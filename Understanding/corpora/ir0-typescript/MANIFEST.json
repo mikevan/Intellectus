@@ -1,0 +1,59 @@
+{
+  "name": "ir0-typescript",
+  "language": "typescript",
+  "fileCount": 10,
+  "totalBytes": 40509,
+  "corpusHash": "01c953f3772a799f",
+  "files": [
+    {
+      "path": "adapters/python/index.ts",
+      "bytes": 5632,
+      "sha256": "58f741e1a405c8ed2bb992bbf6ccaa8e590787eb05cf752f8ffea98bb9f53ada"
+    },
+    {
+      "path": "adapters/treeSitter.ts",
+      "bytes": 1269,
+      "sha256": "b04e16ef9588c7bef44d6b05e00a45089648a9e4ae9b8491bbcc49997efc8133"
+    },
+    {
+      "path": "adapters/typescript/index.ts",
+      "bytes": 7096,
+      "sha256": "3737692966253171d2d34bbcd33598c8648f68900432e6b24c86d9d964018705"
+    },
+    {
+      "path": "concepts/index.ts",
+      "bytes": 1051,
+      "sha256": "24234a2c16992d407e4cd6eddf6fe6276acdd6a69da4938e9fab3f648665f88f"
+    },
+    {
+      "path": "index.ts",
+      "bytes": 143,
+      "sha256": "02b71f6643d9589ae8b463d1d0c5c983d6eb3c428005dcdade9057d070fb2c39"
+    },
+    {
+      "path": "ir/index.ts",
+      "bytes": 6483,
+      "sha256": "7f090129f7477a017887466762daff398798b8e28736a64324c4da685b1d3f0d"
+    },
+    {
+      "path": "journal/index.ts",
+      "bytes": 8294,
+      "sha256": "de3a8788911fa6a009c4071b9244b747dd16f734ffe79a9cab5bd55a3e1a053e"
+    },
+    {
+      "path": "schema/index.ts",
+      "bytes": 3594,
+      "sha256": "964e335bbac20c034579579a917221a27b85813ce2adc219a6d6700eb6cca034"
+    },
+    {
+      "path": "schema/relations.ts",
+      "bytes": 4894,
+      "sha256": "e7e2121596fb17ce434c54fcb59effd4126a8fdb9ad850e73cdd985c38b312f8"
+    },
+    {
+      "path": "scopes/index.ts",
+      "bytes": 2053,
+      "sha256": "8f90a6ac891bcb5777f5841c11f09c6c7a457cf0572278261f22bc0410f4e76a"
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+.review-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 auto 12px;
+  max-width: 2200px;
+  width: 100%;
+}
+
+.eyebrow {
+  color: #c53149;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0;
+  margin: 0 0 2px;
+  text-transform: uppercase;
+}
+
+.review-header h1 {
+  color: #151515;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  line-height: 1;
+  margin: 0;
+  max-width: 680px;
+}
+
+.project-note {
+  background: #fffdf7;
+  border: 1px solid #151515;
+  box-shadow: 2px 2px 0 #151515;
+  color: #4c463d;
+  display: inline-block;
+  font:
+    800 11px / 1.2 "Trebuchet MS",
+    sans-serif;
+  margin: 8px 0 0;
+  max-width: 360px;
+  padding: 6px 8px;
+}
+
+.progress-block {
+  align-items: center;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto minmax(130px, 180px) auto auto auto;
+}
+
+.progress-block span {
+  white-space: nowrap;
+}
+
+.progress-value {
+  font-variant-numeric: tabular-nums;
+  min-width: 12ch;
+  text-align: right;
+}
+
+.progress-block small {
+  color: #4c463d;
+  font:
+    800 12px / 1 "Trebuchet MS",
+    sans-serif;
+}
+
+.progress-count {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+  min-width: 8ch;
+}
+
+.back-button {
+  min-height: 44px;
+  padding-inline-end: 36px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.progress-track {
+  appearance: none;
+  background: #ded8ce;
+  border: 1px solid #151515;
+  height: 10px;
+  min-width: 0;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-track::-webkit-progress-bar {
+  background: #ded8ce;
+}
+
+.progress-track::-webkit-progress-value {
+  background: #d33b53;
+  transition: width 340ms var(--motion-snap);
+}
+
+.progress-track::-moz-progress-bar {
+  background: #d33b53;
+  transition: width 340ms var(--motion-snap);
+}

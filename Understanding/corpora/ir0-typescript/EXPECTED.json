@@ -1,0 +1,65 @@
+{
+  "corpus": "ir0-typescript",
+  "corpusHash": "01c953f3772a799f",
+  "note": "One row per encoder version, in the order measured. A row is never edited. A correction is a new row with a note saying what the earlier row got wrong. Numbers are what the instrument printed at the time, on the frozen corpus, and each was confirmed on a second platform where the 'confirmed' field says so.",
+  "rows": [
+    {
+      "ir": 0,
+      "measured": "2026-09-13",
+      "buildId": null,
+      "files": 10, "functions": 58, "statements": 240,
+      "opaque": 85, "opaquePct": 35.4,
+      "categories": null,
+      "collisionGroups": 6,
+      "confirmed": ["linux"],
+      "note": "Before local bindings were represented. Opaque reasons were grammar node names at this version, not categories, which was itself a defect fixed at IR-2."
+    },
+    {
+      "ir": 1,
+      "measured": "2026-09-13",
+      "buildId": null,
+      "files": 10, "functions": 58, "statements": 240,
+      "opaque": 16, "opaquePct": 6.7,
+      "categories": null,
+      "collisionGroups": 4,
+      "confirmed": ["linux"],
+      "note": "Local bindings and assignments as named values. Member reads added later the same day (IR-1b) took the groups from 5 to 4."
+    },
+    {
+      "ir": 2,
+      "measured": "2026-09-13",
+      "buildId": null,
+      "files": 10, "functions": 58, "statements": 240,
+      "opaque": 16, "opaquePct": 6.7,
+      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "collisionGroups": 4,
+      "confirmed": ["linux", "windows"],
+      "note": "Language-neutral opaque categories and canonical single-use inlining. First version confirmed on a second platform."
+    },
+    {
+      "ir": 3,
+      "measured": "2026-09-14",
+      "buildId": "d36e05dfc3aa",
+      "files": 10, "functions": 58, "statements": 240,
+      "opaque": 16, "opaquePct": 6.7,
+      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "collisionGroups": 3,
+      "collisionFingerprints": ["6acd180082c43bee56a85d4a", "a6afc611f788cd0f0e69939d", "7fb18b89e33bcbde5c309904"],
+      "confirmed": ["linux", "windows"],
+      "note": "Calls and other expressions in operand position as computed values."
+    },
+    {
+      "ir": 4,
+      "measured": "2026-09-14",
+      "buildId": "f48949f5caf3",
+      "files": 10, "functions": 58, "statements": 240,
+      "opaque": 16, "opaquePct": 6.7,
+      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "collisionGroups": 2,
+      "collisionFingerprints": ["6acd180082c43bee56a85d4a", "ee8c8e5ca86134f52b8f5dae"],
+      "confirmed": ["linux", "windows"],
+      "current": true,
+      "note": "A function passed as a value represented as behaviour. The two groups are the switch-heavy group and block in both adapters, which is the one genuine cross-language match in this corpus."
+    }
+  ]
+}

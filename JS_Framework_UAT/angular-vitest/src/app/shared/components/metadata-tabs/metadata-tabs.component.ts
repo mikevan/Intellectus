@@ -1,0 +1,56 @@
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { TabsModule } from 'primeng/tabs';
+
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+
+import { CedarTemplateFormComponent } from '@osf/features/metadata/components/cedar-template-form/cedar-template-form.component';
+import {
+  CedarMetadataRecordModel,
+  CedarMetadataTemplateModel,
+  CedarRecordDataBinding,
+} from '@osf/features/metadata/models';
+import { MetadataTabsModel } from '@osf/shared/models/metadata-tabs.model';
+
+import { LoadingSpinnerComponent } from '../loading-spinner/loading-spinner.component';
+
+@Component({
+  selector: 'osf-metadata-tabs',
+  imports: [LoadingSpinnerComponent, CedarTemplateFormComponent, TabsModule, TranslatePipe],
+  templateUrl: './metadata-tabs.component.html',
+  styleUrl: './metadata-tabs.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class MetadataTabsComponent {
+  loading = input<boolean>(false);
+  tabs = input.required<MetadataTabsModel[]>();
+  selectedTab = input.required<string>();
+  selectedCedarTemplate = input.required<CedarMetadataTemplateModel>();
+  selectedCedarRecord = input.required<CedarMetadataRecordModel | null>();
+  cedarFormReadonly = input<boolean>(true);
+  canEdit = input<boolean>(true);
+  changeTab = output<string | number>();
+  formSubmit = output<CedarRecordDataBinding>();
+  toggleFormEdit = output<void>();
+  cedarFormChangeTemplate = output<void>();
+
+  onCedarFormSubmit(data: CedarRecordDataBinding) {
+    this.formSubmit.emit(data);
+  }
+
+  onCedarFormChangeTemplate() {
+    this.cedarFormChangeTemplate.emit();
+  }
+
+  onTabChange(event: string | number | undefined): void {
+    const value = event;
+
+    if (value !== undefined) {
+      this.changeTab.emit(value);
+    }
+  }
+
+  toggleEditMode() {
+    this.toggleFormEdit.emit();
+  }
+}

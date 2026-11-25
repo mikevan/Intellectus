@@ -1,0 +1,263 @@
+<h2>{{ 'preprints.preprintStepper.review.title' | translate | titlecase }}</h2>
+<p class="mt-3">
+  {{ 'preprints.preprintStepper.review.consentDescription' | translate }}
+</p>
+<p>
+  {{
+    'preprints.preprintStepper.review.workflowDescription'
+      | translate: { providerName: provider().name, reviewsWorkflow: provider().reviewsWorkflow }
+  }}
+</p>
+<p>
+  {{ 'preprints.preprintStepper.review.learnMore' | translate }}
+  <a
+    class="font-bold"
+    href="https://help.osf.io/article/592-preprint-moderation"
+    target="_blank"
+    rel="noopener noreferrer"
+    >{{ 'preprints.preprintStepper.review.moderationPolicies' | translate }}</a
+  >
+  {{ 'preprints.preprintStepper.review.supportCenter' | translate }}
+</p>
+
+<p-card class="card mt-4">
+  <div class="flex flex-column gap-4">
+    <h2>{{ 'preprints.preprintStepper.review.sections.titleAndAbstract.title' | translate }}</h2>
+
+    <section class="flex flex-column gap-2">
+      <h3>
+        {{
+          'preprints.preprintStepper.review.sections.titleAndAbstract.service'
+            | translate: { preprintWord: provider().preprintWord | titlecase }
+        }}
+      </h3>
+      <div class="flex flex-row gap-2 align-items-center">
+        <img
+          class="fit-contain"
+          [src]="provider().squareColorNoTransparentImageUrl"
+          [alt]="'preprints.selectService.providerLogoImageAlt' | translate"
+          height="36"
+          width="36"
+        />
+        <p>{{ provider().name }}</p>
+      </div>
+    </section>
+
+    @if (preprint(); as preprint) {
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'common.labels.title' | translate }}</h3>
+        <p>{{ preprint.title }}</p>
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.common.labels.abstract' | translate }}</h3>
+        <osf-truncated-text [maxVisibleLines]="2" [text]="preprint.description" />
+      </section>
+    }
+  </div>
+</p-card>
+
+<p-card class="card mt-4">
+  <div class="flex flex-column gap-4">
+    <h2>{{ 'common.labels.metadata' | translate }}</h2>
+
+    <section class="flex flex-column gap-2">
+      <h3>{{ 'common.labels.contributors' | translate }}</h3>
+
+      <osf-contributors-list
+        [contributors]="bibliographicContributors()"
+        [isLoading]="areContributorsLoading()"
+        [hasLoadMore]="hasMoreBibliographicContributors()"
+        (loadMoreContributors)="loadMoreContributors()"
+      ></osf-contributors-list>
+    </section>
+
+    @if (affiliatedInstitutions().length) {
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'common.labels.affiliatedInstitutions' | translate }}</h3>
+
+        <osf-affiliated-institutions-view
+          data-test-preprint-institution-list
+          [institutions]="affiliatedInstitutions()"
+        />
+      </section>
+    }
+
+    @if (license()) {
+      <section class="license flex flex-column gap-2">
+        <h3>{{ 'common.labels.license' | translate }}</h3>
+
+        <osf-license-display [license]="license()" [licenseOptions]="licenseOptionsRecord()" />
+      </section>
+    }
+
+    @if (preprint()?.articleDoiLink) {
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.review.sections.metadata.publicationDoi' | translate }}</h3>
+
+        <a [href]="preprint()?.articleDoiLink" target="_blank" rel="noopener noreferrer">
+          {{ preprint()?.articleDoiLink }}
+        </a>
+      </section>
+    }
+
+    <section class="flex flex-column gap-2">
+      <h3>{{ 'common.labels.subjects' | translate }}</h3>
+
+      <div class="flex flex-wrap gap-2">
+        @for (subject of subjects(); track subject.id) {
+          <p-tag [value]="subject.name" severity="info" />
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-column gap-2">
+      <h3>{{ 'shared.tags.title' | translate }}</h3>
+
+      <div class="flex flex-wrap gap-2">
+        @for (tag of preprint()?.tags; track tag) {
+          <p-tag [value]="tag" severity="info" />
+        } @empty {
+          <p>{{ 'common.labels.none' | translate }}</p>
+        }
+      </div>
+    </section>
+
+    <section class="flex flex-column gap-2">
+      <h3>{{ 'preprints.preprintStepper.review.sections.metadata.publicationDate' | translate }}</h3>
+
+      @if (preprint()?.originalPublicationDate) {
+        {{ preprint()?.originalPublicationDate | date: 'MMM d, y' }}
+      } @else {
+        <p>{{ 'common.labels.notApplicable' | translate }}</p>
+      }
+    </section>
+
+    <section class="flex flex-column gap-2">
+      <h3>{{ 'preprints.preprintStepper.review.sections.metadata.publicationCitation' | translate }}</h3>
+
+      @if (preprint()?.customPublicationCitation) {
+        {{ preprint()?.customPublicationCitation }}
+      } @else {
+        <p>{{ 'common.labels.notApplicable' | translate }}</p>
+      }
+    </section>
+  </div>
+</p-card>
+
+@if (provider().assertionsEnabled) {
+  <p-card class="card mt-4">
+    <div class="flex flex-column gap-4">
+      <h2>{{ 'preprints.preprintStepper.review.sections.authorAssertions.title' | translate }}</h2>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.review.sections.authorAssertions.conflictOfInterest' | translate }}</h3>
+
+        @if (!preprint()?.hasCoi) {
+          <p>{{ 'preprints.preprintStepper.review.sections.authorAssertions.noCoi' | translate }}</p>
+        } @else {
+          {{ preprint()?.coiStatement }}
+        }
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.review.sections.authorAssertions.publicData' | translate }}</h3>
+
+        @switch (preprint()?.hasDataLinks) {
+          @case (ApplicabilityStatus.NotApplicable) {
+            <p>{{ 'preprints.preprintStepper.review.sections.authorAssertions.noData' | translate }}</p>
+          }
+          @case (ApplicabilityStatus.Unavailable) {
+            {{ preprint()?.whyNoData }}
+          }
+          @case (ApplicabilityStatus.Applicable) {
+            @for (link of preprint()?.dataLinks; track $index) {
+              <p>{{ link }}</p>
+            }
+          }
+        }
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>
+          {{ 'preprints.preprintStepper.review.sections.authorAssertions.publicPreregistration' | translate }}
+        </h3>
+
+        @switch (preprint()?.hasPreregLinks) {
+          @case (ApplicabilityStatus.NotApplicable) {
+            <p>
+              {{ 'preprints.preprintStepper.review.sections.authorAssertions.noPrereg' | translate }}
+            </p>
+          }
+          @case (ApplicabilityStatus.Unavailable) {
+            {{ preprint()?.whyNoPrereg }}
+          }
+          @case (ApplicabilityStatus.Applicable) {
+            @switch (preprint()?.preregLinkInfo) {
+              @case (PreregLinkInfo.Analysis) {
+                <p>
+                  {{ 'preprints.preprintStepper.common.labels.preregTypes.analysis' | translate }}
+                </p>
+              }
+              @case (PreregLinkInfo.Designs) {
+                <p>
+                  {{ 'preprints.preprintStepper.common.labels.preregTypes.designs' | translate }}
+                </p>
+              }
+              @case (PreregLinkInfo.Both) {
+                <p>
+                  {{ 'preprints.preprintStepper.common.labels.preregTypes.both' | translate }}
+                </p>
+              }
+            }
+            @for (link of preprint()?.preregLinks; track $index) {
+              <p>{{ link }}</p>
+            }
+          }
+        }
+      </section>
+    </div>
+  </p-card>
+}
+
+@if (!isProjectCreationDisabled()) {
+  <p-card class="card mt-4">
+    <div class="flex flex-column gap-4">
+      <h2>{{ 'preprints.preprintStepper.review.sections.supplements.title' | translate }}</h2>
+      @if (preprintProject()) {
+        <p>{{ preprintProject()?.name }}</p>
+      } @else {
+        <p>{{ 'preprints.preprintStepper.review.sections.supplements.noSupplements' | translate }}</p>
+      }
+    </div>
+  </p-card>
+}
+
+<section class="mt-6 flex flex-row justify-content-end align-items-center gap-2">
+  <p-button
+    class="w-6 md:w-6rem"
+    styleClass="w-full"
+    [label]="'common.buttons.cancel' | translate"
+    severity="info"
+    [disabled]="isPreprintSubmitting()"
+    (onClick)="cancelSubmission()"
+  />
+  @if (showDeleteButton()) {
+    <p-button
+      class="w-6 md:w-6rem"
+      styleClass="w-full"
+      [label]="'common.buttons.delete' | translate"
+      severity="danger"
+      [disabled]="isPreprintSubmitting()"
+      (onClick)="deletePreprint()"
+    />
+  }
+  <p-button
+    data-test-submit-button
+    class="w-6 md:w-9rem"
+    styleClass="w-full"
+    [label]="'common.buttons.submit' | translate"
+    [loading]="isPreprintSubmitting()"
+    (onClick)="submitPreprint()"
+  />
+</section>

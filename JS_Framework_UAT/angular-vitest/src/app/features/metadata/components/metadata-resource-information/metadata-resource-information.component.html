@@ -1,0 +1,44 @@
+<p-card>
+  <div class="flex justify-content-between align-items-center">
+    <h2>
+      {{ 'project.overview.metadata.resourceInformation' | translate }}
+      <p-button
+        icon="fas fa-info-circle blue-icon"
+        severity="secondary"
+        text
+        (onClick)="showResourceInfo.emit()"
+        [ariaLabel]="'project.metadata.resourceInformation.tooltipDialog.header' | translate"
+      ></p-button>
+    </h2>
+
+    @if (!readonly()) {
+      <p-button
+        severity="secondary"
+        [label]="'common.buttons.edit' | translate"
+        [disabled]="disabled()"
+        [pTooltip]="disabledButtonTooltip()"
+        tooltipPosition="left"
+        (onClick)="openEditResourceInformationDialog.emit()"
+        data-test-edit-resource-information-button
+      ></p-button>
+    }
+  </div>
+
+  <div class="mt-4">
+    @if (customItemMetadata()?.resourceTypeGeneral || customItemMetadata()?.language) {
+      <div class="flex-column flex gap-2">
+        <p class="inline-block font-bold" data-test-display-resource-type-general>
+          <span> {{ 'project.overview.metadata.resourceType' | translate }}: </span>
+          <span>{{ customItemMetadata()?.resourceTypeGeneral | resourceTypeGeneralLabel }}</span>
+        </p>
+
+        <p class="inline-block font-bold" data-test-display-resource-language>
+          <span> {{ 'project.overview.metadata.resourceLanguage' | translate }}: </span>
+          <span>{{ customItemMetadata()?.language | languageLabel }}</span>
+        </p>
+      </div>
+    } @else {
+      <p>{{ 'project.overview.metadata.noResourceInformation' | translate }}</p>
+    }
+  </div>
+</p-card>

@@ -1,0 +1,71 @@
+<osf-sub-header [title]="'preprints.selectService.title' | translate" />
+
+<section class="flex flex-1 flex-column bg-white p-3 md:p-4">
+  <h2>{{ 'preprints.selectService.sectionTitle' | translate }}</h2>
+  <p class="mt-3">
+    <span>
+      {{ 'preprints.selectService.description' | translate }}
+    </span>
+
+    <a class="font-bold" href="https://help.osf.io/article/376-preprints-home-page">
+      {{ 'preprints.selectService.learnMore' | translate }}
+    </a>
+  </p>
+
+  <section class="mt-6 grid justify-content-center align-items-start gap-4">
+    @if (areProvidersLoading()) {
+      @for (_ of skeletonArray; track $index) {
+        <p-card>
+          <div class="h-10rem w-13rem grid-item flex flex-column align-items-center justify-content-end">
+            <p-skeleton width="60px" height="60px" />
+            <p-skeleton class="mt-3" width="5rem" height="1rem" />
+            <p-skeleton class="mt-4" width="8rem" height="2rem" />
+          </div>
+        </p-card>
+      }
+    } @else {
+      @for (provider of preprintProvidersAllowingSubmissions(); track provider.id) {
+        <p-card
+          [ngClass]="{ active: selectedProviderId() === provider.id }"
+          class="provider-card"
+          [pTooltip]="descriptionTooltip"
+          tooltipPosition="bottom"
+          autoHide="false"
+          (click)="toggleProviderSelection(provider)"
+        >
+          <div class="h-10rem w-13rem grid-item flex flex-column align-items-center justify-content-end">
+            <img
+              class="provider-image"
+              height="60"
+              [src]="provider.squareColorNoTransparentImageUrl"
+              [alt]="'preprints.selectService.providerLogoImageAlt' | translate"
+            />
+
+            <h4 class="text-center mt-3">{{ provider.name }}</h4>
+            <p-button
+              class="mt-4"
+              [label]="
+                selectedProviderId() === provider.id
+                  ? ('common.buttons.deselect' | translate)
+                  : ('common.buttons.select' | translate)
+              "
+              severity="secondary"
+            />
+          </div>
+        </p-card>
+
+        <ng-template #descriptionTooltip>
+          <div [innerHTML]="provider.descriptionHtml | safeHtml"></div>
+        </ng-template>
+      }
+    }
+  </section>
+
+  <section class="mt-6 flex flex-row justify-content-end">
+    <p-button
+      [label]="'common.buttons.next' | translate"
+      [routerLink]="['/preprints', selectedProviderId(), 'submit']"
+      [disabled]="!selectedProviderId()"
+    />
+  </section>
+</section>

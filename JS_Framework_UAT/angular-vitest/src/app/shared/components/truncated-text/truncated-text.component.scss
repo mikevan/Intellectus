@@ -1,0 +1,18 @@
+.text-content {
+  max-height: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: var(--line-clamp);
+  -webkit-line-clamp: var(--line-clamp);
+  -webkit-box-orient: vertical;
+  white-space: pre-wrap;
+
+  &.expanded {
+    display: block;
+    max-height: none;
+    text-overflow: initial;
+    -webkit-line-clamp: initial;
+    line-clamp: initial;
+  }
+}

@@ -1,0 +1,35 @@
+node_modules/
+out/
+dist/
+.vscode-test/
+*.vsix
+*.zip
+*.map
+__pycache__/
+test/fixtures/pyproject/.vscode/
+# KeepSafe's local checkpoint store; it belongs to the machine, not the repository.
+.keepsafe/
+# DeepTest's working files are regenerated on every check; the decisions travel with the code.
+.deeptest/*
+!.deeptest/decisions.json
+
+# Fixture copies of the HelloWorlds ports (scripts/sync-fixtures.mjs) install their own dependencies when a test needs them.
+test/fixtures/helloworld-*/node_modules/
+# The behaviour gate's working folders, and Playwright's own output, under any
+# fixture. The rules below carry a slash, so git anchors them to this file's
+# folder and they never reached test/fixtures/helloworld-*/.
+**/.untangleit/*
+**/test-results/
+# UntangleIt's working files, when UntangleIt measures this project; the run record travels with the code.
+.untangleit/*
+!.untangleit/runs.json
+# The tool was renamed to UntangleIt on 2026-09-11. Its records must not come back.
+.refactorit/**
+
+# The Governance History is local only. It can carry who authorized an
+# attempt, it carries model identity and operational audit metadata, and it
+# is append-only and unbounded. Rule 70 makes what is in it safe to keep on
+# this machine; that is not the same as appropriate to publish through
+# somebody's repository. Stated explicitly so a later negation rule cannot
+# un-ignore it by accident.
+.deeptest/governance.jsonl

@@ -1,0 +1,25 @@
+:root {
+  color: #151515;
+  background: #f4efe3;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-synthesis: none;
+  letter-spacing: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  max-width: 100%;
+  min-width: 0;
+}

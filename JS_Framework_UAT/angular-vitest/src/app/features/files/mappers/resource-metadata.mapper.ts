@@ -1,0 +1,32 @@
+import { IdentifiersMapper } from '@osf/shared/mappers/identifiers.mapper';
+import { ResourceMetadata } from '@osf/shared/models/resource-metadata.model';
+import { replaceBadEncodedChars } from '@shared/helpers/format-bad-encoding.helper';
+
+import { NodeShortInfoResponse } from '../models/node-short-info-response.model';
+import { ResourceCustomMetadataResponse } from '../models/resource-custom-metadata-response.model';
+
+export function MapResourceMetadata(
+  shortInfo: NodeShortInfoResponse,
+  customMetadata: ResourceCustomMetadataResponse
+): ResourceMetadata {
+  return {
+    title: replaceBadEncodedChars(shortInfo.data.attributes.title),
+    description: replaceBadEncodedChars(shortInfo.data.attributes.description),
+    dateCreated: new Date(shortInfo.data.attributes.date_created),
+    dateModified: new Date(shortInfo.data.attributes.date_modified),
+    funders:
+      customMetadata.data.embeds?.custom_metadata?.data?.attributes?.funders?.map((funder) => ({
+        funderName: funder.funder_name,
+        funderIdentifier: funder.funder_identifier,
+        funderIdentifierType: funder.funder_identifier_type,
+        awardNumber: funder.award_number,
+        awardUri: funder.award_uri,
+        awardTitle: funder.award_title,
+      })) || [],
+    identifiers: shortInfo.data.embeds?.identifiers?.data.length
+      ? IdentifiersMapper.fromJsonApi(shortInfo.data.embeds?.identifiers)
+      : [],
+    language: customMetadata.data.embeds?.custom_metadata?.data?.attributes?.language || '',
+    resourceTypeGeneral: customMetadata.data.embeds?.custom_metadata?.data?.attributes?.resource_type_general || '',
+  };
+}

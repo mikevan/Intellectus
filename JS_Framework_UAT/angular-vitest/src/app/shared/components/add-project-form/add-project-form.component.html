@@ -1,0 +1,55 @@
+<form [formGroup]="projectForm()" class="flex flex-column gap-4">
+  <div class="flex flex-column">
+    <label for="project-title">
+      {{ 'common.labels.title' | translate }}
+    </label>
+    <input pInputText id="project-title" type="text" [formControlName]="ProjectFormControls.Title" />
+  </div>
+
+  <div class="flex flex-column">
+    <label for="storage-location">
+      {{ 'myProjects.createProject.storageLocation' | translate }}
+    </label>
+    <p-select
+      id="storage-location"
+      [options]="storageLocations()"
+      optionLabel="name"
+      optionValue="id"
+      [loading]="areStorageLocationsLoading()"
+      [formControlName]="ProjectFormControls.StorageLocation"
+    />
+  </div>
+
+  @if (affiliations() && affiliations().length) {
+    <div>
+      <h3 class="font-normal mb-2">
+        {{ 'myProjects.createProject.affiliation.title' | translate }}
+      </h3>
+      <osf-affiliated-institution-select
+        [institutions]="affiliations()"
+        [isLoading]="affiliationLoading()"
+        [selectedInstitutions]="selectedAffiliations()"
+      />
+    </div>
+  }
+
+  <div class="flex flex-column">
+    <label for="description">
+      {{ 'common.labels.descriptionOptional' | translate }}
+    </label>
+    <textarea pTextarea id="description" [formControlName]="ProjectFormControls.Description" [rows]="5"></textarea>
+  </div>
+
+  <div class="flex flex-column">
+    <label for="template">
+      {{ 'myProjects.createProject.template.label' | translate }}
+    </label>
+    <osf-project-selector
+      id="template"
+      placeholder="myProjects.createProject.template.placeholder"
+      [showClear]="hasTemplateSelected()"
+      [(selectedProject)]="selectedTemplate"
+      (projectChange)="onTemplateChange($event)"
+    />
+  </div>
+</form>

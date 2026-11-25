@@ -1,0 +1,94 @@
+<p-card>
+  <h2>{{ 'settings.accountSettings.connectedEmails.title' | translate }}</h2>
+
+  <p class="mt-4">
+    {{ 'settings.accountSettings.connectedEmails.description' | translate }}
+  </p>
+
+  <div class="flex flex-column mt-4 gap-4">
+    <div class="flex align-items-center flex-wrap gap-2">
+      <p>
+        {{ 'settings.accountSettings.connectedEmails.primaryEmail' | translate }}
+      </p>
+
+      @if (isEmailsLoading()) {
+        <p-skeleton width="20rem" height="2.5rem" />
+      } @else {
+        <p>{{ primaryEmail()?.emailAddress }}</p>
+      }
+    </div>
+
+    <div class="flex align-items-center flex-wrap gap-2">
+      <p>
+        {{ 'settings.accountSettings.connectedEmails.alternateEmails' | translate }}
+      </p>
+
+      <div class="flex flex-column gap-3 xl:flex-row xl:flex-wrap">
+        @if (isEmailsLoading()) {
+          <p-skeleton width="20rem" height="2.5rem" />
+        } @else {
+          @for (email of confirmedEmails(); track email.id) {
+            <div class="flex align-items-center flex-wrap gap-2">
+              <osf-readonly-input
+                [value]="email.emailAddress"
+                [ariaLabelKey]="'settings.accountSettings.connectedEmails.alternateEmails'"
+                (deleteItem)="openConfirmDeleteEmail(email)"
+              ></osf-readonly-input>
+
+              <p-button
+                [label]="'settings.accountSettings.connectedEmails.buttons.makePrimary' | translate"
+                severity="secondary"
+                (click)="makePrimary(email)"
+              >
+              </p-button>
+            </div>
+          }
+        }
+      </div>
+    </div>
+
+    <div class="flex align-items-center flex-wrap gap-2">
+      <p>
+        {{ 'settings.accountSettings.connectedEmails.unconfirmedEmails' | translate }}
+      </p>
+
+      <div class="flex flex-column gap-3 xl:flex-row xl:flex-wrap">
+        @if (isEmailsLoading()) {
+          <p-skeleton width="20rem" height="2.5rem" />
+        } @else {
+          @for (email of unconfirmedEmails(); track email.id) {
+            <div class="flex align-items-center flex-wrap gap-2">
+              <osf-readonly-input
+                [value]="email.emailAddress"
+                [ariaLabelKey]="'settings.accountSettings.connectedEmails.unconfirmedEmails'"
+                (deleteItem)="openConfirmDeleteEmail(email)"
+              ></osf-readonly-input>
+
+              <p-button
+                [label]="
+                  (isSmall()
+                    ? 'settings.accountSettings.connectedEmails.buttons.resendConfirmation'
+                    : 'settings.accountSettings.connectedEmails.buttons.resend'
+                  ) | translate
+                "
+                severity="secondary"
+                [disabled]="isEmailsSubmitting()"
+                [loading]="isEmailsSubmitting()"
+                (click)="resendConfirmation(email)"
+              >
+              </p-button>
+            </div>
+          }
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-content-end mt-4">
+    <p-button
+      (onClick)="addEmail()"
+      [label]="'settings.accountSettings.connectedEmails.buttons.addEmail' | translate"
+      [disabled]="isEmailsLoading() || isEmailsSubmitting()"
+    />
+  </div>
+</p-card>

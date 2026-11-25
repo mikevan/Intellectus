@@ -1,0 +1,24 @@
+import { Funder } from '@osf/features/metadata/models';
+import { RegistrationReviewStates } from '@osf/shared/enums/registration-review-states.enum';
+import { RevisionReviewStates } from '@osf/shared/enums/revision-review-states.enum';
+import { ContributorModel } from '@shared/models/contributors/contributor.model';
+
+import { ReviewAction } from './review-action.model';
+
+export interface RegistryModeration {
+  id: string;
+  title: string;
+  revisionStatus: RevisionReviewStates;
+  reviewsState: RegistrationReviewStates;
+  public: boolean;
+  embargoed: boolean;
+  embargoEndDate: string | null;
+  actions: ReviewAction[];
+  revisionId?: string | null;
+  contributorsLoading?: boolean;
+  contributors?: ContributorModel[];
+  totalContributors?: number;
+  contributorsPage?: number;
+  funders?: Funder[];
+  fundersLoading?: boolean;
+}

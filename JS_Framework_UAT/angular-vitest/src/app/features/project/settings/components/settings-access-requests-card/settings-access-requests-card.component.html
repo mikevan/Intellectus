@@ -1,0 +1,22 @@
+<p-card>
+  <h2 class="pb-4">{{ 'myProjects.settings.accessRequests' | translate }}</h2>
+
+  <div class="flex align-items-center w-full">
+    <p-checkbox
+      [binary]="true"
+      [ngModel]="accessRequest()"
+      (ngModelChange)="accessRequestChange.emit($event)"
+      [disabled]="isProjectReadOnly()"
+      inputId="accessRequest"
+      name="ongoing"
+    ></p-checkbox>
+
+    <label
+      [pTooltip]="isProjectReadOnly() ? ('common.errorMessages.actionUnavailable' | translate) : ''"
+      class="mb-0 ml-2 cursor-pointer"
+      [for]="'accessRequest'"
+    >
+      {{ 'myProjects.settings.accessRequestsText' | translate }}
+    </label>
+  </div>
+</p-card>

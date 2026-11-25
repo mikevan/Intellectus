@@ -1,0 +1,10 @@
+.nav-menu {
+  width: 250px;
+  max-width: 250px;
+
+  .active {
+    background-color: var(--dark-blue-2);
+    border-radius: 0.5rem;
+    font-weight: 700;
+  }
+}

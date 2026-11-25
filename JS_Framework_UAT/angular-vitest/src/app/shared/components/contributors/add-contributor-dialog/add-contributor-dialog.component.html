@@ -1,0 +1,112 @@
+<div class="flex flex-column">
+  @if (isSearchState()) {
+    <osf-search-input
+      [control]="searchControl"
+      [placeholder]="'project.contributors.addDialog.placeholder' | translate"
+    />
+
+    <div class="flex flex-column gap-3 mt-4" [class.users-list]="!isInitialState()">
+      @if (isLoading()) {
+        <osf-loading-spinner class="mt-3"></osf-loading-spinner>
+      } @else {
+        @for (item of users(); track $index) {
+          <div class="border-divider flex pb-3">
+            <p-checkbox
+              variant="filled"
+              [value]="item"
+              [ngModel]="selectedUsers()"
+              (ngModelChange)="onSelectedUsersChange($event)"
+              [disabled]="!!item.disabled"
+            ></p-checkbox>
+            <a class="ml-2 font-bold" [href]="item.id" target="_blank">{{ item.fullName }}</a>
+          </div>
+        }
+
+        @if (!totalUsersCount() && !isInitialState()) {
+          <div class="no-items">{{ 'common.search.noResultsFound' | translate }}</div>
+        }
+      }
+    </div>
+
+    @if (totalUsersCount() > pageSize()) {
+      <osf-custom-paginator
+        [first]="first()"
+        [totalCount]="totalUsersCount()"
+        [showPageLinks]="false"
+        (pageChanged)="pageChanged($event)"
+      ></osf-custom-paginator>
+    }
+
+    @if (!isInitialState()) {
+      <div class="flex justify-content-end mt-4">
+        <p-button
+          class="btn-full-width md:w-auto"
+          severity="secondary"
+          [label]="'project.contributors.addDialog.addUnregisteredContributor' | translate"
+          (onClick)="addUnregistered()"
+          data-test-add-unregistered-contributor-button
+        />
+      </div>
+    }
+  } @else if (isDetailsState()) {
+    <div>
+      <p>{{ 'project.contributors.addDialog.selectPermissions' | translate }}</p>
+
+      <div class="flex flex-column gap-3 mt-4">
+        @for (user of selectedUsers(); track $index) {
+          <osf-add-contributor-item [contributor]="user"></osf-add-contributor-item>
+        }
+      </div>
+    </div>
+  } @else if (isComponentsState()) {
+    <div class="flex flex-column gap-4">
+      <p
+        [innerHTML]="
+          'project.contributors.addDialog.addingContributorsTo'
+            | translate: { names: contributorNames(), projectName: resourceName() }
+        "
+      ></p>
+      <p>{{ 'project.contributors.addDialog.addContributorsToComponents' | translate }}</p>
+
+      <osf-components-selection-list [(components)]="components" />
+    </div>
+  }
+
+  @if (allowAddingContributorsFromParentProject() && this.isSearchState()) {
+    <div class="flex justify-content-center mt-2">
+      <p-button
+        class="w-full"
+        styleClass="w-full"
+        severity="secondary"
+        (onClick)="addSourceProjectContributors()"
+        [label]="
+          'project.contributors.addDialog.addingContributorsFromParentProject'
+            | translate: { projectName: parentResourceName() }
+        "
+      >
+      </p-button>
+    </div>
+  }
+
+  <div class="flex gap-2 mt-6">
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      (onClick)="dialogRef.close()"
+      severity="info"
+      [label]="'common.buttons.cancel' | translate"
+      data-test-cancel-add-contributor-button
+    >
+    </p-button>
+
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      (onClick)="addContributor()"
+      [label]="buttonLabel() | translate"
+      [disabled]="!selectedUsers().length"
+      data-test-add-contributor-button
+    >
+    </p-button>
+  </div>
+</div>

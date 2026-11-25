@@ -1,0 +1,63 @@
+@let safeLinkValue = safeLink();
+
+<section class="p-card p-card-body card gap-4 flex flex-1 file-section-height">
+  @if (safeLinkValue) {
+    <iframe
+      class="flex-1 border-none"
+      [src]="safeLinkValue | safeUrl"
+      (load)="isIframeLoading = false"
+      [hidden]="isIframeLoading"
+      [title]="'preprints.details.file.renderingDocument' | translate"
+      height="100%"
+      allowfullscreen="true"
+      width="100%"
+    ></iframe>
+  }
+
+  @if (isIframeLoading || isFileLoading()) {
+    <osf-loading-spinner />
+  }
+
+  <section class="flex flex-column gap-2">
+    @if (fileVersions().length) {
+      @let fileVersionsValue = fileVersions();
+
+      <div
+        class="flex flex-column gap-2 align-items-start sm:flex-row sm:gap-4 sm:justify-content-between sm:align-items-center"
+      >
+        <p>{{ fileVersionsValue[0].name }}</p>
+        <p class="white-space-nowrap">
+          {{ 'preprints.details.file.version' | translate: { version: fileVersionsValue[0].id } }}
+        </p>
+        <p-button
+          severity="secondary"
+          [label]="'preprints.details.file.downloadPreviousVersion' | translate"
+          (onClick)="versionsMenu.toggle($event)"
+        />
+
+        <p-menu #versionsMenu [model]="versionMenuItems()" appendTo="body" popup class="hidden" />
+      </div>
+    }
+
+    @if (areFileVersionsLoading()) {
+      <p-skeleton width="100%" height="1rem" />
+    }
+
+    @let preprintValue = preprint();
+    @if (file() && preprintValue) {
+      <div class="flex flex-column gap-2 justify-content-start md:flex-row">
+        <span>{{ dateLabel() | translate }}: {{ preprintValue.dateCreated | date: 'longDate' }}</span>
+        @if (isMedium() || isLarge()) {
+          <span>|</span>
+        }
+        <span>
+          {{ 'preprints.details.file.lastEdited' | translate }} : {{ preprintValue.dateModified | date: 'longDate' }}
+        </span>
+      </div>
+    }
+
+    @if (isFileLoading()) {
+      <p-skeleton width="100%" height="1rem" />
+    }
+  </section>
+</section>

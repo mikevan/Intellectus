@@ -1,0 +1,2489 @@
+Checkpoint: 0001-quick-20260813-114949
+Name: quick-20260813-114949
+Created: 2026-08-13T16:49:49Z
+Mode: snapshot
+
+A keepsafe-extension/.vscodeignore
+--- keepsafe-extension/.vscodeignore ---
+**/*.ts
+**/tsconfig.json
+**/.eslintrc.json
+**/.vscode/**
+**/.vscode-test/**
+src/**
+
+A keepsafe-extension/LICENSE
+--- keepsafe-extension/LICENSE ---
+MIT License
+
+Copyright (c) KeepSafe Maintainers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+A keepsafe-extension/media/icon.svg
+--- keepsafe-extension/media/icon.svg ---
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KeepSafe icon">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#103A5C" />
+      <stop offset="100%" stop-color="#1A7A8C" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="48" fill="url(#bg)" />
+  <circle cx="128" cy="128" r="98" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="10" />
+  <path d="M128 50 L190 76 V144 C190 179 163 205 128 223 C93 205 66 179 66 144 V76 Z" fill="#FFFFFF" opacity="0.95"/>
+  <path d="M92 133 L116 157 L164 109" fill="none" stroke="#105C4E" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+A keepsafe-extension/package-lock.json
+--- keepsafe-extension/package-lock.json ---
+{
+  "name": "keepsafe",
+  "version": "0.0.3",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {
+    "": {
+      "name": "keepsafe",
+      "version": "0.0.3",
+      "devDependencies": {
+        "@types/node": "^20.14.10",
+        "@types/vscode": "^1.90.0",
+        "typescript": "^5.5.4"
+      },
+      "engines": {
+        "vscode": "^1.90.0"
+      }
+    },
+    "node_modules/@types/node": {
+      "version": "20.19.43",
+      "resolved": "https://registry.npmjs.org/@types/node/-/node-20.19.43.tgz",
+      "integrity": "sha512-6oYBAi5ikg4Pl+kGsoYtawUMBT2zZMCvPNF7pVLnHZfd1zf38DRiWn/gT01RYCdUqkv7Fhr+C9ot4/tb+2sVvA==",
+      "dev": true,
+      "license": "MIT",
+      "dependencies": {
+        "undici-types": "~6.21.0"
+      }
+    },
+    "node_modules/@types/vscode": {
+      "version": "1.125.0",
+      "resolved": "https://registry.npmjs.org/@types/vscode/-/vscode-1.125.0.tgz",
+      "integrity": "sha512-0icm/ZQAaism87P0ekHqi4/Ju9du+Tm0RUW+y7vqRsxY2cY0FNRX1nAnaW7nT6npPt2tfHiheZ55Zm9UhqonFA==",
+      "dev": true,
+      "license": "MIT"
+    },
+    "node_modules/typescript": {
+      "version": "5.9.3",
+      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+      "integrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==",
+      "dev": true,
+      "license": "Apache-2.0",
+      "bin": {
+        "tsc": "bin/tsc",
+        "tsserver": "bin/tsserver"
+      },
+      "engines": {
+        "node": ">=14.17"
+      }
+    },
+    "node_modules/undici-types": {
+      "version": "6.21.0",
+      "resolved": "https://registry.npmjs.org/undici-types/-/undici-types-6.21.0.tgz",
+      "integrity": "sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==",
+      "dev": true,
+      "license": "MIT"
+    }
+  }
+}
+
+A keepsafe-extension/package.json
+--- keepsafe-extension/package.json ---
+{
+  "name": "keepsafe",
+  "displayName": "KeepSafe",
+  "description": "Local checkpoints and rapid rollback for AI-generated code mistakes.",
+  "icon": "media/OwlLogo_small.png",
+  "version": "0.0.3",
+  "publisher": "KeepSafe",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:keepsafe.quickCheckpoint",
+    "onCommand:keepsafe.restoreLatestCheckpoint",
+    "onCommand:keepsafe.createCheckpoint",
+    "onCommand:keepsafe.listCheckpoints",
+    "onCommand:keepsafe.restoreCheckpoint",
+    "onCommand:keepsafe.diffCheckpoints",
+    "onCommand:keepsafe.rebuild",
+    "onCommand:keepsafe.ignoreAdd"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "keepsafe.quickCheckpoint",
+        "title": "KeepSafe: Quick Checkpoint"
+      },
+      {
+        "command": "keepsafe.restoreLatestCheckpoint",
+        "title": "KeepSafe: Restore Latest Checkpoint"
+      },
+      {
+        "command": "keepsafe.createCheckpoint",
+        "title": "KeepSafe: Create Checkpoint"
+      },
+      {
+        "command": "keepsafe.listCheckpoints",
+        "title": "KeepSafe: List Checkpoints"
+      },
+      {
+        "command": "keepsafe.restoreCheckpoint",
+        "title": "KeepSafe: Restore Checkpoint"
+      },
+      {
+        "command": "keepsafe.diffCheckpoints",
+        "title": "KeepSafe: Diff Checkpoints"
+      },
+      {
+        "command": "keepsafe.rebuild",
+        "title": "KeepSafe: Rebuild Metadata"
+      },
+      {
+        "command": "keepsafe.ignoreAdd",
+        "title": "KeepSafe: Add Ignore Pattern"
+      }
+    ],
+    "configuration": {
+      "title": "KeepSafe",
+      "properties": {
+        "keepsafe.command": {
+          "type": "string",
+          "default": "keepsafe",
+          "description": "Command used to execute the local checkpoint CLI (for example: keepsafe or C:/workspace/keepsafe/.venv/Scripts/keepsafe.exe)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npx @vscode/vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.5.4"
+  }
+}
+
+A keepsafe-extension/README.md
+--- keepsafe-extension/README.md ---
+﻿# KeepSafe Extension
+
+This extension runs your local checkpoint CLI from VS Code to help you recover from AI-driven code mistakes.
+
+## Commands
+
+- `KeepSafe: Quick Checkpoint`
+- `KeepSafe: Restore Latest Checkpoint`
+- `KeepSafe: Create Checkpoint`
+- `KeepSafe: List Checkpoints`
+- `KeepSafe: Restore Checkpoint`
+- `KeepSafe: Diff Checkpoints`
+- `KeepSafe: Rebuild Metadata`
+- `KeepSafe: Add Ignore Pattern`
+
+## Fast Recovery Workflow
+
+1. Run `KeepSafe: Quick Checkpoint` before risky AI-generated edits.
+2. If changes damage the workspace, run `KeepSafe: Restore Latest Checkpoint`.
+3. For older recovery points, use `KeepSafe: Restore Checkpoint` and pick from history.
+
+Behavior details:
+
+- `KeepSafe: Quick Checkpoint` auto-generates checkpoint names as `quick-YYYYMMDD-HHMMSS`.
+- `KeepSafe: Restore Latest Checkpoint` restores the newest available checkpoint after a confirmation prompt.
+
+## Configuration
+
+Set `keepsafe.command` if `keepsafe` is not on your PATH.
+
+Examples:
+
+- `keepsafe`
+- `C:/workspace/keepsafe/.venv/Scripts/keepsafe.exe`
+
+## Development
+
+1. Run `npm install`.
+2. Run `npm run compile`.
+3. Press `F5` in VS Code to launch Extension Development Host.
+
+A keepsafe-extension/src/extension.ts
+--- keepsafe-extension/src/extension.ts ---
+﻿import * as vscode from "vscode";
+import { spawn } from "node:child_process";
+
+type Checkpoint = {
+  id: string;
+  name: string;
+  createdAt: string;
+};
+
+const output = vscode.window.createOutputChannel("KeepSafe");
+
+const commandPairs: Array<[string, (...args: unknown[]) => unknown]> = [
+  ["keepsafe.quickCheckpoint", quickCheckpoint],
+  ["keepsafe.restoreLatestCheckpoint", restoreLatestCheckpoint],
+  ["keepsafe.createCheckpoint", createCheckpoint],
+  ["keepsafe.listCheckpoints", listCheckpoints],
+  ["keepsafe.restoreCheckpoint", restoreCheckpoint],
+  ["keepsafe.diffCheckpoints", diffCheckpoints],
+  ["keepsafe.rebuild", rebuildMetadata],
+  ["keepsafe.ignoreAdd", addIgnorePattern]
+];
+
+export function activate(context: vscode.ExtensionContext): void {
+  for (const [commandId, handler] of commandPairs) {
+    context.subscriptions.push(vscode.commands.registerCommand(commandId, handler));
+  }
+  context.subscriptions.push(output);
+}
+
+export function deactivate(): void {
+  output.dispose();
+}
+
+async function createCheckpoint(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const name = await vscode.window.showInputBox({
+    title: "KeepSafe Checkpoint Name",
+    prompt: "Enter checkpoint name",
+    placeHolder: "Initial checkpoint",
+    validateInput: (value) => (value.trim() ? null : "Checkpoint name is required")
+  });
+  if (!name) {
+    return;
+  }
+
+  const result = await runKeepSafe(["checkpoint", name], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to create checkpoint.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(result.stdout.split("\n")[0] || "Checkpoint created.");
+}
+
+async function quickCheckpoint(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const now = new Date();
+  const stamp = [
+    now.getFullYear().toString().padStart(4, "0"),
+    (now.getMonth() + 1).toString().padStart(2, "0"),
+    now.getDate().toString().padStart(2, "0")
+  ].join("") +
+    "-" +
+    [
+      now.getHours().toString().padStart(2, "0"),
+      now.getMinutes().toString().padStart(2, "0"),
+      now.getSeconds().toString().padStart(2, "0")
+    ].join("");
+
+  const name = `quick-${stamp}`;
+  const result = await runKeepSafe(["checkpoint", name], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to create quick checkpoint.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(result.stdout.split("\n")[0] || "Quick checkpoint created.");
+}
+
+async function listCheckpoints(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const checkpoints = await getCheckpoints(root);
+  if (!checkpoints.length) {
+    vscode.window.showInformationMessage("No checkpoints found.");
+    return;
+  }
+
+  const items = checkpoints.map((cp) => ({
+    label: cp.id,
+    description: cp.name,
+    detail: cp.createdAt
+  }));
+  await vscode.window.showQuickPick(items, {
+    title: "KeepSafe Checkpoints",
+    canPickMany: false,
+    placeHolder: "Checkpoint list"
+  });
+}
+
+async function restoreCheckpoint(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const checkpoint = await pickCheckpoint(root, "Select checkpoint to restore");
+  if (!checkpoint) {
+    return;
+  }
+
+  const answer = await vscode.window.showWarningMessage(
+    `Restore checkpoint ${checkpoint.id}? This will overwrite tracked files in the workspace.`,
+    { modal: true },
+    "Restore"
+  );
+  if (answer !== "Restore") {
+    return;
+  }
+
+  const result = await runKeepSafe(["restore", checkpoint.id], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to restore checkpoint.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(`Restored ${checkpoint.id}`);
+}
+
+async function restoreLatestCheckpoint(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const checkpoints = await getCheckpoints(root);
+  if (!checkpoints.length) {
+    vscode.window.showInformationMessage("No checkpoints found.");
+    return;
+  }
+
+  const latest = checkpoints[checkpoints.length - 1];
+  const answer = await vscode.window.showWarningMessage(
+    `Restore latest checkpoint ${latest.id}? This will overwrite tracked files in the workspace.`,
+    { modal: true },
+    "Restore"
+  );
+  if (answer !== "Restore") {
+    return;
+  }
+
+  const result = await runKeepSafe(["restore", latest.id], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to restore latest checkpoint.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(`Restored latest checkpoint ${latest.id}`);
+}
+
+async function diffCheckpoints(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const left = await pickCheckpoint(root, "Select older checkpoint");
+  if (!left) {
+    return;
+  }
+  const right = await pickCheckpoint(root, "Select newer checkpoint");
+  if (!right) {
+    return;
+  }
+
+  const result = await runKeepSafe(["diff", left.id, right.id], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to diff checkpoints.");
+  }
+  output.appendLine(result.stdout);
+  output.show(true);
+}
+
+async function rebuildMetadata(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const result = await runKeepSafe(["rebuild"], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to rebuild metadata.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(result.stdout.trim());
+}
+
+async function addIgnorePattern(): Promise<void> {
+  const root = getWorkspaceRootOrThrow();
+  const pattern = await vscode.window.showInputBox({
+    title: "KeepSafe Ignore Pattern",
+    prompt: "Enter a .gitignore pattern to add",
+    placeHolder: "logs/*.log or ./build",
+    validateInput: (value) => (value.trim() ? null : "Pattern is required")
+  });
+  if (!pattern) {
+    return;
+  }
+
+  const asDirectory = await vscode.window.showQuickPick(
+    [
+      { label: "No", value: false },
+      { label: "Yes", value: true }
+    ],
+    {
+      title: "Treat as directory pattern?",
+      placeHolder: "Adds trailing slash when yes"
+    }
+  );
+  if (!asDirectory) {
+    return;
+  }
+
+  const args = ["ignore", "add", pattern];
+  if (asDirectory.value) {
+    args.push("--directory");
+  }
+
+  const result = await runKeepSafe(args, root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to add ignore pattern.");
+  }
+  output.appendLine(result.stdout);
+  vscode.window.showInformationMessage(result.stdout.trim());
+}
+
+async function getCheckpoints(root: string): Promise<Checkpoint[]> {
+  const result = await runKeepSafe(["list"], root);
+  if (result.exitCode !== 0) {
+    throw new Error(result.stderr || result.stdout || "Failed to list checkpoints.");
+  }
+
+  const trimmed = result.stdout.trim();
+  if (!trimmed || trimmed === "No checkpoints found.") {
+    return [];
+  }
+
+  return trimmed
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const parts = line.split("\t");
+      return {
+        id: parts[0] || line,
+        name: parts[1] || "",
+        createdAt: parts.slice(2).join("\t")
+      };
+    });
+}
+
+async function pickCheckpoint(root: string, title: string): Promise<Checkpoint | undefined> {
+  const checkpoints = await getCheckpoints(root);
+  if (!checkpoints.length) {
+    vscode.window.showInformationMessage("No checkpoints found.");
+    return undefined;
+  }
+
+  const pick = await vscode.window.showQuickPick(
+    checkpoints.map((cp) => ({
+      label: cp.id,
+      description: cp.name,
+      detail: cp.createdAt,
+      checkpoint: cp
+    })),
+    {
+      title,
+      canPickMany: false
+    }
+  );
+  return pick?.checkpoint;
+}
+
+function getWorkspaceRootOrThrow(): string {
+  const root = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+  if (!root) {
+    throw new Error("Open a workspace folder first.");
+  }
+  return root;
+}
+
+function getConfiguredCommand(): string {
+  const modern = vscode.workspace.getConfiguration("keepsafe").get<string>("command");
+  if (modern && modern.trim()) {
+    return modern.trim();
+  }
+
+  return "keepsafe";
+}
+
+async function runKeepSafe(args: string[], cwd: string): Promise<{ stdout: string; stderr: string; exitCode: number }> {
+  const command = getConfiguredCommand();
+  output.appendLine(`> ${command} ${args.join(" ")}`);
+
+  return new Promise((resolve) => {
+    const child = spawn(command, args, {
+      cwd,
+      shell: false
+    });
+
+    let stdout = "";
+    let stderr = "";
+
+    child.stdout.on("data", (chunk) => {
+      stdout += chunk.toString();
+    });
+
+    child.stderr.on("data", (chunk) => {
+      stderr += chunk.toString();
+    });
+
+    child.on("error", (error) => {
+      stderr += error.message;
+    });
+
+    child.on("close", (code) => {
+      resolve({
+        stdout: stdout.trim(),
+        stderr: stderr.trim(),
+        exitCode: code ?? 1
+      });
+    });
+  });
+}
+
+A keepsafe-extension/tsconfig.json
+--- keepsafe-extension/tsconfig.json ---
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "outDir": "dist",
+    "lib": [
+      "es2020"
+    ],
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
+}
+
+A keepsafe.py
+--- keepsafe.py ---
+﻿from __future__ import annotations
+
+import importlib
+import importlib.util
+import sys
+from pathlib import Path
+
+
+def _load_impl_package() -> None:
+    if "keepsafe_impl" in sys.modules:
+        return
+
+    src_root = Path(__file__).resolve().parent / "src" / "keepsafe"
+    spec = importlib.util.spec_from_file_location(
+        "keepsafe_impl",
+        src_root / "__init__.py",
+        submodule_search_locations=[str(src_root)],
+    )
+    if spec is None or spec.loader is None:
+        raise RuntimeError("Unable to load KeepSafe implementation package")
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules["keepsafe_impl"] = module
+    spec.loader.exec_module(module)
+
+
+def main() -> None:
+    _load_impl_package()
+    cli = importlib.import_module("keepsafe_impl.cli")
+    cli.main()
+
+
+if __name__ == "__main__":
+    main()
+
+A PUBLISHING.md
+--- PUBLISHING.md ---
+﻿# Publishing KeepSafe
+
+This document explains how to package and distribute KeepSafe for local-only use.
+
+KeepSafe is intended to stay local and does not require publishing to public registries.
+
+## 1. Prerequisites
+
+1. Python 3.10+ available in your shell.
+2. Build tools installed:
+
+```bash
+python -m pip install --upgrade build twine
+```
+
+## 2. Update Version
+
+1. Open [pyproject.toml](pyproject.toml).
+2. Bump `project.version` to a new value for your local release.
+3. Save changes.
+
+## 3. Build Artifacts
+
+From project root:
+
+```bash
+python -m build
+```
+
+This creates:
+
+- `dist/*.whl`
+- `dist/*.tar.gz`
+
+## 4. Validate Artifacts
+
+```bash
+python -m twine check dist/*
+```
+
+## 5. Test Local Install
+
+Use one of these:
+
+```bash
+python -m pip install --force-reinstall dist/keepsafe-<version>-py3-none-any.whl
+keepsafe --help
+```
+
+or
+
+```bash
+pipx install dist/keepsafe-<version>-py3-none-any.whl
+keepsafe --help
+```
+
+PowerShell helper to pick the latest built wheel:
+
+```powershell
+$wheel = Get-ChildItem -Path .\dist\*.whl | Sort-Object LastWriteTime -Descending | Select-Object -First 1
+python -m pip install --force-reinstall $wheel.FullName
+```
+
+## 6. Share Artifacts Locally
+
+Share one of these files from `dist/`:
+
+- `keepsafe-<version>-py3-none-any.whl` (recommended)
+- `keepsafe-<version>.tar.gz`
+
+Examples:
+
+- Copy to a shared drive or internal file share.
+- Attach to an internal ticket/release note.
+- Hand off directly to teammates.
+
+## 7. Install From Shared Artifact
+
+```bash
+python -m pip install path/to/keepsafe-<version>-py3-none-any.whl
+```
+
+or
+
+```bash
+pipx install path/to/keepsafe-<version>-py3-none-any.whl
+```
+
+## 8. Notes For Local-Only Distribution
+
+- No PyPI or TestPyPI account is needed.
+- No GitHub release automation is required.
+- Do not reuse a local version if people may cache wheels; bump `project.version` when sharing an update.
+- For reproducible local releases, build from a clean workspace state.
+
+
+
+A pyproject.toml
+--- pyproject.toml ---
+﻿[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keepsafe"
+version = "0.1.0"
+description = "Local checkpoint-based versioning for workspace files"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "KeepSafe Maintainers"}]
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"Programming Language :: Python :: 3 :: Only",
+	"Operating System :: OS Independent",
+	"Environment :: Console",
+]
+
+[project.scripts]
+keepsafe = "keepsafe.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+A README.md
+--- README.md ---
+﻿# KeepSafe
+
+KeepSafe is a local checkpoint system for code workspaces. It stores checkpoint history in a `.keepsafe` directory at the workspace root.
+
+It is designed to scale by streaming file scans, skipping binary-heavy directories by default, and storing checkpoint history as append-only records instead of a single workspace-wide snapshot.
+
+## Install
+
+Install from a local checkout:
+
+```bash
+python -m pip install .
+```
+
+Install for isolated CLI use with `pipx`:
+
+```bash
+pipx install .
+```
+
+After install, run:
+
+```bash
+keepsafe --help
+```
+
+## What It Tracks
+
+- Text files only (validated as UTF-8 text; binary files are skipped).
+- Files allowed by `.gitignore` rules.
+- Checkpoint operation `add`: new file.
+- Checkpoint operation `modify`: changed existing file.
+- Checkpoint operation `delete`: removed file.
+
+## What It Ignores By Default
+
+- `.keepsafe`
+- `.git`
+- `.venv`
+- `venv`
+- `env`
+- `node_modules`
+- `dist`
+- `build`
+- `__pycache__`
+- `.DS_Store`
+
+## Commands
+
+All commands run from the workspace root by default.
+You can target another root with `--root <path>`.
+
+Create a checkpoint:
+
+```bash
+python -m keepsafe checkpoint "initial checkpoint"
+```
+
+List checkpoints:
+
+```bash
+python -m keepsafe list
+```
+
+Restore a checkpoint:
+
+```bash
+python -m keepsafe restore 0001-initial-checkpoint
+```
+
+Compare two checkpoints:
+
+```bash
+python -m keepsafe diff 0001-initial-checkpoint 0010-some-checkpoint
+```
+
+Rebuild KeepSafe metadata to the current format:
+
+```bash
+python -m keepsafe rebuild
+```
+
+Add a pattern to `.gitignore`:
+
+```bash
+python -m keepsafe ignore add .venv --directory
+```
+
+Add a root-relative path from the project root:
+
+```bash
+python -m keepsafe ignore add ./build --directory
+```
+
+Add a wildcard pattern:
+
+```bash
+python -m keepsafe ignore add "logs/*.log"
+```
+
+Use a different workspace root:
+
+```bash
+python -m keepsafe --root ./some-project checkpoint "checkpoint name"
+```
+
+## Checkpoint Semantics
+
+- The first checkpoint is always a full snapshot.
+- After that, checkpoints are delta checkpoints, except periodic full snapshots.
+- Every 10th checkpoint is a full snapshot (`FULL_SNAPSHOT_INTERVAL = 10`).
+- Delta checkpoints contain only `add`, `modify`, and `delete` operations.
+- Full snapshots store current tracked files as `add` entries for snapshot materialization.
+
+## Ignore Command
+
+- `ignore add <pattern>` appends a pattern to the root `.gitignore` file.
+- `ignore add <pattern> --directory` ensures a trailing `/` for directory ignores.
+- If `<pattern>` points to an existing file or directory under the project root (for example `./build`), KeepSafe writes it as a root-anchored pattern (for example `/build/`) so the intended path is ignored.
+
+## Wildcards And Regex
+
+- `.gitignore` uses glob-style wildcard patterns, not regex.
+- `*.log` matches all `.log` files.
+- `logs/*.log` matches `.log` files directly under `logs`.
+- `src/**/temp*` matches files and folders named like `temp*` at any depth under `src`.
+- Regex is not interpreted by `.gitignore` (for example `^build$` is treated as plain text, not a regex anchor pattern).
+
+## Diff Behavior
+
+- `diff` compares endpoint states, not just single checkpoint files.
+- To resolve each endpoint state, KeepSafe replays from the nearest snapshot through every intermediate checkpoint.
+- This guarantees that comparisons across long ranges include all intervening checkpoint effects.
+
+## Restore Behavior
+
+- Restore resolves the target state by replaying from the nearest snapshot through every checkpoint up to the target.
+- Files present now but not in target state are removed.
+- Files in target state are recreated from blob storage.
+
+## Rebuild Behavior
+
+- `rebuild` upgrades or reindexes `.keepsafe` metadata to the current format.
+- If legacy metadata exists (`.keepsafe/index.json` with legacy `state.json` checkpoints), KeepSafe migrates it into the current SQLite and JSONL layout.
+- If legacy metadata does not exist, KeepSafe reindexes from existing `.keepsafe/checkpoints/*/entries.jsonl` logs.
+- Rebuild preserves checkpoint IDs and sequence ordering.
+
+## Storage Layout
+
+KeepSafe stores data under `.keepsafe/`:
+
+- `.keepsafe/index.sqlite3`: metadata database
+- `.keepsafe/index.sqlite3` includes checkpoint sequence, type, counts, and links.
+- `.keepsafe/index.sqlite3` includes latest tracked file state.
+- `.keepsafe/checkpoints/<checkpoint-id>/entries.jsonl`: append-only operation log
+- `.keepsafe/checkpoints/<checkpoint-id>/checkpoint.txt`: human-readable summary
+- `.keepsafe/checkpoints/<checkpoint-id>/manifest.json`: structured checkpoint metadata
+- `.keepsafe/blobs/`: compressed content blobs (sha256-addressed)
+
+## Size Limits
+
+- New-file inline text limit: 256 KiB per file.
+- New-file inline aggregate limit: 5 MiB per checkpoint.
+- Files over inline limits are still tracked via blob storage; they are just not inlined in checkpoint text output.
+
+## Scaling Notes
+
+- Scanning is streaming and path-local (no full-tree in-memory snapshot required).
+- File content is chunk-hashed and blob-addressed.
+- Periodic full snapshots bound restore replay cost over long checkpoint histories.
+
+## Notes
+
+- If no checkpoints exist yet, `list` prints `No checkpoints found.`
+- Checkpoint IDs are sequence-prefixed slugs (for example `0001-initial-checkpoint`).
+
+## Distribution
+
+- Local-only packaging and sharing workflow is documented in [PUBLISHING.md](PUBLISHING.md).
+- Build a wheel locally and share the artifact directly; no public package registry is required.
+
+## VS Code Extension
+
+This repository includes a local VS Code extension at [keepsafe-extension](keepsafe-extension).
+
+Quickstart:
+
+1. Open [keepsafe-extension](keepsafe-extension) in VS Code.
+2. Run `npm install`.
+3. Run `npm run compile`.
+4. Press `F5` to launch an Extension Development Host.
+5. In extension settings, set `keepsafe.command` to your local binary if needed (for example `C:/workspace/keepsafe/.venv/Scripts/keepsafe.exe`).
+
+Commands available from Command Palette:
+
+- `KeepSafe: Quick Checkpoint`
+- `KeepSafe: Restore Latest Checkpoint`
+- `KeepSafe: Create Checkpoint`
+- `KeepSafe: List Checkpoints`
+- `KeepSafe: Restore Checkpoint`
+- `KeepSafe: Diff Checkpoints`
+- `KeepSafe: Rebuild Metadata`
+- `KeepSafe: Add Ignore Pattern`
+
+Fast recovery behavior:
+
+- `KeepSafe: Quick Checkpoint` creates an immediate checkpoint with an auto-generated name using local timestamp format `quick-YYYYMMDD-HHMMSS`.
+- `KeepSafe: Restore Latest Checkpoint` resolves the newest checkpoint and restores it after confirmation.
+- Use `KeepSafe: Restore Checkpoint` when you need a specific older recovery point.
+
+A src/keepsafe/__init__.py
+--- src/keepsafe/__init__.py ---
+﻿"""KeepSafe local checkpointing package."""
+
+__all__ = ["__version__"]
+
+__version__ = "0.1.0"
+
+A src/keepsafe/__main__.py
+--- src/keepsafe/__main__.py ---
+﻿from .cli import main
+
+
+if __name__ == "__main__":
+    main()
+
+A src/keepsafe/checkpointing.py
+--- src/keepsafe/checkpointing.py ---
+﻿from __future__ import annotations
+
+import codecs
+import dataclasses
+import datetime as dt
+import difflib
+import fnmatch
+import hashlib
+import json
+import os
+import sqlite3
+import tempfile
+import zlib
+from pathlib import Path
+from typing import Iterable, Iterator
+
+
+MAX_INLINE_NEW_FILE_BYTES = 256 * 1024
+MAX_INLINE_CHECKPOINT_BYTES = 5 * 1024 * 1024
+FULL_SNAPSHOT_INTERVAL = 10
+DEFAULT_IGNORED_DIRS = {
+    ".git",
+    ".keepsafe",
+    ".venv",
+    "venv",
+    "env",
+    "node_modules",
+    "dist",
+    "build",
+    "__pycache__",
+}
+DEFAULT_IGNORED_FILES = {".DS_Store"}
+READ_CHUNK_SIZE = 1024 * 1024
+
+
+@dataclasses.dataclass(frozen=True)
+class CheckpointRecord:
+    checkpoint_id: str
+    name: str
+    created_at: str
+    kind: str
+    file_count: int
+    changed_count: int
+    base_checkpoint_id: str | None
+    path: str
+
+
+@dataclasses.dataclass(frozen=True)
+class CheckpointResult:
+    summary: str
+    path: str
+
+
+@dataclasses.dataclass(frozen=True)
+class IgnoreRule:
+    base_dir: Path
+    pattern: str
+    negated: bool
+    directory_only: bool
+    anchored: bool
+
+
+@dataclasses.dataclass(frozen=True)
+class FileScanResult:
+    path: Path
+    relative_path: str
+    size: int
+    content_hash: str
+
+
+def create_checkpoint(root: Path, name: str) -> CheckpointResult:
+    store = CheckpointStore(root)
+    return store.create_checkpoint(name)
+
+
+def list_checkpoints(root: Path) -> list[CheckpointRecord]:
+    store = CheckpointStore(root)
+    return store.list_checkpoints()
+
+
+def restore_checkpoint(root: Path, checkpoint_id: str) -> None:
+    store = CheckpointStore(root)
+    store.restore_checkpoint(checkpoint_id)
+
+
+def compare_checkpoints(root: Path, left_checkpoint_id: str, right_checkpoint_id: str) -> str:
+    store = CheckpointStore(root)
+    return store.compare_checkpoints(left_checkpoint_id, right_checkpoint_id)
+
+
+def add_gitignore_entry(root: Path, pattern: str, directory: bool = False) -> str:
+    store = CheckpointStore(root)
+    return store.add_gitignore_entry(pattern=pattern, directory=directory)
+
+
+def rebuild_keepsafe(root: Path) -> str:
+    store = CheckpointStore(root)
+    return store.rebuild()
+
+
+class CheckpointStore:
+    def __init__(self, root: Path) -> None:
+        self.root = root.resolve()
+        self.keepsafe_dir = self.root / ".keepsafe"
+        self.checkpoints_dir = self.keepsafe_dir / "checkpoints"
+        self.blobs_dir = self.keepsafe_dir / "blobs"
+        self.db_path = self.keepsafe_dir / "index.sqlite3"
+
+        self.keepsafe_dir.mkdir(parents=True, exist_ok=True)
+        self.checkpoints_dir.mkdir(parents=True, exist_ok=True)
+        self.blobs_dir.mkdir(parents=True, exist_ok=True)
+        self._init_db()
+
+    def create_checkpoint(self, name: str) -> CheckpointResult:
+        created_at = dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+        with self._connect() as conn:
+            latest = self._latest_checkpoint(conn)
+            sequence = 1 if latest is None else latest["sequence"] + 1
+            checkpoint_id = f"{sequence:04d}-{slugify(name)}"
+            checkpoint_dir = self.checkpoints_dir / checkpoint_id
+            checkpoint_dir.mkdir(parents=True, exist_ok=False)
+
+            entries_path = checkpoint_dir / "entries.jsonl"
+            manifest_path = checkpoint_dir / "checkpoint.txt"
+            metadata_path = checkpoint_dir / "manifest.json"
+
+            conn.execute("BEGIN")
+            conn.execute("DROP TABLE IF EXISTS temp.current_scan")
+            conn.execute("CREATE TEMP TABLE current_scan (path TEXT PRIMARY KEY)")
+
+            added_count = 0
+            modified_count = 0
+            deleted_count = 0
+            tracked_count = 0
+            inline_budget = InlineBudget(MAX_INLINE_CHECKPOINT_BYTES)
+            is_full_snapshot = latest is None or sequence % FULL_SNAPSHOT_INTERVAL == 0
+
+            with (
+                entries_path.open("w", encoding="utf-8", newline="\n") as entries_file,
+                manifest_path.open("w", encoding="utf-8", newline="\n") as manifest_file,
+            ):
+                manifest_file.write(f"Checkpoint: {checkpoint_id}\n")
+                manifest_file.write(f"Name: {name}\n")
+                manifest_file.write(f"Created: {created_at}\n")
+                manifest_file.write(f"Mode: {'snapshot' if is_full_snapshot else 'delta'}\n")
+                if latest is not None:
+                    manifest_file.write(f"Base: {latest['checkpoint_id']}\n")
+                manifest_file.write("\n")
+
+                for scan in scan_text_files(self.root):
+                    conn.execute("INSERT OR IGNORE INTO current_scan(path) VALUES (?)", (scan.relative_path,))
+                    previous = conn.execute(
+                        "SELECT blob_id, content_hash FROM file_state WHERE path = ?",
+                        (scan.relative_path,),
+                    ).fetchone()
+
+                    if is_full_snapshot:
+                        added_count += 1
+                        blob_id, inline_text = self._store_file_blob(scan.path, allow_inline=inline_budget)
+                        entry = {
+                            "op": "add",
+                            "path": scan.relative_path,
+                            "blob_id": blob_id,
+                            "content_hash": scan.content_hash,
+                            "size": scan.size,
+                        }
+                        if inline_text is not None:
+                            entry["text"] = inline_text
+                        write_json_line(entries_file, entry)
+                        self._write_manifest_entry(manifest_file, entry)
+                        conn.execute(
+                            "INSERT OR REPLACE INTO file_state(path, blob_id, content_hash, size, checkpoint_id) VALUES (?, ?, ?, ?, ?)",
+                            (scan.relative_path, blob_id, scan.content_hash, scan.size, checkpoint_id),
+                        )
+                        continue
+
+                    if previous is None:
+                        added_count += 1
+                        blob_id, inline_text = self._store_file_blob(scan.path, allow_inline=inline_budget)
+                        entry = {
+                            "op": "add",
+                            "path": scan.relative_path,
+                            "blob_id": blob_id,
+                            "content_hash": scan.content_hash,
+                            "size": scan.size,
+                        }
+                        if inline_text is not None:
+                            entry["text"] = inline_text
+                        write_json_line(entries_file, entry)
+                        self._write_manifest_entry(manifest_file, entry)
+                        conn.execute(
+                            "INSERT OR REPLACE INTO file_state(path, blob_id, content_hash, size, checkpoint_id) VALUES (?, ?, ?, ?, ?)",
+                            (scan.relative_path, blob_id, scan.content_hash, scan.size, checkpoint_id),
+                        )
+                        continue
+
+                    if previous["content_hash"] != scan.content_hash:
+                        modified_count += 1
+                        blob_id, _ = self._store_file_blob(scan.path, allow_inline=None)
+                        entry = {
+                            "op": "modify",
+                            "path": scan.relative_path,
+                            "blob_id": blob_id,
+                            "content_hash": scan.content_hash,
+                            "size": scan.size,
+                        }
+                        write_json_line(entries_file, entry)
+                        self._write_manifest_entry(manifest_file, entry)
+                        conn.execute(
+                            "INSERT OR REPLACE INTO file_state(path, blob_id, content_hash, size, checkpoint_id) VALUES (?, ?, ?, ?, ?)",
+                            (scan.relative_path, blob_id, scan.content_hash, scan.size, checkpoint_id),
+                        )
+
+                deleted_rows = conn.execute(
+                    "SELECT path FROM file_state WHERE path NOT IN (SELECT path FROM current_scan) ORDER BY path"
+                ).fetchall()
+
+                if not is_full_snapshot:
+                    for row in deleted_rows:
+                        deleted_count += 1
+                        entry = {"op": "delete", "path": row["path"]}
+                        write_json_line(entries_file, entry)
+                        self._write_manifest_entry(manifest_file, entry)
+
+                if deleted_rows:
+                    conn.execute("DELETE FROM file_state WHERE path NOT IN (SELECT path FROM current_scan)")
+
+                tracked_count = conn.execute("SELECT COUNT(*) AS count FROM file_state").fetchone()["count"]
+
+            kind = "snapshot" if is_full_snapshot else "delta"
+            changed_count = added_count + modified_count + deleted_count
+            conn.execute(
+                "INSERT INTO checkpoints(checkpoint_id, sequence, name, created_at, kind, file_count, changed_count, base_checkpoint_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                (
+                    checkpoint_id,
+                    sequence,
+                    name,
+                    created_at,
+                    kind,
+                    tracked_count,
+                    changed_count,
+                    None if latest is None else latest["checkpoint_id"],
+                ),
+            )
+            conn.commit()
+
+            metadata = {
+                "checkpoint_id": checkpoint_id,
+                "sequence": sequence,
+                "name": name,
+                "created_at": created_at,
+                "kind": kind,
+                "file_count": tracked_count,
+                "changed_count": changed_count,
+                "base_checkpoint_id": None if latest is None else latest["checkpoint_id"],
+                "path": str(checkpoint_dir.relative_to(self.root)),
+            }
+            write_json_file(metadata_path, metadata)
+
+            summary = (
+                f"Created {'snapshot' if kind == 'snapshot' else 'delta'} checkpoint {checkpoint_id} "
+                f"({tracked_count} tracked files, {changed_count} changes)"
+            )
+            return CheckpointResult(summary=summary, path=str(checkpoint_dir))
+
+    def list_checkpoints(self) -> list[CheckpointRecord]:
+        with self._connect() as conn:
+            rows = conn.execute(
+                "SELECT checkpoint_id, name, created_at, kind, file_count, changed_count, base_checkpoint_id, sequence FROM checkpoints ORDER BY sequence"
+            ).fetchall()
+        return [
+            CheckpointRecord(
+                checkpoint_id=row["checkpoint_id"],
+                name=row["name"],
+                created_at=row["created_at"],
+                kind=row["kind"],
+                file_count=row["file_count"],
+                changed_count=row["changed_count"],
+                base_checkpoint_id=row["base_checkpoint_id"],
+                path=f".keepsafe/checkpoints/{row['checkpoint_id']}",
+            )
+            for row in rows
+        ]
+
+    def restore_checkpoint(self, checkpoint_id: str) -> None:
+        target_rows = self._materialize_checkpoint_rows(checkpoint_id)
+        current_tracked = [row["path"] for row in self._tracked_file_rows()]
+        target_lookup = {row["path"] for row in target_rows}
+
+        for tracked_path in current_tracked:
+            path = self.root / tracked_path
+            if path.exists() and tracked_path not in target_lookup:
+                remove_path(path)
+
+        for row in target_rows:
+            destination = self.root / row["path"]
+            if destination.exists() and destination.is_dir():
+                remove_path(destination)
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            raw_bytes = read_blob_bytes(self._blob_path(row["blob_id"]))
+            destination.write_bytes(raw_bytes)
+
+    def compare_checkpoints(self, left_checkpoint_id: str, right_checkpoint_id: str) -> str:
+        left_rows = self._materialize_checkpoint_rows(left_checkpoint_id)
+        right_rows = self._materialize_checkpoint_rows(right_checkpoint_id)
+
+        left_map = {row["path"]: row["blob_id"] for row in left_rows}
+        right_map = {row["path"]: row["blob_id"] for row in right_rows}
+
+        left_paths = set(left_map)
+        right_paths = set(right_map)
+        added = sorted(right_paths - left_paths)
+        deleted = sorted(left_paths - right_paths)
+        modified = sorted(path for path in left_paths & right_paths if left_map[path] != right_map[path])
+
+        lines = [
+            f"Compare: {left_checkpoint_id} -> {right_checkpoint_id}",
+            f"Added: {len(added)}",
+            f"Deleted: {len(deleted)}",
+            f"Modified: {len(modified)}",
+            "",
+        ]
+
+        for path in added:
+            lines.append(f"A {path}")
+        for path in deleted:
+            lines.append(f"D {path}")
+        for path in modified:
+            lines.append(f"M {path}")
+            left_text = read_blob_bytes(self._blob_path(left_map[path])).decode("utf-8")
+            right_text = read_blob_bytes(self._blob_path(right_map[path])).decode("utf-8")
+            lines.extend(
+                line.rstrip("\n")
+                for line in difflib.unified_diff(
+                    left_text.splitlines(keepends=True),
+                    right_text.splitlines(keepends=True),
+                    fromfile=f"a/{path}",
+                    tofile=f"b/{path}",
+                )
+            )
+            lines.append("")
+
+        return "\n".join(lines).rstrip() + "\n"
+
+    def add_gitignore_entry(self, pattern: str, directory: bool = False) -> str:
+        normalized = pattern.strip()
+        if not normalized:
+            raise ValueError("Ignore pattern cannot be empty")
+
+        normalized = normalize_ignore_pattern(self.root, normalized, directory=directory)
+        if directory and not normalized.endswith("/"):
+            normalized = f"{normalized}/"
+
+        gitignore_path = self.root / ".gitignore"
+        existing_lines: list[str] = []
+        if gitignore_path.exists():
+            existing_lines = read_text_text(gitignore_path).splitlines()
+
+        if normalized in {line.strip() for line in existing_lines}:
+            return f"Pattern already exists in {gitignore_path}"
+
+        if existing_lines and existing_lines[-1].strip():
+            existing_lines.append("")
+        existing_lines.append(normalized)
+
+        content = "\n".join(existing_lines).rstrip("\n") + "\n"
+        with gitignore_path.open("w", encoding="utf-8", newline="\n") as handle:
+            handle.write(content)
+
+        return f"Added ignore pattern '{normalized}' to {gitignore_path}"
+
+    def rebuild(self) -> str:
+        legacy_index_path = self.keepsafe_dir / "index.json"
+        if legacy_index_path.exists():
+            migrated = self._rebuild_from_legacy_index(legacy_index_path)
+            return f"Rebuilt KeepSafe metadata from legacy format ({migrated} checkpoints migrated)."
+
+        rebuilt = self._rebuild_from_current_logs()
+        return f"Rebuilt KeepSafe metadata from checkpoint logs ({rebuilt} checkpoints indexed)."
+
+    def _rebuild_from_legacy_index(self, legacy_index_path: Path) -> int:
+        payload = read_json_file(legacy_index_path)
+        legacy_items = payload.get("checkpoints", [])
+        if not legacy_items:
+            self._reset_metadata_tables()
+            return 0
+
+        self._reset_metadata_tables()
+
+        previous_state: dict[str, str] = {}
+        migrated = 0
+
+        with self._connect() as conn:
+            conn.execute("BEGIN")
+            for sequence, item in enumerate(legacy_items, start=1):
+                checkpoint_id = item.get("checkpoint_id") or f"{sequence:04d}-checkpoint"
+                checkpoint_dir = self.root / item.get("path", f".keepsafe/checkpoints/{checkpoint_id}")
+                state_path = checkpoint_dir / "state.json"
+                if not state_path.exists():
+                    continue
+
+                state_payload = read_json_file(state_path)
+                current_state = state_payload.get("files", {})
+                if not isinstance(current_state, dict):
+                    continue
+
+                name = state_payload.get("name") or item.get("name") or checkpoint_id
+                created_at = state_payload.get("created_at") or item.get("created_at") or dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+                kind = "snapshot" if sequence == 1 or sequence % FULL_SNAPSHOT_INTERVAL == 0 else "delta"
+
+                entries_path = checkpoint_dir / "entries.jsonl"
+                checkpoint_txt_path = checkpoint_dir / "checkpoint.txt"
+                manifest_path = checkpoint_dir / "manifest.json"
+                checkpoint_dir.mkdir(parents=True, exist_ok=True)
+
+                added_count = 0
+                modified_count = 0
+                deleted_count = 0
+                inline_budget = InlineBudget(MAX_INLINE_CHECKPOINT_BYTES)
+
+                with (
+                    entries_path.open("w", encoding="utf-8", newline="\n") as entries_file,
+                    checkpoint_txt_path.open("w", encoding="utf-8", newline="\n") as manifest_file,
+                ):
+                    manifest_file.write(f"Checkpoint: {checkpoint_id}\n")
+                    manifest_file.write(f"Name: {name}\n")
+                    manifest_file.write(f"Created: {created_at}\n")
+                    manifest_file.write(f"Mode: {kind}\n")
+                    if sequence > 1:
+                        manifest_file.write(f"Base: {legacy_items[sequence - 2].get('checkpoint_id', f'{sequence - 1:04d}-checkpoint')}\n")
+                    manifest_file.write("\n")
+
+                    if kind == "snapshot":
+                        for path in sorted(current_state):
+                            text = normalize_legacy_text(current_state[path])
+                            blob_id = self._store_text_blob(text)
+                            entry = {
+                                "op": "add",
+                                "path": path,
+                                "blob_id": blob_id,
+                                "content_hash": sha256_text(text),
+                                "size": len(text.encode("utf-8")),
+                            }
+                            text_size = entry["size"]
+                            if text_size <= MAX_INLINE_NEW_FILE_BYTES and inline_budget.remaining >= text_size:
+                                entry["text"] = text
+                                inline_budget.consume(text_size)
+                            write_json_line(entries_file, entry)
+                            self._write_manifest_entry(manifest_file, entry)
+                            added_count += 1
+                    else:
+                        previous_paths = set(previous_state)
+                        current_paths = set(current_state)
+
+                        for path in sorted(current_paths - previous_paths):
+                            text = normalize_legacy_text(current_state[path])
+                            blob_id = self._store_text_blob(text)
+                            entry = {
+                                "op": "add",
+                                "path": path,
+                                "blob_id": blob_id,
+                                "content_hash": sha256_text(text),
+                                "size": len(text.encode("utf-8")),
+                            }
+                            text_size = entry["size"]
+                            if text_size <= MAX_INLINE_NEW_FILE_BYTES and inline_budget.remaining >= text_size:
+                                entry["text"] = text
+                                inline_budget.consume(text_size)
+                            write_json_line(entries_file, entry)
+                            self._write_manifest_entry(manifest_file, entry)
+                            added_count += 1
+
+                        for path in sorted(previous_paths - current_paths):
+                            entry = {"op": "delete", "path": path}
+                            write_json_line(entries_file, entry)
+                            self._write_manifest_entry(manifest_file, entry)
+                            deleted_count += 1
+
+                        for path in sorted(previous_paths & current_paths):
+                            prev_text = normalize_legacy_text(previous_state[path])
+                            curr_text = normalize_legacy_text(current_state[path])
+                            if prev_text == curr_text:
+                                continue
+                            blob_id = self._store_text_blob(curr_text)
+                            entry = {
+                                "op": "modify",
+                                "path": path,
+                                "blob_id": blob_id,
+                                "content_hash": sha256_text(curr_text),
+                                "size": len(curr_text.encode("utf-8")),
+                            }
+                            write_json_line(entries_file, entry)
+                            self._write_manifest_entry(manifest_file, entry)
+                            modified_count += 1
+
+                changed_count = added_count + modified_count + deleted_count
+                file_count = len(current_state)
+                base_checkpoint_id = None if sequence == 1 else legacy_items[sequence - 2].get("checkpoint_id", f"{sequence - 1:04d}-checkpoint")
+
+                manifest_payload = {
+                    "checkpoint_id": checkpoint_id,
+                    "sequence": sequence,
+                    "name": name,
+                    "created_at": created_at,
+                    "kind": kind,
+                    "file_count": file_count,
+                    "changed_count": changed_count,
+                    "base_checkpoint_id": base_checkpoint_id,
+                    "path": str(checkpoint_dir.relative_to(self.root)),
+                }
+                write_json_file(manifest_path, manifest_payload)
+
+                conn.execute(
+                    "INSERT OR REPLACE INTO checkpoints(checkpoint_id, sequence, name, created_at, kind, file_count, changed_count, base_checkpoint_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        checkpoint_id,
+                        sequence,
+                        name,
+                        created_at,
+                        kind,
+                        file_count,
+                        changed_count,
+                        base_checkpoint_id,
+                    ),
+                )
+
+                for path, text_value in current_state.items():
+                    text = normalize_legacy_text(text_value)
+                    conn.execute(
+                        "INSERT OR REPLACE INTO file_state(path, blob_id, content_hash, size, checkpoint_id) VALUES (?, ?, ?, ?, ?)",
+                        (
+                            path,
+                            sha256_text(text),
+                            sha256_text(text),
+                            len(text.encode("utf-8")),
+                            checkpoint_id,
+                        ),
+                    )
+
+                previous_state = {key: normalize_legacy_text(value) for key, value in current_state.items()}
+                migrated += 1
+
+            conn.commit()
+
+        return migrated
+
+    def _rebuild_from_current_logs(self) -> int:
+        self._reset_metadata_tables()
+        checkpoint_dirs = [path for path in sorted(self.checkpoints_dir.iterdir()) if path.is_dir()]
+        rebuilt = 0
+
+        with self._connect() as conn:
+            conn.execute("BEGIN")
+            conn.execute("DELETE FROM file_state")
+
+            for sequence, checkpoint_dir in enumerate(checkpoint_dirs, start=1):
+                checkpoint_id = checkpoint_dir.name
+                manifest_path = checkpoint_dir / "manifest.json"
+                entries_path = checkpoint_dir / "entries.jsonl"
+
+                if not entries_path.exists():
+                    continue
+
+                manifest_payload = read_json_file(manifest_path) if manifest_path.exists() else {}
+                name = manifest_payload.get("name", checkpoint_id)
+                created_at = manifest_payload.get("created_at", dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z")
+                kind = manifest_payload.get("kind", "snapshot" if sequence == 1 else "delta")
+                base_checkpoint_id = None if sequence == 1 else checkpoint_dirs[sequence - 2].name
+
+                changed_count = 0
+                with entries_path.open("r", encoding="utf-8") as entries_file:
+                    for raw_line in entries_file:
+                        line = raw_line.strip()
+                        if not line:
+                            continue
+                        entry = json.loads(line)
+                        changed_count += 1
+                        op = entry.get("op")
+                        path = entry.get("path")
+                        if op in {"add", "modify"}:
+                            blob_id = entry["blob_id"]
+                            content_hash = entry.get("content_hash", blob_id)
+                            size = entry.get("size", len(read_blob_bytes(self._blob_path(blob_id))))
+                            conn.execute(
+                                "INSERT OR REPLACE INTO file_state(path, blob_id, content_hash, size, checkpoint_id) VALUES (?, ?, ?, ?, ?)",
+                                (path, blob_id, content_hash, size, checkpoint_id),
+                            )
+                        elif op == "delete":
+                            conn.execute("DELETE FROM file_state WHERE path = ?", (path,))
+
+                file_count = conn.execute("SELECT COUNT(*) AS count FROM file_state").fetchone()["count"]
+                conn.execute(
+                    "INSERT OR REPLACE INTO checkpoints(checkpoint_id, sequence, name, created_at, kind, file_count, changed_count, base_checkpoint_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    (
+                        checkpoint_id,
+                        sequence,
+                        name,
+                        created_at,
+                        kind,
+                        file_count,
+                        changed_count,
+                        base_checkpoint_id,
+                    ),
+                )
+                rebuilt += 1
+
+            conn.commit()
+
+        return rebuilt
+
+    def _reset_metadata_tables(self) -> None:
+        with self._connect() as conn:
+            conn.execute("DELETE FROM checkpoints")
+            conn.execute("DELETE FROM file_state")
+            conn.commit()
+
+    def _init_db(self) -> None:
+        with self._connect() as conn:
+            conn.executescript(
+                """
+                CREATE TABLE IF NOT EXISTS checkpoints (
+                    checkpoint_id TEXT PRIMARY KEY,
+                    sequence INTEGER NOT NULL UNIQUE,
+                    name TEXT NOT NULL,
+                    created_at TEXT NOT NULL,
+                    kind TEXT NOT NULL,
+                    file_count INTEGER NOT NULL,
+                    changed_count INTEGER NOT NULL,
+                    base_checkpoint_id TEXT
+                );
+
+                CREATE TABLE IF NOT EXISTS file_state (
+                    path TEXT PRIMARY KEY,
+                    blob_id TEXT NOT NULL,
+                    content_hash TEXT NOT NULL,
+                    size INTEGER NOT NULL,
+                    checkpoint_id TEXT NOT NULL
+                );
+                """
+            )
+            conn.commit()
+
+    def _connect(self) -> sqlite3.Connection:
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=NORMAL")
+        return conn
+
+    def _latest_checkpoint(self, conn: sqlite3.Connection) -> sqlite3.Row | None:
+        return conn.execute(
+            "SELECT checkpoint_id, sequence FROM checkpoints ORDER BY sequence DESC LIMIT 1"
+        ).fetchone()
+
+    def _tracked_file_rows(self) -> list[sqlite3.Row]:
+        with self._connect() as conn:
+            return conn.execute("SELECT path FROM file_state ORDER BY path").fetchall()
+
+    def _materialize_checkpoint_rows(self, checkpoint_id: str) -> list[sqlite3.Row]:
+        with self._connect() as conn:
+            target = conn.execute(
+                "SELECT sequence FROM checkpoints WHERE checkpoint_id = ?",
+                (checkpoint_id,),
+            ).fetchone()
+            if target is None:
+                raise FileNotFoundError(f"Checkpoint {checkpoint_id} does not exist")
+
+            snapshot = conn.execute(
+                "SELECT checkpoint_id, sequence FROM checkpoints WHERE sequence <= ? AND kind = 'snapshot' ORDER BY sequence DESC LIMIT 1",
+                (target["sequence"],),
+            ).fetchone()
+            if snapshot is None:
+                raise FileNotFoundError(f"No snapshot available to resolve checkpoint {checkpoint_id}")
+
+            conn.execute("DROP TABLE IF EXISTS target_state")
+            conn.execute("CREATE TEMP TABLE target_state (path TEXT PRIMARY KEY, blob_id TEXT NOT NULL)")
+
+            checkpoints = conn.execute(
+                "SELECT checkpoint_id FROM checkpoints WHERE sequence BETWEEN ? AND ? ORDER BY sequence",
+                (snapshot["sequence"], target["sequence"]),
+            ).fetchall()
+            for checkpoint_row in checkpoints:
+                entries_path = self.checkpoints_dir / checkpoint_row["checkpoint_id"] / "entries.jsonl"
+                if not entries_path.exists():
+                    continue
+                with entries_path.open("r", encoding="utf-8") as entries_file:
+                    for line in entries_file:
+                        if not line.strip():
+                            continue
+                        entry = json.loads(line)
+                        op = entry["op"]
+                        path = entry["path"]
+                        if op in {"add", "modify"}:
+                            conn.execute(
+                                "INSERT OR REPLACE INTO target_state(path, blob_id) VALUES (?, ?)",
+                                (path, entry["blob_id"]),
+                            )
+                        elif op == "delete":
+                            conn.execute("DELETE FROM target_state WHERE path = ?", (path,))
+
+            return conn.execute("SELECT path, blob_id FROM target_state ORDER BY path").fetchall()
+
+    def _blob_path(self, blob_id: str) -> Path:
+        return self.blobs_dir / blob_id[:2] / f"{blob_id[2:]}.blob"
+
+    def _store_file_blob(
+        self,
+        path: Path,
+        allow_inline: InlineBudget | None,
+    ) -> tuple[str, str | None]:
+        size = path.stat().st_size
+        blob_id = sha256_file(path)
+        blob_path = self._blob_path(blob_id)
+        blob_path.parent.mkdir(parents=True, exist_ok=True)
+
+        if not blob_path.exists():
+            tmp_handle = tempfile.NamedTemporaryFile(delete=False, dir=str(blob_path.parent), prefix=".tmp-", suffix=".blob")
+            tmp_path = Path(tmp_handle.name)
+            compressor = zlib.compressobj(level=6)
+            try:
+                with path.open("rb") as source, tmp_handle:
+                    while True:
+                        chunk = source.read(READ_CHUNK_SIZE)
+                        if not chunk:
+                            break
+                        tmp_handle.write(compressor.compress(chunk))
+                    tmp_handle.write(compressor.flush())
+                if blob_path.exists():
+                    tmp_path.unlink(missing_ok=True)
+                else:
+                    tmp_path.replace(blob_path)
+            except Exception:
+                tmp_path.unlink(missing_ok=True)
+                raise
+
+        inline_text = None
+        if allow_inline is not None and size <= MAX_INLINE_NEW_FILE_BYTES and allow_inline.remaining >= size:
+            inline_text = read_text_text(path)
+            allow_inline.consume(size)
+
+        return blob_id, inline_text
+
+    def _store_text_blob(self, text: str) -> str:
+        raw_bytes = text.encode("utf-8")
+        blob_id = hashlib.sha256(raw_bytes).hexdigest()
+        blob_path = self._blob_path(blob_id)
+        blob_path.parent.mkdir(parents=True, exist_ok=True)
+        if not blob_path.exists():
+            compressed = zlib.compress(raw_bytes, level=6)
+            blob_path.write_bytes(compressed)
+        return blob_id
+
+    def _write_manifest_entry(self, manifest_file, entry: dict) -> None:
+        op = entry["op"]
+        path = entry["path"]
+        if op == "add":
+            manifest_file.write(f"A {path}\n")
+            text = entry.get("text")
+            if text is not None:
+                manifest_file.write(f"--- {path} ---\n")
+                manifest_file.write(text)
+                if not text.endswith("\n"):
+                    manifest_file.write("\n")
+            else:
+                manifest_file.write(f"[blob {entry['blob_id']} size={entry['size']}]\n")
+            manifest_file.write("\n")
+            return
+
+        if op == "modify":
+            manifest_file.write(f"M {path} [blob {entry['blob_id']} size={entry['size']}]\n\n")
+            return
+
+        if op == "delete":
+            manifest_file.write(f"D {path}\n\n")
+
+
+@dataclasses.dataclass(frozen=True)
+class InlineBudget:
+    remaining: int
+
+    def consume(self, amount: int) -> None:
+        object.__setattr__(self, "remaining", self.remaining - amount)
+
+
+def scan_text_files(root: Path) -> Iterator[FileScanResult]:
+    yield from _walk_text_files(root, root, [])
+
+
+def _walk_text_files(root: Path, current_dir: Path, inherited_rules: list[IgnoreRule]) -> Iterator[FileScanResult]:
+    rules = inherited_rules + load_gitignore_rules(current_dir)
+    try:
+        entries = sorted(current_dir.iterdir(), key=lambda item: item.name.lower())
+    except OSError:
+        return
+
+    for entry in entries:
+        if entry.name in DEFAULT_IGNORED_DIRS or entry.name in DEFAULT_IGNORED_FILES:
+            continue
+
+        relative_path = entry.relative_to(root).as_posix()
+        if should_ignore(entry, current_dir, root, rules):
+            continue
+
+        if entry.is_dir():
+            yield from _walk_text_files(root, entry, rules)
+            continue
+
+        if not entry.is_file():
+            continue
+
+        scan = scan_file(entry)
+        if scan is None:
+            continue
+        yield FileScanResult(path=entry, relative_path=relative_path, size=scan.size, content_hash=scan.content_hash)
+
+
+def scan_file(path: Path) -> FileScanResult | None:
+    try:
+        size = path.stat().st_size
+    except OSError:
+        return None
+
+    hasher = hashlib.sha256()
+    decoder = codecs.getincrementaldecoder("utf-8")()
+    try:
+        with path.open("rb") as handle:
+            while True:
+                chunk = handle.read(READ_CHUNK_SIZE)
+                if not chunk:
+                    break
+                if b"\x00" in chunk:
+                    return None
+                hasher.update(chunk)
+                decoder.decode(chunk)
+            decoder.decode(b"", final=True)
+    except UnicodeDecodeError:
+        return None
+    except OSError:
+        return None
+
+    return FileScanResult(path=path, relative_path="", size=size, content_hash=hasher.hexdigest())
+
+
+def should_ignore(entry: Path, current_dir: Path, root: Path, rules: list[IgnoreRule]) -> bool:
+    ignored = False
+    candidate = entry.resolve()
+    for rule in rules:
+        if rule_matches(rule, candidate, current_dir, root, entry.is_dir()):
+            ignored = not rule.negated
+    return ignored
+
+
+def rule_matches(rule: IgnoreRule, candidate: Path, current_dir: Path, root: Path, is_dir: bool) -> bool:
+    try:
+        relative = candidate.relative_to(rule.base_dir)
+    except ValueError:
+        return False
+
+    pattern = rule.pattern
+    candidate_text = relative.as_posix()
+    if rule.directory_only and not is_dir:
+        return False
+
+    if rule.anchored or "/" in pattern:
+        return fnmatch.fnmatchcase(candidate_text, pattern)
+
+    parts = candidate_text.split("/")
+    return any(fnmatch.fnmatchcase(part, pattern) for part in parts)
+
+
+@dataclasses.dataclass(frozen=True)
+class GitIgnorePattern:
+    pass
+
+
+@dataclasses.dataclass(frozen=True)
+class FileContent:
+    size: int
+    content_hash: str
+
+
+def load_gitignore_rules(directory: Path) -> list[IgnoreRule]:
+    gitignore_path = directory / ".gitignore"
+    if not gitignore_path.exists():
+        return []
+
+    rules: list[IgnoreRule] = []
+    for raw_line in read_text_text(gitignore_path).splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+
+        negated = line.startswith("!")
+        if negated:
+            line = line[1:]
+
+        anchored = line.startswith("/")
+        if anchored:
+            line = line[1:]
+
+        directory_only = line.endswith("/")
+        if directory_only:
+            line = line[:-1]
+
+        if not line:
+            continue
+
+        rules.append(
+            IgnoreRule(
+                base_dir=directory,
+                pattern=line,
+                negated=negated,
+                directory_only=directory_only,
+                anchored=anchored,
+            )
+        )
+    return rules
+
+
+def read_text_text(path: Path) -> str:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return handle.read()
+
+
+def sha256_file(path: Path) -> str:
+    hasher = hashlib.sha256()
+    with path.open("rb") as handle:
+        while True:
+            chunk = handle.read(READ_CHUNK_SIZE)
+            if not chunk:
+                break
+            hasher.update(chunk)
+    return hasher.hexdigest()
+
+
+def read_blob_bytes(path: Path) -> bytes:
+    with path.open("rb") as handle:
+        return zlib.decompress(handle.read())
+
+
+def write_json_line(handle, payload: dict) -> None:
+    handle.write(json.dumps(payload, ensure_ascii=False, sort_keys=True))
+    handle.write("\n")
+
+
+def write_json_file(path: Path, payload: dict) -> None:
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        json.dump(payload, handle, indent=2, ensure_ascii=False, sort_keys=True)
+        handle.write("\n")
+
+
+def read_json_file(path: Path) -> dict:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return json.load(handle)
+
+
+def remove_path(path: Path) -> None:
+    if path.is_dir() and not path.is_symlink():
+        for child in sorted(path.iterdir(), reverse=True):
+            remove_path(child)
+        try:
+            path.rmdir()
+        except OSError:
+            pass
+        return
+
+    try:
+        path.unlink()
+    except FileNotFoundError:
+        pass
+
+
+def slugify(value: str) -> str:
+    slug = [char.lower() if char.isalnum() else "-" for char in value.strip()]
+    result = "".join(slug).strip("-")
+    while "--" in result:
+        result = result.replace("--", "-")
+    return result or "checkpoint"
+
+
+def normalize_ignore_pattern(root: Path, pattern: str, directory: bool) -> str:
+    normalized = pattern.strip().replace("\\", "/")
+    if not normalized:
+        return normalized
+
+    explicit_relative = normalized.startswith("./")
+    if explicit_relative:
+        normalized = normalized[2:]
+
+    wildcard_chars = {"*", "?", "[", "]", "!"}
+    has_wildcards = any(char in normalized for char in wildcard_chars)
+    if has_wildcards:
+        return normalized
+
+    candidate = root / normalized
+    try:
+        resolved = candidate.resolve()
+    except OSError:
+        resolved = candidate
+
+    try:
+        relative = resolved.relative_to(root.resolve())
+    except ValueError:
+        return normalized
+
+    if relative.parts:
+        anchored = "/" + relative.as_posix().rstrip("/")
+        if directory:
+            return anchored + "/"
+        if explicit_relative or resolved.exists():
+            return anchored
+
+    return normalized
+
+
+def normalize_legacy_text(value: object) -> str:
+    if isinstance(value, str):
+        return value
+    if value is None:
+        return ""
+    return str(value)
+
+
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+A src/keepsafe/cli.py
+--- src/keepsafe/cli.py ---
+﻿from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+from .checkpointing import (
+    add_gitignore_entry,
+    compare_checkpoints,
+    create_checkpoint,
+    list_checkpoints,
+    rebuild_keepsafe,
+    restore_checkpoint,
+)
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(prog="keepsafe", description="Local checkpoint versioning")
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=Path.cwd(),
+        help="Workspace root to version. Defaults to the current directory.",
+    )
+
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    checkpoint_parser = subparsers.add_parser("checkpoint", help="Create a new checkpoint")
+    checkpoint_parser.add_argument("name", help="Checkpoint name")
+
+    subparsers.add_parser("list", help="List created checkpoints")
+
+    restore_parser = subparsers.add_parser("restore", help="Restore a checkpoint")
+    restore_parser.add_argument("checkpoint_id", help="Checkpoint id to restore")
+
+    diff_parser = subparsers.add_parser("diff", help="Compare two checkpoints")
+    diff_parser.add_argument("left_checkpoint_id", help="Older checkpoint id")
+    diff_parser.add_argument("right_checkpoint_id", help="Newer checkpoint id")
+
+    subparsers.add_parser("rebuild", help="Rebuild KeepSafe metadata to the current format")
+
+    ignore_parser = subparsers.add_parser("ignore", help="Manage .gitignore patterns")
+    ignore_subparsers = ignore_parser.add_subparsers(dest="ignore_command", required=True)
+    ignore_add_parser = ignore_subparsers.add_parser("add", help="Add a .gitignore pattern")
+    ignore_add_parser.add_argument("pattern", help="Pattern to add (gitignore wildcard syntax)")
+    ignore_add_parser.add_argument(
+        "--directory",
+        action="store_true",
+        help="Treat the pattern as a directory and ensure it ends with '/'.",
+    )
+
+    return parser
+
+
+def main() -> None:
+    parser = build_parser()
+    args = parser.parse_args()
+
+    root = args.root.resolve()
+
+    if args.command == "checkpoint":
+        result = create_checkpoint(root, args.name)
+        print(result.summary)
+        print(result.path)
+        return
+
+    if args.command == "list":
+        checkpoints = list_checkpoints(root)
+        if not checkpoints:
+            print("No checkpoints found.")
+            return
+        for checkpoint in checkpoints:
+            print(f"{checkpoint.checkpoint_id}\t{checkpoint.name}\t{checkpoint.created_at}")
+        return
+
+    if args.command == "restore":
+        restore_checkpoint(root, args.checkpoint_id)
+        print(f"Restored checkpoint {args.checkpoint_id}")
+        return
+
+    if args.command == "diff":
+        print(compare_checkpoints(root, args.left_checkpoint_id, args.right_checkpoint_id), end="")
+        return
+
+    if args.command == "rebuild":
+        print(rebuild_keepsafe(root))
+        return
+
+    if args.command == "ignore":
+        if args.ignore_command == "add":
+            message = add_gitignore_entry(root, args.pattern, directory=args.directory)
+            print(message)
+            return
+        parser.error("Unknown ignore command")
+
+    parser.error("Unknown command")
+
+A src/keepsafe/core.py
+--- src/keepsafe/core.py ---
+﻿from __future__ import annotations
+
+import dataclasses
+import datetime as dt
+import difflib
+import fnmatch
+import json
+import re
+from functools import lru_cache
+from pathlib import Path
+from typing import Iterable
+
+
+DEFAULT_IGNORED_DIRS = {".git", ".keepsafe"}
+
+
+@dataclasses.dataclass(frozen=True)
+class CheckpointRecord:
+    checkpoint_id: str
+    name: str
+    created_at: str
+    kind: str
+    file_count: int
+    changed_count: int
+    path: str
+
+
+@dataclasses.dataclass(frozen=True)
+class CheckpointResult:
+    summary: str
+    path: str
+
+
+@dataclasses.dataclass(frozen=True)
+class IgnoreRule:
+    base_dir: Path
+    pattern: str
+    negated: bool
+    directory_only: bool
+    anchored: bool
+    original: str
+
+    def matches(self, candidate: Path, is_dir: bool) -> bool:
+        try:
+            relative_to_base = candidate.relative_to(self.base_dir)
+        except ValueError:
+            return False
+
+        candidate_text = relative_to_base.as_posix() or candidate.name
+
+        if self.anchored or "/" in self.pattern:
+            if fnmatch.fnmatchcase(candidate_text, self.pattern):
+                return True
+            return False
+
+        parts = candidate_text.split("/")
+        if any(fnmatch.fnmatchcase(part, self.pattern) for part in parts):
+            return True
+        return False
+
+
+def create_checkpoint(root: Path, name: str) -> CheckpointResult:
+    root = root.resolve()
+    KeepSafe_dir = ensure_KeepSafe_dir(root)
+    checkpoints_dir = KeepSafe_dir / "checkpoints"
+    checkpoints_dir.mkdir(parents=True, exist_ok=True)
+
+    index = load_index(KeepSafe_dir)
+    current_state = collect_workspace_state(root)
+    checkpoint_id = build_checkpoint_id(index, name)
+    checkpoint_dir = checkpoints_dir / checkpoint_id
+    checkpoint_dir.mkdir(parents=True, exist_ok=False)
+
+    previous_state = load_previous_state(index, KeepSafe_dir)
+    created_at = dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+
+    if previous_state is None:
+        kind = "snapshot"
+        human_text = render_snapshot_text(checkpoint_id, name, created_at, current_state)
+        changed_count = len(current_state)
+    else:
+        kind = "delta"
+        human_text, changed_count = render_changes_text(
+            checkpoint_id,
+            name,
+            created_at,
+            previous_state,
+            current_state,
+        )
+
+    state_payload = {
+        "checkpoint_id": checkpoint_id,
+        "name": name,
+        "created_at": created_at,
+        "kind": kind,
+        "files": current_state,
+    }
+
+    metadata = {
+        "checkpoint_id": checkpoint_id,
+        "name": name,
+        "created_at": created_at,
+        "kind": kind,
+        "file_count": len(current_state),
+        "changed_count": changed_count,
+    }
+
+    write_text_file(checkpoint_dir / "checkpoint.txt", human_text)
+    write_json_file(checkpoint_dir / "state.json", state_payload)
+    write_json_file(checkpoint_dir / "metadata.json", metadata)
+
+    index["checkpoints"].append(metadata | {"path": str(checkpoint_dir.relative_to(root))})
+    write_json_file(KeepSafe_dir / "index.json", index)
+
+    label = "snapshot" if kind == "snapshot" else "diff"
+    summary = f"Created {label} checkpoint {checkpoint_id} ({len(current_state)} files, {changed_count} changes)"
+    return CheckpointResult(summary=summary, path=str(checkpoint_dir))
+
+
+def list_checkpoints(root: Path) -> list[CheckpointRecord]:
+    KeepSafe_dir = root.resolve() / ".keepsafe"
+    index = load_index(KeepSafe_dir)
+    records: list[CheckpointRecord] = []
+    for item in index["checkpoints"]:
+        records.append(
+            CheckpointRecord(
+                checkpoint_id=item["checkpoint_id"],
+                name=item["name"],
+                created_at=item["created_at"],
+                kind=item["kind"],
+                file_count=item["file_count"],
+                changed_count=item["changed_count"],
+                path=item["path"],
+            )
+        )
+    return records
+
+
+def restore_checkpoint(root: Path, checkpoint_id: str) -> None:
+    root = root.resolve()
+    checkpoint_dir = root / ".keepsafe" / "checkpoints" / checkpoint_id
+    state_path = checkpoint_dir / "state.json"
+    if not state_path.exists():
+        raise FileNotFoundError(f"Checkpoint {checkpoint_id} does not exist")
+
+    state = read_json_file(state_path)
+    files: dict[str, str] = state["files"]
+    tracked_paths = {root / relative_path for relative_path in files}
+
+    for relative_path, content in files.items():
+        target = root / relative_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        write_text_file(target, content)
+
+    for path in sorted(find_tracked_files(root) - tracked_paths, reverse=True):
+        if path.exists() and path.is_file():
+            path.unlink()
+
+
+def load_previous_state(index: dict, KeepSafe_dir: Path) -> dict[str, str] | None:
+    checkpoints = index.get("checkpoints", [])
+    if not checkpoints:
+        return None
+    previous_path = KeepSafe_dir.parent / checkpoints[-1]["path"] / "state.json"
+    if not previous_path.exists():
+        return None
+    previous_state = read_json_file(previous_path)
+    return previous_state["files"]
+
+
+def ensure_KeepSafe_dir(root: Path) -> Path:
+    KeepSafe_dir = root / ".keepsafe"
+    KeepSafe_dir.mkdir(parents=True, exist_ok=True)
+    (KeepSafe_dir / "checkpoints").mkdir(parents=True, exist_ok=True)
+    return KeepSafe_dir
+
+
+def load_index(KeepSafe_dir: Path) -> dict:
+    index_path = KeepSafe_dir / "index.json"
+    if index_path.exists():
+        return read_json_file(index_path)
+    return {"version": 1, "checkpoints": []}
+
+
+def build_checkpoint_id(index: dict, name: str) -> str:
+    sequence = len(index.get("checkpoints", [])) + 1
+    slug = slugify(name)
+    return f"{sequence:04d}-{slug}"
+
+
+def slugify(value: str) -> str:
+    slug = re.sub(r"[^a-zA-Z0-9]+", "-", value.strip().lower()).strip("-")
+    return slug or "checkpoint"
+
+
+def render_snapshot_text(checkpoint_id: str, name: str, created_at: str, state: dict[str, str]) -> str:
+    lines = [
+        f"Checkpoint: {checkpoint_id}",
+        f"Name: {name}",
+        f"Created: {created_at}",
+        f"Mode: snapshot",
+        f"Files: {len(state)}",
+        "",
+    ]
+    for relative_path in sorted(state):
+        lines.append(f"--- {relative_path} ---")
+        lines.append(state[relative_path])
+        if not state[relative_path].endswith("\n"):
+            lines.append("")
+    return "\n".join(lines).rstrip() + "\n"
+
+
+def render_changes_text(
+    checkpoint_id: str,
+    name: str,
+    created_at: str,
+    previous_state: dict[str, str],
+    current_state: dict[str, str],
+) -> tuple[str, int]:
+    previous_paths = set(previous_state)
+    current_paths = set(current_state)
+
+    added = sorted(current_paths - previous_paths)
+    deleted = sorted(previous_paths - current_paths)
+    modified = sorted(path for path in current_paths & previous_paths if previous_state[path] != current_state[path])
+
+    lines = [
+        f"Checkpoint: {checkpoint_id}",
+        f"Name: {name}",
+        f"Created: {created_at}",
+        f"Mode: diff",
+        f"Added: {len(added)}",
+        f"Deleted: {len(deleted)}",
+        f"Modified: {len(modified)}",
+        "",
+    ]
+
+    for relative_path in added:
+        lines.append(f"A {relative_path}")
+        lines.append(current_state[relative_path])
+        if not current_state[relative_path].endswith("\n"):
+            lines.append("")
+
+    for relative_path in deleted:
+        lines.append(f"D {relative_path}")
+
+    for relative_path in modified:
+        lines.append(f"M {relative_path}")
+        diff = difflib.unified_diff(
+            previous_state[relative_path].splitlines(keepends=True),
+            current_state[relative_path].splitlines(keepends=True),
+            fromfile=f"a/{relative_path}",
+            tofile=f"b/{relative_path}",
+        )
+        lines.extend(line.rstrip("\n") for line in diff)
+        lines.append("")
+
+    human_text = "\n".join(lines).rstrip() + "\n"
+    changed_count = len(added) + len(deleted) + len(modified)
+    return human_text, changed_count
+
+
+def collect_workspace_state(root: Path) -> dict[str, str]:
+    state: dict[str, str] = {}
+    rules = load_root_rules(root)
+    for path in walk_files(root, rules):
+        relative_path = path.relative_to(root).as_posix()
+        state[relative_path] = read_text_file(path)
+    return state
+
+
+def find_tracked_files(root: Path) -> set[Path]:
+    rules = load_root_rules(root)
+    return set(walk_files(root, rules))
+
+
+def walk_files(root: Path, rules: list[IgnoreRule], current_dir: Path | None = None) -> Iterable[Path]:
+    current_dir = root if current_dir is None else current_dir
+    entries = sorted(current_dir.iterdir(), key=lambda item: item.name.lower())
+    local_rules = rules + load_gitignore_rules(current_dir, root)
+
+    for entry in entries:
+        if entry.name == ".keepsafe":
+            continue
+
+        relative_path = entry.relative_to(root)
+        if should_ignore(root, relative_path, entry.is_dir(), local_rules):
+            continue
+
+        if entry.is_dir():
+            yield from walk_files(root, local_rules, entry)
+            continue
+
+        if is_text_file(entry):
+            yield entry
+
+
+def load_root_rules(root: Path) -> list[IgnoreRule]:
+    return load_gitignore_rules(root, root)
+
+
+@lru_cache(maxsize=None)
+def load_gitignore_rules(directory: Path, root: Path) -> list[IgnoreRule]:
+    gitignore_path = directory / ".gitignore"
+    if not gitignore_path.exists():
+        return []
+
+    rules: list[IgnoreRule] = []
+    for raw_line in read_text_file(gitignore_path).splitlines():
+        line = raw_line.strip()
+        if not line or line.startswith("#"):
+            continue
+        if line.startswith("\\#") or line.startswith("\\!"):
+            line = line[1:]
+
+        negated = line.startswith("!")
+        if negated:
+            line = line[1:]
+
+        anchored = line.startswith("/")
+        if anchored:
+            line = line[1:]
+
+        directory_only = line.endswith("/")
+        if directory_only:
+            line = line[:-1]
+
+        if not line:
+            continue
+
+        rules.append(
+            IgnoreRule(
+                base_dir=directory,
+                pattern=line,
+                negated=negated,
+                directory_only=directory_only,
+                anchored=anchored,
+                original=raw_line,
+            )
+        )
+    return rules
+
+
+def should_ignore(root: Path, relative_path: Path, is_dir: bool, rules: list[IgnoreRule]) -> bool:
+    candidate = root / relative_path
+    ignored = False
+    for rule in rules:
+        if rule.matches(candidate, is_dir):
+            ignored = not rule.negated
+    if is_dir and relative_path.name in DEFAULT_IGNORED_DIRS:
+        return True
+    return ignored
+
+
+def is_text_file(path: Path) -> bool:
+    try:
+        data = path.read_bytes()
+    except OSError:
+        return False
+    if b"\x00" in data:
+        return False
+    try:
+        data.decode("utf-8")
+    except UnicodeDecodeError:
+        return False
+    return True
+
+
+def read_text_file(path: Path) -> str:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return handle.read()
+
+
+def write_text_file(path: Path, content: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        handle.write(content)
+
+
+def write_json_file(path: Path, payload: dict) -> None:
+    write_text_file(path, json.dumps(payload, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def read_json_file(path: Path) -> dict:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return json.load(handle)
+

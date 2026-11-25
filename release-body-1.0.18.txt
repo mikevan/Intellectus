@@ -1,0 +1,51 @@
+The toolkit's published API described five silent commands, an event surface,
+a public record file, and an integration between DeepTest and UntangleIt, and
+not one of them existed. `deeptest.api.status`, `deeptest.api.check`,
+`deeptest.api.function`, and `deeptest.api.decisions` were never registered.
+Neither was `untangleit.api.plan`. Nothing wrote `.deeptest/last-check.json`.
+Neither tool exposed `onDidCheck` or `onDidDecide`. UntangleIt's own source
+says in its header that it does not call DeepTest, while the contract said it
+asked DeepTest for numbers before and after every untangling.
+
+This release cuts the contract down to the product rather than building the
+product up to the contract. What it publishes now is what the code does: one
+silent command, `untangleit.api.measure`; five interactive commands, all
+registered; the DeepTest to UntangleIt hand-off through `prs.untangleit`; one
+KeepSafe command, `keepsafe.quickCheckpoint`, with KeepSafe's own surface kept
+as a record of someone else's contract rather than as a claim about ours; two
+public record files, `.deeptest/decisions.json` and `.untangleit/runs.json`;
+and the exports activate actually returns. Everything removed is in a new
+section 10, "Proposed, not built", whose first line says that nothing below it
+is a promise. No API was added.
+
+DeepTest gained the `prsToolkit` discovery block the document has required
+since draft 2 and had never carried. `prsToolkit.commands` now means silent
+commands and nothing else, which is why DeepTest's array is empty. An empty
+array is a fact about the tool, not a gap in the block.
+
+The part that lasts is the test. `test/contract.test.ts` reads the section
+headings and the tables under them, never backticks in prose, and checks four
+things: every published command is registered by the tool that publishes it,
+each tool's `prsToolkit.commands` is exactly the silent commands published for
+it and every one is registered, both tools declare a complete block, and every
+public record path is demonstrably written by its owner. It stops reading at
+section 10, and asserts that heading exists so the line between built and
+designed cannot be deleted quietly. A second test runs the same four rules
+against trees built to break each one, because rules that cannot fail prove
+nothing. Six mutations of the real check were tried and all six failed it,
+including moving `untangleit.api.measure` into section 10, which the discovery
+rule catches: a real command cannot be demoted to proposed while the block
+still advertises it.
+
+It reads the mirrored copy in DeepTest's docs on purpose. Phase 0 of the
+release copies the library over it before any tree is tested, so the check runs
+against the document the release ships rather than against a working copy.
+
+Verification before release:
+
+* Complexity 104/104
+* Witness 12/12
+* UntangleIt 17/17
+* DeepTest 220/220
+* library mirrors byte-for-byte identical
+* all five trees built and packaged successfully

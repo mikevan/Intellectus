@@ -1,0 +1,17 @@
+export enum AddonServiceNames {
+  azureblobstorage = 'Azure Blob Storage',
+  figshare = 'figshare',
+  onedrive = 'Onedrive',
+  dropbox = 'Dropbox',
+  googledrive = 'Google Drive',
+  bitbucket = 'Bitbucket',
+  s3 = 'S3',
+  box = 'Box',
+  github = 'Github',
+  dataverse = 'Dataverse',
+  gitlab = 'GitLab',
+  owncloud = 'ownCloud',
+  mendeley = 'Mendeley',
+  zotero = 'Zotero',
+  link_dataverse = 'Dataverse ',
+}

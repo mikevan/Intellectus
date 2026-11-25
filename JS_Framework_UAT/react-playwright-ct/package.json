@@ -1,0 +1,49 @@
+{
+  "name": "lint-forge",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Desktop React SPA for reviewing lint rules and building custom linter configs.",
+  "license": "MIT",
+  "type": "module",
+  "packageManager": "pnpm@10.34.5",
+  "engines": {
+    "node": ">=24.0.0",
+    "pnpm": ">=10.34.5"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "pnpm type-check && vite build",
+    "type-check": "tsc -b",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write .",
+    "preview": "vite preview",
+    "pagespeed:check": "node scripts/check-pagespeed.mjs",
+    "test": "vitest run",
+    "test:ct": "playwright test -c playwright-ct.config.ts",
+    "test:e2e": "playwright test",
+    "check": "pnpm lint && pnpm test && pnpm build"
+  },
+  "dependencies": {
+    "@oddbird/popover-polyfill": "^0.7.2",
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.16",
+    "@playwright/experimental-ct-react": "1.60.0",
+    "@playwright/test": "^1.60.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "jsdom": "^29.1.1",
+    "typescript": "~6.0.2",
+    "vite": "8.0.16",
+    "vitest": "^4.1.7"
+  }
+}

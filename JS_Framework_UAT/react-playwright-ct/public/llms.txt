@@ -1,0 +1,15 @@
+# Lint Forge
+
+> Desktop Biome rule review app for generating custom biome.json lint configurations.
+
+Lint Forge helps developers import an existing Biome config, skip explicitly configured rules, review the remaining linter rules in a focused deck, and export a generated biome.json.
+
+## Links
+
+- [Live app](https://lint-forge.marlonpassos.com.br/)
+- [Source repository](https://github.com/MarlonPassos-git/lint-forge)
+- [Biome documentation](https://biomejs.dev/)
+
+## Topics
+
+Biome, lint rules, biome.json, React, Vite, TypeScript, developer tools.

@@ -1,0 +1,16 @@
+@use "styles/mixins" as mix;
+
+:host {
+  width: 100%;
+}
+
+.sub-header {
+  color: var(--dark-blue-1);
+  background-color: var(--bg-blue-3);
+}
+
+.title-icon {
+  font-size: mix.rem(36px);
+  width: mix.rem(36px);
+  height: mix.rem(36px);
+}

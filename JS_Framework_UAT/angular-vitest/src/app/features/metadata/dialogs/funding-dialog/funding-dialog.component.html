@@ -1,0 +1,89 @@
+<form [formGroup]="fundingForm" (ngSubmit)="save()" class="flex flex-column gap-4">
+  @for (entry of fundingEntries.controls; track $index) {
+    <div [formGroup]="entry">
+      <div class="flex flex-column gap-3">
+        <div class="flex flex-column gap-1">
+          <label [for]="'funderName-' + $index">
+            {{ 'project.metadata.funding.dialog.funderName' | translate }}
+          </label>
+
+          <p-select
+            [id]="'funderName-' + $index"
+            formControlName="funderName"
+            [options]="getOptionsForIndex($index)"
+            optionLabel="name"
+            optionValue="name"
+            [placeholder]="'project.metadata.funding.dialog.selectFunder' | translate"
+            class="w-full"
+            [filter]="true"
+            filterBy="name"
+            [showClear]="true"
+            [loading]="fundersLoading()"
+            [emptyFilterMessage]="filterMessage() | translate"
+            [emptyMessage]="filterMessage() | translate"
+            [autoOptionFocus]="false"
+            (onChange)="onFunderSelected($event.value, $index)"
+            (onFilter)="onFunderSearch($event.filter)"
+          />
+        </div>
+
+        <div class="flex flex-column gap-1">
+          <label [for]="'awardTitle-' + $index">
+            {{ 'project.metadata.funding.dialog.awardTitle' | translate }}
+          </label>
+          <input pInputText [id]="'awardTitle-' + $index" formControlName="awardTitle" class="w-full" />
+        </div>
+
+        <div class="flex flex-column gap-1">
+          <label [for]="'awardUri-' + $index">
+            {{ 'project.metadata.funding.dialog.awardUri' | translate }}
+          </label>
+          <input pInputText [id]="'awardUri-' + $index" formControlName="awardUri" class="w-full" />
+        </div>
+
+        <div class="flex flex-column gap-1">
+          <label [for]="'awardNumber-' + $index">
+            {{ 'project.metadata.funding.dialog.awardNumber' | translate }}
+          </label>
+          <input pInputText [id]="'awardNumber-' + $index" formControlName="awardNumber" class="w-full" />
+        </div>
+
+        @if (configFunders.length || fundingEntries.length > 1) {
+          <div class="flex justify-content-end">
+            <p-button
+              severity="danger"
+              [label]="'common.buttons.remove' | translate"
+              size="small"
+              (onClick)="removeFundingEntry($index)"
+            />
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <div class="flex justify-content-end">
+    <p-button
+      severity="secondary"
+      [label]="'common.buttons.addMore' | translate"
+      [disabled]="fundingForm.invalid"
+      (onClick)="addFundingEntry()"
+    />
+  </div>
+
+  <div class="flex justify-content-end gap-2">
+    <p-button
+      severity="info"
+      [label]="'common.buttons.cancel' | translate"
+      (onClick)="cancel()"
+      data-test-cancel-editing-funding-metadata-button
+    />
+
+    <p-button
+      type="submit"
+      [label]="'common.buttons.save' | translate"
+      [disabled]="fundingForm.invalid"
+      data-test-save-funding-metadata-button
+    />
+  </div>
+</form>

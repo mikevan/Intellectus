@@ -1,0 +1,51 @@
+Two things a check must do before it draws a card: know the tool will start,
+and know that something was actually measured.
+
+Every npm package may declare the Node versions it supports, and DeepTest read
+none of them. checkAngularEnvironment reported "ok" and the Angular CLI then
+refused to start: it needs ^22.22.3 || ^24.15.0 || >=26.0.0 and the machine ran
+22.22.0. The environment check now reads engines.node for every package it
+starts and refuses first, naming the package, its range, and what is installed.
+The semver reader is ours rather than the semver package, because nothing extra
+may be installed and the grammar these fields use is small; a range it cannot
+parse lets the run proceed, since refusing over a misread range is the same
+wrong answer pointed the other way.
+
+Angular with Vitest measured nothing from 1.0.12 until now. That delivery moved
+the path onto the Witness Vite plugin and deleted 1.0.4's chunk source-map
+work as unnecessary. The builder bundles the application before Vitest is
+involved, so the plugin only ever saw built chunks outside the source root and
+correctly declined every one: eleven tests passed, every coverage report was
+{}, every attribution record was empty, and the card called a fully tested
+project 81 untested lines. Restored to the 1.0.4 path, which measures through
+the builder's own instrumentation and maps its chunks back to sources. The
+restoration is exact, not approximate: 21 attributed lines and 25.61% coverage
+on the Angular port, which is what the 1.0.4 note recorded. Moving this path
+onto Witness has no seam yet and belongs to the runner migration.
+
+That defect passed 1.0.14's evidence check, so the check was incomplete. It
+counted attribution records and never asked whether a record held anything. A
+run is refused now when it measured nothing at all: no record carrying a file
+and no file with a line that ran. One empty record stays ordinary, because a
+test of a constant legitimately produces one.
+
+Two tools that were supposed to catch this reported only what they already knew
+how to say. The Angular runner-config test asserted the generated config was
+the config we meant, which it was, on every run, for three versions. And
+survey.cjs printed three of the five evidence counts, so the first acceptance
+run could not show the new check at all. Both are fixed; the reasons are in the
+engineering notes, because a generated-string test cannot prove a path measures
+anything.
+
+Measured on the machine at Node v22.23.2: 217 tests pass; angular-vitest
+reports 11 finished, 11 recorded, 11 carrying a file, 3 files with a line that
+ran, 0 cut off, with greet.ts 9/9/9, greeting.ts 4/4/4, and names.ts 13/8/8; a
+project whose passing tests touch no source reports 0 carrying a file and is
+refused.
+
+Also recorded, unfixed and deliberate: the three instrumentation sources
+disagree about the same files. names.ts has 18 executable lines in the source
+and under Karma, and 13 on the restored Vitest path. greeting.ts has 2 in the
+source, 5 under Karma, and 4 under Vitest. The figures match 1.0.4's, so this
+is what the bundled paths have always done. Neither Angular baseline is the
+target for the runner migration; source-level Witness semantics is.

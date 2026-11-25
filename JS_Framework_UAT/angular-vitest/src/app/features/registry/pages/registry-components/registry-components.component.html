@@ -1,0 +1,29 @@
+<section class="flex flex-column flex-1">
+  <osf-sub-header [title]="'navigation.components' | translate" />
+
+  <div class="flex flex-column flex-1 gap-6 p-4 bg-white">
+    @if (hasViewOnly()) {
+      <osf-view-only-link-message />
+    }
+    <section class="flex flex-1 flex-column gap-4">
+      @if (registryComponentsLoading()) {
+        <div class="flex justify-content-center p-4">
+          <osf-loading-spinner />
+        </div>
+      } @else if (registryComponents().length === 0) {
+        <div class="text-center p-6">
+          <p>{{ 'registry.components.noComponentsFound' | translate }}</p>
+        </div>
+      } @else {
+        <div class="flex flex-column gap-4">
+          @for (component of registryComponents(); track component.id) {
+            <osf-registration-links-card
+              (reviewEmitRegistrationData)="reviewComponentDetails($event)"
+              [registrationData]="component"
+            />
+          }
+        </div>
+      }
+    </section>
+  </div>
+</section>

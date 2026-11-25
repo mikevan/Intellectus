@@ -1,0 +1,195 @@
+import { catchError, map, Observable, throwError } from 'rxjs';
+
+import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+import { RegistryModerationMapper } from '@osf/features/moderation/mappers';
+import { ReviewActionsResponseJsonApi } from '@osf/features/moderation/models/review-action-json-api.model';
+import { PreprintRequestActionsMapper } from '@osf/features/preprints/mappers/preprint-request-actions.mapper';
+import { PreprintRequestAction } from '@osf/features/preprints/models/preprint-request-action.model';
+import { searchPreferencesToJsonApiQueryParams } from '@osf/shared/helpers/search-pref-to-json-api-query-params.helper';
+import { StringOrNull } from '@osf/shared/helpers/types.helper';
+import {
+  PreprintAttributesJsonApi,
+  PreprintDataJsonApi,
+  PreprintMetricsResponseJsonApi,
+  PreprintResponseJsonApi,
+  PreprintsListResponseJsonApi,
+} from '@osf/shared/models/preprints/preprint-json-api.model';
+import { SearchFilters } from '@osf/shared/models/search-filters.model';
+import { JsonApiService } from '@osf/shared/services/json-api.service';
+
+import { preprintSortFieldMap } from '../constants';
+import { PreprintRequestMapper, PreprintsMapper } from '../mappers';
+import {
+  PreprintModel,
+  PreprintRequest,
+  PreprintRequestActionsJsonApiResponse,
+  PreprintRequestsJsonApiResponse,
+} from '../models';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class PreprintsService {
+  private readonly jsonApiService = inject(JsonApiService);
+  private readonly environment = inject(ENVIRONMENT);
+  private readonly router = inject(Router);
+
+  get apiUrl() {
+    return `${this.environment.apiDomainUrl}/v2`;
+  }
+
+  private domainToApiFieldMap: Record<string, string> = {
+    title: 'title',
+    description: 'description',
+    originalPublicationDate: 'original_publication_date',
+    doi: 'doi',
+    customPublicationCitation: 'custom_publication_citation',
+    tags: 'tags',
+    hasCoi: 'has_coi',
+    coiStatement: 'conflict_of_interest_statement',
+    hasDataLinks: 'has_data_links',
+    dataLinks: 'data_links',
+    whyNoData: 'why_no_data',
+    hasPreregLinks: 'has_prereg_links',
+    preregLinks: 'prereg_links',
+    whyNoPrereg: 'why_no_prereg',
+    preregLinkInfo: 'prereg_link_info',
+    isPublished: 'is_published',
+  };
+
+  createPreprint(title: string, abstract: string, providerId: string) {
+    const payload = PreprintsMapper.toCreatePayload(title, abstract, providerId);
+    return this.jsonApiService
+      .post<PreprintResponseJsonApi>(`${this.apiUrl}/preprints/`, payload)
+      .pipe(map((response) => PreprintsMapper.fromPreprintJsonApi(response.data)));
+  }
+
+  getById(id: string) {
+    return this.jsonApiService
+      .get<PreprintResponseJsonApi>(`${this.apiUrl}/preprints/${id}/`)
+      .pipe(map((response) => PreprintsMapper.fromPreprintJsonApi(response.data)));
+  }
+
+  getByIdWithEmbeds(id: string) {
+    const params = { 'embed[]': ['license', 'identifiers'] };
+
+    return this.jsonApiService.get<PreprintResponseJsonApi>(`${this.apiUrl}/preprints/${id}/`, params).pipe(
+      map((response) => PreprintsMapper.fromPreprintWithEmbedsJsonApi(response)),
+      catchError((error) => {
+        if (error.error?.errors?.[0]?.meta?.flagged_content) {
+          this.router.navigate(['/spam-content']);
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getPreprintMetrics(id: string) {
+    const params = { 'metrics[views]': 'total', 'metrics[downloads]': 'total' };
+
+    return this.jsonApiService.get<PreprintMetricsResponseJsonApi>(`${this.apiUrl}/preprints/${id}/`, params).pipe(
+      map((response) => ({
+        downloads: response.meta.metrics.downloads,
+        views: response.meta.metrics.views,
+      }))
+    );
+  }
+
+  updatePreprint(id: string, payload: Partial<PreprintModel>): Observable<PreprintModel> {
+    const apiPayload = this.mapPreprintDomainToApiPayload(payload);
+
+    return this.jsonApiService
+      .patch<PreprintDataJsonApi>(`${this.apiUrl}/preprints/${id}/`, {
+        data: {
+          type: 'preprints',
+          id,
+          attributes: apiPayload,
+        },
+      })
+      .pipe(map((response) => PreprintsMapper.fromPreprintJsonApi(response)));
+  }
+
+  submitPreprint(preprintId: string) {
+    const payload = PreprintsMapper.toReviewActionPayload(preprintId, 'submit');
+    return this.jsonApiService.post(`${this.apiUrl}/preprints/${preprintId}/review_actions/`, payload);
+  }
+
+  createNewVersion(prevVersionPreprintId: string) {
+    return this.jsonApiService
+      .post<PreprintResponseJsonApi>(`${this.apiUrl}/preprints/${prevVersionPreprintId}/versions/`)
+      .pipe(map((response) => PreprintsMapper.fromPreprintJsonApi(response.data)));
+  }
+
+  private mapPreprintDomainToApiPayload(domainPayload: Partial<PreprintModel>): Partial<PreprintAttributesJsonApi> {
+    const apiPayload: Record<string, unknown> = {};
+    Object.entries(domainPayload).forEach(([key, value]) => {
+      if (value !== undefined && this.domainToApiFieldMap[key]) {
+        apiPayload[this.domainToApiFieldMap[key]] = value;
+      }
+    });
+    return apiPayload;
+  }
+
+  getPreprintVersionIds(preprintId: string): Observable<string[]> {
+    return this.jsonApiService
+      .get<PreprintsListResponseJsonApi>(`${this.apiUrl}/preprints/${preprintId}/versions/`)
+      .pipe(map((response) => response.data.map((data) => data.id)));
+  }
+
+  getMyPreprints(pageNumber: number, pageSize: number, filters: SearchFilters) {
+    const params: Record<string, unknown> = {
+      'embed[]': ['bibliographic_contributors'],
+      'fields[users]': 'family_name,full_name,given_name,middle_name',
+      'fields[preprints]': 'title,date_modified,public,bibliographic_contributors,provider',
+    };
+
+    searchPreferencesToJsonApiQueryParams(params, pageNumber, pageSize, filters, preprintSortFieldMap);
+
+    return this.jsonApiService
+      .get<PreprintsListResponseJsonApi>(`${this.apiUrl}/users/me/preprints/`, params)
+      .pipe(map((response) => PreprintsMapper.fromMyPreprintJsonApi(response)));
+  }
+
+  getPreprintReviewActions(preprintId: string) {
+    const baseUrl = `${this.apiUrl}/preprints/${preprintId}/review_actions/?embed=creator`;
+
+    return this.jsonApiService
+      .get<ReviewActionsResponseJsonApi>(baseUrl)
+      .pipe(map((response) => response.data.map((x) => RegistryModerationMapper.fromActionResponse(x))));
+  }
+
+  getPreprintRequests(preprintId: string): Observable<PreprintRequest[]> {
+    const baseUrl = `${this.apiUrl}/preprints/${preprintId}/requests/?embed=creator`;
+
+    return this.jsonApiService
+      .get<PreprintRequestsJsonApiResponse>(baseUrl)
+      .pipe(map((response) => response.data.map((x) => PreprintRequestMapper.fromPreprintRequest(x))));
+  }
+
+  getPreprintRequestActions(requestId: string): Observable<PreprintRequestAction[]> {
+    const baseUrl = `${this.apiUrl}/requests/${requestId}/actions/`;
+
+    return this.jsonApiService
+      .get<PreprintRequestActionsJsonApiResponse>(baseUrl)
+      .pipe(map((response) => response.data.map((x) => PreprintRequestActionsMapper.fromPreprintRequestActions(x))));
+  }
+
+  withdrawPreprint(preprintId: string, justification: string) {
+    const payload = PreprintRequestMapper.toWithdrawPreprintPayload(preprintId, justification);
+
+    return this.jsonApiService.post(`${this.apiUrl}/preprints/${preprintId}/requests/`, payload);
+  }
+
+  submitReviewsDecision(preprintId: string, trigger: string, comment: StringOrNull) {
+    const payload = PreprintsMapper.toReviewActionPayload(preprintId, trigger, comment);
+    return this.jsonApiService.post(`${this.apiUrl}/actions/reviews/`, payload);
+  }
+
+  submitRequestsDecision(requestId: string, trigger: string, comment: StringOrNull) {
+    const payload = PreprintRequestActionsMapper.toRequestActionPayload(requestId, trigger, comment);
+    return this.jsonApiService.post(`${this.apiUrl}/actions/requests/preprints/`, payload);
+  }
+}

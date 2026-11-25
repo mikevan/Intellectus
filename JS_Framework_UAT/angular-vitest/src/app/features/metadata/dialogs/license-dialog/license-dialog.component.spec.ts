@@ -1,0 +1,137 @@
+import { MockComponents, MockProvider } from 'ng-mocks';
+
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { LicenseComponent } from '@osf/shared/components/license/license.component';
+import { LoadingSpinnerComponent } from '@osf/shared/components/loading-spinner/loading-spinner.component';
+import { LicensesSelectors } from '@shared/stores/licenses';
+
+import { MOCK_LICENSE } from '@testing/mocks/license.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { provideMockStore } from '@testing/providers/store-provider.mock';
+
+import { LicenseDialogComponent } from './license-dialog.component';
+
+describe('LicenseDialogComponent', () => {
+  let component: LicenseDialogComponent;
+  let fixture: ComponentFixture<LicenseDialogComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [LicenseDialogComponent, ...MockComponents(LoadingSpinnerComponent, LicenseComponent)],
+      providers: [
+        provideOSFCore(),
+        MockProvider(DynamicDialogRef),
+        MockProvider(DynamicDialogConfig),
+        provideMockStore({
+          signals: [
+            { selector: LicensesSelectors.getLicenses, value: [MOCK_LICENSE] },
+            { selector: LicensesSelectors.getLoading, value: false },
+          ],
+        }),
+      ],
+    });
+
+    fixture = TestBed.createComponent(LicenseDialogComponent);
+    component = fixture.componentInstance;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should handle license selection', () => {
+    component.onSelectLicense(MOCK_LICENSE);
+
+    expect(component.selectedLicenseId()).toBe(MOCK_LICENSE.id);
+  });
+
+  it('should handle license creation with non-existent license', () => {
+    const dialogRef = TestBed.inject(DynamicDialogRef);
+    const closeSpy = vi.spyOn(dialogRef, 'close');
+
+    const createEvent = {
+      id: 'non-existent-license',
+      licenseOptions: { copyrightHolders: 'John Doe', year: '2023' },
+    };
+
+    component.onCreateLicense(createEvent);
+
+    expect(closeSpy).not.toHaveBeenCalled();
+    expect(component.isSubmitting()).toBe(false);
+  });
+
+  it('should handle save with license that has required fields', () => {
+    component.selectedLicenseId.set(MOCK_LICENSE.id);
+
+    const mockLicenseComponent = {
+      selectedLicense: () => MOCK_LICENSE,
+      licenseForm: { invalid: false },
+      saveLicense: vi.fn(),
+    };
+
+    Object.defineProperty(component, 'licenseComponent', {
+      get: () => () => mockLicenseComponent,
+    });
+
+    component.save();
+
+    expect(mockLicenseComponent.saveLicense).toHaveBeenCalled();
+    expect(component.isSubmitting()).toBe(true);
+  });
+
+  it('should not save when no license is selected', () => {
+    const dialogRef = TestBed.inject(DynamicDialogRef);
+    const closeSpy = vi.spyOn(dialogRef, 'close');
+
+    component.selectedLicenseId.set(null);
+
+    component.save();
+
+    expect(closeSpy).not.toHaveBeenCalled();
+  });
+
+  it('should not save when selected license is not found', () => {
+    const dialogRef = TestBed.inject(DynamicDialogRef);
+    const closeSpy = vi.spyOn(dialogRef, 'close');
+
+    component.selectedLicenseId.set('non-existent-license');
+
+    component.save();
+
+    expect(closeSpy).not.toHaveBeenCalled();
+  });
+
+  it('should handle cancel', () => {
+    const dialogRef = TestBed.inject(DynamicDialogRef);
+    const closeSpy = vi.spyOn(dialogRef, 'close');
+
+    const mockLicenseComponent = {
+      cancel: vi.fn(),
+    };
+
+    Object.defineProperty(component, 'licenseComponent', {
+      get: () => () => mockLicenseComponent,
+    });
+
+    component.cancel();
+
+    expect(mockLicenseComponent.cancel).toHaveBeenCalled();
+    expect(closeSpy).toHaveBeenCalled();
+  });
+
+  it('should handle cancel when license component is not available', () => {
+    const dialogRef = TestBed.inject(DynamicDialogRef);
+    const closeSpy = vi.spyOn(dialogRef, 'close');
+
+    Object.defineProperty(component, 'licenseComponent', {
+      get: () => () => null,
+    });
+
+    component.cancel();
+
+    expect(closeSpy).toHaveBeenCalled();
+  });
+});

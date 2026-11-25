@@ -1,0 +1,88 @@
+.p-accordion {
+  --p-accordion-header-color: var(--dark-blue-1);
+  --p-accordion-header-font-weight: 700;
+  --p-accordion-header-padding: 1.5rem 0;
+  --p-accordion-panel-header-color: var(--grey-2);
+  --p-accordion-panel-border-color: var(--grey-2);
+  --p-accordion-content-padding: 0;
+
+  .p-accordionheader {
+    .p-icon {
+      color: var(--grey-1);
+    }
+  }
+}
+
+.p-accordionpanel:not(.p-accordionpanel-active) .p-accordioncontent-content {
+  display: none;
+}
+
+.resource,
+.license,
+.metadata-accordion {
+  .p-accordion {
+    --p-accordion-panel-border-width: 0;
+
+    .p-accordionheader {
+      .p-icon {
+        background: var(--bg-blue-3);
+        border-radius: 50%;
+        color: var(--pr-blue-1);
+        padding: 0.5rem;
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
+}
+
+.filters {
+  .p-accordion {
+    .p-accordioncontent-content {
+      padding-bottom: 1.5rem;
+
+      .content-body {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+
+        p {
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
+
+.card-accordion.p-accordion {
+  --p-accordion-panel-border-width: 0;
+  --p-accordion-header-padding: 0;
+
+  .p-accordioncontent-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    padding: 0.4rem 0 0.1rem 0;
+    border: none;
+  }
+
+  .p-icon {
+    background: var(--bg-blue-3);
+    border-radius: 50%;
+    color: var(--pr-blue-1);
+    padding: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+  }
+}
+
+.collections-accordion {
+  .p-accordionpanel {
+    --p-accordion-panel-border-width: 1px;
+    border-radius: 0.5rem;
+
+    .p-accordionheader {
+      --p-accordion-header-padding: 0;
+    }
+  }
+}

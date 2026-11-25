@@ -1,0 +1,23 @@
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Card } from 'primeng/card';
+import { Divider } from 'primeng/divider';
+
+import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+
+import { IconComponent } from '@osf/shared/components/icon/icon.component';
+
+import { RegistrationOverviewModel } from '../../models';
+import { ShortRegistrationInfoComponent } from '../short-registration-info/short-registration-info.component';
+
+@Component({
+  selector: 'osf-withdrawn-message',
+  imports: [Card, Divider, ShortRegistrationInfoComponent, IconComponent, DatePipe, TranslatePipe],
+  templateUrl: './withdrawn-message.component.html',
+  styleUrl: './withdrawn-message.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class WithdrawnMessageComponent {
+  registration = input.required<RegistrationOverviewModel>();
+}

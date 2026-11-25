@@ -1,0 +1,9 @@
+<osf-registry-provider-hero
+  [searchControl]="searchControl"
+  [provider]="provider()"
+  [isProviderLoading]="isProviderLoading()"
+/>
+
+@if (defaultSearchFiltersInitialized()) {
+  <osf-global-search [searchControlInput]="searchControl" />
+}

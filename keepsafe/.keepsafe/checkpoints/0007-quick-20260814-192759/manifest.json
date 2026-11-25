@@ -1,0 +1,11 @@
+{
+  "checkpoint_id": "0007-quick-20260814-192759",
+  "sequence": 7,
+  "name": "quick-20260814-192759",
+  "created_at": "2026-08-15T00:27:59Z",
+  "kind": "delta",
+  "file_count": 28,
+  "changed_count": 1,
+  "base_checkpoint_id": "0006-quick-20260814-190250",
+  "path": ".keepsafe/checkpoints/0007-quick-20260814-192759"
+}

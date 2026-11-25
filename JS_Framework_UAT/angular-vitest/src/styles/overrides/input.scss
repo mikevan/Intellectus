@@ -1,0 +1,28 @@
+.p-inputtext {
+  --p-inputtext-padding-y: 0.625rem;
+  --p-inputtext-hover-border-color: var(--pr-blue-1);
+
+  width: 100%;
+
+  &[readonly] {
+    --p-inputtext-hover-border-color: var(--grey-2);
+    --p-inputtext-border-color: var(--grey-2);
+    --p-inputtext-focus-border-color: var(--grey-2);
+    --p-inputtext-focus-active-color: var(--grey-2);
+  }
+}
+
+.p-inputtext.ng-touched.ng-invalid,
+.p-inputtext.ng-dirty.ng-invalid {
+  --p-inputtext-border-color: var(--red-1);
+  --p-inputtext-placeholder-color: var(--red-1);
+}
+
+.p-textarea {
+  --p-textarea-shadow: none;
+  --p-textarea-hover-border-color: var(--pr-blue-1);
+  --p-textarea-focus-border-color: var(--pr-blue-1);
+  --p-textarea-active-border-color: var(--pr-blue-1);
+
+  resize: none;
+}

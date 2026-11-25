@@ -1,0 +1,10 @@
+.p-inputgroup {
+  .p-inputtext {
+    width: auto;
+  }
+
+  .p-inputgroupaddon {
+    --p-inputgroup-addon-color: var(--dark-blue-1);
+    font-size: 1rem;
+  }
+}

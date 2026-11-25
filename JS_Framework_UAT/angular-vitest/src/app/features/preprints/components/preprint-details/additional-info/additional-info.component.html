@@ -1,0 +1,88 @@
+@let preprintValue = preprint();
+
+<p-card>
+  @if (preprintValue) {
+    <div class="flex flex-column gap-4">
+      @if (preprintValue.customPublicationCitation) {
+        <section class="flex flex-column gap-2">
+          <h3>{{ 'preprints.preprintStepper.review.sections.metadata.publicationCitation' | translate }}</h3>
+
+          {{ preprintValue.customPublicationCitation }}
+        </section>
+      }
+
+      @if (preprintValue.originalPublicationDate) {
+        <section class="flex flex-column gap-2">
+          <h3>{{ 'preprints.details.originalPublicationDate' | translate }}</h3>
+
+          {{ preprintValue.originalPublicationDate | date: 'MMMM d, y' }}
+        </section>
+      }
+
+      @if (preprintValue.articleDoiLink) {
+        <section class="flex flex-column gap-2">
+          <h3>{{ 'preprints.details.publicationDoi' | translate }}</h3>
+
+          <a
+            class="font-bold word-break-word"
+            [href]="preprintValue.articleDoiLink"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {{ preprintValue.articleDoiLink }}
+          </a>
+        </section>
+      }
+
+      <section class="license flex flex-column gap-2">
+        <h3>{{ 'common.labels.license' | translate }}</h3>
+
+        <osf-license-display [license]="license()" [licenseOptions]="licenseOptionsRecord()" />
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'common.labels.subjects' | translate }}</h3>
+
+        <div class="flex flex-wrap gap-2">
+          @for (subject of subjects(); track subject.id) {
+            <p-tag [value]="subject.name" severity="info" />
+          }
+
+          @if (areSelectedSubjectsLoading()) {
+            <p-skeleton height="1.7rem" />
+          }
+        </div>
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'shared.tags.title' | translate }}</h3>
+
+        <div class="flex flex-wrap gap-2">
+          @for (tag of preprintValue.tags; track tag) {
+            <p-tag
+              class="cursor-pointer hover:bg-black-alpha-10"
+              [value]="tag"
+              severity="info"
+              (click)="tagClicked(tag)"
+            />
+          } @empty {
+            <p>{{ 'common.labels.none' | translate }}</p>
+          }
+        </div>
+      </section>
+
+      <osf-preprint-citation-section [preprintId]="preprintValue.id" [providerId]="preprintProviderId()" />
+    </div>
+  }
+
+  @if (isPreprintLoading()) {
+    <div class="flex flex-column gap-4">
+      @for (i of skeletonData; track $index) {
+        <section class="flex flex-column gap-2">
+          <p-skeleton height="1.3rem" />
+          <p-skeleton height="5rem" />
+        </section>
+      }
+    </div>
+  }
+</p-card>

@@ -1,0 +1,122 @@
+@let resource = currentResource();
+
+@if (resource) {
+  <div class="flex flex-column gap-5 lg:flex-row lg:align-items-center lg:justify-content-between">
+    @if (canEdit()) {
+      <div class="flex gap-3 align-items-center">
+        <div class="flex gap-1" [class.inactive]="isPublic()">
+          <i class="fas fa-lock"></i>
+          <p class="font-bold">{{ 'project.overview.header.privateProject' | translate }}</p>
+        </div>
+
+        <span [pTooltip]="projectReadOnlyTooltip() | translate">
+          <p-toggleswitch
+            class="visibility-switch"
+            [ariaLabel]="'common.accessibility.toggleProjectVisibility' | translate"
+            [(ngModel)]="isPublic"
+            (onChange)="handleToggleProjectPublicity()"
+            [disabled]="disableProjectPrivacyToggle()"
+          />
+        </span>
+
+        <div class="flex gap-2" [class.inactive]="!isPublic()">
+          <i class="fas fa-lock-open"></i>
+          <p class="font-bold">{{ 'project.overview.header.publicProject' | translate }}</p>
+        </div>
+      </div>
+    }
+
+    @if (viewOnly() || !canEdit()) {
+      <div class="flex gap-2">
+        <i [class]="isPublic() ? 'fas fa-lock-open' : 'fas fa-lock'"></i>
+        <p class="font-bold">
+          {{
+            (isPublic() ? 'project.overview.header.publicProject' : 'project.overview.header.privateProject')
+              | translate
+          }}
+        </p>
+      </div>
+    }
+
+    <div class="flex ml-auto">
+      <div class="flex flex-1 flex-column-reverse gap-3 justify-content-end sm:gap-3 sm:flex-row lg:flex-row">
+        @if (storage()) {
+          <p class="font-bold mr-2 ml-0 mt-2 sm:ml-2 sm:mt-0 sm:align-self-center storage">
+            {{ +storage()!.storageUsage | fileSize }}
+          </p>
+        }
+
+        <div class="flex gap-2 justify-content-start">
+          @if (isAuthenticated()) {
+            @if (canEdit()) {
+              <p-button
+                class="flex"
+                [pTooltip]="'project.overview.tooltips.viewOnlyLinks' | translate"
+                tooltipPosition="bottom"
+                [routerLink]="'../contributors'"
+                [ariaLabel]="'project.overview.tooltips.viewOnlyLinks' | translate"
+              >
+                <span class="font-bold">{{ resource.viewOnlyLinksCount }}</span>
+                <i class="fas fa-link text-2xl"></i>
+              </p-button>
+            }
+
+            @if (!viewOnly()) {
+              @if (preventDuplicateCreation()) {
+                <p-button
+                  class="flex"
+                  (click)="navigateToDuplicatesView()"
+                  [pTooltip]="'project.overview.actions.viewDuplication' | translate"
+                  tooltipPosition="bottom"
+                  [ariaLabel]="'project.overview.actions.viewDuplication' | translate"
+                >
+                  <span class="font-bold">{{ resource.forksCount }}</span>
+                  <i class="fas fa-clone text-2xl"></i>
+                </p-button>
+              } @else {
+                <p-button
+                  class="flex"
+                  (click)="forkActionMenu.toggle($event)"
+                  [pTooltip]="'project.overview.tooltips.duplicate' | translate"
+                  tooltipPosition="bottom"
+                  [ariaLabel]="'project.overview.tooltips.duplicate' | translate"
+                >
+                  <span class="font-bold">{{ resource.forksCount }}</span>
+                  <i class="fas fa-clone text-2xl"></i>
+                  <p-menu appendTo="body" #forkActionMenu [model]="forkActionItems" popup>
+                    <ng-template #item let-item>
+                      <a class="p-menu-item-link">
+                        {{ item.label | translate }}
+                      </a>
+                    </ng-template>
+                  </p-menu>
+                </p-button>
+              }
+            }
+
+            @if (!viewOnly()) {
+              <p-button
+                class="flex"
+                styleClass="px-4"
+                [pTooltip]="'project.overview.tooltips.bookmarks' | translate"
+                tooltipPosition="bottom"
+                [icon]="isBookmarked() ? 'fas fa-bookmark fa-xl' : 'far fa-bookmark fa-xl'"
+                [loading]="isBookmarksLoading() || isBookmarksSubmitting()"
+                [ariaLabel]="'project.overview.tooltips.bookmarks' | translate"
+                (onClick)="toggleBookmark()"
+              />
+            }
+          }
+
+          @if (resource.isPublic && !viewOnly()) {
+            <osf-socials-share-button
+              [resourceId]="currentResource().id"
+              [resourceTitle]="currentResource().title"
+              [resourceType]="resourceType"
+            ></osf-socials-share-button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,265 @@
+import { test } from 'vitest';
+import assert from 'node:assert/strict';
+import { scoreLine, summarize, analyzeFile } from '../src/engine/density';
+import { FileCoverage, FileStructure } from '../src/engine/types';
+import { badge, decisionSentence, findingSentence, functionFixRoute, hoverText, lineCaption, nothingToScoreSentence, refactorChoiceDescription, summaryRows, tangleSentence, testsRan, testsSentence, threeNumbers, untangleFailedSentence, untangleItSetupHint, untangleSentSentence, verdict, evidenceProblemSentence, unmeasuredSentence, unmeasuredFileSentence, skippedSentence } from '../src/ui/words';
+
+const plain = { showNumbers: false };
+const numbers = { showNumbers: true };
+const tests = { passed: 3, failed: 0, errors: 0, skipped: 0, exitCode: 0 };
+
+function cov(path: string, lines: Record<number, string[]>): FileCoverage {
+  const map = new Map<number, Set<string>>();
+  const executed = new Set<number>();
+  for (const [l, t] of Object.entries(lines)) {
+    map.set(Number(l), new Set(t));
+    if (t.length) {
+      executed.add(Number(l));
+    }
+  }
+  return { path, lines: map, executed };
+}
+function struct(path: string, depth: Record<number, number>, functions: FileStructure['functions'] = []): FileStructure {
+  return { path, depth: new Map(Object.entries(depth).map(([k, v]) => [Number(k), v])), routes: new Map(), unreachable: new Set(), declarations: new Set(), functions };
+}
+
+test('lineCaption: plain by default, numbers on request, silence on green lines', () => {
+  assert.equal(lineCaption(scoreLine(1, [], 3), plain), 'Never tested. Needs 3 tests.');
+  assert.equal(lineCaption(scoreLine(1, [], 0), plain), 'Never tested.');
+  assert.equal(lineCaption(scoreLine(1, ['a'], 3), plain), '1 test. Needs 3.');
+  assert.equal(lineCaption(scoreLine(1, ['a', 'b'], 2), plain), '');
+  assert.equal(lineCaption(scoreLine(1, ['a', 'b'], 2), numbers), '2 tests. Needs 2.');
+  assert.equal(lineCaption(scoreLine(1, ['a', 'b', 'c'], 1), plain), '');
+  assert.equal(lineCaption({ ...scoreLine(1, [], 0), status: 'unreachable' }, plain), 'This line can never run.');
+  assert.equal(lineCaption({ ...scoreLine(1, [], 0), status: 'declaration' }, plain), '');
+  assert.equal(lineCaption({ ...scoreLine(1, [], 0), status: 'declaration' }, numbers), 'Runs at startup; not scored.');
+});
+
+test('findingSentence says why, in words, and hides the metric unless asked', () => {
+  assert.equal(findingSentence(scoreLine(6, [], 3), plain), 'Never tested. Needs 3 tests because 3 conditions guard it.');
+  assert.equal(findingSentence(scoreLine(6, [], 1), plain), 'Never tested. Needs 1 test because one condition guards it.');
+  assert.equal(findingSentence(scoreLine(6, [], 0), plain), 'Never tested.');
+  assert.equal(findingSentence(scoreLine(4, ['t'], 2), plain), '1 test reaches it. Needs 2 because 2 conditions guard it.');
+  assert.equal(findingSentence(scoreLine(4, ['t', 'u'], 2), plain), 'Tested by 2 tests.');
+  assert.match(findingSentence(scoreLine(6, [], 3), numbers), /\(density 0, depth 3, bar 3\)$/);
+  assert.equal(findingSentence({ ...scoreLine(9, [], 0), status: 'unreachable' }, plain), 'Can never run. Delete it rather than test around it.');
+});
+
+test('badge', () => {
+  assert.equal(badge(scoreLine(1, [], 3)), 'never tested');
+  assert.equal(badge(scoreLine(1, ['a'], 3)), 'needs 2 more tests');
+  assert.equal(badge(scoreLine(1, ['a'], 2)), 'needs 1 more test');
+  assert.equal(badge(scoreLine(1, ['a'], 1)), 'fine');
+  assert.equal(badge({ ...scoreLine(1, [], 0), status: 'unreachable' }), 'can never run');
+});
+
+test('decisionSentence for every state', () => {
+  const d = { path: 'a', line: 1, lineHash: 'h', kind: 'fix' as const, reason: '', by: 'mike', at: '2026-09-05T10:00:00Z', gapAtDecision: 3 };
+  assert.equal(decisionSentence({ kind: 'none' }), '');
+  assert.match(decisionSentence({ kind: 'accepted', decision: { ...d, kind: 'accept', reason: 'legacy' } }), /Accepted by mike on 2026-09-05: legacy/);
+  assert.match(decisionSentence({ kind: 'fix-pending', decision: d, stillShortBy: 2, moved: true }), /Still 2 tests short, but closer/);
+  assert.match(decisionSentence({ kind: 'fix-pending', decision: d, stillShortBy: 1, moved: false }), /Still one test short, nothing changed/);
+  assert.match(decisionSentence({ kind: 'fixed', decision: d }), /Fixed after your request/);
+  assert.match(decisionSentence({ kind: 'stale', decision: d }), /the line has changed since/);
+});
+
+test('verdict: not ready names the untested lines first; ready says what is left', () => {
+  const f = analyzeFile(cov('a.py', { 1: [], 2: ['t'], 3: ['t', 'u'] }), struct('a.py', { 1: 1, 2: 2, 3: 1 }));
+  const s = summarize([f]);
+  const v = verdict(s, tests, 2, 0);
+  assert.equal(v.ready, false);
+  assert.equal(v.headline, 'This is not ready: 1 line was never tested.');
+  assert.match(v.detail, /^1 line of code has never been tested; 1 line has too few tests; tests reach 67% of the code and you asked for 80%/);
+  const failing = verdict(s, { ...tests, failed: 2 }, 2, 0);
+  assert.equal(failing.headline, 'This is not ready: tests fail.');
+  assert.match(failing.detail, /^2 tests fail;/);
+
+  const g = analyzeFile(cov('a.py', { 1: ['t'], 2: ['t', 'u'] }), struct('a.py', { 1: 1, 2: 1 }));
+  const gs = summarize([g], { maxFunctionComplexity: 10, minCoverage: 80, minAverageDensity: 1, minDensityPassRate: 90 });
+  const ok = verdict(gs, tests, 0, 1);
+  assert.equal(ok.ready, true);
+  assert.equal(ok.headline, 'This looks ready.');
+  assert.equal(ok.detail, 'It meets the limits you set. Every line has the tests it needs. 1 line accepted by a person.');
+  const okOpen = verdict({ ...gs, densityPassRateOk: true }, tests, 3, 0);
+  assert.match(okOpen.detail, /3 lines still want more tests; your limits allow that\./);
+});
+
+test('summaryRows: plain values, numbers only when asked, hardest function named', () => {
+  const f = analyzeFile(cov('a.py', { 1: ['t'], 2: [], 3: ['t'] }), struct('a.py', { 1: 1, 2: 1, 3: 2 }, [{ name: 'big', startLine: 1, endLine: 9, complexity: 12, campbell: 7, mbcc: 9 }]));
+  const s = summarize([f]);
+  const rows = summaryRows(s, plain);
+  assert.deepEqual(rows.map((r) => r.label), ['Tests reach', 'Lines with enough tests', 'Hardest to test']);
+  assert.equal(rows[0].value, '2 of 3 lines (67%). You want 80%.');
+  assert.equal(rows[1].value, '1 of 3 (33%). You want 90%.');
+  assert.equal(rows[2].value, 'big() has 12 ways through it. Your limit is 10. Its tangle is 7 by Campbell and 9 by MBCC.');
+  assert.equal(rows[2].ok, false);
+  assert.equal(rows[0].numbers, undefined);
+  const withNumbers = summaryRows(s, numbers);
+  assert.match(withNumbers[2].numbers ?? '', /cyclomatic complexity total 12/);
+  assert.match(withNumbers[2].numbers ?? '', /cognitive complexity max 7 \(Campbell\), 9 \(MBCC\)/);
+  assert.equal(tangleSentence({ name: 'f', startLine: 1, endLine: 2, complexity: 5, campbell: 4, mbcc: 4 }), 'Its tangle is 4 by Campbell and by MBCC.');
+  // The sanity check: tangle above ways through is a nest; ways through at twice the tangle is a flat dispatcher.
+  assert.equal(
+    tangleSentence({ name: 'f', startLine: 1, endLine: 2, complexity: 3, campbell: 4, mbcc: 4 }),
+    'Its tangle is 4 by Campbell and by MBCC. It is harder to follow than it is to test, which means nesting. That is a job for UntangleIt.',
+  );
+  assert.equal(
+    tangleSentence({ name: 'dispatch', startLine: 1, endLine: 2, complexity: 29, campbell: 1, mbcc: 1 }),
+    'Its tangle is 1 by Campbell and by MBCC. It is long rather than hard to follow. It needs tests more than it needs untangling.',
+  );
+  assert.equal(threeNumbers({ name: 'f', startLine: 1, endLine: 2, complexity: 3, campbell: 4, mbcc: 4 }), '3 ways through, tangle 4');
+  assert.equal(threeNumbers({ name: 'f', startLine: 1, endLine: 2, complexity: 3, campbell: 4, mbcc: 6 }), '3 ways through, tangle 4 / 6');
+  const fine = summarize([analyzeFile(cov('a.py', { 1: ['t'] }), struct('a.py', { 1: 1 }, [{ name: 'f', startLine: 1, endLine: 2, complexity: 2, campbell: 0, mbcc: 0 }]))]);
+  assert.equal(summaryRows(fine, plain)[2].value, 'Every function is within your limit of 10 ways through.');
+  assert.equal(summaryRows(summarize([]), plain)[2].value, 'No functions measured.');
+});
+
+test('testsSentence and hoverText', () => {
+  assert.equal(testsSentence(tests), '3 tests passed');
+  assert.equal(testsSentence({ ...tests, failed: 1, errors: 2, skipped: 3 }), '3 tests passed, 1 failed, 2 could not run, 3 skipped');
+  const h = hoverText(scoreLine(6, [], 3), 'a.py', { kind: 'none' }, 'Your tests stop at X.', plain);
+  assert.match(h, /^\*\*DeepTest: Never tested\. Needs 3 tests because 3 conditions guard it\.\*\*/);
+  assert.match(h, /Your tests stop at X\./);
+  assert.doesNotMatch(h, /density/);
+  const t = hoverText(scoreLine(6, ['t1', 't2'], 2), 'a.py', { kind: 'none' }, '', plain);
+  assert.match(t, /- `t1`/);
+  const ran = hoverText({ ...scoreLine(6, [], 1), executed: true }, 'a.py', { kind: 'none' }, '', plain);
+  assert.match(ran, /ran when the program started/);
+  assert.match(hoverText({ ...scoreLine(1, [], 0), status: 'declaration' }, 'a.py', { kind: 'none' }, '', plain), /not scored/);
+  assert.match(hoverText({ ...scoreLine(1, [], 0), status: 'unreachable' }, 'a.py', { kind: 'none' }, '', plain), /can never run/);
+});
+
+test('functionFixRoute: the refactor choice goes to UntangleIt only when it is installed', () => {
+  assert.equal(functionFixRoute('refactor', true), 'untangleit');
+  assert.equal(functionFixRoute('refactor', false), 'brief');
+  assert.equal(functionFixRoute('test', true), 'brief');
+  assert.equal(functionFixRoute('test', false), 'brief');
+});
+
+test('UntangleIt words: complete sentences, exact control labels, the sibling named only when present', () => {
+  assert.equal(
+    refactorChoiceDescription('calc', 10, true),
+    'UntangleIt takes calc() and splits it until it and every piece has at most 10 ways through. Behaviour stays the same. UntangleIt asks before anything changes.',
+  );
+  assert.equal(refactorChoiceDescription('calc', 10, false), 'Refactor calc() until it and every piece has at most 10 ways through. Behaviour stays the same.');
+  assert.equal(untangleSentSentence('calc'), 'calc() is with UntangleIt. It will ask before anything changes. When it is done, press "Check my code again" and DeepTest will measure calc() again.');
+  assert.equal(untangleFailedSentence('calc'), 'UntangleIt could not take calc(). Nothing was sent to the assistant. Open UntangleIt\'s log for the reason, or press "Fix this" again once UntangleIt is ready.');
+  assert.equal(untangleItSetupHint(true), 'UntangleIt is installed. "Break it into smaller pieces" hands the function to it, and it asks before anything changes.');
+  assert.ok(untangleItSetupHint(false).startsWith('"Break it into smaller pieces" asks your AI assistant'));
+  assert.ok(untangleItSetupHint(false).endsWith('It is not installed.'));
+});
+
+test('testsRan: a run counts only when a test passed or failed', () => {
+  assert.equal(testsRan({ passed: 1, failed: 0, errors: 0, skipped: 0, exitCode: 0 }), true);
+  assert.equal(testsRan({ passed: 0, failed: 2, errors: 0, skipped: 0, exitCode: 1 }), true);
+  assert.equal(testsRan({ passed: 0, failed: 0, errors: 5, skipped: 0, exitCode: 1 }), false);
+  assert.equal(testsRan({ passed: 0, failed: 0, errors: 0, skipped: 3, exitCode: 0 }), false);
+  assert.equal(testsRan({ passed: 0, failed: 0, errors: 0, skipped: 0, exitCode: 0 }), false);
+});
+
+test('nothingToScoreSentence says why the run was refused, in plain words', () => {
+  assert.equal(
+    nothingToScoreSentence({ passed: 0, failed: 0, errors: 5, skipped: 0, exitCode: 1 }),
+    'No test ran to the end, so there is nothing to score. 5 tests could not run, usually because of a setup error such as a missing fixture or a database that is not running. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    nothingToScoreSentence({ passed: 0, failed: 0, errors: 1, skipped: 0, exitCode: 1 }),
+    'No test ran to the end, so there is nothing to score. 1 test could not run, usually because of a setup error such as a missing fixture or a database that is not running. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    nothingToScoreSentence({ passed: 0, failed: 0, errors: 0, skipped: 3, exitCode: 0 }),
+    'No test ran, so there is nothing to score. All 3 tests were skipped. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    nothingToScoreSentence({ passed: 0, failed: 0, errors: 0, skipped: 1, exitCode: 0 }),
+    'No test ran, so there is nothing to score. The only test was skipped. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    nothingToScoreSentence({ passed: 0, failed: 0, errors: 0, skipped: 0, exitCode: 0 }),
+    'No test ran, so there is nothing to score. Press "Show the log" to see the test run.',
+  );
+});
+
+test('evidenceProblemSentence: a hole in the attribution is named; a whole record is silence', () => {
+  const ok = { testsFinished: 3, testsRecorded: 3, recordsWithEvidence: 3, filesWithHits: 2, brokenBoundaries: 0, reconcilable: true };
+  assert.equal(evidenceProblemSentence(ok), undefined);
+  assert.equal(evidenceProblemSentence({ ...ok, testsRecorded: 5 }), undefined, 'a retried test leaves two records; that is not a hole');
+  assert.equal(
+    evidenceProblemSentence({ ...ok, testsRecorded: 1 }),
+    '3 tests finished but only 1 left a record of the lines it reached, so 2 tests are unaccounted for. Nothing was scored. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    evidenceProblemSentence({ ...ok, testsRecorded: 2 }),
+    '3 tests finished but only 2 left a record of the lines they reached, so 1 test is unaccounted for. Nothing was scored. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    evidenceProblemSentence({ ...ok, brokenBoundaries: 1 }),
+    '1 test was cut off before it ended, so what it reached cannot be told apart from the next test. Nothing was scored. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    evidenceProblemSentence({ ...ok, testsRecorded: 1, brokenBoundaries: 2 }),
+    '2 tests were cut off before they ended, so what they reached cannot be told apart from the next test. Nothing was scored. Press "Show the log" to see the test run.',
+    'a broken boundary is the worse finding and is named first',
+  );
+  assert.equal(evidenceProblemSentence({ ...ok, testsRecorded: 0, recordsWithEvidence: 0, reconcilable: false }), undefined, 'coverage.py contexts cannot be counted against tests, and the sentence does not pretend they can');
+});
+
+test('an unmeasured file is not ready, is named on the card, and is out of every number', () => {
+  const good = analyzeFile(cov('a.py', { 1: ['t'], 2: ['t', 'u'] }), struct('a.py', { 1: 1, 2: 1 }));
+  const bad = analyzeFile({ path: 'b.py', lines: new Map(), executed: new Set(), unmeasured: 'Witness could not instrument it' }, undefined);
+  assert.equal(bad.unmeasured, 'Witness could not instrument it');
+  assert.deepEqual(bad.lines, []);
+  const s = summarize([good, bad], { maxFunctionComplexity: 10, minCoverage: 80, minAverageDensity: 1, minDensityPassRate: 90 });
+  assert.equal(s.files, 1, 'the unmeasured file is not a measured file');
+  assert.equal(s.coveragePercent, 100, 'and it does not drag coverage to zero');
+  assert.deepEqual(s.unmeasuredFiles, [{ path: 'b.py', reason: 'Witness could not instrument it' }]);
+  const v = verdict(s, tests, 0, 0);
+  assert.equal(v.ready, false);
+  assert.equal(v.headline, 'This is not ready: 1 file could not be measured.');
+  assert.equal(v.detail, '1 file could not be measured.');
+  assert.equal(unmeasuredSentence(s), '1 file could not be measured, so it is not in these numbers. It is listed in the full report.');
+  assert.equal(unmeasuredSentence(summarize([good])), '');
+  assert.equal(unmeasuredFileSentence({ path: 'b.py', reason: 'witness could not instrument it.' }), 'b.py could not be measured. Witness could not instrument it.');
+});
+
+test('skipped decisions are counted and said, per file', () => {
+  const f = analyzeFile({ ...cov('a.ts', { 1: ['t'], 4: ['t'] }), skipped: [{ line: 4, reason: 'why' }, { line: 2, reason: 'why' }] }, struct('a.ts', { 1: 1, 4: 1 }));
+  assert.deepEqual(f.skipped, [{ line: 2, reason: 'why' }, { line: 4, reason: 'why' }]);
+  assert.equal(summarize([f]).skippedDecisions, 2);
+  assert.equal(skippedSentence(f.skipped), '2 decisions on lines 2, 4 could not be counted, so which way they went is unknown. The lines are still counted as run or not run.');
+  assert.equal(skippedSentence([{ line: 9, reason: 'why' }]), '1 decision on line 9 could not be counted, so which way it went is unknown. The line is still counted as run or not run.');
+  assert.equal(skippedSentence([]), '');
+  assert.equal(f.lines.length, 2, 'a skipped decision does not remove its line');
+});
+
+test('a run that measured nothing is refused before anything else is said about it', () => {
+  // Angular under Vitest, 1.0.12 to 1.0.14: eleven tests finished, eleven
+  // records were written, every one of them empty, every coverage report
+  // "{}". The counts reconciled and the card called a fully tested project
+  // entirely untested. Presence of records is not evidence of measurement.
+  const measuredNothing = { testsFinished: 11, testsRecorded: 11, recordsWithEvidence: 0, filesWithHits: 0, brokenBoundaries: 0, reconcilable: true };
+  assert.equal(
+    evidenceProblemSentence(measuredNothing),
+    '11 tests ran, but not one line of your code was recorded as running, so there is nothing to score. The tests and the code are not being measured together. Press "Show the log" to see the test run.',
+  );
+  assert.equal(
+    evidenceProblemSentence({ ...measuredNothing, reconcilable: false }),
+    evidenceProblemSentence(measuredNothing),
+    'the check does not depend on the counts being comparable, so Python is covered by it too',
+  );
+  assert.match(
+    evidenceProblemSentence({ ...measuredNothing, brokenBoundaries: 3 }) ?? '',
+    /^11 tests ran, but not one line/,
+    'and it is said first, because a boundary that broke is beside the point when nothing was measured at all',
+  );
+
+  // The cases it must not refuse. An empty record on its own is ordinary.
+  const ok = { testsFinished: 11, testsRecorded: 11, recordsWithEvidence: 9, filesWithHits: 4, brokenBoundaries: 0, reconcilable: true };
+  assert.equal(evidenceProblemSentence(ok), undefined, 'two tests that touched no measured line are not a hole');
+  assert.equal(
+    evidenceProblemSentence({ ...ok, recordsWithEvidence: 0, filesWithHits: 4 }),
+    undefined,
+    'no per-test record but code did run is the attribution-free shape, not a measurement failure',
+  );
+  assert.equal(evidenceProblemSentence({ testsFinished: 0, testsRecorded: 0, recordsWithEvidence: 0, filesWithHits: 0, brokenBoundaries: 0, reconcilable: true }), undefined, 'a run with no finished test is refused earlier, by nothingToScoreSentence');
+});

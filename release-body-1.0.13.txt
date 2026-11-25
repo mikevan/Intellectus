@@ -1,0 +1,19 @@
+A number that could be lowered without untangling anything can now be seen.
+
+Task 1 of the current list was to measure the five methods UntangleIt rewrote in the complexity library at 1.0.9, which shipped with a claim and no measurement behind it. complexity/scripts/measure.cjs does that measuring headlessly: the built library, the vendored grammars, three numbers per function, and with --rev the same scorer reading an older revision, so a before and an after are never scored by two different engines.
+
+What it found. The five methods fell from 31, 25, 20, 19, and 8 to 4, 1, 4, 3, and 5, and the three files went from nine functions over a limit of 15 to three. The 1.0.9 message said five methods sat over a limit of 5. Twenty-one did. Three functions are still over 15 and none of them were in the five: memberRoot in typescript.ts at 20, isConstant in python.ts at 17, and visitIf in python.ts at 16. Those are their own work, not this delivery's.
+
+The hole. MBCC charges a boolean run one per operand when the run holds a call, because the reader has to know whether the call ran. Move that run into a named helper and the caller holds one call, which costs one, while the operands it was charged for sit in a method the caller's number never sees. The reader's work did not change. The caller's figure fell. In the measured case, exclusiveKey in python.ts reads 4 where it read 31, and the eight methods it became come to 24. Most of that drop is nesting genuinely removed. Not all of it is.
+
+What was tried and rejected. The first plan was to delete the two wrapper helpers in each of python.ts and typescript.ts and put the expressions back inline. That is deleting working code to satisfy a metric, which is the measure wagging the code, and isDiscriminatorConstantPair is used twice and removes a duplication. The second was to teach the scorer to follow calls and see through the wrapper. That is a different piece of software with its own class of wrong answers, built to patch a paragraph.
+
+What was done instead. The scorer keeps the blind spot, stated plainly, and the check moves to the loop, which is the only place that holds both versions of the code. UntangleIt's comparison now carries the total: what the pieces come to together in tangle, against what the method and every piece the untangling disturbed were carrying before. The card says both numbers, and when the total holds or rises while every piece fits, it says the tangle moved rather than went away. UntangleIt still decides nothing; the person keeps or restores, as it always has.
+
+The header comment in UntangleIt/src/engine/tangle.ts said the only extraction that lowers tangle is one that removes nesting. Our own library disproved that. It now says what is true, and so do measures.md, MBCC section 5, and step 5 of the UntangleIt spec, each with the measured case named.
+
+Also in this delivery: DeepTest/scripts/survey.cjs, the headless driver that prints what the DeepTest panel would show, which has been in use for two deliveries without being checked in.
+
+Not in this delivery, and outstanding: no tree carries a changelog entry for 1.0.11 or 1.0.12.
+
+Also in this delivery: release.ps1 clears a stale .git\index.lock in every tree before the first git write, and refuses to run on a lock that has bytes in it. Those empty locks are left behind when a repository is read over a file bridge, because git writes the lock to refresh its index even for a read and the bridge will not let it delete the file afterwards. The first attempt at this release died on five of them, after Phase 1 had already set every version number. Clearing them by hand before every release was never the right answer.

@@ -1,0 +1,3 @@
+[console_scripts]
+keepsafe = keepsafe.cli:main
+ks = keepsafe.cli:main

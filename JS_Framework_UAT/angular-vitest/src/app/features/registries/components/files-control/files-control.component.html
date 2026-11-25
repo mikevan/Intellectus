@@ -1,0 +1,58 @@
+@if (!dataLoaded()) {
+  <osf-loading-spinner></osf-loading-spinner>
+} @else {
+  <div class="flex flex-column bg-white gap-4 h-full flex-1 p-4 p-dialog-align-center">
+    <div class="flex flex-grow-0 w-full sm:w-30rem"></div>
+    @if (!filesViewOnly()) {
+      <div class="flex flex-column gap-4 md:justify-content-between md:flex-row md:flex-wrap">
+        <div class="flex flex-column w-full gap-2 sm:flex-row md:w-max">
+          <p-button
+            [disabled]="fileIsUploading() || isFilesLoading()"
+            outlined
+            raised
+            severity="success"
+            [icon]="'fas fa-plus'"
+            [label]="'files.actions.createFolder' | translate"
+            (onClick)="createFolder()"
+          >
+          </p-button>
+
+          <p-button
+            [disabled]="fileIsUploading() || isFilesLoading()"
+            outlined
+            raised
+            severity="success"
+            [icon]="'fas fa-upload'"
+            [label]="'files.actions.uploadFile' | translate"
+            (onClick)="fileInput.click()"
+          >
+          </p-button>
+
+          <input osfClearFile #fileInput type="file" class="hidden" (change)="onFileSelected($event)" />
+        </div>
+      </div>
+    }
+
+    <osf-file-upload-dialog
+      [(visible)]="fileIsUploading"
+      [fileName]="fileName()"
+      [progress]="progress()"
+    ></osf-file-upload-dialog>
+
+    <osf-files-tree
+      [files]="files()"
+      [totalCount]="filesTotalCount()"
+      [currentFolder]="currentFolder()!"
+      [isLoading]="isFilesLoading()"
+      [scrollHeight]="'500px'"
+      [viewOnly]="filesViewOnly()"
+      [allowedMenuActions]="allowedMenuActions"
+      (deleteFile)="deleteFile($event)"
+      (fileOpened)="onEntryFileClicked($event)"
+      (uploadFiles)="confirmTreeUpload($event)"
+      (loadFiles)="onLoadFiles($event)"
+      (currentFolderChanged)="setCurrentFolder($event)"
+    >
+    </osf-files-tree>
+  </div>
+}

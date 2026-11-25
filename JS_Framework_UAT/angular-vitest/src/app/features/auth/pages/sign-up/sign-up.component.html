@@ -1,0 +1,124 @@
+@if (!isFormSubmitted()) {
+  <section class="sign-up-container p-4">
+    <h2 class="text-center">{{ 'auth.signUp.title' | translate }}</h2>
+
+    <form [formGroup]="signUpForm" class="mt-6" (ngSubmit)="onSubmit()">
+      <div class="flex flex-column gap-3">
+        <p-button
+          class="btn-full-width"
+          [label]="'auth.signUp.social.orcid' | translate"
+          variant="text"
+          raised
+          (onClick)="navigateToOrcidSignIn()"
+        >
+          <img ngSrc="assets/icons/colored/orcid.svg" alt="Orcid icon" height="20" width="20" />
+        </p-button>
+
+        <p-button
+          class="btn-full-width"
+          [label]="'auth.signUp.social.institution' | translate"
+          variant="text"
+          raised
+          icon="fas fa-landmark fa-lg"
+          (onClick)="navigateToInstitutionSingIn()"
+        >
+        </p-button>
+      </div>
+
+      <p-divider class="my-4" align="center">
+        <span class="px-3">
+          {{ 'auth.signUp.divider' | translate }}
+        </span>
+      </p-divider>
+
+      <div class="flex flex-column gap-2">
+        <div class="flex flex-column">
+          <osf-text-input
+            [control]="signUpForm.controls['fullName']"
+            [label]="'auth.signUp.form.fullName'"
+            [placeholder]="'auth.signUp.form.fullNamePlaceholder'"
+            [maxLength]="inputLimits.fullName.maxLength"
+          ></osf-text-input>
+        </div>
+
+        <div class="flex flex-column">
+          <osf-text-input
+            [control]="signUpForm.controls['givenName']"
+            [label]="'auth.signUp.form.givenName'"
+            [maxLength]="inputLimits.fullName.maxLength"
+          ></osf-text-input>
+        </div>
+
+        <div class="flex flex-column">
+          <osf-text-input
+            [control]="signUpForm.controls['familyName']"
+            [label]="'auth.signUp.form.familyName'"
+            [maxLength]="inputLimits.fullName.maxLength"
+          ></osf-text-input>
+        </div>
+
+        <div class="flex flex-column">
+          <osf-text-input
+            [control]="signUpForm.controls['email1']"
+            [label]="'common.labels.email'"
+            [placeholder]="'common.labels.emailPlaceholder'"
+            type="email"
+            [maxLength]="inputLimits.email.maxLength"
+          ></osf-text-input>
+        </div>
+
+        <div class="flex flex-column">
+          <osf-text-input
+            [control]="signUpForm.controls['email2']"
+            [label]="'auth.common.confirmEmail'"
+            [placeholder]="'common.labels.emailPlaceholder'"
+            type="email"
+            [maxLength]="inputLimits.email.maxLength"
+          ></osf-text-input>
+        </div>
+
+        <div class="flex flex-column">
+          <label for="password">
+            {{ 'auth.common.password.title' | translate }}
+          </label>
+          <p-password
+            inputId="password"
+            formControlName="password"
+            [toggleMask]="true"
+            [feedback]="false"
+            autocomplete="new-password"
+          ></p-password>
+          <osf-password-input-hint [control]="signUpForm.controls['password']" />
+        </div>
+
+        <div class="flex mt-1">
+          <p-checkbox formControlName="acceptedTermsOfService" [binary]="true" inputId="agreeTerms"></p-checkbox>
+          <label class="ml-2" for="agreeTerms">
+            {{ 'auth.signUp.form.terms.agree' | translate }}
+            <a class="font-bold" routerLink="/terms-of-use">{{ 'auth.signUp.form.terms.termsOfUse' | translate }}</a>
+            {{ 'auth.signUp.form.terms.and' | translate }}
+            <a class="font-bold" routerLink="/privacy-policy">
+              {{ 'auth.signUp.form.terms.privacyPolicy' | translate }}
+            </a>
+          </label>
+        </div>
+
+        <div class="flex justify-content-center mt-3">
+          <ngx-recaptcha2 [siteKey]="siteKey" [useGlobalDomain]="false" formControlName="recaptcha"></ngx-recaptcha2>
+        </div>
+      </div>
+
+      <p-button
+        class="btn-full-width block mt-6"
+        type="submit"
+        [label]="'auth.signUp.form.submit' | translate"
+        [disabled]="!signUpForm.valid"
+      ></p-button>
+    </form>
+  </section>
+} @else {
+  <section class="message-container text-center p-4">
+    <h2>{{ 'auth.signUp.success.title' | translate }}</h2>
+    <p class="mt-4">{{ 'auth.signUp.success.message' | translate }}</p>
+  </section>
+}

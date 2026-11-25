@@ -1,0 +1,82 @@
+import { StateContext } from '@ngxs/store';
+
+import { catchError, finalize, tap } from 'rxjs';
+
+import { inject, Injectable } from '@angular/core';
+
+import { handleSectionError } from '@osf/shared/helpers/state-error.handler';
+import { FilesService } from '@osf/shared/services/files.service';
+
+import { CreateFolder, DeleteDraftRegistrationFiles, GetFiles, GetRootFolders } from '../registries.actions';
+import { RegistriesStateModel } from '../registries.model';
+
+@Injectable()
+export class FilesHandlers {
+  filesService = inject(FilesService);
+
+  getRootFolders(ctx: StateContext<RegistriesStateModel>, action: GetRootFolders) {
+    const state = ctx.getState();
+    ctx.patchState({ rootFolders: { ...state.rootFolders, isLoading: true, error: null }, currentFolder: null });
+
+    return this.filesService.getFolders(action.folderLink).pipe(
+      tap({
+        next: (response) =>
+          ctx.patchState({
+            rootFolders: {
+              data: response.data,
+              isLoading: false,
+              error: null,
+            },
+            currentFolder: response.data.length > 0 ? response.data[0] : null,
+          }),
+      }),
+      catchError((error) => handleSectionError(ctx, 'rootFolders', error))
+    );
+  }
+
+  getProjectFiles(ctx: StateContext<RegistriesStateModel>, { filesLink, page }: GetFiles) {
+    const state = ctx.getState();
+    ctx.patchState({
+      files: {
+        ...state.files,
+        isLoading: true,
+        error: null,
+        totalCount: 0,
+      },
+    });
+
+    return this.filesService.getFilesWithoutFiltering(filesLink, page).pipe(
+      tap((response) => {
+        const newData = page === 1 ? response.data : [...(state.files.data ?? []), ...response.data];
+
+        ctx.patchState({
+          files: {
+            data: newData,
+            isLoading: false,
+            error: null,
+            totalCount: response.totalCount,
+          },
+        });
+      }),
+      catchError((error) => handleSectionError(ctx, 'files', error))
+    );
+  }
+
+  createFolder(ctx: StateContext<RegistriesStateModel>, action: CreateFolder) {
+    const state = ctx.getState();
+    ctx.patchState({ files: { ...state.files, isLoading: true, error: null } });
+
+    return this.filesService
+      .createFolder(action.newFolderLink, action.folderName)
+      .pipe(finalize(() => ctx.patchState({ files: { ...state.files, isLoading: false, error: null } })));
+  }
+
+  deleteDraftRegistrationFiles(ctx: StateContext<RegistriesStateModel>, action: DeleteDraftRegistrationFiles) {
+    const state = ctx.getState();
+    ctx.patchState({ files: { ...state.files, isLoading: true, error: null } });
+
+    return this.filesService
+      .deleteEntry(action.link)
+      .pipe(finalize(() => ctx.patchState({ files: { ...state.files, isLoading: false, error: null } })));
+  }
+}

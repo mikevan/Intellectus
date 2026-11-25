@@ -1,0 +1,76 @@
+import { CurrentResourceType } from '@osf/shared/enums/resource-type.enum';
+import { replaceBadEncodedChars } from '@shared/helpers/format-bad-encoding.helper';
+import { ProviderShortInfoModel } from '@shared/models/provider/provider.model';
+import { RegistryProviderDetailsJsonApi } from '@shared/models/provider/registration-provider-json-api.model';
+import { RegistrationNodeModel } from '@shared/models/registration/registration-node.model';
+import { RegistrationNodeAttributesJsonApi } from '@shared/models/registration/registration-node-json-api.model';
+
+export class RegistrationNodeMapper {
+  static getRegistrationNodeAttributes(
+    id: string,
+    attributes: RegistrationNodeAttributesJsonApi
+  ): RegistrationNodeModel {
+    return {
+      id,
+      type: 'registrations',
+      accessRequestsEnabled: attributes.access_requests_enabled,
+      archiving: attributes.archiving,
+      articleDoi: attributes.article_doi,
+      category: attributes.category,
+      currentUserIsContributor: attributes.current_user_is_contributor,
+      currentUserPermissions: attributes.current_user_permissions || [],
+      customCitation: attributes.custom_citation,
+      dateCreated: attributes.date_created,
+      dateModified: attributes.date_modified,
+      dateRegistered: attributes.date_registered,
+      dateWithdrawn: attributes.date_withdrawn,
+      description: replaceBadEncodedChars(attributes.description),
+      embargoed: attributes.embargoed,
+      embargoEndDate: attributes.embargo_end_date,
+      hasAnalyticCode: attributes.has_analytic_code,
+      hasData: attributes.has_data,
+      hasMaterials: attributes.has_materials,
+      hasPapers: attributes.has_papers,
+      hasProject: attributes.has_project,
+      hasSupplements: attributes.has_supplements,
+      iaUrl: attributes.ia_url,
+      isCollection: attributes.collection,
+      isFork: attributes.fork,
+      isPreprint: attributes.preprint,
+      isPublic: attributes.public,
+      isRegistration: attributes.registration,
+      nodeLicense: {
+        copyrightHolders: attributes.node_license?.copyright_holders || null,
+        year: attributes.node_license?.year || null,
+      },
+      pendingEmbargoApproval: attributes.pending_embargo_approval,
+      pendingEmbargoTerminationApproval: attributes.pending_embargo_termination_approval,
+      pendingRegistrationApproval: attributes.pending_registration_approval,
+      pendingWithdrawal: attributes.pending_withdrawal,
+      providerSpecificMetadata: attributes.provider_specific_metadata,
+      registeredMeta: attributes.registered_meta,
+      registrationSupplement: attributes.registration_supplement,
+      reviewsState: attributes.reviews_state,
+      revisionState: attributes.revision_state,
+      tags: attributes.tags || [],
+      title: replaceBadEncodedChars(attributes.title),
+      wikiEnabled: attributes.wiki_enabled,
+      withdrawalJustification: attributes.withdrawal_justification,
+      withdrawn: attributes.withdrawn,
+    };
+  }
+
+  static getRegistrationProviderShortInfo(provider?: RegistryProviderDetailsJsonApi): ProviderShortInfoModel {
+    if (!provider) {
+      return {} as ProviderShortInfoModel;
+    }
+
+    return {
+      id: provider.id,
+      name: provider.attributes.name,
+      permissions: provider.attributes.permissions,
+      type: CurrentResourceType.Registrations,
+      reviewsWorkflow: provider.attributes.reviews_workflow,
+    };
+  }
+}

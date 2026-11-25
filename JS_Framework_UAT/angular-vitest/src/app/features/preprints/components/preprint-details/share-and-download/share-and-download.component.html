@@ -1,0 +1,26 @@
+@let preprintValue = preprint();
+@let providerValue = preprintProvider();
+
+<div class="flex align-items-center gap-2">
+  <p-button
+    icon="fas fa-download text-2xl"
+    styleClass="px-4"
+    tooltipPosition="bottom"
+    [pTooltip]="
+      'preprints.details.share.downloadPreprint' | translate: { documentType: preprintProvider()?.preprintWord }
+    "
+    [ariaLabel]="
+      'preprints.details.share.downloadPreprint' | translate: { documentType: preprintProvider()?.preprintWord }
+    "
+    (onClick)="download()"
+  />
+
+  @if (preprintValue && providerValue) {
+    <osf-socials-share-button
+      [resourceId]="preprintValue.id"
+      [resourceTitle]="preprintValue.title"
+      [resourceType]="resourceType"
+      [resourceProvider]="providerValue.id"
+    ></osf-socials-share-button>
+  }
+</div>

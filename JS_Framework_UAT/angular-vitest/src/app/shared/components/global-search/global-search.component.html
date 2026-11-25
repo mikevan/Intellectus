@@ -1,0 +1,55 @@
+@if (!searchControlInput()) {
+  <div class="mx-3 md:mx-4">
+    <osf-search-input
+      [control]="searchControl"
+      [showHelpIcon]="true"
+      [placeholder]="'collections.searchInput.placeholder' | translate"
+      (helpClicked)="showTutorial()"
+    />
+  </div>
+}
+
+<div class="relative">
+  <osf-search-results-container
+    ngSkipHydration
+    [provider]="provider()"
+    [filters]="filters()"
+    [tabOptions]="resourceTabOptions()"
+    [resources]="resources()"
+    [areResourcesLoading]="areResourcesLoading()"
+    [searchCount]="resourcesCount()"
+    [selectedSort]="sortBy()"
+    [selectedTab]="resourceType()"
+    [selectedOptions]="filterOptions()"
+    [first]="first()"
+    [prev]="previous()"
+    [next]="next()"
+    (sortChanged)="onSortChanged($event)"
+    (tabChanged)="onTabChange(+$event)"
+    (pageChanged)="onPageChanged($event)"
+  >
+    <div slot="filter-chips">
+      <osf-filter-chips
+        [filterOptions]="filterOptions()"
+        [filters]="filters()"
+        (selectedOptionRemoved)="onSelectedOptionRemoved($event)"
+      />
+    </div>
+
+    <ng-template #filtersComponent>
+      <osf-search-filters
+        [filters]="filters()"
+        [selectedOptions]="filterOptions()"
+        [filterSearchResults]="filterSearchCache()"
+        [isLoading]="areResourcesLoading()"
+        [showEmptyState]="true"
+        (loadFilterOptions)="onLoadFilterOptions($event)"
+        (filterOptionSelected)="onSelectedFilterOptionsChanged($event)"
+        (filterOptionsSearch)="onSearchFilterOptions($event)"
+        (loadMoreFilterOptions)="onLoadMoreFilterOptions($event)"
+      />
+    </ng-template>
+  </osf-search-results-container>
+
+  <osf-search-help-tutorial [(currentStep)]="currentStep" />
+</div>

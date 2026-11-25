@@ -1,0 +1,76 @@
+<p-table
+  class="my-projects-table"
+  [value]="isLoading() ? skeletonData : items()"
+  [rows]="tableParams().rows"
+  [first]="tableParams().firstRowIndex"
+  [rowsPerPageOptions]="tableParams().rowsPerPageOptions"
+  [paginator]="tableParams().paginator"
+  [totalRecords]="tableParams().totalRecords"
+  paginatorDropdownAppendTo="body"
+  [scrollable]="true"
+  [sortMode]="'single'"
+  [lazy]="true"
+  [sortField]="sortColumn()"
+  [sortOrder]="sortOrder()"
+  [customSort]="true"
+  [resetPageOnSort]="false"
+  (onSort)="onSort($event)"
+  (onPage)="onPageChange($event)"
+>
+  <ng-template #header>
+    <tr>
+      <th pSortableColumn="title">
+        {{ 'common.labels.title' | translate }}
+        <p-sortIcon field="title" />
+      </th>
+
+      <th>{{ 'common.labels.contributors' | translate }}</th>
+
+      <th pSortableColumn="dateModified">
+        {{ 'common.labels.modified' | translate }}
+        <p-sortIcon field="dateModified" />
+      </th>
+
+      @if (downloadCellTemplate()) {
+        <th [attr.aria-label]="'common.buttons.download' | translate"></th>
+      }
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-item>
+    @if (item?.id) {
+      <tr (click)="onItemClick(item)">
+        <td>
+          <p class="flex align-items-center gap-2">
+            <osf-icon [iconClass]="item.isPublic ? 'fas fa-lock-open' : 'fas fa-lock'"></osf-icon>
+            <span class="overflow-ellipsis">{{ item.title }}</span>
+          </p>
+        </td>
+
+        <td>
+          <osf-contributors-list-shortener [data]="item.contributors" />
+        </td>
+
+        <td>{{ item.dateModified | date: 'MMM d, y, h:mm a' }}</td>
+
+        @if (downloadCellTemplate(); as downloadTemplate) {
+          <td class="text-center">
+            <ng-container *ngTemplateOutlet="downloadTemplate; context: { $implicit: item }" />
+          </td>
+        }
+      </tr>
+    } @else {
+      <tr class="loading-row">
+        <td [attr.colspan]="columnCount()">
+          <p-skeleton width="100%" height="3.3rem" borderRadius="0" />
+        </td>
+      </tr>
+    }
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td [attr.colspan]="columnCount()" class="text-center">{{ emptyMessageKey() | translate }}</td>
+    </tr>
+  </ng-template>
+</p-table>

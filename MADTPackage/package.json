@@ -1,0 +1,47 @@
+{
+  "name": "MADTPackage",
+  "displayName": "MikeVan's AI Development Toolkit - Polyglot",
+  "description": "Know whether your AI-written code is good, whether it is being changed without your knowledge, and what to do about it. Installs KeepSafe, DeepTest, and UntangleIt together.",
+  "version": "1.0.21",
+  "publisher": "prs",
+  "license": "GPL-3.0-only",
+  "icon": "media/MADTPackageLogo.png",
+  "homepage": "https://projectrevivesolutions.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikevan/MADTPackage.git"
+  },
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Extension Packs"
+  ],
+  "keywords": [
+    "MikeVan's AI Development Toolkit",
+    "AI",
+    "vibe coding",
+    "testing",
+    "refactoring",
+    "checkpoint"
+  ],
+  "galleryBanner": {
+    "color": "#1e293b",
+    "theme": "dark"
+  },
+  "extensionPack": [
+    "KeepSafe.keepsafe",
+    "prs.deeptest",
+    "prs.untangleit"
+  ],
+  "scripts": {
+    "package": "npx @vscode/vsce package",
+    "test:governance": "vitest run"
+  },
+  "devDependencies": {
+    "@projectrevivesolutions/witness": "file:../Witness",
+    "@types/node": "22.20.4",
+    "typescript": "5.9.3",
+    "vitest": "3.2.7"
+  }
+}

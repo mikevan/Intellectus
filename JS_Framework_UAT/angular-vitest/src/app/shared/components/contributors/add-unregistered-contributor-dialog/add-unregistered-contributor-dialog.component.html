@@ -1,0 +1,58 @@
+<div class="flex flex-column">
+  <form [formGroup]="contributorForm">
+    <osf-text-input
+      [control]="contributorForm.controls['fullName']"
+      [label]="'auth.signUp.form.fullName'"
+      [placeholder]="'auth.signUp.form.fullNamePlaceholder'"
+      [maxLength]="inputLimits.fullName.maxLength"
+      [minLength]="inputLimits.fullName.minLength"
+    >
+    </osf-text-input>
+
+    <osf-text-input
+      class="block mt-3"
+      [control]="contributorForm.controls['email']"
+      [label]="'common.labels.email'"
+      [placeholder]="'common.labels.emailPlaceholder'"
+      [type]="'email'"
+      [maxLength]="inputLimits.email.maxLength"
+      [minLength]="inputLimits.email.minLength"
+    >
+    </osf-text-input>
+  </form>
+
+  <p class="mt-4">{{ 'project.contributors.addDialog.unregisteredContributorNotification' | translate }}</p>
+
+  <div class="flex justify-content-end mt-4">
+    <p-button
+      class="btn-full-width md:w-auto"
+      severity="secondary"
+      [label]="'project.contributors.addDialog.addRegisteredContributor' | translate"
+      (onClick)="addRegistered()"
+      data-test-add-registered-contributor-button
+    >
+    </p-button>
+  </div>
+
+  <div class="flex gap-2 mt-6">
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      (onClick)="dialogRef.close()"
+      severity="info"
+      [label]="'common.buttons.cancel' | translate"
+      data-test-cancel-add-unregistered-contributor-button
+    >
+    </p-button>
+
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      (onClick)="submit()"
+      [label]="'common.buttons.add' | translate"
+      [disabled]="contributorForm.invalid"
+      data-test-add-unregistered-contributor-button
+    >
+    </p-button>
+  </div>
+</div>

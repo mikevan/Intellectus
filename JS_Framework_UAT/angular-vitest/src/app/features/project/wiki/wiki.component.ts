@@ -1,0 +1,199 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+import { ButtonGroupModule } from 'primeng/buttongroup';
+import { Tooltip } from 'primeng/tooltip';
+
+import { filter, map, mergeMap, of, tap } from 'rxjs';
+
+import { isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, inject, PLATFORM_ID } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { UserSelectors } from '@osf/core/store/user/user.selectors';
+import { SubHeaderComponent } from '@osf/shared/components/sub-header/sub-header.component';
+import { CompareSectionComponent } from '@osf/shared/components/wiki/compare-section/compare-section.component';
+import { EditSectionComponent } from '@osf/shared/components/wiki/edit-section/edit-section.component';
+import { ViewSectionComponent } from '@osf/shared/components/wiki/view-section/view-section.component';
+import { WikiListComponent } from '@osf/shared/components/wiki/wiki-list/wiki-list.component';
+import { ResourceType } from '@osf/shared/enums/resource-type.enum';
+import { WikiModes } from '@osf/shared/enums/wiki-modes.enum';
+import { ToastService } from '@osf/shared/services/toast.service';
+import { ViewOnlyLinkHelperService } from '@osf/shared/services/view-only-link-helper.service';
+import { CurrentResourceSelectors } from '@osf/shared/stores/current-resource';
+import {
+  ClearWiki,
+  CreateWiki,
+  CreateWikiVersion,
+  DeleteWiki,
+  GetCompareVersionContent,
+  GetComponentsWikiList,
+  GetWikiList,
+  GetWikiModes,
+  GetWikiVersionContent,
+  GetWikiVersions,
+  SetCurrentWiki,
+  ToggleMode,
+  UpdateWikiPreviewContent,
+  WikiSelectors,
+} from '@osf/shared/stores/wiki';
+import { ViewOnlyLinkMessageComponent } from '@shared/components/view-only-link-message/view-only-link-message.component';
+@Component({
+  selector: 'osf-wiki',
+  imports: [
+    Button,
+    ButtonGroupModule,
+    SubHeaderComponent,
+    WikiListComponent,
+    ViewSectionComponent,
+    EditSectionComponent,
+    CompareSectionComponent,
+    ViewOnlyLinkMessageComponent,
+    Tooltip,
+    TranslatePipe,
+  ],
+  templateUrl: './wiki.component.html',
+  styleUrl: './wiki.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class WikiComponent {
+  private readonly route = inject(ActivatedRoute);
+  private readonly router = inject(Router);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly toastService = inject(ToastService);
+  private readonly viewOnlyService = inject(ViewOnlyLinkHelperService);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  WikiModes = WikiModes;
+  homeWikiName = 'Home';
+
+  wikiModes = select(WikiSelectors.getWikiModes);
+  previewContent = select(WikiSelectors.getPreviewContent);
+  versionContent = select(WikiSelectors.getWikiVersionContent);
+  compareVersionContent = select(WikiSelectors.getCompareVersionContent);
+  isWikiListLoading = select(WikiSelectors.getWikiListLoading || WikiSelectors.getComponentsWikiListLoading);
+  wikiList = select(WikiSelectors.getWikiList);
+  componentsWikiList = select(WikiSelectors.getComponentsWikiList);
+  currentWikiId = select(WikiSelectors.getCurrentWikiId);
+  wikiVersions = select(WikiSelectors.getWikiVersions);
+  isWikiVersionSubmitting = select(WikiSelectors.getWikiVersionSubmitting);
+  isWikiVersionLoading = select(WikiSelectors.getWikiVersionsLoading);
+  isCompareVersionLoading = select(WikiSelectors.getCompareVersionsLoading);
+  isAnonymous = select(WikiSelectors.isWikiAnonymous);
+  hasWriteAccess = select(CurrentResourceSelectors.hasWriteAccess);
+  disableWikiEdit = select(UserSelectors.isProjectReadOnly);
+
+  actions = createDispatchMap({
+    getWikiModes: GetWikiModes,
+    toggleMode: ToggleMode,
+    getWikiList: GetWikiList,
+    getComponentsWikiList: GetComponentsWikiList,
+    updateWikiPreviewContent: UpdateWikiPreviewContent,
+    setCurrentWiki: SetCurrentWiki,
+    deleteWiki: DeleteWiki,
+    createWiki: CreateWiki,
+    getWikiVersions: GetWikiVersions,
+    createWikiVersion: CreateWikiVersion,
+    getWikiVersionContent: GetWikiVersionContent,
+    getCompareVersionContent: GetCompareVersionContent,
+    clearWiki: ClearWiki,
+  });
+
+  wikiIdFromQueryParams = this.route.snapshot.queryParams['wiki'];
+  readonly projectId = toSignal(this.route.parent?.params.pipe(map((params) => params['id'])) ?? of(undefined));
+
+  readonly hasViewOnly = computed(() => this.viewOnlyService.hasViewOnlyParam(this.router));
+
+  readonly disabledEditTooltip = computed(() =>
+    this.disableWikiEdit() ? 'common.errorMessages.actionUnavailable' : ''
+  );
+
+  constructor() {
+    this.actions
+      .getWikiList(ResourceType.Project, this.projectId())
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        tap(() => {
+          if (!this.wikiIdFromQueryParams) {
+            this.navigateToWiki(this.wikiList()?.[0]?.id || '');
+          }
+          if (!this.wikiList()?.length && this.hasWriteAccess()) {
+            this.actions.createWiki(ResourceType.Project, this.projectId(), this.homeWikiName);
+          }
+        })
+      )
+      .subscribe();
+
+    this.actions.getComponentsWikiList(ResourceType.Project, this.projectId());
+
+    this.route.queryParams
+      .pipe(
+        takeUntilDestroyed(this.destroyRef),
+        map((params) => params['wiki']),
+        filter((wikiId) => wikiId),
+        tap((wikiId) => {
+          this.actions.setCurrentWiki(wikiId);
+        }),
+        mergeMap((wikiId) => this.actions.getWikiVersions(wikiId))
+      )
+      .subscribe();
+
+    this.destroyRef.onDestroy(() => {
+      if (this.isBrowser) {
+        this.actions.clearWiki();
+      }
+    });
+  }
+
+  toggleMode(mode: WikiModes) {
+    this.actions.toggleMode(mode);
+  }
+
+  updateWikiPreviewContent(content: string) {
+    this.actions.updateWikiPreviewContent(content);
+  }
+
+  onCreateWiki() {
+    this.navigateToWiki(this.currentWikiId());
+  }
+
+  onRenameWiki() {
+    this.navigateToWiki(this.currentWikiId());
+  }
+
+  onDeleteWiki() {
+    this.actions.deleteWiki(this.currentWikiId()).pipe(tap(() => this.navigateToWiki(this.currentWikiId())));
+  }
+
+  onSaveContent(content: string) {
+    this.actions
+      .createWikiVersion(this.currentWikiId(), content)
+      .pipe(
+        tap(() => {
+          this.toastService.showSuccess('project.wiki.version.successSaved');
+          this.actions.getWikiVersions(this.currentWikiId());
+        })
+      )
+      .subscribe();
+  }
+
+  onSelectVersion(versionId: string) {
+    this.actions.getWikiVersionContent(this.currentWikiId(), versionId);
+  }
+
+  onSelectCompareVersion(versionId: string) {
+    this.actions.getCompareVersionContent(this.currentWikiId(), versionId);
+  }
+
+  private navigateToWiki(wiki: string) {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: { wiki },
+      queryParamsHandling: 'merge',
+    });
+  }
+}

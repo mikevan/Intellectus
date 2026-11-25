@@ -1,0 +1,88 @@
+<div class="py-5 px-3 md:p-5 xl:p-4">
+  <div class="flex align-items-center">
+    <h1>{{ currentUser()?.fullName }}</h1>
+
+    @if (isMedium() && showEdit()) {
+      <p-button class="ml-auto" [label]="'myProfile.editProfile' | translate" (click)="toProfileSettings()"></p-button>
+    }
+  </div>
+
+  <div class="flex flex-column gap-4 mt-4 md:gap-5 xl:flex-row xl:justify-content-between">
+    <p class="font-normal">
+      {{ 'myProfile.memberSince' | translate }}: {{ currentUser()?.dateRegistered | date: 'MMM d, yyyy' }}
+    </p>
+
+    <div class="flex flex-column gap-4 min-w-0 xl:align-items-end xl:flex-1">
+      <div class="flex flex-column gap-3 w-full md:flex-row xl:gap-4 xl:justify-content-end">
+        @if (orcidId()) {
+          <div class="flex flex-row align-items-center gap-2">
+            <img ngSrc="assets/icons/colored/orcid.svg" width="16" height="16" alt="orcid" />
+            <a class="font-bold" [href]="'https://orcid.org/' + orcidId()"> https://orcid.org/{{ orcidId() }} </a>
+          </div>
+        }
+
+        <div class="flex flex-row align-items-center gap-2">
+          <img ngSrc="assets/icons/colored/cos-shield.svg" width="16" height="16" alt="cos-shield" />
+          <a class="dark-blue-two-link font-bold" [href]="currentUser()?.link">{{ currentUser()?.link }}</a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap align-items-center gap-3">
+        @for (social of userSocials(); track social.alt) {
+          <a class="cursor-pointer custom-light-hover" [href]="social.url" target="_blank" rel="noopener noreferrer">
+            <img [ngSrc]="social.icon" width="24" height="24" [alt]="social.alt | translate" />
+          </a>
+        }
+      </div>
+
+      <div class="flex flex-wrap align-items-center gap-3">
+        @for (institution of currentUserInstitutions(); track $index) {
+          <a
+            class="cursor-pointer custom-light-hover"
+            [routerLink]="['/institutions', institution.id]"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              [ngSrc]="institution.assets.logo"
+              class="fit-contain"
+              width="80"
+              height="80"
+              [alt]="institution.name"
+            />
+          </a>
+        }
+      </div>
+
+      @if (!isMedium() && showEdit()) {
+        <div class="btn-full-width">
+          <p-button
+            class="ml-auto"
+            [label]="'myProfile.editProfile' | translate"
+            (onClick)="toProfileSettings()"
+          ></p-button>
+        </div>
+      }
+    </div>
+  </div>
+</div>
+
+@if (isEmploymentAndEducationVisible()) {
+  <div class="cards flex flex-column gap-4 py-4 px-3 md:px-5 xl:flex-row xl:px-4">
+    @if (currentUser()?.employment?.length) {
+      <div class="card w-full p-3 md:p-4 xl:w-6">
+        <h2 class="mb-3">{{ 'settings.profileSettings.tabs.employment' | translate }}</h2>
+
+        <osf-employment-history [employment]="currentUser()?.employment | sortByDate"></osf-employment-history>
+      </div>
+    }
+
+    @if (currentUser()?.education?.length) {
+      <div class="card w-full p-3 md:p-4 xl:w-6">
+        <h2 class="mb-3">{{ 'settings.profileSettings.tabs.education' | translate }}</h2>
+
+        <osf-education-history [education]="currentUser()?.education | sortByDate"></osf-education-history>
+      </div>
+    }
+  </div>
+}

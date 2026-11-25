@@ -1,0 +1,13 @@
+.p-toggleswitch {
+  --p-toggleswitch-background: var(--grey-1);
+}
+
+.visibility-switch {
+  .p-toggleswitch {
+    scale: 1.2;
+
+    .p-toggleswitch-handle {
+      scale: 1.15;
+    }
+  }
+}

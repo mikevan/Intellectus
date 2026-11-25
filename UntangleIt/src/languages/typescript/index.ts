@@ -1,0 +1,411 @@
+/**
+ * TypeScript / JavaScript plugin: tree-sitter (typescript, tsx, javascript
+ * grammars) for the methods and their ways through, Jest or Vitest from
+ * the project's own node_modules for verification, and detection from
+ * package.json so the first run asks nothing.
+ */
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import type { Parser } from 'web-tree-sitter';
+import { FunctionComplexity } from '../../engine/types';
+import { runProcess } from '../shared/process';
+import { createParser, initTreeSitter } from '../shared/treeSitter';
+import { createTypeScriptBoundaryRecorder } from './boundary';
+import { BoundaryRecorder, Detection, FieldSpec, HostServices, LanguagePlugin, LanguageSettings, RunContext, StructureEnvironment, StructureSource, TestRunSummary, TestRunner } from '../types';
+import { analyzeTypeScriptTree } from './structure';
+import { extractScript, isSingleFileComponent } from '@projectrevivesolutions/complexity';
+
+/** ng-vitest is Vitest under Angular's unit-test builder, driven through `ng test`. */
+// The runner names and Angular runner detection belong to Witness, which owns
+// runner delivery for every product. Imported for this file's own use and
+// re-exported so every caller in this tree is unchanged.
+import type { Runner as WitnessRunner } from '@projectrevivesolutions/witness';
+import { detectAngularRunner } from '@projectrevivesolutions/witness';
+
+export type Runner = WitnessRunner;
+export { detectAngularRunner };
+
+const FIELDS: FieldSpec[] = [
+  {
+    key: 'runner',
+    label: 'Test runner',
+    kind: 'select',
+    options: [
+      { value: 'auto', label: 'Detect from package.json' },
+      { value: 'vitest', label: 'Vitest' },
+      { value: 'jest', label: 'Jest' },
+      { value: 'mocha', label: 'Mocha' },
+    ],
+    hint: 'UntangleIt runs the project\'s own tests to check that an untangling kept the behaviour. Angular projects run through ng test and Playwright component tests through Playwright, detected from the project.',
+  },
+  {
+    key: 'extraArgs',
+    label: 'Extra runner arguments',
+    kind: 'text',
+    placeholder: '--bail',
+    hint: 'Optional. Passed to the runner as typed.',
+  },
+];
+
+const IGNORED_DIRS = new Set(['node_modules', '.git', 'dist', 'out', 'build', 'coverage', '.untangleit', '.deeptest', '.keepsafe', '.vscode-test', '.next', '.nuxt', '.svelte-kit', 'vendor']);
+const SOURCE_EXT = /\.(m?[jt]sx?|c[jt]s|vue|svelte)$/;
+const TEST_FILE = /(\.(test|spec)\.[cm]?[jt]sx?$)/;
+
+export function isTestFile(relativePath: string): boolean {
+  return TEST_FILE.test(path.basename(relativePath)) || relativePath.split('/').includes('__tests__');
+}
+
+export function walkTree(root: string, relative = ''): string[] {
+  const out: string[] = [];
+  let entries: fs.Dirent[];
+  try {
+    entries = fs.readdirSync(path.join(root, relative), { withFileTypes: true });
+  } catch {
+    return out;
+  }
+  for (const entry of entries) {
+    const rel = relative ? `${relative}/${entry.name}` : entry.name;
+    if (entry.isDirectory()) {
+      if (!IGNORED_DIRS.has(entry.name)) {
+        out.push(...walkTree(root, rel));
+      }
+    } else if (entry.isFile() && SOURCE_EXT.test(entry.name) && !entry.name.endsWith('.d.ts')) {
+      out.push(rel);
+    }
+  }
+  return out;
+}
+
+export function readPackageJson(workspaceRoot: string): { deps: Record<string, string>; scripts: Record<string, string> } | undefined {
+  try {
+    const pkg = JSON.parse(fs.readFileSync(path.join(workspaceRoot, 'package.json'), 'utf8')) as Record<string, unknown>;
+    return {
+      deps: { ...(pkg.dependencies as Record<string, string> | undefined), ...(pkg.devDependencies as Record<string, string> | undefined) },
+      scripts: (pkg.scripts as Record<string, string> | undefined) ?? {},
+    };
+  } catch {
+    return undefined;
+  }
+}
+
+/** Finds an installed package by walking up from the workspace, the way Node resolves modules. */
+export function resolveModuleDir(workspaceRoot: string, name: string): string | undefined {
+  let dir = workspaceRoot;
+  for (;;) {
+    const candidate = path.join(dir, 'node_modules', ...name.split('/'));
+    if (fs.existsSync(path.join(candidate, 'package.json'))) {
+      return candidate;
+    }
+    const parent = path.dirname(dir);
+    if (parent === dir) {
+      return undefined;
+    }
+    dir = parent;
+  }
+}
+
+
+const PLAYWRIGHT_CT_PACKAGES = ['@playwright/experimental-ct-react', '@playwright/experimental-ct-vue', '@playwright/experimental-ct-svelte', '@playwright/experimental-ct-solid', '@playwright/experimental-ct-react17'];
+
+/** The Playwright component-testing package the project uses, or undefined. */
+export function detectPlaywrightCt(workspaceRoot: string): string | undefined {
+  const pkg = readPackageJson(workspaceRoot);
+  return PLAYWRIGHT_CT_PACKAGES.find((p) => Boolean(pkg?.deps[p]));
+}
+
+/** Same rules as DeepTest's: Playwright component tests first, then Vitest, Jest, and Mocha, with the test script settling a tie. */
+export function detectRunner(workspaceRoot: string): Runner | undefined {
+  const pkg = readPackageJson(workspaceRoot);
+  if (detectPlaywrightCt(workspaceRoot)) {
+    return 'playwright-ct';
+  }
+  const has = (name: string): boolean => Boolean(pkg?.deps[name]) || Boolean(resolveModuleDir(workspaceRoot, name));
+  const testScript = pkg?.scripts.test ?? '';
+  const present = (['vitest', 'jest', 'mocha'] as const).filter(has);
+  if (present.length > 1) {
+    const named = present.filter((r) => new RegExp(`\\b${r}\\b`).test(testScript));
+    if (named.length === 1) {
+      return named[0];
+    }
+  }
+  return present[0];
+}
+
+export function guessTestsPath(workspaceRoot: string): string {
+  for (const candidate of ['test', 'tests', '__tests__', 'spec', 'src/__tests__']) {
+    if (fs.existsSync(path.join(workspaceRoot, candidate))) {
+      return candidate;
+    }
+  }
+  return '';
+}
+
+export function guessSourceRoot(workspaceRoot: string, testsPath: string): string {
+  for (const candidate of ['src', 'lib', 'app']) {
+    if (candidate !== testsPath && fs.existsSync(path.join(workspaceRoot, candidate)) && walkTree(path.join(workspaceRoot, candidate)).length > 0) {
+      return candidate;
+    }
+  }
+  return '';
+}
+
+/** Terminal colour codes, which runners emit even when asked not to. */
+export function stripAnsi(text: string): string {
+  // eslint-disable-next-line no-control-regex
+  return text.replace(/\u001b\[[0-9;]*[A-Za-z]/g, '');
+}
+
+function grabCounts(line: string): Pick<TestRunSummary, 'passed' | 'failed' | 'skipped'> {
+  const grab = (word: string): number => {
+    const m = line.match(new RegExp(`(\\d+) ${word}`));
+    return m ? Number(m[1]) : 0;
+  };
+  return { passed: grab('passed'), failed: grab('failed'), skipped: grab('skipped') + grab('todo') };
+}
+
+export function parseJestSummary(output: string, exitCode: number | null): TestRunSummary {
+  const line = stripAnsi(output).split(/\r?\n/).reverse().find((l) => /^\s*Tests:/.test(l));
+  return { errors: 0, exitCode, ...(line ? grabCounts(line) : { passed: 0, failed: 0, skipped: 0 }) };
+}
+
+export function parseVitestSummary(output: string, exitCode: number | null): TestRunSummary {
+  const line = stripAnsi(output).split(/\r?\n/).reverse().find((l) => /^\s*Tests\s+\d/.test(l));
+  return { errors: 0, exitCode, ...(line ? grabCounts(line) : { passed: 0, failed: 0, skipped: 0 }) };
+}
+
+/** Karma's last "Executed N of M" line, with "(F FAILED)" and "(skipped S)" when they apply; no line means nothing ran. */
+export function parseKarmaSummary(output: string, exitCode: number | null): TestRunSummary {
+  const summary: TestRunSummary = { passed: 0, failed: 0, errors: 0, skipped: 0, exitCode };
+  const line = stripAnsi(output)
+    .split(/\r?\n/)
+    .reverse()
+    .find((l) => /Executed \d+ of \d+/.test(l));
+  if (!line) {
+    if (exitCode !== 0) {
+      summary.errors = 1;
+    }
+    return summary;
+  }
+  const executed = Number(/Executed (\d+) of/.exec(line)?.[1] ?? 0);
+  summary.failed = Number(/\((\d+) FAILED\)/.exec(line)?.[1] ?? 0);
+  summary.skipped = Number(/\(skipped (\d+)\)/.exec(line)?.[1] ?? 0);
+  summary.passed = Math.max(0, executed - summary.failed);
+  if (/ERROR/.test(line) && executed === 0) {
+    summary.errors = 1;
+  }
+  return summary;
+}
+
+/** Mocha's summary: "10 passing (5ms)", "2 failing", "1 pending". */
+export function parseMochaSummary(output: string, exitCode: number | null): TestRunSummary {
+  const summary: TestRunSummary = { passed: 0, failed: 0, errors: 0, skipped: 0, exitCode };
+  const text = stripAnsi(output);
+  const grab = (word: string): number => {
+    const m = new RegExp(`(\\d+) ${word}`).exec(text);
+    return m ? Number(m[1]) : 0;
+  };
+  summary.passed = grab('passing');
+  summary.failed = grab('failing');
+  summary.skipped = grab('pending');
+  if (summary.passed + summary.failed + summary.skipped === 0 && exitCode !== 0) {
+    summary.errors = 1;
+  }
+  return summary;
+}
+
+/** Playwright's summary: "2 passed (2.6s)", "1 failed", "1 flaky", "1 skipped", "1 did not run". */
+export function parsePlaywrightSummary(output: string, exitCode: number | null): TestRunSummary {
+  const summary: TestRunSummary = { passed: 0, failed: 0, errors: 0, skipped: 0, exitCode };
+  const text = stripAnsi(output);
+  const grab = (word: string): number => {
+    const m = new RegExp(`(\\d+) ${word}`).exec(text);
+    return m ? Number(m[1]) : 0;
+  };
+  summary.passed = grab('passed') + grab('flaky');
+  summary.failed = grab('failed');
+  summary.skipped = grab('skipped') + grab('did not run');
+  if (summary.passed + summary.failed + summary.skipped === 0 && exitCode !== 0) {
+    summary.errors = 1;
+  }
+  return summary;
+}
+
+export function tsFields(settings: LanguageSettings): { runner: 'auto' | Runner; extraArgs: string } {
+  const f = settings.fields;
+  const runner = f.runner === 'jest' || f.runner === 'vitest' || f.runner === 'mocha' ? f.runner : 'auto';
+  return { runner, extraArgs: typeof f.extraArgs === 'string' ? f.extraArgs : '' };
+}
+
+function splitArgs(text: string): string[] {
+  return text.trim() ? text.trim().split(/\s+/) : [];
+}
+
+function walkSources(workspaceRoot: string, sourceRoot: string, testsPath: string): string[] {
+  const base = sourceRoot ? path.join(workspaceRoot, sourceRoot) : workspaceRoot;
+  return walkTree(base)
+    .map((rel) => (sourceRoot ? `${sourceRoot}/${rel}` : rel))
+    .filter((rel) => !isTestFile(rel) && !(testsPath && rel.startsWith(`${testsPath}/`)));
+}
+
+async function detect(workspaceRoot: string, _host: HostServices): Promise<Detection> {
+  const notes: string[] = [];
+  const runner = detectRunner(workspaceRoot);
+  if (!readPackageJson(workspaceRoot)) {
+    notes.push('No package.json at the workspace root.');
+  } else if (runner) {
+    notes.push(`Found ${runner}. UntangleIt will run it to check that an untangling kept the behaviour.`);
+  } else {
+    notes.push('No test runner found in package.json. Without tests, UntangleIt cannot verify behaviour; it will still measure.');
+  }
+  const testsPath = guessTestsPath(workspaceRoot);
+  const sourceRoot = guessSourceRoot(workspaceRoot, testsPath);
+  return { testsPath, sourceRoot, sourceFiles: walkSources(workspaceRoot, sourceRoot, testsPath), fields: { runner: 'auto', extraArgs: '' }, notes };
+}
+
+class NodeTestRunner implements TestRunner {
+  private runnerFor(ctx: Pick<RunContext, 'workspaceRoot' | 'settings'>): Runner | undefined {
+    const { runner } = tsFields(ctx.settings);
+    if (runner !== 'auto') {
+      return runner;
+    }
+    const angular = detectAngularRunner(ctx.workspaceRoot);
+    return angular === 'vitest' ? 'ng-vitest' : angular === 'karma' ? 'ng-karma' : detectRunner(ctx.workspaceRoot);
+  }
+
+  describe(ctx: Pick<RunContext, 'workspaceRoot' | 'settings'>): string {
+    const runner = this.runnerFor(ctx);
+    const name = runner === 'ng-vitest' ? 'ng test with Vitest' : runner === 'ng-karma' ? 'ng test with Karma' : runner === 'playwright-ct' ? 'Playwright component tests' : runner;
+    return runner ? `${name} ${ctx.settings.testsPath || ''}`.trim() : 'no test runner found';
+  }
+
+  async run(ctx: RunContext): Promise<TestRunSummary> {
+    const runner = this.runnerFor(ctx);
+    if (!runner) {
+      throw new Error('No test runner was found. Install Vitest or Jest, or pick one on the setup screen.');
+    }
+    if (runner === 'mocha') {
+      const mochaDir = resolveModuleDir(ctx.workspaceRoot, 'mocha');
+      if (!mochaDir) {
+        throw new Error('mocha is not installed. Run npm install.');
+      }
+      const { extraArgs: mochaExtra } = tsFields(ctx.settings);
+      const testsPath = ctx.settings.testsPath;
+      const mochaArgs = [path.join(mochaDir, 'bin', 'mocha.js'), ...splitArgs(mochaExtra), ...(testsPath ? [`${testsPath}/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}`] : [])];
+      ctx.log(`$ node ${mochaArgs.join(' ')}`);
+      const mochaRun = await runProcess('node', mochaArgs, { cwd: ctx.workspaceRoot, env: { ...process.env, CI: process.env.CI ?? 'true', NO_COLOR: '1', FORCE_COLOR: '0' }, log: ctx.log, signal: ctx.signal });
+      return parseMochaSummary(mochaRun.output, mochaRun.exitCode);
+    }
+    if (runner === 'playwright-ct') {
+      // The component package's own cli.js, the one `npx playwright` resolves to in such a project (DeepTest 1.0.7 notes).
+      const ctPackage = detectPlaywrightCt(ctx.workspaceRoot)!;
+      const ctDir = resolveModuleDir(ctx.workspaceRoot, ctPackage);
+      if (!ctDir) {
+        throw new Error(`${ctPackage} is not installed. Run npm install.`);
+      }
+      const { extraArgs: pwExtra } = tsFields(ctx.settings);
+      // Playwright looks for playwright.config.* on its own; component tests live in playwright-ct.config.*, so name it.
+      const ctConfig = ['playwright-ct.config.ts', 'playwright-ct.config.mts', 'playwright-ct.config.js', 'playwright-ct.config.mjs', 'playwright-ct.config.cjs'].find((f) => fs.existsSync(path.join(ctx.workspaceRoot, f)));
+      const pwArgs = [path.join(ctDir, 'cli.js'), 'test', ...(ctConfig ? ['-c', ctConfig] : []), ...splitArgs(pwExtra)];
+      ctx.log(`$ node ${pwArgs.join(' ')}`);
+      const pwRun = await runProcess('node', pwArgs, { cwd: ctx.workspaceRoot, env: { ...process.env, CI: process.env.CI ?? 'true', NO_COLOR: '1', FORCE_COLOR: '0' }, log: ctx.log, signal: ctx.signal });
+      return parsePlaywrightSummary(pwRun.output, pwRun.exitCode);
+    }
+    if (runner === 'ng-vitest' || runner === 'ng-karma') {
+      // Angular's tests need the compiler and TestBed that only the builder
+      // provides, so the run is `ng test`, never the vitest binary (DeepTest
+      // 1.0 survey, finding 3a). Same driver as DeepTest's, without the hook.
+      // Karma runs headless so no browser window opens mid-loop.
+      const cli = resolveModuleDir(ctx.workspaceRoot, '@angular/cli');
+      if (!cli) {
+        throw new Error('@angular/cli is not installed. Run npm install.');
+      }
+      const { extraArgs: ngExtra } = tsFields(ctx.settings);
+      const ngArgs = [path.join(cli, 'bin', 'ng.js'), 'test', '--watch=false', ...(runner === 'ng-karma' ? ['--browsers', 'ChromeHeadless'] : []), ...splitArgs(ngExtra)];
+      ctx.log(`$ node ${ngArgs.join(' ')}`);
+      const ngRun = await runProcess('node', ngArgs, { cwd: ctx.workspaceRoot, env: { ...process.env, CI: process.env.CI ?? 'true', NO_COLOR: '1', FORCE_COLOR: '0' }, log: ctx.log, signal: ctx.signal });
+      return runner === 'ng-karma' ? parseKarmaSummary(ngRun.output, ngRun.exitCode) : parseVitestSummary(ngRun.output, ngRun.exitCode);
+    }
+    const moduleDir = resolveModuleDir(ctx.workspaceRoot, runner);
+    if (!moduleDir) {
+      throw new Error(`${runner} is not installed. Run npm install.`);
+    }
+    const { extraArgs } = tsFields(ctx.settings);
+    const env = { ...process.env, CI: process.env.CI ?? 'true', NO_COLOR: '1', FORCE_COLOR: '0' };
+    const testsPath = ctx.settings.testsPath;
+    const args =
+      runner === 'jest'
+        ? [path.join(moduleDir, 'bin', 'jest.js'), '--ci', ...splitArgs(extraArgs), ...(testsPath ? [`^${escapeRegex(path.join(ctx.workspaceRoot, testsPath).split(path.sep).join('/'))}/`] : [])]
+        : [path.join(moduleDir, 'vitest.mjs'), 'run', ...(testsPath ? [`${testsPath}/`] : []), ...splitArgs(extraArgs)];
+    ctx.log(`$ node ${args.join(' ')}`);
+    const run = await runProcess('node', args, { cwd: ctx.workspaceRoot, env, log: ctx.log, signal: ctx.signal });
+    return runner === 'jest' ? parseJestSummary(run.output, run.exitCode) : parseVitestSummary(run.output, run.exitCode);
+  }
+}
+
+function escapeRegex(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+class TypeScriptStructureSource implements StructureSource {
+  constructor(private readonly parsers: { typescript: Parser; tsx: Parser; javascript: Parser }) {}
+
+  measure(relativePath: string, text: string): FunctionComplexity[] {
+    const ext = path.extname(relativePath).toLowerCase();
+    let parser = ext === '.tsx' ? this.parsers.tsx : ext === '.ts' || ext === '.mts' || ext === '.cts' ? this.parsers.typescript : this.parsers.javascript;
+    let source = text;
+    if (isSingleFileComponent(relativePath)) {
+      // A single-file component is measured through its script blocks. The
+      // library blanks everything outside them, newlines kept, so every
+      // function's start and end line is the line in the editor and the
+      // untangle loop reads and rewrites the same lines it would in a .ts
+      // file. The template half is not parsed (1.0.3).
+      const script = extractScript(text);
+      if (!script) {
+        return [];
+      }
+      source = script.source;
+      parser = script.lang === 'tsx' ? this.parsers.tsx : script.lang === 'typescript' ? this.parsers.typescript : this.parsers.javascript;
+    }
+    const tree = parser.parse(source);
+    if (!tree) {
+      throw new Error(`tree-sitter could not parse ${relativePath}`);
+    }
+    try {
+      return analyzeTypeScriptTree(relativePath, tree).functions;
+    } finally {
+      tree.delete();
+    }
+  }
+
+  dispose(): void {
+    this.parsers.typescript.delete();
+    this.parsers.tsx.delete();
+    this.parsers.javascript.delete();
+  }
+}
+
+export const typescriptPlugin: LanguagePlugin = {
+  id: 'typescript',
+  displayName: 'TypeScript / JavaScript',
+  vscodeLanguageIds: ['typescript', 'typescriptreact', 'javascript', 'javascriptreact'],
+  extensions: ['.ts', '.tsx', '.mts', '.cts', '.js', '.jsx', '.mjs', '.cjs', '.vue', '.svelte'],
+  configFields: FIELDS,
+  isTestFile,
+  walkSources,
+  detect,
+  createTestRunner(): TestRunner {
+    return new NodeTestRunner();
+  },
+  createBoundaryRecorder(): BoundaryRecorder {
+    return createTypeScriptBoundaryRecorder();
+  },
+  async createStructureSource(env: StructureEnvironment): Promise<StructureSource> {
+    await initTreeSitter(path.join(env.wasmDir, 'web-tree-sitter.wasm'));
+    const [typescript, tsx, javascript] = await Promise.all([
+      createParser(path.join(env.wasmDir, 'tree-sitter-typescript.wasm')),
+      createParser(path.join(env.wasmDir, 'tree-sitter-tsx.wasm')),
+      createParser(path.join(env.wasmDir, 'tree-sitter-javascript.wasm')),
+    ]);
+    return new TypeScriptStructureSource({ typescript, tsx, javascript });
+  },
+};

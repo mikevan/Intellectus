@@ -1,0 +1,155 @@
+<div class="home-container flex flex-column">
+  <section class="flex flex-column pt-7 px-3 md:mt-7 md:px-5 xl:flex-row xl:mt-4 xl:px-4">
+    <div
+      class="flex flex-column align-items-center text-center xl:justify-content-center xl:text-left xl:align-items-start"
+    >
+      <h1 [innerHTML]="'home.loggedOut.hero.title' | translate"></h1>
+
+      <p class="mt-3">{{ 'home.loggedOut.hero.subtitle' | translate }}</p>
+
+      <p-button
+        class="btn-full-width mt-4 w-6 xl:w-auto"
+        [label]="'home.loggedOut.hero.signUp' | translate"
+        severity="success"
+        [routerLink]="['/register']"
+      />
+    </div>
+
+    <div class="flex justify-content-center my-5 md:mt-7 xl:m-0">
+      <img
+        class="research-image"
+        ngSrc="assets/images/better-research-background.svg"
+        priority
+        height="377"
+        width="585"
+        [alt]="'home.loggedOut.hero.betterResearchImageAltText' | translate"
+      />
+    </div>
+  </section>
+
+  <section class="discover-research-container flex flex-column text-center py-7 px-3 md:mt-7 md:px-5 xl:px-4">
+    <h1 [innerHTML]="'home.loggedOut.discover.title' | translate"></h1>
+
+    <p class="mt-3">{{ 'home.loggedOut.discover.subtitle' | translate }}</p>
+
+    <div class="w-full mt-4">
+      <osf-search-input
+        [control]="searchControl"
+        [placeholder]="'home.loggedOut.discover.searchPlaceholder' | translate"
+        (triggerSearch)="redirectToSearchPageWithValue()"
+      />
+    </div>
+  </section>
+
+  <section class="flex flex-column text-center pt-6 px-3 md:mt-8 md:px-5 xl:mt-3 xl:px-4">
+    <h1 [innerHTML]="'home.loggedOut.support.title' | translate"></h1>
+
+    <div class="flex justify-content-center mt-4">
+      <img
+        class="connected-record-image"
+        ngSrc="assets/images/connected-record.png"
+        width="896"
+        height="504"
+        [alt]="'home.loggedOut.support.connectedRecord' | translate"
+      />
+    </div>
+
+    <div class="flex justify-content-center mt-4 xl:mt-6">
+      <a
+        class="p-button font-bold w-6 xl:w-auto"
+        href="https://cos.io/our-products/osf/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {{ 'common.labels.learnMore' | translate }}
+      </a>
+    </div>
+  </section>
+
+  <section class="flex flex-column text-center pt-6 px-3 md:mt-8 md:px-5 xl:px-4">
+    <h1 [innerHTML]="'home.loggedOut.testimonials.title' | translate"></h1>
+
+    <div class="carousel-container max-w-full mt-4 pt-5">
+      <p-carousel
+        [value]="slides"
+        [showNavigators]="false"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="5000"
+      >
+        <ng-template let-slide #item>
+          <div class="flex align-items-center justify-content-center">
+            <div class="flex flex-column">
+              <osf-icon class="quote-icon" iconClass="fas fa-quote-left fa-2xl"></osf-icon>
+
+              <div class="pl-6 max-w-full text-left">
+                <h2>{{ slide.title | translate }}</h2>
+
+                <p class="font-semibold mt-4">{{ slide.author }}</p>
+                <p class="mt-2">{{ slide.facility | translate }}</p>
+              </div>
+            </div>
+
+            <img class="hidden md:flex" [src]="slide.img" [alt]="slide.name" />
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </section>
+
+  <section class="flex flex-column pt-6 px-3 md:mt-8 md:px-5 xl:px-4">
+    <h1 class="text-center" [innerHTML]="'home.loggedOut.integrations.title' | translate"></h1>
+
+    <div class="hidden flex-wrap p-6 md:flex md:p-5 xl:px-0 xl:flex-nowrap">
+      @for (icon of icons; track icon.title) {
+        <div class="col-6 pb-6 xl:col-4">
+          <ng-container
+            [ngTemplateOutlet]="integrationIcons"
+            [ngTemplateOutletContext]="{ $implicit: icon }"
+          ></ng-container>
+        </div>
+      }
+    </div>
+
+    <div class="my-4 md:hidden">
+      <p-carousel
+        [value]="icons"
+        [showNavigators]="false"
+        [numVisible]="1"
+        [numScroll]="1"
+        [circular]="true"
+        [autoplayInterval]="5000"
+      >
+        <ng-template let-icon #item>
+          <div class="mb-4">
+            <ng-container
+              [ngTemplateOutlet]="integrationIcons"
+              [ngTemplateOutletContext]="{ $implicit: icon }"
+            ></ng-container>
+          </div>
+        </ng-template>
+      </p-carousel>
+    </div>
+  </section>
+</div>
+
+<ng-template #integrationIcons let-icon>
+  <div class="flex flex-column align-items-center gap-4">
+    <p>{{ icon.title | translate }}</p>
+
+    <img
+      [ngSrc]="icon.first.path"
+      [width]="icon.first.width"
+      [height]="icon.first.height"
+      [alt]="'home.loggedOut.integrations.iconImageAltText' | translate"
+    />
+
+    <img
+      [ngSrc]="icon.second.path"
+      [width]="icon.second.width"
+      [height]="icon.second.height"
+      [alt]="'home.loggedOut.integrations.iconImageAltText' | translate"
+    />
+  </div>
+</ng-template>

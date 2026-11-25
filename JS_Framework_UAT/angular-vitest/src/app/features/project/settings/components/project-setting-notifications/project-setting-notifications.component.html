@@ -1,0 +1,21 @@
+<p-card>
+  <h2 class="pb-4">{{ 'myProjects.settings.emailNotifications' | translate }}</h2>
+
+  <p class="pb-4">{{ 'myProjects.settings.emailNotificationsText' | translate }}</p>
+
+  @if (notifications().length) {
+    <osf-project-detail-setting-accordion
+      (emitValueChange)="changeEmittedValue($event)"
+      [rightControls]="allAccordionData"
+      [title]="title()"
+      [disabledRightControls]="isProjectReadOnly()"
+    >
+      <div class="flex align-items-baseline gap-2 mt-2">
+        <i class="fas fa-minus text-sm p-3"></i>
+        <span>
+          {{ subscriptionEvent.FileUpdated | notificationDescription: notifications()[0].frequency | translate }}
+        </span>
+      </div>
+    </osf-project-detail-setting-accordion>
+  }
+</p-card>

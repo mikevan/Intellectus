@@ -1,0 +1,250 @@
+<h2>{{ 'preprints.preprintStepper.authorAssertions.title' | translate }}</h2>
+
+<p-card class="card mt-4">
+  <div>
+    <h2>{{ 'preprints.preprintStepper.authorAssertions.conflictOfInterest.title' | translate }}</h2>
+
+    <p class="mt-3">
+      {{ 'preprints.preprintStepper.authorAssertions.conflictOfInterest.description' | translate }}
+    </p>
+
+    <div class="mt-4 flex flex-row gap-4">
+      <div class="flex flex-row gap-2">
+        <p-radio-button
+          inputId="coi-yes"
+          name="coi"
+          [value]="true"
+          [formControl]="authorAssertionsForm.controls['hasCoi']"
+        />
+        <label class="cursor-pointer" for="coi-yes">{{ 'common.labels.yes' | translate }}</label>
+      </div>
+
+      <div class="flex flex-row gap-2">
+        <p-radio-button
+          inputId="coi-no"
+          name="coi"
+          [value]="false"
+          [formControl]="authorAssertionsForm.controls['hasCoi']"
+        />
+        <label class="cursor-pointer" for="coi-no">{{ 'common.labels.no' | translate }}</label>
+      </div>
+    </div>
+
+    <textarea
+      class="mt-4 w-full"
+      [ngClass]="{ 'cursor-not-allowed': !authorAssertionsForm.value.hasCoi }"
+      pTextarea
+      id="coi-reason"
+      [rows]="3"
+      [formControl]="authorAssertionsForm.controls['coiStatement']"
+      [placeholder]="
+        authorAssertionsForm.value.hasCoi
+          ? ('preprints.preprintStepper.common.placeholders.describe' | translate)
+          : ('preprints.preprintStepper.authorAssertions.conflictOfInterest.noCoiPlaceholder' | translate)
+      "
+    ></textarea>
+    @let coiStatementControl = authorAssertionsForm.controls['coiStatement'];
+    @if (coiStatementControl.errors?.['required'] && (coiStatementControl.touched || coiStatementControl.dirty)) {
+      <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+        {{ INPUT_VALIDATION_MESSAGES.required | translate }}
+      </p-message>
+    }
+  </div>
+</p-card>
+
+<p-card class="card mt-4">
+  <div>
+    <h2>{{ 'preprints.preprintStepper.authorAssertions.publicData.title' | translate }}</h2>
+
+    <p class="mt-3">
+      {{ 'preprints.preprintStepper.authorAssertions.publicData.description' | translate }}
+    </p>
+
+    <div class="mt-4 flex flex-row gap-4">
+      <div class="flex flex-row gap-2">
+        <p-radio-button
+          inputId="publicDataAvailable"
+          name="publicData"
+          [value]="ApplicabilityStatus.Applicable"
+          [formControl]="authorAssertionsForm.controls['hasDataLinks']"
+        />
+        <label class="cursor-pointer" for="publicDataAvailable"> {{ 'common.labels.available' | translate }} </label>
+      </div>
+
+      <div class="flex flex-row gap-2">
+        <p-radio-button
+          inputId="publicDataUnavailable"
+          name="publicData"
+          [value]="ApplicabilityStatus.Unavailable"
+          [formControl]="authorAssertionsForm.controls['hasDataLinks']"
+        />
+        <label class="cursor-pointer" for="publicDataUnavailable">
+          {{ 'common.labels.unavailable' | translate }}
+        </label>
+      </div>
+
+      <div class="flex flex-row gap-2">
+        <p-radio-button
+          inputId="publicDataNotApplicable"
+          name="publicData"
+          [value]="ApplicabilityStatus.NotApplicable"
+          [formControl]="authorAssertionsForm.controls['hasDataLinks']"
+        />
+        <label class="cursor-pointer" for="publicDataNotApplicable">
+          {{ 'common.labels.notApplicable' | translate }}
+        </label>
+      </div>
+    </div>
+
+    @let hasDataLinks = authorAssertionsForm.value.hasDataLinks!;
+    @if (hasDataLinks === ApplicabilityStatus.Unavailable || hasDataLinks === ApplicabilityStatus.NotApplicable) {
+      <textarea
+        class="mt-4 w-full"
+        [ngClass]="{
+          'cursor-not-allowed': hasDataLinks === ApplicabilityStatus.NotApplicable,
+        }"
+        pTextarea
+        id="public-data-description"
+        [formControl]="authorAssertionsForm.controls['whyNoData']"
+        [rows]="3"
+        [placeholder]="
+          hasDataLinks === ApplicabilityStatus.Unavailable
+            ? ('preprints.preprintStepper.common.placeholders.describe' | translate)
+            : ('preprints.preprintStepper.authorAssertions.publicData.notApplicablePlaceholder' | translate)
+        "
+      ></textarea>
+      @let whyNoDataControl = authorAssertionsForm.controls['whyNoData'];
+      @if (whyNoDataControl.errors?.['required'] && (whyNoDataControl.touched || whyNoDataControl.dirty)) {
+        <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+          {{ INPUT_VALIDATION_MESSAGES.required | translate }}
+        </p-message>
+      }
+    } @else {
+      <div class="mt-4">
+        <osf-array-input
+          [formArray]="authorAssertionsForm.controls['dataLinks']"
+          [inputPlaceholder]="'preprints.preprintStepper.common.placeholders.linkToData' | translate"
+          [validators]="linkValidators"
+        />
+      </div>
+    }
+  </div>
+</p-card>
+
+<p-card class="card mt-4">
+  <div>
+    <h2>{{ 'preprints.preprintStepper.authorAssertions.publicPreregistration.title' | translate }}</h2>
+
+    <p class="mt-3">
+      {{ 'preprints.preprintStepper.authorAssertions.publicPreregistration.description' | translate }}
+    </p>
+  </div>
+
+  <div class="mt-4 flex flex-row gap-4">
+    <div class="flex flex-row gap-2">
+      <p-radio-button
+        inputId="preregistrationAvailable"
+        name="publicPreregistration"
+        [value]="ApplicabilityStatus.Applicable"
+        [formControl]="authorAssertionsForm.controls['hasPreregLinks']"
+      />
+      <label class="cursor-pointer" for="preregistrationAvailable"> {{ 'common.labels.available' | translate }} </label>
+    </div>
+
+    <div class="flex flex-row gap-2">
+      <p-radio-button
+        inputId="preregistrationUnavailable"
+        name="publicPreregistration"
+        [value]="ApplicabilityStatus.Unavailable"
+        [formControl]="authorAssertionsForm.controls['hasPreregLinks']"
+      />
+      <label class="cursor-pointer" for="preregistrationUnavailable">
+        {{ 'common.labels.unavailable' | translate }}
+      </label>
+    </div>
+
+    <div class="flex flex-row gap-2">
+      <p-radio-button
+        inputId="preregistrationNotApplicable"
+        name="publicPreregistration"
+        [value]="ApplicabilityStatus.NotApplicable"
+        [formControl]="authorAssertionsForm.controls['hasPreregLinks']"
+      />
+      <label class="cursor-pointer" for="preregistrationNotApplicable">
+        {{ 'common.labels.notApplicable' | translate }}
+      </label>
+    </div>
+  </div>
+  @let hasPreregLinks = authorAssertionsForm.value.hasPreregLinks!;
+  @if (hasPreregLinks === ApplicabilityStatus.Unavailable || hasPreregLinks === ApplicabilityStatus.NotApplicable) {
+    <textarea
+      class="mt-4 w-full"
+      [ngClass]="{
+        'cursor-not-allowed': hasPreregLinks === ApplicabilityStatus.NotApplicable,
+      }"
+      pTextarea
+      id="public-data-description"
+      [rows]="3"
+      [formControl]="authorAssertionsForm.controls['whyNoPrereg']"
+      [placeholder]="
+        hasPreregLinks === ApplicabilityStatus.Unavailable
+          ? ('preprints.preprintStepper.common.placeholders.describe' | translate)
+          : ('preprints.preprintStepper.authorAssertions.publicPreregistration.notApplicablePlaceholder' | translate)
+      "
+    ></textarea>
+    @let hasPreregLinksControl = authorAssertionsForm.controls['hasPreregLinks'];
+    @if (hasPreregLinksControl.errors?.['required'] && (hasPreregLinksControl.touched || hasPreregLinksControl.dirty)) {
+      <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+        {{ INPUT_VALIDATION_MESSAGES.required | translate }}
+      </p-message>
+    }
+  } @else {
+    <div class="mt-4 w-12">
+      <osf-form-select
+        [control]="authorAssertionsForm.controls['preregLinkInfo']"
+        [options]="preregLinkOptions"
+        [placeholder]="'preprints.preprintStepper.authorAssertions.publicPreregistration.selectType' | translate"
+        [fullWidth]="true"
+      />
+    </div>
+
+    <div class="mt-4">
+      <osf-array-input
+        [formArray]="authorAssertionsForm.controls['preregLinks']"
+        [inputPlaceholder]="'preprints.preprintStepper.common.placeholders.linkToData' | translate"
+        [validators]="linkValidators"
+      />
+    </div>
+  }
+</p-card>
+
+<section class="mt-6 flex flex-row justify-content-end align-items-center gap-2">
+  <p-button
+    class="w-6 md:w-6rem"
+    styleClass="w-full"
+    [label]="'common.buttons.back' | translate"
+    severity="info"
+    (onClick)="backButtonClicked()"
+  />
+  @if (showDeleteButton()) {
+    <p-button
+      class="w-6 md:w-6rem"
+      styleClass="w-full"
+      [label]="'common.buttons.delete' | translate"
+      severity="danger"
+      (onClick)="deletePreprint()"
+    />
+  }
+  <p-button
+    class="w-6 md:w-9rem"
+    styleClass="w-full"
+    [label]="'common.buttons.next' | translate"
+    [pTooltip]="
+      authorAssertionsForm.invalid ? ('preprints.preprintStepper.common.validation.fillRequiredFields' | translate) : ''
+    "
+    tooltipPosition="top"
+    [disabled]="authorAssertionsForm.invalid"
+    [loading]="isUpdatingPreprint()"
+    (onClick)="nextButtonClicked()"
+  />
+</section>

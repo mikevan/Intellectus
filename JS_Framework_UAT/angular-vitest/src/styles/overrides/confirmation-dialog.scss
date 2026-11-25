@@ -1,0 +1,46 @@
+.p-dialog-mask {
+  z-index: 2103 !important;
+}
+
+.p-dialog {
+  --p-dialog-header-padding: 1.5rem;
+  --p-button-text-secondary-color: var(--grey-1);
+  --p-button-text-secondary-hover-background: var(--grey-3);
+  --p-button-text-secondary-active-background: var(--grey-1);
+  --p-dialog-title-font-size: 1.125rem;
+  --p-dialog-title-font-weight: 700;
+  --p-dialog-content-padding: 0 1.5rem 1.5rem;
+  --p-dialog-footer-padding: 0 1.5rem 1.5rem;
+
+  .p-dialog-title {
+    text-transform: capitalize;
+  }
+
+  .p-dialog-content {
+    align-items: start;
+  }
+
+  .p-dialog-footer {
+    justify-content: center;
+
+    p-button {
+      width: 50%;
+
+      .p-confirmdialog-reject-button {
+        width: 100%;
+      }
+
+      .p-confirmdialog-accept-button {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.p-dialog-align-center .p-dialog .p-dialog-content {
+  align-items: center;
+}
+
+.p-dialog-overflow-visible .p-dialog .p-dialog-content {
+  overflow-y: visible;
+}

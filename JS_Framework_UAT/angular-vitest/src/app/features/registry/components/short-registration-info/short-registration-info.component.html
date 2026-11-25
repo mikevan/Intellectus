@@ -1,0 +1,39 @@
+<div class="mb-3">
+  <h4>{{ 'common.labels.contributors' | translate }}</h4>
+
+  <osf-contributors-list
+    [contributors]="bibliographicContributors()"
+    [isLoading]="isBibliographicContributorsLoading()"
+    [hasLoadMore]="hasMoreBibliographicContributors()"
+    (loadMoreContributors)="handleLoadMoreContributors()"
+  ></osf-contributors-list>
+</div>
+
+<div class="mb-3">
+  <h4>{{ 'common.labels.description' | translate }}</h4>
+  <p>{{ registration().description }}</p>
+</div>
+
+<div class="mb-3 flex flex-wrap">
+  <div class="mb-3 w-6">
+    <h4>{{ 'registry.overview.metadata.type' | translate }}</h4>
+    <p>{{ registration().registrationSupplement }}</p>
+  </div>
+
+  <div class="mb-3 w-6">
+    <h4>{{ 'registry.overview.metadata.registeredDate' | translate }}</h4>
+    <p>{{ registration().dateRegistered | date }}</p>
+  </div>
+</div>
+
+<div class="mb-3 flex flex-wrap">
+  <div class="mb-3 w-6">
+    <h4>{{ 'common.labels.dateCreated' | translate }}</h4>
+    <p>{{ registration().dateCreated | date }}</p>
+  </div>
+
+  <div class="mb-3 w-6">
+    <h4>{{ 'registry.overview.metadata.associatedProject' | translate }}</h4>
+    <a class="font-bold" [routerLink]="['/', registration().associatedProjectId]">{{ associatedProjectUrl() }}</a>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{
+  "name": "svelte5-tests",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "comment": "Re-runs the parent __tests__/*.test.ts files under Svelte 5 instead of the root workspace's Svelte 4.",
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@fingerprint/agent": "^4.1.3",
+    "@sveltejs/vite-plugin-svelte": "^4.0.0",
+    "@testing-library/svelte": "^5.4.2",
+    "@testing-library/user-event": "^14.6.1",
+    "dotenv": "^17.4.2",
+    "jsdom": "^29.1.1",
+    "svelte": "^5.56.7",
+    "typescript": "~6.0.3",
+    "vite": "^5.4.21",
+    "vitest": "^3.2.4"
+  }
+}

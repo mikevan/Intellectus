@@ -1,0 +1,36 @@
+<section class="flex-column flex flex-1">
+  <osf-sub-header
+    class="pt-6"
+    [description]="'institutions.description' | translate"
+    [title]="'institutions.title' | translate"
+    [icon]="'custom-icon-institutions'"
+  />
+
+  <osf-scheduled-banner />
+
+  <div class="flex-column flex flex-1 w-full bg-white p-5">
+    <osf-search-input [control]="searchControl" [placeholder]="'institutions.searchInstitutions' | translate" />
+
+    @if (institutionsLoading()) {
+      <div class="flex-1 mt-4 bg-white md:mt-8 lg:pt-5">
+        <osf-loading-spinner />
+      </div>
+    } @else {
+      <div class="py-5 flex flex-column gap-3">
+        @for (institution of institutions(); track $index) {
+          <a class="dark-blue-link" [routerLink]="[institution.id]">
+            <div class="border-1 border-round-xl grey-border-color px-5 py-4 flex align-items-center gap-4">
+              <img class="fit-contain" [ngSrc]="institution.assets.logo" [alt]="'Logo'" width="80" height="80" />
+
+              <h2>{{ institution.name }}</h2>
+            </div>
+          </a>
+        }
+
+        @if (!institutions().length) {
+          <p class="text-center">{{ 'common.search.noResultsFound' | translate }}</p>
+        }
+      </div>
+    }
+  </div>
+</section>

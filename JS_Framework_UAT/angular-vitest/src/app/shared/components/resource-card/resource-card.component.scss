@@ -1,0 +1,23 @@
+.resource {
+  border: 1px solid var(--grey-2);
+  border-radius: 0.5rem;
+
+  .type {
+    width: fit-content;
+    background: var(--grey-3);
+    border-radius: 0.25rem;
+  }
+
+  p {
+    font-weight: 400;
+  }
+
+  a {
+    font-weight: 700;
+  }
+
+  .break-line {
+    border: none;
+    border-top: 1px solid var(--grey-2);
+  }
+}

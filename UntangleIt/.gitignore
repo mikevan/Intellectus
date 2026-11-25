@@ -1,0 +1,27 @@
+node_modules/
+out/
+dist/
+.vscode-test/
+*.vsix
+*.zip
+*.map
+__pycache__/
+# KeepSafe's local checkpoint store; it belongs to the machine, not the repository.
+.keepsafe/
+# UntangleIt's working files; the run record travels with the code.
+.untangleit/*
+!.untangleit/runs.json
+# DeepTest's working files, when DeepTest measures this project.
+.deeptest/*
+!.deeptest/decisions.json
+test/fixtures/*/.untangleit/
+test/fixtures/*/.vscode/
+test/fixtures/*/node_modules/
+
+# The Governance History is local only. It can carry who authorized an
+# attempt, it carries model identity and operational audit metadata, and it
+# is append-only and unbounded. Rule 70 makes what is in it safe to keep on
+# this machine; that is not the same as appropriate to publish through
+# somebody's repository. Stated explicitly so a later negation rule cannot
+# un-ignore it by accident.
+.untangleit/governance.jsonl

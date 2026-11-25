@@ -1,0 +1,21 @@
+@use "styles/mixins" as mix;
+
+:host {
+  @include mix.flex-column;
+  flex: 1;
+}
+
+.files-table {
+  border: 1px solid var(--grey-2);
+  border-radius: 0.5rem;
+
+  .files-table-row {
+    border-bottom: 1px solid var(--grey-2);
+  }
+}
+
+.link-btn-no-padding {
+  --p-button-label-font-weight: 400;
+  --p-button-link-color: var(--dark-blue-1);
+  --p-button-padding-y: 0.5rem;
+}

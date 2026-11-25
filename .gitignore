@@ -1,0 +1,12 @@
+node_modules/
+.venv/
+__pycache__/
+.pytest_cache/
+.vscode-test/
+.angular/
+coverage/
+test-results/
+playwright-report/
+*.vsix
+*.whl
+*.tar.gz

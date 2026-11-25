@@ -1,0 +1,71 @@
+<osf-sub-header [title]="'navigation.wiki' | translate">
+  <p-buttonGroup class="ml-auto">
+    <p-button
+      [label]="'common.buttons.view' | translate"
+      [variant]="wikiModes().view ? undefined : 'outlined'"
+      (onClick)="toggleMode(WikiModes.View)"
+    />
+    @if (hasWriteAccess()) {
+      <p-button
+        [label]="'common.buttons.edit' | translate"
+        [variant]="wikiModes().edit ? undefined : 'outlined'"
+        (onClick)="toggleMode(WikiModes.Edit)"
+        [disabled]="disableWikiEdit()"
+        [pTooltip]="disabledEditTooltip() | translate"
+      />
+    }
+    <p-button
+      [label]="'project.wiki.compare' | translate"
+      [variant]="wikiModes().compare ? undefined : 'outlined'"
+      (onClick)="toggleMode(WikiModes.Compare)"
+    />
+  </p-buttonGroup>
+</osf-sub-header>
+
+@if (hasViewOnly()) {
+  <div class="bg-white w-full px-5 pt-5 pb-1">
+    <osf-view-only-link-message />
+  </div>
+}
+
+<section class="flex flex-column lg:flex-row lg:flex-wrap bg-white flex-1 h-full p-5 gap-4 w-full wiki-page">
+  <osf-wiki-list
+    [list]="wikiList()"
+    [resourceId]="projectId()"
+    [isLoading]="isWikiListLoading()"
+    [componentsList]="componentsWikiList()"
+    [currentWikiId]="currentWikiId()"
+    [canEdit]="hasWriteAccess()"
+    (createWiki)="onCreateWiki()"
+    (deleteWiki)="onDeleteWiki()"
+    (renameWiki)="onRenameWiki()"
+  ></osf-wiki-list>
+  @if (wikiModes().view) {
+    <osf-view-section
+      [versions]="wikiVersions()"
+      [previewContent]="previewContent()"
+      [versionContent]="versionContent()"
+      [isLoading]="isWikiVersionLoading()"
+      (selectVersion)="onSelectVersion($event)"
+    ></osf-view-section>
+  }
+  @if (hasWriteAccess() && wikiModes().edit) {
+    <osf-edit-section
+      [currentContent]="previewContent()"
+      [versionContent]="versionContent()"
+      (contentChange)="updateWikiPreviewContent($event)"
+      [isSaving]="isWikiVersionSubmitting()"
+      [disableSaveButton]="disableWikiEdit()"
+      (saveContent)="onSaveContent($event)"
+    ></osf-edit-section>
+  }
+  @if (wikiModes().compare) {
+    <osf-compare-section
+      [versions]="wikiVersions()"
+      [previewContent]="previewContent()"
+      [versionContent]="compareVersionContent()"
+      [isLoading]="isWikiVersionLoading()"
+      (selectVersion)="onSelectCompareVersion($event)"
+    ></osf-compare-section>
+  }
+</section>

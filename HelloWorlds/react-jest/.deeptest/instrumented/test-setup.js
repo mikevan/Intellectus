@@ -1,0 +1,1 @@
+const __witness_urjpvy = globalThis.__witness__.file("__witness_urjpvy", {"path":"C:/workspace/HelloWorlds/react-jest/src/test-setup.js","statementMap":{},"fnMap":{},"branchMap":{},"skipped":[]});import '@testing-library/jest-dom';

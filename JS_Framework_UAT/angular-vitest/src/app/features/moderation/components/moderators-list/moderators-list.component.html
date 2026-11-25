@@ -1,0 +1,28 @@
+<div class="flex flex-column gap-4 md:flex-row md:gap-6">
+  <osf-search-input class="w-full" [control]="searchControl" [placeholder]="'common.search.title' | translate" />
+
+  @if (hasAdminAccess()) {
+    <div class="ml-auto w-full md:w-4">
+      <p-button
+        class="w-full"
+        styleClass="w-full"
+        [label]="'moderation.addModerator' | translate"
+        (click)="openAddModeratorDialog()"
+        [disabled]="isModeratorsLoading()"
+      />
+    </div>
+  }
+</div>
+
+<div class="block w-full my-5">
+  <osf-moderators-table
+    [items]="moderators()"
+    [isLoading]="isModeratorsLoading()"
+    [currentUserId]="currentUser()?.id"
+    [tableParams]="tableParams()"
+    [hasAdminAccess]="hasAdminAccess()"
+    (pageChanged)="pageChanged($event)"
+    (update)="updateModerator($event)"
+    (remove)="removeModerator($event)"
+  />
+</div>

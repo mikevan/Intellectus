@@ -1,0 +1,259 @@
+﻿# KeepSafe
+
+KeepSafe is a local checkpoint system for code workspaces. It stores checkpoint history in a `.keepsafe` directory at the workspace root.
+
+It is designed to scale by streaming file scans, skipping binary-heavy directories by default, and storing checkpoint history as append-only records instead of a single workspace-wide snapshot.
+
+## Install
+
+Install from a local checkout:
+
+```bash
+python -m pip install .
+```
+
+Install for isolated CLI use with `pipx`:
+
+```bash
+pipx install .
+```
+
+After install, run:
+
+```bash
+keepsafe --help
+```
+
+The package also installs a shorter `ks` command:
+
+```bash
+ks --help
+```
+
+## What It Tracks
+
+- Text files only (validated as UTF-8 text; binary files are skipped).
+- Files allowed by `.gitignore` rules.
+- Checkpoint operation `add`: new file.
+- Checkpoint operation `modify`: changed existing file.
+- Checkpoint operation `delete`: removed file.
+
+## What It Ignores By Default
+
+- `.keepsafe`
+- `.git`
+- `.venv`
+- `venv`
+- `env`
+- `node_modules`
+- `dist`
+- `build`
+- `__pycache__`
+- `.DS_Store`
+
+## Commands
+
+All commands run from the workspace root by default.
+You can target another root with `--root <path>`.
+
+Create a checkpoint:
+
+```bash
+python -m keepsafe checkpoint "initial checkpoint"
+```
+
+Short form:
+
+```bash
+ks create
+```
+
+List checkpoints:
+
+```bash
+python -m keepsafe list
+```
+
+Restore a checkpoint:
+
+```bash
+python -m keepsafe restore 0001-initial-checkpoint
+```
+
+Short form:
+
+```bash
+ks restore last
+```
+
+Compare two checkpoints:
+
+```bash
+python -m keepsafe diff 0001-initial-checkpoint 0010-some-checkpoint
+```
+
+Short form:
+
+```bash
+ks diff
+```
+
+Rebuild KeepSafe metadata to the current format:
+
+```bash
+python -m keepsafe rebuild
+```
+
+Short form:
+
+```bash
+ks rebuild
+```
+
+Add a pattern to `.gitignore`:
+
+```bash
+python -m keepsafe ignore add .venv --directory
+```
+
+Short form:
+
+```bash
+ks add ignore .venv --directory
+```
+
+Add a root-relative path from the project root:
+
+```bash
+python -m keepsafe ignore add ./build --directory
+```
+
+Add a wildcard pattern:
+
+```bash
+python -m keepsafe ignore add "logs/*.log"
+```
+
+Use a different workspace root:
+
+```bash
+python -m keepsafe --root ./some-project checkpoint "checkpoint name"
+```
+
+## Checkpoint Semantics
+
+- The first checkpoint is always a full snapshot.
+- After that, checkpoints are delta checkpoints, except periodic full snapshots.
+- Every 10th checkpoint is a full snapshot (`FULL_SNAPSHOT_INTERVAL = 10`).
+- Delta checkpoints contain only `add`, `modify`, and `delete` operations.
+- Full snapshots store current tracked files as `add` entries for snapshot materialization.
+
+## Ignore Command
+
+- `ignore add <pattern>` appends a pattern to the root `.gitignore` file.
+- `ignore add <pattern> --directory` ensures a trailing `/` for directory ignores.
+- If `<pattern>` points to an existing file or directory under the project root (for example `./build`), KeepSafe writes it as a root-anchored pattern (for example `/build/`) so the intended path is ignored.
+
+## Wildcards And Regex
+
+- `.gitignore` uses glob-style wildcard patterns, not regex.
+- `*.log` matches all `.log` files.
+- `logs/*.log` matches `.log` files directly under `logs`.
+- `src/**/temp*` matches files and folders named like `temp*` at any depth under `src`.
+- Regex is not interpreted by `.gitignore` (for example `^build$` is treated as plain text, not a regex anchor pattern).
+
+## Diff Behavior
+
+- `diff` compares endpoint states, not just single checkpoint files.
+- To resolve each endpoint state, KeepSafe replays from the nearest snapshot through every intermediate checkpoint.
+- This guarantees that comparisons across long ranges include all intervening checkpoint effects.
+
+## Restore Behavior
+
+- Restore resolves the target state by replaying from the nearest snapshot through every checkpoint up to the target.
+- Files present now but not in target state are removed.
+- Files in target state are recreated from blob storage.
+- If the workspace is otherwise deleted but `.keepsafe/` remains, KeepSafe can still restore tracked files from the stored checkpoints and blobs.
+
+## Rebuild Behavior
+
+- `rebuild` upgrades or reindexes `.keepsafe` metadata to the current format.
+- If legacy metadata exists (`.keepsafe/index.json` with legacy `state.json` checkpoints), KeepSafe migrates it into the current SQLite and JSONL layout.
+- If legacy metadata does not exist, KeepSafe reindexes from existing `.keepsafe/checkpoints/*/entries.jsonl` logs.
+- Rebuild preserves checkpoint IDs and sequence ordering.
+
+## Storage Layout
+
+KeepSafe stores data under `.keepsafe/`:
+
+- `.keepsafe/index.sqlite3`: metadata database
+- `.keepsafe/index.sqlite3` includes checkpoint sequence, type, counts, and links.
+- `.keepsafe/index.sqlite3` includes latest tracked file state.
+- `.keepsafe/checkpoints/<checkpoint-id>/entries.jsonl`: append-only operation log
+- `.keepsafe/checkpoints/<checkpoint-id>/checkpoint.txt`: human-readable summary
+- `.keepsafe/checkpoints/<checkpoint-id>/manifest.json`: structured checkpoint metadata
+- `.keepsafe/blobs/`: compressed content blobs (sha256-addressed)
+
+## Size Limits
+
+- New-file inline text limit: 256 KiB per file.
+- New-file inline aggregate limit: 5 MiB per checkpoint.
+- Files over inline limits are still tracked via blob storage; they are just not inlined in checkpoint text output.
+
+## Scaling Notes
+
+- Scanning is streaming and path-local (no full-tree in-memory snapshot required).
+- File content is chunk-hashed and blob-addressed.
+- Periodic full snapshots bound restore replay cost over long checkpoint histories.
+
+## Notes
+
+- If no checkpoints exist yet, `list` prints `No checkpoints found.`
+- Checkpoint IDs are sequence-prefixed slugs (for example `0001-initial-checkpoint`).
+
+## Short Aliases
+
+The package also installs a compact `ks` command that points to the same CLI.
+
+- `ks quick` maps to `KeepSafe: Quick Checkpoint`
+- `ks restore last` maps to `KeepSafe: Restore Latest Checkpoint`
+- `ks create` maps to `KeepSafe: Create Checkpoint`
+- `ks list` maps to `KeepSafe: List Checkpoints`
+- `ks restore` maps to `KeepSafe: Restore Checkpoint`
+- `ks diff` maps to `KeepSafe: Diff Checkpoints`
+- `ks rebuild` maps to `KeepSafe: Rebuild Metadata`
+- `ks add ignore <pattern>` maps to `KeepSafe: Add Ignore Pattern`
+
+## Distribution
+
+- Local-only packaging and sharing workflow is documented in [PUBLISHING.md](PUBLISHING.md).
+- Build a wheel locally and share the artifact directly; no public package registry is required.
+
+## VS Code Extension
+
+This repository includes a local VS Code extension at [keepsafe-extension](keepsafe-extension).
+
+Quickstart:
+
+1. Open the repository root ([keepsafe](.)) in VS Code.
+2. Open [keepsafe-extension](keepsafe-extension) if you want to edit the extension source directly.
+3. Run `npm install` in [keepsafe-extension](keepsafe-extension) once.
+4. Press `F5` from the repo root. The included debug config will compile the extension and launch an Extension Development Host.
+5. In the Extension Development Host, set `keepsafe.command` to your local binary if needed (for example `C:/workspace/keepsafe/.venv/Scripts/keepsafe.exe`).
+
+Commands available from Command Palette:
+
+- `KeepSafe: Quick Checkpoint`
+- `KeepSafe: Restore Latest Checkpoint`
+- `KeepSafe: Create Checkpoint`
+- `KeepSafe: List Checkpoints`
+- `KeepSafe: Restore Checkpoint`
+- `KeepSafe: Diff Checkpoints`
+- `KeepSafe: Rebuild Metadata`
+- `KeepSafe: Add Ignore Pattern`
+
+Fast recovery behavior:
+
+- `KeepSafe: Quick Checkpoint` creates an immediate checkpoint with an auto-generated name using local timestamp format `quick-YYYYMMDD-HHMMSS`.
+- `KeepSafe: Restore Latest Checkpoint` resolves the newest checkpoint and restores it after confirmation.
+- Use `KeepSafe: Restore Checkpoint` when you need a specific older recovery point.

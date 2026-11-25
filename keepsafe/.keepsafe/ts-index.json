@@ -1,0 +1,94 @@
+{
+  "checkpoints": [
+    {
+      "checkpoint_id": "0001-quick-20260813-114949",
+      "sequence": 1,
+      "name": "quick-20260813-114949",
+      "created_at": "2026-08-13T16:49:49Z",
+      "kind": "snapshot",
+      "file_count": 17,
+      "changed_count": 17,
+      "base_checkpoint_id": null
+    },
+    {
+      "checkpoint_id": "0002-quick-20260814-012343",
+      "sequence": 2,
+      "name": "quick-20260814-012343",
+      "created_at": "2026-08-14T06:23:43Z",
+      "kind": "delta",
+      "file_count": 28,
+      "changed_count": 19,
+      "base_checkpoint_id": "0001-quick-20260813-114949"
+    },
+    {
+      "checkpoint_id": "0003-quick-20260814-184857",
+      "sequence": 3,
+      "name": "quick-20260814-184857",
+      "created_at": "2026-08-14T23:48:57Z",
+      "kind": "delta",
+      "file_count": 29,
+      "changed_count": 3,
+      "base_checkpoint_id": "0002-quick-20260814-012343"
+    },
+    {
+      "checkpoint_id": "0004-quick-20260814-185951",
+      "sequence": 4,
+      "name": "quick-20260814-185951",
+      "created_at": "2026-08-14T23:59:51Z",
+      "kind": "delta",
+      "file_count": 29,
+      "changed_count": 0,
+      "base_checkpoint_id": "0003-quick-20260814-184857"
+    },
+    {
+      "checkpoint_id": "0005-quick-20260814-190100",
+      "sequence": 5,
+      "name": "quick-20260814-190100",
+      "created_at": "2026-08-15T00:01:00Z",
+      "kind": "delta",
+      "file_count": 29,
+      "changed_count": 0,
+      "base_checkpoint_id": "0004-quick-20260814-185951"
+    },
+    {
+      "checkpoint_id": "0006-quick-20260814-190250",
+      "sequence": 6,
+      "name": "quick-20260814-190250",
+      "created_at": "2026-08-15T00:02:50Z",
+      "kind": "delta",
+      "file_count": 29,
+      "changed_count": 0,
+      "base_checkpoint_id": "0005-quick-20260814-190100"
+    },
+    {
+      "checkpoint_id": "0007-quick-20260814-192759",
+      "sequence": 7,
+      "name": "quick-20260814-192759",
+      "created_at": "2026-08-15T00:27:59Z",
+      "kind": "delta",
+      "file_count": 28,
+      "changed_count": 1,
+      "base_checkpoint_id": "0006-quick-20260814-190250"
+    },
+    {
+      "checkpoint_id": "0008-quick-20260814-192813",
+      "sequence": 8,
+      "name": "quick-20260814-192813",
+      "created_at": "2026-08-15T00:28:13Z",
+      "kind": "delta",
+      "file_count": 28,
+      "changed_count": 0,
+      "base_checkpoint_id": "0007-quick-20260814-192759"
+    },
+    {
+      "checkpoint_id": "0009-quick-20260814-203359",
+      "sequence": 9,
+      "name": "quick-20260814-203359",
+      "created_at": "2026-08-15T01:33:59Z",
+      "kind": "delta",
+      "file_count": 20,
+      "changed_count": 11,
+      "base_checkpoint_id": "0008-quick-20260814-192813"
+    }
+  ]
+}

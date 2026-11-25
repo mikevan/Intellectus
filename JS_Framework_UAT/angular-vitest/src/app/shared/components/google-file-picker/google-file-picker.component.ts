@@ -1,0 +1,175 @@
+import { Store } from '@ngxs/store';
+
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+
+import { ChangeDetectionStrategy, Component, effect, inject, input, OnInit, signal } from '@angular/core';
+
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+import { SENTRY_TOKEN } from '@core/provider/sentry.provider';
+import { AddonType } from '@osf/shared/enums/addon-type.enum';
+import { GoogleFilePickerDownloadService } from '@osf/shared/services/google-file-picker.download.service';
+import { StorageItem } from '@shared/models/addons/storage-item.model';
+import { GoogleFileDataModel } from '@shared/models/files/google-file-data.model';
+import { GoogleFilePickerModel } from '@shared/models/files/google-file-picker.model';
+import { AddonsSelectors, GetAuthorizedStorageOauthToken } from '@shared/stores/addons';
+
+@Component({
+  selector: 'osf-google-file-picker',
+  imports: [TranslatePipe, Button],
+  templateUrl: './google-file-picker.component.html',
+  styleUrl: './google-file-picker.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class GoogleFilePickerComponent implements OnInit {
+  private readonly Sentry = inject(SENTRY_TOKEN);
+  private readonly store = inject(Store);
+  private readonly environment = inject(ENVIRONMENT);
+  private readonly translateService = inject(TranslateService);
+  private readonly googlePicker = inject(GoogleFilePickerDownloadService);
+  private readonly apiKey = this.environment.googleFilePickerApiKey;
+  private readonly appId = this.environment.googleFilePickerAppId;
+  private parentId = '';
+  private isMultipleSelect!: boolean;
+  private title!: string;
+
+  isFolderPicker = input.required<boolean>();
+  rootFolder = input<StorageItem | null>(null);
+  accountId = input<string>('');
+  handleFolderSelection = input<(folder: StorageItem) => void>();
+  currentAddonType = input<string>(AddonType.STORAGE);
+
+  accessToken = signal<string | null>(null);
+  visible = signal(false);
+  isGFPDisabled = signal(true);
+
+  private get isPickerConfigured() {
+    return !!this.apiKey && !!this.appId;
+  }
+
+  constructor() {
+    effect(() => {
+      const isReady = !this.isGFPDisabled();
+      const hasRootFolder = !!this.rootFolder();
+      const isFilePicker = !this.isFolderPicker();
+
+      if (isReady && hasRootFolder && isFilePicker) {
+        this.createPicker();
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    if (!this.isPickerConfigured) {
+      this.isGFPDisabled.set(true);
+      return;
+    }
+
+    this.parentId = this.isFolderPicker() ? '' : this.rootFolder()?.itemId || '';
+    this.title = this.isFolderPicker()
+      ? this.translateService.instant('settings.addons.configureAddon.googleFilePicker.rootFolderTitle')
+      : this.translateService.instant('settings.addons.configureAddon.googleFilePicker.fileFolderTitle');
+    this.isMultipleSelect = !this.isFolderPicker();
+
+    this.googlePicker.loadScript().subscribe({
+      next: () => {
+        this.googlePicker.loadGapiModules().subscribe({
+          next: () => {
+            this.initializePicker();
+            this.loadOauthToken();
+          },
+          error: (err) => this.Sentry.captureException(err, { tags: { feature: 'google-picker auth' } }),
+        });
+      },
+      error: (err) => this.Sentry.captureException(err, { tags: { feature: 'google-picker load' } }),
+    });
+  }
+
+  createPicker(): void {
+    if (!this.isPickerConfigured) return;
+
+    this.refreshOauthTokenAndOpenPicker();
+  }
+
+  private refreshOauthTokenAndOpenPicker(): void {
+    if (!this.accountId()) {
+      this.openPickerWithCurrentToken();
+      return;
+    }
+
+    this.store.dispatch(new GetAuthorizedStorageOauthToken(this.accountId(), this.currentAddonType())).subscribe({
+      complete: () => {
+        this.accessToken.set(
+          this.store.selectSnapshot(AddonsSelectors.getAuthorizedStorageAddonOauthToken(this.accountId()))
+        );
+        this.isGFPDisabled.set(!this.accessToken());
+        this.openPickerWithCurrentToken();
+      },
+      error: () => {
+        this.openPickerWithCurrentToken();
+      },
+    });
+  }
+
+  private openPickerWithCurrentToken(): void {
+    const google = window.google;
+
+    const googlePickerView = new google.picker.DocsView(google.picker.ViewId.DOCS);
+    googlePickerView.setSelectFolderEnabled(true);
+    if (this.isFolderPicker()) {
+      googlePickerView.setMimeTypes('application/vnd.google-apps.folder');
+    }
+    googlePickerView.setIncludeFolders(true);
+    googlePickerView.setParent(this.parentId);
+
+    const pickerBuilder = new google.picker.PickerBuilder()
+      .setDeveloperKey(this.apiKey)
+      .setAppId(this.appId)
+      .addView(googlePickerView)
+      .setTitle(this.title)
+      .setOAuthToken(this.accessToken())
+      .setCallback(this.pickerCallback.bind(this));
+
+    if (this.isMultipleSelect) {
+      pickerBuilder.enableFeature(google.picker.Feature.MULTISELECT_ENABLED);
+    }
+
+    const picker = pickerBuilder.build();
+    picker.setVisible(true);
+  }
+
+  private initializePicker() {
+    if (this.isFolderPicker()) {
+      this.visible.set(true);
+    }
+  }
+
+  private loadOauthToken(): void {
+    if (this.accountId()) {
+      this.store.dispatch(new GetAuthorizedStorageOauthToken(this.accountId(), this.currentAddonType())).subscribe({
+        complete: () => {
+          this.accessToken.set(
+            this.store.selectSnapshot(AddonsSelectors.getAuthorizedStorageAddonOauthToken(this.accountId()))
+          );
+          this.isGFPDisabled.set(!this.accessToken());
+        },
+      });
+    }
+  }
+
+  private filePickerCallback(data: GoogleFileDataModel) {
+    this.handleFolderSelection()?.(
+      Object({
+        itemName: data.name,
+        itemId: data.id,
+      })
+    );
+  }
+
+  pickerCallback(data: GoogleFilePickerModel) {
+    if (data.action === window.google.picker.Action.PICKED) {
+      this.filePickerCallback(data.docs[0]);
+    }
+  }
+}

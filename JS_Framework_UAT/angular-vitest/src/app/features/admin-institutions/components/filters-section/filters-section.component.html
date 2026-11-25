@@ -1,0 +1,40 @@
+@if (filtersVisible()) {
+  <div class="absolute top-0 right-0 z-5 w-22rem">
+    <p-card>
+      <div class="flex flex-column max-filters-height pt-4">
+        <div class="flex justify-content-between align-items-center px-4">
+          <h2>{{ 'adminInstitutions.common.filterBy' | translate }}</h2>
+          <p-button
+            icon="fa fa-close text-xl"
+            [rounded]="true"
+            [text]="true"
+            severity="secondary"
+            (onClick)="filtersVisible.set(false)"
+          />
+        </div>
+
+        <osf-filter-chips
+          class="px-4"
+          [filterOptions]="selectedFilterOptions()"
+          [filters]="filters()"
+          (selectedOptionRemoved)="onFilterChipRemoved($event)"
+        />
+
+        <div class="filters-section overflow-auto px-4">
+          <osf-search-filters
+            [plainStyle]="true"
+            [filters]="filters()"
+            [selectedOptions]="selectedFilterOptions()"
+            [filterSearchResults]="filterSearchCache()"
+            [isLoading]="areResourcesLoading()"
+            [showEmptyState]="true"
+            (loadFilterOptions)="onLoadFilterOptions($event)"
+            (filterOptionSelected)="onSelectedFilterOptionsChanged($event)"
+            (filterOptionsSearch)="onSearchFilterOptions($event)"
+            (loadMoreFilterOptions)="onLoadMoreFilterOptions($event)"
+          />
+        </div>
+      </div>
+    </p-card>
+  </div>
+}

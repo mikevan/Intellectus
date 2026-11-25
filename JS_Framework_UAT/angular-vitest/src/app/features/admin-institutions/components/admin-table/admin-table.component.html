@@ -1,0 +1,242 @@
+<div class="flex justify-content-between align-items-center py-3 px-0">
+  <div class="hidden md:block">
+    <ng-content select="[slot=amount]"></ng-content>
+  </div>
+
+  <p-menu #downloadMenu [model]="downloadMenuItems" appendTo="body" popup>
+    <ng-template #item let-item>
+      <a
+        class="p-menu-item-link ml-1"
+        osfStopPropagation
+        (click)="downloadClicked.emit(item.value)"
+        (keydown.enter)="downloadClicked.emit(item.value)"
+        tabindex="0"
+      >
+        <i [class]="item.icon"></i>
+
+        {{ item.label }}
+      </a>
+    </ng-template>
+  </p-menu>
+
+  <div class="flex align-items-center gap-2 w-full md:flex-row md:w-fit">
+    <ng-content select="[slot=otherFilters]"></ng-content>
+
+    <div class="flex align-items-center gap-2 justify-content-between w-full md:justify-content-start md:w-fit">
+      <p-multi-select
+        class="w-9 md:w-fit"
+        [options]="tableColumns()"
+        [(ngModel)]="selectedColumns"
+        (onChange)="onColumnSelectionChange($event.value)"
+        optionLabel="header"
+        [showToggleAll]="false"
+        [showClear]="false"
+        [dropdownIcon]="'hidden'"
+        [ariaLabel]="'common.accessibility.customizeOptions' | translate"
+      >
+        <ng-template let-values pTemplate="selectedItems">
+          <div class="flex align-items-center gap-2">
+            <i class="fas fa-table-columns text-primary text-xl"></i>
+            <span class="text-primary">{{ 'adminInstitutions.institutionUsers.customize' | translate }}</span>
+          </div>
+        </ng-template>
+
+        <ng-template #item let-item>
+          {{ item.header | translate }}
+        </ng-template>
+      </p-multi-select>
+
+      <p-button
+        icon="fa fa-download text-primary text-xl"
+        outlined
+        styleClass="grey-border-color"
+        [ariaLabel]="'common.buttons.download' | translate"
+        (onClick)="downloadMenu.toggle($event)"
+      />
+
+      @if (reportsLink()) {
+        <a
+          pButton
+          [href]="reportsLink()"
+          icon="fas fa-chart-pie text-xl"
+          class="p-button p-button-outlined font-bold grey-border-color no-underline"
+          target="_blank"
+          [attr.aria-label]="'common.buttons.reportsLink' | translate"
+        ></a>
+      }
+    </div>
+  </div>
+</div>
+
+<div class="relative">
+  <p-table
+    class="institution-admin-table"
+    [columns]="selectedColumnsComputed()"
+    [value]="isLoading() ? skeletonData : tableData()"
+    [scrollable]="true"
+    [sortMode]="'single'"
+    [lazy]="true"
+    [sortField]="sortField()"
+    [sortOrder]="sortOrder()"
+    [customSort]="true"
+    [resetPageOnSort]="false"
+    (onSort)="onSort($event)"
+  >
+    <ng-template #header let-columns>
+      <tr>
+        @for (col of columns; track col.field) {
+          <th [pSortableColumn]="col.sortable ? (col.sortField ?? col.field) : null">
+            <div class="flex align-items-center gap-2">
+              <span>{{ col.header | translate }}</span>
+              @if (col.sortable) {
+                <p-sortIcon [field]="col.sortField ?? col.field"></p-sortIcon>
+              }
+            </div>
+          </th>
+        }
+      </tr>
+    </ng-template>
+
+    <ng-template #body let-rowData let-columns="columns">
+      @if (isLoading()) {
+        <tr class="loading-row">
+          <td colspan="15">
+            <p-skeleton width="100%" height="3.3rem" borderRadius="0" />
+          </td>
+        </tr>
+      } @else {
+        <tr>
+          @for (col of columns; track col.field) {
+            <td class="max-w-20rem hover-group">
+              @let currentColumnField = rowData[col.field];
+
+              <div class="flex align-items-center gap-1">
+                @if (col.isLink && isLink(currentColumnField)) {
+                  <a [href]="currentColumnField.url" [target]="col.linkTarget ?? '_self'" class="font-bold">
+                    @if (col.dateFormat) {
+                      {{ getCellValue(currentColumnField) | date: col.dateFormat }}
+                    } @else {
+                      {{ getCellValue(currentColumnField) }}
+                    }
+                  </a>
+                } @else if (col.isLink && col.isArray && isLinkArray(currentColumnField)) {
+                  <div class="flex gap-1 align-items-center flex-wrap">
+                    @if (currentColumnField.length === 0 && col.field === 'creator') {
+                      <div class="flex-1 flex align-items-center gap-1">
+                        <osf-info-icon
+                          [tooltipText]="'adminInstitutions.institutionUsers.notBibliographicOrAffiliatedUserText'"
+                          tooltipPosition="bottom"
+                        ></osf-info-icon>
+                      </div>
+                    } @else {
+                      @for (link of currentColumnField; track $index) {
+                        <div class="flex-1 flex align-items-center gap-1">
+                          <a
+                            [href]="link.url"
+                            [target]="col.linkTarget ?? '_self'"
+                            class="font-bold"
+                            [ngClass]="{ 'max-w-link-with-icon': col.showIcon, 'max-w-full-link': !col.showIcon }"
+                          >
+                            <span class="overflow-hidden text-overflow-ellipsis whitespace-nowrap block">
+                              {{ link.text + ($last ? '' : ',') }}</span
+                            >
+                          </a>
+                          @if (col.showIcon) {
+                            <p-button
+                              [pTooltip]="col.iconTooltip | translate"
+                              class="icon-button"
+                              [icon]="col.iconClass"
+                              variant="text"
+                              severity="info"
+                              [ariaLabel]="'common.accessibility.tooltipBtn' | translate"
+                              (onClick)="onIconClick(rowData, col, $index)"
+                            />
+                          }
+                        </div>
+                      }
+                    }
+                  </div>
+                } @else {
+                  @if (col.dateFormat && currentColumnField) {
+                    <p>
+                      {{ getCellValue(currentColumnField) | date: col.dateFormat }}
+                    </p>
+                  } @else if (!col.dateFormat && currentColumnField) {
+                    <p class="overflow-hidden text-overflow-ellipsis">
+                      {{ getCellValue(currentColumnField) }}
+                    </p>
+                  } @else {
+                    <p class="overflow-hidden text-overflow-ellipsis">{{ currentColumnField ?? '-' }}</p>
+                  }
+                }
+
+                @if (col.showIcon && !col.isArray) {
+                  <p-button
+                    [pTooltip]="col.iconTooltip | translate"
+                    class="icon-button"
+                    [icon]="col.iconClass"
+                    variant="text"
+                    severity="info"
+                    [ariaLabel]="'common.accessibility.tooltipBtn' | translate"
+                    (onClick)="onIconClick(rowData, col, $index)"
+                  />
+                }
+              </div>
+            </td>
+          }
+        </tr>
+      }
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="15" class="text-center">{{ 'adminInstitutions.institutionUsers.noData' | translate }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <ng-content select="[slot=tableFilters]"></ng-content>
+</div>
+
+@if (isNextPreviousPagination()) {
+  <div class="flex column-gap-2 w-full justify-content-center pt-2">
+    @if (firstLink() && prevLink()) {
+      <p-button
+        icon="fas fa-angles-left"
+        severity="contrast"
+        text
+        [ariaLabel]="'common.accessibility.goToFirstPage' | translate"
+        (onClick)="switchPage(firstLink())"
+      />
+    }
+
+    <p-button
+      icon="fas fa-angle-left"
+      severity="contrast"
+      text
+      [disabled]="!prevLink()"
+      [ariaLabel]="'common.accessibility.goToPreviousPage' | translate"
+      (onClick)="switchPage(prevLink())"
+    />
+
+    <p-button
+      icon="fas fa-angle-right"
+      severity="contrast"
+      text
+      [disabled]="!nextLink()"
+      [ariaLabel]="'common.accessibility.goToNextPage' | translate"
+      (onClick)="switchPage(nextLink())"
+    />
+  </div>
+} @else {
+  @if (enablePagination() && totalCount() > pageSize()) {
+    <div class="p-3">
+      <osf-custom-paginator
+        [first]="first()"
+        [totalCount]="totalCount()"
+        [rows]="pageSize()"
+        (pageChanged)="onPageChange($event)"
+      />
+    </div>
+  }
+}

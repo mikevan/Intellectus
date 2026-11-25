@@ -1,0 +1,331 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+import { Dialog } from 'primeng/dialog';
+import { Message } from 'primeng/message';
+import { RadioButton } from 'primeng/radiobutton';
+import { Textarea } from 'primeng/textarea';
+import { Tooltip } from 'primeng/tooltip';
+
+import { finalize } from 'rxjs';
+
+import { TitleCasePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { ReviewAction } from '@osf/features/moderation/models';
+import { decisionExplanation, decisionSettings, formInputLimits } from '@osf/features/preprints/constants';
+import { ProviderReviewsWorkflow, ReviewsState } from '@osf/features/preprints/enums';
+import { PreprintProviderDetails, PreprintRequest } from '@osf/features/preprints/models';
+import {
+  PreprintSelectors,
+  SubmitRequestsDecision,
+  SubmitReviewsDecision,
+} from '@osf/features/preprints/store/preprint';
+import { InputLimits } from '@osf/shared/constants/input-limits.const';
+import { StringOrNull } from '@osf/shared/helpers/types.helper';
+
+@Component({
+  selector: 'osf-preprint-make-decision',
+  imports: [Button, Dialog, Message, RadioButton, Textarea, Tooltip, FormsModule, TranslatePipe, TitleCasePipe],
+  templateUrl: './preprint-make-decision.component.html',
+  styleUrl: './preprint-make-decision.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class PreprintMakeDecisionComponent {
+  private readonly translateService = inject(TranslateService);
+  private readonly router = inject(Router);
+
+  private readonly actions = createDispatchMap({
+    submitReviewsDecision: SubmitReviewsDecision,
+    submitRequestsDecision: SubmitRequestsDecision,
+  });
+
+  readonly provider = input.required<PreprintProviderDetails>();
+  readonly latestAction = input.required<ReviewAction | null>();
+  readonly latestWithdrawalRequest = input.required<PreprintRequest | null>();
+  readonly isPendingWithdrawal = input.required<boolean>();
+
+  readonly preprint = select(PreprintSelectors.getPreprint);
+
+  dialogVisible = false;
+  didValidate = signal<boolean>(false);
+  decision = signal<ReviewsState>(ReviewsState.Accepted);
+  initialReviewerComment = signal<StringOrNull>(null);
+  reviewerComment = signal<StringOrNull>(null);
+  requestDecisionJustification = signal<StringOrNull>(null);
+  saving = signal<boolean>(false);
+
+  readonly decisionCommentLimit = InputLimits.decisionComment.maxLength;
+  readonly ReviewsState = ReviewsState;
+
+  labelDecisionButton = computed(() => {
+    const preprint = this.preprint();
+    if (preprint?.reviewsState === ReviewsState.Withdrawn) {
+      return 'preprints.details.decision.withdrawalReason';
+    } else if (this.isPendingWithdrawal()) {
+      return 'preprints.details.decision.makeDecision';
+    } else {
+      return preprint?.reviewsState === ReviewsState.Pending
+        ? 'preprints.details.decision.makeDecision'
+        : 'preprints.details.decision.modifyDecision';
+    }
+  });
+
+  makeDecisionButtonDisabled = computed(() => {
+    const reason = this.latestAction()?.comment;
+    const state = this.preprint()?.reviewsState;
+    return state === ReviewsState.Withdrawn && !reason;
+  });
+
+  labelDecisionDialogHeader = computed(() => {
+    const preprint = this.preprint();
+
+    if (preprint?.reviewsState === ReviewsState.Withdrawn) {
+      return 'preprints.details.decision.header.withdrawalReason';
+    } else if (this.isPendingWithdrawal()) {
+      return 'preprints.details.decision.header.submitDecision';
+    } else {
+      return preprint?.reviewsState === ReviewsState.Pending
+        ? 'preprints.details.decision.header.submitDecision'
+        : 'preprints.details.decision.header.modifyDecision';
+    }
+  });
+
+  labelSubmitButton = computed(() => {
+    const preprint = this.preprint();
+    const reviewsState = preprint?.reviewsState;
+
+    if (this.isPendingWithdrawal() || reviewsState === ReviewsState.Pending) {
+      return 'preprints.details.decision.submitButton.submitDecision';
+    }
+
+    if (this.commentEdited() && !this.decisionChanged()) {
+      return 'preprints.details.decision.submitButton.updateComment';
+    }
+
+    return 'preprints.details.decision.submitButton.modifyDecision';
+  });
+
+  submitButtonDisabled = computed(
+    () => (!this.decisionChanged() && !this.commentEdited()) || this.commentExceedsLimit()
+  );
+
+  acceptOptionExplanation = computed(() => {
+    const reviewsWorkflow = this.provider().reviewsWorkflow;
+
+    if (reviewsWorkflow === ProviderReviewsWorkflow.PostModeration) {
+      return 'preprints.details.decision.accept.post';
+    }
+
+    return 'preprints.details.decision.accept.pre';
+  });
+
+  rejectOptionLabel = computed(() =>
+    this.preprint()?.isPublished
+      ? 'preprints.details.decision.withdrawn.label'
+      : 'preprints.details.decision.reject.label'
+  );
+
+  labelRequestDecisionJustification = computed(() => {
+    if (this.decision() === ReviewsState.Rejected) {
+      return 'preprints.details.decision.denialJustification';
+    }
+
+    return 'preprints.details.decision.withdrawalJustification';
+  });
+
+  rejectOptionExplanation = computed(() => {
+    const provider = this.provider();
+    const reviewsWorkflow = provider.reviewsWorkflow;
+    const isPreModeration = reviewsWorkflow === ProviderReviewsWorkflow.PreModeration;
+
+    if (isPreModeration && this.preprint()?.reviewsState === ReviewsState.Accepted) {
+      return 'preprints.details.decision.approve.explanation';
+    }
+
+    if (isPreModeration) {
+      return decisionExplanation.reject[reviewsWorkflow];
+    }
+
+    return decisionExplanation.withdrawn[ProviderReviewsWorkflow.PostModeration];
+  });
+
+  rejectRadioButtonValue = computed(() =>
+    this.preprint()?.isPublished ? ReviewsState.Withdrawn : ReviewsState.Rejected
+  );
+
+  settingsComments = computed(() => {
+    const commentType = this.provider().reviewsCommentsPrivate ? 'private' : 'public';
+    return decisionSettings.comments[commentType];
+  });
+
+  settingsNames = computed(() => {
+    const commentType = this.provider().reviewsCommentsAnonymous ? 'anonymous' : 'named';
+    return decisionSettings.names[commentType];
+  });
+
+  settingsModeration = computed(
+    () => decisionSettings.moderation[this.provider().reviewsWorkflow || ProviderReviewsWorkflow.PreModeration]
+  );
+
+  commentEdited = computed(() => this.reviewerComment()?.trim() !== this.initialReviewerComment()?.trim());
+
+  commentExceedsLimit = computed(() => {
+    const comment = this.reviewerComment();
+    if (!comment) return false;
+
+    return comment.length > this.decisionCommentLimit;
+  });
+
+  requestDecisionJustificationErrorMessage = computed(() => {
+    const justification = this.requestDecisionJustification();
+    const minLength = formInputLimits.requestDecisionJustification.minLength;
+    const trimmedJustification = justification?.trim() ?? '';
+
+    if (!trimmedJustification) {
+      return this.translateService.instant('preprints.details.decision.justificationRequiredError');
+    }
+
+    if (trimmedJustification.length < minLength) {
+      return this.translateService.instant('preprints.details.decision.justificationLengthError', { minLength });
+    }
+
+    return null;
+  });
+
+  decisionChanged = computed(() => this.preprint()?.reviewsState !== this.decision());
+
+  constructor() {
+    effect(() => {
+      const preprint = this.preprint();
+
+      if (!preprint) {
+        return;
+      }
+
+      const latestAction = this.latestAction();
+      if (preprint.reviewsState === ReviewsState.Pending) {
+        this.decision.set(ReviewsState.Accepted);
+        this.initialReviewerComment.set(null);
+        this.reviewerComment.set(null);
+      } else {
+        this.decision.set(preprint.reviewsState);
+        this.initialReviewerComment.set(latestAction?.comment ?? null);
+        this.reviewerComment.set(latestAction?.comment ?? null);
+      }
+    });
+
+    effect(() => {
+      const withdrawalRequest = this.latestWithdrawalRequest();
+      if (!withdrawalRequest) return;
+
+      this.requestDecisionJustification.set(withdrawalRequest.comment);
+    });
+  }
+
+  submit() {
+    const preprint = this.preprint();
+    if (!preprint) return;
+
+    let trigger;
+    if (preprint.reviewsState !== ReviewsState.Pending && this.commentEdited() && !this.decisionChanged()) {
+      // If the submission is not pending,
+      // the decision has not changed and the comment is edited.
+      // the trigger would be 'edit_comment'
+      trigger = 'edit_comment';
+    } else {
+      let actionType;
+      if (preprint.isPublished && this.isPendingWithdrawal()) {
+        // if the submission is published and is pending withdrawal.
+        // actionType would be 'reject'
+        // meaning moderators could accept/reject the withdrawl request
+        actionType = 'reject';
+      } else if (preprint.isPublished && !this.isPendingWithdrawal()) {
+        // if the submission is published and is not pending withdrawal
+        // actionType would be 'withdraw'
+        // meaning moderators could approve/directly withdraw the submission
+        actionType = 'withdraw';
+      } else {
+        // Otherwise
+        // actionType would be 'reject'
+        // meaning the moderator could either accept or reject the submission
+        actionType = 'reject';
+      }
+      // If the decision is to accept the submission or the withdrawal request,
+      // the trigger is 'accept'
+      // If not, then the trigger is whatever 'actionType' set above.
+      trigger = this.decision() === ReviewsState.Accepted ? 'accept' : actionType;
+    }
+
+    let comment: StringOrNull;
+
+    if (this.isPendingWithdrawal()) {
+      if (trigger === 'reject') {
+        this.didValidate.set(true);
+        if (this.requestDecisionJustificationErrorMessage() !== null) {
+          return;
+        }
+      }
+
+      comment = this.requestDecisionJustification()?.trim() || null;
+    } else {
+      comment = this.reviewerComment()?.trim() || null;
+    }
+
+    this.saving.set(true);
+
+    if (this.isPendingWithdrawal()) {
+      const latestWithdrawalRequest = this.latestWithdrawalRequest();
+
+      if (!latestWithdrawalRequest) {
+        this.saving.set(false);
+        return;
+      }
+
+      this.actions
+        .submitRequestsDecision(latestWithdrawalRequest.id, trigger, comment)
+        .pipe(finalize(() => this.saving.set(false)))
+        .subscribe({
+          next: () => {
+            this.router.navigate(['preprints', this.provider().id, 'moderation', 'withdrawals']);
+          },
+        });
+    } else {
+      this.actions
+        .submitReviewsDecision(trigger, comment)
+        .pipe(finalize(() => this.saving.set(false)))
+        .subscribe({
+          next: () => {
+            this.router.navigate(['preprints', this.provider().id, 'moderation', 'submissions']);
+          },
+        });
+    }
+  }
+
+  requestDecisionToggled() {
+    if (!this.isPendingWithdrawal()) {
+      return;
+    }
+
+    if (this.decision() === ReviewsState.Accepted) {
+      this.requestDecisionJustification.set(this.latestWithdrawalRequest()?.comment || null);
+    } else if (this.decision() === ReviewsState.Rejected) {
+      this.requestDecisionJustification.set(null);
+    }
+  }
+
+  cancel() {
+    this.dialogVisible = false;
+    const preprint = this.preprint();
+
+    if (preprint) {
+      this.decision.set(preprint.reviewsState);
+    }
+
+    this.reviewerComment.set(this.initialReviewerComment());
+  }
+}

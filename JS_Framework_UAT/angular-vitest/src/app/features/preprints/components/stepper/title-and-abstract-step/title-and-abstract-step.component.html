@@ -1,0 +1,78 @@
+<h2>{{ 'preprints.preprintStepper.titleAndAbstract.title' | translate }}</h2>
+
+<p-card class="cardmt-4">
+  <div class="flex flex-column gap-3">
+    <div class="flex flex-column">
+      <osf-text-input
+        [control]="titleAndAbstractForm.controls['title']"
+        [label]="'common.labels.title' | translate"
+        [maxLength]="inputLimits.title.maxLength"
+      />
+    </div>
+
+    <div class="flex flex-column">
+      <label for="abstract">{{ 'preprints.preprintStepper.titleAndAbstract.abstractLabel' | translate }}</label>
+      <textarea
+        data-test-abstract-input
+        pTextarea
+        id="abstract"
+        [rows]="4"
+        [formControl]="titleAndAbstractForm.controls['description']"
+      ></textarea>
+      @let abstractControl = titleAndAbstractForm.controls['description'];
+      @if (abstractControl.errors?.['required'] && (abstractControl.touched || abstractControl.dirty)) {
+        <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+          {{ INPUT_VALIDATION_MESSAGES.required | translate }}
+        </p-message>
+      }
+      @if (abstractControl.errors?.['minlength'] && (abstractControl.touched || abstractControl.dirty)) {
+        <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+          {{
+            'preprints.preprintStepper.titleAndAbstract.abstractMinLengthError'
+              | translate: { length: inputLimits.abstract.minLength }
+          }}
+        </p-message>
+      }
+      @if (abstractControl.errors?.['maxlength'] && (abstractControl.touched || abstractControl.dirty)) {
+        <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+          {{
+            'preprints.preprintStepper.titleAndAbstract.abstractMaxLengthError'
+              | translate: { length: inputLimits.abstract.maxLength }
+          }}
+        </p-message>
+      }
+    </div>
+  </div>
+</p-card>
+
+<section class="mt-6 flex flex-row justify-content-end align-items-center gap-2">
+  <p-button
+    class="w-6 md:w-6rem"
+    styleClass="w-full"
+    [label]="'common.buttons.back' | translate"
+    severity="info"
+    [routerLink]="['/preprints', providerId(), 'discover']"
+  />
+  @if (showDeleteButton()) {
+    <p-button
+      class="w-6 md:w-6rem"
+      styleClass="w-full"
+      [label]="'common.buttons.delete' | translate"
+      severity="danger"
+      (onClick)="deletePreprint()"
+    />
+  }
+  <p-button
+    data-test-next-button
+    class="w-6 md:w-9rem"
+    styleClass="w-full"
+    [label]="'common.buttons.next' | translate"
+    [pTooltip]="
+      titleAndAbstractForm.invalid ? ('preprints.preprintStepper.common.validation.fillRequiredFields' | translate) : ''
+    "
+    tooltipPosition="top"
+    [disabled]="titleAndAbstractForm.invalid"
+    [loading]="isUpdatingPreprint()"
+    (onClick)="nextButtonClicked()"
+  />
+</section>

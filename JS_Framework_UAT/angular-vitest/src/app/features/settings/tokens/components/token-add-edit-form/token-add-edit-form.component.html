@@ -1,0 +1,63 @@
+<form [formGroup]="tokenForm" (ngSubmit)="handleSubmitForm()" class="flex flex-column gap-4">
+  <div class="flex flex-column">
+    <osf-text-input
+      [control]="tokenForm.controls[TokenFormControls.TokenName]"
+      [label]="'settings.tokens.form.tokenName'"
+      [maxLength]="inputLimits.maxLength"
+      [minLength]="inputLimits.minLength"
+    >
+    </osf-text-input>
+  </div>
+
+  <div class="flex flex-column gap-4">
+    <div class="flex flex-column gap-2">
+      <p class="font-bold">
+        {{ 'settings.tokens.form.scopes.title' | translate }}
+      </p>
+
+      <p>
+        {{ 'settings.tokens.form.scopes.description' | translate }}
+      </p>
+    </div>
+
+    <div class="flex flex-column gap-4">
+      @for (scope of tokenScopes(); track scope.id) {
+        <div class="flex align-items-start gap-2">
+          <p-checkbox [value]="scope.id" [formControlName]="TokenFormControls.Scopes" [inputId]="scope.id" />
+
+          <div class="flex flex-column gap-1">
+            <label [for]="scope.id" class="font-bold">{{ scope.id }}</label>
+            <span>{{ scope.description }}</span>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="flex justify-content-end gap-2">
+    @if (isEditMode()) {
+      <div class="w-6 md:w-auto">
+        <p-button
+          class="btn-full-width"
+          [label]="'common.buttons.save' | translate"
+          type="submit"
+          [disabled]="!tokenForm.valid"
+        />
+      </div>
+    } @else {
+      <p-button
+        class="w-12rem btn-full-width"
+        [label]="'common.buttons.cancel' | translate"
+        severity="info"
+        (onClick)="dialogRef.close()"
+      />
+      <p-button
+        class="w-12rem btn-full-width"
+        [label]="'settings.tokens.buttons.create' | translate"
+        type="submit"
+        [disabled]="!tokenForm.valid || isLoading()"
+        [loading]="isLoading()"
+      />
+    }
+  </div>
+</form>

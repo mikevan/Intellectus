@@ -1,0 +1,8 @@
+Checkpoint: 0007-quick-20260814-192759
+Name: quick-20260814-192759
+Created: 2026-08-15T00:27:59Z
+Mode: delta
+Base: 0006-quick-20260814-190250
+
+D keepsafe-extension/media/icon_small.svg
+

@@ -1,0 +1,10 @@
+.p-card {
+  border: 1px solid var(--grey-2);
+  --p-card-shadow: none;
+  --p-card-color: var(--dark-blue-1);
+  --p-card-border-radius: 0.5rem;
+}
+
+.no-padding-card {
+  --p-card-body-padding: 0;
+}

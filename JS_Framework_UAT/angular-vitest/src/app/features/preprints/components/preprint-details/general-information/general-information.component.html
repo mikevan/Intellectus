@@ -1,0 +1,64 @@
+@let preprintValue = preprint();
+@let preprintProviderValue = preprintProvider();
+
+<p-card>
+  @if (preprintValue) {
+    <div class="flex flex-column gap-4">
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.review.sections.metadata.authors' | translate }}</h3>
+
+        <div class="flex flex-column gap-1 line-height-2 md:flex-row">
+          <osf-contributors-list
+            [contributors]="bibliographicContributors()"
+            [isLoading]="areContributorsLoading()"
+            [hasLoadMore]="hasMoreBibliographicContributors()"
+            (loadMoreContributors)="handleLoadMoreContributors()"
+          ></osf-contributors-list>
+        </div>
+      </section>
+
+      <section class="flex flex-column gap-2">
+        <h3>{{ 'preprints.preprintStepper.common.labels.abstract' | translate }}</h3>
+        <osf-truncated-text [expanded]="!isBrowser" [maxVisibleLines]="2" [text]="preprintValue.description" />
+      </section>
+
+      @if (affiliatedInstitutions().length) {
+        <section class="flex flex-column gap-2">
+          <h3>{{ 'common.labels.affiliatedInstitutions' | translate }}</h3>
+
+          <osf-affiliated-institutions-view [institutions]="affiliatedInstitutions()" />
+        </section>
+      }
+
+      @if (preprintProviderValue?.assertionsEnabled) {
+        <osf-preprint-author-assertions [preprint]="preprintValue" />
+      }
+
+      @if (preprintValue.nodeId) {
+        <section class="flex flex-column gap-2">
+          <h3>{{ 'preprints.details.supplementalMaterials' | translate }}</h3>
+          <a class="font-bold flex gap-1" [href]="nodeLink()">
+            {{ nodeLink() }}
+            <osf-icon iconClass="fa fa-external-link-alt" />
+          </a>
+        </section>
+      }
+
+      <osf-preprint-doi-section
+        [preprintProvider]="preprintProviderValue"
+        (preprintVersionSelected)="preprintVersionSelected.emit($event)"
+      />
+    </div>
+  }
+
+  @if (isPreprintLoading()) {
+    <div class="flex flex-column gap-4">
+      @for (i of skeletonData; track $index) {
+        <section class="flex flex-column gap-2">
+          <p-skeleton height="1.3rem" />
+          <p-skeleton height="5rem" />
+        </section>
+      }
+    </div>
+  }
+</p-card>

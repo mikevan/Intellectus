@@ -1,0 +1,32 @@
+<div class="flex flex-column gap-2">
+  @if (isDataLoading()) {
+    <p-skeleton width="8rem" height="19px" />
+    <p-skeleton width="10rem" height="19px" />
+    <p-skeleton width="9rem" height="19px" />
+  } @else {
+    @let userCounts = userRelatedCounts();
+    @if (userCounts?.employment) {
+      <p data-test-search-result-card-user-employment>
+        {{ 'resourceCard.labels.employment' | translate }} {{ userCounts!.employment }}
+      </p>
+    }
+
+    @if (userCounts?.education) {
+      <p data-test-search-result-card-user-education>
+        {{ 'resourceCard.labels.education' | translate }} {{ userCounts!.education }}
+      </p>
+    }
+
+    <p data-test-search-result-card-user-public-projects>
+      {{ 'resourceCard.labels.publicProjects' | translate }} {{ userCounts?.projects }}
+    </p>
+
+    <p data-test-search-result-card-user-public-registrations>
+      {{ 'resourceCard.labels.publicRegistrations' | translate }} {{ userCounts?.registrations }}
+    </p>
+
+    <p data-test-search-result-card-user-public-preprints>
+      {{ 'resourceCard.labels.publicPreprints' | translate }} {{ userCounts?.preprints }}
+    </p>
+  }
+</div>

@@ -1,0 +1,2 @@
+{"test":"src/names.test.js::cleanName trims","files":{"C:/workspace/HelloWorlds/react-jest/src/names.js":[7,8,11,17]},"outcomes":{"C:/workspace/HelloWorlds/react-jest/src/names.js":{"0":[1],"1":[1],"2":[0,1]}},"entered":{"C:/workspace/HelloWorlds/react-jest/src/names.js":[0]}}
+{"test":"src/names.test.js::initials two parts","files":{"C:/workspace/HelloWorlds/react-jest/src/names.js":[22,23,26,29]},"outcomes":{"C:/workspace/HelloWorlds/react-jest/src/names.js":{"3":[1],"4":[1]}},"entered":{"C:/workspace/HelloWorlds/react-jest/src/names.js":[2,3,4]}}

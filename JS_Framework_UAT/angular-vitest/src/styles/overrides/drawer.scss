@@ -1,0 +1,12 @@
+.p-drawer {
+  --p-drawer-background: var(--dark-blue-1);
+  --p-drawer-header-padding: 0;
+  --p-drawer-content-padding: 0;
+  border: none;
+  padding-left: 1.5rem;
+  width: 100%;
+}
+
+.p-drawer-header {
+  height: 5.75rem;
+}

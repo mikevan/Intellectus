@@ -1,0 +1,50 @@
+<section class="registries-hero-container py-5 px-3 flex flex-column gap-4 md:py-6 md:px-4">
+  <div class="flex flex-column align-items-start justify-content-between gap-4 md:flex-row">
+    <div class="flex align-items-center justify-content-center gap-2 w-full">
+      @if (isProviderLoading()) {
+        <p-skeleton width="3rem" height="1.5rem" />
+        <p-skeleton width="12rem" height="1.5rem" />
+      } @else {
+        <img
+          [src]="provider()!.brand?.heroLogoImageUrl"
+          height="80"
+          [alt]="'preprints.selectService.providerLogoImageAlt' | translate"
+        />
+      }
+    </div>
+
+    @if (!isProviderLoading() && provider()!.allowSubmissions) {
+      <p-button
+        [label]="'registries.addRegistration' | translate"
+        (onClick)="navigateToCreatePage()"
+        styleClass="w-max"
+      ></p-button>
+    }
+  </div>
+
+  <div class="provider-description">
+    @if (isProviderLoading()) {
+      <div class="flex flex-column gap-2">
+        <p-skeleton width="40%" height="1.5rem"></p-skeleton>
+        <p-skeleton width="70%" height="1.5rem"></p-skeleton>
+
+        <p-skeleton width="10%" height="1rem"></p-skeleton>
+      </div>
+    } @else {
+      <div class="rich-text" [innerHTML]="provider()!.descriptionHtml"></div>
+    }
+  </div>
+
+  @if (isProviderLoading()) {
+    <p-skeleton class="w-full" height="3rem" />
+  } @else {
+    <osf-search-input
+      class="w-full"
+      [showHelpIcon]="true"
+      [placeholder]="'preprints.searchPlaceholder' | translate: { preprintWord: 'Registrations' } | titlecase"
+      [control]="searchControl()"
+      (triggerSearch)="onTriggerSearch($event)"
+      (helpClicked)="openHelpDialog()"
+    />
+  }
+</section>

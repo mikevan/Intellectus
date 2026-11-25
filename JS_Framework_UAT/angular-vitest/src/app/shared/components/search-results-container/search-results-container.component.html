@@ -1,0 +1,160 @@
+<div class="flex flex-column flex-1 w-full" [class.pt-6]="showTabs()">
+  @if (showTabs()) {
+    <nav class="align-items-center flex-1 px-3 hidden md:px-5 md:flex">
+      @for (item of tabOptions(); track $index) {
+        <p-button
+          class="tab-btn border-round-top-xl"
+          [class.active]="selectedTab() === item.value"
+          link
+          styleClass="font-semibold"
+          [attr.aria-selected]="selectedTab() === item.value"
+          (onClick)="selectTab(item.value)"
+        >
+          {{ item.label | translate }}
+        </p-button>
+      }
+    </nav>
+  }
+  <div class="flex flex-column gap-3 py-4 px-3 md:px-5 xl:px-4 bg-white">
+    <div class="flex justify-content-between align-items-start column-gap-3">
+      <div class="flex flex-1 flex-column gap-4">
+        @if (showTabs()) {
+          <osf-select
+            class="text-center inline-flex md:hidden"
+            [options]="tabOptions()"
+            [fullWidth]="true"
+            [selectedValue]="selectedTab()"
+            (changeValue)="selectTab(+$event!)"
+          />
+        }
+
+        <h4 class="result-count">
+          @if (searchCount() >= 10000) {
+            10 000+ {{ 'collections.searchResults.results' | translate }}
+          } @else if (searchCount() > 0) {
+            {{ searchCount() }} {{ 'collections.searchResults.results' | translate }}
+          } @else {
+            0 {{ 'collections.searchResults.results' | translate }}
+          }
+        </h4>
+      </div>
+
+      <div class="flex align-items-center gap-1">
+        <p class="hidden md:block">{{ 'collections.filters.sortBy' | translate }}:</p>
+
+        <p-select
+          class="no-border-dropdown font-bold hidden md:inline-flex"
+          [options]="searchSortingOptions"
+          optionLabel="label"
+          optionValue="value"
+          appendTo="body"
+          [ngModel]="selectedSort()"
+          (ngModelChange)="selectSort($event)"
+        ></p-select>
+
+        @if (hasFilters()) {
+          <p-button
+            class="block md:hidden"
+            severity="secondary"
+            icon="fas fa-sliders"
+            size="large"
+            [ariaLabel]="'common.accessibility.openFilters' | translate"
+            (click)="openFilters()"
+          ></p-button>
+        }
+        <p-button
+          class="block md:hidden"
+          severity="secondary"
+          icon="fas fa-filter"
+          size="large"
+          [ariaLabel]="'common.accessibility.openSortingOptions' | translate"
+          (click)="openSorting()"
+        ></p-button>
+      </div>
+    </div>
+
+    @if (isFiltersOpen()) {
+      <div class="w-full mb-3 md:hidden">
+        <ng-container *ngTemplateOutlet="filtersComponent() || null"></ng-container>
+      </div>
+    } @else if (isSortingOpen()) {
+      <div class="flex flex-column p-5 pt-1 row-gap-3">
+        @for (option of searchSortingOptions; track option.value) {
+          <div
+            class="sort-card"
+            tabindex="0"
+            role="button"
+            [class]="{ 'card-selected': selectedSort() === option.value }"
+            (click)="selectSort(option.value)"
+            (keydown.enter)="selectSort(option.value)"
+          >
+            {{ option.label }}
+          </div>
+        }
+      </div>
+    }
+
+    <div class="flex flex-column gap-3 md:flex-row md:gap-4">
+      <div class="flex flex-column gap-3 w-4 md:gap-4 md:w-3">
+        @if (hasSelectedOptions()) {
+          <ng-content select="[slot=filter-chips]"></ng-content>
+        }
+        <div class="hidden md:block">
+          <ng-container *ngTemplateOutlet="filtersComponent() || null"></ng-container>
+        </div>
+      </div>
+
+      <div class="flex-1">
+        @if (areResourcesLoading()) {
+          <osf-loading-spinner />
+        } @else {
+          <div class="flex flex-column gap-4">
+            @if (resources().length > 0) {
+              @for (item of resources(); track item.absoluteUrl) {
+                <osf-resource-card
+                  [resource]="item"
+                  [provider]="provider()"
+                  [attr.data-test-search-result-card]="item.id || item.absoluteUrl"
+                />
+              }
+
+              <div class="flex column-gap-2 w-full justify-content-center pt-2">
+                @if (first() && prev()) {
+                  <p-button
+                    icon="fas fa-angles-left"
+                    severity="contrast"
+                    text
+                    [ariaLabel]="'common.accessibility.goToFirstPage' | translate"
+                    (click)="switchPage(first())"
+                  ></p-button>
+                }
+
+                <p-button
+                  icon="fas fa-angle-left"
+                  severity="contrast"
+                  text
+                  [ariaLabel]="'common.accessibility.goToPreviousPage' | translate"
+                  [disabled]="!prev()"
+                  (click)="switchPage(prev())"
+                >
+                </p-button>
+
+                <p-button
+                  icon="fas fa-angle-right"
+                  severity="contrast"
+                  text
+                  [ariaLabel]="'common.accessibility.goToNextPage' | translate"
+                  [disabled]="!next()"
+                  (click)="switchPage(!next() ? first() : next())"
+                >
+                </p-button>
+              </div>
+            } @else {
+              <p class="m-auto">{{ 'common.search.noResultsFound' | translate }}</p>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

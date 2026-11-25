@@ -1,0 +1,49 @@
+<form class="flex flex-column gap-4" [formGroup]="formGroup()" (ngSubmit)="handleSubmit()">
+  <osf-text-input
+    [control]="getControl('pid')"
+    [label]="'DOI'"
+    [placeholder]="'https://doi.org/'"
+    [maxLength]="inputLimits.name.maxLength"
+  >
+    @if (getControl('pid').hasError('invalidDoi')) {
+      <span>{{ 'resources.errors.doiValidation' | translate }}</span>
+    }
+  </osf-text-input>
+
+  <osf-form-select
+    [fullWidth]="true"
+    [options]="resourceOptions"
+    [appendTo]="'body'"
+    [control]="getControl('resourceType')"
+    [placeholder]="'resources.selectAResourceType'"
+  />
+
+  <div>
+    <label [for]="'coi-reason'">{{ 'common.labels.descriptionOptional' | translate }}</label>
+    <textarea
+      class="w-full"
+      pTextarea
+      id="coi-reason"
+      [rows]="3"
+      [formControl]="getControl('description')"
+      [maxlength]="inputLimits.description.maxLength"
+    ></textarea>
+  </div>
+
+  <div class="flex justify-content-between w-full gap-1">
+    @if (showCancelButton()) {
+      <p-button
+        class="btn-full-width"
+        [label]="cancelButtonLabel() | translate"
+        severity="info"
+        (onClick)="handleCancel()"
+      />
+    }
+    <p-button
+      class="btn-full-width"
+      type="submit"
+      [label]="primaryButtonLabel() | translate"
+      [disabled]="formGroup().invalid"
+    />
+  </div>
+</form>

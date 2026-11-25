@@ -1,0 +1,598 @@
+import { Store } from '@ngxs/store';
+
+import { MockComponents, MockProvider } from 'ng-mocks';
+
+import { of, throwError } from 'rxjs';
+
+import { Mock, Mocked } from 'vitest';
+
+import { HttpErrorResponse } from '@angular/common/http';
+import { PLATFORM_ID } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { HelpScoutService } from '@core/services/help-scout.service';
+import { PrerenderReadyService } from '@core/services/prerender-ready.service';
+import { ClearCurrentProvider } from '@core/store/provider';
+import { MetaTagsData } from '@osf/shared/models/meta-tags/meta-tags-data.model';
+import { CustomDialogService } from '@osf/shared/services/custom-dialog.service';
+import { DataciteService } from '@osf/shared/services/datacite/datacite.service';
+import { MetaTagsService } from '@osf/shared/services/meta-tags.service';
+import { MetaTagsBuilderService } from '@osf/shared/services/meta-tags-builder.service';
+import { ToastService } from '@osf/shared/services/toast.service';
+import { ContributorsSelectors } from '@osf/shared/stores/contributors';
+
+import { MOCK_CONTRIBUTOR } from '@testing/mocks/contributors.mock';
+import { PREPRINT_MOCK } from '@testing/mocks/preprint.mock';
+import { PREPRINT_PROVIDER_DETAILS_MOCK } from '@testing/mocks/preprint-provider-details';
+import { PREPRINT_REQUEST_MOCK } from '@testing/mocks/preprint-request.mock';
+import { REVIEW_ACTION_MOCK } from '@testing/mocks/review-action.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { CustomDialogServiceMockBuilder } from '@testing/providers/custom-dialog-provider.mock';
+import { DataciteServiceMock, DataciteServiceMockType } from '@testing/providers/datacite.service.mock';
+import { HelpScoutServiceMockFactory } from '@testing/providers/help-scout.service.mock';
+import { MetaTagsServiceMockFactory } from '@testing/providers/meta-tags.service.mock';
+import { MetaTagsBuilderServiceMockFactory } from '@testing/providers/meta-tags-builder.service.mock';
+import { PrerenderReadyServiceMockFactory } from '@testing/providers/prerender-ready.service.mock';
+import { ActivatedRouteMockBuilder } from '@testing/providers/route-provider.mock';
+import { RouterMockBuilder, RouterMockType } from '@testing/providers/router-provider.mock';
+import { mergeSignalOverrides, provideMockStore, SignalOverride } from '@testing/providers/store-provider.mock';
+import { ToastServiceMock, ToastServiceMockType } from '@testing/providers/toast-provider.mock';
+
+import { AdditionalInfoComponent } from '../../components/preprint-details/additional-info/additional-info.component';
+import { GeneralInformationComponent } from '../../components/preprint-details/general-information/general-information.component';
+import { ModerationStatusBannerComponent } from '../../components/preprint-details/moderation-status-banner/moderation-status-banner.component';
+import { PreprintFileSectionComponent } from '../../components/preprint-details/preprint-file-section/preprint-file-section.component';
+import { PreprintMakeDecisionComponent } from '../../components/preprint-details/preprint-make-decision/preprint-make-decision.component';
+import { PreprintMetricsInfoComponent } from '../../components/preprint-details/preprint-metrics-info/preprint-metrics-info.component';
+import { PreprintTombstoneComponent } from '../../components/preprint-details/preprint-tombstone/preprint-tombstone.component';
+import { PreprintWarningBannerComponent } from '../../components/preprint-details/preprint-warning-banner/preprint-warning-banner.component';
+import { ShareAndDownloadComponent } from '../../components/preprint-details/share-and-download/share-and-download.component';
+import { StatusBannerComponent } from '../../components/preprint-details/status-banner/status-banner.component';
+import { ReviewsState } from '../../enums';
+import {
+  FetchPreprintDetails,
+  FetchPreprintRequestActions,
+  FetchPreprintRequests,
+  FetchPreprintReviewActions,
+  PreprintSelectors,
+  ResetPreprintState,
+} from '../../store/preprint';
+import { GetPreprintProviderById, PreprintProvidersSelectors } from '../../store/preprint-providers';
+import { CreateNewVersion } from '../../store/preprint-stepper';
+
+import { PreprintDetailsComponent } from './preprint-details.component';
+
+describe('PreprintDetailsComponent', () => {
+  let component: PreprintDetailsComponent;
+  let fixture: ComponentFixture<PreprintDetailsComponent>;
+  let store: Store;
+  let routerMock: RouterMockType;
+  let helpScoutServiceMock: Mocked<HelpScoutService>;
+  let prerenderReadyServiceMock: Mocked<PrerenderReadyService>;
+  let dataciteServiceMock: DataciteServiceMockType;
+  let metaTagsServiceMock: ReturnType<typeof MetaTagsServiceMockFactory>;
+  let metaTagsBuilderServiceMock: ReturnType<typeof MetaTagsBuilderServiceMockFactory>;
+  let customDialogServiceMock: ReturnType<CustomDialogServiceMockBuilder['build']>;
+  let toastService: ToastServiceMockType;
+
+  const mockProvider = PREPRINT_PROVIDER_DETAILS_MOCK;
+  const mockPreprint = PREPRINT_MOCK;
+  const mockReviewActions = [REVIEW_ACTION_MOCK];
+  const mockRequests = [PREPRINT_REQUEST_MOCK];
+  const mockContributors = [MOCK_CONTRIBUTOR];
+
+  const defaultSignals: SignalOverride[] = [
+    { selector: PreprintProvidersSelectors.getPreprintProviderDetails('osf'), value: mockProvider },
+    { selector: PreprintProvidersSelectors.isPreprintProviderDetailsLoading, value: false },
+    { selector: PreprintSelectors.getPreprint, value: mockPreprint },
+    { selector: PreprintSelectors.isPreprintLoading, value: false },
+    { selector: ContributorsSelectors.getBibliographicContributors, value: mockContributors },
+    { selector: ContributorsSelectors.isBibliographicContributorsLoading, value: false },
+    { selector: PreprintSelectors.getPreprintReviewActions, value: mockReviewActions },
+    { selector: PreprintSelectors.arePreprintReviewActionsLoading, value: false },
+    { selector: PreprintSelectors.getPreprintRequests, value: mockRequests },
+    { selector: PreprintSelectors.arePreprintRequestsLoading, value: false },
+    { selector: PreprintSelectors.getPreprintRequestActions, value: mockReviewActions },
+    { selector: PreprintSelectors.arePreprintRequestActionsLoading, value: false },
+    { selector: PreprintSelectors.hasAdminAccess, value: false },
+    { selector: PreprintSelectors.hasWriteAccess, value: true },
+    { selector: PreprintSelectors.getPreprintMetrics, value: null },
+    { selector: PreprintSelectors.arePreprintMetricsLoading, value: false },
+  ];
+
+  function setup(overrides?: {
+    selectorOverrides?: SignalOverride[];
+    routeParams?: { providerId: string; id: string };
+    queryParams?: Record<string, unknown>;
+    routerUrl?: string;
+    dialogReturnsCloseValue?: boolean;
+  }) {
+    const signals = mergeSignalOverrides(defaultSignals, overrides?.selectorOverrides);
+    const routeParams = overrides?.routeParams ?? { providerId: 'osf', id: 'preprint-1' };
+    const queryParams = overrides?.queryParams ?? { mode: 'moderator' };
+
+    routerMock = RouterMockBuilder.create()
+      .withUrl(overrides?.routerUrl ?? '/preprints/osf/preprint-1')
+      .withNavigate(vi.fn().mockResolvedValue(true))
+      .withNavigateByUrl(vi.fn().mockResolvedValue(true))
+      .build();
+    const activatedRouteMock = ActivatedRouteMockBuilder.create()
+      .withParams(routeParams)
+      .withQueryParams(queryParams)
+      .build();
+    helpScoutServiceMock = HelpScoutServiceMockFactory();
+    prerenderReadyServiceMock = PrerenderReadyServiceMockFactory();
+    dataciteServiceMock = DataciteServiceMock.simple();
+    metaTagsServiceMock = MetaTagsServiceMockFactory();
+    metaTagsBuilderServiceMock = MetaTagsBuilderServiceMockFactory();
+    metaTagsBuilderServiceMock.buildPreprintMetaTagsData.mockImplementation(
+      ({ providerId, preprint }) =>
+        ({
+          canonicalUrl: `http://localhost:4200/preprints/${providerId}/${preprint?.id}`,
+        }) as MetaTagsData
+    );
+    toastService = ToastServiceMock.simple();
+    customDialogServiceMock =
+      overrides?.dialogReturnsCloseValue === false
+        ? CustomDialogServiceMockBuilder.create()
+            .withOpen(
+              vi.fn().mockReturnValue({
+                onClose: of(false),
+                close: vi.fn(),
+              } as any)
+            )
+            .build()
+        : CustomDialogServiceMockBuilder.create()
+            .withOpen(
+              vi.fn().mockReturnValue({
+                onClose: of(true),
+                close: vi.fn(),
+              } as any)
+            )
+            .build();
+
+    TestBed.configureTestingModule({
+      imports: [
+        PreprintDetailsComponent,
+        ...MockComponents(
+          PreprintFileSectionComponent,
+          ShareAndDownloadComponent,
+          GeneralInformationComponent,
+          AdditionalInfoComponent,
+          StatusBannerComponent,
+          PreprintTombstoneComponent,
+          PreprintWarningBannerComponent,
+          ModerationStatusBannerComponent,
+          PreprintMakeDecisionComponent,
+          PreprintMetricsInfoComponent
+        ),
+      ],
+      providers: [
+        provideOSFCore(),
+        MockProvider(ToastService, toastService),
+        MockProvider(Router, routerMock),
+        MockProvider(ActivatedRoute, activatedRouteMock),
+        MockProvider(HelpScoutService, helpScoutServiceMock),
+        MockProvider(PrerenderReadyService, prerenderReadyServiceMock),
+        MockProvider(DataciteService, dataciteServiceMock),
+        MockProvider(MetaTagsService, metaTagsServiceMock),
+        MockProvider(MetaTagsBuilderService, metaTagsBuilderServiceMock),
+        MockProvider(CustomDialogService, customDialogServiceMock),
+        provideMockStore({ signals }),
+      ],
+    });
+
+    store = TestBed.inject(Store);
+    fixture = TestBed.createComponent(PreprintDetailsComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }
+
+  it('should dispatch initial fetch actions on creation', () => {
+    setup();
+
+    expect(store.dispatch).toHaveBeenCalledWith(new GetPreprintProviderById('osf'));
+    expect(store.dispatch).toHaveBeenCalledWith(new FetchPreprintDetails('preprint-1'));
+    expect(store.dispatch).toHaveBeenCalledWith(new FetchPreprintReviewActions());
+    expect(store.dispatch).toHaveBeenCalledWith(new FetchPreprintRequests());
+    expect(store.dispatch).toHaveBeenCalledWith(new FetchPreprintRequestActions(PREPRINT_REQUEST_MOCK.id));
+  });
+
+  it('should set HelpScout and datacite tracking on initialization', () => {
+    setup();
+
+    expect(helpScoutServiceMock.setResourceType).toHaveBeenCalledWith('preprint');
+    expect(dataciteServiceMock.logIdentifiableView).toHaveBeenCalledTimes(1);
+    expect(prerenderReadyServiceMock.setNotReady).toHaveBeenCalled();
+  });
+
+  it('should update meta tags when preprint and contributors are loaded', () => {
+    setup();
+
+    expect(metaTagsBuilderServiceMock.buildPreprintMetaTagsData).toHaveBeenCalledWith(
+      expect.objectContaining({
+        providerId: 'osf',
+        preprint: expect.objectContaining({ id: 'preprint-1' }),
+      })
+    );
+
+    expect(metaTagsServiceMock.updateMetaTags).toHaveBeenCalledWith(
+      expect.objectContaining({
+        canonicalUrl: 'http://localhost:4200/preprints/osf/preprint-1',
+      }),
+      expect.anything()
+    );
+  });
+
+  it('should not fetch moderation actions when not moderator and no permissions', () => {
+    setup({
+      queryParams: {},
+      selectorOverrides: [
+        {
+          selector: PreprintProvidersSelectors.getPreprintProviderDetails('osf'),
+          value: { ...mockProvider, permissions: [] },
+        },
+      ],
+    });
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(new FetchPreprintReviewActions());
+    expect(store.dispatch).not.toHaveBeenCalledWith(new FetchPreprintRequests());
+  });
+
+  it('should navigate to canonical version id when url id differs', () => {
+    setup({ routeParams: { providerId: 'osf', id: 'old-id' }, routerUrl: '/preprints/osf/old-id' });
+
+    expect(routerMock.navigate).toHaveBeenCalledWith(['../', 'preprint-1'], {
+      relativeTo: expect.anything(),
+      replaceUrl: true,
+      queryParamsHandling: 'preserve',
+    });
+  });
+
+  it('should navigate to edit page when edit is clicked', () => {
+    setup();
+
+    component.editPreprintClicked();
+
+    expect(routerMock.navigate).toHaveBeenCalledWith(['preprints', 'osf', 'edit', 'preprint-1']);
+  });
+
+  it('should create new version and navigate to new version route', () => {
+    setup();
+    vi.spyOn(store, 'selectSnapshot').mockReturnValue({ id: 'new-version-id' } as any);
+
+    component.createNewVersionClicked();
+
+    expect(store.dispatch).toHaveBeenCalledWith(new CreateNewVersion('preprint-1'));
+    expect(routerMock.navigate).toHaveBeenCalledWith(['preprints', 'osf', 'new-version', 'new-version-id']);
+  });
+
+  it('should return early in createNewVersionClicked when preprint id is missing', () => {
+    setup({ routeParams: { providerId: 'osf', id: '' } });
+    (store.dispatch as Mock).mockClear();
+
+    component.createNewVersionClicked();
+
+    expect(store.dispatch).not.toHaveBeenCalledWith(expect.any(CreateNewVersion));
+  });
+
+  it('should show toast error for 409 on create new version', () => {
+    setup();
+    const errorResponse = new HttpErrorResponse({
+      status: 409,
+      error: { errors: [{ detail: 'Version already exists' }] },
+    });
+
+    (store.dispatch as Mock).mockReturnValueOnce(throwError(() => errorResponse));
+
+    component.createNewVersionClicked();
+
+    expect(toastService.showError).toHaveBeenCalledWith('Version already exists');
+    expect(routerMock.navigate).not.toHaveBeenCalled();
+  });
+
+  it('should refetch preprint after successful withdraw dialog close', () => {
+    setup();
+    const fetchSpy = vi.spyOn(component, 'fetchPreprint');
+
+    component.handleWithdrawClicked();
+
+    expect(customDialogServiceMock.open).toHaveBeenCalled();
+    expect(fetchSpy).toHaveBeenCalledWith('preprint-1');
+  });
+
+  it('should navigate to pending moderation page on 403 "pending moderation" error', () => {
+    setup();
+    const preprintId = 'preprint-1';
+    const errorResponse = new HttpErrorResponse({
+      status: 403,
+      error: {
+        errors: [{ detail: 'This preprint is pending moderation and is not yet publicly available.' }],
+      },
+    });
+
+    vi.spyOn(store, 'dispatch').mockReturnValue(throwError(() => errorResponse));
+
+    component.fetchPreprint(preprintId);
+
+    expect(routerMock.navigate).toHaveBeenCalledWith(['/preprints', 'osf', preprintId, 'pending-moderation']);
+  });
+
+  it('should return early in fetchPreprint when preprint id is missing', () => {
+    setup();
+    const prerenderSpy = prerenderReadyServiceMock.setNotReady as Mock;
+    prerenderSpy.mockClear();
+    (store.dispatch as Mock).mockClear();
+
+    component.fetchPreprint('');
+
+    expect(prerenderSpy).not.toHaveBeenCalled();
+    expect(store.dispatch).not.toHaveBeenCalledWith(expect.any(FetchPreprintDetails));
+  });
+
+  it('should reset state and provider on destroy in browser', () => {
+    setup();
+    (store.dispatch as Mock).mockClear();
+
+    component.ngOnDestroy();
+
+    expect(store.dispatch).toHaveBeenCalledWith(new ResetPreprintState());
+    expect(store.dispatch).toHaveBeenCalledWith(new ClearCurrentProvider());
+    expect(helpScoutServiceMock.unsetResourceType).toHaveBeenCalled();
+  });
+
+  it('should expose expected computed values for default mocks', () => {
+    setup();
+
+    expect(component.latestAction()).toBe(mockReviewActions[0]);
+    expect(component.latestWithdrawalRequest()).toBe(mockRequests[0]);
+    expect(component.latestRequestAction()).toBe(mockReviewActions[0]);
+    expect(component.isPendingWithdrawal()).toBe(true);
+    expect(component.isWithdrawalRejected()).toBe(false);
+    expect(component.moderationMode()).toBe(true);
+    expect(component.isOsfPreprint()).toBe(true);
+  });
+
+  it('should mark preprint withdrawable for pending and accepted states', () => {
+    setup();
+    vi.spyOn(component, 'preprint').mockReturnValue({ ...mockPreprint, reviewsState: ReviewsState.Pending } as any);
+    expect(component['preprintWithdrawableState']()).toBe(true);
+
+    vi.spyOn(component, 'preprint').mockReturnValue({ ...mockPreprint, reviewsState: ReviewsState.Accepted } as any);
+    expect(component['preprintWithdrawableState']()).toBe(true);
+  });
+
+  it('should hide edit button when preprint is withdrawn', () => {
+    setup({
+      selectorOverrides: [
+        { selector: PreprintSelectors.getPreprint, value: { ...mockPreprint, dateWithdrawn: '2024-01-01' } },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(false);
+  });
+
+  it('should hide edit button when user does not have write access', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.hasWriteAccess, value: false }],
+    });
+
+    expect(component.editButtonVisible()).toBe(false);
+  });
+
+  it('should show edit button for initial preprint', () => {
+    setup({
+      selectorOverrides: [
+        {
+          selector: PreprintSelectors.getPreprint,
+          value: { ...mockPreprint, isLatestVersion: false, reviewsState: ReviewsState.Initial },
+        },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(true);
+  });
+
+  it('should show edit button for latest preprint', () => {
+    setup({
+      selectorOverrides: [
+        {
+          selector: PreprintSelectors.getPreprint,
+          value: { ...mockPreprint, isLatestVersion: true },
+        },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(true);
+  });
+
+  it('should show edit button for pending premoderation preprint', () => {
+    setup({
+      selectorOverrides: [
+        {
+          selector: PreprintSelectors.getPreprint,
+          value: { ...mockPreprint, isLatestVersion: false, reviewsState: ReviewsState.Pending },
+        },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(true);
+  });
+
+  it('should show edit-and-resubmit for rejected premoderation preprint with admin access', () => {
+    setup({
+      selectorOverrides: [
+        {
+          selector: PreprintSelectors.getPreprint,
+          value: { ...mockPreprint, isLatestVersion: false, reviewsState: ReviewsState.Rejected },
+        },
+        { selector: PreprintSelectors.hasAdminAccess, value: true },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(true);
+  });
+
+  it('should hide edit button when none of edit visibility conditions are met', () => {
+    setup({
+      selectorOverrides: [
+        {
+          selector: PreprintSelectors.getPreprint,
+          value: { ...mockPreprint, isLatestVersion: false, reviewsState: ReviewsState.Rejected },
+        },
+      ],
+    });
+
+    expect(component.editButtonVisible()).toBe(false);
+  });
+
+  it('should return false for statusBannerVisible when provider is missing', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintProvidersSelectors.getPreprintProviderDetails('osf'), value: null }],
+    });
+
+    expect(component.statusBannerVisible()).toBe(false);
+  });
+
+  it('should return false for statusBannerVisible when preprint is missing', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.getPreprint, value: null }],
+    });
+
+    expect(component.statusBannerVisible()).toBe(false);
+  });
+
+  it('should return false for statusBannerVisible when related request data is loading', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.arePreprintRequestsLoading, value: true }],
+    });
+
+    expect(component.statusBannerVisible()).toBe(false);
+  });
+
+  it('should return false for isPendingWithdrawal when no withdrawal request exists', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.getPreprintRequests, value: [] }],
+    });
+
+    expect(component.isPendingWithdrawal()).toBe(false);
+  });
+
+  it('should return false for isWithdrawalRejected when no request action exists', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.getPreprintRequestActions, value: [] }],
+    });
+
+    expect(component.isWithdrawalRejected()).toBe(false);
+  });
+
+  it('should return false for withdrawalButtonVisible while withdrawal data is loading', () => {
+    setup({
+      selectorOverrides: [{ selector: PreprintSelectors.arePreprintRequestsLoading, value: true }],
+    });
+
+    expect(component.withdrawalButtonVisible()).toBe(false);
+  });
+
+  it('should return early in editPreprintClicked when route ids are missing', () => {
+    setup({ routeParams: { providerId: '', id: '' } });
+    (routerMock.navigate as Mock).mockClear();
+
+    component.editPreprintClicked();
+
+    expect(routerMock.navigate).not.toHaveBeenCalled();
+  });
+});
+
+describe('PreprintDetailsComponent SSR', () => {
+  let component: PreprintDetailsComponent;
+  let fixture: ComponentFixture<PreprintDetailsComponent>;
+  let store: Store;
+  let helpScoutServiceMock: Mocked<HelpScoutService>;
+
+  const defaultSignals = [
+    { selector: PreprintProvidersSelectors.getPreprintProviderDetails('osf'), value: PREPRINT_PROVIDER_DETAILS_MOCK },
+    { selector: PreprintSelectors.getPreprint, value: PREPRINT_MOCK },
+    { selector: ContributorsSelectors.getBibliographicContributors, value: [MOCK_CONTRIBUTOR] },
+    { selector: PreprintSelectors.isPreprintLoading, value: false },
+    { selector: PreprintProvidersSelectors.isPreprintProviderDetailsLoading, value: false },
+    { selector: ContributorsSelectors.isBibliographicContributorsLoading, value: false },
+    { selector: PreprintSelectors.getPreprintReviewActions, value: [] },
+    { selector: PreprintSelectors.getPreprintRequests, value: [] },
+    { selector: PreprintSelectors.getPreprintRequestActions, value: [] },
+  ];
+
+  beforeEach(() => {
+    const routerMock = RouterMockBuilder.create().build();
+    const activatedRouteMock = ActivatedRouteMockBuilder.create()
+      .withParams({ providerId: 'osf', id: 'preprint-1' })
+      .build();
+    helpScoutServiceMock = HelpScoutServiceMockFactory();
+
+    TestBed.configureTestingModule({
+      imports: [
+        PreprintDetailsComponent,
+        ...MockComponents(
+          PreprintFileSectionComponent,
+          ShareAndDownloadComponent,
+          GeneralInformationComponent,
+          AdditionalInfoComponent,
+          StatusBannerComponent,
+          PreprintTombstoneComponent,
+          PreprintWarningBannerComponent,
+          ModerationStatusBannerComponent,
+          PreprintMakeDecisionComponent,
+          PreprintMetricsInfoComponent
+        ),
+      ],
+      providers: [
+        provideOSFCore(),
+        MockProvider(PLATFORM_ID, 'server'),
+        MockProvider(ToastService, ToastServiceMock.simple()),
+        MockProvider(ActivatedRoute, activatedRouteMock),
+        MockProvider(Router, routerMock),
+        MockProvider(CustomDialogService, CustomDialogServiceMockBuilder.create().withDefaultOpen().build()),
+        MockProvider(DataciteService, DataciteServiceMock.simple()),
+        MockProvider(MetaTagsBuilderService, MetaTagsBuilderServiceMockFactory()),
+        MockProvider(MetaTagsService, MetaTagsServiceMockFactory()),
+        MockProvider(PrerenderReadyService, PrerenderReadyServiceMockFactory()),
+        MockProvider(HelpScoutService, helpScoutServiceMock),
+        provideMockStore({ signals: defaultSignals }),
+      ],
+    });
+
+    store = TestBed.inject(Store);
+    fixture = TestBed.createComponent(PreprintDetailsComponent);
+    component = fixture.componentInstance;
+    document.head.innerHTML = '';
+  });
+
+  it('should render successfully on the server without throwing errors', () => {
+    expect(() => fixture.detectChanges()).not.toThrow();
+    expect(component).toBeTruthy();
+  });
+
+  it('should add signposting tags during SSR', () => {
+    fixture.detectChanges();
+
+    const linkTags = Array.from(document.head.querySelectorAll('link[rel="linkset"]'));
+    expect(linkTags.length).toBe(2);
+    expect(linkTags[0].getAttribute('href')).toBe('http://localhost:4200/metadata/preprint-1/?format=linkset');
+    expect(linkTags[0].getAttribute('type')).toBe('application/linkset');
+    expect(linkTags[1].getAttribute('href')).toBe('http://localhost:4200/metadata/preprint-1/?format=linkset-json');
+    expect(linkTags[1].getAttribute('type')).toBe('application/linkset+json');
+  });
+
+  it('should not access browser-only APIs during SSR', () => {
+    const platformId = TestBed.inject(PLATFORM_ID);
+    expect(platformId).toBe('server');
+    fixture.detectChanges();
+    (store.dispatch as Mock).mockClear();
+
+    component.ngOnDestroy();
+
+    expect(store.dispatch).not.toHaveBeenCalled();
+    expect(helpScoutServiceMock.unsetResourceType).toHaveBeenCalled();
+  });
+});

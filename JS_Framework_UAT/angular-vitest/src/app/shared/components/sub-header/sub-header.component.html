@@ -1,0 +1,45 @@
+<section class="sub-header flex flex-column gap-4 w-full py-5 px-3 md:px-5 md:pb-6 xl:py-6 xl:px-4">
+  <div class="flex flex-column gap-4 md:flex-row">
+    <div class="flex align-items-center gap-3">
+      @if (icon()) {
+        <i class="title-icon" [class]="icon()"></i>
+      }
+
+      @if (isLoading()) {
+        <p-skeleton width="12rem" height="37px"></p-skeleton>
+      } @else {
+        <h1 data-test-page-heading class="flex align-items-center word-break-word">
+          {{ title() | fixSpecialChar }}
+          @if (tooltip()) {
+            <i
+              class="fas fa-circle-info ml-1 blue-icon cursor-pointer"
+              [pTooltip]="tooltip()"
+              tooltipPosition="right"
+            ></i>
+          }
+        </h1>
+      }
+    </div>
+
+    @if (showButton()) {
+      <div class="ml-auto w-full md:w-auto">
+        <p-button
+          [severity]="buttonSeverity()"
+          class="w-full"
+          styleClass="w-full"
+          [label]="buttonLabel()"
+          (onClick)="buttonClick.emit()"
+          [loading]="isSubmitting()"
+          [disabled]="isButtonDisabled()"
+          data-test-sub-header-button
+          [pTooltip]="buttonTooltip()"
+        ></p-button>
+      </div>
+    }
+    <ng-content #subContent></ng-content>
+  </div>
+
+  @if (description()) {
+    <p [innerHtml]="description() | safeHtml"></p>
+  }
+</section>

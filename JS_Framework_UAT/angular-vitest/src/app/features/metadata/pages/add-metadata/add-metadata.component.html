@@ -1,0 +1,82 @@
+<osf-sub-header [title]="'project.metadata.addMetadata.title' | translate" />
+
+@if (!selectedTemplate) {
+  @if (cedarTemplatesLoading()) {
+    <div class="flex-1">
+      <osf-loading-spinner />
+    </div>
+  } @else {
+    <section class="flex flex-column bg-white flex-1 h-full p-3 gap-4 sm:p-5">
+      <section class="flex flex-column gap-2">
+        <section class="flex flex-column gap-2">
+          <h2>{{ 'project.metadata.addMetadata.selectTemplate' | translate }}</h2>
+          <div [innerHTML]="'project.metadata.addMetadata.cedarInfo' | translate"></div>
+        </section>
+
+        <div class="flex gap-2 flex-wrap mt-4 sm:gap-4">
+          @for (meta of cedarTemplates()?.data; track meta.id) {
+            <div
+              class="flex flex-column align-items-center gap-4 border-1 grey-border-color border-round-xl p-4"
+              [class.metadata-item]="isMedium()"
+            >
+              <div class="flex flex-row gap-4">
+                <h2>{{ meta.template.title }}</h2>
+              </div>
+
+              <div class="flex flex-column">
+                <p>{{ meta.template.description }}</p>
+              </div>
+
+              @if (hasExistingRecord(meta.id)) {
+                <p-button
+                  class="mt-auto"
+                  severity="secondary"
+                  [pTooltip]="'project.metadata.addMetadata.youAlreadyAddedText' | translate"
+                  [label]="'project.metadata.addMetadata.youAlreadyAdded' | translate"
+                  [disabled]="true"
+                ></p-button>
+              } @else {
+                <p-button
+                  class="mt-auto"
+                  severity="secondary"
+                  [label]="'common.buttons.select' | translate"
+                  (onClick)="onSelect(meta)"
+                  data-test-select-button
+                ></p-button>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="flex justify-content-end flex-0 gap-2 mt-6">
+          <p-button
+            styleClass="w-10rem"
+            class="w-10rem"
+            [label]="'common.buttons.cancel' | translate"
+            severity="info"
+            (onClick)="onCancel()"
+          ></p-button>
+          @if (hasMultiplePages()) {
+            <p-button
+              styleClass="w-10rem"
+              class="w-10rem"
+              [label]="'common.buttons.next' | translate"
+              [disabled]="!hasNextPage()"
+              (onClick)="onNext()"
+            ></p-button>
+          }
+        </div>
+      </section>
+    </section>
+  }
+} @else {
+  <osf-cedar-template-form
+    (toggleEditMode)="toggleEditMode()"
+    (emitData)="createRecordMetadata($event)"
+    (changeTemplate)="disableSelect()"
+    [template]="selectedTemplate"
+    [existingRecord]="existingRecord"
+    [readonly]="!isEditMode"
+    [showEditButton]="!!existingRecord"
+  />
+}

@@ -1,0 +1,39 @@
+import { MockProvider } from 'ng-mocks';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+
+import { RouterMockBuilder } from '@testing/providers/router-provider.mock';
+
+import { MyRegistrationsRedirectComponent } from './my-registrations-redirect.component';
+
+describe('MyRegistrationsRedirectComponent', () => {
+  let component: MyRegistrationsRedirectComponent;
+  let fixture: ComponentFixture<MyRegistrationsRedirectComponent>;
+  let router: Router;
+
+  beforeEach(() => {
+    const routerMock = RouterMockBuilder.create().build();
+
+    TestBed.configureTestingModule({
+      imports: [MyRegistrationsRedirectComponent],
+      providers: [MockProvider(Router, routerMock)],
+    });
+
+    fixture = TestBed.createComponent(MyRegistrationsRedirectComponent);
+    component = fixture.componentInstance;
+    router = TestBed.inject(Router);
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should navigate to /my-registrations on component creation', () => {
+    expect(router.navigate).toHaveBeenCalledWith(['/my-registrations'], {
+      queryParamsHandling: 'preserve',
+      replaceUrl: true,
+    });
+  });
+});

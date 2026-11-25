@@ -1,0 +1,31 @@
+<div class="addon-card flex flex-1 gap-4 flex-column p-5">
+  <div class="max-h-8rem flex justify-content-center align-items-center">
+    @if (actualAddon()?.iconUrl) {
+      <img class="addon-image" alt="Addon card image" [src]="actualAddon()!.iconUrl" data-test-addon-card-logo />
+    }
+  </div>
+
+  <div class="flex flex-column gap-3">
+    <h3 class="text-center" data-test-addon-card-title>{{ actualAddon()?.displayName }}</h3>
+
+    <div class="flex justify-content-center align-items-center md:gap-5 md:mt-3 btn-container">
+      @if (isConnected()) {
+        <p-button
+          [label]="'common.buttons.disable' | translate"
+          severity="danger"
+          (onClick)="showDisableDialog()"
+          data-test-addon-card-disconnect
+        ></p-button>
+      }
+
+      <p-button
+        [label]="buttonLabel() | translate"
+        severity="secondary"
+        [disabled]="!canConfigure() || shouldDisableConnect()"
+        [pTooltip]="buttonTooltip() | translate"
+        [class.opacity-0]="!canConfigure()"
+        (onClick)="!isConfiguredAddon() ? onConnectAddon() : onConfigureAddon()"
+      ></p-button>
+    </div>
+  </div>
+</div>

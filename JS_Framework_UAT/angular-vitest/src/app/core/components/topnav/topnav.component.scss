@@ -1,0 +1,24 @@
+@use "styles/mixins" as mix;
+
+:host {
+  z-index: 1200;
+}
+
+.nav-container {
+  background: var(--dark-blue-1);
+  padding: mix.rem(28px) mix.rem(24px);
+  color: var(--white);
+
+  .logo-img {
+    z-index: 1105;
+  }
+
+  .topnav-btn {
+    height: mix.rem(36px);
+    width: mix.rem(36px);
+
+    --p-button-contrast-background: transparent;
+    --p-button-contrast-border-color: transparent;
+    z-index: 1105;
+  }
+}

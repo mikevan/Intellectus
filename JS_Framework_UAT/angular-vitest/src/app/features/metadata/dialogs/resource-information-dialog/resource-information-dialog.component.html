@@ -1,0 +1,57 @@
+<form [formGroup]="resourceForm" (ngSubmit)="save()" class="flex flex-column gap-4">
+  <div class="flex flex-column gap-2">
+    <label for="resourceType">
+      {{ 'files.detail.resourceMetadata.fields.resourceType' | translate }}
+    </label>
+
+    <p-select
+      id="resourceType"
+      class="w-full"
+      appendTo="body"
+      data-test-select-resource-type
+      [formControl]="resourceForm.controls.resourceType"
+      [options]="resourceTypeOptions"
+      optionLabel="label"
+      optionValue="value"
+      [placeholder]="'common.buttons.select' | translate"
+    />
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <label for="resourceLanguage">
+      {{ 'files.detail.resourceMetadata.fields.resourceLanguage' | translate }}
+    </label>
+
+    <p-select
+      id="resourceLanguage"
+      class="w-full"
+      data-test-select-resource-language
+      appendTo="body"
+      [filter]="true"
+      filterBy="label"
+      [formControl]="resourceForm.controls.resourceLanguage"
+      [options]="languageOptions"
+      optionLabel="name"
+      optionValue="code"
+      [placeholder]="'common.buttons.select' | translate"
+      [virtualScroll]="true"
+      [virtualScrollItemSize]="35"
+    >
+    </p-select>
+  </div>
+
+  <div class="flex justify-content-end gap-2 mt-4">
+    <p-button
+      severity="info"
+      [label]="'common.buttons.cancel' | translate"
+      (onClick)="cancel()"
+      data-test-cancel-editing-resource-metadata-button
+    />
+    <p-button
+      type="submit"
+      [label]="'common.buttons.save' | translate"
+      [disabled]="resourceForm.invalid"
+      data-test-save-resource-metadata-button
+    />
+  </div>
+</form>

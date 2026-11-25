@@ -1,0 +1,117 @@
+import { LMarkdownEditorModule, MdEditorOption } from 'ngx-markdown-editor';
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+import { Checkbox } from 'primeng/checkbox';
+import { Panel } from 'primeng/panel';
+import { Tooltip } from 'primeng/tooltip';
+
+import { ChangeDetectionStrategy, Component, effect, inject, input, output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+import { CustomDialogService } from '@osf/shared/services/custom-dialog.service';
+
+import { WikiSyntaxHelpDialogComponent } from '../wiki-syntax-help-dialog/wiki-syntax-help-dialog.component';
+
+@Component({
+  selector: 'osf-edit-section',
+  imports: [Checkbox, Panel, Button, Tooltip, TranslatePipe, FormsModule, LMarkdownEditorModule],
+  templateUrl: './edit-section.component.html',
+  styleUrl: './edit-section.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class EditSectionComponent {
+  private readonly customDialogService = inject(CustomDialogService);
+
+  readonly currentContent = input.required<string>();
+  readonly versionContent = input.required<string>();
+  readonly isSaving = input<boolean>(false);
+  readonly disableSaveButton = input<boolean>(false);
+  readonly contentChange = output<string>();
+  readonly saveContent = output<string>();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private editorInstance: any;
+
+  content = '';
+  initialContent = '';
+
+  options: MdEditorOption = {
+    showPreviewPanel: false,
+    customRender: {},
+    fontAwesomeVersion: '6',
+    markedjsOpt: { sanitize: true },
+    hideIcons: [''],
+  };
+
+  autoCompleteEnabled = false;
+
+  constructor() {
+    effect(() => {
+      const versionContent = this.versionContent();
+      if (!this.initialContent) {
+        this.content = versionContent;
+        this.initialContent = versionContent;
+      }
+    });
+
+    effect(() => {
+      const currentContent = this.currentContent();
+      this.content = currentContent;
+      this.initialContent = currentContent;
+    });
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async onEditorLoaded(editor: any) {
+    this.editorInstance = editor;
+    editor.setShowPrintMargin(false);
+    await import('ace-builds/src-noconflict/ext-language_tools');
+    const aceGlobal = (globalThis as { ace?: { require?: (path: string) => { snippetCompleter?: unknown } } }).ace;
+    const langTools = aceGlobal?.require?.('ace/ext/language_tools');
+    editor.setOptions({
+      enableBasicAutocompletion: this.autoCompleteEnabled,
+      enableLiveAutocompletion: this.autoCompleteEnabled,
+      enableSnippets: langTools?.snippetCompleter ? [langTools.snippetCompleter] : [],
+    });
+  }
+
+  onPreviewDomChanged() {
+    this.contentChange.emit(this.editorInstance?.getValue());
+  }
+
+  save() {
+    this.saveContent.emit(this.editorInstance?.getValue());
+  }
+
+  revert() {
+    this.content = this.initialContent;
+  }
+
+  undo() {
+    this.editorInstance?.undo();
+  }
+
+  redo() {
+    this.editorInstance?.redo();
+  }
+
+  doHorizontalRule() {
+    this.editorInstance?.insert('\n');
+    this.editorInstance?.insert('----------\n');
+    this.editorInstance?.insert('\n');
+  }
+
+  openSyntaxHelpDialog() {
+    this.customDialogService.open(WikiSyntaxHelpDialogComponent, { header: 'project.wiki.syntaxHelp.header' });
+  }
+
+  toggleAutocomplete() {
+    if (this.editorInstance) {
+      this.autoCompleteEnabled = !this.autoCompleteEnabled;
+      this.editorInstance.setOptions({
+        enableBasicAutocompletion: this.autoCompleteEnabled,
+        enableLiveAutocompletion: this.autoCompleteEnabled,
+      });
+    }
+  }
+}

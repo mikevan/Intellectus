@@ -1,0 +1,228 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { SortEvent } from 'primeng/api';
+import { Button } from 'primeng/button';
+import { TablePageEvent } from 'primeng/table';
+
+import { debounceTime, distinctUntilChanged, filter, tap } from 'rxjs';
+
+import { isPlatformBrowser, NgOptimizedImage } from '@angular/common';
+import { Component, computed, DestroyRef, effect, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { FormControl } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+
+import { ScheduledBannerComponent } from '@osf/core/components/osf-banners/scheduled-banner/scheduled-banner.component';
+import { UserSelectors } from '@osf/core/store/user';
+import { CreateProjectDialogComponent } from '@osf/features/my-projects/components/create-project-dialog/create-project-dialog.component';
+import { LoadingSpinnerComponent } from '@osf/shared/components/loading-spinner/loading-spinner.component';
+import { MyProjectsTableComponent } from '@osf/shared/components/my-projects-table/my-projects-table.component';
+import { SearchInputComponent } from '@osf/shared/components/search-input/search-input.component';
+import { SubHeaderComponent } from '@osf/shared/components/sub-header/sub-header.component';
+import { DEFAULT_TABLE_PARAMS } from '@osf/shared/constants/default-table-params.constants';
+import { FEATURE_FLAGS } from '@osf/shared/constants/feature-flags.const';
+import { SortOrder } from '@osf/shared/enums/sort-order.enum';
+import { MyResourcesItem } from '@osf/shared/models/my-resources/my-resources-item.model';
+import { MyResourcesSearchFilters } from '@osf/shared/models/my-resources/my-resources-search-filters.model';
+import { TableParameters } from '@osf/shared/models/table-parameters.model';
+import { CustomDialogService } from '@osf/shared/services/custom-dialog.service';
+import { ProjectRedirectDialogService } from '@osf/shared/services/project-redirect-dialog.service';
+import { ClearMyResources, GetMyProjects, MyResourcesSelectors } from '@osf/shared/stores/my-resources';
+
+import { WorkflowLauncherSectionComponent } from '../../components/workflow-launcher-section/workflow-launcher-section.component';
+import { DASHBOARD_PRODUCT_LINKS } from '../../constants/dashboard-products.constants';
+
+@Component({
+  selector: 'osf-dashboard',
+  imports: [
+    RouterLink,
+    NgOptimizedImage,
+    Button,
+    SubHeaderComponent,
+    MyProjectsTableComponent,
+    SearchInputComponent,
+    LoadingSpinnerComponent,
+    ScheduledBannerComponent,
+    WorkflowLauncherSectionComponent,
+    TranslatePipe,
+  ],
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.scss',
+})
+export class DashboardComponent implements OnInit {
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly router = inject(Router);
+  private readonly route = inject(ActivatedRoute);
+  private readonly customDialogService = inject(CustomDialogService);
+  private readonly projectRedirectDialogService = inject(ProjectRedirectDialogService);
+  private readonly platformId = inject(PLATFORM_ID);
+  private readonly isBrowser = isPlatformBrowser(this.platformId);
+
+  readonly searchControl = new FormControl<string>('');
+  readonly activeProject = signal<MyResourcesItem | null>(null);
+  readonly sortColumn = signal<string | undefined>(undefined);
+  readonly sortOrder = signal<SortOrder>(SortOrder.Asc);
+  readonly tableParams = signal<TableParameters>({ ...DEFAULT_TABLE_PARAMS });
+
+  readonly projects = select(MyResourcesSelectors.getProjects);
+  readonly totalProjectsCount = select(MyResourcesSelectors.getTotalProjects);
+  readonly areProjectsLoading = select(MyResourcesSelectors.getProjectsLoading);
+  readonly projectCreationDisabled = select(UserSelectors.isProjectCreationDisabled);
+  readonly activeFlags = select(UserSelectors.getActiveFlags);
+
+  readonly actions = createDispatchMap({ getMyProjects: GetMyProjects, clearMyResources: ClearMyResources });
+
+  readonly dashboardProducts = DASHBOARD_PRODUCT_LINKS;
+
+  readonly isWorkflowLauncherEnabled = computed(() => this.activeFlags().includes(FEATURE_FLAGS.WORKFLOW_LAUNCHER));
+
+  readonly filteredProjects = computed(() => {
+    const search = this.searchControl.value?.toLowerCase() ?? '';
+    return this.projects().filter((project) => project.title.toLowerCase().includes(search));
+  });
+
+  readonly buttonTooltip = computed(() => {
+    return this.projectCreationDisabled() ? 'home.loggedIn.dashboard.createProjectDisabledTooltip' : '';
+  });
+
+  readonly existsProjects = computed(() => this.projects().length || !!this.searchControl.value?.length);
+  readonly noProjectsMessage = computed(() => {
+    if (this.projectCreationDisabled()) {
+      return 'home.loggedIn.dashboard.noCreatedProjectAndCreateProjectDisabled';
+    }
+    return 'home.loggedIn.dashboard.noCreatedProject';
+  });
+  readonly subHeaderTitle = computed(() =>
+    this.existsProjects() ? 'home.loggedIn.dashboard.title' : 'home.loggedIn.dashboard.welcome'
+  );
+
+  constructor() {
+    this.setupSearchSubscription();
+    this.setupTotalRecordsEffect();
+    this.setupCleanup();
+  }
+
+  ngOnInit() {
+    this.setupQueryParamsSubscription();
+  }
+
+  setupQueryParamsSubscription(): void {
+    this.route.queryParams.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
+      const page = Number(params['page']) || 1;
+      const rows = Number(params['rows']) || DEFAULT_TABLE_PARAMS.rows;
+      const sortField = params['sortField'];
+      const sortOrder = params['sortOrder'] as SortOrder;
+      const search = params['search'] || '';
+
+      this.tableParams.update((current) => ({
+        ...current,
+        firstRowIndex: (page - 1) * rows,
+        rows,
+      }));
+
+      if (sortField) {
+        this.sortColumn.set(sortField);
+        this.sortOrder.set(+sortOrder || SortOrder.Asc);
+      }
+
+      if (search) {
+        this.searchControl.setValue(search);
+      }
+
+      this.fetchProjects();
+    });
+  }
+
+  setupSearchSubscription(): void {
+    this.searchControl.valueChanges
+      .pipe(debounceTime(300), distinctUntilChanged(), takeUntilDestroyed(this.destroyRef))
+      .subscribe(() => this.updateQueryParams(true));
+  }
+
+  setupTotalRecordsEffect(): void {
+    effect(() => {
+      const total = this.totalProjectsCount();
+      this.tableParams.update((current) => ({
+        ...current,
+        totalRecords: total,
+      }));
+    });
+  }
+
+  setupCleanup(): void {
+    this.destroyRef.onDestroy(() => {
+      if (this.isBrowser) {
+        this.actions.clearMyResources();
+      }
+    });
+  }
+
+  fetchProjects(): void {
+    const filters: MyResourcesSearchFilters = {
+      searchValue: this.searchControl.value ?? '',
+      searchFields: ['title'],
+      sortColumn: this.sortColumn(),
+      sortOrder: this.sortOrder(),
+    };
+
+    const page = Math.floor(this.tableParams().firstRowIndex / this.tableParams().rows) + 1;
+    this.actions.getMyProjects(page, this.tableParams().rows, filters);
+  }
+
+  updateQueryParams(isPageReset = false): void {
+    const page = isPageReset ? 1 : Math.floor(this.tableParams().firstRowIndex / this.tableParams().rows) + 1;
+    const queryParams = {
+      page,
+      rows: this.tableParams().rows,
+      search: this.searchControl.value || undefined,
+      sortField: this.sortColumn() || undefined,
+      sortOrder: this.sortOrder() || undefined,
+    };
+
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams,
+      queryParamsHandling: 'merge',
+    });
+  }
+
+  onPageChange(event: TablePageEvent): void {
+    this.tableParams.update((current) => ({
+      ...current,
+      rows: event.rows,
+      firstRowIndex: event.first,
+    }));
+
+    this.updateQueryParams();
+  }
+
+  onSort(event: SortEvent): void {
+    if (event.field) {
+      this.sortColumn.set(event.field);
+      this.sortOrder.set(event.order as SortOrder);
+      this.updateQueryParams(true);
+    }
+  }
+
+  navigateToProject(project: MyResourcesItem): void {
+    this.activeProject.set(project);
+    this.router.navigate([project.id]);
+  }
+
+  createProject(): void {
+    this.customDialogService
+      .open(CreateProjectDialogComponent, { header: 'myProjects.header.createProject', width: '850px' })
+      .onClose.pipe(
+        filter((result) => result?.project.id),
+        tap((result) => this.projectRedirectDialogService.showProjectRedirectDialog(result.project.id)),
+        takeUntilDestroyed(this.destroyRef)
+      )
+      .subscribe();
+  }
+
+  openInfoLink(): void {
+    window.open('https://help.osf.io/', '_blank');
+  }
+}

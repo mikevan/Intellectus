@@ -1,0 +1,116 @@
+import { Injectable } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { ProjectMetadataFormControls } from '@osf/features/collections/enums';
+import { CustomValidators } from '@osf/shared/helpers/custom-form-validators.helper';
+import { ProjectModel } from '@osf/shared/models/projects/projects.model';
+import { LicenseModel } from '@shared/models/license/license.model';
+import { ProjectMetadataUpdatePayload } from '@shared/models/project-metadata-update-payload.model';
+
+import { ProjectMetadataForm } from '../models/project-metadata-form.model';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ProjectMetadataFormService {
+  private readonly currentYear = new Date();
+
+  createForm(): FormGroup<ProjectMetadataForm> {
+    return new FormGroup<ProjectMetadataForm>({
+      [ProjectMetadataFormControls.Title]: new FormControl('', {
+        nonNullable: true,
+        validators: [CustomValidators.requiredTrimmed()],
+      }),
+      [ProjectMetadataFormControls.Description]: new FormControl('', {
+        nonNullable: true,
+        validators: [CustomValidators.requiredTrimmed()],
+      }),
+      [ProjectMetadataFormControls.License]: new FormControl(null, {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      [ProjectMetadataFormControls.Tags]: new FormControl([], {
+        nonNullable: true,
+      }),
+      [ProjectMetadataFormControls.LicenseYear]: new FormControl(this.currentYear.getFullYear().toString(), {
+        nonNullable: true,
+      }),
+      [ProjectMetadataFormControls.CopyrightHolders]: new FormControl('', {
+        nonNullable: true,
+      }),
+    });
+  }
+
+  updateLicenseValidators(form: FormGroup<ProjectMetadataForm>, license: LicenseModel): void {
+    const yearControl = form.get(ProjectMetadataFormControls.LicenseYear);
+    const copyrightHoldersControl = form.get(ProjectMetadataFormControls.CopyrightHolders);
+
+    yearControl?.setValidators(license.requiredFields.includes('year') ? [CustomValidators.requiredTrimmed()] : []);
+    copyrightHoldersControl?.setValidators(
+      license.requiredFields.includes('copyrightHolders') ? [CustomValidators.requiredTrimmed()] : []
+    );
+
+    yearControl?.updateValueAndValidity();
+    copyrightHoldersControl?.updateValueAndValidity();
+  }
+
+  populateFormFromProject(
+    form: FormGroup<ProjectMetadataForm>,
+    project: ProjectModel,
+    license: LicenseModel | null
+  ): { tags: string[] } {
+    const tags = project.tags || [];
+
+    form.patchValue({
+      [ProjectMetadataFormControls.Title]: project.title,
+      [ProjectMetadataFormControls.Description]: project.description || '',
+      [ProjectMetadataFormControls.License]: license,
+      [ProjectMetadataFormControls.Tags]: tags,
+      [ProjectMetadataFormControls.LicenseYear]:
+        project.licenseOptions?.year || this.currentYear.getFullYear().toString(),
+      [ProjectMetadataFormControls.CopyrightHolders]: project.licenseOptions?.copyrightHolders || '',
+    });
+
+    return { tags };
+  }
+
+  patchLicenseData(form: FormGroup<ProjectMetadataForm>, license: LicenseModel, project: ProjectModel): void {
+    form.patchValue({
+      [ProjectMetadataFormControls.License]: license,
+      [ProjectMetadataFormControls.LicenseYear]:
+        project.licenseOptions?.year || this.currentYear.getFullYear().toString(),
+      [ProjectMetadataFormControls.CopyrightHolders]: project.licenseOptions?.copyrightHolders || '',
+    });
+  }
+
+  updateTagsInForm(form: FormGroup<ProjectMetadataForm>, tags: string[]): void {
+    form.patchValue({ [ProjectMetadataFormControls.Tags]: tags });
+    form.get(ProjectMetadataFormControls.Tags)?.markAsTouched();
+  }
+
+  buildMetadataPayload(form: FormGroup<ProjectMetadataForm>, project: ProjectModel): ProjectMetadataUpdatePayload {
+    const formValue = form.value;
+
+    return {
+      id: project.id,
+      title: formValue.title || '',
+      description: formValue.description || '',
+      tags: formValue.tags || [],
+      licenseId: formValue.license?.id || '',
+      licenseOptions: formValue.license?.requiredFields?.length
+        ? {
+            year: formValue.licenseYear || '',
+            copyrightHolders: formValue.copyrightHolders || '',
+          }
+        : undefined,
+    };
+  }
+
+  isFormUnchanged(currentFormValues: unknown, initialFormValues: string | null): boolean {
+    return !initialFormValues || !currentFormValues || JSON.stringify(currentFormValues) === initialFormValues;
+  }
+
+  resetForm(form: FormGroup<ProjectMetadataForm>): void {
+    form.markAsUntouched();
+  }
+}

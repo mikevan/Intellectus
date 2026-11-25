@@ -1,0 +1,35 @@
+<div class="stepper-container">
+  <div class="stepper-circles-lines-row">
+    @for (step of steps(); track $index; let i = $index) {
+      @if (currentStep()) {
+        <button
+          [disabled]="step.disabled"
+          class="step-circle"
+          [class.active]="isStepActive(step)"
+          [class.invalid]="step.invalid"
+          [class.current]="i === currentStep().index"
+          (click)="onStepClick(step)"
+          [attr.aria-label]="step.label | translate"
+        >
+          @if (step.invalid && i !== currentStep().index) {
+            <osf-icon iconClass="fas fa-exclamation" />
+          } @else {
+            @if (isStepCompleted(step)) {
+              <osf-icon iconClass="fas fa-check" />
+            } @else {
+              <span>{{ i + 1 }}</span>
+            }
+          }
+        </button>
+        @if (i < steps().length - 1) {
+          <div class="step-line" [class.active]="i <= currentStep().index"></div>
+        }
+      }
+    }
+  </div>
+  <div class="stepper-labels-row">
+    @for (step of steps(); track $index) {
+      <div class="step-label">{{ step.label | translate }}</div>
+    }
+  </div>
+</div>

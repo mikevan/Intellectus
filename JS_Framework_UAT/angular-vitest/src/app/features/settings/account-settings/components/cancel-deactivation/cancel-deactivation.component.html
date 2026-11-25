@@ -1,0 +1,22 @@
+<div class="flex flex-column gap-3">
+  <p>
+    {{ 'settings.accountSettings.deactivateAccount.dialog.undo.message' | translate }}
+  </p>
+</div>
+
+<div class="flex gap-2 mt-4">
+  <p-button
+    class="w-full"
+    styleClass="w-full"
+    (click)="dialogRef.close()"
+    severity="info"
+    [label]="'common.buttons.cancel' | translate"
+  ></p-button>
+
+  <p-button
+    class="w-full"
+    styleClass="w-full"
+    (click)="cancelDeactivation()"
+    [label]="'settings.accountSettings.common.buttons.undo' | translate"
+  ></p-button>
+</div>

@@ -1,0 +1,21 @@
+<osf-sub-header [title]="'settings.accountSettings.title' | translate" [icon]="'fas fa-gear'" />
+
+@if (currentUser()?.id) {
+  <section class="flex flex-column gap-4 bg-white py-4 px-3 md:px-5 xl:px-4">
+    <osf-connected-emails></osf-connected-emails>
+
+    <osf-default-storage-location></osf-default-storage-location>
+
+    <osf-connected-identities></osf-connected-identities>
+
+    <osf-affiliated-institutions></osf-affiliated-institutions>
+
+    <osf-share-indexing></osf-share-indexing>
+
+    <osf-change-password></osf-change-password>
+
+    <osf-two-factor-auth></osf-two-factor-auth>
+
+    <osf-deactivate-account></osf-deactivate-account>
+  </section>
+}

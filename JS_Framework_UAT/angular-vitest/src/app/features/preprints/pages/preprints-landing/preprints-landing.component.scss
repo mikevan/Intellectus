@@ -1,0 +1,24 @@
+.subheader {
+  color: var(--dark-blue-1);
+
+  .custom-icon-preprints {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .provider-description {
+    line-height: 1.5rem;
+  }
+}
+
+.blue-dark-gradient {
+  background: url("/assets/images/dark-blue-gradient.png") center;
+}
+
+.link-button {
+  a,
+  a:hover {
+    color: var(--p-button-success-color);
+    text-decoration: none;
+  }
+}

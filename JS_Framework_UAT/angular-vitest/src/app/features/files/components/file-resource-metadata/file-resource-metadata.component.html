@@ -1,0 +1,115 @@
+@let metadata = resourceMetadata();
+@let resourceContributors = contributors();
+
+<div class="p-4 flex flex-column gap-5">
+  <h2>
+    {{ 'files.detail.resourceMetadata.title.' + resourceType() | translate }}
+  </h2>
+
+  @if (isResourceMetadataLoading()) {
+    <p-skeleton width="100%" height="4rem" />
+    <p-skeleton width="100%" height="4rem" />
+    <p-skeleton width="100%" height="4rem" />
+    <p-skeleton width="100%" height="4rem" />
+  } @else {
+    @for (funder of metadata?.funders; track funder.funderIdentifier || $index) {
+      <div class="flex flex-column gap-2">
+        @if (funder.funderName) {
+          <div class="flex flex-column gap-1">
+            <h4>{{ 'files.detail.resourceMetadata.fields.funder' | translate }}</h4>
+            <span>{{ funder.funderName }}</span>
+          </div>
+        }
+        @if (funder.awardTitle) {
+          <div class="flex flex-column gap-1">
+            <h4>{{ 'files.detail.resourceMetadata.fields.awardTitle' | translate }}</h4>
+            <span>{{ funder.awardTitle }}</span>
+          </div>
+        }
+        @if (funder.awardNumber) {
+          <div class="flex flex-column gap-1">
+            <h4>{{ 'files.detail.resourceMetadata.fields.awardNumber' | translate }}</h4>
+            <span>{{ funder.awardNumber }}</span>
+          </div>
+        }
+        @if (funder.awardUri) {
+          <div class="flex flex-column gap-1">
+            <h4>{{ 'files.detail.resourceMetadata.fields.awardUri' | translate }}</h4>
+            <span>{{ funder.awardUri }}</span>
+          </div>
+        }
+      </div>
+    }
+
+    <div class="flex flex-column gap-2">
+      <h4>{{ 'common.labels.title' | translate }}</h4>
+
+      <span>{{ metadata?.title }}</span>
+    </div>
+
+    @if (metadata?.description) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'common.labels.description' | translate }}</h4>
+
+        <div>
+          {{ metadata?.description }}
+        </div>
+      </div>
+    }
+
+    @if (metadata?.resourceTypeGeneral) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'files.detail.resourceMetadata.fields.resourceType' | translate }}</h4>
+
+        <div>
+          {{ metadata?.resourceTypeGeneral }}
+        </div>
+      </div>
+    }
+
+    @if (metadata?.language) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'files.detail.resourceMetadata.fields.resourceLanguage' | translate }}</h4>
+
+        <div>
+          {{ metadata?.language }}
+        </div>
+      </div>
+    }
+
+    @if (metadata?.dateCreated) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'common.labels.dateCreated' | translate }}</h4>
+
+        <div>
+          {{ metadata?.dateCreated | date: 'MMMM d, y' }}
+        </div>
+      </div>
+    }
+
+    @if (metadata?.dateModified) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'common.labels.dateModified' | translate }}</h4>
+
+        <div>
+          {{ metadata?.dateModified | date: 'MMMM d, y' }}
+        </div>
+      </div>
+    }
+  }
+
+  @if (isResourceContributorsLoading()) {
+    <p-skeleton width="100%" height="4rem" />
+  } @else {
+    @if (resourceContributors.length) {
+      <div class="flex flex-column gap-2">
+        <h4>{{ 'common.labels.contributors' | translate }}</h4>
+
+        <osf-contributors-list
+          [contributors]="resourceContributors"
+          [anonymous]="isAnonymous()"
+        ></osf-contributors-list>
+      </div>
+    }
+  }
+</div>

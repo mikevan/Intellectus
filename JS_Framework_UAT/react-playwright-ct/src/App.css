@@ -1,0 +1,250 @@
+@import "./components/review/ReviewHeader.css";
+@import "./components/setup/ReviewSetupMenu.css";
+@import "./components/layout/ReviewWorkspace.css";
+@import "./components/panels/Panels.css";
+@import "./components/rules/RuleStage.css";
+@import "./components/reset/ResetDialog.css";
+
+.app-shell {
+  --motion-snap: cubic-bezier(0.2, 0.85, 0.18, 1);
+  --motion-swipe: cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  min-height: 100svh;
+  min-width: 0;
+  padding: 18px;
+}
+
+button {
+  align-items: center;
+  border: 1px solid #151515;
+  cursor: pointer;
+  display: inline-flex;
+  font:
+    800 14px / 1.1 "Trebuchet MS",
+    sans-serif;
+  gap: 8px;
+  justify-content: center;
+  min-width: 0;
+  min-height: 44px;
+  padding: 8px 12px;
+  transition:
+    filter 180ms ease,
+    box-shadow 240ms var(--motion-snap),
+    transform 240ms var(--motion-snap);
+}
+
+button:focus-visible,
+button:hover {
+  box-shadow: 2.25px 2.25px 0 #151515;
+  transform: translate(-3px, -3px);
+}
+
+button:focus-visible,
+textarea:focus-visible,
+.docs-frame:focus-visible,
+.output-code:focus-visible,
+.filter-option input:focus-visible {
+  outline: 3px solid #d33b53;
+  outline-offset: 3px;
+}
+
+button:active {
+  box-shadow: 0 0 0 #151515;
+  transform: translate(0, 0);
+}
+
+button:disabled {
+  cursor: not-allowed;
+  filter: grayscale(1);
+  opacity: 0.55;
+  transform: none;
+}
+
+.primary-button,
+.icon-button {
+  background: #151515;
+  color: #fffdf7;
+}
+
+.primary-button {
+  width: 100%;
+}
+
+.icon-button {
+  aspect-ratio: 1;
+  min-height: 44px;
+  padding: 0;
+  width: 44px;
+}
+
+.off-button,
+.secondary-button {
+  background: #d6d1db;
+}
+
+.info-button {
+  background: #90a8ed;
+  color: #151515;
+}
+
+.warn-button {
+  background: #f4c542;
+}
+
+.error-button {
+  background: #e85d5d;
+  color: #151515;
+}
+
+.small-icon-button {
+  aspect-ratio: 1;
+  background: #fffdf7;
+  color: #151515;
+  min-height: 44px;
+  padding: 0;
+  width: 44px;
+}
+
+.shortcut-hint {
+  background: #fffdf7;
+  border: 1px solid #151515;
+  color: #151515;
+  font:
+    800 9px / 1 "Cascadia Code",
+    Consolas,
+    monospace;
+  inset-inline-end: 5px;
+  opacity: 0;
+  padding: 3px;
+  pointer-events: none;
+  position: absolute;
+  top: 5px;
+  transition: opacity 140ms ease;
+}
+
+button:is(:hover, :focus-visible) .shortcut-hint {
+  opacity: 1;
+}
+
+@media (min-width: 1181px) {
+  .control-panel,
+  .output-panel,
+  .rule-stage,
+  .iframe-stack {
+    min-height: 0;
+  }
+
+  .finished-stage {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .show-panel-button {
+    max-height: 100%;
+    min-height: 100%;
+  }
+}
+
+@media (forced-colors: active) {
+  button:focus-visible,
+  textarea:focus-visible,
+  .docs-frame:focus-visible,
+  .output-code:focus-visible,
+  .filter-option input:focus-visible,
+  .filter-option:has(input:focus-visible) {
+    box-shadow: none;
+    outline: 2px solid CanvasText;
+    outline-offset: 2px;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filter-option,
+  .progress-track::-webkit-progress-value,
+  .progress-track::-moz-progress-bar,
+  .workspace,
+  .control-panel,
+  .output-panel,
+  button,
+  .rule-frame,
+  .rule-frame::after,
+  .decision-bar,
+  .decision-bar button::after,
+  .shortcut-hint,
+  .show-panel-button {
+    transition: none;
+  }
+
+  .reset-dialog {
+    animation: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .app-shell {
+    display: block;
+    height: auto;
+  }
+
+  .workspace {
+    flex: none;
+    grid-template-columns: 1fr;
+  }
+
+  .workspace.is-input-hidden,
+  .workspace.is-output-hidden,
+  .workspace.is-input-hidden.is-output-hidden {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel,
+  .output-panel {
+    min-height: auto;
+  }
+
+  .show-panel-button {
+    min-height: 48px;
+    writing-mode: horizontal-tb;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 8px;
+  }
+
+  .review-header {
+    align-items: start;
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .progress-block {
+    grid-template-columns: auto auto minmax(0, 1fr) auto auto auto;
+    width: 100%;
+  }
+
+  .review-header h1 {
+    font-size: 24px;
+  }
+
+  .control-panel,
+  .output-panel {
+    padding: 14px;
+  }
+
+  .finished-stage,
+  .iframe-stack,
+  .rule-stage {
+    min-height: 560px;
+  }
+}
+
+@media (max-width: 440px) {
+  .progress-block {
+    grid-template-columns: auto auto minmax(0, 1fr);
+  }
+}

@@ -1,0 +1,15 @@
+<p-card>
+  <h2>{{ 'settings.accountSettings.defaultStorageLocation.title' | translate }}</h2>
+
+  <p class="mt-4">
+    {{ 'settings.accountSettings.defaultStorageLocation.description' | translate }}
+  </p>
+
+  <div class="mt-4">
+    <p-select class="w-full" optionLabel="name" [options]="regions()" [(ngModel)]="selectedRegion"></p-select>
+  </div>
+
+  <div class="flex justify-content-end mt-4">
+    <p-button [label]="'common.buttons.update' | translate" (click)="updateLocation()"></p-button>
+  </div>
+</p-card>

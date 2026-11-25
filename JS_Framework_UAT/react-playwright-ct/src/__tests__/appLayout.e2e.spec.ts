@@ -1,0 +1,103 @@
+import { expect, type Locator, type Page, test } from '@playwright/test'
+
+type ReviewLayoutMetrics = {
+  iframeCount: number
+  overflowX: number
+  queuedFrameVisibility: string[]
+}
+
+async function getReviewLayoutMetrics(page: Page): Promise<ReviewLayoutMetrics> {
+  return page.evaluate(() => ({
+    iframeCount: document.querySelectorAll('iframe.docs-frame').length,
+    overflowX: document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    queuedFrameVisibility: Array.from(
+      document.querySelectorAll(
+        '.rule-frame.is-queued-next .docs-frame, .rule-frame.is-queued-after .docs-frame',
+      ),
+      (frame) => getComputedStyle(frame).visibility,
+    ),
+  }))
+}
+
+test('keeps active review layout within documented resource bounds', async ({ page }) => {
+  await page.goto('/')
+
+  const metrics = await getReviewLayoutMetrics(page)
+  expect(metrics.iframeCount).toBe(3)
+  expect(metrics.queuedFrameVisibility).toEqual(['hidden', 'hidden'])
+  expect(metrics.overflowX).toBe(0)
+})
+
+test('keeps panel toggles usable without horizontal overflow', async ({ page }) => {
+  await page.goto('/')
+
+  await page.getByRole('button', { name: 'Hide base file' }).click()
+  await page.getByRole('button', { name: 'Hide output' }).click()
+
+  await expect(page.getByRole('button', { name: 'Show base file' })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Show biome.json' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Lint Forge' })).toBeVisible()
+  expect(await getHorizontalOverflow(page)).toBe(0)
+})
+
+test('keeps mobile review layout free of horizontal overflow', async ({ page }) => {
+  await page.setViewportSize({ height: 900, width: 320 })
+  await page.goto('/')
+
+  await expect(page.getByRole('heading', { name: 'Lint Forge' })).toBeVisible()
+  const errorButton = page.getByRole('button', { name: 'Error', exact: true })
+  await errorButton.scrollIntoViewIfNeeded()
+  await expectControlInsideViewport(errorButton, 320, 900)
+  expect(await getHorizontalOverflow(page)).toBe(0)
+})
+
+test('keeps every desktop decision control inside the viewport', async ({ page }) => {
+  await page.setViewportSize({ height: 900, width: 1440 })
+  await page.goto('/')
+
+  for (const decision of ['Off', 'Info', 'Warn', 'Error']) {
+    await expectControlInsideViewport(
+      page.getByRole('button', { name: decision, exact: true }),
+      1440,
+      900,
+    )
+  }
+})
+
+test('keeps the setup menu beside reset at narrow widths', async ({ page }) => {
+  for (const width of [640, 320]) {
+    await page.setViewportSize({ height: 900, width })
+    await page.goto('/')
+
+    const resetButton = page.getByRole('button', { name: 'Reset review' })
+    const setupTrigger = page.getByRole('button', { name: 'Review setup' })
+    await expect(setupTrigger).toBeVisible()
+
+    const resetBounds = await resetButton.boundingBox()
+    const setupBounds = await setupTrigger.boundingBox()
+    expect(resetBounds).not.toBeNull()
+    expect(setupBounds).not.toBeNull()
+    expect(Math.abs((setupBounds?.y ?? 0) - (resetBounds?.y ?? 0))).toBeLessThanOrEqual(2)
+    expect(setupBounds?.x).toBeGreaterThan(resetBounds?.x ?? 0)
+    expect(await getHorizontalOverflow(page)).toBe(0)
+  }
+})
+
+async function getHorizontalOverflow(page: Page) {
+  return page.evaluate(
+    () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+  )
+}
+
+async function expectControlInsideViewport(
+  control: Locator,
+  viewportWidth: number,
+  viewportHeight: number,
+) {
+  const bounds = await control.boundingBox()
+  expect(bounds).not.toBeNull()
+  expect(bounds?.x).toBeGreaterThanOrEqual(0)
+  expect((bounds?.x ?? 0) + (bounds?.width ?? 0)).toBeLessThanOrEqual(viewportWidth)
+  expect(bounds?.y).toBeGreaterThanOrEqual(0)
+  expect((bounds?.y ?? 0) + (bounds?.height ?? 0)).toBeLessThanOrEqual(viewportHeight)
+}

@@ -1,0 +1,16 @@
+{
+  "name": "deeptest-test-model",
+  "displayName": "DeepTest integration suite: stub language model",
+  "description": "Test editor only. Registers one stub language model so the integration suite runs with a model present. It never answers. It is never packaged: .vscodeignore excludes test/**.",
+  "publisher": "prs",
+  "version": "0.0.1",
+  "private": true,
+  "engines": { "vscode": "^1.104.0" },
+  "main": "./extension.js",
+  "activationEvents": ["*"],
+  "contributes": {
+    "languageModelChatProviders": [
+      { "vendor": "deeptest-test-model", "displayName": "DeepTest test stub" }
+    ]
+  }
+}

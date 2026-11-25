@@ -1,0 +1,1 @@
+{"target":"initials","test":"src/lib/names.test.ts::initials two parts","index":0,"depth":0,"args":{"t":"array","v":[{"t":"str","v":"Jeff Public"}]},"outcome":{"kind":"return","value":{"t":"str","v":"J.P."}}}

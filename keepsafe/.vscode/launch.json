@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run KeepSafe Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "preLaunchTask": "keepsafe-extension: compile",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/keepsafe-extension"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/keepsafe-extension/dist/**/*.js"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,200 @@
+import { Store } from '@ngxs/store';
+
+import { MockComponents, MockProvider } from 'ng-mocks';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { CustomPaginatorComponent } from '@osf/shared/components/custom-paginator/custom-paginator.component';
+import { IconComponent } from '@osf/shared/components/icon/icon.component';
+import { LoadingSpinnerComponent } from '@osf/shared/components/loading-spinner/loading-spinner.component';
+import { SelectComponent } from '@osf/shared/components/select/select.component';
+
+import { MOCK_PREPRINT_WITHDRAWAL_SUBMISSIONS } from '@testing/mocks/preprint-withdrawal-submission.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { ActivatedRouteMockBuilder } from '@testing/providers/route-provider.mock';
+import { RouterMockBuilder } from '@testing/providers/router-provider.mock';
+import { provideMockStore } from '@testing/providers/store-provider.mock';
+
+import { PreprintSubmissionsSort, SubmissionReviewStatus } from '../../enums';
+import { PreprintWithdrawalSubmission } from '../../models';
+import {
+  GetPreprintWithdrawalSubmissionContributors,
+  LoadMorePreprintWithdrawalSubmissionContributors,
+  PreprintModerationSelectors,
+} from '../../store/preprint-moderation';
+import { PreprintSubmissionItemComponent } from '../preprint-submission-item/preprint-submission-item.component';
+
+import { PreprintWithdrawalSubmissionsComponent } from './preprint-withdrawal-submissions.component';
+
+describe('PreprintWithdrawalSubmissionsComponent', () => {
+  let component: PreprintWithdrawalSubmissionsComponent;
+  let fixture: ComponentFixture<PreprintWithdrawalSubmissionsComponent>;
+  let mockRouter: ReturnType<RouterMockBuilder['build']>;
+  let mockActivatedRoute: ReturnType<ActivatedRouteMockBuilder['build']>;
+  let store: Store;
+
+  const mockProviderId = 'test-provider-id';
+  const mockSubmissions: PreprintWithdrawalSubmission[] = MOCK_PREPRINT_WITHDRAWAL_SUBMISSIONS;
+
+  beforeEach(() => {
+    mockRouter = RouterMockBuilder.create().build();
+    mockRouter.serializeUrl = vi.fn(
+      (urlTree: any) => `/preprints/${mockProviderId}/${urlTree.segments?.[2] || 'test-id'}?mode=moderator`
+    );
+    mockRouter.createUrlTree = vi.fn(
+      (commands: any[], extras?: any) =>
+        ({
+          segments: commands,
+          queryParams: extras?.queryParams || {},
+        }) as any
+    );
+
+    mockActivatedRoute = ActivatedRouteMockBuilder.create()
+      .withParams({ providerId: mockProviderId })
+      .withQueryParams({ status: 'pending' })
+      .build();
+
+    TestBed.configureTestingModule({
+      imports: [
+        PreprintWithdrawalSubmissionsComponent,
+        ...MockComponents(
+          SelectComponent,
+          IconComponent,
+          LoadingSpinnerComponent,
+          PreprintSubmissionItemComponent,
+          CustomPaginatorComponent
+        ),
+      ],
+      providers: [
+        provideOSFCore(),
+        MockProvider(Router, mockRouter),
+        MockProvider(ActivatedRoute, mockActivatedRoute),
+        provideMockStore({
+          signals: [
+            { selector: PreprintModerationSelectors.getPreprintWithdrawalSubmissions, value: mockSubmissions },
+            { selector: PreprintModerationSelectors.arePreprintWithdrawalSubmissionsLoading, value: false },
+            { selector: PreprintModerationSelectors.getPreprintWithdrawalSubmissionsPendingCount, value: 1 },
+            { selector: PreprintModerationSelectors.getPreprintWithdrawalSubmissionsAcceptedCount, value: 0 },
+            { selector: PreprintModerationSelectors.getPreprintWithdrawalSubmissionsRejectedCount, value: 0 },
+          ],
+        }),
+      ],
+    });
+
+    fixture = TestBed.createComponent(PreprintWithdrawalSubmissionsComponent);
+    component = fixture.componentInstance;
+    store = TestBed.inject(Store);
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize with default values', () => {
+    expect(component.currentPage()).toBe(1);
+    expect(component.pageSize()).toBe(10);
+    expect(component.first()).toBe(0);
+    expect(component.selectedSortOption()).toBe(PreprintSubmissionsSort.Newest);
+    expect(component.selectedReviewOption()).toBeDefined();
+  });
+
+  it('should have sort options defined', () => {
+    expect(component.sortOptions).toBeDefined();
+    expect(component.sortOptions.length).toBeGreaterThan(0);
+  });
+
+  it('should have actions defined', () => {
+    expect(component.actions).toBeDefined();
+    expect(component.actions.getPreprintWithdrawalSubmissions).toBeDefined();
+  });
+
+  it('should compute submission review options with counts', () => {
+    const options = component.submissionReviewOptions();
+    expect(options).toBeDefined();
+    expect(options.length).toBeGreaterThan(0);
+    expect(options[0]).toHaveProperty('count');
+  });
+
+  it('should compute total count', () => {
+    expect(component.totalCount()).toBeDefined();
+  });
+
+  it('should change review status', () => {
+    component.changeReviewStatus(SubmissionReviewStatus.Accepted);
+    expect(component.selectedReviewOption()).toBe(SubmissionReviewStatus.Accepted);
+    expect(mockRouter.navigate).toHaveBeenCalledWith(
+      [],
+      expect.objectContaining({
+        queryParams: { status: SubmissionReviewStatus.Accepted },
+      })
+    );
+  });
+
+  it('should change sort option', () => {
+    component.changeSort(PreprintSubmissionsSort.Oldest);
+    expect(component.selectedSortOption()).toBe(PreprintSubmissionsSort.Oldest);
+  });
+
+  it('should handle page change', () => {
+    const mockEvent = { page: 1, first: 10, rows: 10 };
+    component.onPageChange(mockEvent);
+    expect(component.currentPage()).toBe(2);
+    expect(component.first()).toBe(10);
+  });
+
+  it('should handle page change when page is undefined', () => {
+    const mockEvent = { page: undefined, first: 0, rows: 10 };
+    component.onPageChange(mockEvent);
+    expect(component.currentPage()).toBe(1);
+    expect(component.first()).toBe(0);
+  });
+
+  it('should navigate to preprint', () => {
+    const mockItem = mockSubmissions[0];
+    const windowOpenSpy = vi.spyOn(window, 'open').mockImplementation(() => null);
+
+    component.navigateToPreprint(mockItem);
+
+    expect(windowOpenSpy).toHaveBeenCalledWith(expect.stringContaining('/preprints/'), '_blank');
+
+    windowOpenSpy.mockRestore();
+  });
+
+  it('should get status from query params on init', () => {
+    expect(component.selectedReviewOption()).toBe(SubmissionReviewStatus.Pending);
+  });
+
+  it('should reset pagination when changing review status', () => {
+    component.currentPage.set(3);
+    component.first.set(20);
+
+    component.changeReviewStatus(SubmissionReviewStatus.Accepted);
+
+    expect(component.currentPage()).toBe(1);
+    expect(component.first()).toBe(0);
+  });
+
+  it('should load contributors for a withdrawal submission', () => {
+    const mockItem = mockSubmissions[0];
+    const dispatchSpy = vi.spyOn(store, 'dispatch');
+
+    component.loadContributors(mockItem);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(
+      new GetPreprintWithdrawalSubmissionContributors(mockItem.id, mockItem.preprintId)
+    );
+  });
+
+  it('should load more contributors for a withdrawal submission', () => {
+    const mockItem = mockSubmissions[0];
+    const dispatchSpy = vi.spyOn(store, 'dispatch');
+
+    component.loadMoreContributors(mockItem);
+
+    expect(dispatchSpy).toHaveBeenCalledWith(
+      new LoadMorePreprintWithdrawalSubmissionContributors(mockItem.id, mockItem.preprintId)
+    );
+  });
+});

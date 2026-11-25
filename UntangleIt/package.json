@@ -1,0 +1,236 @@
+{
+  "name": "untangleit",
+  "displayName": "UntangleIt - Polyglot",
+  "description": "Untangles one method at a time. Finds the methods with too many ways through them, hands your AI assistant a strict brief to break them into smaller pieces without changing what they do, and measures the result. You decide at every step.",
+  "icon": "media/untangleitLogo.png",
+  "version": "1.0.21",
+  "publisher": "prs",
+  "license": "GPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikevan/untangleit.git"
+  },
+  "engines": {
+    "vscode": "^1.104.0"
+  },
+  "categories": [
+    "Testing",
+    "Other"
+  ],
+  "keywords": [
+    "refactor",
+    "cyclomatic complexity",
+    "AI",
+    "vibe coding",
+    "MikeVan's AI Development Toolkit"
+  ],
+  "prsToolkit": {
+    "protocol": 1,
+    "verb": "untangle",
+    "commands": [
+      "untangleit.api.measure"
+    ],
+    "records": [
+      ".untangleit/runs.json"
+    ]
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "untangleit",
+          "title": "UntangleIt - Polyglot 1.0.21",
+          "icon": "media/untangleit.svg"
+        }
+      ]
+    },
+    "views": {
+      "untangleit": [
+        {
+          "type": "webview",
+          "id": "untangleit.sidebar",
+          "name": "UntangleIt - Polyglot 1.0.21",
+          "icon": "media/untangleit.svg",
+          "contextualTitle": "UntangleIt - Polyglot 1.0.21"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "untangleit.run",
+        "title": "Find the tangled methods",
+        "category": "UntangleIt",
+        "icon": "$(play)"
+      },
+      {
+        "command": "untangleit.configure",
+        "title": "Change the setup",
+        "category": "UntangleIt",
+        "icon": "$(gear)"
+      },
+      {
+        "command": "untangleit.showOutput",
+        "title": "Show the log",
+        "category": "UntangleIt",
+        "icon": "$(output)"
+      },
+      {
+        "command": "untangleit.worst",
+        "title": "Untangle the most tangled method",
+        "category": "UntangleIt"
+      },
+      {
+        "command": "untangleit.method",
+        "title": "Untangle this method",
+        "category": "UntangleIt"
+      },
+      {
+        "command": "untangleit.measureAgain",
+        "title": "Measure the method again",
+        "category": "UntangleIt"
+      },
+      {
+        "command": "untangleit.api.measure",
+        "title": "Measure a file (silent, for other tools)",
+        "category": "UntangleIt"
+      },
+      {
+        "command": "untangleit.showProposedChange",
+        "title": "Show the proposed change",
+        "category": "UntangleIt"
+      },
+      {
+        "command": "untangleit.governance",
+        "title": "Governance History",
+        "category": "UntangleIt"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "untangleit.run",
+          "when": "view == untangleit.sidebar",
+          "group": "navigation@1"
+        },
+        {
+          "command": "untangleit.configure",
+          "when": "view == untangleit.sidebar",
+          "group": "navigation@2"
+        },
+        {
+          "command": "untangleit.showOutput",
+          "when": "view == untangleit.sidebar",
+          "group": "navigation@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "untangleit.method",
+          "when": "false"
+        },
+        {
+          "command": "untangleit.measureAgain",
+          "when": "false"
+        },
+        {
+          "command": "untangleit.api.measure",
+          "when": "false"
+        },
+        {
+          "command": "untangleit.showProposedChange",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "UntangleIt",
+      "properties": {
+        "untangleit.language": {
+          "type": "string",
+          "default": "",
+          "description": "Language plugin id (python, typescript). Empty means detect from the workspace."
+        },
+        "untangleit.testsPath": {
+          "type": "string",
+          "default": "",
+          "description": "Folder with the tests, relative to the workspace. Empty means detect."
+        },
+        "untangleit.sourceRoot": {
+          "type": "string",
+          "default": "",
+          "description": "Folder with the code to measure, relative to the workspace. Empty means the whole workspace."
+        },
+        "untangleit.languageSettings": {
+          "type": "object",
+          "default": {},
+          "description": "Per-language settings, keyed by plugin id."
+        },
+        "untangleit.limit": {
+          "type": "number",
+          "default": 15,
+          "minimum": 1,
+          "description": "The most tangle one method may have before it counts as tangled. Tangle is MikeVan's Better Cognitive Complexity (MBCC), which counts how hard a method is to follow. Every piece produced by an untangling must also fit under this."
+        },
+        "untangleit.rounds": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "description": "How many rounds of untangle-and-measure to offer on one method before UntangleIt stops and hands the result back to you."
+        },
+        "untangleit.keepSafe.offerCheckpoint": {
+          "type": "boolean",
+          "default": true,
+          "description": "Before \"Untangle it\" hands work to an AI assistant, offer to create a KeepSafe checkpoint. Only applies when the KeepSafe extension (KeepSafe.keepsafe) is installed."
+        },
+        "untangleit.showNumbers": {
+          "type": "boolean",
+          "default": false,
+          "description": "Show the engineer's numbers (MBCC, Campbell's Cognitive Complexity, and cyclomatic complexity) next to the plain words."
+        },
+        "untangleit.polyglot.agents.enabled": {
+          "type": "boolean",
+          "default": true,
+          "scope": "application",
+          "markdownDescription": "Let Polyglot ask your assistant for help. When this is off, Polyglot AI assistance is disabled across installed Polyglot tools. Measurements, reports, and deterministic checks keep working.",
+          "description": "Let Polyglot ask your assistant for help. When this is off, Polyglot AI assistance is disabled across installed Polyglot tools. Measurements, reports, and deterministic checks keep working."
+        }
+      }
+    },
+    "chatParticipants": [
+      {
+        "id": "prs.untangleit.governed",
+        "name": "untangleit",
+        "fullName": "UntangleIt",
+        "description": "Explain a test run that stopped before the tests started.",
+        "isSticky": false
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node esbuild.mjs",
+    "watch": "node esbuild.mjs --watch",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run",
+    "compile-tests": "tsc -p tsconfig.test.json",
+    "test:vscode": "npm run build && npm run compile-tests && node out/test/integration/runTests.js",
+    "package": "npm run check && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.17",
+    "@types/vscode": "1.104.0",
+    "@vscode/test-electron": "^3.1.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "0.28.2",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.7"
+  },
+  "dependencies": {
+    "@projectrevivesolutions/complexity": "file:../complexity",
+    "@projectrevivesolutions/witness": "file:../Witness",
+    "web-tree-sitter": "0.27.0"
+  }
+}

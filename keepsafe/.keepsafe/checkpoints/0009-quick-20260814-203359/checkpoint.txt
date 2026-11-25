@@ -1,0 +1,34 @@
+Checkpoint: 0009-quick-20260814-203359
+Name: quick-20260814-203359
+Created: 2026-08-15T01:33:59Z
+Mode: delta
+Base: 0008-quick-20260814-192813
+
+A keepsafe-extension/.gitignore
+--- keepsafe-extension/.gitignore ---
+*
+!.gitignore
+!README.md
+!media/
+!media/**
+
+M keepsafe-extension/README.md [blob ae1ff31939604373414e6610a627945f18e249438faefe17a60a0686da34c0f4 size=5569]
+
+D keepsafe-extension/.vscodeignore
+
+D keepsafe-extension/LICENSE
+
+D keepsafe-extension/package-lock.json
+
+D keepsafe-extension/package.json
+
+D keepsafe-extension/src/extension.ts
+
+D keepsafe-extension/tsconfig.json
+
+D keepsafe-extension/src/scanner.ts
+
+D keepsafe-extension/src/store.ts
+
+D keepsafe-extension/README_old.md
+

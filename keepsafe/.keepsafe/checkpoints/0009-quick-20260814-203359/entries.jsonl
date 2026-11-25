@@ -1,0 +1,11 @@
+{"blob_id":"815814c28b215202834f26c95072807678edc596e0d8ce3db6ed9578d77c7252","content_hash":"815814c28b215202834f26c95072807678edc596e0d8ce3db6ed9578d77c7252","op":"add","path":"keepsafe-extension/.gitignore","size":46,"text":"*\r\n!.gitignore\r\n!README.md\r\n!media/\r\n!media/**"}
+{"blob_id":"ae1ff31939604373414e6610a627945f18e249438faefe17a60a0686da34c0f4","content_hash":"ae1ff31939604373414e6610a627945f18e249438faefe17a60a0686da34c0f4","op":"modify","path":"keepsafe-extension/README.md","size":5569}
+{"op":"delete","path":"keepsafe-extension/.vscodeignore"}
+{"op":"delete","path":"keepsafe-extension/LICENSE"}
+{"op":"delete","path":"keepsafe-extension/package-lock.json"}
+{"op":"delete","path":"keepsafe-extension/package.json"}
+{"op":"delete","path":"keepsafe-extension/src/extension.ts"}
+{"op":"delete","path":"keepsafe-extension/tsconfig.json"}
+{"op":"delete","path":"keepsafe-extension/src/scanner.ts"}
+{"op":"delete","path":"keepsafe-extension/src/store.ts"}
+{"op":"delete","path":"keepsafe-extension/README_old.md"}

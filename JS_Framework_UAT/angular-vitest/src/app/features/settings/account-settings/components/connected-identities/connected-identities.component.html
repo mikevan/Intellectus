@@ -1,0 +1,22 @@
+<p-card>
+  <h2>{{ 'settings.accountSettings.connectedIdentities.title' | translate }}</h2>
+
+  <p class="mt-4">
+    {{ 'settings.accountSettings.connectedIdentities.description' | translate }}
+  </p>
+
+  <div class="mt-4">
+    @for (identity of externalIdentities(); track identity.id) {
+      <div class="flex mt-3">
+        <osf-readonly-input
+          [value]="`${identity.id}: ${identity.externalId} (${identity.status})`"
+          [ariaLabelKey]="'settings.accountSettings.connectedIdentities.title'"
+          (deleteItem)="deleteExternalIdentity(identity)"
+        ></osf-readonly-input>
+      </div>
+    }
+    @if (!externalIdentities().length) {
+      <p>{{ 'settings.accountSettings.connectedIdentities.noIdentities' | translate }}</p>
+    }
+  </div>
+</p-card>

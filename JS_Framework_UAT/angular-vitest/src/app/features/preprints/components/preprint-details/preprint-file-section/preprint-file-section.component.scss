@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  flex: 1;
+}
+
+.file-section-height {
+  min-height: 600px;
+}
+
+.card {
+  &.small {
+    --p-card-body-padding: 0.75rem;
+  }
+}

@@ -1,0 +1,64 @@
+Jest measures through Witness, so a Jest project installs no coverage package
+either. What changed on the way there is the order of two steps, and the
+reason is worth keeping.
+
+The plan said wrap the project's transformer and instrument its output. Jest's
+own types settle why that cannot stand: require always uses the synchronous
+process, and the instrumenter is asynchronous because tree-sitter initialises
+its WASM that way. Reaching it from inside process would mean blocking on a
+worker thread through Atomics. The second reason matters more than the first:
+instrumenting the transformer's output means instrumenting Babel's compiled
+JavaScript, whose lines are not the editor's, so the counters would need a
+source map to get home. That is the shape the Angular path spent 1.0.15
+escaping, and building it on purpose for a second runner would be a strange
+way to spend the day.
+
+So the instrumenting goes in front. Witness rewrites source textually on the
+source's own lines, Babel compiles around the counters, and the numbers stay
+in source coordinates with no map anywhere. witnessUniverse now produces both
+halves from one parse, the executable-line universe and the instrumented text,
+which is the honest reading of one instrument. The transformer is a
+synchronous lookup that substitutes that text and calls the project's own,
+read from jest --showConfig and wrapped pattern by pattern so a project that
+transforms other file types keeps doing exactly that. Its cache key is the
+upstream key over the instrumented text, salted with that text, so a
+transformer that keys only on a file path cannot serve a stale transform.
+
+Maps are embedded per file. Jest gives every test file its own global, so an
+instrumented module registers itself with whatever runtime it lands beside
+rather than relying on a registration from another sandbox, and the whole-run
+counters are written when each test file finishes rather than at exit.
+
+The risky assumption was checked before any of it was built. Witness
+instruments greet.js, Babel compiles it with the port's real presets, and all
+sixteen counters survive, as do all eighty-one in the villain and both in the
+JSX component; running the result, hello("Jeff") returns "Hello, Jeff!" and the
+attributed lines are 4 and 7, which are the if and the return in the source.
+Equivalence with the Istanbul path is the end-to-end test, unweakened: it pins
+line 4 to one test, line 2 to two, line 8 to none, line 25 as executed at
+import but under no test, every line status, and the route steps of the worst
+line.
+
+Measured on the machine at Node v22.23.2: Witness 10 tests, DeepTest 218, and
+the react-jest port reports 11 finished, 11 recorded, 11 carrying a file, 3
+files with a line that ran, 0 cut off, with Greeting.jsx 1 of 1, greet.js 9 of
+9, names.js 8 of 18, and the villain 0 of 49. Every figure matches the
+react-vitest port file for file. Two runners with different transform
+pipelines, one instrument, one answer. The Angular paths still disagree with
+the source on plain TypeScript as well as on components, which is what the
+runner migration is for.
+
+Two things cost time and are written down rather than tidied away. The first
+Jest run died because the test-path filter sat after a yargs array flag, which
+is the same rule the Angular driver hit in 1.0.4 and which is recorded in the
+notes as one flag per value. And the cache-key test passed while proving
+nothing, because the stub transformer it wrapped keyed on the text it was
+handed; deleting the salt did not fail it. It now wraps a transformer that
+keys on the path instead, and deleting the salt fails it. That is the second
+test in one day that could not fail on the code it guarded.
+
+Also in this delivery: MADTPackage gains the .gitattributes the other four
+trees already had. It was the only tree without one, which meant Git would
+have written CRLF into the working tree on the next checkout of the
+authoritative library documents while their mirrors stayed LF, and Phase 0
+would have failed on a mismatch that had nothing to do with content.

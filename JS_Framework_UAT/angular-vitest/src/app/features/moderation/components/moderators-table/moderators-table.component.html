@@ -1,0 +1,119 @@
+<p-table
+  [value]="isLoading() ? skeletonData : items()"
+  [rows]="tableParams().rows"
+  [first]="tableParams().firstRowIndex"
+  [rowsPerPageOptions]="tableParams().rowsPerPageOptions"
+  [paginator]="tableParams().paginator"
+  [totalRecords]="tableParams().totalRecords"
+  paginatorDropdownAppendTo="body"
+  [scrollable]="tableParams().scrollable"
+  [lazy]="true"
+  [lazyLoadOnInit]="true"
+  (onPage)="onPageChange($event)"
+  class="view-only-table"
+>
+  <ng-template #header>
+    <tr>
+      <th>{{ 'project.contributors.table.headers.name' | translate }}</th>
+      <th>
+        <div class="flex align-items-center">
+          <span>{{ 'project.contributors.table.headers.permissions' | translate }}</span>
+        </div>
+      </th>
+
+      <th>{{ 'project.contributors.table.headers.employment' | translate }}</th>
+      <th>{{ 'project.contributors.table.headers.education' | translate }}</th>
+      <th></th>
+    </tr>
+  </ng-template>
+
+  <ng-template #body let-item>
+    @if (item.id) {
+      <tr>
+        <td>
+          <a class="font-bold" [routerLink]="['/', item.userId]">
+            {{ item.fullName }}
+          </a>
+        </td>
+        <td>
+          <div>
+            @if (hasAdminAccess()) {
+              <osf-select
+                [options]="permissionsOptions"
+                [placeholder]="'project.contributors.permissionFilter'"
+                [appendTo]="'body'"
+                [noBorder]="true"
+                [(selectedValue)]="item.permission"
+                (changeValue)="updatePermission(item)"
+              />
+            } @else {
+              @switch (item.permission) {
+                @case (ModeratorPermission.Admin) {
+                  <span>{{ 'moderation.moderatorPermissions.administrator' | translate }}</span>
+                }
+                @case (ModeratorPermission.Moderator) {
+                  <span>{{ 'moderation.moderatorPermissions.moderator' | translate }}</span>
+                }
+              }
+            }
+          </div>
+        </td>
+        <td>
+          @if (item.employment?.length) {
+            <a
+              class="font-bold cursor-pointer"
+              tabindex="0"
+              (click)="openEmploymentHistory(item)"
+              (keydown.enter)="openEmploymentHistory(item)"
+            >
+              {{ 'project.contributors.employment.show' | translate }}
+            </a>
+          } @else {
+            <span>{{ 'project.contributors.employment.none' | translate }}</span>
+          }
+        </td>
+        <td>
+          <div class="flex column-gap-2">
+            @if (item.education?.length) {
+              <a
+                class="font-bold cursor-pointer"
+                tabindex="0"
+                (click)="openEducationHistory(item)"
+                (keydown.enter)="openEducationHistory(item)"
+              >
+                {{ 'project.contributors.education.show' | translate }}
+              </a>
+            } @else {
+              <span>{{ 'project.contributors.education.none' | translate }}</span>
+            }
+          </div>
+        </td>
+        <td>
+          @if (hasAdminAccess() || currentUserId() === item.id) {
+            <p-button
+              class="danger-icon-btn"
+              icon="fas fa-trash"
+              severity="danger"
+              text
+              (onClick)="removeModerator(item)"
+              [ariaLabel]="'common.buttons.delete' | translate"
+              [disabled]="!hasAdminAccess() && currentUserId() !== item.id"
+            />
+          }
+        </td>
+      </tr>
+    } @else {
+      <tr class="loading-row">
+        <td colspan="5">
+          <p-skeleton width="100%" height="3.3rem" borderRadius="0" />
+        </td>
+      </tr>
+    }
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="5" class="text-center">{{ 'common.search.noResultsFound' | translate }}</td>
+    </tr>
+  </ng-template>
+</p-table>

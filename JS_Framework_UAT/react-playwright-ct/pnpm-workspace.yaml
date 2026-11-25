@@ -1,0 +1,15 @@
+allowBuilds: {}
+blockExoticSubdeps: true
+minimumReleaseAge: 43200
+minimumReleaseAgeExclude:
+  - nanoid@3.3.18
+  # Renovate security update: vitest@4.1.11
+  - vitest@4.1.11
+  # Renovate security update: pnpm@10.34.5
+  - pnpm@10.34.5
+overrides:
+  nanoid@^3.3.0: 3.3.18
+  postcss@^8.5.0: 8.5.23
+  undici@^7.0.0: 7.29.0
+  vite@^6.0.0: 6.4.3
+trustPolicy: no-downgrade

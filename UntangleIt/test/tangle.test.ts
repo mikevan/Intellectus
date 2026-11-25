@@ -1,0 +1,181 @@
+import { test } from 'vitest';
+import assert from 'node:assert/strict';
+import { compare, measureWorkspace, rankTangled, snapshot } from '../src/engine/tangle';
+import { emptyRunFile, openRunFor, upsertRun } from '../src/runs';
+import { outcomeSentence, runSentence, tangledSentence, verdict, wasBefore } from '../src/ui/words';
+
+/**
+ * A method with the given tangle (MBCC). Campbell is set two below it and
+ * ways through is fixed at 99 for every method, so any test that passes
+ * proves the ranking and the judging read MBCC and nothing else.
+ */
+const m = (name: string, tangle: number, startLine = 1, path = 'a.ts') => ({ name, complexity: 99, campbell: Math.max(0, tangle - 2), mbcc: tangle, startLine, endLine: startLine + 9, path });
+
+test('rankTangled keeps only methods over the limit by tangle, worst first, stable by path and line', () => {
+  const ranked = rankTangled([m('a', 3), m('b', 12, 20), m('c', 7, 5, 'b.ts'), m('d', 7, 40)], 5);
+  assert.deepEqual(
+    ranked.map((t) => [t.name, t.over]),
+    [
+      ['b', 7],
+      ['d', 2],
+      ['c', 2],
+    ],
+  );
+  assert.equal(rankTangled([m('a', 5)], 5).length, 0);
+  // A flat switch: 29 ways through, tangle 1. Never tangled, whatever the limit.
+  const flat = { name: 'dispatch', complexity: 29, campbell: 1, mbcc: 1, startLine: 1, endLine: 60, path: 'a.ts' };
+  assert.equal(rankTangled([flat], 5).length, 0);
+  assert.equal(rankTangled([flat], 1).length, 0);
+});
+
+test('verdict speaks plainly for none, all fine, and tangled', () => {
+  assert.equal(verdict(measureWorkspace([], 5, 0)).headline, 'No methods were found to measure.');
+  const fine = verdict(measureWorkspace([m('a', 2), m('b', 5)], 5, 1));
+  assert.equal(fine.ready, true);
+  assert.equal(fine.headline, 'Every method is within your limit.');
+  assert.equal(fine.detail, '2 methods in 1 file, none with a tangle of 6 or more.');
+  const bad = verdict(measureWorkspace([m('a', 2), m('big', 14)], 5, 1));
+  assert.equal(bad.ready, false);
+  assert.equal(bad.headline, '1 method is too tangled.');
+  assert.equal(bad.detail, 'Your limit is a tangle of 5. The worst is big() with a tangle of 14. 2 methods measured in 1 file.');
+});
+
+test('tangledSentence hides the engineer\'s numbers unless asked', () => {
+  const t = rankTangled([m('big', 14)], 5)[0];
+  assert.equal(tangledSentence(t, { showNumbers: false }), 'big() has a tangle of 14. Your limit is 5.');
+  assert.equal(tangledSentence(t, { showNumbers: true }), 'big() has a tangle of 14. Your limit is 5. (MBCC 14, Campbell 12, 99 ways through; 9 over)');
+});
+
+test('compare: pieces are the original, the new, and the changed; unrelated neighbours stay out', () => {
+  const before = snapshot(m('big', 14), [m('big', 14), m('helper', 2, 30), m('other', 3, 50)]);
+  const after = [m('big', 4), m('helper', 2, 30), m('other', 3, 50), m('bigPartA', 5, 60), m('bigPartB', 6, 80)];
+  const c = compare(before, after, 5);
+  assert.deepEqual(
+    c.pieces.map((p) => [p.name, p.mbcc, p.over, p.kind]),
+    [
+      ['bigPartB', 6, 1, 'new'],
+      ['big', 4, 0, 'original'],
+      ['bigPartA', 5, 0, 'new'],
+    ],
+  );
+  assert.equal(c.withinLimit, false);
+  assert.equal(c.remainingOver, 1);
+  assert.equal(c.moved, true);
+  assert.equal(c.before, 14);
+  // The method was 14 and the three pieces come to 15, so nothing was
+  // removed; the work was spread. The totals are what say so.
+  assert.equal(c.totalBefore, 14);
+  assert.equal(c.totalAfter, 15);
+
+  const done = compare(before, [m('big', 3), m('helper', 2, 30), m('other', 3, 50), m('bigPartA', 5, 60)], 5);
+  assert.equal(done.withinLimit, true);
+  assert.equal(done.remainingOver, 0);
+
+  const gone = compare(before, [m('helper', 2, 30), m('other', 3, 50)], 5);
+  assert.equal(gone.original, undefined);
+  assert.equal(gone.pieces.length, 0);
+  assert.equal(gone.withinLimit, false);
+
+  // A neighbour the untangling disturbed brings what it was carrying into
+  // the total, so a method emptied into an existing helper is not free.
+  const intoHelper = compare(before, [m('big', 4), m('helper', 12, 30), m('other', 3, 50)], 5);
+  assert.equal(intoHelper.totalBefore, 16);
+  assert.equal(intoHelper.totalAfter, 16);
+
+  const neighbourChanged = compare(before, [m('big', 14), m('helper', 4, 30), m('other', 3, 50)], 5);
+  assert.deepEqual(
+    neighbourChanged.pieces.map((p) => [p.name, p.kind]),
+    [
+      ['big', 'original'],
+      ['helper', 'changed'],
+    ],
+  );
+});
+
+test('outcomeSentence: within limit, still over, tests fail, and gone', () => {
+  const before = snapshot(m('big', 14), [m('big', 14)]);
+  const tests = { passed: 9, failed: 0, errors: 0, skipped: 0, exitCode: 0 };
+  const ok = compare(before, [m('big', 3), m('bigPartA', 5, 60)], 5);
+  assert.equal(outcomeSentence(ok, tests, 5, 'big'), 'Untangled into 2 pieces: big() 3, bigPartA() 5. Every piece is within your limit of 5. Together the pieces come to 8, against 14 before. All 9 tests pass.');
+  const over = compare(before, [m('big', 8), m('bigPartA', 5, 60)], 5);
+  assert.equal(outcomeSentence(over, tests, 5, 'big'), 'Not done. 2 pieces: big() 8, bigPartA() 5. 1 piece is still over your limit of 5; big() went from 14 to 8. Together the pieces come to 13, against 14 before. All 9 tests pass. Your call.');
+  assert.match(outcomeSentence(ok, { ...tests, failed: 2 }, 5, 'big'), /^The untangling broke 2 tests\. Behaviour changed/);
+  const gone = compare(before, [], 5);
+  assert.match(outcomeSentence(gone, tests, 5, 'big'), /^big\(\) is gone and no new methods appeared/);
+  assert.equal(outcomeSentence(ok, undefined, 5, 'big'), 'Untangled into 2 pieces: big() 3, bigPartA() 5. Every piece is within your limit of 5. Together the pieces come to 8, against 14 before.');
+});
+
+test('outcomeSentence says so when every piece fits and the tangle only moved', () => {
+  // The wrapper case the scorer cannot see on its own: the method's own
+  // number falls, every piece fits, and the reader's work is still there,
+  // spread across three methods instead of one.
+  const before = snapshot(m('big', 20), [m('big', 20)]);
+  const spread = compare(before, [m('big', 9), m('bigPartA', 8, 60), m('bigPartB', 6, 80)], 15);
+  assert.equal(spread.withinLimit, true);
+  assert.equal(spread.totalBefore, 20);
+  assert.equal(spread.totalAfter, 23);
+  assert.equal(
+    outcomeSentence(spread, undefined, 15, 'big'),
+    'Untangled into 3 pieces: big() 9, bigPartA() 8, bigPartB() 6. Every piece is within your limit of 15. Together the pieces come to 23, against 20 before, so the tangle moved rather than went away.',
+  );
+  // One piece is the method itself, unsplit. There is no total to compare.
+  const unsplit = compare(before, [m('big', 9)], 15);
+  assert.equal(outcomeSentence(unsplit, undefined, 15, 'big'), 'Untangled into 1 piece: big() 9. Every piece is within your limit of 15.');
+});
+
+/**
+ * The hand-written untangle brief was deleted in Phase 5, and its test with
+ * it.
+ *
+ * `buildUntangleBrief` assembled prose and handed it to an assistant through
+ * the clipboard and the editor chat. Nothing recorded what limits travelled
+ * and nothing validated what came back. It was deleted rather than wrapped,
+ * because hand-written prose inside a governed packet is the thing rule 87
+ * was written about, and restoring it would reopen M4.
+ *
+ * Where its assertions went:
+ *
+ *   quoting the method into the brief, and the truncation marker
+ *     Gone on purpose. The governed packet carries a readable-paths list and
+ *     the model reads the file, which is one fewer copy of the customer's
+ *     source in one fewer place (rule 70).
+ *
+ *   "the existing tests pass without being edited"
+ *     Now C1, enforced rather than requested, and
+ *     `governed-untangle.test.ts` asserts the effective set is exactly
+ *     C1, C2, C3, C4, C8.
+ *
+ *   "it will not accept the result on your behalf"
+ *     Now structural: field 10 names two measurements that must both hold,
+ *     and the authorization brief's fifth point says what will be measured.
+ *     Asserted in `governed-untangle.test.ts`.
+ *
+ *   the round-2 sections, and the MBCC coaching prose
+ *     Gone with the builder. The round count lives on `RunRecord.rounds`,
+ *     which the test below still covers, and each round now builds its own
+ *     packet with its own anchor.
+ *
+ *   the target, stated with its measured number and the limit
+ *     **Still a product requirement**, and it moved to
+ *     `governed-untangle.test.ts` as an assertion over the packet's evidence
+ *     rather than over generated prose.
+ */
+
+test('runs: the open run is the newest unfinished one, and the sentences read as a record', () => {
+  const base = { path: 'a.ts', name: 'big', startLine: 1, before: 14, limit: 5, by: 'mike', startedAt: '2026-09-06T10:00:00Z', snapshot: snapshot(m('big', 14), [m('big', 14)]) };
+  let file = emptyRunFile();
+  file = upsertRun(file, { ...base, id: 'r1', rounds: 1, status: 'sent' });
+  assert.equal(openRunFor(file, 'a.ts', 'big')?.id, 'r1');
+  assert.equal(runSentence(file.runs[0]), 'Sent to your assistant on 2026-09-06 (round 1). When it says done, press "Measure again".');
+  file = upsertRun(file, { ...base, id: 'r1', rounds: 1, status: 'within-limit', measuredAt: '2026-09-07T10:00:00Z' });
+  assert.equal(openRunFor(file, 'a.ts', 'big'), undefined);
+  assert.equal(runSentence(file.runs[0]), 'Untangled on 2026-09-07: was 14 ways through, every piece within 5.');
+  // A record written by 0.1.x judged by ways through and has no `measure`; one from 0.1.11 on says so.
+  assert.equal(wasBefore({ before: 15 }), 'was 15 ways through');
+  assert.equal(wasBefore({ before: 15, measure: 'ways' }), 'was 15 ways through');
+  assert.equal(wasBefore({ before: 47, measure: 'mbcc' }), 'was a tangle of 47');
+  assert.equal(runSentence({ ...file.runs[0], measure: 'mbcc', before: 47 }), 'Untangled on 2026-09-07: was a tangle of 47, every piece within 5.');
+  file = upsertRun(file, { ...base, id: 'r2', rounds: 2, status: 'still-over', outcome: 'Not done.' });
+  assert.equal(openRunFor(file, 'a.ts', 'big')?.id, 'r2');
+  assert.equal(runSentence(file.runs[1]), 'After 2 rounds, still over your limit. Not done.');
+});

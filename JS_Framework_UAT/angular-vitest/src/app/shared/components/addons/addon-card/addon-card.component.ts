@@ -1,0 +1,160 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
+
+import { Component, computed, inject, input } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { UserSelectors } from '@osf/core/store/user';
+import { getAddonTypeString, isConfiguredAddon, isStorageAddon } from '@osf/shared/helpers/addon-type.helper';
+import { CustomConfirmationService } from '@osf/shared/services/custom-confirmation.service';
+import { LoaderService } from '@osf/shared/services/loader.service';
+import { AddonModel } from '@shared/models/addons/addon.model';
+import { AddonCardModel } from '@shared/models/addons/addon-card.model';
+import { AuthorizedAccountModel } from '@shared/models/addons/authorized-account.model';
+import { ConfiguredAddonModel } from '@shared/models/addons/configured-addon.model';
+import { DeleteAuthorizedAddon } from '@shared/stores/addons';
+
+@Component({
+  selector: 'osf-addon-card',
+  imports: [Button, Tooltip, TranslatePipe],
+  templateUrl: './addon-card.component.html',
+  styleUrl: './addon-card.component.scss',
+})
+export class AddonCardComponent {
+  private readonly router = inject(Router);
+  private readonly customConfirmationService = inject(CustomConfirmationService);
+  private readonly loaderService = inject(LoaderService);
+  private readonly actions = createDispatchMap({ deleteAuthorizedAddon: DeleteAuthorizedAddon });
+
+  readonly card = input<AddonModel | AuthorizedAccountModel | ConfiguredAddonModel | AddonCardModel | null>(null);
+  readonly isConnected = input<boolean>(false);
+  readonly hasAdminAccess = input<boolean>(false);
+
+  readonly isProjectReadOnly = select(UserSelectors.isProjectReadOnly);
+
+  readonly actualAddon = computed(() => {
+    const actualCard = this.card();
+    if (!actualCard) return null;
+
+    if ('isConfigured' in actualCard) {
+      return actualCard.addon;
+    }
+
+    return actualCard;
+  });
+
+  readonly addonTypeString = computed(() => getAddonTypeString(this.actualAddon()));
+  readonly isConfiguredAddon = computed(() => {
+    const actualCard = this.card();
+    if (!actualCard) return false;
+
+    if ('isConfigured' in actualCard) {
+      return actualCard.isConfigured;
+    }
+
+    return isConfiguredAddon(actualCard);
+  });
+
+  readonly canConfigure = computed(() => {
+    const isConfigured = this.isConfiguredAddon();
+    const hasAdmin = this.hasAdminAccess();
+
+    if (!isConfigured) return true;
+
+    const addon = this.card();
+    if (!addon) return true;
+
+    let isOwner = false;
+    if ('configuredAddon' in addon && addon.configuredAddon) {
+      isOwner = addon.configuredAddon.currentUserIsOwner;
+    } else if ('currentUserIsOwner' in addon) {
+      isOwner = addon.currentUserIsOwner;
+    }
+
+    return hasAdmin || isOwner;
+  });
+
+  readonly shouldDisableConnect = computed(() => {
+    if (this.isConfiguredAddon() || this.isConnected()) {
+      return false;
+    }
+    if (this.isProjectReadOnly() && !this.isConnected() && isStorageAddon(this.actualAddon())) {
+      return true;
+    }
+    return false;
+  });
+
+  readonly buttonTooltip = computed(() => {
+    return this.shouldDisableConnect() ? 'common.errorMessages.actionUnavailable' : '';
+  });
+
+  readonly buttonLabel = computed(() => {
+    const isConfigured = this.isConfiguredAddon();
+    const isConnected = this.isConnected();
+
+    if (isConfigured) {
+      return 'common.buttons.configure';
+    }
+
+    return isConnected ? 'settings.addons.form.buttons.reconnect' : 'settings.addons.form.buttons.connect';
+  });
+
+  onConnectAddon(): void {
+    const addon = this.actualAddon();
+    if (addon) {
+      const currentUrl = this.router.url;
+      const baseUrl = currentUrl.split('/addons')[0];
+      this.router.navigate([`${baseUrl}/addons/connect-addon`], {
+        state: { addon },
+      });
+    }
+  }
+
+  onConfigureAddon(): void {
+    const actualCard = this.card();
+    if (!actualCard) return;
+
+    if ('isConfigured' in actualCard && actualCard.configuredAddon) {
+      const currentUrl = this.router.url;
+      const baseUrl = currentUrl.split('/addons')[0];
+      this.router.navigate([`${baseUrl}/addons/configure-addon`], {
+        state: { addon: actualCard.configuredAddon },
+      });
+    } else {
+      const addon = this.actualAddon();
+      if (addon) {
+        const currentUrl = this.router.url;
+        const baseUrl = currentUrl.split('/addons')[0];
+        this.router.navigate([`${baseUrl}/addons/configure-addon`], {
+          state: { addon },
+        });
+      }
+    }
+  }
+
+  showDisableDialog(): void {
+    this.customConfirmationService.confirmDelete({
+      headerKey: 'settings.addons.messages.deleteConfirmation.title',
+      messageKey: 'settings.addons.messages.deleteConfirmation.message',
+      acceptLabelKey: 'common.buttons.disable',
+      onConfirm: () => this.onDisableAddon(),
+    });
+  }
+
+  onDisableAddon(): void {
+    const addon = this.actualAddon();
+    const addonId = addon?.id;
+
+    if (addonId) {
+      this.loaderService.show();
+      this.actions.deleteAuthorizedAddon(addonId, this.addonTypeString()).subscribe({
+        complete: () => this.loaderService.hide(),
+        error: () => this.loaderService.hide(),
+      });
+    }
+  }
+}

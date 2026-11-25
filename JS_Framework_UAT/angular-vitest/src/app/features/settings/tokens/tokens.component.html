@@ -1,0 +1,11 @@
+<osf-sub-header
+  [showButton]="isBaseRoute()"
+  [buttonLabel]="'settings.tokens.buttons.create' | translate"
+  [title]="'settings.tokens.header' | translate"
+  [icon]="'fas fa-gear'"
+  (buttonClick)="createToken()"
+/>
+
+<section class="flex-column flex flex-1">
+  <router-outlet />
+</section>

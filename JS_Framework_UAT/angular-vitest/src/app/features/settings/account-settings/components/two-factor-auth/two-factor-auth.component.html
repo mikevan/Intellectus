@@ -1,0 +1,77 @@
+@if (accountSettings()) {
+  <p-card>
+    <h2>{{ 'settings.accountSettings.twoFactorAuth.title' | translate }}</h2>
+
+    @if (accountSettings()?.twoFactorEnabled && !accountSettings()?.twoFactorConfirmed) {
+      <div class="flex flex-column gap-2 mt-4">
+        <p>
+          {{ 'settings.accountSettings.twoFactorAuth.description.enabled' | translate }}
+        </p>
+
+        <p class="font-bold">
+          {{ 'settings.accountSettings.twoFactorAuth.description.warning' | translate }}
+        </p>
+
+        <p>
+          {{ 'settings.accountSettings.twoFactorAuth.description.setup' | translate }}
+        </p>
+
+        <p>
+          {{ 'settings.accountSettings.twoFactorAuth.description.verification' | translate }}
+        </p>
+
+        <p
+          class="token-container"
+          [innerHTML]="
+            'settings.accountSettings.twoFactorAuth.description.scan' | translate: { secret: accountSettings()?.secret }
+          "
+        ></p>
+
+        <qrcode [qrdata]="qrCodeLink()" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      </div>
+
+      <label for="code">{{ 'settings.accountSettings.twoFactorAuth.verification.label' | translate }}</label>
+
+      <p-inputMask
+        inputId="code"
+        mask="999999"
+        [placeholder]="'settings.accountSettings.twoFactorAuth.enterCode' | translate"
+        slotChar=""
+        [formControl]="verificationCode"
+        [maxlength]="codeMaxLength"
+      ></p-inputMask>
+
+      <div class="flex justify-content-end gap-2 mt-4">
+        <p-button [label]="'common.buttons.cancel' | translate" (click)="disableTwoFactor()" severity="info">
+        </p-button>
+
+        <p-button
+          [label]="'settings.accountSettings.common.buttons.enable' | translate"
+          (click)="enableTwoFactor()"
+          [disabled]="verificationCode.invalid"
+        >
+        </p-button>
+      </div>
+    } @else if (accountSettings()?.twoFactorEnabled && accountSettings()?.twoFactorConfirmed) {
+      <p class="mt-4">
+        {{ 'settings.accountSettings.twoFactorAuth.description.enabled' | translate }}
+      </p>
+
+      <div class="flex justify-content-end mt-4">
+        <p-button
+          [label]="'common.buttons.disable' | translate"
+          severity="danger"
+          (click)="openDisableDialog()"
+        ></p-button>
+      </div>
+    } @else {
+      <p class="mt-4">
+        {{ 'settings.accountSettings.twoFactorAuth.description.disabled' | translate }}
+      </p>
+
+      <div class="flex justify-content-end mt-4">
+        <p-button [label]="'common.buttons.configure' | translate" (click)="configureTwoFactorAuth()"> </p-button>
+      </div>
+    }
+  </p-card>
+}

@@ -1,0 +1,74 @@
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { TableModule } from 'primeng/table';
+
+import { NgClass } from '@angular/common';
+import { Component, computed, input } from '@angular/core';
+
+import { ADDON_TERMS } from '@osf/shared/constants/addon-terms.const';
+import { isCitationAddon, isRedirectAddon } from '@osf/shared/helpers/addon-type.helper';
+import { AddonTerm } from '@osf/shared/models/addons/addon-utils.model';
+import { AddonModel } from '@shared/models/addons/addon.model';
+import { AuthorizedAccountModel } from '@shared/models/addons/authorized-account.model';
+
+@Component({
+  selector: 'osf-addon-terms',
+  imports: [TranslatePipe, TableModule, NgClass],
+  templateUrl: './addon-terms.component.html',
+  styleUrls: ['./addon-terms.component.scss'],
+})
+export class AddonTermsComponent {
+  addon = input<AddonModel | AuthorizedAccountModel | null>(null);
+  redirectUrl = input<string | null>(null);
+
+  isRedirectService = computed(() => isRedirectAddon(this.addon()));
+  terms = computed(() => {
+    const addon = this.addon();
+    if (!addon) {
+      return [];
+    }
+    return this.getAddonTerms(addon);
+  });
+
+  private getAddonTerms(addon: AddonModel | AuthorizedAccountModel): AddonTerm[] {
+    const supportedFeatures = addon.supportedFeatures || [];
+    const provider = addon.providerName;
+    const isCitationService = isCitationAddon(addon);
+    if (isRedirectAddon(addon)) {
+      return [];
+    }
+
+    const relevantTerms = isCitationService ? ADDON_TERMS.filter((term) => term.citation) : ADDON_TERMS;
+
+    return relevantTerms.map((term) => {
+      const feature = term.supportedFeature;
+      const hasFeature = supportedFeatures.includes(feature);
+      const hasPartialFeature = supportedFeatures.includes(`${feature}_PARTIAL`);
+
+      let message: string;
+      let type: 'warning' | 'info' | 'danger';
+
+      if (isCitationService && term.citation) {
+        if (hasPartialFeature && term.citation.partial) {
+          message = term.citation.partial;
+          type = 'warning';
+        } else if (!hasFeature && term.citation.false) {
+          message = term.citation.false;
+          type = 'danger';
+        } else {
+          message = term.storage[hasFeature ? 'true' : 'false'];
+          type = hasFeature ? 'info' : 'danger';
+        }
+      } else {
+        message = term.storage[hasFeature ? 'true' : 'false'];
+        type = hasFeature ? 'info' : hasPartialFeature ? 'warning' : 'danger';
+      }
+
+      return {
+        function: term.label,
+        status: message.replace(/{provider}/g, provider || ''),
+        type,
+      };
+    });
+  }
+}

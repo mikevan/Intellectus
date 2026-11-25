@@ -1,0 +1,140 @@
+@let currentFile = file();
+
+<osf-sub-header [isLoading]="isFileLoading()" [title]="headerTitle()" />
+
+<p-tabs [value]="selectedTab" (valueChange)="onTabChange($event)" class="ml-auto mr-4">
+  <p-tablist>
+    <p-tab [value]="FileDetailTab.Details">{{ 'files.detail.tabs.details' | translate }}</p-tab>
+    <p-tab [value]="FileDetailTab.Revisions">{{ 'files.detail.tabs.revisions' | translate }}</p-tab>
+    <p-tab [value]="FileDetailTab.Keywords">{{ 'files.detail.tabs.keywords' | translate }}</p-tab>
+  </p-tablist>
+</p-tabs>
+
+<div class="flex gap-4 bg-white flex-column h-full flex-1 p-4">
+  <div class="flex">
+    <div class="flex align-items-center gap-2 back-navigation font-semibold">
+      <i class="pi pi-angle-left text-base"></i>
+      <a [routerLink]="['../']" queryParamsHandling="merge" class="font-semibold">
+        {{ 'files.detail.backToList' | translate }}
+      </a>
+    </div>
+
+    <div class="flex gap-3 ml-auto sm-round-padding-btn">
+      @if (canManageFileActions()) {
+        <p-button
+          severity="secondary"
+          [label]="'files.detail.actions.addCommunityMetadata' | translate"
+          [routerLink]="['/', fileGuid, 'metadata', 'add']"
+        ></p-button>
+      }
+
+      @if (currentFile?.links?.download) {
+        <p-button
+          severity="secondary"
+          class="btn-icon-only"
+          icon="fas fa-download"
+          [ariaLabel]="'common.buttons.download' | translate"
+          (onClick)="downloadFile()"
+        />
+      }
+      @if (currentFile?.links?.render) {
+        <div class="relative">
+          <p-button
+            severity="secondary"
+            class="btn-icon-only"
+            icon="fas fa-file-import"
+            [ariaLabel]="'common.buttons.embed' | translate"
+            (onClick)="embedMenu.toggle($event)"
+          />
+
+          <p-menu appendTo="body" [model]="embedItems" popup #embedMenu>
+            <ng-template #item let-item>
+              <a class="p-menu-item-link">{{ item.label | translate }}</a>
+            </ng-template>
+          </p-menu>
+        </div>
+      }
+      @if (currentFile?.links?.html) {
+        <div class="relative">
+          <p-button
+            severity="secondary"
+            class="btn-icon-only"
+            icon="fas fa-share-nodes"
+            [ariaLabel]="'common.buttons.share' | translate"
+            (click)="shareMenu.toggle($event)"
+          />
+
+          <p-menu appendTo="body" [model]="shareItems" popup #shareMenu>
+            <ng-template #item let-item>
+              <a class="p-menu-item-link">{{ item.label | translate }}</a>
+            </ng-template>
+          </p-menu>
+        </div>
+      }
+      @if (canManageFileActions()) {
+        <p-button
+          severity="danger"
+          [ariaLabel]="'common.buttons.delete' | translate"
+          class="btn-icon-only"
+          icon="fas fa-trash"
+          (onClick)="confirmDelete()"
+        />
+      }
+    </div>
+  </div>
+
+  <div class="flex flex-column lg:flex-row gap-4 flex-1 h-full">
+    <div class="w-full h-full lg:w-6">
+      @if (safeLink) {
+        <iframe
+          [src]="safeLink"
+          (load)="isIframeLoading = false"
+          [hidden]="isIframeLoading"
+          title="Rendering of document"
+          marginheight="0"
+          frameborder="0"
+          allowfullscreen=""
+          class="full-image"
+          height="100%"
+          width="100%"
+        ></iframe>
+      }
+      @if (isIframeLoading) {
+        <osf-loading-spinner></osf-loading-spinner>
+      }
+    </div>
+
+    <div class="w-full flex flex-column gap-4 flex-1 lg:w-6">
+      @if (selectedTab === FileDetailTab.Revisions) {
+        <osf-file-revisions
+          class="metadata"
+          [isLoading]="isFileRevisionLoading()"
+          [fileRevisions]="fileRevisions()"
+          (downloadRevision)="downloadRevision($event)"
+          (openRevision)="onOpenRevision($event)"
+        ></osf-file-revisions>
+      } @else if (selectedTab === FileDetailTab.Keywords) {
+        <osf-file-keywords class="metadata"></osf-file-keywords>
+      } @else {
+        <div class="file-metadata-tabs flex flex-column flex-1">
+          <osf-metadata-tabs
+            [loading]="isFileLoading()"
+            [tabs]="tabs()"
+            [selectedTab]="selectedMetadataTab()"
+            [selectedCedarTemplate]="selectedCedarTemplate()!"
+            [selectedCedarRecord]="selectedCedarRecord()!"
+            [cedarFormReadonly]="cedarFormReadonly()"
+            (changeTab)="onMetadataTabChange($event)"
+            (formSubmit)="onCedarFormSubmit($event)"
+            (toggleFormEdit)="toggleEditMode()"
+          >
+            <div class="w-full flex flex-column gap-4 flex-1 -mt-4">
+              <osf-file-metadata class="metadata"></osf-file-metadata>
+              <osf-file-resource-metadata class="metadata" [resourceType]="resourceType"></osf-file-resource-metadata>
+            </div>
+          </osf-metadata-tabs>
+        </div>
+      }
+    </div>
+  </div>
+</div>

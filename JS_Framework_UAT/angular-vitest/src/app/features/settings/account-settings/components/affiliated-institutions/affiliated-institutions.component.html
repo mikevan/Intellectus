@@ -1,0 +1,23 @@
+<p-card>
+  <h2>{{ 'common.labels.affiliatedInstitutions' | translate }}</h2>
+
+  <p class="mt-4">
+    {{ 'settings.accountSettings.affiliatedInstitutions.description' | translate }}
+  </p>
+
+  @if (institutions().length === 0) {
+    <p class="mt-4">
+      {{ 'settings.accountSettings.affiliatedInstitutions.noInstitutions' | translate }}
+    </p>
+  }
+
+  @for (institution of institutions(); track institution.id) {
+    <div class="flex mt-3">
+      <osf-readonly-input
+        [value]="institution.name"
+        [ariaLabelKey]="'common.labels.affiliatedInstitution' | translate"
+        (deleteItem)="deleteInstitution(institution)"
+      ></osf-readonly-input>
+    </div>
+  }
+</p-card>

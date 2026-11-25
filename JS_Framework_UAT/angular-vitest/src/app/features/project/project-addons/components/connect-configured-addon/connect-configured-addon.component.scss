@@ -1,0 +1,11 @@
+@use "styles/mixins" as mix;
+
+:host {
+  flex: 1;
+  @include mix.flex-column;
+}
+
+.stepper-container {
+  background-color: var(--white);
+  flex: 1;
+}

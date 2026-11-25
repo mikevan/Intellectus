@@ -1,0 +1,27 @@
+<nav class="nav-menu">
+  <p-panelMenu [model]="mainMenuItems()" [multiple]="false">
+    <ng-template #item let-item>
+      <a
+        [routerLink]="item.routerLink ? item.routerLink : null"
+        [queryParams]="item.queryParams"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="item.routerLinkActiveOptions"
+        class="nav-link flex align-items-center"
+        (click)="goToLink(item)"
+      >
+        @if (item.icon) {
+          <osf-icon [iconClass]="`nav-icon ${item.icon}`"></osf-icon>
+        }
+
+        <span>{{ item.label }}</span>
+
+        @if (hasVisibleChildren | wrapFn: item) {
+          <osf-icon
+            class="ml-auto pt-1"
+            [iconClass]="item.expanded ? `fas fa-chevron-down fa-sm` : `fas fa-chevron-right fa-sm`"
+          ></osf-icon>
+        }
+      </a>
+    </ng-template>
+  </p-panelMenu>
+</nav>

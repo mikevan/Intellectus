@@ -1,0 +1,38 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+
+import { MetadataRecordFormat } from '../enums/metadata-record-format.enum';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MetadataRecordsService {
+  private readonly http = inject(HttpClient);
+  private readonly environment = inject(ENVIRONMENT);
+
+  get webUrl() {
+    return this.environment.webUrl;
+  }
+
+  getMetadataDownloadUrl(id: string): string {
+    return `${this.webUrl}/metadata/${id}`;
+  }
+
+  downloadMetadata(id: string): void {
+    if (!id) {
+      return;
+    }
+
+    window.open(this.getMetadataDownloadUrl(id), '_blank');
+  }
+
+  getMetadataRecord(id: string, format: MetadataRecordFormat) {
+    const url = `${this.webUrl}/metadata/${id}/?format=${format}`;
+    return this.http.get(url, {
+      responseType: 'text',
+      headers: new HttpHeaders({ 'X-No-Auth-Redirect': 'true' }),
+    });
+  }
+}

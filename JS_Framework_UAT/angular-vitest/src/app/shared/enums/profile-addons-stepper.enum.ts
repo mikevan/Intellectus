@@ -1,0 +1,8 @@
+export enum ProjectAddonsStepperValue {
+  TERMS = 1,
+  CHOOSE_CONNECTION,
+  CHOOSE_ACCOUNT,
+  CONFIGURE_ROOT_FOLDER,
+  SETUP_NEW_ACCOUNT,
+  AUTH,
+}

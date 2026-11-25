@@ -1,0 +1,9 @@
+<h2>{{ title() | translate }}</h2>
+
+@if (isLoading()) {
+  <osf-loading-spinner></osf-loading-spinner>
+} @else {
+  <div class="flex align-items-center justify-content-center w-full h-full">
+    <p-chart class="mt-4" type="pie" responsive="true" [data]="data()" [options]="options()"></p-chart>
+  </div>
+}

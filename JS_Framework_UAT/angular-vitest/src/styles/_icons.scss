@@ -1,0 +1,92 @@
+@mixin custom-icon-mask($url) {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-color: currentColor;
+  mask: url($url) no-repeat center / contain;
+  -webkit-mask: url($url) no-repeat center / contain;
+}
+
+.custom-icon-registries {
+  @include custom-icon-mask("/assets/icons/colored/registries.svg");
+}
+
+.custom-icon-preprints {
+  @include custom-icon-mask("/assets/icons/colored/preprints.svg");
+}
+
+.custom-icon-collections {
+  @include custom-icon-mask("/assets/icons/colored/collections.svg");
+}
+
+.custom-icon-institutions {
+  @include custom-icon-mask("/assets/icons/colored/institutions.svg");
+}
+
+.custom-icon-projects {
+  @include custom-icon-mask("/assets/icons/colored/projects.svg");
+}
+
+.custom-icon-meetings {
+  @include custom-icon-mask("/assets/icons/colored/meetings.svg");
+}
+
+.custom-icon-data {
+  background: url("/assets/icons/colored/data-colored.svg") no-repeat center;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}
+
+.custom-icon-code {
+  background: url("/assets/icons/colored/code-colored.svg") no-repeat center;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}
+
+.custom-icon-materials {
+  background: url("/assets/icons/colored/materials-colored.svg") no-repeat center;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}
+
+.custom-icon-papers {
+  background: url("/assets/icons/colored/papers-colored.svg") no-repeat center;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}
+
+.custom-icon-supplements {
+  background: url("/assets/icons/colored/supplements-colored.svg") no-repeat center;
+  background-size: contain;
+  width: 1rem;
+  height: 1rem;
+}
+
+.custom-icon-data-dark {
+  @include custom-icon-mask("/assets/icons/colored/data.svg");
+}
+
+.custom-icon-code-dark {
+  @include custom-icon-mask("/assets/icons/colored/code.svg");
+}
+
+.custom-icon-materials-dark {
+  @include custom-icon-mask("/assets/icons/colored/materials.svg");
+}
+
+.custom-icon-papers-dark {
+  @include custom-icon-mask("/assets/icons/colored/papers.svg");
+}
+
+.custom-icon-supplements-dark {
+  @include custom-icon-mask("/assets/icons/colored/supplements.svg");
+}
+
+.icon-resource-size {
+  width: 1.75rem;
+  height: 2rem;
+}

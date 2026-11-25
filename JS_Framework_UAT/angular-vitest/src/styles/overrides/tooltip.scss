@@ -1,0 +1,14 @@
+:root {
+  --p-tooltip-max-width: 20rem;
+}
+
+.p-tooltip-text {
+  --p-tooltip-background: var(--white);
+  --p-tooltip-color: var(--dark-blue-1);
+  --p-tooltip-padding: 1rem;
+  --p-overlay-popover-shadow: 0px 0px 4px 0px var(--grey-outline);
+}
+
+.p-tooltip-arrow {
+  border: none;
+}

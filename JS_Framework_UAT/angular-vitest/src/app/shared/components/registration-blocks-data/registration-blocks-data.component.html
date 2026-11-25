@@ -1,0 +1,62 @@
+@for (question of questions(); track question.id) {
+  <div [class.mb-4]="!$last">
+    <h4 class="mb-2">
+      {{ question.displayText }}
+
+      @if (!isOriginalRevision() && updatedKeysMap()[question.responseKey!]) {
+        <p-tag class="font-bold" [value]="'common.labels.updated' | translate" severity="warn"></p-tag>
+      }
+    </h4>
+
+    @if (reviewData()[question.responseKey!]) {
+      @switch (question.fieldType) {
+        @case (FieldType.Text) {
+          <p class="preserve-whitespace">{{ reviewData()[question.responseKey!] | fixSpecialChar }}</p>
+        }
+        @case (FieldType.Checkbox) {
+          @for (option of reviewData()[question.responseKey!]; track option) {
+            <p class="preserve-whitespace mb-1">{{ option }}</p>
+          }
+        }
+        @case (FieldType.File) {
+          @if (reviewData()[question.responseKey!].length) {
+            <div class="flex flex-wrap gap-2">
+              @for (file of reviewData()[question.responseKey!]; track file.id) {
+                @if (isDraft()) {
+                  <p>{{ file.file_name }}</p>
+                } @else {
+                  <a
+                    class="font-bold cursor-pointer"
+                    target="_blank"
+                    rel="noopener"
+                    [href]="getFileUrl(file?.file_urls?.html)"
+                  >
+                    {{ file.file_name }}
+                  </a>
+                }
+              }
+            </div>
+          } @else {
+            <p class="font-italic">{{ 'common.labels.noFiles' | translate }}</p>
+          }
+        }
+        @default {
+          <p class="preserve-whitespace">{{ reviewData()[question.responseKey!] | fixSpecialChar }}</p>
+        }
+      }
+    } @else {
+      @if (question.fieldType === FieldType.File) {
+        <p class="font-italic">{{ 'common.labels.noFiles' | translate }}</p>
+      } @else if (question.fieldType === FieldType.Paragraph) {
+        <p class="preserve-whitespace">{{ question.paragraphText! | translate }}</p>
+      } @else {
+        <p class="font-italic">{{ 'common.labels.noData' | translate }}</p>
+      }
+      @if (question.required && !isOverviewPage()) {
+        <p-message class="mt-1" severity="error" variant="simple" size="small">
+          {{ INPUT_VALIDATION_MESSAGES.required | translate }}
+        </p-message>
+      }
+    }
+  </div>
+}

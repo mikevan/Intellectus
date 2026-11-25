@@ -1,0 +1,118 @@
+import { MockComponents, MockPipe, MockProvider } from 'ng-mocks';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { AddToCollectionSelectors } from '@osf/features/collections/store/add-to-collection';
+import { TagsInputComponent } from '@osf/shared/components/tags-input/tags-input.component';
+import { TextInputComponent } from '@osf/shared/components/text-input/text-input.component';
+import { TruncatedTextComponent } from '@osf/shared/components/truncated-text/truncated-text.component';
+import { ToastService } from '@osf/shared/services/toast.service';
+import { InterpolatePipe } from '@shared/pipes/interpolate.pipe';
+import { ProjectsSelectors } from '@shared/stores/projects/projects.selectors';
+
+import { MOCK_PROJECT } from '@testing/mocks/project.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { provideMockStore } from '@testing/providers/store-provider.mock';
+import { ToastServiceMockBuilder } from '@testing/providers/toast-provider.mock';
+
+import { ProjectMetadataStepComponent } from './project-metadata-step.component';
+
+describe.skip('ProjectMetadataStepComponent', () => {
+  let component: ProjectMetadataStepComponent;
+  let fixture: ComponentFixture<ProjectMetadataStepComponent>;
+  let toastServiceMock: ReturnType<ToastServiceMockBuilder['build']>;
+
+  beforeEach(() => {
+    toastServiceMock = ToastServiceMockBuilder.create().build();
+
+    TestBed.configureTestingModule({
+      imports: [
+        ProjectMetadataStepComponent,
+        ...MockComponents(TagsInputComponent, TextInputComponent, TruncatedTextComponent),
+        MockPipe(InterpolatePipe),
+      ],
+      providers: [
+        provideOSFCore(),
+        MockProvider(ToastService, toastServiceMock),
+        provideMockStore({
+          signals: [
+            { selector: ProjectsSelectors.getSelectedProject, value: MOCK_PROJECT },
+            { selector: AddToCollectionSelectors.getCollectionLicenses, value: [] },
+            { selector: ProjectsSelectors.getSelectedProjectUpdateSubmitting, value: false },
+          ],
+        }),
+      ],
+    });
+
+    fixture = TestBed.createComponent(ProjectMetadataStepComponent);
+    component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('stepperActiveValue', 0);
+    fixture.componentRef.setInput('targetStepValue', 2);
+    fixture.componentRef.setInput('isDisabled', false);
+    fixture.componentRef.setInput('providerId', 'id1');
+
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize with input values', () => {
+    expect(component.stepperActiveValue()).toBe(0);
+    expect(component.targetStepValue()).toBe(2);
+    expect(component.isDisabled()).toBe(false);
+    expect(component.providerId()).toBe('id1');
+  });
+
+  it('should handle tags change', () => {
+    const mockTags = ['tag1', 'tag2', 'tag3'];
+
+    component.handleTagsChange(mockTags);
+
+    expect(component.projectTags()).toEqual(mockTags);
+  });
+
+  it('should handle discard changes', () => {
+    component.handleTagsChange(['tag1', 'tag2']);
+    expect(component.projectTags()).toEqual(['tag1', 'tag2']);
+
+    component.handleDiscardChanges();
+
+    expect(component).toBeTruthy();
+  });
+
+  it('should handle edit step', () => {
+    const stepChangeSpy = vi.spyOn(component.stepChange, 'emit');
+
+    component.handleEditStep();
+
+    expect(stepChangeSpy).toHaveBeenCalledWith(component.targetStepValue());
+  });
+
+  it('should handle different input values', () => {
+    fixture.componentRef.setInput('stepperActiveValue', 1);
+    fixture.componentRef.setInput('targetStepValue', 3);
+    fixture.componentRef.setInput('isDisabled', true);
+    fixture.componentRef.setInput('providerId', 'id2');
+    fixture.detectChanges();
+
+    expect(component.stepperActiveValue()).toBe(1);
+    expect(component.targetStepValue()).toBe(3);
+    expect(component.isDisabled()).toBe(true);
+    expect(component.providerId()).toBe('id2');
+  });
+
+  it('should initialize selected license as null', () => {
+    expect(component.selectedLicense()).toBe(null);
+  });
+
+  it('should have project metadata form', () => {
+    expect(component.projectMetadataForm).toBeDefined();
+  });
+
+  it('should have computed project license', () => {
+    expect(component.projectLicense()).toBeDefined();
+  });
+});

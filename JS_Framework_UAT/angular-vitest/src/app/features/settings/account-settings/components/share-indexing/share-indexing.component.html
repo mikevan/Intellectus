@@ -1,0 +1,36 @@
+<p-card>
+  <h2>{{ 'settings.accountSettings.shareIndexing.title' | translate }}</h2>
+
+  <p class="mt-4">
+    {{ 'settings.accountSettings.shareIndexing.description' | translate }} <br />
+    <a class="font-semibold" href="https://help.osf.io/article/588-getting-started-with-osf-search" target="_blank">
+      {{ 'settings.accountSettings.shareIndexing.learnMore' | translate }}
+    </a>
+  </p>
+
+  <div class="flex flex-column gap-3 mt-4 md:flex-row">
+    <div class="flex align-items-center gap-2">
+      <p-radio-button name="optOut" [value]="false" inputId="indexing1" [(ngModel)]="selectedOption"></p-radio-button>
+
+      <label class="m-0 cursor-pointer" for="indexing1">
+        {{ 'settings.accountSettings.shareIndexing.options.optOut' | translate }}
+      </label>
+    </div>
+
+    <div class="flex align-items-center gap-2">
+      <p-radio-button name="optIn" [value]="true" inputId="indexing2" [(ngModel)]="selectedOption"></p-radio-button>
+
+      <label class="m-0 cursor-pointer" for="indexing2">
+        {{ 'settings.accountSettings.shareIndexing.options.optIn' | translate }}
+      </label>
+    </div>
+  </div>
+
+  <div class="flex justify-content-end mt-4">
+    <p-button
+      [label]="'common.buttons.update' | translate"
+      (click)="updateIndexing()"
+      [disabled]="noChanges"
+    ></p-button>
+  </div>
+</p-card>

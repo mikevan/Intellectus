@@ -1,0 +1,93 @@
+@let project = currentProject();
+@let status = submissionReviewStatus();
+
+@if (!isProjectLoading() && project) {
+  <div class="flex justify-content-between">
+    <osf-sub-header
+      [title]="project.title"
+      [showButton]="showDecisionButton()"
+      [buttonSeverity]="'success'"
+      [buttonLabel]="'moderation.makeDecision.header' | translate"
+      (buttonClick)="handleOpenMakeDecisionDialog()"
+    />
+  </div>
+
+  @if (currentProject()) {
+    <div class="px-3 pb-5 flex flex-column sm:px-5">
+      <osf-project-overview-toolbar
+        [currentResource]="currentProject()!"
+        [storage]="storage()"
+        [canEdit]="hasAdminAccess()"
+        [viewOnly]="hasViewOnly()"
+      />
+    </div>
+  }
+
+  <div class="flex flex-column gap-4 bg-white h-full p-3 sm:p-4">
+    @if (isCollectionsRoute()) {
+      <p-button
+        link
+        [label]="'moderation.makeDecision.goBackLink' | translate"
+        class="link-btn-no-padding font-bold"
+        (onClick)="goBack()"
+      />
+
+      @if (status && collectionProvider()) {
+        @let submissionOption = SubmissionReviewStatusOptions[status];
+
+        <p-message class="overview-message w-full" icon="fas fa-circle-exclamation" severity="warn">
+          {{ submissionOption.label | translate }}
+          <a class="cursor-pointer" [routerLink]="['/collections/', collectionProvider()?.id]">
+            {{ collectionProvider()?.name }}
+          </a>
+        </p-message>
+      }
+    }
+
+    @if (hasViewOnly()) {
+      <osf-view-only-link-message />
+    }
+
+    <div class="flex flex-column gap-4 lg:flex-row">
+      <div class="flex flex-column gap-4 flex-order-2 lg:flex-order-1 lg:w-8">
+        @if (isWikiEnabled()) {
+          <osf-overview-wiki [resourceId]="currentProject()!.id" [canEdit]="hasWriteAccess()" />
+        }
+
+        <osf-files-widget
+          [rootOption]="filesRootOption()"
+          [components]="components()"
+          [areComponentsLoading]="areComponentsLoading()"
+        />
+
+        @if (parentProject()) {
+          <osf-overview-parent-project
+            [project]="parentProject()!"
+            [isLoading]="isParentProjectLoading()"
+            [anonymous]="isAnonymous()"
+          />
+        }
+
+        <osf-project-components [canEdit]="hasWriteAccess()" [anonymous]="isAnonymous()" />
+
+        @if (!hasViewOnly()) {
+          <osf-linked-resources [canEdit]="hasWriteAccess()" />
+        }
+
+        @if (configuredCitationAddons().length) {
+          @for (addon of configuredCitationAddons(); track addon.id) {
+            <osf-citation-addon-card [addon]="addon" />
+          }
+        }
+
+        <osf-project-recent-activity [projectId]="projectId()" />
+      </div>
+
+      <div class="flex flex-column right-section p-4 flex-order-1 lg:flex-order-2 lg:w-4">
+        <osf-project-overview-metadata />
+      </div>
+    </div>
+  </div>
+} @else {
+  <osf-loading-spinner />
+}

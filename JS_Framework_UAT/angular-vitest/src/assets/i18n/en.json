@@ -1,0 +1,2950 @@
+{
+  "truncatedText": {
+    "readMore": "Read more",
+    "hide": "Hide"
+  },
+  "activityLog": {
+    "defaults": {
+      "preprint": "Preprint",
+      "preprintPlural": "Preprints",
+      "anonymousA": "a",
+      "anonymousAn": "an anonymous",
+      "someUsers": "some users",
+      "contributorsAnd": ", and ",
+      "contributorsOthers": " others",
+      "aNewNameLocation": "a new name/location",
+      "materialized": "{{materialized}} in {{addon}}",
+      "aTitle": "a title",
+      "aNameLocation": "a name/location",
+      "pageTitle": "a title",
+      "aFile": "a file",
+      "folder": "folder",
+      "file": "file",
+      "aUser": "A user",
+      "aProject": "a project",
+      "fileOn": "on {{file}}",
+      "wikiOn": "on wiki page {{wiki}}",
+      "field": "field",
+      "updatedFields": "{{old}} to {{new}}",
+      "uncategorized": "Uncategorized",
+      "fallbackWithNode": "{{user}} performed action \"{{action}}\" on {{node}}",
+      "fallbackWithoutNode": "{{user}} performed action \"{{action}}\""
+    },
+    "activities": {
+      "addon_added": "{{user}} enabled {{addon}} to {{node}}",
+      "addon_file_copied": "{{user}} copied {{source}} to {{destination}} in {{node}}",
+      "addon_file_moved": "{{user}} moved {{source}} to {{destination}} in {{node}}",
+      "addon_file_renamed": "{{user}} renamed {{source}} to {{destination}} in {{node}}",
+      "addon_removed": "{{user}} disabled {{addon}} from {{node}}",
+      "affiliated_institution_added": "{{user}} added {{institution}} affiliation to {{node}}",
+      "affiliated_institution_removed": "{{user}} removed {{institution}} affiliation from {{node}}",
+      "article_doi_updated": "{{user}} changed the article_doi of {{node}}",
+      "category_updated": "{{user}} changed the category of {{node}}",
+      "checked_in": "{{user}} checked in {{kind}} {{path}} to {{node}}",
+      "checked_out": "{{user}} checked out {{kind}} {{path}} from {{node}}",
+      "coi_statement_updated": "{{user}} changed the conflict of interest statement for {{preprint}}.",
+      "comment_added": "{{user}} added a comment {{commentLocation}} in {{node}}",
+      "comment_removed": "{{user}} deleted a comment {{commentLocation}} in {{node}}",
+      "comment_restored": "{{user}} restored a comment {{commentLocation}} in {{node}}",
+      "comment_updated": "{{user}} updated a comment {{commentLocation}} in {{node}}",
+      "contributor_added": "{{user}} added {{contributors}} as contributor(s) to {{node}}",
+      "contributor_removed": "{{user}} removed {{contributors}} as contributor(s) from {{node}}",
+      "contributors_reordered": "{{user}} reordered contributors for {{node}}",
+      "created_from": "{{user}} created {{node}} based on {{template}}",
+      "custom_citation_added": "{{user}} created a custom citation for {{node}}",
+      "custom_citation_edited": "{{user}} edited a custom citation for {{node}}",
+      "custom_citation_removed": "{{user}} removed a custom citation from {{node}}",
+      "data_links_updated": "{{user}} has updated their data links",
+      "edit_description": "{{user}} edited description of {{node}}",
+      "edit_title": "{{user}} changed the title from {{titleOriginal}} to {{titleNew}}",
+      "embargo_approved": "{{user}} approved embargoed registration of {{node}}",
+      "embargo_approved_no_user": "Embargo of registration of {{node}} approved",
+      "embargo_cancelled": "{{user}} cancelled embargoed registration of {{node}}",
+      "embargo_completed": "{{user}} completed embargo of {{node}}",
+      "embargo_completed_no_user": "Embargo for {{node}} completed",
+      "embargo_initiated": "{{user}} initiated an embargoed registration of {{node}}",
+      "embargo_terminated": "Embargo for {{node}} ended",
+      "external_ids_added": "{{user}} created external identifier(s) {{identifiers}} on {{node}}",
+      "external_registration_created": "A registration of {{node}} was created on an external registry.",
+      "external_registration_imported": "A registration of {{node}} was imported to OSF from an external registry.",
+      "file_added": "{{user}} added file {{path}} to {{node}}",
+      "file_metadata_updated": "{{user}} updated file metadata for {{path}}",
+      "file_removed": "{{user}} removed {{pathType}} {{path}} from {{node}}",
+      "file_restored": "{{user}} restored file {{path}} from {{node}}",
+      "file_tag_added": "{{user}} added tag {{tag}} to {{path}} in OSF Storage in {{node}}",
+      "file_tag_removed": "{{user}} removed tag {{tag}} from {{path}} in OSF Storage in {{node}}",
+      "file_updated": "{{user}} updated file in {{node}}",
+      "folder_created": "{{user}} created a folder in {{node}}",
+      "group_added": "{{user}} added {{group}} to {{node}}",
+      "group_removed": "{{user}} removed {{group}} from {{node}}",
+      "group_updated": "{{user}} changed {{group}} permissions to {{node}}",
+      "guid_metadata_updated": "{{user}} updated metadata for {{node}}",
+      "has_coi_updated": "{{user}} changed the conflict of interest statement availability for {{preprint}}.",
+      "has_data_links_updated": "{{user}} has updated the has links to data field to {{value}}",
+      "has_prereg_links_updated": "{{user}} has updated their preregistration data link availability to {{value}}",
+      "license_changed": "{{user}} updated the license of {{node}} to {{license}}",
+      "made_contributor_invisible": "{{user}} made bibliographic contributor {{contributors}} a non-bibliographic contributor on {{node}}",
+      "made_contributor_visible": "{{user}} made non-bibliographic contributor {{contributors}} a bibliographic contributor on {{node}}",
+      "made_private": "{{user}} made {{node}} private",
+      "made_public": "{{user}} made {{node}} public",
+      "made_public_no_user": "{{node}} made public",
+      "made_wiki_private": "{{user}} made the wiki of {{node}} privately editable",
+      "made_wiki_public": "{{user}} made the wiki of {{node}} publicly editable",
+      "migrated_quickfiles": "{{user}} had their QuickFiles migrated into {{node}}",
+      "node_access_requests_disabled": "{{user}} disabled access requests for {{node}}",
+      "node_access_requests_enabled": "{{user}} enabled access requests for {{node}}",
+      "node_created": "{{user}} created {{node}}",
+      "node_forked": "{{user}} created fork from {{forkedFrom}}",
+      "node_removed": "{{user}} removed {{node}}",
+      "osf_storage_file_added": "{{user}} added file {{path}} to OSF Storage in {{node}}",
+      "osf_storage_file_removed": "{{user}} removed {{pathType}} {{path}} from OSF Storage in {{node}}",
+      "osf_storage_file_updated": "{{user}} updated file {{path}} in OSF Storage in {{node}}",
+      "osf_storage_folder_created": "{{user}} created folder {{path}} in OSF Storage in {{node}}",
+      "permissions_updated": "{{user}} changed permissions for {{node}}",
+      "pointer_created": "{{user}} created a link to {{pointerCategory}} {{pointer}}",
+      "pointer_forked": "{{user}} forked a link to {{pointerCategory}} {{pointer}}",
+      "pointer_removed": "{{user}} removed a link to {{pointerCategory}} {{pointer}}",
+      "preprint_file_updated": "{{user}} updated the primary file of this {{preprint}} on {{preprintProvider}} {{preprintWordPlural}}",
+      "preprint_initiated": "{{user}} made {{node}} a {{preprint}} on {{preprintProvider}} {{preprintWordPlural}}",
+      "preprint_license_updated": "{{user}} updated the license of this {{preprint}} on {{preprintProvider}} {{preprintWordPlural}} to {{license}}",
+      "prereg_links_info_updated": "{{user}} has updated their preregistration links to {{value}}",
+      "prereg_links_updated": "{{user}} has updated their preregistration data links",
+      "prereg_registration_initiated": "{{user}} submitted for review to the Preregistration Challenge a registration of {{node}}",
+      "project_created": "{{user}} created {{node}}",
+      "project_created_from_draft_reg": "{{node}} was created from a draft registration",
+      "project_deleted": "{{user}} deleted {{node}}",
+      "project_registered": "{{user}} registered {{node}}",
+      "project_registered_no_user": "{{node}} registered",
+      "registration_approved": "{{user}} approved a registration of {{node}}",
+      "registration_approved_no_user": "Registration of {{node}} was approved",
+      "registration_cancelled": "{{user}} cancelled a registration of {{node}}",
+      "registration_initiated": "{{user}} initiated a registration of {{node}}",
+      "registration_date_updated": "An OSF Support Team member updated the registration date of {{node}}",
+      "resource_identifier_added": "{{user}} has added a Resource to Registration {{node}}",
+      "resource_identifier_removed": "{{user}} has removed a Resource to Registration {{node}}",
+      "resource_identifier_updated": "{{user}} has updated a Resource to Registration {{node}}",
+      "retraction_approved": "{{user}} approved a withdrawal of a registration of {{node}}",
+      "retraction_approved_no_user": "A withdrawal of a registration of {{node}} was approved",
+      "retraction_cancelled": "{{user}} cancelled withdrawal of a registration of {{node}}",
+      "retraction_initiated": "{{user}} initiated withdrawal of a registration of {{node}}",
+      "retraction_initiated_no_user": "A withdrawal of a registration of {{node}} was proposed",
+      "subjects_updated": "{{user}} updated the subjects on {{node}}",
+      "tag_added": "{{user}} added tag {{tag}} to {{node}}",
+      "tag_removed": "{{user}} removed tag {{tag}} from {{node}}",
+      "updated_fields": "{{user}} changed the {{updatedFields}} for {{node}}",
+      "view_only_link_added": "{{user}} created {{anonymousLink}} view-only link to {{node}}",
+      "view_only_link_removed": "{{user}} removed {{anonymousLink}} view-only link to {{node}}",
+      "why_no_data_updated": "{{user}} has updated their data statement",
+      "why_no_prereg_updated": "{{user}} has updated their preregistration data availability statement",
+      "wiki_deleted": "{{user}} deleted wiki page {{page}} of {{node}}",
+      "wiki_renamed": "{{user}} renamed wiki page {{oldPage}} to {{page}} of {{node}}",
+      "wiki_updated": "{{user}} updated wiki page {{page}} to version {{version}} of {{node}}"
+    }
+  },
+  "adminInstitutions": {
+    "common": {
+      "filterBy": "Filter by",
+      "filters": "Filters"
+    },
+    "contact": {
+      "administrative": "Administrative",
+      "message": "I am an admin associated with Center For Open Science and I would like to be added to your project as a non-bibliographic contributor in order to assist with metadata curation please add me with the following permissions.",
+      "readWrite": "Read/Write",
+      "requestAccess": "Request Access",
+      "sendMessage": "Send Message"
+    },
+    "institutionUsers": {
+      "accountCreated": "Account Created",
+      "allDepartments": "All departments",
+      "allowReplyToSenderAddress": "Allow reply to sender address",
+      "ccSender": "CC sender",
+      "customize": "Customize",
+      "filesOnOsf": "Files on OSF",
+      "hasOrcid": "Has ORCID",
+      "lastActive": "Last Active",
+      "lastLogin": "Last Login",
+      "messageSent": "Message has been sent.",
+      "noData": "No users found",
+      "notBibliographicOrAffiliatedUserText": "The user is not bibliographic or no longer affiliated with the institution",
+      "orcid": "ORCID",
+      "osfLink": "OSF Link",
+      "preprints": "Preprints",
+      "requestSent": "Request has been sent.",
+      "sendEmail": "Send Email",
+      "sendMessage": "Send message",
+      "sincerelyYours": "Sincerely Yours",
+      "totalDataStored": "Total data stored on OSF",
+      "writeEmailText": "Please write the text of your email here"
+    },
+    "preprints": {
+      "downloadsLastDays": "Downloads (last 30 days)",
+      "totalPreprints": "Total Preprints"
+    },
+    "projects": {
+      "addOns": "Add-ons",
+      "contributorName": "Contributor Name",
+      "doi": "DOI",
+      "funderName": "Funder Name",
+      "link": "Link",
+      "resourceType": "Resource Type",
+      "storageLocation": "Storage Location",
+      "totalDataStored": "Total Data Stored on OSF",
+      "totalProjects": "Total Projects",
+      "views": "Views (last 30 days)"
+    },
+    "registrations": {
+      "funderName": "Funder Name",
+      "registrationSchema": "Registration Schema",
+      "totalRegistrations": "Total Registrations"
+    },
+    "requestAccessErrorDialog": {
+      "detailsMessage": "The user has the request access feature turned off, or you already have access. Reach out to the user by sending an email message by pressing the \"Back\" button below.",
+      "title": "Can't Request Access"
+    },
+    "summary": {
+      "embargoedRegistrations": "Embargoed registrations",
+      "lastUpdated": "Last Updated",
+      "osfPreprints": "OSF Preprints",
+      "osfPublicAndEmbargoedRegistrations": "OSF Public and Embargoed Registrations",
+      "osfPublicAndPrivateProjects": "OSF Public and Private Projects",
+      "privateProjects": "Private projects",
+      "publicEmbargoedRegistrations": "Public vs Embargoed Registrations",
+      "publicPrivateProjects": "Public vs Private Projects",
+      "publicProjects": "Public projects",
+      "publicRegistrations": "Public registrations",
+      "title": "Summary",
+      "topStorageRegions": "Top Storage Regions",
+      "topTenAddons": "Top 10 Add-ons",
+      "topTenLicenses": "Top 10 Licenses",
+      "totalMonthlyActiveUsers": "Total Monthly Active Users",
+      "totalMonthlyLoggedInUsers": "Total Monthly Logged in Users",
+      "totalOsfObjects": "Total OSF Objects",
+      "totalPublicFileCount": "Total Public File Count",
+      "totalStorageInGb": "Total Storage in GB",
+      "totalUsers": "Total Users",
+      "totalUsersByDepartment": "Total Users by Department"
+    }
+  },
+  "auth": {
+    "common": {
+      "confirmEmail": "Confirm email",
+      "password": {
+        "confirm": "Confirm New Password",
+        "mismatch": "Passwords must match.",
+        "new": "New Password",
+        "requirements": "Your password needs to be at least 8 characters long, include both lower- and upper-case characters, and have at least one number and special character",
+        "title": "Password",
+        "validation": {
+          "minlength": "Password must be at least 8 characters long.",
+          "pattern": "Password must include lowercase, uppercase, and at least one number and special character.",
+          "required": "Password is required."
+        }
+      },
+      "resetPassword": "Reset password"
+    },
+    "forgotPassword": {
+      "description": "Enter your email address and we'll send a link to reset your password",
+      "messages": {
+        "success": "Thanks. Check your email to reset your password."
+      },
+      "title": "Forgot Your Password?"
+    },
+    "resetPassword": {
+      "success": {
+        "backToSignin": "Back to Sign In",
+        "message": "You have successfully reset your password",
+        "title": "Thank You!"
+      },
+      "title": "Reset Password"
+    },
+    "signUp": {
+      "divider": "or",
+      "form": {
+        "familyName": "Family Name",
+        "fullName": "Full Name",
+        "fullNamePlaceholder": "John Doe",
+        "givenName": "Given Name",
+        "submit": "Sign Up",
+        "terms": {
+          "agree": "I agree to the",
+          "and": "and",
+          "privacyPolicy": "Privacy Policy",
+          "termsOfUse": "Terms of Use"
+        }
+      },
+      "social": {
+        "institution": "Sign up through Institution",
+        "orcid": "Sign up through ORCID"
+      },
+      "success": {
+        "message": "Check your email to confirm your account",
+        "title": "Registration successful"
+      },
+      "title": "Create A Free Account"
+    }
+  },
+  "collections": {
+    "addToCollection": {
+      "cedarFormNotAvailable": "CEDAR metadata form is not available for this collection.",
+      "collectionMetadata": "Collection Metadata",
+      "confirmationDialogHeader": "Add to Collection",
+      "confirmationDialogMessage": "Once submitted to the collection, the project will be made public. It can later be made private again. A moderator will review your submission before it is included in the collection.",
+      "confirmationDialogToastMessage": "Project has been successfully submitted to the collection",
+      "contributorsTooltip": "Projects must have at least one registered administrator and one author showing in the citation at all times. A registered administrator is a user who has both confirmed their account and has administrator privileges.",
+      "form": {
+        "chooseLicense": "Choose License",
+        "fieldRequired": "This field can't be empty",
+        "loadingPlaceholder": "Loading projects...",
+        "noProjectsFound": "No projects found"
+      },
+      "noLicense": "No license",
+      "noTags": "No tags",
+      "projectContributors": "Project Contributors",
+      "projectMetadataMessage": "Updates made in this section will update the project.",
+      "projectMetadataUpdateSuccess": "Project Metadata successfully updated.",
+      "resourceMetadata": "Project Metadata",
+      "selectProject": "Select a project",
+      "tooltipMessage": "Complete previous step to edit this section",
+      "updateError": "Failed to submit to the collection. Please try again."
+    },
+    "common": {
+      "by": "by",
+      "dateCreated": "Date Created:",
+      "dateModified": "Date Modified:"
+    },
+    "filters": {
+      "additionalFilters": "Additional Filters",
+      "noFiltersAvailable": "No filters available",
+      "noOptionsAvailable": "No options available",
+      "searchCreators": "Search for creators",
+      "sort": {
+        "label": "Sort by:"
+      },
+      "sortBy": "Sort by"
+    },
+    "helpDialog": {
+      "header": "Search help",
+      "linkText": "help page",
+      "message": "OSF Search provides a powerful discovery tool to help you find data, papers, analysis plans, and more content across the research lifecycle. OSF Collections have some specialized filters, which you can learn more about on our "
+    },
+    "removeDialog": {
+      "header": "Remove project from collection",
+      "message": "Are you sure you want to remove {{projectTitle}} from this collection?",
+      "reasonPlaceholder": "Optional reason for removal",
+      "success": "Project successfully removed from this collection."
+    },
+    "searchInput": {
+      "placeholder": "Enter search term(s) here"
+    },
+    "searchResults": {
+      "noResults": "0 results",
+      "noResultsFoundMessage": "Try broadening your search terms",
+      "results": "results"
+    }
+  },
+  "chooseRepository": {
+    "title": "Choose a Repository for Your Research Materials",
+    "intro": "For the data, code, and materials that come out of your work, a dedicated repository is the right home. The repositories below are publicly trusted, and built to make your research outputs findable and citable for the long term. Discover more repository options at <a href=\"https://www.re3data.org/\" target=\"_blank\" rel=\"noopener\">https://www.re3data.org/</a>.",
+    "learnMore": "Learn more",
+    "repositories": {
+      "dryad": {
+        "title": "Dryad",
+        "description": "Focused on research data underlying published findings. Best suited for <b>datasets</b> that accompany a journal article. Includes built-in curation support to help meet sharing standards.",
+        "linkText": "Go to Dryad"
+      },
+      "figshare": {
+        "title": "Figshare",
+        "description": "Accepts <b>datasets, code, images, presentations, and more</b> from any discipline, and supports sharing multiple output types from a single project.",
+        "linkText": "Go to Figshare"
+      },
+      "harvardDataverse": {
+        "title": "Harvard Dataverse",
+        "description": "A robust repository for research <b>data</b> across all disciplines, hosted across multiple institutions globally. Widely recognized by journals and funders.",
+        "linkText": "Go to Dataverse"
+      },
+      "mendeleyData": {
+        "title": "Mendeley Data",
+        "description": "Mendeley Data is a free cloud-based collaborative repository for <b>data storage</b>. A good option for researchers already using Mendeley or working within the Elsevier ecosystem.",
+        "linkText": "Go to Mendeley"
+      },
+      "vivli": {
+        "title": "Vivli",
+        "description": "Specialized for clinical and biomedical research, particularly <b>individual participant-level data from clinical trials</b>. Best suited for health sciences researchers with funder or journal data sharing requirements.",
+        "linkText": "Go to Vivli"
+      },
+      "zenodo": {
+        "title": "Zenodo (recommended)",
+        "description": "A free, general-purpose repository hosted by CERN for researchers. Accepts <b>any research output type</b> and assigns a permanent DOI to every object.",
+        "linkText": "Go to Zenodo"
+      }
+    }
+  },
+  "common": {
+    "accessibility": {
+      "confirmation": "Confirmation",
+      "confirmationDialog": "Confirmation dialog",
+      "copyButtonInfo": "Copy to clipboard button",
+      "customizeOptions": "Customize options",
+      "goToFirstPage": "Go to first page",
+      "goToNextPage": "Go to next page",
+      "goToPreviousPage": "Go to previous page",
+      "help": "Help",
+      "mainNavigation": "Main navigation",
+      "openFilters": "Open filters",
+      "openSortingOptions": "Open sorting options",
+      "reportsLink": "Reports link",
+      "searchHelp": "Search help",
+      "tagInput": "Tag input",
+      "toggleProjectVisibility": "Toggle project visibility",
+      "toggleTreeNode": "Toggle tree node",
+      "tooltipBtn": "Tooltip button"
+    },
+    "buttons": {
+      "accept": "Accept",
+      "add": "Add",
+      "addMore": "Add More",
+      "addOneMore": "Add One More",
+      "addToCollection": "Add to Collection",
+      "back": "Back",
+      "cancel": "Cancel",
+      "clickToEdit": "Click to edit",
+      "close": "Close",
+      "configure": "Configure",
+      "confirm": "Confirm",
+      "continue": "Continue",
+      "continueUpdate": "Continue Update",
+      "copy": "Copy",
+      "copyTo": "Copy to",
+      "create": "Create",
+      "createCustomCitation": "Create Custom Citation",
+      "createNewVersion": "Create New Version",
+      "customize": "Customize",
+      "delete": "Delete",
+      "deselect": "Deselect",
+      "disable": "Disable",
+      "discardChanges": "Discard Changes",
+      "disconnect": "Disconnect",
+      "done": "Done",
+      "download": "Download",
+      "edit": "Edit",
+      "editAndResubmit": "Edit And Resubmit",
+      "embed": "Embed",
+      "filter": "Filter",
+      "hide": "Hide",
+      "leaveThisView": "Leave this view",
+      "loadMore": "Load more",
+      "move": "Move",
+      "next": "Next",
+      "no": "No",
+      "preview": "Preview",
+      "readMore": "Read more",
+      "reject": "Reject",
+      "remove": "Remove",
+      "removeAll": "Remove All",
+      "removeFromCollection": "Remove from Collection",
+      "rename": "Rename",
+      "replace": "Replace",
+      "resubmit": "Resubmit",
+      "revert": "Revert",
+      "review": "Review",
+      "save": "Save",
+      "saveAndContinue": "Save and Continue",
+      "seeMore": "See more",
+      "select": "Select",
+      "selectAll": "Select All",
+      "send": "Send",
+      "share": "Share",
+      "skip": "Skip",
+      "sort": "Sort",
+      "submit": "Submit",
+      "update": "Update",
+      "upload": "Upload",
+      "view": "View",
+      "withdraw": "Withdraw",
+      "yes": "Yes"
+    },
+    "discardChanges": {
+      "header": "You Might Lose Unsaved Changes",
+      "message": "Are you sure you want to proceed?"
+    },
+    "discardChangesDialog": {
+      "header": "Discard changes",
+      "message": "Are you sure you want to discard your unsaved changes?"
+    },
+    "errorMessages": {
+      "serverError": "An unexpected error occurred. Please try again later.",
+      "actionUnavailable": "This action is no longer available. Contact support if you have any questions."
+    },
+    "hint": {
+      "tagSeparators": "Use enter or comma to create a tag.",
+      "viewOnlyLinksBanner": "You are viewing OSF through a view-only link, which may limit the data you have permission to see."
+    },
+    "labels": {
+      "affiliatedInstitutions": "Affiliated Institutions",
+      "and": "and",
+      "available": "Available",
+      "contributors": "Contributors",
+      "copied": "Copied!",
+      "data": "Data",
+      "dateCreated": "Date created",
+      "dateModified": "Date modified",
+      "dateRegistered": "Date registered",
+      "dateUpdated": "Date Updated",
+      "delete": "Delete",
+      "description": "Description",
+      "descriptionOptional": "Description (Optional)",
+      "downloads": "Downloads",
+      "drafts": "Drafts",
+      "edit": "Edit",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "forked": "Forked",
+      "lastUpdated": "Last Updated",
+      "language": "Language",
+      "learnMore": "Learn More",
+      "license": "License",
+      "makePublic": "Make Public",
+      "metadata": "Metadata",
+      "modified": "Modified",
+      "more": "more",
+      "no": "No",
+      "noAffiliatedInstitutions": "No affiliated institutions",
+      "noData": "No data",
+      "noDescription": "No description",
+      "noDoi": "No DOI",
+      "noFiles": "No files selected",
+      "noLicense": "No License",
+      "none": "None",
+      "notApplicable": "Not Applicable",
+      "optional": "Optional",
+      "project": "Project",
+      "public": "Public",
+      "subjects": "Subjects",
+      "submitted": "Submitted",
+      "title": "Title",
+      "unavailable": "Unavailable",
+      "updated": "Updated",
+      "year": "Year",
+      "yes": "Yes"
+    },
+    "links": {
+      "clickHere": "Click here",
+      "helpGuide": "Help Guide",
+      "hideExample": "Hide Example",
+      "showExample": "Show Example"
+    },
+    "placeholder": {
+      "addTag": "Add tags"
+    },
+    "search": {
+      "filterPlaceholders": {
+        "affiliation": "Select institution",
+        "creator": "Creator name",
+        "dateCreated": "Select date",
+        "funder": "Select funder",
+        "generic": "",
+        "isPartOfCollection": "Select collection",
+        "publisher": "Select provider",
+        "resourceType": "Select resource type",
+        "rights": "Select license",
+        "subject": "Select subject"
+      },
+      "loading": "Loading results",
+      "noResultsFound": "No results found.",
+      "tabs": {
+        "all": "All",
+        "files": "Files",
+        "preprints": "Preprints",
+        "projects": "Projects",
+        "registrations": "Registrations",
+        "users": "Users"
+      },
+      "title": "Search"
+    },
+    "socials": {
+      "academia": "Academia",
+      "academiaProfileId": "Academia Profile Id",
+      "baiduScholar": "Baidu Scholar",
+      "bluesky": "Bluesky",
+      "facebook": "Facebook",
+      "github": "GitHub",
+      "impactStory": "ImpactStory",
+      "linkedIn": "LinkedIn",
+      "mastodon": "Mastodon",
+      "orcid": "ORCID",
+      "profileWebsites": "Your website",
+      "researcherId": "ResearcherID",
+      "researchGate": "ResearchGate",
+      "scholar": "Google Scholar",
+      "ssrn": "SSRN",
+      "x": "X"
+    },
+    "sort": {
+      "createdNewest": "Date created (newest)",
+      "createdOldest": "Date created (oldest)",
+      "modifiedNewest": "Date modified (newest)",
+      "modifiedOldest": "Date modified (oldest)",
+      "relevance": "Relevance"
+    }
+  },
+  "files": {
+    "actions": {
+      "addFromDrive": "Add from Drive",
+      "createFolder": "Create Folder",
+      "downloadAsZip": "Download As Zip",
+      "uploadFile": "Upload File"
+    },
+    "detail": {
+      "actions": {
+        "addCommunityMetadata": "Add community Metadata",
+        "copyDynamicIframe": "Copy dynamic JS iFrame",
+        "copyStaticIframe": "Copy static HTML iFrame"
+      },
+      "backToList": "Back to list of files",
+      "fileMetadata": {
+        "fields": {
+          "resourceLanguage": "Resource Language",
+          "resourceType": "Resource Type"
+        },
+        "title": "File Metadata",
+        "previewNotAvailable": "File or Registration metadata not available in preview mode."
+      },
+      "keywords": {
+        "title": "Keywords"
+      },
+      "resourceMetadata": {
+        "fields": {
+          "awardNumber": "Award number",
+          "awardTitle": "Award title",
+          "awardUri": "Award URI",
+          "funder": "Funder",
+          "resourceLanguage": "Resource language",
+          "resourceType": "Resource type"
+        },
+        "title": {
+          "nodes": "Project Metadata",
+          "registrations": "Registration Metadata"
+        }
+      },
+      "revisions": {
+        "actions": {
+          "copyMd5": "Copy MD5",
+          "copySha2": "Copy SHA-2"
+        },
+        "title": "Revisions",
+        "tooltips": {
+          "md5": "MD5 is an algorithm used to verify data integrity",
+          "sha2": "SHA-2 is a cryptographic hash function designed by the NSA used to verify data integrity."
+        }
+      },
+      "tabs": {
+        "details": "Details",
+        "keywords": "Keywords",
+        "revisions": "Revisions"
+      },
+      "toast": {
+        "cedarUpdated": "CEDAR record updated successfully",
+        "copiedToClipboard": "Copied to clipboard"
+      }
+    },
+    "dialogs": {
+      "copyFile": {
+        "success": "File successfully copied."
+      },
+      "createFolder": {
+        "folderName": "New folder name",
+        "folderNamePlaceholder": "Please enter a folder name",
+        "success": "Folder successfully created.",
+        "title": "Create folder"
+      },
+      "deleteFile": {
+        "message": "Are you sure you want to delete <span class=\"font-bold\">{{name}}</span>?",
+        "success": "Successfully deleted.",
+        "title": "Delete File"
+      },
+      "deleteFolder": {
+        "message": "Are you sure you want to delete the folder <span class=\"font-bold\">{{name}}</span> and all its contents?",
+        "title": "Delete Folder"
+      },
+      "deleteMultipleItems": {
+        "message": "Are you sure you want to delete <span class=\"font-bold\">{{name}}</span>?",
+        "title": "Delete items"
+      },
+      "moveFile": {
+        "cannotMove": "Cannot move or copy to this folder",
+        "copingHeader": "Copying...",
+        "dialogTitle": "Move file",
+        "dialogTitleMultiple": "Move files",
+        "error": "Failed to move or copy files, please try again later",
+        "message": "Are you sure you want to move <span class=\"font-bold\">{{dragNodeName}}</span> to <span class=\"font-bold\">{{dropNodeName}}</span>?",
+        "movingHeader": "Moving...",
+        "multipleFiles": "{{count}} files",
+        "noMovePermission": "Cannot move or copy to this file provider",
+        "pathError": "Path is not specified!",
+        "storage": "OSF Storage",
+        "success": "Successfully moved.",
+        "title": "Select Destination"
+      },
+      "renameFile": {
+        "enterNewName": "Enter new name",
+        "newName": "New name",
+        "success": "Successfully renamed.",
+        "title": "Rename file"
+      },
+      "replaceFile": {
+        "message": "Are you sure you want to replace <span class=\"font-bold\">{{name}}</span>?",
+        "multiple": "Replace files",
+        "single": "Replace file",
+        "success": "Successfully replaced."
+      },
+      "uploadFile": {
+        "message": "Are you sure you want to upload <span class=\"font-bold\">{{name}}</span>?",
+        "title": "Upload file"
+      },
+      "uploadFiles": {
+        "message": "Are you sure you want to upload <span class=\"font-bold\">{{count}}</span> files?",
+        "title": "Upload files"
+      }
+    },
+    "dropText": "Drop a file to upload",
+    "emptyState": "No files are available at this time.",
+    "filesBrowserDialog": {
+      "copy": "Copy",
+      "copyDescription": "You can copy your files from one part of your project or component to another. Select the files that you want to copy, and click the vertical ellipses to open the dropdown, click the “Copy” button. Choose a component, provider, or folder and then click “Copy”. Your files will now appear in both the original and chosen locations.",
+      "createFolder": "Create a folder",
+      "createFolderDescription": "To create a folder to help organize your files, click “Create a Folder”. Note: You can also organize your project content by creating Components.",
+      "downloadAllFilesZip": "Download All Files As a Zip",
+      "downloadAllFilesZipDescription": "Select the storage provider from the left navigation, and then click “Download As Zip” in the top toolbar.",
+      "downloadFile": "Download a File",
+      "downloadFileDescription": "With the file open: Click the vertical ellipses to open the dropdown. Click “Download”. From the file list: Click the vertical ellipses of the file to open the dropdown. Click “Download”.\n\n",
+      "downloadFolderZip": "Download a Folder as Zip",
+      "downloadFolderZipDescription": "To download a specific folder as a zip, click the vertical ellipses on the folder’s row to open the dropdown. Click “Download”. Alternatively, open the folder and then click “Download As Zip” in the top toolbar.\n\n",
+      "helpGuides": "help guides on project files.",
+      "moreInfo": "For more information please see our",
+      "move": "Move",
+      "moveDescription": "You can move your files from one part of your project or component to another. Select the files that you want to move, and click the vertical ellipses to open the dropdown, then click “move”. Choose a component, provider, or folder and then click “Move”.",
+      "note": "Note:",
+      "openViewFiles": "Open/View Files and Folders",
+      "openViewFilesDescription": "Click a file name to go to view the file in the OSF. Opens file in a new tab. Click on the folder to open the contents in the files list.",
+      "osfProjectTransition": "OSF Project Transition",
+      "readOnlyWarning": "OSF Projects are being transitioned. You can no longer upload, rename, move, or copy files or folders. Existing files and folders remain accessible and downloadable. Read more about the",
+      "renameFolderFile": "Rename a folder or file",
+      "renameFolderFileDescription": "In the files list, select the file that you want to rename and click the vertical ellipses to open the dropdown. Select “Rename”. Note: Some special characters may cause unexpected behavior with certain addons.",
+      "seeAllFiles": "See All Files in a Provider",
+      "seeAllFilesDescription": "All connected storage providers are displayed in the dropdown above the files list. Choose one provider to view contents.",
+      "selectFilesFolders": "Select Files/Folders",
+      "selectFilesFoldersDescription": "Click on a row (outside of the file or folder name). Click on more rows to select multiple files. Select the ellipses on the right side of the row to see more file options.",
+      "title": "Using the OSF Files Browser",
+      "upload": "Upload",
+      "uploadDescription": "There are two ways to upload files. Open the storage provider or folder where you intend to upload files; you can then drag files from your desktop into files list area OR click “Upload Files”, and select your files. Note: File names with special characters may cause unexpected behavior with certain addons."
+    },
+    "metaTagDescriptionPlaceholder": "Presented by OSF",
+    "searchPlaceholder": "Search your files",
+    "selectedFiles": "item(s) selected",
+    "sort": {
+      "lastModifiedNewest": "Last modified: newest to oldest",
+      "lastModifiedOldest": "Last modified: oldest to newest",
+      "nameAZ": "Name: A-Z",
+      "nameZA": "Name: Z-A",
+      "placeholder": "Sort"
+    },
+    "storageLocation": "OSF Storage"
+  },
+  "footer": {
+    "copyright": "Copyright © 2011-2026",
+    "links": {
+      "api": "API",
+      "centerForOpenScience": "Center for Open Science",
+      "privacyPolicy": "Privacy Policy",
+      "status": "Status",
+      "termsOfUse": "Terms of Use",
+      "topGuidelines": "TOP Guidelines"
+    }
+  },
+  "forbiddenPage": {
+    "message": "If this should not have occurred and the issue persists, please report it to",
+    "title": "You Don't Have Permission To Perform This Action"
+  },
+  "home": {
+    "confirmEmail": {
+      "add": {
+        "denyError": "There was a problem canceling the request to add {{name}} to your account.",
+        "descriptionPrefix": "Do you want to add ",
+        "descriptionSuffix": "to your profile ?",
+        "emailNotAdded": "{{name}} has not been added to your account.",
+        "emailVerified": "{{name}} has been added to your account.",
+        "goToEmails": "Add email",
+        "title": "Add alternative email?",
+        "verifyError": "There was a problem adding {{name} to your account."
+      },
+      "merge": {
+        "denyError": "There was a problem canceling the request to merge {{name}} into your account.",
+        "descriptionPrefix": "Would you like to merge ",
+        "descriptionSuffix": "into your account? This action is irreversible.",
+        "emailNotAdded": "{{name}} has not been merged into your account.",
+        "emailVerified": "{{name}} has been merged into your account.",
+        "goToEmails": "Merge account",
+        "title": "Merge account?",
+        "verifyError": "There was a problem merging {{name}} into your account."
+      }
+    },
+    "loggedIn": {
+      "dashboard": {
+        "createProject": "Create New Project",
+        "createProjectDisabledTooltip": "Project creation is no longer available. OSF is transitioning away from Projects as part of a platform update. Your existing projects remain accessible.",
+        "getStartedHelp": "Visit Get Started Help Guides",
+        "images": {
+          "osfCollectionsImageAltText": "OSF Collections",
+          "osfInstitutionsImageAltText": "OSF Institutions",
+          "osfPreprintsImageAltTest": "OSF Preprints",
+          "osfRegistriesImageAltTest": "OSF Registries"
+        },
+        "noCreatedProject": "You haven’t created a project yet.",
+        "noCreatedProjectAndCreateProjectDisabled": "You don't have any projects.",
+        "workflowLauncher": {
+          "title": "Plan and document the lifecycle of your research",
+          "description1": "OSF is designed to support your research process — planning your study, registering your methods, and sharing your findings as preprints. ",
+          "description2": "Clarify your plan, connect all data and materials that resulted from the study, and then post your preprint. Open scholarship enables more discoverability, increased transparency, and ensures research rigor. (Learn more about the <a href=\"https://help.osf.io/article/727-osf-projects-transition\" target=\"_blank\" rel=\"noopener\">OSF Project transition</a>).",
+          "cards": {
+            "studyPlans": {
+              "title": "Study Plans",
+              "description": "Document your research questions, methods, and analysis plans before you analyze data.",
+              "button": "Add Study Plan"
+            },
+            "researchMaterials": {
+              "title": "Research Materials",
+              "description": "Store and share datasets, code, materials, and other outputs from your research in a trusted public repository.",
+              "button": "Store Research Materials"
+            },
+            "preprints": {
+              "title": "Preprints",
+              "description": "Publish the outcomes of your research with an open access preprint, and connect the preprint to your study plan.",
+              "button": "Add Preprint"
+            },
+            "search": {
+              "title": "Search",
+              "description": "Search across study plans and preprints with enhanced metadata and filters.",
+              "button": "Go to Search"
+            }
+          }
+        },
+        "projectTransition": "New projects can no longer be created after November 16th, and all existing projects will become read-only on February 19th. You can read more about the upcoming transition <a href='https://help.osf.io/article/727-osf-projects-transition' target='_blank' rel='noopener noreferrer'>here</a>.",
+        "quickSearch": {
+          "goTo": "Go to",
+          "myProjects": "My Projects",
+          "osf": "OSF",
+          "search": "search",
+          "searchPlaceholder": "Search your projects",
+          "toOrganize": "to organize your work or"
+        },
+        "title": "Dashboard",
+        "welcome": "Welcome to OSF!"
+      },
+      "latestResearch": {
+        "button": "View Preprints",
+        "subtitle": "Check out the latest preprints hosted on OSF covering a variety of research areas",
+        "title": "Browse the latest research"
+      }
+    },
+    "loggedOut": {
+      "discover": {
+        "searchPlaceholder": "Search",
+        "subtitle": "Discover projects, data, materials, and collaborators on OSF that might be helpful to your own research",
+        "title": "<span class='highlight'>Discover</span> Public Research"
+      },
+      "hero": {
+        "betterResearchImageAltText": "Better research",
+        "signUp": "Sign Up",
+        "subtitle": "OSF is a free, open platform to support your research and enable collaboration",
+        "title": "There's a <span class='highlight'>better way</span> to manage your research"
+      },
+      "integrations": {
+        "categories": {
+          "authentication": "Authentication",
+          "discovery": "Discovery",
+          "references": "References"
+        },
+        "iconImageAltText": "Integration icon",
+        "title": "OSF <span class='highlight'>integrations</span> make your workflow more efficient"
+      },
+      "support": {
+        "title": "How OSF <span class='highlight'>Supports</span> your research",
+        "connectedRecord": "Connected record"
+      },
+      "testimonials": {
+        "slides": {
+          "maya": {
+            "facility": "Department of Epidemiology Harvard University",
+            "quote": "OSF is indispensable in helping me create reproducible research pipelines from preregistration through data collection and analysis. Its versatility makes it my one-stop shop for projects. The Dropbox integration effortlessly transforms my existing local workflow to public repository."
+          },
+          "patricia": {
+            "facility": "Research Services Librarian | University of Toronto",
+            "quote": "OSF is a game changer for those wanting to effectively share their research process in the spirit of collaboration."
+          },
+          "philip": {
+            "facility": "SocArXiv papers",
+            "quote": "Because SocArXiv is a not-for-profit organization, researchers can be assured that they are sharing their research in an environment where access, inclusivity, and preservation, rather than profit, will remain at the heart of the mission. A great benefit of partnering with OSF is that this application is a free public good."
+          }
+        },
+        "title": "What others are <span class='highlight'>saying</span>"
+      }
+    }
+  },
+  "institutions": {
+    "description": "OSF Institutions enhances transparency and increases the visibility of research outputs, accelerating discovery and reuse. Institutional members focus on generating and sharing research, and let OSF Institutions handle the infrastructure. <br /> <a class='dark-blue-two-link font-bold' href='https://www.cos.io/products/osf-institutions' target='_blank'>Read more</a>",
+    "searchInstitutions": "Search institutions",
+    "title": "Institutions"
+  },
+  "meetings": {
+    "details": {
+      "searchPlaceholder": "Search",
+      "table": {
+        "columns": {
+          "author": "Author",
+          "category": "Category",
+          "dateCreated": "Date Created"
+        }
+      }
+    },
+    "landing": {
+      "description": "A free poster and presentation sharing service for academic meetings and conferences",
+      "features": {
+        "discover": {
+          "description": "Explore posters and presentations from events long after they're over.",
+          "title": "Discover"
+        },
+        "enhance": {
+          "description": "Add supplementary data and materials to your submission to make your work more transparent.",
+          "title": "Enhance"
+        },
+        "share": {
+          "description": "Get persistent links to your content and increase your impact.",
+          "title": "Share"
+        }
+      },
+      "searchPlaceholder": "Search meetings",
+      "submissionsNote": "Only conferences with at least five submissions are displayed.",
+      "table": {
+        "columns": {
+          "date": "Date",
+          "location": "Location",
+          "submissions": "Submissions"
+        }
+      },
+      "title": "Meetings",
+      "users": {
+        "title": "Who uses OSF Meetings?"
+      }
+    }
+  },
+  "moderation": {
+    "addModerator": "Add moderator",
+    "allItems": "All Items",
+    "bulkUpload": "Bulk upload",
+    "bulkUploadMessage": "Drag and drop the csv file that has the registration information to upload.",
+    "inviteModerator": "Invite moderator",
+    "makeDecision": {
+      "acceptRequest": "Accept request",
+      "acceptRequestMessage": "Submission will appear in search results and will be associated with the collection.",
+      "acceptSubmissionSuccess": "Submission has been accepted successfully",
+      "acceptSuccess": "Submission has been accepted successfully",
+      "acceptUpdate": "Accept update",
+      "acceptUpdateMessage": "Update will be accepted and registration will be updated",
+      "acceptWithdrawal": "Accept withdrawal",
+      "acceptWithdrawalMessage": "Registration will be withdrawn but still have a tombstone page with a justification for withdrawal and subset of the metadata available.",
+      "acceptWithdrawalSuccess": "Submission has been withdrawn successfully",
+      "forceWithdraw": "Force Withdraw",
+      "forceWithdrawMessage": "Registration will be withdrawn but still have a tombstone page with a justification for withdrawal and a subset of the metadata available",
+      "forceWithdrawSuccess": "Submission has been force withdrawn successfully",
+      "goBackLink": "< Back to list of submissions",
+      "header": "Make decision",
+      "justificationPlaceholder": "Provide justification for withdrawal",
+      "rejectRequest": "Reject request",
+      "rejectRequestMessage": "Submission will not appear in search results nor will be associated with the collection.",
+      "rejectSubmissionSuccess": "Submission has been rejected successfully",
+      "rejectSuccess": "Submission has been rejected successfully",
+      "rejectUpdate": "Reject update",
+      "rejectUpdateMessage": "Update will be rejected and registration will remain unchanged",
+      "rejectWithdrawal": "Reject withdrawal",
+      "rejectWithdrawalMessage": "Submission will remain fully public",
+      "remarksPlaceholder": "Add remarks to registration admins",
+      "removeSuccess": "Submission has been withdrawn successfully",
+      "submitDecision": "Submit decision",
+      "withdrawRequest": "Withdraw Request",
+      "withdrawRequestMessage": "Submission will be withdrawn from the collection and will no longer appear in search results."
+    },
+    "moderatorPermissions": {
+      "administrator": "Administrator",
+      "moderator": "Moderator"
+    },
+    "moderators": "Moderators",
+    "noSubmissions": "No submissions",
+    "notificationPreferences": {
+      "items": {
+        "provider_new_pending_submissions": "New pending submissions",
+        "provider_new_pending_withdraw_requests": "New pending withdraw requests"
+      },
+      "note": "To configure other notification preferences visit your",
+      "successUpdate": "Notification preference updated successfully",
+      "title": "Configure reviews notification preferences"
+    },
+    "notifications": "Notifications",
+    "pending": "Pending",
+    "preprintReviewStatus": {
+      "accepted": "accepted a preprint \"{{name}}\" in",
+      "rejected": "rejected a preprint \"{{name}}\" from",
+      "submitted": "submitted a preprint \"{{name}}\" to",
+      "withdrawn": "withdrawn a preprint \"{{name}}\" from"
+    },
+    "preprintSettings": {
+      "commentVisibility": {
+        "description": "Moderators can add comments when making a decision about a submission.",
+        "moderators": "Moderators",
+        "moderatorsAndContributors": "Moderators And Contributors",
+        "moderatorsAndContributorsDescription": "Comments will be visible to Open Science Framework moderators AND contributors on the submission.",
+        "moderatorsDescription": "Comments will be visible to Open Science Framework. Moderators NOT contributors on the submission.",
+        "title": "Comment Visibility"
+      },
+      "moderationType": {
+        "post": "Post-moderation",
+        "postDescription": "All preprints are displayed publicly immediately upon submission. Preprints also appear in a queue for a moderator to accept or reject. If rejected, the preprint is no longer displayed publicly.",
+        "pre": "Pre-moderation",
+        "preDescription": "All preprints are placed in a queue for a moderator to accept or reject. Preprints are displayed publicly only after approval.",
+        "title": "Moderation Type"
+      },
+      "moderatorComments": {
+        "anonymized": "Anonymized Comments",
+        "anonymizedDescription": "All comments will be visible to the contributors of the submission, but the moderator's name will not be displayed.",
+        "description": "If moderators' comments are visible to contributors, the moderator's name can be displayed or hidden from the contributors.",
+        "named": "Named Comments",
+        "namedDescription": "All comments will be visible to the contributors of the submission and the moderator's osf profile name will be displayed.",
+        "title": "Moderator Comments"
+      },
+      "warning": "Notice: Moderation settings can only be changed by an OSF administrator. Contact",
+      "warningForAssistance": "for assistance."
+    },
+    "registryAccepted": "Registration submission accepted",
+    "registryEmbargoedWithEndDate": "Embargoed Registration with an end date of ",
+    "registryRejected": "Registration submission rejected",
+    "registrySubmitted": "Registration submitted",
+    "registryWithdrawalAccepted": "Registration withdrawal request accepted",
+    "registryWithdrawalRequested": "Registration withdrawal requested",
+    "removeDialog": {
+      "message": "Are you sure you want to remove <b>{{name}}</b> moderator?",
+      "title": "Remove moderator"
+    },
+    "searchModerator": "Search moderator",
+    "selectPermission": "Select permission",
+    "settings": "Settings",
+    "settingsMessage": "To configure your notification preferences visit your",
+    "showHistory": "Show history",
+    "sortOption": {
+      "newest": "Date: newest to oldest",
+      "oldest": "Date: oldest to newest",
+      "titleAZ": "Title: A-Z",
+      "titleZA": "Title: Z-A"
+    },
+    "submissionReview": {
+      "accepted": "Accepted",
+      "by": "by",
+      "embargoEnding": "with embargo ending",
+      "rejected": "Rejected",
+      "requested": "Requested",
+      "submitted": "Submitted",
+      "withdrawalRequested": "Registration withdrawal requested",
+      "withdrawn": "Withdrawn"
+    },
+    "submissionReviewStatus": {
+      "accepted": "Accepted",
+      "approved": "Approved",
+      "declined": "Declined",
+      "embargo": "Embargo",
+      "inProgress": "In Progress",
+      "pending": "Pending",
+      "pendingUpdates": "Pending Updates",
+      "pendingWithdrawal": "Pending Withdrawal",
+      "public": "Public",
+      "rejected": "Rejected",
+      "removed": "Removed",
+      "withdrawn": "Withdrawn"
+    },
+    "submissions": "Submissions",
+    "submitted": "Submitted",
+    "toastMessages": {
+      "addSuccessMessage": "Moderator {{name}} successfully added.",
+      "deleteSuccessMessage": "Moderator {{name}} successfully removed.",
+      "multipleAddSuccessMessage": "Moderators successfully added.",
+      "updateSuccessMessage": "Moderator {{name}} updated."
+    },
+    "userSettings": "User settings",
+    "withdrawalRequest": "Withdrawal Request",
+    "withNoEmbargo": "with no embargo"
+  },
+  "myProfile": {
+    "editProfile": "Edit Profile",
+    "memberSince": "Member since"
+  },
+  "myProjects": {
+    "createProject": {
+      "actions": {
+        "create": "Create Project"
+      },
+      "affiliation": {
+        "title": "Affiliation"
+      },
+      "storageLocation": "Storage Location",
+      "template": {
+        "label": "Template (Optional)",
+        "placeholder": "Select template or start typing to find one"
+      }
+    },
+    "header": {
+      "createProject": "Create Project",
+      "createProjectDisabledTooltip": "Project creation is no longer available. OSF is transitioning away from Projects as part of a platform update. Your existing projects remain accessible.",
+      "title": "My Projects"
+    },
+    "redirectDialog": {
+      "confirmButton": "Go to project",
+      "header": "Success",
+      "message": "New project created successfully!",
+      "rejectButton": "Keep working here"
+    },
+    "settings": {
+      "accessRequests": "Access Requests",
+      "accessRequestsText": "Allow users to request access to this project",
+      "anonymizeContributorList": "Anonymize contributor list for this link (e.g., for blind peer review).",
+      "anyoneOption": "Anyone with link",
+      "anyonePrivateLink": "Anyone with the private link can view—but not edit—the components associated with the link.",
+      "contributorsOption": "Contributors (with write access)",
+      "current": "Current",
+      "delete": {
+        "message": "Are you sure you want to delete this view only link?",
+        "title": "Delete Link {{name}}?"
+      },
+      "deleteComponent": "Delete Component",
+      "deleteProject": "Delete Project",
+      "descriptions": {
+        "file_updated": {
+          "instantly": "You'll be notified immediately when files are updated.",
+          "daily": "You'll receive a daily summary of file updates.",
+          "none": "You won't receive file update notifications."
+        }
+      },
+      "disabledForWiki": "This feature is disabled for wikis of private projects.",
+      "emailNotifications": "Email Notifications",
+      "emailNotificationsText": "These notification settings only apply to you. They do NOT affect any other contributor on this project.",
+      "enabledForWiki": "This feature is enabled for wikis of private projects.",
+      "ensureNoInformation": "Ensure the wiki pages, files, registration forms and add-ons do not contain identifying information.",
+      "faq": "FAQ",
+      "institutionalLogos": "institutional logos to be displayed on public projects",
+      "linkName": "Link name",
+      "parentsNeedToBeChecked": "Parents need to be checked",
+      "projectAffiliation": "Project Affiliation / Branding",
+      "projectsCanBeAffiliated": "Projects can be affiliated with institutions that have created OSF for Institutions accounts. This allows:",
+      "publicProjectsToBeDiscoverable": "public projects to be discoverable on specific institutional landing pages",
+      "saveChanges": "Save Changes",
+      "singleSignInToTHeOSF": "single sign-in to the OSF with institutional credentials",
+      "storageLocationMessage": "Storage location cannot be changed after project is created.",
+      "typeLinkName": "Type link name",
+      "updateProjectDetailsMessage": "Successfully updated project details.",
+      "updateProjectSettingsMessage": "Successfully updated project settings.",
+      "viewOnlyLinkCreated": "View only link successfully created.",
+      "viewOnlyLinkDeleted": "View only link successfully deleted.",
+      "viewOnlyLinks": "View-only Links",
+      "viewOnlySubtitle": "Create a link to share this project so those who have the link can view—but not edit—the project.",
+      "viewOnlyTable": {
+        "anonymous": "Anonymous",
+        "createdBy": "Created By",
+        "createdDate": "Created date",
+        "linkName": "Link Name",
+        "sharedComponents": "Shared Components"
+      },
+      "whichComponentLink": "Which components would you like to associate with this link?",
+      "whoCanEdit": "Who can edit:",
+      "wiki": "Wiki",
+      "wikiConfigureText": "Create a link to share this project so those who have the link can view—but not edit—the project.",
+      "wikiConfigureTitle": "Configure",
+      "wikiText": "Enable the wiki in {{projectName}}"
+    },
+    "table": {
+      "emptyState": {
+        "all": {
+          "both": "You don't have any projects or components.",
+          "private": "You don't have any private projects or components.",
+          "public": "You don't have any public projects or components."
+        },
+        "components": {
+          "both": "You don't have any components.",
+          "private": "You don't have any private components.",
+          "public": "You don't have any public components."
+        },
+        "projects": {
+          "both": "You don't have any projects.",
+          "private": "You don't have any private projects.",
+          "public": "You don't have any public projects."
+        }
+      },
+      "searchPlaceholder": "Filter by title, description, and tags",
+      "download": {
+        "addonFiles": "Download {{addonName}} files",
+        "files": "Download OSF Storage files",
+        "metadata": "Download metadata"
+      }
+    },
+    "tabOptions": {
+      "all": "Projects and Components",
+      "component": "Components",
+      "root": "Projects"
+    },
+    "visibilityFilterOptions": {
+      "all": "Public and Private",
+      "private": "Private",
+      "public": "Public"
+    },
+    "tabs": {
+      "bookmarks": "Bookmarks",
+      "myPreprints": "My Preprints",
+      "myProjects": "My Projects",
+      "myRegistrations": "My Registrations"
+    }
+  },
+  "navigation": {
+    "accountSettings": "Account Settings",
+    "addons": "Add-ons",
+    "analytics": "Analytics",
+    "collections": "Collections",
+    "components": "Components",
+    "configureAddonAccounts": "Configure add-on & link service accounts",
+    "contributors": "Contributors",
+    "developerApps": "Developer Apps",
+    "discover": "Discover",
+    "donate": "Donate",
+    "files": "Files",
+    "home": "Home",
+    "institutions": "Institutions",
+    "linkedServices": "Linked Services",
+    "links": "Links",
+    "logOut": "Log out",
+    "meetings": "Meetings",
+    "metadata": "Metadata",
+    "moderation": "Moderation",
+    "myOsf": "My OSF",
+    "myProfile": "My profile",
+    "myProjects": "My Projects",
+    "notifications": "Notifications",
+    "overview": "Overview",
+    "personalAccessTokens": "Personal Access Tokens",
+    "preprints": "Preprints",
+    "preprintsSubRoutes": {
+      "myPreprints": "My Preprints",
+      "myReviewing": "My Reviewing",
+      "preprintDetails": "Preprint details"
+    },
+    "profile": "Profile",
+    "profileSettings": "Profile Settings",
+    "projectDetails": "Project details",
+    "projects": "Projects",
+    "recentActivity": "Recent Activity",
+    "registrations": "Registrations",
+    "registries": "Registries",
+    "registriesSubRoutes": {
+      "myRegistrations": "My Registrations",
+      "registryDetails": "Registry Details"
+    },
+    "resources": "Resources",
+    "searchOsf": "Search OSF",
+    "settings": "Settings",
+    "signIn": "Sign in",
+    "signUp": "Sign Up",
+    "support": "Support",
+    "wiki": "Wiki"
+  },
+  "nodeCategories": {
+    "analysis": "Analysis",
+    "communication": "Communication",
+    "data": "Data",
+    "hypothesis": "Hypothesis",
+    "instrumentation": "Instrumentation",
+    "methods and measures": "Methods and Measures",
+    "procedure": "Procedure",
+    "project": "Project",
+    "software": "Software",
+    "other": "Other"
+  },
+  "pageNotFound": {
+    "message": "The page you were looking for is either doesn't exist, was deleted, or the URL may be incorrect. If this should not have occurred and the issue persists, please report it to",
+    "title": "Page not found"
+  },
+  "preprints": {
+    "addContributorBySearch": "Add Contributor By Search",
+    "addPreprint": "Add a {{preprintWord}}",
+    "browseBySubjects": {
+      "title": "Browse By Subjects"
+    },
+    "createNewVersionTitle": "Create New Version",
+    "createServer": {
+      "and": "and",
+      "contactUs": "Contact us",
+      "description": "Check out the",
+      "inputWelcome": "Input welcome!",
+      "openSourceCode": "open source code",
+      "publicRoadmap": "public roadmap",
+      "title": "Create your own branded preprint servers backed by the OSF"
+    },
+    "details": {
+      "decision": {
+        "accept": {
+          "label": "Accept submission",
+          "post": "Submission will continue to appear in search results.",
+          "pre": "Submission will appear in search results and be made public."
+        },
+        "approve": {
+          "explanation": "Submission will be withdrawn but still have a tombstone page with a subset of the metadata available",
+          "label": "Approve withdrawal"
+        },
+        "commentLengthError": "Comment is {{length}} character(s) too long (maximum is {{limit}}).",
+        "commentPlaceholder": "Explain the reasoning behind your decision",
+        "decline": {
+          "explanation": "Submission will remain fully public",
+          "label": "Decline withdrawal"
+        },
+        "denialJustification": "Reason for denial (required, not publicly visible)",
+        "header": {
+          "modifyDecision": "Modify your decision",
+          "submitDecision": "Submit your decision",
+          "withdrawalReason": "Reason for withdrawal"
+        },
+        "justificationLengthError": "Request decision justification is too short (minimum is {{minLength}} characters)",
+        "justificationRequiredError": "Request decision justification can't be blank",
+        "makeDecision": "Make decision",
+        "modifyDecision": "Modify decision",
+        "noReasonProvided": "No reason provided",
+        "reject": {
+          "label": "Reject submission",
+          "post": "Submission will be removed from search results and made private.",
+          "pre": "Submission will not appear in search results and will remain private."
+        },
+        "settings": {
+          "comments": {
+            "private": "Comments are not visible to contributors",
+            "public": "Comments are visible to contributors on decision"
+          },
+          "moderation": {
+            "post": "Submission will be removed from search results and made private if rejected",
+            "pre": "Submission appears in search results once accepted"
+          },
+          "names": {
+            "anonymous": "Comments are anonymous",
+            "named": "Commenter's name is visible to contributors"
+          }
+        },
+        "submitButton": {
+          "modifyDecision": "Modify decision",
+          "submitDecision": "Submit decision",
+          "updateComment": "Update comment"
+        },
+        "withdrawalJustification": "Reason for withdrawal (optional, will be publicly displayed)",
+        "withdrawalReason": "View reason",
+        "withdrawn": {
+          "label": "Withdraw submission",
+          "post": "Submission will no longer be publicly available."
+        }
+      },
+      "doi": {
+        "noDoi": "No DOI",
+        "pendingDoi": "DOI created after {{documentType}} is made public",
+        "pendingDoiMinted": "DOIs are minted by a third party, and may take up to 24 hours to be registered.",
+        "pendingDoiModeration": "DOI created after moderator approval",
+        "title": "{{documentType}} DOI"
+      },
+      "file": {
+        "created": "Created",
+        "downloadPreviousVersion": "Download previous version",
+        "downloadVersion": "Version {{version}}, {{date}}",
+        "lastEdited": "Last edited",
+        "renderingDocument": "Rendering document",
+        "submitted": "Submitted",
+        "version": "Version: {{version}}"
+      },
+      "moderationStatusBanner": {
+        "pendingDetails": {
+          "body": "This preprint was submitted for review. It won't be available until it is accepted by the provider. Please check back later.",
+          "title": "This Preprint Is Pending Moderation At OSF Preprints"
+        },
+        "recentActivity": {
+          "accepted": "accepted this {{documentType}} on",
+          "automatic": {
+            "accepted": "This {{documentType}} was automatically accepted on",
+            "pending": "This {{documentType}} was submitted on"
+          },
+          "pending": "submitted this {{documentType}} on",
+          "pendingWithdrawal": "requested to withdraw this {{documentType}} on",
+          "rejected": "rejected this {{documentType}} on",
+          "withdrawn": "withdrew this {{documentType}} on"
+        }
+      },
+      "originalPublicationDate": "Original Publication Date",
+      "publicationDoi": "Peer-reviewed Publication DOI",
+      "reasonForWithdrawal": "Reason for withdrawal",
+      "share": {
+        "downloadPreprint": "Download {{documentType}}",
+        "views": "Views"
+      },
+      "statusBanner": {
+        "accepted": "Accepted",
+        "messages": {
+          "accepted": "has been accepted by a moderator and is publicly available and searchable.",
+          "base": "{{name}} uses {{workflow}}. This {{documentType}}",
+          "pendingPostModeration": "is publicly available and searchable but is subject to removal by a moderator.",
+          "pendingPreModeration": "is not publicly available or searchable until approved by a moderator.",
+          "pendingWithdrawal": "This {{documentType}} has been requested by the authors to be withdrawn. It will still be publicly searchable until the request has been approved.",
+          "rejected": "has been rejected by a moderator and is not publicly available or searchable.",
+          "withdrawalRejected": "Your request to withdraw this {{documentType}} from the service has been denied by the moderator.",
+          "withdrawn": "This {{documentType}} has been withdrawn."
+        },
+        "moderator": "Moderator",
+        "moderatorFeedback": "Moderator Feedback",
+        "pending": "Pending",
+        "pendingWithdrawal": "Pending withdrawal",
+        "rejected": "Rejected",
+        "showModeratorFeedback": "Show moderator feedback",
+        "withdrawalRejected": "Withdrawal rejected",
+        "withdrawn": "Withdrawn"
+      },
+      "supplementalMaterials": "Supplemental Materials",
+      "warningBanner": "OSF preprints are not peer reviewed and acceptance into OSF preprints is not an indicator of scholarly merit.",
+      "withdrawDialog": {
+        "justificationInputError": "Comment must be at least {{length}} characters.",
+        "justificationInputLabel": "Reason for withdrawal",
+        "noModerationNotice": "<strong>{{pluralCapitalizedPreprintWord}} are a permanent part of the scholarly record. Withdrawal requests are subject to this service’s policy on {{singularPreprintWord}} version removal and at the discretion of the moderators.</strong><br>This request will be submitted to <a href=\"mailto:{{supportEmail}}\" target=\"_blank\">{{supportEmail}}</a> for review and removal. If the request is approved, this {{singularPreprintWord}} version will be replaced by a tombstone page with metadata and the reason for withdrawal. This {{singularPreprintWord}} version will still be searchable by other users after removal.",
+        "postModerationNotice": "<strong>{{pluralCapitalizedPreprintWord}} are a permanent part of the scholarly record. Withdrawal requests are subject to this service’s policy on {{singularPreprintWord}} version removal and at the discretion of the moderators.</strong><br>This service uses post-moderation. This request will be submitted to service moderators for review. If the request is approved, this {{singularPreprintWord}} version will be replaced by a tombstone page with metadata and the reason for withdrawal. This {{singularPreprintWord}} version will still be searchable by other users after removal.",
+        "preModerationNoticeAccepted": "<strong>{{pluralCapitalizedPreprintWord}} are a permanent part of the scholarly record. Withdrawal requests are subject to this service’s policy on {{singularPreprintWord}} version removal and at the discretion of the moderators.</strong><br>This service uses pre-moderation. This request will be submitted to service moderators for review. If the request is approved, this {{singularPreprintWord}} version will be replaced by a tombstone page with metadata and the reason for withdrawal. This {{singularPreprintWord}} version will still be searchable by other users after removal.",
+        "preModerationNoticePending": "Since this version is still pending approval and private, it can be withdrawn immediately. The reason of withdrawal will be visible to service moderators. Once withdrawn, the {{singularPreprintWord}} will remain private and never be made public.",
+        "title": "Withdraw {{preprintWord}}",
+        "withdrawalExplanation": "You are about to withdraw this version of your {{singularPreprintWord}}. Withdrawing a version will remove it from public view but will not affect other versions of this {{singularPreprintWord}}, if available."
+      }
+    },
+    "documentType": {
+      "default": {
+        "plural": "documents",
+        "pluralCapitalized": "Documents",
+        "singular": "document",
+        "singularCapitalized": "Document"
+      },
+      "paper": {
+        "plural": "papers",
+        "pluralCapitalized": "Papers",
+        "singular": "paper",
+        "singularCapitalized": "Paper"
+      },
+      "preprint": {
+        "plural": "preprints",
+        "pluralCapitalized": "Preprints",
+        "singular": "preprint",
+        "singularCapitalized": "Preprint"
+      },
+      "thesis": {
+        "plural": "theses",
+        "pluralCapitalized": "Theses",
+        "singular": "thesis",
+        "singularCapitalized": "Thesis"
+      },
+      "work": {
+        "plural": "works",
+        "pluralCapitalized": "Works",
+        "singular": "work",
+        "singularCapitalized": "Work"
+      }
+    },
+    "downloadRedirect": {
+      "message": "Your download will begin shortly."
+    },
+    "helpDialog": {
+      "header": "Search help",
+      "linkText": "help guides",
+      "message": "OSF Search provides a powerful discovery tool to help you find data, papers, analysis plans, and more content across the research lifecycle. OSF Preprints has some specialized filters, which you can learn more about on our"
+    },
+    "myPreprints": {
+      "searchPlaceholder": "Filter by title, description, and tags",
+      "title": "My Preprints"
+    },
+    "poweredBy": "Powered by OSF Preprints",
+    "preprintContributorsWarning": "Warning: Changing your permissions will prevent you from editing your draft.",
+    "preprintStepper": {
+      "authorAssertions": {
+        "conflictOfInterest": {
+          "description": "The Conflict of Interest (COI) assertion is made on behalf of all the authors listed for this preprint. COIs include: financial involvement in any entity such as honoraria, grants, speaking fees, employment, consultancies, stock ownership, expert testimony, and patents or licenses. COIs can also include non-financial interests such as personal or professional relationships or pre-existing beliefs in the subject matter or materials discussed in this preprint.",
+          "noCoiPlaceholder": "Author asserted there is no Conflict of Interest with this preprint.",
+          "title": "Conflict of Interest"
+        },
+        "publicData": {
+          "description": "Data refers to raw and/or processed information (quantitative or qualitative) used for the analyses, case studies, and/or descriptive interpretation in the preprint. Public data could include data posted to open-access repositories, public archival library collection, or government archive. For data that is available under limited circumstances (e.g., after signing a data sharing agreement), choose the 'No' option and use the comment box to explain how others could access the data.",
+          "notApplicablePlaceholder": "Author asserted there is no data associated with this preprint.",
+          "title": "Public Data"
+        },
+        "publicPreregistration": {
+          "description": "A preregistration is a description of the research design and/or analysis plan that is created and registered before researchers collected data or before they have seen/interacted with preexisting data. The description should appear in a public registry (e.g., clinicaltrials.gov, OSF, AEA registry).",
+          "notApplicablePlaceholder": "The author asserts that a preregistration is not applicable because no data collection, extraction, or analysis is reported in the preprint.",
+          "selectType": "Choose one",
+          "title": "Public Preregistration"
+        },
+        "title": "Author Assertions"
+      },
+      "common": {
+        "labels": {
+          "abstract": "Abstract",
+          "preregTypes": {
+            "analysis": "Analysis Plan",
+            "both": "Both",
+            "designs": "Study Design"
+          }
+        },
+        "placeholders": {
+          "describe": "Describe",
+          "linkToData": "Link to data"
+        },
+        "successMessages": {
+          "preprintSaved": "Preprint saved",
+          "preprintSubmitted": "Preprint submitted"
+        },
+        "validation": {
+          "fillRequiredFields": "Fill in “Required” fields to continue"
+        }
+      },
+      "deleteDraft": {
+        "header": "Delete Preprint Draft",
+        "message": "Are you sure you want to delete this preprint draft?",
+        "success": "Preprint draft successfully deleted."
+      },
+      "file": {
+        "note": "Note: You cannot switch options once a file is attached.",
+        "selectFromProject": "Select From Existing OSF Project",
+        "title": "File",
+        "tooltips": {
+          "computerDisabled": "Start a new preprint to attach a file from your computer.",
+          "projectDisabled": "Start a new preprint to attach a file from your project."
+        },
+        "uploadDescription": "Please Upload your {{preprintWord}}",
+        "uploadFileButton": "Upload file",
+        "uploadFromComputer": "Upload From Your Computer"
+      },
+      "metadata": {
+        "affiliatedInstitutionsDescription": "You can affiliate your {{preprintWord}} with your institution if it is an <a class='font-bold' href='https://www.cos.io/products/osf-institutions' target='_blank'>OSF institutional member</a> and has worked with the Center for Open Science to create a dedicated <a class='font-bold' href='https://help.osf.io/article/191-view-institutional-landing-pages' target='_blank'>institutional OSF landing page</a>.",
+        "publicationCitationTitle": "Publication Citation (optional)",
+        "publicationDateTitle": "Publication Date (optional)",
+        "publicationDoi": {
+          "patternError": "Please use a valid DOI format (10.xxxx/xxxxx)",
+          "title": "Publication DOI (optional)"
+        },
+        "tagsTitle": "Tags (optional)"
+      },
+      "projectSelection": {
+        "description": "This will make your project public, if it is not already",
+        "selectProject": "Select Project",
+        "subDescription": "The projects and components for which you have admin access are listed below."
+      },
+      "review": {
+        "consentDescription": "By submitting this preprint you confirm that all contributors agree with sharing it and that you have the right to share this preprint.",
+        "learnMore": "You can read more about",
+        "moderationPolicies": "OSF preprints moderation policies",
+        "sections": {
+          "authorAssertions": {
+            "conflictOfInterest": "Conflict of Interest",
+            "noCoi": "Author asserted no Conflict of Interest.",
+            "noData": "Author asserted there is no data associated with this preprint.",
+            "noPrereg": "The author asserts that a preregistration is not applicable because no data collection, extraction, or analysis is reported in the preprint.",
+            "publicData": "Public Data",
+            "publicPreregistration": "Public Preregistration",
+            "title": "Author Assertions"
+          },
+          "metadata": {
+            "authors": "Authors",
+            "publicationCitation": "Publication Citation",
+            "publicationDate": "Publication Date",
+            "publicationDoi": "Publication DOI"
+          },
+          "supplements": {
+            "noSupplements": "Author did not add any supplements for this preprint",
+            "title": "Supplements (Optional)"
+          },
+          "titleAndAbstract": {
+            "service": "{{preprintWord}} Service",
+            "title": "Title and Abstract"
+          }
+        },
+        "supportCenter": "on the OSF support center.",
+        "title": "Consent to publish",
+        "workflowDescription": "{{providerName}} uses {{reviewsWorkflow}}. If your preprint is accepted, it will be assigned a DOI and become publicly accessible via OSF. The preprint file cannot be deleted but it can be updated or modified."
+      },
+      "steps": {
+        "authorAssertions": "Author Assertions",
+        "file": "File",
+        "metadata": "Metadata",
+        "review": "Review",
+        "supplements": "Supplements",
+        "titleAndAbstract": "Title and Abstract"
+      },
+      "supplements": {
+        "description": "Connect an OSF project to share data, code, protocols, or other supplemental materials.",
+        "discardChanges": {
+          "header": "Discard changes?",
+          "message": "You have unsaved changes in the project creation form. Are you sure you want to go back?"
+        },
+        "disconnectProject": {
+          "header": "Disconnect supplemental material",
+          "message": "This will disconnect the selected project. You can select new supplemental material or re-add the same supplemental material at a later date."
+        },
+        "options": {
+          "connectExisting": "Connect An Existing OSF Project",
+          "createNew": "Create A New OSF Project"
+        },
+        "projectCreationDisabled": "Project creation is no longer available. OSF is transitioning away from Projects as part of a platform update. Your existing projects remain accessible.",
+        "successMessages": {
+          "projectConnected": "Project connected",
+          "projectCreated": "Project created",
+          "projectDisconnected": "Project disconnected"
+        },
+        "title": "Supplements (optional)"
+      },
+      "titleAndAbstract": {
+        "abstractLabel": "Abstract",
+        "abstractMaxLengthError": "Abstract can not exceed {{length}} characters.",
+        "abstractMinLengthError": "Abstract must be at least {{length}} characters.",
+        "title": "Title and Abstract"
+      }
+    },
+    "providers": "Providers",
+    "searchPlaceholder": "Search {{preprintWord}}...",
+    "selectService": {
+      "description": "A preprint is a version of a scholarly or scientific paper that is posted online before it has undergone formal peer review and published in a scientific journal.",
+      "learnMore": "Learn more",
+      "providerLogoImageAlt": "Provider Logo",
+      "sectionTitle": "Select a preprint service",
+      "title": "Add A Preprint"
+    },
+    "services": {
+      "description": "Leading preprint service providers use this open source infrastructure to support their communities.",
+      "title": "Preprint Services"
+    },
+    "showExample": "Show an example",
+    "title": "Preprints",
+    "updatePreprint": "Edit a {{preprintWord}}"
+  },
+  "profile": {
+    "mergedAccount": {
+      "message": "This account has been merged with "
+    }
+  },
+  "project": {
+    "analytics": {
+      "charts": {
+        "pastMonth": "Past month",
+        "pastTwoWeeks": "Past two weeks",
+        "pastWeek": "Past week",
+        "popularPages": "Popular pages",
+        "showAnalytics": "Show analytics for date range:",
+        "timeOfDayOfVisits": "Time of day of visits",
+        "topReferrers": "Top referrers",
+        "uniqueVisits": "Unique visits",
+        "visits": "Visits"
+      },
+      "kpi": {
+        "forks": "Duplicates",
+        "linksToThisProject": "Links to this project",
+        "templateCopies": "Template copies",
+        "viewForks": "View duplicates",
+        "viewLinks": "View links"
+      },
+      "privateProject": {
+        "benefits": {
+          "affiliated": "can be affiliated with OSF for Institutions partners",
+          "citable": "are citable",
+          "discoverable": "are discoverable",
+          "openPractices": "promote open practices among peers"
+        },
+        "impact": "Receive data on visitors to your project by enabling Analytics and begin discovering the impact of your work.",
+        "message": "Analytics are not available for private projects. To view Analytics, make your project public by switching Public from the project overview page. Public projects:"
+      },
+      "viewRelated": {
+        "linkedProjectsMessage": "Linked Projects you have permission to view are shown here.",
+        "linkedProjectsTitle": "Linked Projects",
+        "noLinkedProjectsMessage": "No Linked Projects found."
+      }
+    },
+    "contributors": {
+      "addContributor": "Add Contributor",
+      "addDialog": {
+        "addContributorsToComponents": "You can also add the contributor(s) to any components on which you are an admin.",
+        "addingContributorsFromParentProject": "Import contributors from {{projectName}}",
+        "addingContributorsTo": "Adding contributor(s) <b>{{names}}</b> to <b>{{projectName}}</b>.",
+        "addRegisteredContributor": "Add Registered Contributor",
+        "addUnregisteredContributor": "Add Unregistered Contributor",
+        "bibliographicContributor": "Bibliographic Contributor",
+        "placeholder": "Search by name or user information",
+        "selectPermissions": "Please select which permissions you want to give to contributor",
+        "unregisteredContributorNotification": "We will notify the user that they have been added to your project"
+      },
+      "bibliographicContributorInfo": {
+        "heading": "Bibliographic Contributor Information",
+        "projectDescription": "Only bibliographic contributors will be displayed in the Contributors list and in project citations. Non-bibliographic contributors can read and modify the project as normal.",
+        "registrationDescription": "Only bibliographic contributors will be displayed in the Contributors list and in registration citations. Non-bibliographic contributors can read and modify the registration as normal."
+      },
+      "bibliography": {
+        "bibliographic": "Bibliographic",
+        "nonBibliographic": "Non-Bibliographic"
+      },
+      "bibliographyFilter": "Bibliography",
+      "createLink": "Create a link to share this project so those who have the link can view—but not edit—the project.",
+      "createLinkDialog": {
+        "dialogTitle": "Create a new link to share your project"
+      },
+      "curatorInfo": {
+        "heading": "Curator Information",
+        "projectDescription": "An administrator designated by your affiliated institution to curate your project.",
+        "registrationDescription": "An administrator designated by your affiliated institution to curate your registration."
+      },
+      "education": {
+        "none": "No education history",
+        "show": "Show education history"
+      },
+      "employment": {
+        "none": "No employment history",
+        "show": "Show employment history"
+      },
+      "permissionFilter": "Filter by permission",
+      "permissionInfo": {
+        "addComponents": "Add and configure components",
+        "addResourcesLinks": "Add resources links",
+        "deleteProject": "Delete project and components",
+        "deleteRegister": "Delete and register project",
+        "editContent": "Add and edit content",
+        "editMetadata": "Edit metadata",
+        "endEmbargoEarly": "End embargo early",
+        "manageContributors": "Manage contributor",
+        "manageViewOnlyLinks": "Manage view-only links",
+        "publicPrivate": "Public private settings",
+        "read": "Read privileges",
+        "readOnlyViewProjectContent": "View project content",
+        "readWrite": "Read and write privileges",
+        "title": "Permission Information",
+        "viewProjectContent": "View project content and comment",
+        "viewRegistrationContent": "View registration content",
+        "withdrawRegistration": "Withdraw registration"
+      },
+      "permissions": {
+        "administrator": "Administrator",
+        "read": "Read",
+        "readAndWrite": "Read + Write"
+      },
+      "removeDialog": {
+        "message": "Are you sure you want to remove <b>{{name}}</b> contributor?",
+        "successMessage": "Contributor {{name}} successfully removed.",
+        "thisProjectAndComponents": "This project and all it's components",
+        "thisProjectOnly": "This project only",
+        "title": "Remove contributor"
+      },
+      "reorderDeactivateTooltip": "Remove deactivated contributors in order to enable reordering.",
+      "searchProjectPlaceholder": "Search Project Contributors",
+      "searchRegistrationPlaceholder": "Search Registration Contributors",
+      "table": {
+        "emptyMessage": "No contributors found.",
+        "headers": {
+          "contributor": "Bibliographic Contributor",
+          "curator": "Curator",
+          "education": "Education history",
+          "employment": "Employment history",
+          "name": "Name",
+          "permissions": "Permissions"
+        }
+      },
+      "toastMessages": {
+        "addSuccessMessage": "Contributor {{name}} successfully added.",
+        "multipleAddSuccessMessage": "Contributors successfully added.",
+        "multipleUpdateSuccessMessage": "Contributors successfully updated."
+      },
+      "viewOnly": "View-only links"
+    },
+    "deleteInstitution": {
+      "message": "Are you sure you want to delete <b>{{name}}</b> from this project?",
+      "success": "Institution has been successfully deleted.",
+      "title": "Delete institution"
+    },
+    "deleteProject": {
+      "dialog": {
+        "confirmation": "Type the following to continue:",
+        "deleteProject": "Delete project and components",
+        "listMessage": "You are about to delete the following:",
+        "noPermissionsMessage": "You do not have permissions to delete this project and its components. <br/><br/> To delete, you must have admin permissions across all objects. Please check your permissions and try again. <br/><br/> Contact support at support@osf.io if you have any questions.",
+        "warningMessage": "It will no longer be available to you or any other contributors. This is irreversible."
+      },
+      "success": "Project has been successfully deleted."
+    },
+    "linkedServices": {
+      "addonsLink": "Add-ons",
+      "noLinkedServices": "This project has no configured linked services at the moment.",
+      "redirectMessage": "Visit",
+      "redirectMessageSuffix": "to add a linked service.",
+      "table": {
+        "displayName": "Display Name",
+        "link": "Link",
+        "linkedService": "Linked Service",
+        "resourceType": "Resource Type"
+      },
+      "title": "Linked Services"
+    },
+    "metadata": {
+      "addCommunityMetadataRecord": {
+        "title": "Add community metadata record"
+      },
+      "addMetadata": {
+        "cedarInfo": "OSF has partnered with <a target='_blank' href='https://metadatacenter.org/'>CEDAR</a> to provide more ways to annotate your research with domain or community-specific metadata records. If you would like to request the addition of a new metadata template, contact us at <a>support@osf.io</a>.",
+        "changeTemplate": "Change template",
+        "copyRecordMetadataUrl": "Copy url to clipboard to share.",
+        "downloadRecordMetadata": "Download Metadata Record",
+        "loadingCedar": "Loading CEDAR record...",
+        "notPublishedText": "This metadata has a status of 'Draft' and is not publicly viewable. To 'Publish' this metadata please fill in all required fields and resubmit the data.",
+        "publish": "Publish",
+        "publishedText": "This metadata has a status of 'Published' and is publicly viewable.",
+        "recordCreatedSuccessfully": "Record created successfully",
+        "recordUpdatedSuccessfully": "Record updated successfully",
+        "select": "Select",
+        "selectTemplate": "Select a Metadata Template",
+        "title": "Add community metadata record",
+        "youAlreadyAdded": "Already Added",
+        "youAlreadyAddedText": "You have already added a record for this template"
+      },
+      "affiliatedInstitutions": {
+        "dialog": {
+          "header": "Edit Affiliated Institutions"
+        },
+        "updated": "Affiliated institutions updated successfully"
+      },
+      "contributors": {
+        "editContributors": "Edit contributors"
+      },
+      "description": {
+        "dialog": {
+          "header": "Edit Description"
+        },
+        "updated": "Description updated successfully"
+      },
+      "doi": {
+        "created": "DOI created successfully",
+        "dialog": {
+          "createConfirm": {
+            "header": "Create DOI",
+            "message": "Are you sure you want to create a DOI for this project? A DOI is persistent and will always resolve this page."
+          },
+          "header": "Edit publication DOI",
+          "label": "https://doi.org/",
+          "placeholder": "10.xxxx/xxxxx"
+        }
+      },
+      "editTitle": "Edit Title",
+      "editTitlePlaceholder": "Edit title here",
+      "funding": {
+        "dialog": {
+          "awardNumber": "Award Number",
+          "awardTitle": "Award Title",
+          "awardUri": "Award URI",
+          "funderName": "Funder Name",
+          "header": "Edit Funding/Support Information",
+          "loadingFunders": "Loading funders...",
+          "noFundersFound": "No funders found",
+          "selectFunder": "Select a funder"
+        },
+        "updated": "Funding information updated successfully"
+      },
+      "license": {
+        "dialog": {
+          "chooseLicense": {
+            "label": "Choose License"
+          },
+          "header": "Edit License"
+        },
+        "updated": "License updated successfully"
+      },
+      "publicationDoi": {
+        "updated": "Publication DOI updated successfully"
+      },
+      "resourceInformation": {
+        "dialog": {
+          "header": "Edit Resource Information"
+        },
+        "tooltipDialog": {
+          "dataTypeLink": "Datacite Resource Types",
+          "endText": "More information is available on our",
+          "header": "About resource information",
+          "helpLink": " help guides",
+          "mainContent": "The resource information section allows you to describe what kind of material you are sharing in a human and machine readable format. Indexes and search engines can use the resource types to filter results, increasing discoverability for works with completed metadata. For example, indicating that your resource type is “Dataset” will allow your work to be displayed in other indexes and repositories that specialize in data in addition to the OSF.",
+          "secondaryContent": "You can describe the resources within your entire {{ resourceName }}, and you can also describe the resource type of individual files within. Just open one of your files to edit its metadata.",
+          "thirdContent": "OSF enables the"
+        },
+        "updated": "Resource information updated successfully"
+      },
+      "titleUpdated": "Description updated successfully"
+    },
+    "overview": {
+      "actions": {
+        "duplicateProject": "Duplicate project (structure only)",
+        "forkProject": "Duplicate project (with files)",
+        "forkProjectLabel": "Duplicate project",
+        "manageContributors": "Manage Contributors",
+        "settings": "Settings",
+        "viewDuplication": "View duplicates",
+        "duplicatingProjectsNotAllowed": "Duplicating projects is no longer available. OSF is transitioning away from Projects as part of a platform update."
+      },
+      "citations": {
+        "copyCitation": "Copy citation",
+        "viewOriginal": "View original file"
+      },
+      "collectionsModeration": {
+        "accepted": "Included in ",
+        "pending": "Pending entry into ",
+        "rejected": "Rejected from ",
+        "removed": "Removed from "
+      },
+      "components": {
+        "addComponentButton": "Add Component",
+        "addComponentDisabled": "Component creation is no longer available. OSF is transitioning away from Projects as part of a platform update.",
+        "linkProjectsButton": "Link Projects",
+        "noComponentsMessage": "Add components to organize your project.",
+        "title": "Components"
+      },
+      "dialog": {
+        "addComponent": {
+          "addContributors": "Add Contributors from",
+          "addTags": "Add Tags from",
+          "contributorsMessage": "admins will have read access to this component.",
+          "header": "Create New Component",
+          "license": {
+            "description": "This component will inherit the same license as"
+          },
+          "storageLocation": "Storage Location"
+        },
+        "adjustPrivacySetting": "Adjust your privacy settings by checking the boxes below.",
+        "changePrivacySettings": "Change privacy settings",
+        "checkedProjects": "Checked projects and components will be public.",
+        "deleteComponent": {
+          "confirmation": "Type the following to continue:",
+          "header": "Delete component",
+          "listMessage": "You are about to delete the following:",
+          "message": "It will no longer be available to other contributors on the project.",
+          "noPermissionsMessage": "You do not have permissions to delete this component and its subcomponents. <br/><br/> To delete, you must have admin permissions across all objects. Please check your permissions and try again. <br/><br/> Contact support at support@osf.io if you have any questions.",
+          "warningMessage": "This component contains subcomponents. To delete this component, you must also delete all subcomponents. This action is irreversible."
+        },
+        "deleteNodeLink": {
+          "header": "Delete Link",
+          "message": "Are you sure you want to delete this link? This will not remove the project or registration this link refers to."
+        },
+        "duplicate": {
+          "header": "Duplicate Template",
+          "templateAddonsWarning": "Any add-ons configured for this project will not be authenticated in the new project.",
+          "templateConfirmation": "Are you sure you want to create a new project using this project as a template?"
+        },
+        "fork": {
+          "confirmButton": "Duplicate",
+          "forksMessage": "Duplicates you have permission to view are shown here.",
+          "headerProject": "Duplicate This Project",
+          "messageProject": "Are you sure you want to duplicate this project (with files)?",
+          "noForksMessage": "No duplicates found"
+        },
+        "linkProject": {
+          "header": "Link to another OSF project or registration objects",
+          "projects": "Projects",
+          "registrations": "Registrations",
+          "searchAllObjects": "Search All Objects",
+          "searchMyObjects": "Search My Objects",
+          "searchObjectsPlaceholder": "Search objects",
+          "table": {
+            "created": "Created"
+          }
+        },
+        "makePrivate": {
+          "confirmButton": "Make Private",
+          "header": "Make Project Private",
+          "messageItems": {
+            "publicDuplicatesRemainPublic": "Public duplicates and registrations of this project will remain public.",
+            "removedFromCollections": "The project will automatically be removed from any collections. Any pending requests will be cancelled.",
+            "searchEnginesMayHaveAccessed": "Search engines (including Google's cache) or others may have accessed files, wiki pages, or analytics while this project was public."
+          }
+        },
+        "makePublic": {
+          "confirmButton": "Make Public",
+          "header": "Make Project Public",
+          "message": "Please review your projects, components, and add-ons for sensitive or restricted information before making them public.",
+          "warning": "Once they are made public, you should assume they will always be public. You can return them to private later, but search engines (including Google's cache) or others may access files, wiki pages, or analytics before you do.",
+          "warningReadOnly": "This action is irreversible."
+        },
+        "privacySettingsPermissionTooltip": "You must have admin permission on this component to be able to change privacy settings",
+        "toast": {
+          "addComponent": {
+            "success": "Component has been created successfully"
+          },
+          "bookmark": {
+            "add": "Successfully added to bookmarks",
+            "remove": "Successfully removed from bookmarks"
+          },
+          "changePrivacySettings": {
+            "success": "Privacy settings have been successfully updated."
+          },
+          "deleteComponent": {
+            "success": "Component has been deleted successfully"
+          },
+          "deleteNodeLink": {
+            "success": "Node link has been deleted successfully"
+          },
+          "duplicate": {
+            "success": "Project has been duplicated successfully"
+          },
+          "fork": {
+            "success": "Project has been duplicated successfully"
+          },
+          "reorderComponents": {
+            "success": "Components have been reordered successfully."
+          }
+        },
+        "uncheckedComponents": "Unchecked components will be private."
+      },
+      "files": {
+        "filesPreview": "Files Preview"
+      },
+      "header": {
+        "privateProject": "Private Project",
+        "publicProject": "Public Project"
+      },
+      "linkedProjects": {
+        "noLinkedProjectsMessage": "Link your project.",
+        "title": "Linked Projects"
+      },
+      "metadata": {
+        "anonymousContributors": "Anonymous Contributors",
+        "citation": "Citation",
+        "citationInputPlaceholder": "Select citation style or start typing",
+        "citationLoadingPlaceholder": "Loading options...",
+        "citeAs": "Cite as:",
+        "collection": "Collection",
+        "customCitationPlaceholder": "Enter custom citation",
+        "dateCreated": "Date Created",
+        "dateUpdated": "Date Updated",
+        "funderNames": "Funder Names",
+        "fundingSupport": "Funding/Support Information",
+        "getMoreCitations": "Get More Citations",
+        "internetArchiveLink": "internet archive link",
+        "noCitations": "No citations",
+        "noCollections": "No collections",
+        "noInformation": "No information",
+        "noProjectDoi": "No Project DOI",
+        "noPublicationDoi": "No Publication DOI",
+        "noLanguage": "No language",
+        "noResourceInformation": "No resource information available",
+        "noResourceType": "No resource type",
+        "noSupplements": "No supplements",
+        "noTags": "No tags",
+        "placeholders": {
+          "edit": "Edit description here"
+        },
+        "projectDOI": "Project DOI",
+        "publicationDOI": "Publication DOI",
+        "registrationDOI": "Registration DOI",
+        "resourceInformation": "Resource Information",
+        "resourceLanguage": "Resource language",
+        "resourceType": "Resource type",
+        "supplementalMaterialsPrefix": "Has supplemental materials for",
+        "supplementalMaterialsSuffix": "on OSF Preprints",
+        "supplements": "Supplements"
+      },
+      "parentProject": "Parent Project",
+      "recentActivity": {
+        "noActivity": "No recent activity",
+        "title": "Recent Activity"
+      },
+      "tooltips": {
+        "bookmarks": "Bookmarks",
+        "duplicate": "Duplicate",
+        "share": "Share",
+        "viewOnlyLinks": "View only links"
+      },
+      "wiki": {
+        "noWikiMessage": "Click the “Edit” to add important information, links, or images here to describe your project.",
+        "title": "Wiki"
+      }
+    },
+    "registrations": {
+      "addRegistration": "Add a Registration",
+      "card": {
+        "description": "Description:",
+        "embargoed": "Embargoed",
+        "lastUpdated": "Last Updated:",
+        "noTitle": "(Untitled)",
+        "registered": "Registered:",
+        "registrationSupplement": "Registration Supplement",
+        "registrationTemplate": "Registration template:",
+        "registry": "Registry:",
+        "withdrawn": "Withdrawn"
+      },
+      "emptyState": "There have been no completed registrations of this project."
+    },
+    "requestAccess": {
+      "acceptDialog": {
+        "header": "Accept access",
+        "message": "Are you sure you want to accept access for <b>{{name}}</b>?",
+        "successMessage": "Access accepted successfully."
+      },
+      "followingUsers": "The following users have requested access to this project.",
+      "rejectDialog": {
+        "header": "Reject access",
+        "message": "Are you sure you want to reject access for <b>{{name}}</b>?",
+        "successMessage": "Access rejected successfully."
+      },
+      "requestForAccess": "Requests for Access"
+    },
+    "wiki": {
+      "addNewWiki": "Add new wiki page",
+      "addNewWikiPlaceholder": "New wiki name",
+      "addWikiSuccess": "Wiki page has been added successfully",
+      "autocomplete": "Autocomplete",
+      "compare": "Compare",
+      "deleteWiki": "Delete wiki page",
+      "deleteWikiMessage": "Are you sure you want to delete this wiki page?",
+      "horizontalRule": "Horizontal rule",
+      "list": {
+        "componentsHeader": "Components Wiki Pages",
+        "header": "Project Wiki Pages"
+      },
+      "livePreviewTo": "Live preview to",
+      "redo": "Redo",
+      "renameWiki": "Rename wiki page",
+      "renameWikiConflict": "That wiki name already exists.",
+      "renameWikiSuccess": "Wiki page has been renamed successfully",
+      "syntaxHelp": {
+        "endMsg": "syntax. For more information and examples, go to our",
+        "header": "Wiki Syntax Help",
+        "links": {
+          "guide": "Guides",
+          "markdown": "Markdown"
+        },
+        "startMsg": "The wiki uses the"
+      },
+      "undo": "Undo",
+      "version": {
+        "current": "Current",
+        "noContent": "Add important information, links, or images here to describe your project.",
+        "preview": "Preview",
+        "successSaved": "Wiki version has been saved successfully",
+        "title": "Version",
+        "unknownAuthor": "Unknown author"
+      },
+      "view": "View"
+    }
+  },
+  "registries": {
+    "addRegistration": "Add a Registration",
+    "browse": "Browse Registrations",
+    "confirmDeleteDraft": "Are you sure you want to delete this draft registration?",
+    "deleteDraft": "Delete Draft",
+    "description": "The open registries network",
+    "justification": {
+      "acceptChanges": "Accept Changes",
+      "caution": "Caution: Only one person is able to edit a registration draft at a time. Be sure to coordinate with any other contributors.",
+      "confirmContinueEditing": {
+        "header": "Are you sure this needs more edits?",
+        "label": "What additional changes need to be made and why?",
+        "message": "This will cancel any approvals from other admin contributors and return the registration back to its draft form for additional changes."
+      },
+      "confirmDeleteUpdate": {
+        "header": "Delete this draft update",
+        "message": "Are you sure you want to delete this draft update?"
+      },
+      "continueEditing": "Continue Editing",
+      "decisionRecorded": "Your decision has been recorded.",
+      "deleteUpdates": "Delete Draft Update",
+      "description": "Justification will be provided to admins and moderators upon review. Once approved, it will be displayed at the top of the registration.",
+      "noData": "No justification provided.",
+      "noUpdates": "No responses updated",
+      "placeholder": "Explain the updates made to this registration and why the changes were necessary. Be thorough in your response. ",
+      "step": "Justification",
+      "submitChanges": "Submit Changes",
+      "successAccept": "Changes successfully accepted.",
+      "successDeleteDraft": "Draft update successfully deleted.",
+      "successSubmit": "Justification update successfully submitted.",
+      "title": "Justification for update",
+      "updatedList": "List of updated registration questions"
+    },
+    "metadata": {
+      "addContributors": "Add Contributor By Search",
+      "description": "This metadata applies only to the registration you are creating, and will not be applied to your project.",
+      "title": "Registration Metadata"
+    },
+    "new": {
+      "addNewRegistry": "Add New Registration",
+      "createDraft": "Create draft",
+      "createdSuccessfully": "Draft created successfully",
+      "hostedRegistriesLink": "Learn more about other hosted registries.",
+      "registryClosedForSubmissions": "This registry is closed for new submissions. Please start a new registration with a different registry.",
+      "registrySubmissionInfo": "You are submitting to OSF Registries.",
+      "selectProject": "Select your project",
+      "steps": {
+        "existingProjectQuestion": "Do you have content for registration in an existing OSF project?",
+        "registrationTypeQuestion": "Which type of registration would you like to create?",
+        "selectProjectHint": "If your project includes components, you can select which components to include or exclude at the end of the registration.",
+        "selectProjectQuestion": "Which project do you want to register?",
+        "title": "Step"
+      }
+    },
+    "noRegistrations": "You don't have any registrations. Create one with the button below.",
+    "review": {
+      "confirmation": {
+        "blindPeerReviewLink": "blind peer review",
+        "deletionWarning": "Registrations can't be deleted, but you can withdraw.",
+        "embargoHint": "Embargo your registration if you plan to submit to a journal that requires",
+        "embargoPlaceholder": "Choose embargo end date",
+        "noEditWarning": "Do not edit any files until the registration archives.",
+        "options": {
+          "embargo": "Enter registration into embargo",
+          "public": "Make registration public immediately"
+        },
+        "successMessage": "Registration successfully created.",
+        "title": "Almost done..."
+      },
+      "register": "Register",
+      "selectComponents": {
+        "description": "Contributor changes for included components must be done on the component contributor page before submitting this registration.",
+        "title": "Select Components"
+      },
+      "step": "Review"
+    },
+    "searchPlaceholder": "Search Registrations",
+    "services": {
+      "contactUs": "Contact Us",
+      "description": "Leading registry service providers use this open source infrastructure to support their communities.",
+      "title": "Registry Services"
+    },
+    "successDeleteDraft": "Draft registration successfully deleted.",
+    "title": "Registries"
+  },
+  "registry": {
+    "archiving": {
+      "description": "Changes to any files (1) in the projects or components being registered, (2) uploaded or selected as prompt responses, including those connected through add-ons during archiving will result in archiving failure and loss of your registration timestamp. Please do not modify your files until after you have received email confirmation of archiving completion. If this registration has been archiving for more than 72 hours, please email ",
+      "descriptionEnd": " for assistance.",
+      "pleaseNote": "Please note",
+      "title": "This registration is currently archiving, and no changes can be made at this time."
+    },
+    "components": {
+      "noComponentsFound": "No components found"
+    },
+    "links": {
+      "linkedRegistrations": "Linked registrations",
+      "noLinkedProjectsOrComponentsFound": "No linked projects or components found",
+      "noLinkedRegistrationsFound": "No linked registrations found",
+      "viewLinksProjectsAndComponents": "View for Linked projects and Components"
+    },
+    "overview": {
+      "endEmbargo": "End embargo early",
+      "endEmbargoMessage": "By clicking confirm, an email will be sent to project administrator(s) to approve ending the embargo. If approved, this registration, including any components, will be made public immediately. This action is irreversible.",
+      "latest": "Latest",
+      "metadata": {
+        "associatedProject": "Associated project",
+        "doi": "Registration DOI",
+        "registeredDate": "Date registered",
+        "registry": "Registry",
+        "type": "Registration Type"
+      },
+      "original": "Original",
+      "reviewUpdate": "Review Update",
+      "statuses": {
+        "accepted": {
+          "long": "This public registration is a frozen, non-editable version of this",
+          "project": "project",
+          "short": "Public",
+          "text": "Public registration"
+        },
+        "embargo": {
+          "long": "This registration is embargoed. It will remain private until {{embargoEndDate}}.",
+          "short": "Embargoed",
+          "text": "Embargoed registration"
+        },
+        "initialApproved": {
+          "long": "This registration is awaiting approval by all admin contributors or after 48 hours has passed. An email will notify all registration contributors of the decision. If the registration is pending after 48 hours has passed, contact support at {{email}}.",
+          "short": "Pending admin contributor approval",
+          "text": "Pending"
+        },
+        "inProgress": {
+          "long": "This registration is currently being updated by its contributors. Updates will be made available once approved.",
+          "short": "Updates being made",
+          "text": "Update in progress"
+        },
+        "pending": {
+          "long": "This registration is awaiting a decision by the registry moderators. An email will notify all registration contributors of the decision.",
+          "short": "Pending moderator approval",
+          "text": "Pending moderation"
+        },
+        "pendingEmbargoApproval": {
+          "long": "This registration is waiting for approval from its contributors. Once approved, the registration will remain private until the embargo ends.",
+          "short": "Pending embargo approval",
+          "text": "Pending approval"
+        },
+        "pendingEmbargoTermination": {
+          "long": "This registration is waiting for approval from its contributors to terminate its embargo and be made public.",
+          "short": "Pending embargo termination",
+          "text": "Embargoed registration"
+        },
+        "pendingModeration": {
+          "long": "This registration has an update that is waiting for moderation. Updates will be made available once approved.",
+          "short": "Update pending moderator approval",
+          "text": "Update pending review"
+        },
+        "pendingRegistrationApproval": {
+          "long": "This registration is waiting for approval from its contributors.",
+          "short": "Pending registration approval",
+          "text": "Pending approval"
+        },
+        "pendingWithdraw": {
+          "long": "This registration is waiting for approval to be withdrawn by registry moderators.",
+          "short": "Pending withdrawal moderation",
+          "text": "Pending withdrawal"
+        },
+        "pendingWithdrawRequest": {
+          "long": "This registration is waiting for approval to be withdrawn by its contributors.",
+          "short": "Pending withdraw request",
+          "text": "Pending withdrawal"
+        },
+        "updatePendingApproval": {
+          "long": "This registration has an update that is waiting for approval from its contributors. Updates will be made available once approved.",
+          "short": "Update pending approval",
+          "text": "Update pending"
+        }
+      },
+      "update": "Update {{version}}",
+      "updatedRevisionDescription": "This is an update to the original registration. This update was made on ",
+      "updateReason": "Reason for update:",
+      "updates": "Updates",
+      "withdrawDescription": "Withdrawing a registration will remove its content from the OSF, but leave basic metadata behind. The title of a withdrawn registration and its contributor list will remain, as will justification or explanation of the withdrawal, should you wish to provide it. Withdrawn registrations will be marked with a \"withdrawn\" tag. This action is irreversible.",
+      "withdrawJustificationLabel": "Please provide your justification for withdrawing this registration.",
+      "withdrawRegistration": "Withdraw registration"
+    },
+    "withdrawn": {
+      "dateWithdrawn": "Date withdrawn",
+      "justificationLabel": "Justification for withdrawal",
+      "title": "This registration has been withdrawn for the reason(s) stated below."
+    }
+  },
+  "requestAccess": {
+    "alreadyRequestedMessage": "You already requested access.",
+    "commentLabel": "Comment (Optional)",
+    "helpMessage": "If this should not have occurred, please contact",
+    "message": "Ask for access, or switch to an account with permission.",
+    "messageReadOnly": "This project is in a read-only state, and new access can no longer be granted. If you are already a contributor, please switch to the account that has access to this project. <br><br> If you need assistance locating the correct account or have questions, please contact support at",
+    "readOnlyTitle": "You Don't Have Access",
+    "requestAccess": "Request Access",
+    "requestedSuccessMessage": "Your request for access has been sent.",
+    "switchAccount": "Switch Account",
+    "title": "You Need Permission"
+  },
+  "resourceCard": {
+    "andCountMore": "and {{count}} more",
+    "labels": {
+      "associatedAnalysisPlan": " Associated preregistration:",
+      "associatedData": "Associated data:",
+      "associatedStudyDesign": "Associated study design:",
+      "collection": "Collection:",
+      "conflictOfInterestResponse": "Conflict of Interest response:",
+      "context": "Context",
+      "description": "Description:",
+      "descriptionBold": "<span class=\"font-bold\">Description: </span>",
+      "doi": "DOI:",
+      "education": "Education:",
+      "employment": "Employment:",
+      "from": "From:",
+      "funder": "Funder:",
+      "funderAwards": "Funder awards:",
+      "language": "Language:",
+      "noCoi": "Author asserted no Conflict of Interest",
+      "provider": "Provider:",
+      "publicPreprints": "Public preprints:",
+      "publicProjects": "Public projects:",
+      "publicRegistrations": "Public registrations:",
+      "registrationTemplate": "Registration Template:",
+      "resourceNature": "Resource type:",
+      "url": "URL:",
+      "withdrawn": "Withdrawn"
+    },
+    "resources": {
+      "analyticCode": "Analytic Code",
+      "data": "Data",
+      "materials": "Materials",
+      "papers": "Papers",
+      "supplements": "Supplements"
+    },
+    "type": {
+      "file": "File",
+      "null": "Unknown",
+      "preprint": "Preprint",
+      "project": "Project",
+      "projectComponent": "Project Component",
+      "registration": "Registration",
+      "registrationComponent": "Registration Component",
+      "user": "User"
+    }
+  },
+  "resources": {
+    "add": "Add Resource",
+    "check": "Check your DOI for accuracy",
+    "delete": "Delete Resource",
+    "deleteText": "Are you sure you want to delete resource? This cannot be undone.",
+    "description": " Contributors affirmed to adhere to the criteria for each badge.",
+    "edit": "Edit Resource",
+    "errors": {
+      "doiValidation": "Please enter a valid DOI in the format: 10.xxxx/xxxxx",
+      "noCurrentResource": "No current resource.",
+      "noRegistryId": "No registry ID found."
+    },
+    "linkDoi": "Link a DOI from a repository to your registration by clicking “Add resource” button.",
+    "selectAResourceType": "Select A Resource Type",
+    "title": "Resources",
+    "toastMessages": {
+      "addResourceError": "Error occurred while adding new resource.",
+      "addResourceSuccess": "Added new resource",
+      "deletedResourceSuccess": "Resource is deleted successfully.",
+      "updatedResourceSuccess": "Updated resource.",
+      "updateResourceError": "Error occurred while updating new resource."
+    }
+  },
+  "resourceSpammed": {
+    "contact": "If this is a mistake, reach out to",
+    "footer": "for assistance. Your content remains safe and will be restored once verified.",
+    "message": "This content was flagged as potential spam.",
+    "title": "This page is temporarily unavailable."
+  },
+  "searchHelpTutorial": {
+    "step1": {
+      "description": "Enter any term in the search box and filter by specific object types. More information is available on our help guides.",
+      "title": "Improved OSF Search"
+    },
+    "step2": {
+      "description": "Narrow the source, discipline, and more. For example, find content supported by a specific funder or view only datasets.",
+      "title": "Refine Your Search"
+    },
+    "step3": {
+      "description": "Remember to add metadata and resources to your own work on OSF to make it more discoverable! Learn more in our help guides.",
+      "title": "Add Metadata"
+    },
+    "stepCount": "{{current}} of {{total}}"
+  },
+  "settings": {
+    "accountSettings": {
+      "addEmail": {
+        "description": "Add an alternative email address to your account.",
+        "messages": {
+          "error": "Failed to add alternative email",
+          "success": "Alternative email added successfully"
+        },
+        "title": "Add alternative email"
+      },
+      "affiliatedInstitutions": {
+        "deleteDialog": {
+          "header": "Delete institution",
+          "message": "Are you sure you want to delete <b>{{name}}</b> institution?"
+        },
+        "description": "Connect your account to institutions to access institutional features and services.",
+        "noInstitutions": "You have no affiliations.",
+        "successDelete": "Successfully deleted affiliated institution."
+      },
+      "changePassword": {
+        "form": {
+          "confirmPassword": "Confirm password",
+          "confirmPasswordPlaceholder": "Confirm your new password",
+          "newPassword": "New password",
+          "newPasswordPlaceholder": "Enter your new password",
+          "oldPassword": "Old password",
+          "oldPasswordPlaceholder": "Enter your current password"
+        },
+        "messages": {
+          "error": "Failed to update password. Please try again.",
+          "success": "Password updated successfully."
+        },
+        "title": "Change Password",
+        "validation": {
+          "confirmPasswordRequired": "Please confirm your password",
+          "oldPasswordRequired": "Old password is required",
+          "passwordsDoNotMatch": "Passwords do not match",
+          "sameAsOldPassword": "New password must be different from old password"
+        }
+      },
+      "common": {
+        "buttons": {
+          "deactivate": "Deactivate",
+          "enable": "Enable",
+          "request": "Request",
+          "undo": "Undo"
+        }
+      },
+      "connectedEmails": {
+        "alternateEmails": "Alternate Emails:",
+        "buttons": {
+          "addEmail": "Add Email",
+          "makePrimary": "Make Primary",
+          "resend": "Resend",
+          "resendConfirmation": "Resend confirmation"
+        },
+        "confirmationSentDialog": {
+          "header": "Confirmation email sent",
+          "message": "Your account now includes <b>{{email}}</b>. A confirmation email has been sent to that address. Click the link in the email to confirm this action."
+        },
+        "deleteDialog": {
+          "header": "Delete email",
+          "message": "Are you sure you want to delete <b>{{name}}</b> email?"
+        },
+        "description": "To merge an existing account with this one or to log in with multiple email addresses, add an alternate email address below. All projects and components will be displayed under the email address listed as primary.",
+        "makePrimaryDialog": {
+          "header": "Make email primary",
+          "message": "Are you sure you want to make <b>{{email}}</b> email primary?"
+        },
+        "primaryEmail": "Primary Email:",
+        "resendDialog": {
+          "header": "Resend email confirmation",
+          "message": "Are you sure you want to resend email confirmation to <b>{{email}}</b>?"
+        },
+        "successAdd": "Email successfully added.",
+        "successDelete": "Email successfully deleted.",
+        "successMakePrimary": "Email successfully set as primary.",
+        "successResend": "Email successfully resent.",
+        "title": "Connected Emails",
+        "unconfirmedEmails": "Unconfirmed Emails:"
+      },
+      "connectedIdentities": {
+        "deleteDialog": {
+          "header": "Delete connected identity",
+          "message": "Are you sure you want to delete <b>{{name}}</b> identity?"
+        },
+        "description": "Connected identities allow you to log in to the OSF via a third-party service. You can revoke these identifies.",
+        "noIdentities": "You have not authorized any external services to log in to the OSF.",
+        "successDelete": "Successfully deleted connected identities.",
+        "title": "Connected identities"
+      },
+      "deactivateAccount": {
+        "actions": {
+          "requestDeactivation": "Request deactivation",
+          "undoDeactivation": "Undo deactivation request"
+        },
+        "description": {
+          "main": "Deactivating your account will remove you from all public projects to which you are a contributor. Your account will no longer be associated with OSF projects, and your work on the OSF will be inaccessible.",
+          "secondary": "If this is a secondary account that you want to close, consider merging your accounts"
+        },
+        "dialog": {
+          "deactivate": {
+            "title": "Deactivate account"
+          },
+          "undo": {
+            "message": "Are you sure you want to undo your account deactivation request? This will preserve your account status.",
+            "title": "Undo deactivation request?"
+          }
+        },
+        "pendingDeactivation": "Your account is currently pending deactivation.",
+        "successCancelDeactivation": "Deactivation request successfully undone.",
+        "successDeactivation": "An OSF administrator will contact you shortly to confirm your deactivation request.",
+        "title": "Deactivate Account",
+        "warning": {
+          "confirm": "Are you sure you want to request account deactivation?",
+          "description": "An OSF administrator will review your request. If accepted, you will NOT be able to reactivate your account.",
+          "title": "Warning: This action cannot be undone once approved."
+        }
+      },
+      "defaultStorageLocation": {
+        "description": "This location will be applied to new projects and components. It will not affect existing projects and components.",
+        "successUpdate": "Successfully updated default storage location.",
+        "title": "Default storage location"
+      },
+      "shareIndexing": {
+        "description": "By default, OSF users are indexed into SHARE, a free, open dataset of research metadata. This allows SHARE to include your user profile and research in its database, which is used by search engines and other services to make research more discoverable. You can opt out of this indexing by checking the box below. NOTE: Public projects, files, registrations, and preprints will still be indexed in SHARE.",
+        "learnMore": "Learn more about SHARE",
+        "options": {
+          "optIn": "Opt In To SHARE Indexing",
+          "optOut": "Out of SHARE Indexing"
+        },
+        "successUpdate": "Successfully updated SHARE indexing preference.",
+        "title": "Opt out of SHARE indexing"
+      },
+      "title": "Account Settings",
+      "twoFactorAuth": {
+        "configure": {
+          "description": "Configuring two-factor authentication will not immediately activate this feature for your account. You will need to follow the steps that appear below to complete the activation of two-factor authentication for your account.",
+          "title": "Configure"
+        },
+        "description": {
+          "disabled": "Two-factor authentication protects your OSF account using both your password and email.",
+          "enabled": "By using two-factor authentication, you will protect your OSF account with both your password and your mobile phone.",
+          "scan": "Scan the image below, or enter the secret key <p class='token'>{{secret}}</p> into your authentication device.",
+          "setup": "To use, you must install an appropriate application on your mobile device. Google Authenticator is a popular choice and is available for both Android and iOS.",
+          "verification": "Once verified, your device will display a six-digit code that must be entered during the login process. This code changes every few seconds, which means that unauthorized users will not be able to log in to you account, even if they know your password.",
+          "warning": "Important: If you lose access to your mobile device, you will not be able to log in to your OSF account."
+        },
+        "disable": {
+          "message": "Are you sure you want to disable two-factor authentication?",
+          "title": "Disable"
+        },
+        "enterCode": "Enter 6-digit code",
+        "successDisable": "Two-factor authentication successfully disabled.",
+        "title": "Two-factor authentication",
+        "verification": {
+          "error": "Verification code is invalid. Please try again.",
+          "label": "Enter your verification code:",
+          "success": "Two-factor authentication successfully set up."
+        }
+      }
+    },
+    "addons": {
+      "categories": {
+        "additionalService": "Additional Storage",
+        "citationManager": "Citation Manager",
+        "linkedServices": "Linked Services",
+        "otherServices": "Other Services"
+      },
+      "configureAddon": {
+        "aboutResourceType": "About resource type",
+        "account": "Account:",
+        "chooseResourceType": "Choose a resource type",
+        "connectedAccount": "Connected to account:",
+        "disconnect": "Disconnect {{addonName}}",
+        "disconnectMessage": "You are about to disconnect the following addon from the project:",
+        "folderName": "Folder name:",
+        "googleFilePicker": {
+          "fileFolderTitle": "Select a file or folder to add",
+          "rootFolderTitle": "Select a root folder",
+          "selectRootFolder": "Select Root Folder"
+        },
+        "home": "Home",
+        "linkedItem": "Linked item:",
+        "noFolders": "No folders",
+        "noFolderSelected": "No selected folder",
+        "noLinkedItem": "No linked item",
+        "resourceType": "Resource type",
+        "resourceTypeModalMessage": "This helps others understand what kind of material you're sharing. Choosing the right resource type makes it easier for search engines and research tools to find and share your work—both on OSF and in other scholarly indexes.<br><br>For example, selecting <strong>“Dataset”</strong> tells tools and repositories that your files are research data, which helps your work appear in places that specialize in datasets.<br><br>Pick the option that best describes most of the files you're linking.<br><br>OSF uses resource types from <strong>DataCite</strong>, a standard used by many research platforms. <a target='_blank' href={{link}}>(Learn more)</a>",
+        "rootDirectory": "Root Directory",
+        "selectedFolder": "Selected folder:",
+        "selectFolder": "Select",
+        "title": "Configure Add-on"
+      },
+      "connectAddon": {
+        "chooseExistingAccount": "Choose existing account",
+        "configure": "Configure",
+        "confirmAccount": "Confirm account",
+        "connectAccount": "Connect following account: {{accountName}}",
+        "loginToOrSelectAccount": "Login to {{addonName}} or select an account",
+        "oauthDescription": "Complete the OAuth process in the new window before returning to this page. If you do not see a new window, please click the Start OAuth link below.",
+        "reconnectAccount": "Reconnect Account",
+        "redirectAddons": {
+          "goToService": "Go to {{serviceName}}",
+          "popupError": "If you are having trouble with the pop-up window, try clicking the link above to connect your account:",
+          "terms": "Clicking the button below will redirect you outside of OSF. You will need to follow that service's permissions to continue.",
+          "tip": "If the page does not open, disable your browser's pop-up blocker and try again. Or click on this link to <a target='_blank' href={{serviceUrl}}>go to {{serviceName}}</a>."
+        },
+        "setupNewAccount": "Setup new account",
+        "startOauth": "Start OAuth",
+        "storageDescription": "• This add-on allows you to store files using an external service. Files added to this add-on are not stored within the OSF.",
+        "table": {
+          "function": "Function",
+          "status": "Status"
+        },
+        "terms": "Terms",
+        "termsDescription": "• This add-on connects your OSF project to an external service. Use of this service is bound by its terms and conditions. The OSF is not responsible for the service or for your use thereof.",
+        "title": "Connect Add-on"
+      },
+      "connectedDescription": "Manage your connected Add-ons, re-authorize, disconnect account, or disconnect project",
+      "description": "Sync your projects with external services to help stay connected and organized. Select a category from the dropdown and browse the options.",
+      "filters": {
+        "addonType": "Addon Type",
+        "search": "Search add-ons"
+      },
+      "form": {
+        "buttons": {
+          "acceptingTerms": "Accepting...",
+          "authorize": "Authorize",
+          "connect": "Connect",
+          "existingAccount": "Choose Existing Account",
+          "newAccount": "Setup New Account",
+          "reconnect": "Reconnect",
+          "startOauth": "Start OAuth"
+        },
+        "fields": {
+          "accessKey": "Access Key",
+          "accountName": "Account Name",
+          "accountNameDescription": "This will distinguish your account from other using the same addon.",
+          "apiToken": "API Token",
+          "hostUrl": "Host URL",
+          "hostUrlDescription": "Please include the protocol (http:// or https://) in the URL.",
+          "password": "Password",
+          "passwordDescription": "These credentials will be encrypted",
+          "personalAccessToken": "Personal Access Token",
+          "secretKey": "Secret Key",
+          "username": "Username"
+        }
+      },
+      "header": "Add-ons",
+      "messages": {
+        "connectError": "Failed to connect to {{serviceName}}",
+        "connectSuccess": "Successfully connected to {{serviceName}}",
+        "deleteConfirmation": {
+          "message": "Are you sure you want to disable this account? All projects connected to this account will be affected.",
+          "title": "Disable Account?"
+        },
+        "deleteError": "Failed to disconnect from {{serviceName}}",
+        "deleteSuccess": "Successfully disconnected from {{serviceName}}",
+        "updateError": "Failed to update {{serviceName}} configuration",
+        "updateSuccess": "Successfully updated {{serviceName}} configuration"
+      },
+      "tabs": {
+        "allAddons": "All Add-ons",
+        "connectedAddons": "Connected Add-ons"
+      },
+      "toast": {
+        "createSuccess": "Successfully connected to the {{addonName}} add-on",
+        "disconnectSuccess": "Successfully disconnected from the {{addonName}} account",
+        "updateSuccess": "Successfully updated {{addonName}} add-on configuration"
+      }
+    },
+    "developerApps": {
+      "buttons": {
+        "create": "Create Developer App"
+      },
+      "confirmation": {
+        "delete": {
+          "message": "Are you sure you want to delete this developer app? All users' access tokens will be revoked. This cannot be reversed.",
+          "success": "Delete App successfully deleted.",
+          "title": "Delete App {{name}}?"
+        },
+        "resetSecret": {
+          "message": "Resetting the client secret will render your application unusable until it is updated with the new client secret, and all users must reauthorize access. Previously issued access tokens will no longer work.<br><br>Are you sure you want to reset the client secret? This cannot be reversed.",
+          "success": "Client secret successfully reset.",
+          "title": "Reset Client Secret?"
+        }
+      },
+      "details": {
+        "back": "Back to list of developer apps",
+        "clientId": {
+          "description": "The client ID is the developer app's unique identifier and is safe to share publicly.",
+          "title": "Client ID"
+        },
+        "clientSecret": {
+          "description": "The client secret is available only to you. Keep it private and do not share it.",
+          "hide": "Hide client secret",
+          "reset": "Reset",
+          "resetSecret": "Reset Secret",
+          "show": "Show client secret",
+          "title": "Client Secret"
+        }
+      },
+      "form": {
+        "appName": "App Name",
+        "callbackUrl": "Authorization callback URL",
+        "createSuccess": "Developer app successfully created.",
+        "createTitle": "Create Developer App",
+        "description": "App description (optional)",
+        "editTitle": "Edit app",
+        "homepageUrl": "Project homepage URL",
+        "updateSuccess": "Developer app successfully updated."
+      },
+      "header": "Developer apps",
+      "list": {
+        "description": "Third-party web applications can connect to the OSF on behalf of users via the OAuth 2.0 web application flow."
+      }
+    },
+    "notifications": {
+      "emailPreferences": {
+        "items": {
+          "general": {
+            "description": "Receive general notifications about the OSF every 2-3 weeks.",
+            "title": "Open Science Framework General"
+          },
+          "help": {
+            "description": "Receive helpful tips on how to make the most of the OSF, up to once per week.",
+            "title": "Open Science Framework Help"
+          }
+        },
+        "successUpdate": "Email preferences successfully updated.",
+        "title": "Configure Email Preferences"
+      },
+      "frequency": {
+        "daily": "Daily",
+        "instant": "Instant",
+        "never": "Never"
+      },
+      "notificationPreferences": {
+        "items": {
+          "files": "Files updated",
+          "preprints": "Preprint submissions updated"
+        },
+        "note": "Note: Transactional and administrative service emails will still be sent.",
+        "successUpdate": "Notification preferences successfully updated.",
+        "title": "Configure Notification Preferences",
+        "tooltipText": "These are default settings for new projects you create or are added to. Modifying these settings will not modify settings on existing projects."
+      }
+    },
+    "profileSettings": {
+      "changesDiscarded": "Changes discarded successfully.",
+      "education": {
+        "degree": "Degree",
+        "department": "Department",
+        "endDate": "End Date",
+        "institution": "Institution",
+        "ongoing": "Ongoing",
+        "startDate": "Start Date",
+        "successUpdate": "Education successfully updated.",
+        "title": "Education {{index}}"
+      },
+      "employment": {
+        "addPosition": "Add Position",
+        "department": "Department / Institute (Optional)",
+        "endDate": "End Date",
+        "institution": "Institution / Employer",
+        "jobTitle": "Job Title",
+        "presentlyEmployed": "Presently employed",
+        "startDate": "Start Date",
+        "successUpdate": "Employment successfully updated.",
+        "title": "Position {{index}}"
+      },
+      "endDateError": "End date must be greater than start date.",
+      "name": {
+        "citationPreview": {
+          "apa": "APA",
+          "citationFormat": "Citation format:",
+          "mla": "MLA",
+          "style": "Style:",
+          "title": "Citation Preview"
+        },
+        "description": "Your full name is the name that will be displayed in your profile. To control the way your name will appear in citations, you can edit the fields directly below.",
+        "familyName": "Family Name",
+        "fullName": "Full Name",
+        "givenName": "Given Name",
+        "middleNames": "Middle Name(s) (Optional)",
+        "successUpdate": "Settings successfully updated.",
+        "suffix": "Suffix (Optional)"
+      },
+      "social": {
+        "successUpdate": "Social successfully updated.",
+        "title": "Social Link {{index}}"
+      },
+      "tabs": {
+        "education": "Education",
+        "employment": "Employment",
+        "name": "Name",
+        "social": "Social"
+      },
+      "title": "Profile Settings"
+    },
+    "tokens": {
+      "buttons": {
+        "create": "Create Token"
+      },
+      "confirmation": {
+        "delete": {
+          "message": "Are you sure you want to delete this token? This action cannot be reversed.",
+          "title": "Delete Token {{name}}?"
+        }
+      },
+      "createdDialog": {
+        "successMessage": "Token <strong>{{tokenName}}</strong> successfully created.",
+        "title": "Token Successfully Created",
+        "tokenWarning": "This is the only time your token will be displayed.",
+        "warningMessage": "This token will never expire. This token should never be shared with others. If it is accidentally revealed publicly, it should be deactivated immediately."
+      },
+      "details": {
+        "back": "Back to list of personal tokens"
+      },
+      "form": {
+        "createTitle": "Create Personal Access Token",
+        "editTitle": "Edit token",
+        "scopes": {
+          "description": "Scopes limit access for personal access tokens.",
+          "title": "Scopes"
+        },
+        "tokenName": "Token Name"
+      },
+      "header": "Personal Access Tokens",
+      "list": {
+        "description": "Personal access tokens function like ordinary OAuth access tokens. They can be used to authenticate to the API."
+      },
+      "toastMessage": {
+        "successCreate": "Token successfully created.",
+        "successDelete": "Token successfully deleted.",
+        "successEdit": "Token successfully updated."
+      }
+    }
+  },
+  "maintenance": {
+    "message": "Please come back later.",
+    "title": "The OSF is currently down for scheduled maintenance."
+  },
+  "shared": {
+    "affiliatedInstitutions": {
+      "description": "This is a service provided by the OSF and is automatically applied to your registration. If you are not sure if your institution has signed up for this service, you can look for their name in this list."
+    },
+    "description": {
+      "message": "Write a detailed description of your research project, including its purpose and any expected outcomes. This should give readers a comprehensive overview of your work."
+    },
+    "files": {
+      "description": "Uploaded files will automatically be archived in this registration. They will also be added to a related project that will be created for this registration.",
+      "descriptionNoProject": "Uploaded files will automatically be archived in this registration.",
+      "limitText": "You may attach up to 5 file(s) to this question. Files cannot total over 5GB in size."
+    },
+    "license": {
+      "copyrightHolders": "Copyright Holders",
+      "description": "A license tells others how they can use your work in the future and only applies to the information and files submitted with the registration.",
+      "helpText": "For more information, see this ",
+      "selectLicense": "Select license"
+    },
+    "resources": {
+      "title": "Open resources"
+    },
+    "statuses": {
+      "accepted": "Accepted",
+      "embargo": "Embargo",
+      "initialApproved": "Pending",
+      "inProgress": "Update in progress",
+      "pending": "Pending",
+      "pendingEmbargoApproval": "Pending embargo approval",
+      "pendingEmbargoTerminationApproval": "Pending embargo termination approval",
+      "pendingModeration": "Pending moderation",
+      "pendingRegistrationApproval": "Pending registration approval",
+      "pendingWithdraw": "Pending withdrawal",
+      "pendingWithdrawRequest": "Pending withdraw request",
+      "unapproved": "Unapproved",
+      "updatePendingApproval": "Update pending approval",
+      "withdrawn": "Withdrawn"
+    },
+    "subjects": {
+      "description": "Identify the main subject areas that your research pertains to. This helps categorize your work and makes it easier for others in your field to find and reference it.",
+      "noSelected": "No subjects selected",
+      "noSubject": "No subjects found",
+      "searchSubjects": "Search subjects"
+    },
+    "tags": {
+      "description": "Enter specific keywords that describe the key elements and concepts of your research. These keywords will improve the discoverability of your registration in search results and databases.",
+      "title": "Tags"
+    },
+    "title": {
+      "description": "Provide a concise and descriptive title for your registration that accurately reflects the main focus of your research. A clear and specific title will help others quickly understand the essence of your study."
+    }
+  },
+  "toast": {
+    "cookieConsent": {
+      "accept": "Accept cookies",
+      "message": "Notice: This website relies on cookies to help provide a better user experience. By clicking accept or continuing to use the site, you consent to our use of cookies. See our Privacy Policy and Cookie Use for more information."
+    },
+    "tosConsent": {
+      "and": " and ",
+      "haveReadAndAgree": "I've read and agree to the terms and conditions",
+      "message": "Notice: We've updated our",
+      "privacyPolicy": " privacy policy.",
+      "termsOfUse": " terms of use "
+    }
+  },
+  "validation": {
+    "email": "Please enter a valid email address.",
+    "invalidInput": "Invalid input.",
+    "link": "This field must start with https:// to be a valid url.",
+    "maxLength": "The field must be at most {{length}} characters.",
+    "minLength": "The field must be at least {{length}} characters.",
+    "required": "The field is required."
+  }
+}

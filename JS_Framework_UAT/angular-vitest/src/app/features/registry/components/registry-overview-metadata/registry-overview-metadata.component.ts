@@ -1,0 +1,129 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+
+import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+import { GetCustomItemMetadata, MetadataSelectors } from '@osf/features/metadata/store';
+import { AffiliatedInstitutionsViewComponent } from '@osf/shared/components/affiliated-institutions-view/affiliated-institutions-view.component';
+import { ContributorsListComponent } from '@osf/shared/components/contributors-list/contributors-list.component';
+import { FundersListComponent } from '@osf/shared/components/funders-list/funders-list.component';
+import { ResourceCitationsComponent } from '@osf/shared/components/resource-citations/resource-citations.component';
+import { ResourceDoiComponent } from '@osf/shared/components/resource-doi/resource-doi.component';
+import { ResourceLicenseComponent } from '@osf/shared/components/resource-license/resource-license.component';
+import { SubjectsListComponent } from '@osf/shared/components/subjects-list/subjects-list.component';
+import { TagsListComponent } from '@osf/shared/components/tags-list/tags-list.component';
+import { TruncatedTextComponent } from '@osf/shared/components/truncated-text/truncated-text.component';
+import { CurrentResourceType, ResourceType } from '@osf/shared/enums/resource-type.enum';
+import { LanguageLabelPipe } from '@osf/shared/pipes/language-label.pipe';
+import { ResourceTypeGeneralLabelPipe } from '@osf/shared/pipes/resource-type-general-label.pipe';
+import { ContributorsSelectors, LoadMoreBibliographicContributors } from '@osf/shared/stores/contributors';
+import { RegistrationProviderSelectors } from '@osf/shared/stores/registration-provider';
+import { FetchSelectedSubjects, SubjectsSelectors } from '@osf/shared/stores/subjects';
+
+import {
+  GetRegistryIdentifiers,
+  GetRegistryInstitutions,
+  GetRegistryLicense,
+  RegistrySelectors,
+  SetRegistryCustomCitation,
+} from '../../store/registry';
+
+@Component({
+  selector: 'osf-registry-overview-metadata',
+  imports: [
+    Button,
+    RouterLink,
+    DatePipe,
+    TranslatePipe,
+    TruncatedTextComponent,
+    ResourceCitationsComponent,
+    ResourceDoiComponent,
+    ResourceLicenseComponent,
+    AffiliatedInstitutionsViewComponent,
+    ContributorsListComponent,
+    FundersListComponent,
+    SubjectsListComponent,
+    TagsListComponent,
+    LanguageLabelPipe,
+    ResourceTypeGeneralLabelPipe,
+  ],
+  templateUrl: './registry-overview-metadata.component.html',
+  styleUrl: './registry-overview-metadata.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class RegistryOverviewMetadataComponent {
+  private readonly environment = inject(ENVIRONMENT);
+  private readonly router = inject(Router);
+
+  readonly registry = select(RegistrySelectors.getRegistry);
+  readonly registryProvider = select(RegistrationProviderSelectors.getBrandedProvider);
+  readonly isAnonymous = select(RegistrySelectors.isRegistryAnonymous);
+  readonly customItemMetadata = select(MetadataSelectors.getCustomItemMetadata);
+  readonly isCustomItemMetadataLoading = select(MetadataSelectors.isCustomItemMetadataLoading);
+
+  canEdit = select(RegistrySelectors.hasWriteAccess);
+  license = select(RegistrySelectors.getLicense);
+  isLicenseLoading = select(RegistrySelectors.isLicenseLoading);
+  identifiers = select(RegistrySelectors.getIdentifiers);
+  isIdentifiersLoading = select(RegistrySelectors.isIdentifiersLoading);
+  institutions = select(RegistrySelectors.getInstitutions);
+  isInstitutionsLoading = select(RegistrySelectors.isInstitutionsLoading);
+  subjects = select(SubjectsSelectors.getSelectedSubjects);
+  isSubjectsLoading = select(SubjectsSelectors.areSelectedSubjectsLoading);
+
+  bibliographicContributors = select(ContributorsSelectors.getBibliographicContributors);
+  isBibliographicContributorsLoading = select(ContributorsSelectors.isBibliographicContributorsLoading);
+  hasMoreBibliographicContributors = select(ContributorsSelectors.hasMoreBibliographicContributors);
+
+  readonly currentResourceType = CurrentResourceType.Registrations;
+  readonly dateFormat = 'MMM d, y, h:mm a';
+  readonly webUrl = this.environment.webUrl;
+  readonly showAssociatedProject = computed(
+    () => !!this.registry()?.associatedProjectId && this.registry()?.hasProject
+  );
+
+  private readonly actions = createDispatchMap({
+    getSubjects: FetchSelectedSubjects,
+    getInstitutions: GetRegistryInstitutions,
+    getIdentifiers: GetRegistryIdentifiers,
+    getLicense: GetRegistryLicense,
+    getCustomItemMetadata: GetCustomItemMetadata,
+    setCustomCitation: SetRegistryCustomCitation,
+    loadMoreBibliographicContributors: LoadMoreBibliographicContributors,
+  });
+
+  constructor() {
+    effect(() => {
+      const registry = this.registry();
+
+      if (registry?.id) {
+        this.actions.getInstitutions(registry.id);
+        this.actions.getSubjects(registry.id, ResourceType.Registration);
+        this.actions.getLicense(registry.licenseId);
+        this.actions.getIdentifiers(registry.id);
+        this.actions.getCustomItemMetadata(registry.id);
+      }
+    });
+  }
+
+  onCustomCitationUpdated(citation: string): void {
+    this.actions.setCustomCitation(citation);
+  }
+
+  handleLoadMoreContributors(): void {
+    const registryId = this.registry()?.id;
+    if (!registryId) return;
+
+    this.actions.loadMoreBibliographicContributors(registryId, ResourceType.Registration);
+  }
+
+  tagClicked(tag: string) {
+    this.router.navigate(['/search'], { queryParams: { search: tag } });
+  }
+}

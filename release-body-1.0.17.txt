@@ -1,0 +1,18 @@
+Angular Vitest and Karma now measure original source through Witness rather than Angular's compiled Istanbul output. The Angular builder consumes an instrumented shadow source tree that preserves templates, styles, assets, aliases, original file identities, and source coordinates.
+
+Witness now preserves TypeScript type inference and control-flow narrowing during instrumentation, with a strict TypeScript regression test protecting both behaviors. Decorated Angular class fields that cannot be safely rewritten remain syntactically untouched and are reported explicitly as skipped.
+
+DeepTest no longer owns runner hooks; the product uses Witness hooks across the JavaScript runners. Angular's Istanbul product path, unloaded-coverage machinery, and retired DeepTest hooks are removed. istanbul-lib-instrument remains dev-only as the differential test oracle.
+
+Packaging cleanup removes the retired .refactorit state, excludes .deeptest artifacts from UntangleIt packages, and removes stale package exclusions.
+
+Verification before release:
+
+* Complexity 104/104
+* Witness 12/12
+* UntangleIt 17/17
+* DeepTest 218/218
+* Angular Vitest 11/11 with complete evidence and 0 cut off
+* Angular Karma 11/11 with complete evidence and 0 cut off
+* library mirrors byte-for-byte identical
+* all five trees built and packaged successfully

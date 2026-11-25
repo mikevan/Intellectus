@@ -1,0 +1,21 @@
+<p-card>
+  <div class="flex justify-content-between align-items-center">
+    <h2>{{ 'common.labels.license' | translate }}</h2>
+
+    @if (!readonly()) {
+      <p-button
+        severity="secondary"
+        [label]="'common.buttons.edit' | translate"
+        (onClick)="openEditLicenseDialog.emit()"
+        [disabled]="disabled()"
+        [pTooltip]="disabledButtonTooltip()"
+        tooltipPosition="left"
+        data-test-edit-license-button
+      />
+    }
+  </div>
+
+  <div class="mt-4">
+    <p data-test-target-license-name>{{ license()?.name || ('common.labels.noLicense' | translate) }}</p>
+  </div>
+</p-card>

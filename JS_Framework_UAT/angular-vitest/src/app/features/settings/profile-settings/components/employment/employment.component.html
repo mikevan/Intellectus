@@ -1,0 +1,30 @@
+<form [formGroup]="employmentForm">
+  <div formArrayName="positions" class="flex flex-column row-gap-4">
+    @for (position of positions.controls; track index; let index = $index) {
+      <osf-employment-form [group]="position" [index]="index" (remove)="removePosition(index)"></osf-employment-form>
+    }
+  </div>
+</form>
+
+<p-button
+  [label]="'settings.profileSettings.employment.addPosition' | translate"
+  severity="secondary"
+  class="ml-auto w-6 btn-full-width md:w-auto"
+  (click)="addPosition()"
+/>
+
+<div class="flex justify-content-between align-items-end column-gap-2 md:ml-auto h-3rem mt-2">
+  <p-button
+    class="w-6 btn-full-width md:w-auto"
+    [label]="'common.buttons.discardChanges' | translate"
+    severity="info"
+    [disabled]="!hasFormChanges()"
+    (onClick)="discardChanges()"
+  />
+  <p-button
+    class="w-6 btn-full-width md:w-auto"
+    [label]="'common.buttons.save' | translate"
+    [disabled]="positions.invalid || !hasFormChanges()"
+    (onClick)="saveEmployment()"
+  />
+</div>

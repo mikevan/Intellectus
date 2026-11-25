@@ -1,0 +1,45 @@
+@if (!showExpandedSection()) {
+  <h2>{{ title() | translate }}</h2>
+}
+
+@if (isLoading()) {
+  <osf-loading-spinner></osf-loading-spinner>
+} @else {
+  <div class="flex flex-column justify-content-start gap-2 h-full md:gap-4">
+    <div class="flex align-items-center justify-content-center">
+      @if (data() && options() && labels().length) {
+        <p-chart type="doughnut" responsive="true" [data]="data()" [options]="options()"></p-chart>
+      }
+    </div>
+
+    @if (showExpandedSection()) {
+      <div class="resource">
+        <p-accordion>
+          <p-accordion-panel value="0">
+            <p-accordion-header class="flex flex-row column-gap-3 align-items-center p-0">
+              <p class="font-bold">{{ title() | translate }}</p>
+            </p-accordion-header>
+            <p-accordion-content>
+              <div class="pt-3">
+                @for (label of labels(); let i = $index; track i) {
+                  <li class="flex align-items-center justify-content-between gap-3 mb-2">
+                    <div class="flex align-items-center gap-2">
+                      <div
+                        class="w-1rem h-1rem"
+                        [style.background-color]="PIE_CHART_PALETTE[i % PIE_CHART_PALETTE.length]"
+                      ></div>
+                      <span>{{ label }}</span>
+                    </div>
+                    @if (datasets().length) {
+                      <span>{{ datasets()[0].data[i] }}</span>
+                    }
+                  </li>
+                }
+              </div>
+            </p-accordion-content>
+          </p-accordion-panel>
+        </p-accordion>
+      </div>
+    }
+  </div>
+}

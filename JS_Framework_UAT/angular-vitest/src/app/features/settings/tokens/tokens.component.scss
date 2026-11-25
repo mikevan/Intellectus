@@ -1,0 +1,6 @@
+@use "styles/mixins" as mix;
+
+:host {
+  @include mix.flex-column;
+  flex: 1;
+}

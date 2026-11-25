@@ -1,0 +1,96 @@
+<form [formGroup]="componentForm" (ngSubmit)="submitForm()" class="flex flex-column gap-4">
+  <div class="flex flex-column">
+    <label for="component-title">
+      {{ 'common.labels.title' | translate }}
+    </label>
+    <input pInputText id="component-title" type="text" [formControlName]="ComponentFormControls.Title" />
+  </div>
+
+  @if (areUserInstitutionsLoading() || userInstitutions().length) {
+    <div>
+      <h3 class="font-normal mbx-2">
+        {{ 'myProjects.createProject.affiliation.title' | translate }}
+      </h3>
+
+      <osf-affiliated-institution-select
+        [institutions]="userInstitutions()"
+        [selectedInstitutions]="selectedInstitutions()"
+        [isLoading]="areUserInstitutionsLoading()"
+        (selectedInstitutionsChange)="setSelectedInstitutions($event)"
+      />
+    </div>
+  }
+
+  <div class="flex flex-column">
+    <label for="storage-location">
+      {{ 'project.overview.dialog.addComponent.storageLocation' | translate }}
+    </label>
+    <p-select
+      id="storage-location"
+      optionLabel="name"
+      optionValue="id"
+      [options]="storageLocations()"
+      [loading]="areRegionsLoading()"
+      [formControlName]="ComponentFormControls.StorageLocation"
+    ></p-select>
+  </div>
+
+  <div class="flex align-items-start gap-2">
+    <p-checkbox
+      inputId="add-contributors"
+      [formControlName]="ComponentFormControls.AddContributors"
+      [binary]="true"
+    ></p-checkbox>
+    <div>
+      <label for="add-contributors" class="cursor-pointer m-0">
+        {{ ('project.overview.dialog.addComponent.addContributors' | translate) + ' ' + currentProject()?.title }}
+      </label>
+      <small>
+        {{ currentProject()?.title + ' ' + ('project.overview.dialog.addComponent.contributorsMessage' | translate) }}
+      </small>
+    </div>
+  </div>
+
+  <div class="flex align-items-center gap-2">
+    <p-checkbox inputId="add-tags" [formControlName]="ComponentFormControls.AddTags" [binary]="true"></p-checkbox>
+    <label for="add-tags" class="cursor-pointer m-0">
+      {{ ('project.overview.dialog.addComponent.addTags' | translate) + ' ' + currentProject()?.title }}
+    </label>
+  </div>
+
+  <div class="flex flex-column">
+    <p>{{ 'common.labels.license' | translate }}</p>
+    <p class="pt-1" id="license">
+      {{
+        ('project.overview.dialog.addComponent.license.description' | translate) + ' ' + currentProject()?.title + '.'
+      }}
+      <a class="font-bold" href="https://help.osf.io/article/288-license-your-project" target="_blank">
+        {{ 'common.labels.learnMore' | translate }}
+      </a>
+    </p>
+  </div>
+
+  <div class="flex flex-column">
+    <label for="description">
+      {{ 'common.labels.descriptionOptional' | translate }}
+    </label>
+    <textarea pTextarea id="description" [formControlName]="ComponentFormControls.Description" [rows]="5"></textarea>
+  </div>
+
+  <div class="flex justify-content-end gap-3">
+    <p-button
+      class="w-12rem btn-full-width"
+      [label]="'common.buttons.cancel' | translate"
+      severity="info"
+      (onClick)="dialogRef.close()"
+      [disabled]="isSubmitting()"
+    />
+    <p-button
+      class="w-12rem btn-full-width"
+      [label]="'common.buttons.create' | translate"
+      type="submit"
+      [disabled]="!componentForm.valid || isSubmitting()"
+      [loading]="isSubmitting()"
+    />
+  </div>
+</form>

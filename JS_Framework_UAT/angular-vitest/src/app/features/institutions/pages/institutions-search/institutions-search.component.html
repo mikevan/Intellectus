@@ -1,0 +1,27 @@
+<section class="flex flex-column flex-1 xl:mt-6">
+  @if (isInstitutionLoading()) {
+    <div class="flex-1 mt-4 md:mt-8 lg:pt-5">
+      <osf-loading-spinner />
+    </div>
+  } @else {
+    <div class="flex flex-column gap-5 p-5">
+      <div class="flex align-items-center gap-2 justify-content-center">
+        <img
+          [ngSrc]="institution().assets.logo"
+          [alt]="institution().name"
+          width="80"
+          height="80"
+          class="fit-contain"
+        />
+
+        <h1>{{ institution().name }}</h1>
+      </div>
+
+      <p [innerHtml]="institution().description | safeHtml"></p>
+    </div>
+
+    @if (defaultSearchFiltersInitialized()) {
+      <osf-global-search [resourceTabOptions]="resourceTabOptions" />
+    }
+  }
+</section>

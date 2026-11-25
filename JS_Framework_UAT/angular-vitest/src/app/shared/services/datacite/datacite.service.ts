@@ -1,0 +1,119 @@
+import { EMPTY, filter, map, Observable, of, switchMap, take } from 'rxjs';
+
+import { isPlatformBrowser } from '@angular/common';
+import { HttpClient, HttpContext } from '@angular/common/http';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
+
+import { BYPASS_ERROR_INTERCEPTOR } from '@core/interceptors/error-interceptor.tokens';
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+import { DataciteEvent } from '@osf/shared/enums/datacite/datacite-event.enum';
+import { IdentifierModel } from '@osf/shared/models/identifiers/identifier.model';
+import { IdentifiersResponseJsonApi } from '@osf/shared/models/identifiers/identifier-json-api.model';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class DataciteService {
+  private readonly http: HttpClient = inject(HttpClient);
+  private readonly environment = inject(ENVIRONMENT);
+  private readonly platformId = inject(PLATFORM_ID);
+
+  get apiDomainUrl() {
+    return this.environment.apiDomainUrl;
+  }
+
+  get dataciteTrackerAddress() {
+    return this.environment.dataciteTrackerAddress;
+  }
+
+  get dataciteTrackerRepoId() {
+    return this.environment.dataciteTrackerRepoId;
+  }
+
+  logIdentifiableView(trackable: Observable<{ identifiers?: IdentifierModel[] } | null>) {
+    return this.watchIdentifiable(trackable, DataciteEvent.VIEW);
+  }
+
+  logIdentifiableDownload(trackable: Observable<{ identifiers?: IdentifierModel[] } | null>) {
+    return this.watchIdentifiable(trackable, DataciteEvent.DOWNLOAD);
+  }
+
+  logFileDownload(targetId: string, targetType: string) {
+    return this.logFile(targetId, targetType, DataciteEvent.DOWNLOAD);
+  }
+
+  logFileView(targetId: string, targetType: string) {
+    return this.logFile(targetId, targetType, DataciteEvent.VIEW);
+  }
+
+  private watchIdentifiable(
+    trackable: Observable<{ identifiers?: IdentifierModel[] } | null>,
+    event: DataciteEvent
+  ): Observable<void> {
+    return trackable.pipe(
+      filter((item) => item != null),
+      map((item) => item?.identifiers?.find((identifier) => identifier.category == 'doi')?.value ?? null),
+      filter((doi): doi is string => !!doi),
+      take(1),
+      switchMap((doi) => this.logActivity(event, doi))
+    );
+  }
+
+  private logFile(targetId: string, targetType: string, event: DataciteEvent): Observable<void> {
+    const url = `${this.apiDomainUrl}/v2/${targetType}/${targetId}/identifiers`;
+    return this.http.get<IdentifiersResponseJsonApi>(url).pipe(
+      map((item) => ({
+        identifiers: item.data.map<IdentifierModel>((identifierData) => ({
+          id: identifierData.id,
+          type: identifierData.type,
+          category: identifierData.attributes.category,
+          value: identifierData.attributes.value,
+        })),
+      })),
+      switchMap((trackable) => this.watchIdentifiable(of(trackable), event))
+    );
+  }
+
+  /**
+   * Internal helper to log a specific Datacite event for a given DOI.
+   * Only tracks in browser environment using sendBeacon with HTTP POST fallback.
+   *
+   * @param event - The Datacite event type (VIEW or DOWNLOAD).
+   * @param doi - The DOI (Digital Object Identifier) of the resource.
+   * @returns An Observable that completes when the tracking request is sent,
+   *          or EMPTY if DOI, repo ID is missing, or not in browser.
+   */
+  private logActivity(event: DataciteEvent, doi: string): Observable<void> {
+    if (!doi || !this.dataciteTrackerRepoId) {
+      return EMPTY;
+    }
+
+    if (!isPlatformBrowser(this.platformId)) {
+      return EMPTY;
+    }
+
+    const payload = {
+      n: event,
+      u: window.location.href,
+      i: this.dataciteTrackerRepoId,
+      p: doi,
+    };
+
+    const success = navigator.sendBeacon(this.dataciteTrackerAddress, JSON.stringify(payload));
+
+    if (success) {
+      return of(void 0);
+    } else {
+      const headers = { 'Content-Type': 'application/json' };
+      const context = new HttpContext();
+      context.set(BYPASS_ERROR_INTERCEPTOR, true);
+
+      return this.http
+        .post(this.dataciteTrackerAddress, payload, {
+          headers,
+          context,
+        })
+        .pipe(map(() => undefined));
+    }
+  }
+}

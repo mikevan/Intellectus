@@ -1,0 +1,160 @@
+# Changelog
+
+We follow the CalVer (https://calver.org/) versioning scheme: YY.MINOR.MICRO.
+26.18.1 (2026-09-14)
+====================
+
+* Hotfix to update language
+
+26.18.0 (2026-09-10)
+====================
+
+* Project Creation and Project Read-only
+
+26.17.1 (2026-09-01)
+====================
+
+* Hotfix to add OCI build spec
+
+26.17.0 (2026-08-31)
+====================
+
+* PB&S 26-15 Release
+
+26.16.1 (2026-08-11)
+====================
+
+* Hotfix to update homepage and dashboard copy and images
+
+26.16.0 (2026-08-10)
+====================
+
+* Workflow Launcher
+
+26.15.0 (2026-08-03)
+====================
+
+* Improve tracking for download dashboard.
+
+26.14.0 (2026-07-20)
+====================
+
+* My Projects Page Improvements & DAZ Improvements
+
+26.13.0 (2026-06-23)
+====================
+
+* PB&S and ES2 code cleanup
+
+26.12.0 (2026-06-23)
+====================
+
+* ES2 consolidation
+
+26.11.1 (2026-06-10)
+====================
+
+* Don't send delete request to API when deleting preprint draft
+
+26.11.0 (2026-05-27)
+====================
+
+* PB&S 26-9 Release
+
+26.10.1 (2026-05-15)
+====================
+
+* Hotfix to take users to the links they clicked instead of the dashboard
+
+26.10.0 (2026-05-07)
+====================
+
+* OSF4I In-progress SSO Project - FE Piece
+
+26.9.2 (2026-05-06)
+===================
+
+* Hotfix to avoid errors on creating preprint versions
+
+26.9.1 (2026-04-28)
+===================
+
+* Hotfix to add alias for ip addresses, redux
+
+26.9.0 (2026-04-28)
+===================
+
+* Misc. improvements and bug fixes
+
+26.8.2 (2026-04-20)
+===================
+
+* Hotfix to add alias for ip addresses, again
+
+26.8.1 (2026-04-20)
+===================
+
+* Hotfix to add alias for ip addresses
+
+26.8.0 (2026-04-16)
+===================
+
+* Angular upgrade
+
+26.7.0 (2026-04-08)
+===================
+
+* ORCiD Integration Project - FE Part
+
+26.6.1 (2026-03-26)
+===================
+
+* Hotfix to prevent redirect on 403 error
+
+26.6.0 (2026-03-26)
+===================
+
+* Misc. improvements and bug fixes
+
+26.5.1 (2026-03-18)
+===================
+
+* Hotfix for Angular SSR
+
+26.5.0 (2026-02-26)
+===================
+
+* Config updates to enable Angular SSR
+
+26.4.0 (2026-02-26)
+===================
+
+* Search and fetch funder ids from ROR instead of CrossRef
+
+26.3.1 (2026-02-25)
+===================
+
+* Hotfix to prevent 403 error when fetching metadata from causing a redirect
+
+26.3.0 (2026-02-24)
+===================
+
+* FAIR Signposting
+
+26.2.1 (2026-02-03)
+===================
+
+* Hotfix for navigation translations and contributor search
+
+26.2.0 (2026-01-29)
+===================
+
+* Misc. improvements and bug fixes
+
+26.1.0 (2026-01-01)
+===================
+
+* Angular FE support for Notification Refactor Project
+
+# vi: ft=markdown
+

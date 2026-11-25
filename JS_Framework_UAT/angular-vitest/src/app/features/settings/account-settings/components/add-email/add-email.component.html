@@ -1,0 +1,29 @@
+<div class="flex flex-column gap-6">
+  <osf-text-input
+    [control]="emailControl"
+    [placeholder]="'common.labels.emailPlaceholder'"
+    [label]="'common.labels.email'"
+    [maxLength]="emailMaxLength"
+  ></osf-text-input>
+
+  <div class="flex gap-2">
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      (onClick)="dialogRef.close()"
+      severity="info"
+      [label]="'common.buttons.cancel' | translate"
+    >
+    </p-button>
+
+    <p-button
+      class="w-full"
+      styleClass="w-full"
+      [disabled]="emailControl.invalid"
+      (click)="addEmail()"
+      [loading]="isSubmitting()"
+      [label]="'common.buttons.add' | translate"
+    >
+    </p-button>
+  </div>
+</div>

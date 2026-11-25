@@ -1,0 +1,92 @@
+import { DEFAULT_TABLE_PARAMS } from '../constants/default-table-params.constants';
+import { replaceBadEncodedChars } from '../helpers/format-bad-encoding.helper';
+import {
+  PaginatedViewOnlyLinksModel,
+  ViewOnlyLinkModel,
+  ViewOnlyLinkNodeModel,
+} from '../models/view-only-links/view-only-link.model';
+import {
+  ViewOnlyLinkJsonApi,
+  ViewOnlyLinksResponsesJsonApi,
+} from '../models/view-only-links/view-only-link-response.model';
+
+import { UserMapper } from './user';
+
+export class ViewOnlyLinksMapper {
+  static fromResponse(
+    response: ViewOnlyLinksResponsesJsonApi,
+    projectId: string,
+    webUrl: string
+  ): PaginatedViewOnlyLinksModel {
+    const items: ViewOnlyLinkModel[] = response.data.map((item) => {
+      const creator = UserMapper.getUserInfo(item.embeds.creator);
+
+      return {
+        id: item.id,
+        link: `${webUrl}/${projectId}/overview?view_only=${item.attributes.key}`,
+        dateCreated: item.attributes.date_created,
+        key: item.attributes.key,
+        name: item.attributes.name,
+        anonymous: item.attributes.anonymous,
+        creator: {
+          id: creator?.id || '',
+          fullName: creator?.fullName || '',
+        },
+        nodes: item.embeds?.nodes?.data?.map(
+          (node) =>
+            ({
+              id: node.id,
+              title: replaceBadEncodedChars(node.attributes.title),
+              category: node.attributes.category,
+            }) as ViewOnlyLinkNodeModel
+        ),
+      } as ViewOnlyLinkModel;
+    });
+
+    return {
+      items,
+      total: response.meta.total,
+      perPage: response.meta.per_page ?? DEFAULT_TABLE_PARAMS.rows,
+      next: response?.links?.next,
+      prev: response?.links?.prev,
+    };
+  }
+
+  static fromSingleResponse(
+    response: ViewOnlyLinkJsonApi,
+    projectId: string,
+    webUrl: string
+  ): PaginatedViewOnlyLinksModel {
+    const item = response;
+    const creator = UserMapper.getUserInfo(item.embeds.creator);
+
+    const mappedItem: ViewOnlyLinkModel = {
+      id: item.id,
+      link: `${webUrl}/${projectId}/overview?view_only=${item.attributes.key}`,
+      dateCreated: item.attributes.date_created,
+      key: item.attributes.key,
+      name: item.attributes.name,
+      anonymous: item.attributes.anonymous,
+      creator: {
+        id: creator?.id || '',
+        fullName: creator?.fullName || '',
+      },
+      nodes: item.embeds?.nodes?.data?.map(
+        (node) =>
+          ({
+            id: node.id,
+            title: node.attributes.title,
+            category: node.attributes.category,
+          }) as ViewOnlyLinkNodeModel
+      ),
+    };
+
+    return {
+      items: [mappedItem],
+      total: 1,
+      perPage: 1,
+      next: null,
+      prev: null,
+    };
+  }
+}

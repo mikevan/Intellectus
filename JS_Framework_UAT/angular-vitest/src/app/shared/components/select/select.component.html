@@ -1,0 +1,21 @@
+<p-select
+  [class.w-full]="fullWidth()"
+  [class.no-border-dropdown]="noBorder()"
+  [options]="options()"
+  optionLabel="label"
+  optionValue="value"
+  [appendTo]="appendTo()"
+  [placeholder]="placeholder() | translate"
+  [disabled]="disabled()"
+  [(ngModel)]="selectedValue"
+  (ngModelChange)="changeValue.emit($event)"
+  [loading]="loading()"
+>
+  <ng-template #selectedItem let-selectedOption>
+    {{ selectedOption.label | fixSpecialChar | translate }}
+  </ng-template>
+
+  <ng-template #item let-item>
+    {{ item.label | fixSpecialChar | translate }}
+  </ng-template>
+</p-select>

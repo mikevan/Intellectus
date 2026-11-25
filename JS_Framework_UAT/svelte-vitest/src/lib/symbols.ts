@@ -1,0 +1,1 @@
+export const FINGERPRINT_CONTEXT = Symbol('FINGERPRINT_CLIENT')

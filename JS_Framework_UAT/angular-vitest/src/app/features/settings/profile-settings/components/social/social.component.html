@@ -1,0 +1,25 @@
+<osf-authenticated-identity />
+
+<form [formGroup]="socialLinksForm">
+  <div formArrayName="links" class="flex flex-column row-gap-4 social">
+    @for (link of links.controls; track index; let index = $index) {
+      <osf-social-form [group]="link" [index]="index"></osf-social-form>
+    }
+  </div>
+</form>
+
+<div class="flex justify-content-between align-items-end column-gap-2 mt-2 md:justify-content-end">
+  <p-button
+    class="w-6 btn-full-width md:w-auto"
+    [label]="'common.buttons.discardChanges' | translate"
+    severity="info"
+    [disabled]="!hasFormChanges()"
+    (onClick)="discardChanges()"
+  />
+  <p-button
+    class="w-6 btn-full-width md:w-auto"
+    [label]="'common.buttons.save' | translate"
+    [disabled]="!hasFormChanges()"
+    (onClick)="saveSocialLinks()"
+  />
+</div>

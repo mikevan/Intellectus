@@ -1,0 +1,53 @@
+1.0.19 let your assistant help. 1.0.21 makes it earn the right.
+
+Every request to a model now goes out as a governed packet. The packet says
+what Polyglot measured, what it wants, what may change, and what must not.
+The answer comes back and gets checked against your actual repository by
+validators, not against the assistant's opinion of its own work. A malformed
+answer gets one correction and no more. A proposal that cannot be validated
+is not reported as validated, and missing evidence is never dressed up as a
+constraint violation. Nothing the model writes is applied to your files.
+You get a read-only diff and you make the change, because a vibe coder's
+approval of a diff is not evidence that the code is right.
+
+Every attempt is authorized in plain language first: what was measured, what
+is being tried, what may change, what must not, and what gets measured after.
+The governance record is kept locally, holds no source and no prompts, and
+shows up in a Governance History view that says what Polyglot established,
+not what it guessed.
+
+One setting turns it all off. If either DeepTest or UntangleIt has AI
+assistance switched off, neither product contacts a model, and every button
+that needs one is gone. With no model at all, the products are
+exactly as useful as they were before any of this existed.
+
+A release governance test now reads the production source the way a compiler
+does, not the way grep does, and refuses a release with an ungoverned path to
+a model or any path that writes a model's change into a project. It found a
+real defect on its first honest run: finding explanations were recorded under
+the wrong interaction and skipped a check. Fixed in both products.
+
+Then the release qualification ran each product inside a real editor for the
+first time since that layer existed, and the suites were wrong in four ways.
+
+The tangled-method expectation predated the branch-chain rule from 0.1.1, so
+it expected one tangled method where the scorer correctly finds two. The
+suites read the clipboard for a hand-off that no longer uses the clipboard.
+The test editor had no model, so the new kill switch did its job and refused
+everything the suites tried to test. Each product now loads a stub model in
+the test editor only, one that throws if anything ever sends to it, and runs
+a second launch with no model to prove the refusal. Neither stub ships.
+
+The fourth was not the suite. "Fix this" refused on every Python line. Python
+coverage labelled tests by module and function, the destination logic reads
+a test file from the label, and it took each label for a file of its own.
+DeepTest now labels Python tests with pytest's own node ids through a plugin
+it generates on every run. The adapter test pushes the real ids through the
+real destination code so this cannot hide again.
+
+Also: the suites retry a folder delete that Windows reports as not empty for
+a moment after the scanner touches a new file. Bazel and CMake do the same
+thing, for the same reason.
+
+This closes Polyglot. The series was the JavaScript frameworks, and it ends
+with them.

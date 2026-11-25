@@ -1,0 +1,17 @@
+.p-tag {
+  --p-tag-border-radius: 4px;
+  --p-tag-padding: 0.25rem 0.75rem;
+
+  --p-tag-warn-background: var(--yellow-2);
+  --p-tag-warn-color: var(--yellow-1);
+
+  --p-tag-secondary-background: var(--grey-4);
+  --p-tag-secondary-color: var(--white);
+
+  --p-tag-info-background: var(--bg-blue-2);
+  --p-tag-info-color: var(--dark-blue-1);
+}
+
+.p-tag-info {
+  --p-tag-font-weight: normal;
+}

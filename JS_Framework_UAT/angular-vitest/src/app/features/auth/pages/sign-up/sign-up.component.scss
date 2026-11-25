@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  background: url("/assets/images/dark-blue-gradient.png") center no-repeat;
+  background-size: cover;
+}
+
+.sign-up-container,
+.message-container {
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 4px var(--grey-outline);
+  margin: 4.5rem 0 1.5rem 0;
+  width: 32rem;
+
+  .text-danger {
+    color: var(--red-1);
+    font-weight: 600;
+  }
+}
+
+.message-container {
+  margin: auto;
+}

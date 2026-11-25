@@ -1,0 +1,20 @@
+<section class="nav-container flex align-items-center justify-content-between">
+  <img class="logo-img" ngSrc="assets/images/logo.svg" alt="OSF Logo" height="36" width="106" priority />
+
+  <p-drawer
+    [closable]="false"
+    [visible]="isDrawerVisible()"
+    [motionOptions]="{ duration: 100 }"
+    (visibleChange)="isDrawerVisible.set($event)"
+  >
+    <osf-nav-menu (closeMenu)="toggleMenuVisibility()" />
+  </p-drawer>
+
+  <p-button
+    class="topnav-btn custom-light-hover flex"
+    [icon]="isDrawerVisible() ? 'fas fa-close fa-2xl' : 'fas fa-bars fa-2xl'"
+    severity="contrast"
+    ariaLabel="Toggle"
+    (onClick)="toggleMenuVisibility()"
+  ></p-button>
+</section>

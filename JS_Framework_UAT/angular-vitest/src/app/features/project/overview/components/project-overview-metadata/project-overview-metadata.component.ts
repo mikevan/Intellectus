@@ -1,0 +1,165 @@
+import { createDispatchMap, select } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { Button } from 'primeng/button';
+import { Tooltip } from 'primeng/tooltip';
+
+import { DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+
+import { UserSelectors } from '@osf/core/store/user/user.selectors';
+import {
+  GetCedarMetadataRecords,
+  GetCedarMetadataTemplates,
+  GetCustomItemMetadata,
+  MetadataSelectors,
+} from '@osf/features/metadata/store';
+import { AffiliatedInstitutionsViewComponent } from '@osf/shared/components/affiliated-institutions-view/affiliated-institutions-view.component';
+import { ContributorsListComponent } from '@osf/shared/components/contributors-list/contributors-list.component';
+import { FundersListComponent } from '@osf/shared/components/funders-list/funders-list.component';
+import { ResourceCitationsComponent } from '@osf/shared/components/resource-citations/resource-citations.component';
+import { ResourceDoiComponent } from '@osf/shared/components/resource-doi/resource-doi.component';
+import { ResourceLicenseComponent } from '@osf/shared/components/resource-license/resource-license.component';
+import { SubjectsListComponent } from '@osf/shared/components/subjects-list/subjects-list.component';
+import { TagsListComponent } from '@osf/shared/components/tags-list/tags-list.component';
+import { TruncatedTextComponent } from '@osf/shared/components/truncated-text/truncated-text.component';
+import { CurrentResourceType, ResourceType } from '@osf/shared/enums/resource-type.enum';
+import { LanguageLabelPipe } from '@osf/shared/pipes/language-label.pipe';
+import { ResourceTypeGeneralLabelPipe } from '@osf/shared/pipes/resource-type-general-label.pipe';
+import { MetadataRecordsService } from '@osf/shared/services/metadata-records.service';
+import { CollectionsSelectors, GetProjectSubmissions } from '@osf/shared/stores/collections';
+import {
+  ContributorsSelectors,
+  GetBibliographicContributors,
+  LoadMoreBibliographicContributors,
+} from '@osf/shared/stores/contributors';
+import { FetchSelectedSubjects, SubjectsSelectors } from '@osf/shared/stores/subjects';
+
+import {
+  GetProjectIdentifiers,
+  GetProjectInstitutions,
+  GetProjectLicense,
+  GetProjectPreprints,
+  ProjectOverviewSelectors,
+  SetProjectCustomCitation,
+} from '../../store';
+import { OverviewCollectionsComponent } from '../overview-collections/overview-collections.component';
+import { OverviewSupplementsComponent } from '../overview-supplements/overview-supplements.component';
+
+@Component({
+  selector: 'osf-project-overview-metadata',
+  imports: [
+    Button,
+    TranslatePipe,
+    RouterLink,
+    DatePipe,
+    Tooltip,
+    TruncatedTextComponent,
+    ResourceCitationsComponent,
+    OverviewCollectionsComponent,
+    AffiliatedInstitutionsViewComponent,
+    ContributorsListComponent,
+    FundersListComponent,
+    ResourceDoiComponent,
+    ResourceLicenseComponent,
+    SubjectsListComponent,
+    TagsListComponent,
+    OverviewSupplementsComponent,
+    LanguageLabelPipe,
+    ResourceTypeGeneralLabelPipe,
+  ],
+  templateUrl: './project-overview-metadata.component.html',
+  styleUrl: './project-overview-metadata.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ProjectOverviewMetadataComponent {
+  private readonly router = inject(Router);
+  private readonly metadataRecordsService = inject(MetadataRecordsService);
+
+  readonly currentProject = select(ProjectOverviewSelectors.getProject);
+  readonly isAnonymous = select(ProjectOverviewSelectors.isProjectAnonymous);
+  readonly canEdit = select(ProjectOverviewSelectors.hasWriteAccess);
+  readonly customItemMetadata = select(MetadataSelectors.getCustomItemMetadata);
+  readonly isCustomItemMetadataLoading = select(MetadataSelectors.isCustomItemMetadataLoading);
+  readonly institutions = select(ProjectOverviewSelectors.getInstitutions);
+  readonly isInstitutionsLoading = select(ProjectOverviewSelectors.isInstitutionsLoading);
+  readonly identifiers = select(ProjectOverviewSelectors.getIdentifiers);
+  readonly isIdentifiersLoading = select(ProjectOverviewSelectors.isIdentifiersLoading);
+  readonly license = select(ProjectOverviewSelectors.getLicense);
+  readonly isLicenseLoading = select(ProjectOverviewSelectors.isLicenseLoading);
+  readonly preprints = select(ProjectOverviewSelectors.getPreprints);
+  readonly isPreprintsLoading = select(ProjectOverviewSelectors.isPreprintsLoading);
+  readonly subjects = select(SubjectsSelectors.getSelectedSubjects);
+  readonly areSelectedSubjectsLoading = select(SubjectsSelectors.areSelectedSubjectsLoading);
+  readonly bibliographicContributors = select(ContributorsSelectors.getBibliographicContributors);
+  readonly isBibliographicContributorsLoading = select(ContributorsSelectors.isBibliographicContributorsLoading);
+  readonly hasMoreBibliographicContributors = select(ContributorsSelectors.hasMoreBibliographicContributors);
+  readonly projectSubmissions = select(CollectionsSelectors.getCurrentProjectSubmissions);
+  readonly isProjectSubmissionsLoading = select(CollectionsSelectors.getCurrentProjectSubmissionsLoading);
+  readonly isProjectReadOnly = select(UserSelectors.isProjectReadOnly);
+  readonly cedarRecords = select(MetadataSelectors.getCedarRecords);
+  readonly cedarTemplates = computed(() => this.cedarTemplatesResponse()?.data ?? null);
+  private readonly cedarTemplatesResponse = select(MetadataSelectors.getCedarTemplates);
+  readonly disabledButtonTooltip = computed(() =>
+    this.isProjectReadOnly() ? 'common.errorMessages.actionUnavailable' : ''
+  );
+
+  readonly resourceType = CurrentResourceType.Projects;
+  readonly dateFormat = 'MMM d, y, h:mm a';
+
+  private readonly actions = createDispatchMap({
+    getInstitutions: GetProjectInstitutions,
+    getIdentifiers: GetProjectIdentifiers,
+    getLicense: GetProjectLicense,
+    getPreprints: GetProjectPreprints,
+    setCustomCitation: SetProjectCustomCitation,
+    getSubjects: FetchSelectedSubjects,
+    getProjectSubmissions: GetProjectSubmissions,
+    getCustomItemMetadata: GetCustomItemMetadata,
+    getBibliographicContributors: GetBibliographicContributors,
+    loadMoreBibliographicContributors: LoadMoreBibliographicContributors,
+    getCedarRecords: GetCedarMetadataRecords,
+    getCedarTemplates: GetCedarMetadataTemplates,
+  });
+
+  constructor() {
+    effect(() => {
+      const project = this.currentProject();
+
+      if (project?.id) {
+        this.actions.getBibliographicContributors(project.id, ResourceType.Project);
+        this.actions.getInstitutions(project.id);
+        this.actions.getIdentifiers(project.id);
+        this.actions.getPreprints(project.id);
+        this.actions.getSubjects(project.id, ResourceType.Project);
+        this.actions.getProjectSubmissions(project.id);
+        this.actions.getLicense(project.licenseId);
+        this.actions.getCedarRecords(project.id, ResourceType.Project);
+        this.actions.getCedarTemplates();
+        this.actions.getCustomItemMetadata(project.id);
+      }
+    });
+  }
+
+  downloadMetadata(): void {
+    const projectId = this.currentProject()?.id;
+
+    if (projectId) {
+      this.metadataRecordsService.downloadMetadata(projectId);
+    }
+  }
+
+  onCustomCitationUpdated(citation: string): void {
+    this.actions.setCustomCitation(citation);
+  }
+
+  handleLoadMoreContributors(): void {
+    this.actions.loadMoreBibliographicContributors(this.currentProject()?.id, ResourceType.Project);
+  }
+
+  tagClicked(tag: string) {
+    this.router.navigate(['/search'], { queryParams: { search: tag } });
+  }
+}

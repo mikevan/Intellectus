@@ -1,0 +1,69 @@
+<div class="linked-project flex flex-column p-2 pb-4 gap-4">
+  <div class="flex align-items-center pt-3 pl-3 pr-3 justify-content-between">
+    <h2>{{ 'project.overview.linkedProjects.title' | translate }}</h2>
+    @if (canEdit()) {
+      <p-button
+        severity="secondary"
+        [label]="'project.overview.components.linkProjectsButton' | translate"
+        (onClick)="openLinkProjectModal()"
+        [disabled]="isProjectReadOnly()"
+        [pTooltip]="disabledButtonTooltip() | translate"
+      />
+    }
+  </div>
+  <div class="linked-project-container pl-3 pr-3 flex flex-column gap-5">
+    @if (isLinkedResourcesLoading()) {
+      <p-skeleton width="100%" height="7rem" />
+    } @else {
+      @if (linkedResources().length) {
+        @for (linkedResource of linkedResources(); track linkedResource.id) {
+          <div class="linked-project-wrapper flex flex-column p-3 gap-3">
+            <div class="flex justify-content-between align-items-center">
+              <h2 class="flex align-items-center gap-2">
+                <osf-icon [iconClass]="linkedResource.isPublic ? 'fas fa-lock-open' : 'fas fa-lock'"></osf-icon>
+                <a class="linked-project-title" [href]="linkedResource.id">{{ linkedResource.title }}</a>
+              </h2>
+
+              @if (canEdit()) {
+                <div>
+                  <p-button
+                    class="danger-icon-btn"
+                    icon="fas fa-trash"
+                    severity="danger"
+                    text
+                    [ariaLabel]="'common.buttons.delete' | translate"
+                    (onClick)="openDeleteResourceModal(linkedResource.id)"
+                  >
+                  </p-button>
+                </div>
+              }
+            </div>
+
+            <div class="flex gap-1">
+              <p class="font-bold">{{ 'common.labels.contributors' | translate }}:</p>
+
+              <osf-contributors-list [contributors]="linkedResource.bibliographicContributors"></osf-contributors-list>
+            </div>
+            @if (linkedResource.description) {
+              <osf-truncated-text
+                [text]="('resourceCard.labels.descriptionBold' | translate) + linkedResource.description"
+              />
+            }
+          </div>
+        }
+      } @else {
+        <p class="font-italic">{{ 'project.overview.linkedProjects.noLinkedProjectsMessage' | translate }}</p>
+      }
+    }
+  </div>
+  @if (hasMoreLinkedResources() && !isLinkedResourcesLoading()) {
+    <div class="flex justify-content-center px-3">
+      <p-button
+        (onClick)="loadMore()"
+        severity="secondary"
+        [label]="'common.buttons.seeMore' | translate"
+        [loading]="isLoadingMoreLinkedResources()"
+      />
+    </div>
+  }
+</div>

@@ -1,0 +1,122 @@
+{
+  "keepsafe-extension/media/icon.svg": {
+    "blob_id": "6d829f977c76fa01248be899721313fd0ed258a0b348a7187d33d959df72193b",
+    "content_hash": "6d829f977c76fa01248be899721313fd0ed258a0b348a7187d33d959df72193b",
+    "size": 1758,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "keepsafe-extension/README.md": {
+    "blob_id": "ae1ff31939604373414e6610a627945f18e249438faefe17a60a0686da34c0f4",
+    "content_hash": "ae1ff31939604373414e6610a627945f18e249438faefe17a60a0686da34c0f4",
+    "size": 5569,
+    "checkpoint_id": "0009-quick-20260814-203359"
+  },
+  "keepsafe.py": {
+    "blob_id": "b3e490c31e6e6344344b9bdec667dfa4ab672f275c682aba16782ff9f1e9e3a6",
+    "content_hash": "b3e490c31e6e6344344b9bdec667dfa4ab672f275c682aba16782ff9f1e9e3a6",
+    "size": 883,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  "PUBLISHING.md": {
+    "blob_id": "79fcbffb5fa8bf2c0ef59f8e49831aabfd55430eaed405fa78f94f0392b36e0a",
+    "content_hash": "79fcbffb5fa8bf2c0ef59f8e49831aabfd55430eaed405fa78f94f0392b36e0a",
+    "size": 2042,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  "pyproject.toml": {
+    "blob_id": "cc5bd05d1891b93c572bf5ace6bc06a85583c63a2e104a54d547495081327267",
+    "content_hash": "cc5bd05d1891b93c572bf5ace6bc06a85583c63a2e104a54d547495081327267",
+    "size": 682,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "README.md": {
+    "blob_id": "9319c1b6252644ed408a6a013b85b2a2937ac8a3561bf41dd91223e6728e3a23",
+    "content_hash": "9319c1b6252644ed408a6a013b85b2a2937ac8a3561bf41dd91223e6728e3a23",
+    "size": 8036,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe/__init__.py": {
+    "blob_id": "ec7c94fa20238535d9f190aeeaee73783421f284338332c07477598112f3e372",
+    "content_hash": "ec7c94fa20238535d9f190aeeaee73783421f284338332c07477598112f3e372",
+    "size": 102,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  "src/keepsafe/__main__.py": {
+    "blob_id": "e8ca2906f278529013ab93baba9a086ccf530a5249af475f3b5166264760e0c4",
+    "content_hash": "e8ca2906f278529013ab93baba9a086ccf530a5249af475f3b5166264760e0c4",
+    "size": 70,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  "src/keepsafe/checkpointing.py": {
+    "blob_id": "392805fbcfa1a0a2b7e11e1094d5ac479a60fd6d5228400993b81b72f562bc71",
+    "content_hash": "392805fbcfa1a0a2b7e11e1094d5ac479a60fd6d5228400993b81b72f562bc71",
+    "size": 41464,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  "src/keepsafe/cli.py": {
+    "blob_id": "f981b60c6b9d43d5739dedb1de07b23d1d16beda116ced6efa7fd271f3a0222f",
+    "content_hash": "f981b60c6b9d43d5739dedb1de07b23d1d16beda116ced6efa7fd271f3a0222f",
+    "size": 7816,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe/core.py": {
+    "blob_id": "60451cdd40c75ee58e594e7fec341baaf6fd63cb225689e085e2082a69c7d5de",
+    "content_hash": "60451cdd40c75ee58e594e7fec341baaf6fd63cb225689e085e2082a69c7d5de",
+    "size": 12127,
+    "checkpoint_id": "0001-quick-20260813-114949"
+  },
+  ".vscode/launch.json": {
+    "blob_id": "f3440e7bfe9eb4457a8830adb89e754c221efe45c4c1b5ae08e26c0c5d60736b",
+    "content_hash": "f3440e7bfe9eb4457a8830adb89e754c221efe45c4c1b5ae08e26c0c5d60736b",
+    "size": 420,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  ".vscode/tasks.json": {
+    "blob_id": "1780a1e5a5df5f9e493444617e5bf70502d8419d421b65a66cd36c1c4d178014",
+    "content_hash": "1780a1e5a5df5f9e493444617e5bf70502d8419d421b65a66cd36c1c4d178014",
+    "size": 305,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "keepsafe-extension/media/example.gitignore": {
+    "blob_id": "b1fdbb5eac1b3dcb2d83954291335e8616226df1c082b9df96ffdcb59c0afd48",
+    "content_hash": "b1fdbb5eac1b3dcb2d83954291335e8616226df1c082b9df96ffdcb59c0afd48",
+    "size": 47,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe.egg-info/dependency_links.txt": {
+    "blob_id": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "content_hash": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "size": 1,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe.egg-info/entry_points.txt": {
+    "blob_id": "a92ab43eb08d5bf755a1ad43a03d1466ac028dff27d00a73b745d95367eca3ab",
+    "content_hash": "a92ab43eb08d5bf755a1ad43a03d1466ac028dff27d00a73b745d95367eca3ab",
+    "size": 70,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe.egg-info/PKG-INFO": {
+    "blob_id": "356eaba6f19887f31236622ac83c817b9ed17dc7dbce2d14181a8bc53f152ad9",
+    "content_hash": "356eaba6f19887f31236622ac83c817b9ed17dc7dbce2d14181a8bc53f152ad9",
+    "size": 7567,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe.egg-info/SOURCES.txt": {
+    "blob_id": "7de3f6a1ff0d20582515bfa167f9895ad76547a0b60411f7cfc9fe127557ce39",
+    "content_hash": "7de3f6a1ff0d20582515bfa167f9895ad76547a0b60411f7cfc9fe127557ce39",
+    "size": 328,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "src/keepsafe.egg-info/top_level.txt": {
+    "blob_id": "f6f851ec0036921bfedfb7e2053e6d0f64be3a1f8d5278cfee4022af0cc3ee80",
+    "content_hash": "f6f851ec0036921bfedfb7e2053e6d0f64be3a1f8d5278cfee4022af0cc3ee80",
+    "size": 9,
+    "checkpoint_id": "0002-quick-20260814-012343"
+  },
+  "keepsafe-extension/.gitignore": {
+    "blob_id": "815814c28b215202834f26c95072807678edc596e0d8ce3db6ed9578d77c7252",
+    "content_hash": "815814c28b215202834f26c95072807678edc596e0d8ce3db6ed9578d77c7252",
+    "size": 46,
+    "checkpoint_id": "0009-quick-20260814-203359"
+  }
+}

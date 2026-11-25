@@ -1,0 +1,111 @@
+import { MockComponents, MockPipe, MockProvider } from 'ng-mocks';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { IconComponent } from '@osf/shared/components/icon/icon.component';
+import { CollectionsSelectors } from '@osf/shared/stores/collections';
+import { DateAgoPipe } from '@shared/pipes/date-ago.pipe';
+
+import { MOCK_COLLECTION_SUBMISSION_WITH_GUID } from '@testing/mocks/submission.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { ActivatedRouteMockBuilder } from '@testing/providers/route-provider.mock';
+import { RouterMockBuilder } from '@testing/providers/router-provider.mock';
+import { provideMockStore } from '@testing/providers/store-provider.mock';
+
+import { SubmissionReviewStatus } from '../../enums';
+
+import { CollectionSubmissionItemComponent } from './collection-submission-item.component';
+
+describe('CollectionSubmissionItemComponent', () => {
+  let component: CollectionSubmissionItemComponent;
+  let fixture: ComponentFixture<CollectionSubmissionItemComponent>;
+  let mockRouter: ReturnType<RouterMockBuilder['build']>;
+  let mockActivatedRoute: ReturnType<ActivatedRouteMockBuilder['build']>;
+
+  const mockSubmission = MOCK_COLLECTION_SUBMISSION_WITH_GUID;
+
+  const mockCollectionProvider = {
+    id: 'provider-123',
+    name: 'Test Provider',
+  };
+
+  beforeEach(() => {
+    mockRouter = RouterMockBuilder.create().build();
+    mockActivatedRoute = ActivatedRouteMockBuilder.create().withQueryParams({ status: 'pending' }).build();
+
+    TestBed.configureTestingModule({
+      imports: [CollectionSubmissionItemComponent, ...MockComponents(IconComponent), MockPipe(DateAgoPipe)],
+      providers: [
+        provideOSFCore(),
+        MockProvider(Router, mockRouter),
+        MockProvider(ActivatedRoute, mockActivatedRoute),
+        provideMockStore({
+          signals: [{ selector: CollectionsSelectors.getCollectionProvider, value: mockCollectionProvider }],
+        }),
+      ],
+    });
+
+    fixture = TestBed.createComponent(CollectionSubmissionItemComponent);
+    component = fixture.componentInstance;
+  });
+
+  it('should create', () => {
+    fixture.componentRef.setInput('submission', mockSubmission);
+    fixture.detectChanges();
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize with submission input', () => {
+    fixture.componentRef.setInput('submission', mockSubmission);
+    fixture.detectChanges();
+
+    expect(component.submission()).toEqual(mockSubmission);
+  });
+
+  it('should compute current review action correctly', () => {
+    fixture.componentRef.setInput('submission', mockSubmission);
+    fixture.detectChanges();
+
+    const currentAction = component.currentReviewAction();
+    expect(currentAction).toEqual(mockSubmission.actions![0]);
+  });
+
+  it('should return null for current review action when no actions exist', () => {
+    const submissionWithoutActions = { ...mockSubmission, actions: [] };
+    fixture.componentRef.setInput('submission', submissionWithoutActions);
+    fixture.detectChanges();
+
+    const currentAction = component.currentReviewAction();
+    expect(currentAction).toBeNull();
+  });
+
+  it('should return null for current review action when actions is undefined', () => {
+    const submissionWithoutActions = { ...mockSubmission, actions: undefined };
+    fixture.componentRef.setInput('submission', submissionWithoutActions);
+    fixture.detectChanges();
+
+    const currentAction = component.currentReviewAction();
+    expect(currentAction).toBeNull();
+  });
+
+  it('should have SubmissionReviewStatus enum available', () => {
+    expect(component.SubmissionReviewStatus).toBe(SubmissionReviewStatus);
+  });
+
+  it('should load collection provider from store', () => {
+    fixture.componentRef.setInput('submission', mockSubmission);
+    fixture.detectChanges();
+
+    expect(component.collectionProvider()).toEqual(mockCollectionProvider);
+  });
+
+  it('should handle empty actions array', () => {
+    const submissionWithEmptyActions = { ...mockSubmission, actions: [] };
+    fixture.componentRef.setInput('submission', submissionWithEmptyActions);
+    fixture.detectChanges();
+
+    const currentAction = component.currentReviewAction();
+    expect(currentAction).toBeNull();
+  });
+});

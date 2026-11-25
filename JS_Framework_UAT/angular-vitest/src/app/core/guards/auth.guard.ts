@@ -1,0 +1,37 @@
+import { Store } from '@ngxs/store';
+
+import { map, switchMap, take } from 'rxjs';
+
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+
+import { AuthService } from '@core/services/auth.service';
+import { GetCurrentUser, UserSelectors } from '@osf/core/store/user';
+import { ViewOnlyLinkHelperService } from '@osf/shared/services/view-only-link-helper.service';
+
+export const authGuard: CanActivateFn = () => {
+  const store = inject(Store);
+  const router = inject(Router);
+  const authService = inject(AuthService);
+  const viewOnlyHelper = inject(ViewOnlyLinkHelperService);
+
+  if (viewOnlyHelper.hasViewOnlyParam(router)) {
+    return true;
+  }
+
+  return store.dispatch(GetCurrentUser).pipe(
+    switchMap(() =>
+      store.select(UserSelectors.isAuthenticated).pipe(
+        take(1),
+        map((isAuthenticated) => {
+          if (!isAuthenticated) {
+            authService.navigateToSignIn();
+            return false;
+          }
+
+          return true;
+        })
+      )
+    )
+  );
+};

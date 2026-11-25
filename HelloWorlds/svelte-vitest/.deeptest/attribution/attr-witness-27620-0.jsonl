@@ -1,0 +1,1 @@
+{"test":"src/lib/Greeting.test.ts::Greeting renders the classic greeting","files":{"C:/workspace/HelloWorlds/svelte-vitest/src/lib/greet.ts":[4,7]},"outcomes":{"C:/workspace/HelloWorlds/svelte-vitest/src/lib/greet.ts":{"1":[1]}},"entered":{"C:/workspace/HelloWorlds/svelte-vitest/src/lib/greet.ts":[0]}}

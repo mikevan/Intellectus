@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+}
+
+.copy-icon-btn {
+  --p-button-padding-y: 0.125rem;
+  --p-button-text-contrast-color: var(--dark-blue-1);
+  --p-button-contrast-focus-ring-color: var(--dark-blue-1);
+  --p-button-text-contrast-active-background: transparent;
+  --p-button-text-contrast-hover-background: transparent;
+  --p-button-icon-only-width: 1.5rem;
+
+  &:hover {
+    --p-button-text-contrast-color: var(--dark-blue-2);
+  }
+}

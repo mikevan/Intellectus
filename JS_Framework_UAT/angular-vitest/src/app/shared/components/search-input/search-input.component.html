@@ -1,0 +1,22 @@
+<div class="search-container flex align-items-center">
+  <osf-icon class="search-icon" [iconClass]="'fas fa-magnifying-glass'"></osf-icon>
+
+  <input
+    class="search-input"
+    type="text"
+    [placeholder]="placeholder()"
+    pInputText
+    [formControl]="control()"
+    (keydown.enter)="enterClicked()"
+  />
+
+  @if (showHelpIcon()) {
+    <p-button
+      class="help-icon"
+      icon="fas fa-question"
+      severity="secondary"
+      [ariaLabel]="'common.accessibility.searchHelp' | translate"
+      (onClick)="helpClicked.emit()"
+    />
+  }
+</div>

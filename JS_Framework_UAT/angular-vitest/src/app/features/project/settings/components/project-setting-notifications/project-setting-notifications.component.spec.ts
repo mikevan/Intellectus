@@ -1,0 +1,130 @@
+import { MockComponent, MockPipe } from 'ng-mocks';
+
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { UserSelectors } from '@osf/core/store/user/user.selectors';
+import { SubscriptionEvent } from '@osf/shared/enums/subscriptions/subscription-event.enum';
+import { SubscriptionFrequency } from '@osf/shared/enums/subscriptions/subscription-frequency.enum';
+
+import { MOCK_NOTIFICATION_SUBSCRIPTIONS } from '@testing/mocks/notification-subscription.mock';
+import { provideOSFCore } from '@testing/osf.testing.provider';
+import { provideMockStore } from '@testing/providers/store-provider.mock';
+
+import { NotificationDescriptionPipe } from '../../pipes';
+import { ProjectDetailSettingAccordionComponent } from '../project-detail-setting-accordion/project-detail-setting-accordion.component';
+
+import { ProjectSettingNotificationsComponent } from './project-setting-notifications.component';
+
+describe('ProjectSettingNotificationsComponent', () => {
+  let component: ProjectSettingNotificationsComponent;
+  let fixture: ComponentFixture<ProjectSettingNotificationsComponent>;
+
+  const mockNotifications = MOCK_NOTIFICATION_SUBSCRIPTIONS;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        ProjectSettingNotificationsComponent,
+        MockComponent(ProjectDetailSettingAccordionComponent),
+        MockPipe(NotificationDescriptionPipe),
+      ],
+      providers: [
+        provideOSFCore(),
+        provideMockStore({
+          signals: [
+            {
+              selector: UserSelectors.isProjectReadOnly,
+              value: false,
+            },
+          ],
+        }),
+      ],
+    });
+
+    fixture = TestBed.createComponent(ProjectSettingNotificationsComponent);
+    component = fixture.componentInstance;
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should initialize with empty accordion data', () => {
+    expect(component.allAccordionData).toEqual([]);
+  });
+
+  it('should have correct subscription frequency options', () => {
+    const expectedOptions = [
+      { label: 'Never', value: SubscriptionFrequency.Never },
+      { label: 'Daily', value: SubscriptionFrequency.Daily },
+      { label: 'Instant', value: SubscriptionFrequency.Instant },
+    ];
+
+    expect(component.subscriptionFrequencyOptions).toEqual(expectedOptions);
+  });
+
+  it('should update accordion data when notifications input changes', () => {
+    fixture.componentRef.setInput('notifications', mockNotifications);
+    fixture.detectChanges();
+
+    expect(component.allAccordionData).toBeDefined();
+    expect(component.allAccordionData?.length).toBe(3);
+
+    if (component.allAccordionData) {
+      expect(component.allAccordionData[0]).toEqual({
+        label: 'settings.notifications.notificationPreferences.items.files',
+        value: SubscriptionFrequency.Instant,
+        type: 'dropdown',
+        options: component.subscriptionFrequencyOptions,
+        event: SubscriptionEvent.FileUpdated,
+      });
+
+      expect(component.allAccordionData[1]).toEqual({
+        label: 'settings.notifications.notificationPreferences.items.files',
+        value: SubscriptionFrequency.Daily,
+        type: 'dropdown',
+        options: component.subscriptionFrequencyOptions,
+        event: SubscriptionEvent.GlobalFileUpdated,
+      });
+    }
+  });
+
+  it('should emit notification value change when changeEmittedValue is called', () => {
+    vi.spyOn(component.notificationEmitValue, 'emit');
+    fixture.componentRef.setInput('notifications', mockNotifications);
+    fixture.detectChanges();
+
+    const emittedValue = { index: 0, value: SubscriptionFrequency.Never };
+    component.changeEmittedValue(emittedValue);
+
+    expect(component.notificationEmitValue.emit).toHaveBeenCalledWith({
+      id: mockNotifications[0].id,
+      event: SubscriptionEvent.FileUpdated,
+      frequency: SubscriptionFrequency.Never,
+    });
+  });
+
+  it('should not emit when allAccordionData is undefined', () => {
+    vi.spyOn(component.notificationEmitValue, 'emit');
+    component.allAccordionData = undefined;
+
+    const emittedValue = { index: 0, value: SubscriptionFrequency.Never };
+    component.changeEmittedValue(emittedValue);
+
+    expect(component.notificationEmitValue.emit).not.toHaveBeenCalled();
+  });
+
+  it('should handle multiple notifications correctly', () => {
+    const multipleNotifications = MOCK_NOTIFICATION_SUBSCRIPTIONS.slice(0, 3);
+
+    fixture.componentRef.setInput('notifications', multipleNotifications);
+    fixture.detectChanges();
+
+    expect(component.allAccordionData?.length).toBe(3);
+
+    if (component.allAccordionData) {
+      expect(component.allAccordionData[0].event).toBe(SubscriptionEvent.FileUpdated);
+      expect(component.allAccordionData[1].event).toBe(SubscriptionEvent.GlobalFileUpdated);
+    }
+  });
+});

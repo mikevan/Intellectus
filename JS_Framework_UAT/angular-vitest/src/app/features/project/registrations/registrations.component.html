@@ -1,0 +1,30 @@
+<osf-sub-header
+  [showButton]="hasAdminAccess()"
+  [buttonLabel]="'project.registrations.addRegistration' | translate"
+  [isButtonDisabled]="isProjectReadOnly()"
+  [buttonTooltip]="(isProjectReadOnly() ? 'common.errorMessages.actionUnavailable' : '') | translate"
+  [title]="'navigation.registrations' | translate"
+  (buttonClick)="addRegistration()"
+/>
+@if (isRegistrationsLoading()) {
+  <osf-loading-spinner />
+} @else {
+  <section class="flex flex-column bg-white flex-1 h-full p-5 gap-4">
+    @if (!registrations().length) {
+      <p>{{ 'project.registrations.emptyState' | translate }}</p>
+    } @else {
+      <div class="flex-column flex flex-1 w-full gap-4">
+        @for (registration of registrations(); track registration.id) {
+          <osf-registration-card [registrationData]="registration" />
+        }
+        @if (registrationsTotalCount() > itemsPerPage) {
+          <osf-custom-paginator
+            [first]="first"
+            [totalCount]="registrationsTotalCount()"
+            (pageChanged)="onPageChange($event)"
+          />
+        }
+      </div>
+    }
+  </section>
+}

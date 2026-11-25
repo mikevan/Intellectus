@@ -1,0 +1,25 @@
+.vscode/**
+src/**
+test/**
+out/**
+node_modules/**
+vendor/**
+esbuild.mjs
+tsconfig*.json
+scratch/**
+**/*.map
+.gitignore
+vitest.config.ts
+.deeptest/**
+.refactorit/**
+*.vsix
+
+.keepsafe/**
+.untangleit/**
+_to_delete/**
+Claude outputs/**
+*.zip
+.vscodeignore
+media/**
+!media/deeptestLogo.png
+!media/*.svg

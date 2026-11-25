@@ -1,0 +1,6 @@
+.gitignore
+node_modules/**
+*.vsix
+scripts/**
+ROADMAP.md
+library/**

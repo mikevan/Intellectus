@@ -1,0 +1,53 @@
+<p-accordion class="accordion-border p-4 py-4 no-padding w-full">
+  <p-accordion-panel value="0">
+    <p-accordion-header class="flex flex-row column-gap-3 align-items-center">
+      {{ 'registry.overview.updates' | translate }}
+    </p-accordion-header>
+
+    <p-accordion-content>
+      <div class="flex flex-column gap-2 pt-4 align-items-center justify-content-center">
+        @if (revisions().length > 0) {
+          @for (revision of revisions(); track $index; let last = $last) {
+            <p-button
+              severity="info"
+              class="w-full"
+              [class.current-revision]="selectedRevisionIndex() === $index"
+              styleClass="w-full"
+              [label]="revision.label | translate: { version: revisions().length - $index - 1 }"
+              (onClick)="emitOpenRevision($index)"
+            />
+          }
+
+          @if (canEdit()) {
+            @if (registryAcceptedUnapproved()) {
+              <p-button
+                class="w-full"
+                styleClass="w-full"
+                [label]="'registry.overview.reviewUpdate' | translate"
+                [routerLink]="['/registries/revisions/', unApprovedRevisionId(), 'review']"
+              />
+            }
+            @if (registryApproved()) {
+              <p-button
+                class="w-full"
+                styleClass="w-full"
+                (onClick)="startUpdateRegistration()"
+                [label]="'common.buttons.update' | translate"
+                [loading]="isSubmitting()"
+              />
+            }
+            @if (registryInProgress()) {
+              <p-button
+                class="w-full"
+                styleClass="w-full"
+                (onClick)="continueUpdateHandler()"
+                [label]="'common.buttons.continueUpdate' | translate"
+                [loading]="isSubmitting()"
+              />
+            }
+          }
+        }
+      </div>
+    </p-accordion-content>
+  </p-accordion-panel>
+</p-accordion>

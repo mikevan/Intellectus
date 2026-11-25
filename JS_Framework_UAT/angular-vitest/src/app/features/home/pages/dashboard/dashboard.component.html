@@ -1,0 +1,104 @@
+<section class="max-w-full flex-1 xl:mt-6">
+  @if (areProjectsLoading()) {
+    <osf-loading-spinner />
+  } @else {
+    <osf-sub-header
+      [showButton]="!isWorkflowLauncherEnabled()"
+      [title]="subHeaderTitle() | translate"
+      [icon]="'fas fa-home'"
+      [buttonLabel]="'home.loggedIn.dashboard.createProject' | translate"
+      [isButtonDisabled]="projectCreationDisabled()"
+      [buttonTooltip]="buttonTooltip() | translate"
+      (buttonClick)="createProject()"
+    />
+
+    <osf-scheduled-banner />
+
+    @if (isWorkflowLauncherEnabled()) {
+      <osf-workflow-launcher-section />
+    }
+
+    @if (existsProjects()) {
+      <div class="quick-search-container py-4 px-3 md:px-4">
+        <p class="text-center mb-4 xl:mb-6">
+          {{ 'home.loggedIn.dashboard.quickSearch.goTo' | translate }}
+          <a class="font-bold" routerLink="/my-projects">
+            {{ 'home.loggedIn.dashboard.quickSearch.myProjects' | translate }}
+          </a>
+          {{ 'home.loggedIn.dashboard.quickSearch.toOrganize' | translate }}
+          <a class="font-bold" routerLink="/search">
+            {{ 'home.loggedIn.dashboard.quickSearch.search' | translate }}
+          </a>
+          {{ 'home.loggedIn.dashboard.quickSearch.osf' | translate }}
+        </p>
+
+        <osf-search-input
+          [placeholder]="'home.loggedIn.dashboard.quickSearch.searchPlaceholder' | translate"
+          [control]="searchControl"
+        />
+
+        <osf-my-projects-table
+          class="block mt-4"
+          [items]="filteredProjects()"
+          [tableParams]="tableParams()"
+          [sortColumn]="sortColumn()"
+          [sortOrder]="sortOrder()"
+          [isLoading]="areProjectsLoading()"
+          (pageChange)="onPageChange($event)"
+          (sort)="onSort($event)"
+          (itemClick)="navigateToProject($event)"
+        />
+      </div>
+
+      <div
+        class="latest-research-container flex flex-column gap-4 py-6 px-3 md:px-4 xl:flex-row xl:justify-content-between"
+      >
+        <div>
+          <h1>{{ 'home.loggedIn.latestResearch.title' | translate }}</h1>
+          <p class="mt-2">{{ 'home.loggedIn.latestResearch.subtitle' | translate }}</p>
+        </div>
+
+        <p-button
+          routerLink="/preprints"
+          [label]="'home.loggedIn.latestResearch.button' | translate"
+          severity="success"
+        />
+      </div>
+    } @else {
+      <div class="flex flex-column align-items-center bg-white gap-4 text-center py-4 px-6">
+        <p>{{ noProjectsMessage() | translate }}</p>
+
+        <p class="rich-text" [innerHTML]="'home.loggedIn.dashboard.projectTransition' | translate"></p>
+
+        <img
+          class="connected-record-image"
+          ngSrc="assets/images/connected-record.png"
+          width="896"
+          height="504"
+          [alt]="'home.loggedOut.support.connectedRecord' | translate"
+        />
+
+        <p-button [label]="'home.loggedIn.dashboard.getStartedHelp' | translate" (onClick)="openInfoLink()" />
+      </div>
+    }
+
+    <div class="flex flex-column p-4">
+      @for (product of dashboardProducts; track product.imageSrc) {
+        @if (product.external) {
+          <a
+            [href]="product.link"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.data-test-products-collections]="product.testId ? '' : null"
+          >
+            <img class="max-w-full" [src]="product.imageSrc" [alt]="product.altKey | translate" />
+          </a>
+        } @else {
+          <a [routerLink]="product.link">
+            <img class="max-w-full" [src]="product.imageSrc" [alt]="product.altKey | translate" />
+          </a>
+        }
+      }
+    </div>
+  }
+</section>

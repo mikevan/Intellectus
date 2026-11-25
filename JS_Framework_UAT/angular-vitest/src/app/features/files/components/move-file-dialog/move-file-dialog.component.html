@@ -1,0 +1,68 @@
+<osf-file-select-destination
+  [projectId]="currentProject()?.id!"
+  [components]="components()"
+  [areComponentsLoading]="areComponentsLoading()"
+  [storageProvider]="storageProvider()"
+  (selectProject)="onProjectChange($event)"
+  (selectStorage)="onStorageChange()"
+></osf-file-select-destination>
+
+@if (showFilesLoading()) {
+  <div class="w-8rem ml-auto mr-auto">
+    <osf-loading-spinner></osf-loading-spinner>
+  </div>
+} @else {
+  <div class="flex flex-column gap-2">
+    <div class="files-table flex flex-column relative">
+      @if (previousFolder()) {
+        <div class="files-table-row px-3">
+          <p-button
+            class="link-btn-no-padding w-full h-full"
+            styleClass="w-full h-full justify-content-start"
+            link
+            (onClick)="openParentFolder()"
+            osfStopPropagation
+          >
+            <i class="fas fa-sm fa-angle-left"></i>
+            <i class="fas fa-folder"></i>
+            {{ currentFolder()?.name ?? '' }}
+          </p-button>
+        </div>
+      }
+      @if (files().length) {
+        <p-virtualscroller
+          [items]="files()"
+          [itemSize]="virtualScrollItemSize"
+          scrollHeight="250px"
+          [showLoader]="true"
+          [loading]="isLoadingMore()"
+          [lazy]="true"
+          (onScrollIndexChange)="onScrollIndexChange($event)"
+        >
+          <ng-template #item let-item let-options="options">
+            <osf-move-file-row
+              [item]="item"
+              [isIndented]="foldersStack().length > 0"
+              [isBlocked]="fileIdsInList().has(item.id) || !hasAddUpdateFeature()"
+              (openFolder)="openFolder($event)"
+            />
+          </ng-template>
+        </p-virtualscroller>
+      } @else {
+        <div class="flex justify-content-center p-4">
+          <h3 class="font-normal text-no-transform">{{ 'files.emptyState' | translate }}</h3>
+        </div>
+      }
+    </div>
+  </div>
+}
+
+<div class="flex justify-content-end gap-2 mt-4">
+  <p-button severity="info" [label]="'common.buttons.cancel' | translate" (onClick)="dialogRef.close()"></p-button>
+
+  <p-button
+    [disabled]="buttonDisabled()"
+    [label]="(isMoveAction ? 'common.buttons.move' : 'common.buttons.copy') | translate"
+    (onClick)="moveFiles()"
+  ></p-button>
+</div>

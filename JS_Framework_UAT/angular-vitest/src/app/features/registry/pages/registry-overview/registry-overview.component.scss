@@ -1,0 +1,19 @@
+.left-section {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  gap: 1.5rem;
+}
+
+.right-section {
+  border: 1px solid var(--grey-2);
+  border-radius: 0.75rem;
+  flex: 1;
+  height: max-content;
+}
+
+.blocks-section {
+  border: 1px solid var(--grey-2);
+  border-radius: 0.75rem;
+  height: max-content;
+}

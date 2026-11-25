@@ -1,0 +1,29 @@
+<div class="flex flex-column gap-4">
+  <div class="flex flex-column gap-2">
+    <p [innerHTML]="'settings.tokens.createdDialog.successMessage' | translate: { tokenName: tokenName() }"></p>
+    <p>
+      {{ 'settings.tokens.createdDialog.warningMessage' | translate }}
+    </p>
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <div class="p-inputgroup">
+      <p-iconfield class="w-full" iconPosition="right">
+        <input class="w-full overflow-ellipsis" pInputText [value]="tokenId()" readonly #tokenInput />
+        <p-inputicon>
+          <osf-copy-button [copyItem]="tokenId()"></osf-copy-button>
+        </p-inputicon>
+      </p-iconfield>
+    </div>
+
+    <p class="warning font-bold">{{ 'settings.tokens.createdDialog.tokenWarning' | translate }}</p>
+  </div>
+
+  <div class="flex justify-content-end mt-4">
+    <p-button
+      class="w-12rem btn-full-width"
+      [label]="'common.buttons.close' | translate"
+      (onClick)="dialogRef.close()"
+    ></p-button>
+  </div>
+</div>

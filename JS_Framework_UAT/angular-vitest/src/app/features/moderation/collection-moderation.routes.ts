@@ -1,0 +1,55 @@
+import { provideStates } from '@ngxs/store';
+
+import { Routes } from '@angular/router';
+
+import { CollectionsModerationState } from '@osf/features/moderation/store/collections-moderation';
+import { CurrentResourceType, ResourceType } from '@osf/shared/enums/resource-type.enum';
+import { ActivityLogsState } from '@shared/stores/activity-logs';
+import { CollectionsState } from '@shared/stores/collections';
+
+import { ModeratorsState } from './store/moderators';
+import { ProviderSubscriptionsState } from './store/provider-subscriptions';
+import { CollectionModerationTab } from './enums';
+
+export const collectionModerationRoutes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('@osf/features/moderation/pages/collection-moderation/collection-moderation.component').then(
+        (m) => m.CollectionModerationComponent
+      ),
+    providers: [provideStates([ActivityLogsState, CollectionsState])],
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'all-items',
+      },
+      {
+        path: 'all-items',
+        loadComponent: () =>
+          import('./components/collection-moderation-submissions/collection-moderation-submissions.component').then(
+            (m) => m.CollectionModerationSubmissionsComponent
+          ),
+        data: { tab: CollectionModerationTab.AllItems },
+        providers: [provideStates([CollectionsModerationState])],
+      },
+      {
+        path: 'moderators',
+        loadComponent: () =>
+          import('./components/moderators-list/moderators-list.component').then((m) => m.ModeratorsListComponent),
+        data: { resourceType: ResourceType.Collection, tab: CollectionModerationTab.Moderators },
+        providers: [provideStates([ModeratorsState])],
+      },
+      {
+        path: 'settings',
+        loadComponent: () =>
+          import('./components/notification-settings/notification-settings.component').then(
+            (m) => m.NotificationSettingsComponent
+          ),
+        data: { tab: CollectionModerationTab.Settings, resourceType: CurrentResourceType.Collections },
+        providers: [provideStates([ProviderSubscriptionsState])],
+      },
+    ],
+  },
+];

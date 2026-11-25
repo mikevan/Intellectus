@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.quick-search-container {
+  background-color: var(--white);
+}
+
+.latest-research-container {
+  background-color: var(--bg-blue-3);
+}
+
+.connected-record-image {
+  width: 100%;
+  max-width: 60%;
+  height: auto;
+  object-fit: contain;
+}

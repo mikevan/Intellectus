@@ -1,0 +1,62 @@
+<div class="contributors-dialog flex flex-column gap-4">
+  <div class="flex justify-content-end align-items-center">
+    @if (hasAdminAccess()) {
+      <p-button
+        [label]="'project.contributors.addContributor' | translate"
+        [disabled]="isLoading()"
+        (onClick)="openAddContributorDialog()"
+        data-test-add-button
+      />
+    }
+  </div>
+
+  <div class="filters-container flex flex-column gap-3">
+    <osf-search-input [control]="searchControl" [placeholder]="searchPlaceholder | translate" />
+  </div>
+
+  <osf-contributors-table
+    class="w-full"
+    [(contributors)]="contributors"
+    [tableParams]="tableParams()"
+    [isLoading]="isLoading()"
+    [isLoadingMore]="isLoadingMore()"
+    [showLoadMore]="hasMoreContributors()"
+    [showEmployment]="false"
+    [showEducation]="false"
+    [hasAdminAccess]="hasAdminAccess()"
+    [currentUserId]="currentUser()?.id"
+    (remove)="removeContributor($event)"
+    (loadMore)="loadMoreContributors()"
+  ></osf-contributors-table>
+
+  @if (hasChanges) {
+    <div class="flex gap-2 w-full">
+      <p-button
+        class="w-3"
+        styleClass="w-full"
+        (onClick)="cancel()"
+        severity="info"
+        [label]="'common.buttons.cancel' | translate"
+        data-test-cancel-button
+      >
+      </p-button>
+
+      <p-button
+        class="w-3"
+        styleClass="w-full"
+        [label]="'common.buttons.save' | translate"
+        (onClick)="onSave()"
+        data-test-save-button
+      ></p-button>
+    </div>
+  }
+
+  <div class="flex justify-content-end gap-2 pt-3">
+    <p-button
+      [label]="'common.buttons.close' | translate"
+      (onClick)="onClose()"
+      [disabled]="isLoading()"
+      data-test-close-button
+    ></p-button>
+  </div>
+</div>

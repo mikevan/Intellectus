@@ -1,0 +1,126 @@
+import { BehaviorSubject } from 'rxjs';
+
+import { ActivatedRoute } from '@angular/router';
+
+export class ActivatedRouteMockBuilder {
+  private paramsObj: Record<string, any> = {};
+  private queryParamsObj: Record<string, any> = {};
+  private dataObj: Record<string, any> = {};
+  private firstChildBuilder: ActivatedRouteMockBuilder | null = null;
+  private parentRoute: Partial<ActivatedRoute> | null = null;
+  private hasParent = true;
+
+  private params$ = new BehaviorSubject<Record<string, any>>({});
+  private queryParams$ = new BehaviorSubject<Record<string, any>>({});
+  private data$ = new BehaviorSubject<Record<string, any>>({});
+
+  static create(): ActivatedRouteMockBuilder {
+    return new ActivatedRouteMockBuilder();
+  }
+
+  withId(id: string): ActivatedRouteMockBuilder {
+    this.paramsObj = { ...this.paramsObj, id };
+    this.params$.next(this.paramsObj);
+    return this;
+  }
+
+  withParams(params: Record<string, any>): ActivatedRouteMockBuilder {
+    this.paramsObj = { ...this.paramsObj, ...params };
+    this.params$.next(this.paramsObj);
+    return this;
+  }
+
+  withQueryParams(query: Record<string, any>): ActivatedRouteMockBuilder {
+    this.queryParamsObj = { ...this.queryParamsObj, ...query };
+    this.queryParams$.next(this.queryParamsObj);
+    return this;
+  }
+
+  withData(data: Record<string, any>): ActivatedRouteMockBuilder {
+    this.dataObj = { ...this.dataObj, ...data };
+    this.data$.next(this.dataObj);
+    return this;
+  }
+
+  withNoParent(): ActivatedRouteMockBuilder {
+    this.hasParent = false;
+    this.parentRoute = null;
+    return this;
+  }
+
+  withParentRoute(parentRoute: Partial<ActivatedRoute>): ActivatedRouteMockBuilder {
+    this.hasParent = true;
+    this.parentRoute = parentRoute;
+    return this;
+  }
+
+  withFirstChild(configureFn: (builder: ActivatedRouteMockBuilder) => void): ActivatedRouteMockBuilder {
+    this.firstChildBuilder = new ActivatedRouteMockBuilder();
+    configureFn(this.firstChildBuilder);
+    return this;
+  }
+
+  build(): Partial<ActivatedRoute> {
+    const paramMap = {
+      get: vi.fn((key: string) => this.paramsObj[key]),
+      has: vi.fn((key: string) => key in this.paramsObj),
+      getAll: vi.fn((key: string) => (this.paramsObj[key] ? [this.paramsObj[key]] : [])),
+      keys: Object.keys(this.paramsObj),
+    };
+
+    const firstChild = this.firstChildBuilder ? this.firstChildBuilder.build() : null;
+
+    const parent = this.hasParent
+      ? (this.parentRoute ??
+        ({
+          params: this.params$.asObservable(),
+          snapshot: {
+            params: this.paramsObj,
+          },
+        } as any))
+      : null;
+
+    const route: Partial<ActivatedRoute> = {
+      parent,
+      snapshot: {
+        params: this.paramsObj,
+        queryParams: this.queryParamsObj,
+        data: this.dataObj,
+        paramMap: paramMap,
+        firstChild: firstChild?.snapshot ?? null,
+      } as any,
+      firstChild: firstChild as any,
+      params: this.params$.asObservable(),
+      queryParams: this.queryParams$.asObservable(),
+      data: this.data$.asObservable(),
+    };
+
+    this.params$.next(this.paramsObj);
+    this.queryParams$.next(this.queryParamsObj);
+    this.data$.next(this.dataObj);
+
+    return route;
+  }
+}
+
+export const ActivatedRouteMock = {
+  withId(id: string) {
+    return ActivatedRouteMockBuilder.create().withId(id);
+  },
+  withParams(params: Record<string, any>) {
+    return ActivatedRouteMockBuilder.create().withParams(params);
+  },
+  withQueryParams(query: Record<string, any>) {
+    return ActivatedRouteMockBuilder.create().withQueryParams(query);
+  },
+  withData(data: Record<string, any>) {
+    return ActivatedRouteMockBuilder.create().withData(data);
+  },
+};
+
+export function provideActivatedRouteMock(mock?: ReturnType<ActivatedRouteMockBuilder['build']>) {
+  return {
+    provide: ActivatedRoute,
+    useFactory: () => mock ?? ActivatedRouteMockBuilder.create().build(),
+  };
+}

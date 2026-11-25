@@ -1,0 +1,280 @@
+import { createDispatchMap, select, Store } from '@ngxs/store';
+
+import { TranslatePipe } from '@ngx-translate/core';
+
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { Button } from 'primeng/button';
+import { Card } from 'primeng/card';
+import { Skeleton } from 'primeng/skeleton';
+
+import { isPlatformBrowser } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  OnInit,
+  PLATFORM_ID,
+  signal,
+} from '@angular/core';
+import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+
+import { ENVIRONMENT } from '@core/provider/environment.provider';
+import { StorageItemSelectorComponent } from '@osf/shared/components/addons/storage-item-selector/storage-item-selector.component';
+import { SubHeaderComponent } from '@osf/shared/components/sub-header/sub-header.component';
+import { AddonServiceNames } from '@osf/shared/enums/addon-service-names.enum';
+import { AddonType } from '@osf/shared/enums/addon-type.enum';
+import { OperationNames } from '@osf/shared/enums/operation-names.enum';
+import { getAddonTypeString } from '@osf/shared/helpers/addon-type.helper';
+import { AddonModel } from '@osf/shared/models/addons/addon.model';
+import { ConfiguredAddonModel } from '@osf/shared/models/addons/configured-addon.model';
+import { AddonFormService } from '@osf/shared/services/addons/addon-form.service';
+import { AddonOperationInvocationService } from '@osf/shared/services/addons/addon-operation-invocation.service';
+import { ToastService } from '@osf/shared/services/toast.service';
+import {
+  AddonsSelectors,
+  ClearOperationInvocations,
+  CreateAddonOperationInvocation,
+  GetLinkAddons,
+  UpdateConfiguredAddon,
+} from '@osf/shared/stores/addons';
+
+import { AddonDialogService } from '../../services/addon-dialog.service';
+
+@Component({
+  selector: 'osf-configure-addon',
+  imports: [
+    SubHeaderComponent,
+    TranslatePipe,
+    Button,
+    RouterLink,
+    Card,
+    ReactiveFormsModule,
+    FormsModule,
+    Skeleton,
+    BreadcrumbModule,
+    StorageItemSelectorComponent,
+  ],
+  templateUrl: './configure-addon.component.html',
+  styleUrl: './configure-addon.component.scss',
+  providers: [AddonDialogService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class ConfigureAddonComponent implements OnInit {
+  private router = inject(Router);
+  private route = inject(ActivatedRoute);
+  private destroyRef = inject(DestroyRef);
+  private toastService = inject(ToastService);
+  private addonDialogService = inject(AddonDialogService);
+  private addonFormService = inject(AddonFormService);
+  private operationInvocationService = inject(AddonOperationInvocationService);
+  private store = inject(Store);
+  private environment = inject(ENVIRONMENT);
+  private platformId = inject(PLATFORM_ID);
+  private isBrowser = isPlatformBrowser(this.platformId);
+
+  accountNameControl = new FormControl('');
+  storageAddon = signal<AddonModel | null>(null);
+  addon = signal<ConfiguredAddonModel | null>(null);
+
+  readonly isGoogleDrive = computed(() => this.storageAddon()?.wbKey === 'googledrive');
+  readonly canRename = computed(() => this.addon()?.currentUserIsOwner ?? false);
+
+  isEditMode = signal<boolean>(false);
+  selectedStorageItemId = signal('');
+  selectedStorageItemUrl = signal('');
+  selectedResourceType = signal('');
+  addonsUserReference = select(AddonsSelectors.getAddonsUserReference);
+  operationInvocation = select(AddonsSelectors.getOperationInvocation);
+  linkAddons = select(AddonsSelectors.getLinkAddons);
+  selectedStorageItem = select(AddonsSelectors.getSelectedStorageItem);
+
+  addonServiceName = computed(
+    () =>
+      AddonServiceNames[this.addon()?.externalServiceName as keyof typeof AddonServiceNames] ||
+      this.addon()?.displayName
+  );
+
+  readonly baseUrl = computed(() => {
+    const currentUrl = this.router.url;
+    return currentUrl.split('/addons')[0];
+  });
+
+  readonly resourceUri = computed(() => {
+    const id = this.route.parent?.parent?.snapshot.params['id'];
+    return `${this.environment.webUrl}/${id}`;
+  });
+
+  readonly addonTypeString = computed(() => {
+    return getAddonTypeString(this.addon()) as AddonType;
+  });
+
+  readonly selectedItemLabel = computed(() => {
+    const addonType = this.addonTypeString();
+    return addonType === AddonType.LINK
+      ? 'settings.addons.configureAddon.linkedItem'
+      : 'settings.addons.configureAddon.selectedFolder';
+  });
+
+  readonly supportedResourceTypes = computed(() => {
+    const linkAddons = this.linkAddons();
+    if (linkAddons?.length && this.addonTypeString() === AddonType.LINK) {
+      const addon = linkAddons.find((a) => this.addon()?.externalServiceName === a.externalServiceName);
+      return addon?.supportedResourceTypes || [];
+    }
+    return [];
+  });
+
+  readonly actions = createDispatchMap({
+    createAddonOperationInvocation: CreateAddonOperationInvocation,
+    updateConfiguredAddon: UpdateConfiguredAddon,
+    clearOperationInvocations: ClearOperationInvocations,
+    getLinkAddons: GetLinkAddons,
+  });
+
+  constructor() {
+    this.initializeAddon();
+
+    this.destroyRef.onDestroy(() => {
+      if (this.isBrowser) {
+        this.actions.clearOperationInvocations();
+      }
+    });
+
+    effect(() => {
+      if (this.addonTypeString() === AddonType.LINK) {
+        this.actions.getLinkAddons();
+      }
+    });
+  }
+
+  private initializeAddon(): void {
+    const addon = this.router.getCurrentNavigation()?.extras.state?.['addon'] as ConfiguredAddonModel;
+
+    if (addon) {
+      this.storageAddon.set(
+        this.store.selectSnapshot(AddonsSelectors.getStorageAddon(addon.externalStorageServiceId || ''))
+      );
+
+      this.addon.set(addon);
+      this.selectedStorageItemId.set(addon.selectedStorageItemId);
+      this.selectedStorageItemUrl.set(addon.targetUrl || '');
+      this.selectedResourceType.set(addon.resourceType || '');
+      this.accountNameControl.setValue(addon.displayName);
+    } else {
+      this.router.navigate([`${this.baseUrl()}/addons`]);
+    }
+  }
+
+  handleCreateOperationInvocation(operationName: OperationNames, folderId: string): void {
+    const addon = this.addon();
+    if (!addon) return;
+
+    const payload = this.operationInvocationService.createOperationInvocationPayload(addon, operationName, folderId);
+
+    this.actions.createAddonOperationInvocation(payload);
+  }
+
+  handleCreateOperationInvocationWithCursor(
+    operationName: OperationNames,
+    folderId: string,
+    pageCursor?: string
+  ): void {
+    const addon = this.addon();
+    if (!addon) return;
+
+    const payload = this.operationInvocationService.createOperationInvocationPayload(
+      addon,
+      operationName,
+      folderId,
+      pageCursor
+    );
+
+    this.actions.createAddonOperationInvocation(payload);
+  }
+
+  ngOnInit(): void {
+    if (!this.isGoogleDrive()) {
+      this.handleCreateOperationInvocation(OperationNames.GET_ITEM_INFO, this.selectedStorageItemId());
+    } else {
+      this.isEditMode.set(true);
+    }
+  }
+
+  handleDisconnectAccount(): void {
+    const currentAddon = this.addon();
+    if (!currentAddon) return;
+
+    this.openDisconnectDialog(currentAddon);
+  }
+
+  private openDisconnectDialog(addon: ConfiguredAddonModel): void {
+    const dialogRef = this.addonDialogService.openDisconnectDialog(addon);
+
+    dialogRef.subscribe((result) => {
+      if (result?.success) {
+        this.router.navigate([`${this.baseUrl()}/addons`]);
+        this.toastService.showSuccess('settings.addons.toast.disconnectSuccess', {
+          addonName: this.addon()?.displayName,
+        });
+      }
+    });
+  }
+
+  toggleEditMode(): void {
+    if (!this.isEditMode()) {
+      this.resetConfigurationForm();
+      if (!this.isGoogleDrive()) {
+        this.handleCreateOperationInvocation(OperationNames.LIST_ROOT_ITEMS, this.selectedStorageItemId());
+      } else {
+        this.handleCreateOperationInvocation(OperationNames.GET_ITEM_INFO, this.selectedStorageItemId());
+      }
+    } else {
+      if (this.isGoogleDrive()) {
+        this.router.navigate([`${this.baseUrl()}/addons`]);
+        return;
+      }
+      this.handleCreateOperationInvocation(OperationNames.GET_ITEM_INFO, this.addon()!.selectedStorageItemId);
+    }
+
+    this.isEditMode.set(!this.isEditMode());
+  }
+
+  handleUpdateAddonConfiguration(): void {
+    const currentAddon = this.addon();
+    if (!currentAddon) return;
+
+    const payload = this.addonFormService.generateConfiguredAddonUpdatePayload(
+      currentAddon,
+      this.addonsUserReference()[0].id || '',
+      this.resourceUri(),
+      this.accountNameControl.value || '',
+      this.selectedStorageItemId() || '',
+      this.addonTypeString(),
+      this.selectedResourceType(),
+      this.selectedStorageItemUrl()
+    );
+
+    this.actions.updateConfiguredAddon(payload, this.addonTypeString(), currentAddon.id).subscribe({
+      complete: () => {
+        this.router.navigate([`${this.baseUrl()}/addons`]);
+        this.toastService.showSuccess('settings.addons.toast.updateSuccess', {
+          addonName: this.addonServiceName(),
+        });
+      },
+    });
+  }
+
+  private resetConfigurationForm(): void {
+    this.selectedStorageItemId.set('');
+    this.selectedStorageItemUrl.set('');
+    const currentAddon = this.addon();
+    if (currentAddon) {
+      this.selectedResourceType.set(currentAddon.resourceType || '');
+      this.accountNameControl.setValue(currentAddon.displayName);
+    }
+  }
+}

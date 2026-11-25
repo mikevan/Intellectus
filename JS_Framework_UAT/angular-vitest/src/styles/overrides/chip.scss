@@ -1,0 +1,39 @@
+.p-chip {
+  --p-chip-background: var(--bg-blue-2);
+  --p-chip-border-radius: 0.25rem;
+  --p-chip-color: var(--dark-blue-1);
+  --p-chip-padding-y: 0.25rem;
+  --p-chip-padding-x: 0.75rem;
+  --p-chip-remove-icon-color: var(--dark-blue-1);
+  --p-chip-remove-icon-font-size: 0.7rem;
+  --p-chip-remove-icon-size: 0.7rem;
+
+  &:has(.p-chip-remove-icon) {
+    padding-inline-end: var(--p-chip-padding-x);
+  }
+
+  &:hover {
+    --p-chip-background: var(--bg-blue-3);
+    --p-chip-color: var(--pr-blue-3);
+
+    .p-chip-remove-icon {
+      --p-chip-remove-icon-color: var(--pr-blue-1);
+    }
+  }
+
+  .p-chip-label {
+    line-height: 1.5rem;
+  }
+
+  .p-chip-remove-icon {
+    display: flex;
+    align-items: center;
+    margin-top: 2px;
+  }
+}
+
+.osf-tags-input {
+  input.ng-invalid.ng-touched {
+    border-color: var(--p-inputtext-invalid-border-color);
+  }
+}

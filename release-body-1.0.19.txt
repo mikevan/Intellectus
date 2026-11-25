@@ -1,0 +1,126 @@
+UntangleIt could tell you a method got simpler. It could not tell you the
+method still worked. It measured the tangle before the hand-off and again
+after, which says the shape changed and says nothing at all about whether the
+code does the same thing it did this morning. The person was left taking an
+assistant's word for the only part that matters. That is a strange thing for a
+measurement tool to ask.
+
+So 1.0.19 records what the method actually did. Before the brief goes to the
+assistant, the project's own tests run once more with a Witness recorder
+watching the one method the person selected, and every call it makes is
+written down: the arguments, the outcome, whether it returned, threw,
+resolved, or rejected, and in what order. At "Measure again" the same
+recording runs against whatever came back. The two sets are compared and the
+answer is one of three words. Equivalent, changed, or insufficient.
+
+The third word is the point. A gate that only ever says yes or no will say yes
+when it has nothing to go on, and a confident wrong yes is worse than no gate.
+So it refuses, by name. The method was never exercised by the suite. The
+recorder could not find the target after the assistant moved it. The target is
+a shape we cannot watch. The runs cannot be paired. The arguments differ, so
+the comparison would be meaningless. There is nothing comparable. Six reasons,
+each one a thing the person can act on, and not one of them is a pass.
+
+Six JavaScript and TypeScript runners reach the gate, in three shapes of
+delivery, because that is what the runners allow rather than what we would
+have preferred. Vitest, Mocha, and Playwright's page instrument as the runner
+loads or builds the file. Jest's transform contract is synchronous and the
+instrumenter is not, so the one file is rewritten ahead of the run. Angular
+bundles the application before either runner is involved and offers no hook in
+front of that, so the source is mirrored into a shadow tree with one file
+rewritten and the builder is pointed at the mirror. Playwright reaches only
+the code that runs in the page, and that is written down as a limit: a
+boundary outside the reachable path reports insufficient evidence rather than
+a pass. Python runs the same gate through pytest with the same record shape.
+
+Doing that inside UntangleIt would have meant a second instrumentation path
+next to DeepTest's, aimed at the same six runners, drifting from it the first
+week. So runner delivery moved into Witness, and both tools now reach a
+project's runner through the same code. Witness owns instrumentation delivery
+and behaviour recording. DeepTest owns measurement, attribution, and evidence.
+UntangleIt owns the refactor workflow and reads the recordings. That is why a
+six-runner gate is a short file rather than a second product.
+
+The second half of this release is about what happens when a run dies before a
+single test executes.
+
+A project path containing an apostrophe kills Angular's builder and
+Playwright's component build. Both write the absolute project path into
+generated JavaScript inside a quoted string without escaping it, the quote
+ends the string early, and the generated file does not parse. It was tempting
+to call that ours. It is not: a plain "npx playwright test" from such a path
+fails identically with none of the toolkit involved, and the unescaped import
+is a line in Angular's own application-code-bundle.js. Our own generation was
+already clean, and a test now pins that.
+
+What a person saw, before this, was a verdict of no evidence and a wall of
+runner output, which reads exactly like their code did something wrong. What
+they get now is one line and an offer. Behind the line, the toolkit writes
+down what it established from deterministic evidence: the runner, the
+category, the exact character found in the path, the verbatim error lines,
+what it knows, what it does not know, the remediation it is confident in, and
+the constraints on what must never be recommended. Copilot turns that into
+plain language. It is told not to diagnose anything from scratch when the
+diagnosis already exists, because an assistant re-deriving a known cause sends
+people to the wrong place. When the toolkit cannot classify a failure it says
+so in the packet, ships no remediation, and the brief tells Copilot to explain
+the evidence and name no cause it does not support.
+
+The first four attempts at this were hand-written paragraphs, rewritten four
+times, with a test pinning every sentence. That is an encyclopedia of prose
+living inside a measurement tool, out of date the week it ships. The toolkit
+now writes facts and boundaries and lets the assistant write the sentences.
+The hand-off is the same clipboard and chat pattern UntangleIt already used
+for its untangle brief, not a second agent interface.
+
+The constraints are the part worth guarding. Do not recommend Windows-specific
+path handling, because hard-coded drive letters and backslash rules make the
+project fail on Linux. Do not modify application logic, tests, or
+configuration, because nothing in the project caused this. Do not propose
+patching Angular, Playwright, or Vite. If the project already contains code
+that quotes or normalises paths, leave it alone: somebody solved a real
+problem there. And the path condition offers explanation only, never a fix,
+because the remedy is moving a folder and an assistant offered a fix button
+would write the very path-juggling the constraints forbid.
+
+Raw runner output has not gone anywhere. It stays in the log, one press away,
+with the matched evidence and the generated-file paths. The change is that it
+is no longer the first thing a non-expert reads.
+
+Things that cost time and are written down rather than tidied away. A Python
+recording came back equivalent when it should have been changed, because
+CPython validates a .pyc by size and mtime to the second, so a same-length
+edit inside one second was invisible; the recorder now runs with bytecode
+writing off. A changed-return proof case reported unstable pairing until it
+turned out the fixture's own assertion was truncating the suite, so the
+fixture was rewritten and the truncation kept as its own test. Both browser
+gate tests failed for three separate reasons at once: Witness was not checking
+for Playwright before reading package.json, the boundary runtime and the main
+runtime both declared top-level fs in the same page, and Angular's shadow tree
+had no tsconfig, so the builder failed the whole bundle on the first file
+carrying Angular metadata. Playwright records with a null test identity unless
+the identity is stamped at drain, because it has no per-test page hook. A
+mutation survived in the boundary runtime and proved a thenable branch was
+already dead. And the Angular Karma fixture's lockfile was structurally
+invalid and refused npm ci, which is why it is regenerated here.
+
+Also in this delivery: the six fixture manifests and lockfiles that had
+drifted apart are reconciled, so a fresh checkout can run npm ci and reproduce
+the qualification. release.ps1 now derives the toolkit root from its own
+location instead of carrying a workspace path in a string, which broke the
+moment the workspace moved. DeepTest's .gitignore rules for the gate's working
+folders carried a slash, so git anchored them to the repository root and they
+never reached the fixtures; they are anchored properly now, and the rule that
+keeps .untangleit/runs.json in the repository still works.
+
+Verification before release:
+
+* Complexity 104/104, with no file changed in this release
+* Witness 49/49
+* UntangleIt 36/36, including both browser gate tests
+* DeepTest 225/225
+* Angular Karma behaviour gate passed from
+  C:\workspace\MikeVans_AI_Development_Toolkit
+* Playwright CT behaviour gate passed from the same path
+* library: 15 documents mirrored, every mirror matches
+* all five trees built, packaged, and installed

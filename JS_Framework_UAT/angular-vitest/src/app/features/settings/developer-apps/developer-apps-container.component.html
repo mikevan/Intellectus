@@ -1,0 +1,11 @@
+<osf-sub-header
+  [showButton]="isBaseRoute()"
+  [buttonLabel]="'settings.developerApps.buttons.create' | translate"
+  [title]="'settings.developerApps.header' | translate"
+  [icon]="'fas fa-gear'"
+  (buttonClick)="createDeveloperApp()"
+/>
+
+<section class="flex flex-column flex-1">
+  <router-outlet />
+</section>

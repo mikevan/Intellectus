@@ -1,0 +1,153 @@
+<p-button
+  severity="success"
+  tooltipPosition="left"
+  [label]="labelDecisionButton() | translate | titlecase"
+  [disabled]="makeDecisionButtonDisabled()"
+  [pTooltip]="makeDecisionButtonDisabled() ? ('preprints.details.decision.noReasonProvided' | translate) : ''"
+  (onClick)="dialogVisible = true"
+/>
+
+<p-dialog
+  [header]="labelDecisionDialogHeader() | translate"
+  [modal]="true"
+  draggable="false"
+  styleClass="w-28rem"
+  [(visible)]="dialogVisible"
+>
+  <div class="w-full flex flex-column gap-2 align-items-start">
+    @if (isPendingWithdrawal()) {
+      <section class="w-full flex flex-column gap-2">
+        <div class="flex flex-row align-items-start gap-2">
+          <p-radio-button
+            inputId="approve"
+            class="pt-1"
+            [value]="ReviewsState.Accepted"
+            [(ngModel)]="decision"
+            (change)="requestDecisionToggled()"
+          />
+
+          <label for="approve" class="cursor-pointer">
+            <h4 class="line-height-3">{{ 'preprints.details.decision.approve.label' | translate }}</h4>
+            <p class="line-height-3">{{ 'preprints.details.decision.approve.explanation' | translate }}</p>
+          </label>
+        </div>
+
+        <div class="flex flex-row align-items-start gap-2">
+          <p-radio-button
+            inputId="decline"
+            class="pt-1"
+            [value]="ReviewsState.Rejected"
+            [(ngModel)]="decision"
+            (change)="requestDecisionToggled()"
+          />
+
+          <label for="decline" class="cursor-pointer">
+            <h4 class="line-height-3">{{ 'preprints.details.decision.decline.label' | translate }}</h4>
+            <p class="line-height-3">{{ 'preprints.details.decision.decline.explanation' | translate }}</p>
+          </label>
+        </div>
+      </section>
+
+      <section class="w-full">
+        <div class="flex justify-content-between align-items-center gap-4">
+          <label for="withdrawalJustification" class="cursor-pointer">
+            {{ labelRequestDecisionJustification() | translate }}
+          </label>
+          <p>{{ requestDecisionJustification()?.length ?? 0 }}/{{ decisionCommentLimit }}</p>
+        </div>
+
+        <textarea
+          pTextarea
+          id="withdrawalJustification"
+          class="w-full"
+          [rows]="4"
+          [(ngModel)]="requestDecisionJustification"
+          [maxlength]="decisionCommentLimit"
+        ></textarea>
+
+        @if (didValidate() && decision() === ReviewsState.Rejected) {
+          <p-message class="simple-variant flex mt-1" severity="error" variant="simple" size="small">
+            {{ requestDecisionJustificationErrorMessage() }}
+          </p-message>
+        }
+      </section>
+
+      <section class="mt-6 w-full flex gap-2 justify-content-end">
+        <p-button
+          class="w-12rem btn-full-width"
+          severity="success"
+          [label]="labelSubmitButton() | translate | titlecase"
+          [loading]="saving()"
+          (onClick)="submit()"
+        />
+      </section>
+    } @else {
+      @if (preprint()?.reviewsState === ReviewsState.Withdrawn) {
+        {{ latestAction()!.comment }}
+      } @else {
+        <section class="w-full">
+          <ul class="ml-4">
+            <li class="list-disc line-height-3">{{ settingsComments() | translate }}</li>
+            @if (!provider().reviewsCommentsPrivate) {
+              <li class="list-disc line-height-3">{{ settingsNames() | translate }}</li>
+            }
+            <li class="list-disc line-height-3">{{ settingsModeration() | translate }}</li>
+          </ul>
+        </section>
+
+        <section class="w-full mt-4 flex flex-column gap-2">
+          <div class="flex flex-row align-items-start gap-2">
+            <p-radio-button inputId="accept" class="pt-1" [value]="ReviewsState.Accepted" [(ngModel)]="decision" />
+
+            <label for="accept" class="cursor-pointer">
+              <h4 class="line-height-3">{{ 'preprints.details.decision.accept.label' | translate }}</h4>
+              <p class="line-height-3">{{ acceptOptionExplanation() | translate }}</p>
+            </label>
+          </div>
+
+          <div class="flex flex-row align-items-start gap-2">
+            <p-radio-button inputId="reject" class="pt-1" [value]="rejectRadioButtonValue()" [(ngModel)]="decision" />
+
+            <label for="reject" class="cursor-pointer">
+              <h4 class="line-height-3">{{ rejectOptionLabel() | translate }}</h4>
+              <p class="line-height-3">{{ rejectOptionExplanation() | translate }}</p>
+            </label>
+          </div>
+        </section>
+
+        <section class="w-full mt-4">
+          <p class="flex justify-content-end">{{ reviewerComment()?.length ?? 0 }}/{{ decisionCommentLimit }}</p>
+
+          <textarea
+            pTextarea
+            id="comment"
+            class="w-full mt-1"
+            [placeholder]="'preprints.details.decision.commentPlaceholder' | translate"
+            [rows]="4"
+            [(ngModel)]="reviewerComment"
+            [maxlength]="decisionCommentLimit"
+          ></textarea>
+        </section>
+
+        <section class="mt-6 w-full flex gap-2 justify-content-end">
+          @if (preprint()?.reviewsState !== ReviewsState.Pending) {
+            <p-button
+              class="w-12rem btn-full-width"
+              severity="info"
+              [label]="'common.buttons.cancel' | translate"
+              (onClick)="cancel()"
+            />
+          }
+          <p-button
+            class="w-12rem btn-full-width"
+            severity="success"
+            [label]="labelSubmitButton() | translate | titlecase"
+            [disabled]="submitButtonDisabled()"
+            [loading]="saving()"
+            (onClick)="submit()"
+          />
+        </section>
+      }
+    }
+  </div>
+</p-dialog>

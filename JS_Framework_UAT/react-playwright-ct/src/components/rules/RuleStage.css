@@ -1,0 +1,313 @@
+.rule-stage {
+  container-type: inline-size;
+  contain: layout paint;
+  min-height: min(800px, calc(100svh - 92px));
+  min-width: 0;
+}
+
+.iframe-stack {
+  height: 100%;
+  min-height: min(800px, calc(100svh - 92px));
+  min-width: 0;
+  overflow: clip;
+  position: relative;
+}
+
+.rule-frame {
+  background: #fffdf7;
+  border: 1px solid #151515;
+  contain: layout;
+  inset: 0;
+  opacity: 0;
+  overflow: visible;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 280ms var(--motion-swipe);
+  visibility: hidden;
+  will-change: opacity;
+}
+
+.rule-frame::after {
+  background: #fffdf7;
+  border: 2px solid #151515;
+  box-shadow: 5px 5px 0 #151515;
+  color: #151515;
+  content: attr(data-decision-label);
+  font:
+    800 34px / 1 "Trebuchet MS",
+    sans-serif;
+  left: 50%;
+  opacity: 0;
+  padding: 10px 16px;
+  pointer-events: none;
+  position: absolute;
+  top: 84px;
+  transform: translate(-50%, -10px) rotate(-4deg) scale(0.88);
+  transition:
+    opacity 140ms ease,
+    transform 220ms var(--motion-snap);
+  z-index: 6;
+}
+
+.rule-frame.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: none;
+  visibility: visible;
+  z-index: 3;
+}
+
+.rule-frame.is-queued-next,
+.rule-frame.is-queued-after {
+  pointer-events: none;
+  visibility: visible;
+}
+
+.rule-frame.is-queued-next {
+  opacity: 0.32;
+  transform: translate(12px, 12px) rotate(1.2deg) scale(0.982);
+  z-index: 2;
+}
+
+.rule-frame.is-queued-after {
+  opacity: 0.16;
+  transform: translate(22px, 22px) rotate(2deg) scale(0.964);
+  z-index: 1;
+}
+
+.rule-frame.is-exiting {
+  opacity: 0;
+  pointer-events: none;
+  transform: none;
+}
+
+.rule-frame.is-exiting::after {
+  opacity: 1;
+  transform: translate(-50%, 0) rotate(-4deg) scale(1);
+}
+
+.rule-frame.is-exiting-off {
+  transform: none;
+}
+
+.rule-frame.is-exiting-info {
+  transform: none;
+}
+
+.rule-frame.is-exiting-warn {
+  transform: none;
+}
+
+.rule-frame.is-exiting-error {
+  transform: none;
+}
+
+.docs-frame {
+  border: 0;
+  display: block;
+  height: calc(100% - 62px);
+  max-width: 100%;
+  width: 100%;
+}
+
+.skip-documentation {
+  background: #fffdf7;
+  border: 2px solid #151515;
+  box-shadow: 4px 4px 0 #151515;
+  color: #151515;
+  font:
+    800 14px / 1.1 "Trebuchet MS",
+    sans-serif;
+  left: 16px;
+  padding: 10px 12px;
+  position: absolute;
+  top: 70px;
+  z-index: 7;
+}
+
+.skip-documentation:not(:focus-visible) {
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  padding: 0;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.skip-documentation:focus-visible {
+  outline: 3px solid #d33b53;
+  outline-offset: 3px;
+}
+
+@media (forced-colors: active) {
+  .skip-documentation {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+    color: CanvasText;
+  }
+
+  .skip-documentation:focus-visible {
+    outline: 2px solid CanvasText;
+    outline-offset: 2px;
+  }
+}
+
+.rule-frame.is-queued-next .docs-frame,
+.rule-frame.is-queued-after .docs-frame {
+  visibility: hidden;
+}
+
+.rule-meta {
+  align-items: center;
+  border-bottom: 1px solid #151515;
+  display: grid;
+  gap: 2px;
+  min-height: 48px;
+  padding: 7px 16px;
+}
+
+.rule-meta div {
+  align-items: baseline;
+  display: flex;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rule-meta span {
+  color: #d33b53;
+  flex: 0 0 auto;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.rule-meta strong {
+  color: #151515;
+  font-size: 17px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rule-meta h2 {
+  color: #151515;
+  font-size: 17px;
+  line-height: 1.1;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rule-meta p,
+.finished-stage p {
+  color: #4c463d;
+  margin: 0;
+}
+
+.rule-meta p {
+  font-size: 13px;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.decision-bar {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 253, 247, 0.76);
+  border: 1px solid #151515;
+  bottom: 8px;
+  contain: layout;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  left: 10px;
+  min-width: 0;
+  padding: 5px;
+  position: absolute;
+  right: 10px;
+  transition:
+    transform 260ms var(--motion-snap),
+    background-color 180ms ease;
+  z-index: 5;
+}
+
+.decision-bar button {
+  min-height: 44px;
+  min-width: 0;
+  padding: 8px 28px 8px 6px;
+  position: relative;
+  width: 100%;
+}
+
+.decision-bar button::after {
+  background: #151515;
+  bottom: -6px;
+  content: "";
+  height: 3px;
+  left: 50%;
+  opacity: 0;
+  position: absolute;
+  transform: translateX(-50%) scaleX(0.25);
+  transition:
+    opacity 160ms ease,
+    transform 220ms var(--motion-snap);
+  width: 44%;
+}
+
+.decision-bar button.is-selected-decision {
+  box-shadow: 3px 3px 0 #151515;
+  filter: saturate(1.18);
+  transform: translate(-4px, -4px) rotate(-1deg);
+}
+
+.decision-bar button.is-selected-decision::after {
+  opacity: 1;
+  transform: translateX(-50%) scaleX(1);
+}
+
+.decision-status {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.finished-stage {
+  align-content: center;
+  background: #fffdf7;
+  border: 1px solid #151515;
+  display: grid;
+  justify-items: center;
+  min-height: 660px;
+  text-align: center;
+}
+
+.finished-stage h2 {
+  color: #151515;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1.05;
+  margin: 10px 0;
+}
+
+@container (max-width: 520px) {
+  .decision-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 32rem) {
+  .decision-bar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

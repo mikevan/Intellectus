@@ -1,0 +1,53 @@
+.p-select {
+  font-size: 1rem;
+  --p-select-hover-border-color: var(--pr-blue-1);
+  --p-select-overlay-color: var(--dark-blue-1);
+  --p-select-overlay-border-color: var(--grey-2);
+  --p-select-dropdown-color: var(--grey-1);
+  --p-select-padding-y: 0.6rem;
+  --p-icon-size: 0.875rem;
+
+  &.accordion-dropdown {
+    font-size: 0.875rem;
+    border: none;
+    box-shadow: none;
+    min-width: 120px;
+    width: max-content;
+    max-width: 300px;
+  }
+}
+
+.p-select-option {
+  --p-select-option-focus-background: var(--bg-blue-3);
+  --p-select-option-focus-color: var(--dark-blue-1);
+  --p-select-option-selected-focus-background: var(--bg-blue-2);
+  --p-select-option-selected-color: var(--dark-blue-1);
+  --p-select-option-color: var(--dark-blue-1);
+  white-space: wrap;
+}
+
+.no-border-dropdown {
+  &.p-select {
+    --p-select-padding-y: 0;
+    --p-select-padding-x: 0;
+    --p-select-shadow: none;
+    border: none;
+
+    .p-select-label {
+      font-size: 0.875rem;
+      white-space: nowrap;
+    }
+  }
+}
+
+.resource-selector {
+  .p-select {
+    min-width: 16rem;
+  }
+}
+
+#project-select {
+  .p-select-label {
+    font-size: 0.875rem;
+  }
+}

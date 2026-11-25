@@ -1,0 +1,113 @@
+@if (registrationData()) {
+  <p-card>
+    <div class="flex gap-3 flex-column">
+      <div class="flex align-items-center flex-wrap gap-2 w-full">
+        <osf-icon [iconClass]="registrationData().isPublic ? 'fas fa-lock-open' : 'fas fa-lock'"></osf-icon>
+
+        <p-button
+          class="link-btn-no-padding"
+          styleClass="text-lg"
+          link
+          [label]="registrationData().title || 'project.registrations.card.noTitle' | translate"
+          (onClick)="reviewEmitRegistrationData.emit(registrationData()!.id)"
+        ></p-button>
+      </div>
+      <div class="flex flex-wrap flex-column lg:flex-nowrap lg:flex-row justify-content-between gap-5">
+        <div class="flex gap-3 flex-column w-full">
+          @if (isComponentData() && componentsDataTyped()?.registrationSupplement) {
+            <div class="flex gap-2 align-items-baseline">
+              <strong>{{ 'project.registrations.card.registrationTemplate' | translate }}</strong>
+              <span>{{ componentsDataTyped()!.registrationSupplement }}</span>
+            </div>
+          }
+
+          @if (isComponentData() && componentsDataTyped()?.registry) {
+            <div class="flex gap-2">
+              <strong>{{ 'project.registrations.card.registry' | translate }}</strong>
+              <span>{{ componentsDataTyped()!.registry }}</span>
+            </div>
+          }
+
+          <div class="flex gap-2 align-items-baseline">
+            <strong>{{ 'project.registrations.card.registered' | translate }}</strong>
+            <span>{{ registrationData().dateCreated | date: 'medium' }}</span>
+          </div>
+
+          <div class="flex gap-2 align-items-baseline">
+            <strong>{{ 'project.registrations.card.lastUpdated' | translate }}</strong>
+            <span>{{ registrationData().dateModified | date: 'medium' }}</span>
+          </div>
+
+          <div class="flex gap-2 align-items-baseline">
+            <strong>{{ 'common.labels.contributors' | translate }}:</strong>
+            <osf-contributors-list
+              [contributors]="registrationData().contributors"
+              [anonymous]="!registrationData().contributors.length"
+            ></osf-contributors-list>
+          </div>
+
+          <div class="flex gap-2 align-items-baseline">
+            <strong>{{ 'project.registrations.card.description' | translate }}</strong>
+
+            <osf-truncated-text
+              [maxVisibleLines]="2"
+              [text]="registrationData().description || 'common.labels.noDescription' | translate"
+            />
+          </div>
+
+          @if (isRegistrationData()) {
+            @if (registrationDataTyped()?.registrationSupplement) {
+              <div class="flex gap-2">
+                <strong>{{ 'project.registrations.card.registrationSupplement' | translate }}:</strong>
+                <span>{{ registrationDataTyped()?.registrationSupplement }}</span>
+              </div>
+            }
+
+            @if (registrationDataTyped()?.withdrawn) {
+              <div class="flex gap-2">
+                <strong>{{ 'project.registrations.card.withdrawn' | translate }}:</strong>
+                <span>{{ 'common.labels.yes' | translate }}</span>
+              </div>
+            }
+
+            @if (registrationDataTyped()?.embargoed) {
+              <div class="flex gap-2">
+                <strong>{{ 'project.registrations.card.embargoed' | translate }}:</strong>
+                <span>{{ 'common.labels.yes' | translate }}</span>
+              </div>
+            }
+          }
+
+          <div class="flex gap-2 mt-1">
+            <p-button
+              severity="primary"
+              [label]="'common.buttons.view' | translate"
+              (onClick)="reviewEmitRegistrationData.emit(registrationData()!.id)"
+            ></p-button>
+
+            @if (hasWriteAccess()) {
+              <p-button
+                severity="secondary"
+                (onClick)="updateEmitRegistrationData.emit(registrationData().id)"
+                [label]="'common.buttons.update' | translate"
+              ></p-button>
+            }
+          </div>
+        </div>
+
+        <div class="flex flex-column min-w-max">
+          <h3 class="mb-1">{{ 'shared.resources.title' | translate }}</h3>
+          <osf-data-resources
+            [vertical]="true"
+            [absoluteUrl]="registrationData().id"
+            [hasData]="registrationDataTyped()?.hasData"
+            [hasAnalyticCode]="registrationDataTyped()?.hasAnalyticCode"
+            [hasMaterials]="registrationDataTyped()?.hasMaterials"
+            [hasPapers]="registrationDataTyped()?.hasPapers"
+            [hasSupplements]="registrationDataTyped()?.hasSupplements"
+          ></osf-data-resources>
+        </div>
+      </div>
+    </div>
+  </p-card>
+}
