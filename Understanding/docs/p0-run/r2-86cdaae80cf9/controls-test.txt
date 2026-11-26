@@ -1,0 +1,124 @@
+TAP version 13
+# Subtest: P0 control python c1_attr_ret
+ok 1 - P0 control python c1_attr_ret
+  ---
+  duration_ms: 119.8644
+  type: 'test'
+  ...
+# Subtest: P0 control python c2_neg_ret
+ok 2 - P0 control python c2_neg_ret
+  ---
+  duration_ms: 0.3507
+  type: 'test'
+  ...
+# Subtest: P0 control python c3_throw_wrapped
+ok 3 - P0 control python c3_throw_wrapped
+  ---
+  duration_ms: 0.1244
+  type: 'test'
+  ...
+# Subtest: P0 control python c4_bound
+ok 4 - P0 control python c4_bound
+  ---
+  duration_ms: 0.1261
+  type: 'test'
+  ...
+# Subtest: P0 control python c5_twice
+ok 5 - P0 control python c5_twice
+  ---
+  duration_ms: 0.1325
+  type: 'test'
+  ...
+# Subtest: P0 control python c6_loop
+ok 6 - P0 control python c6_loop
+  ---
+  duration_ms: 0.1052
+  type: 'test'
+  ...
+# Subtest: P0 control python c7_merge
+ok 7 - P0 control python c7_merge
+  ---
+  duration_ms: 0.1106
+  type: 'test'
+  ...
+# Subtest: P0 control python c8_nested
+ok 8 - P0 control python c8_nested
+  ---
+  duration_ms: 0.1599
+  type: 'test'
+  ...
+# Subtest: P0 control python c9_ret
+ok 9 - P0 control python c9_ret
+  ---
+  duration_ms: 0.3875
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c1AttrRet
+ok 10 - P0 control typescript c1AttrRet
+  ---
+  duration_ms: 0.3205
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c2NegRet
+ok 11 - P0 control typescript c2NegRet
+  ---
+  duration_ms: 0.1411
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c3ThrowWrapped
+ok 12 - P0 control typescript c3ThrowWrapped
+  ---
+  duration_ms: 0.1123
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c9Ret
+ok 13 - P0 control typescript c9Ret
+  ---
+  duration_ms: 0.0682
+  type: 'test'
+  ...
+# Subtest: P0 IR control c3b_throw_wrapped_ir
+ok 14 - P0 IR control c3b_throw_wrapped_ir
+  ---
+  duration_ms: 0.2642
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-agree
+ok 15 - P0 classifier control K-agree
+  ---
+  duration_ms: 0.0919
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-merge
+ok 16 - P0 classifier control K-merge
+  ---
+  duration_ms: 0.0589
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-dup
+ok 17 - P0 classifier control K-dup
+  ---
+  duration_ms: 0.0559
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-ingest
+ok 18 - P0 classifier control K-ingest
+  ---
+  duration_ms: 0.0542
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-both
+ok 19 - P0 classifier control K-both
+  ---
+  duration_ms: 0.0549
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 19
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 273.6531

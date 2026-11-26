@@ -1,0 +1,69 @@
+corpus            corpora/radon-python/src
+threads walked    109   (an entry executable and everything reachable through resolved calls)
+qualifying        2   (>=3 executables, >=1 branch, >=1 observable effect, >=1 boundary crossing, 0 opacity)
+SUFFICIENT        0
+
+why threads fail to qualify, worst first:
+   102  fewer than 3 executables, needs 3
+    80  no branch
+    75  no value crosses an executable boundary
+    64  no observable effect
+    50  opaque construct(s)
+
+qualifying threads:
+  gobble#21  (5 executables, 8 predicates, 8 effects)  23 missing facts
+        8  EFFECT_UNDERSPECIFIED   gobble#21: mi_rank, gobble#21: mi_visit, mi_compute: log
+        6  CALLEE_UNIDENTIFIED   mi_rank: chr, mi_compute: min, mi_compute: sqrt
+        5  RECEIVER_UNIDENTIFIED   mi_compute: log, mi_compute: sqrt, log: get
+        3  ORDER_UNSPECIFIED   gobble#21, mi_compute, log
+        1  OPERAND_UNIDENTIFIED   mi_visit: argument of mi_compute
+  gobble#28  (5 executables, 7 predicates, 5 effects)  16 missing facts
+        5  EFFECT_UNDERSPECIFIED   gobble#28: read, h_visit_ast: from_ast, h_visit_ast: halstead_visitor_report
+        5  CALLEE_UNIDENTIFIED   gobble#28: read, h_visit_ast: Halstead, from_ast: cls
+        2  ENTITY_UNREPRESENTED   h_visit_ast: Halstead, halstead_visitor_report: HalsteadReport
+        2  ORDER_UNSPECIFIED   h_visit_ast, from_ast
+        1  RECEIVER_UNIDENTIFIED   h_visit_ast: from_ast
+        1  OPERAND_UNIDENTIFIED   from_ast: argument of cls
+
+ranked missing facts across qualifying threads (occurrences, then threads affected):
+    13    2 thr   EFFECT_UNDERSPECIFIED
+    11    2 thr   CALLEE_UNIDENTIFIED
+     6    2 thr   RECEIVER_UNIDENTIFIED
+     5    2 thr   ORDER_UNSPECIFIED
+     2    2 thr   OPERAND_UNIDENTIFIED
+     2    1 thr   ENTITY_UNREPRESENTED
+
+what each means:
+  EFFECT_UNDERSPECIFIED: An effect whose invocation is known and whose semantics are not: no target identity, no operation semantics, no externally observable behaviour. Enough to say it happened, not enough to reproduce it.
+  CALLEE_UNIDENTIFIED: A call whose callee the store does not identify, so the emitter cannot know what to call.
+  RECEIVER_UNIDENTIFIED: A receiver whose identity the store does not establish, so the emitter cannot know what the operation acts on.
+  ORDER_UNSPECIFIED: Two or more effects whose relative order the store does not fix, so the emitter cannot know the sequence.
+  OPERAND_UNIDENTIFIED: An operand the store records as unknown, so the emitter cannot know what value is used.
+  ENTITY_UNREPRESENTED: A constructed entity with no concept in the store, because the store has no concept for a class or structured object. Semantic entity identity, not a programming-language type.
+
+the emitter's needs, frozen before measuring:
+  - per step: the operation performed, and for a call the identity of the callee
+  - per step: every operand with its identity, including receivers
+  - per step: the control condition under which it runs, with its predicate and operands
+  - per step: the value produced, and where it goes next
+  - per effect: the target, the operation's identity and semantics, the arguments, the ordering relative to other effects, and any externally observable behaviour required for equivalence
+  - per thread: the entry point and its parameters
+  - per thread: the exit and its value
+  - per thread: the semantic entity identity of anything constructed (a class or structured object; NOT a programming-language type)
+
+limits of this checker:
+  - A thread here is an entry executable and everything reachable from it through RESOLVED calls. With 12 and 16 resolved calls in the two corpora, threads are short, and a thread's members understate the work the source actually does.
+  - TYPE_REQUIRED is not populated by this checker. It is counted only where equivalent regeneration actually requires type information that cannot be recovered from the semantic facts present, and deciding that needs an emitter to fail for that reason. Convenience does not count, and nothing here guesses.
+  - A verdict is only as good as EMITTER_NEEDS. If an emitter later fails for a reason not on that list, the list was incomplete and the log records that as a finding about the checklist.
+
+order of observable effects (R-1B0, instrument only):
+  definition: A pair of observable effects in one executable is fixed when facts of a designated order relation connect the two occurrences on one control path, directly or by a chain.
+  order relations designated: none
+  executables with two or more observable effects: 44
+  pairs: 274, fixed by the store: 0, unordered: 274
+  qualifying thread gobble#21: 7 pairs, 7 unordered
+  qualifying thread gobble#28: 2 pairs, 2 unordered
+  limits:
+  - No relation is designated as an order relation yet, so no pair can be fixed. That is the starting point R-1B measures from, not a result.
+  - Effects are stored as literals on HAS_EFFECT, with no occurrence identity, so there is no node an order fact could name. R-1B1 must give effect occurrences an identity before any candidate relation can be tried.
+  - HAS_EFFECT records only whether an effect is under a condition, and HAS_PREDICATE is not linked to any particular effect, so the store cannot tell whether two effects can run on the same path. Pairs on mutually exclusive branches are counted as unordered, which inflates the count until path membership is represented.

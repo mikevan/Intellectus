@@ -1,0 +1,6944 @@
+{
+ "executables": [
+  {
+   "file": "__init__.py",
+   "name": "main",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "get_value",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|getint|3|true",
+      "returned": true,
+      "path": "body[1].then[0].value.expr"
+     },
+     {
+      "match": "call|getboolean|3|true",
+      "returned": true,
+      "path": "body[2].then[0].value.expr"
+     },
+     {
+      "match": "call|get|3|true",
+      "returned": true,
+      "path": "body[2].else[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 3
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "toml_config",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "file_config",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].effect.args[0].expr",
+     "operation": "toml_config",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "cc",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "raw",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "mi",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "hal",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "__init__#8",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "__getattr__",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|__getattribute__|1|true",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "__repr__",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|repr|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "__eq__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "from_function",
+   "ordinal": 0,
+   "counts": {
+    "O": 6,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[4].expr.args[0].expr",
+     "operation": "zip",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[4].expr.args[0].expr.args[0].expr",
+     "operation": "reversed",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[4].expr.args[0].expr.args[1].expr",
+     "operation": "reversed",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|cls|1|false",
+      "returned": true,
+      "path": "body[6].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "log_result",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"log\",[{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"as_json\",\"args\":[],\"receiver\":{\"kind\":\"input\",\"index\":0}}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],{\"kind\":\"opaque\",\"category\":\"other\"}]null",
+     "coarse": "[\"log\",[\"computed\",\"unknown\",\"unknown\"],null]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "key": "[\"log\",[{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"as_xml\",\"args\":[],\"receiver\":{\"kind\":\"input\",\"index\":0}}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"opaque\",\"category\":\"other\"}]}]null",
+     "coarse": "[\"log\",[\"computed\",\"unknown\",\"unknown\"],null]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].else[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous"
+   ],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 2
+   },
+   "unmatched": [
+    {
+     "path": "body[1].then[0].effect.args[0].expr",
+     "operation": "as_json",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[1].else[0].then[0].effect.args[0].expr",
+     "operation": "as_xml",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "log",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].effect.args[0].expr.left.expr.left.expr.right.expr.right.expr",
+     "operation": "get",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[3].effect.args[0].expr.left.expr.right.expr.whenFalse.expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "log_list",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "log_error",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].effect.args[0].expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/__init__.py",
+   "name": "outstream",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/colors.py",
+   "name": "color_enabled",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "_iter_filenames",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|iter_filenames|3|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "gobble",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "run",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "results",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].value.expr.args[0].expr",
+     "operation": "run",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|caching_iterator|2|true",
+      "returned": true,
+      "path": "body[3].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "caching_iterator",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_json",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "dict",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dumps|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_xml",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_md",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_codeclimate_issues",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "to_terminal",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "gobble#11",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|sorted_results|2|false",
+      "returned": true,
+      "path": "body[3].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "_to_dicts",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_json#13",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dumps|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_xml#14",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dict_to_xml|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_md#15",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dict_to_md|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_codeclimate_issues#16",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dict_to_codeclimate_issues|2|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "to_terminal#17",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 3,
+    "pseudoT": 3
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 3
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 3,
+    "opaqueEffects": 3,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "gobble#18",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "analyze",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[1].value.expr.args[0].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|raw_to_dict|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_xml#19",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "to_terminal#20",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 7,
+    "pseudoT": 7
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 7
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].then[0].expr.operand.body[0].value.expr",
+     "operation": "get",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 7,
+    "opaqueEffects": 7,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "gobble#21",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "filtered_results",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "_sort",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|sorted|2|true",
+      "returned": true,
+      "path": "body[0].then[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_json#24",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "dict",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dumps|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_xml#25",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "to_terminal#26",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "__init__#27",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "gobble#28",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|h_visit|1|false",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "as_json#29",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dumps|1|false",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "to_terminal#30",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "_to_dicts#31",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/harvest.py",
+   "name": "hal_report_to_terminal",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 12,
+    "pseudoT": 12
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 12
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 12,
+    "opaqueEffects": 12,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_open",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_get_normal_name",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].expr.receiver.expr",
+     "operation": "lower",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "detect_encoding",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 3,
+    "pseudoT": 3
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 3
+   },
+   "rows": [
+    {
+     "key": "[\"find_cookie\",[{\"kind\":\"value\",\"id\":5}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false}]null",
+     "coarse": "[\"find_cookie\",[\"value\"],null]",
+     "operation": "find_cookie",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[10].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"find_cookie\",[{\"kind\":\"value\",\"id\":8}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":7},\"negated\":true},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":8},\"negated\":false}]}]null",
+     "coarse": "[\"find_cookie\",[\"value\"],null]",
+     "operation": "find_cookie",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[15].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"read_or_stop\",[],null]null",
+     "coarse": "[\"read_or_stop\",[],null]",
+     "operation": "read_or_stop",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[7].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"read_or_stop\",[],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":7},\"negated\":true}]}]null",
+     "coarse": "[\"read_or_stop\",[],null]",
+     "operation": "read_or_stop",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[13].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous"
+   ],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 4
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 4,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 3,
+    "opaqueEffects": 3,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "read_or_stop",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "find_cookie",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].expr.args[0].expr",
+     "operation": "group",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_open_function",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_open#6",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_is_python_file",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "iter_filenames",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].predicate.left.expr",
+     "operation": "set",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[1].predicate.right.expr",
+     "operation": "set",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[2].expr.whenTrue.expr",
+     "operation": "split",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[3].expr.whenTrue.expr",
+     "operation": "split",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[3].expr.whenTrue.expr.receiver.expr",
+     "operation": "format",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "explore_directories",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "filter_out",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "cc_to_dict",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 3,
+    "pseudoT": 3
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 3
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].expr.left.expr",
+     "operation": "set",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[3].expr.right.expr",
+     "operation": "set",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 3,
+    "opaqueEffects": 3,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "get_type",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "raw_to_dict",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "dict_to_xml",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].value.expr.receiver.expr",
+     "operation": "tostring",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|decode|1|false",
+      "returned": true,
+      "path": "body[3].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "dict_to_md",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "dict_to_codeclimate_issues",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "cc_to_terminal",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "_format_line",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[6].expr.whenFalse.expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|format|8|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "format_cc_issue",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dumps|1|false",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "get_remediation_points",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "get_content",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|join|1|false",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "get_fingerprint",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 4,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].effect.args[0].expr",
+     "operation": "encode",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|hexdigest|0|false",
+      "returned": true,
+      "path": "body[4].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "cli/tools.py",
+   "name": "strip_ipython",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|join|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "cc_rank",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].value.expr.args[0].expr.left.expr",
+     "operation": "min",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|chr|1|true",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "average_complexity",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[3].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "sorted_results",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|sorted|2|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "add_inner_blocks",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "cc_visit",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "code2ast",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|cc_visit_ast|2|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "complexity.py",
+   "name": "cc_visit_ast",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"from_ast\",[{\"kind\":\"input\",\"index\":0},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],null]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"from_ast\",[\"input\",\"unknown\"],\"unknown\"]",
+     "operation": "from_ast",
+     "Opp": 1,
+     "S": 0,
+     "P": 1,
+     "T": 1,
+     "Tcoarse": 1,
+     "Pcoarse": 1,
+     "classes": [
+      "wrapper"
+     ],
+     "mapping": "unique",
+     "occurrences": [
+      {
+       "path": "body[1].value.object.expr",
+       "carrier": "return",
+       "wrapper": [
+        "read",
+        "computed"
+       ],
+       "reachable": true,
+       "statementLevel": false
+      }
+     ],
+     "contributing": {
+      "effects": [],
+      "binds": [
+       "return(read>computed)"
+      ],
+      "kept": "binds",
+      "dropped": 0
+     }
+    }
+   ],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "contrib/flake8.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "contrib/flake8.py",
+   "name": "add_options",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-max-cc\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-no-assert\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-show-closures\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous"
+   ],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 3
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "contrib/flake8.py",
+   "name": "parse_options",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "contrib/flake8.py",
+   "name": "run",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "h_visit",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "parse",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|h_visit_ast|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "h_visit_ast",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|Halstead|2|false",
+      "returned": true,
+      "path": "body[4].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "halstead_visitor_report",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[5].then[0].expr.left.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[5].then[0].expr.right.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[6].expr.whenTrue.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|HalsteadReport|12|false",
+      "returned": true,
+      "path": "body[9].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "mi_compute",
+   "ordinal": 0,
+   "counts": {
+    "O": 7,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"log\",[{\"kind\":\"input\",\"index\":0}],{\"kind\":\"opaque\",\"category\":\"other\"}]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"log\",[\"input\"],\"unknown\"]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"log\",[{\"kind\":\"input\",\"index\":2}],{\"kind\":\"opaque\",\"category\":\"other\"}]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"log\",[\"input\"],\"unknown\"]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous",
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 2
+   },
+   "unmatched": [
+    {
+     "path": "body[4].expr.args[0].expr.right.expr",
+     "operation": "radians",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[5].value.expr.args[0].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[5].value.expr.args[0].expr.args[1].expr.left.expr.left.expr.right.expr.right.expr",
+     "operation": "sin",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|min|2|true",
+      "returned": true,
+      "path": "body[5].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "mi_parameters",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "mi_visit",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|mi_compute|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "metrics.py",
+   "name": "mi_rank",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|chr|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_generate",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "generate_tokens",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[1].value.expr.args[0].expr.args[0].object.expr",
+     "operation": "StringIO",
+     "carrier": "argument",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|list|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_fewer_tokens",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_find",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_split_tokens",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_get_all_tokens",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "_logical",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].value.expr.args[0].expr",
+     "operation": "aux",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|sum|2|false",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "aux",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].expr.args[0].expr",
+     "operation": "_fewer_tokens",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "is_single_token",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "raw.py",
+   "name": "analyze",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|Module|7|false",
+      "returned": true,
+      "path": "body[5].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "code2ast",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|parse|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "letter",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "fullname",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|format|2|true",
+      "returned": true,
+      "path": "body[2].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "__str__",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|format|6|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "fullname#4",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "complexity",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "__str__#6",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|format|6|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "get_name",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "from_code",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "code2ast",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|from_ast|2|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "from_ast",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 8,
+    "writeEffects": 8,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "functions_complexity",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[1].value.expr.left.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[1].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "classes_complexity",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[1].value.expr.left.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[1].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "total_complexity",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "blocks",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "max_line",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "max_line#16",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "generic_visit",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[4].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_Assert",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_AsyncFunctionDef",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_FunctionDef",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].expr.args[3].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_ClassDef",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[5].expr.args[3].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[5].expr.args[3].expr.args[0].expr.right.expr",
+     "operation": "list",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[5].expr.args[3].expr.args[0].expr.right.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "__init__#22",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 6,
+    "writeEffects": 6,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "distinct_operators",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|len|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "distinct_operands",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|len|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "dispatch",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "aux",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[6].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 2,
+    "writeEffects": 2,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_BinOp",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_UnaryOp",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_BoolOp",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_AugAssign",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_Compare",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_FunctionDef#32",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "visitors.py",
+   "name": "visit_AsyncFunctionDef#33",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  }
+ ],
+ "totals": {
+  "O": 183,
+  "Opp": 121,
+  "S": 120,
+  "P": 121,
+  "T": 121,
+  "pseudoP": 81,
+  "pseudoT": 81,
+  "rows": 12,
+  "byClass": {
+   "wrapper": 1,
+   "grouping-merge": 0,
+   "grouping-duplication": 0,
+   "ingestion-discrepancy": 0,
+   "other": 0
+  },
+  "byMapping": {
+   "unique": 1,
+   "multiplicity": 0,
+   "ambiguous": 0,
+   "coarse-ambiguous": 11
+  },
+  "keysByMapping": {
+   "unique": 110,
+   "multiplicity": 0,
+   "ambiguous": 0,
+   "coarse-ambiguous": 11
+  },
+  "unmatchedByReason": {
+   "nested-argument": 40,
+   "behaviour": 1,
+   "receiver": 6,
+   "predicate": 2,
+   "expression-operand": 13
+  },
+  "valuelessThrows": 10,
+  "opaqueStatements": 81
+ },
+ "a1": {
+  "executablesCompared": 137,
+  "executablesEqual": 95,
+  "returnedCallSteps": 44,
+  "stepPairs": 297,
+  "effectPairs": 274,
+  "unmatchedSteps": 44,
+  "unmatchedStepsReturned": 44,
+  "unmatchedEffects": 0,
+  "kindMismatches": []
+ },
+ "unpaired": {
+  "inIrOnly": [],
+  "inStoreOnly": []
+ },
+ "limits": [
+  "Locations are file, executable, and IR path. The IR keeps no source lines by design.",
+  "Calls the encoder does not represent, inside opaque constructs or in a thrown value it drops, are in no population. The visibility bound counts the statements that may hide them; it claims nothing about them.",
+  "A stored invocation records operation, argument kinds, and receiver kind only. It is matched to projected sites at that coarse key; a coarse key covering several projected keys is reported, never split.",
+  "Identical occurrences are matched by multiplicity. Which stored invocation is which occurrence is not determined.",
+  "HAS_EFFECT records kind, operation, argument count, and whether conditional; A1 matches steps on exactly that."
+ ]
+}

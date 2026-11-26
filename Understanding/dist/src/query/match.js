@@ -1,4 +1,4 @@
-import { effectProjection, fingerprint } from "../ir/index.js";
+import { effectProjection, fingerprint, unwrapAwaited } from "../ir/index.js";
 /** Every named place read and every operation called, with the path condition it happens under. */
 function surface(fn) {
     const reads = new Set();
@@ -13,9 +13,10 @@ function surface(fn) {
         else if (o.kind === "negated")
             walkOperand(o.operand);
         else if (o.kind === "computed") {
-            if (o.expr.kind === "call" && o.expr.operation)
-                operations.add(o.expr.operation);
-        }
+            const { inner } = unwrapAwaited(o.expr);
+            if (inner.kind === "call" && inner.operation)
+                operations.add(inner.operation);
+        } // R-1A: see through the wrapper
     };
     const walkPredicate = (p) => {
         if (p.kind === "compare") {

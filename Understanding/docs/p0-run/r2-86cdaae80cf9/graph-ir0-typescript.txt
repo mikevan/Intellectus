@@ -1,0 +1,182 @@
+corpus            corpora/ir0-typescript/src
+files             10
+concepts          68  (10 modules, 58 executables)
+assertions        859
+
+assertions by relation:
+    122  HAS_ARGUMENT
+     96  HAS_PREDICATE
+     80  HAS_INVOCATION
+     80  HAS_OUTCOME
+     77  HAS_PARAMETER
+     76  HAS_EFFECT
+     68  RENDERS_AS
+     67  FLOWS_TO
+     58  MEMBER_OF
+     58  HAS_FINGERPRINT
+     45  HAS_RETURN
+     16  INVOKES
+     16  CALLS
+
+interprocedural structure:
+  executables               58
+  CALLS edges               16   (resolved 16)
+  isolated executables      40  (no call in or out)
+  connected components      44   largest 8
+  longest directed chain    2 calls deep
+
+call operations with no callee  26 distinct, 63 occurrences  (unresolved + ambiguous invocations; opaque: entries are pseudo-operations, not calls)
+     9  opaque:loop
+     6  filter
+     6  opaque:multi-branch
+     5  get
+     4  set
+     4  push
+     3  replace
+     3  lookup
+     2  map
+     2  visit
+     2  walk
+     2  slice
+
+boundary composition:
+  invocations               80   (resolved 16, unresolved 62, ambiguous 1, self 1)
+  boundary values           324
+  FLOWS_TO edges            67
+  values that flow anywhere  56 of 324
+  largest value reachability 5 values
+
+what the 64 invocations with no CALLS edge cost, by cause (occurrences, not distinct names):
+  category               occ    args   lost flows
+  RECEIVER_UNRESOLVED    36      43           79
+  UNKNOWN                11      15           26
+  REPRESENTATION_LOSS    15       0           15
+  INTERNAL_AMBIGUOUS      1       2            3
+  INTERNAL_UNRESOLVED     1       1            2
+  TOTAL                  64      61          125
+  flows written 67; flows prevented 125; so 34.9% of the composition this corpus offers was captured.
+
+  ranked by cost, the operations in each cause:
+    RECEIVER_UNRESOLVED  filter, map, get, init, load, set, setLanguage, includes, and 8 more
+    UNKNOWN              visit, walk, readFileSync, writeFileSync, appendFileSync, super, lookup
+    REPRESENTATION_LOSS  opaque:loop, opaque:multi-branch
+    INTERNAL_AMBIGUOUS   operand
+    INTERNAL_UNRESOLVED  parse
+
+  external knowledge used: 88 operation names and 14 class names, both DECLARED_BY_AUTHOR.
+    The author's knowledge of the Python and JavaScript standard libraries, 2026-09-14.
+    The class declarations of the committed corpora, read from the corpus text on 2026-09-14 because the store holds no concept for a class.
+
+  what this instrument cannot measure:
+    - RECEIVER_UNRESOLVED is now populated from IR-7's preserved receiver, and it takes precedence over EXTERNAL_UNMODELED when a call has a receiver, because the operation's name cannot tell a runtime method from a method of the corpus. So EXTERNAL_UNMODELED now means a bare call to a built-in name, and the split between runtime receivers and corpus receivers still needs type flow, which this round does not have.
+    - DYNAMIC can only be populated where the IR recorded that the callee came from a value, which the current adapters never do, so it stays at zero for the same reason.
+    - REPRESENTATION_LOSS exposes zero arguments by construction, so its full cost is not measurable by this instrument.
+
+where the 46 receiver arguments in the store come from (origin, not type):
+  origin                   occ   in a flow
+  UNRESOLVED                24          0
+  MEMBER_VALUE              13          0
+  PARAMETER                  4          4
+  LOCAL_BINDING              3          0
+  CALL_OUTCOME               2          2
+  traceable origins        22 of 46
+  backward steps followed  max 1, total 6
+
+  what this instrument cannot establish:
+    - MODULE_OR_IMPORTED cannot be populated: the store holds module concepts, and the encoder records an imported name as a free name rather than as the module it came from, so an imported receiver is indistinguishable from any other unbound name.
+    - An origin is not a type. PARAMETER says the identity arrives from the caller; it says nothing about what the caller passed.
+    - LOCAL_BINDING and MEMBER_VALUE are read from the operand kind the encoder recorded, not followed through the value graph, because ingestion writes no flow edge from a binding to a receiver use.
+
+producers of the 55 receiver occurrences in the IR, by group (measurement only, no flow written):
+  group           total  identifiable  ambiguous  unavailable   of which invocation / other
+  LOCAL_BINDING      8             8          0            0   4 / 4
+  MEMBER_VALUE      13            13          0            0   0 / 13
+  COMPUTED          10            10          0            0   10 / 0
+
+  what a producer is not:
+    - A producer is an expression, not an entity. MEMBER_VALUE identifies the read that produced the receiver and says nothing about what is stored in the field.
+    - This instrument reads the IR directly rather than the store, because the store holds no assertion joining a binding or a computed expression to a receiver use. That absence is what IR-8 would address; nothing here writes it.
+    - A receiver recorded as `unknown` (a free name) is outside these three groups entirely: there is no producer in the function to identify, which is the import and module gap stated in E3-origin.
+
+channels still written by nobody:
+  PARTICIPATES_IN  0
+  FOLLOWS          0
+  OBSERVED_IN      0
+  TESTED_BY        0
+  SATISFIES        0
+
+what each total counts (I-0):
+     80  invocations
+         HAS_INVOCATION assertions: one per call site after the effect/bind merge below.
+     16  resolved invocations
+         Invocations whose operation named exactly one executable in this corpus, other than the caller; each writes INVOKES and CALLS.
+     62  unresolved invocations
+         Invocations whose operation named no executable in this corpus.
+      1  ambiguous invocations
+         Invocations whose operation named more than one executable; never resolved to one of them.
+      1  self invocations
+         Invocations whose only candidate is the caller itself: direct recursion. No CALLS self-loop is written, so these appear in no other bucket.
+     63  call-operation occurrences
+         Entries in the operation table: unresolved plus ambiguous invocations, counted by operation name. `opaque:` entries stand for unrepresented statements and are not calls.
+     64  invocations with no CALLS edge
+         The population the cost table classifies: every invocation without an INVOKES edge, which is unresolved plus ambiguous plus self.
+     15  of those, pseudo-invocations
+         REPRESENTATION_LOSS rows: one per opaque statement, standing in for a construct the IR cannot represent. Not calls.
+     49  of those, calls
+         Invocations with no CALLS edge that are actual call sites.
+     46  receiver arguments in the store
+         HAS_ARGUMENT assertions with role=receiver: one per merged call site that carries a receiver. The population the origin instrument reads.
+     55  receiver occurrences in the IR
+         Receivers read straight from the semantic projection, before the merge: the population the producer instrument reads.
+     55  receiver sites from the projection
+         Receiver-bearing call sites read from the semantic projection before the merge: exactly what the producer instrument counts.
+     11  receiver sites from returned or thrown operands
+         Receiver-bearing call sites the ingestion additionally finds inside returned and thrown operands. The producer instrument does not walk these.
+     29  call sites merged
+         Sites the effect/bind rule merged: one call reported twice by the projection becomes one invocation.
+     20  of those, carrying a receiver
+         Merged sites whose call had a receiver: the whole difference between the two receiver populations.
+
+the totals reconcile (I-0):
+  ok        invocations account for every call site
+            80 = 16 resolved + 62 unresolved + 1 ambiguous + 1 self
+  ok        the operation table counts unresolved and ambiguous only
+            63 = 62 unresolved + 1 ambiguous
+  ok        the cost table classifies every invocation without a CALLS edge
+            64 = 80 invocations - 16 resolved
+  ok        the cost table separates calls from pseudo-invocations
+            64 = 15 pseudo-invocations + 49 calls
+  ok        the origin instrument reads the store's receiver arguments
+            46 = 46 receiver arguments
+  ok        the producer instrument counts the projection's receiver sites
+            55 IR occurrences = 55 receiver sites from the projection
+  ok        the store's receiver arguments are the sites seen, less those merged
+            46 store arguments = 55 from the projection + 11 from returned or thrown operands - 20 merged
+  every identity holds
+
+call sites, site by site (P0; the full reconciliation is `node dist/scripts/callsites.js <corpus>`):
+    113  IR call occurrences, at any depth (O)
+     65  of those, in positions ingestion's rule reaches (O-pp)
+     65  statement-level call sites, the R-1B1 draft 1 probe's rule (S)
+     65  projected call sites, ingestion's rule re-implemented (P); plus 15 pseudo
+     65  stored call invocations (T); plus 15 pseudo
+  rows 9: wrapper 0, grouping-merge 0, grouping-duplication 0, ingestion-discrepancy 0, other 0
+  mapping of every key with a site or invocation: unique 56, multiplicity 0, ambiguous 0, coarse-ambiguous 9
+  occurrences outside the rule: behaviour 14, expression-operand 4, nested-argument 8, predicate 3, receiver 19
+  visibility bound: 15 semantic opaque statements, 18 value-less throws
+    adapters/typescript/index.ts::operand#0  get  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[3].then[0].expr (bind)
+    adapters/typescript/index.ts::operand#0  get  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[4].then[0].expr (bind)
+    journal/index.ts::apply#0  delete  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[2].else[0].then[0].then[0].effect (effect)
+    journal/index.ts::apply#0  delete  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[2].else[0].else[0].then[0].effect (effect)
+    schema/index.ts::checkAssertion#0  lookup  O-pp 1 S 1 P 1 T coarse 3/3  [-] coarse-ambiguous  body[5].then[0].expr (bind)
+    schema/index.ts::checkAssertion#0  lookup  O-pp 1 S 1 P 1 T coarse 3/3  [-] coarse-ambiguous  body[2].expr (bind)
+    schema/index.ts::checkAssertion#0  lookup  O-pp 1 S 1 P 1 T coarse 3/3  [-] coarse-ambiguous  body[11].then[0].expr (bind)
+    scopes/index.ts::declareScope#0  assert  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[1].effect (effect)
+    scopes/index.ts::declareScope#0  assert  O-pp 1 S 1 P 1 T coarse 2/2  [-] coarse-ambiguous  body[2].then[0].effect (effect)
+  A1, steps against HAS_EFFECT: 46 of 58 executables equal; unmatched steps 13 (13 returned or thrown calls, of 13 such call steps), unmatched effects 0; write, emit, or opaque kind mismatches 0
+  pairs over the step population 97, over the effect population 96
+    - Locations are file, executable, and IR path. The IR keeps no source lines by design.
+    - Calls the encoder does not represent, inside opaque constructs or in a thrown value it drops, are in no population. The visibility bound counts the statements that may hide them; it claims nothing about them.
+    - A stored invocation records operation, argument kinds, and receiver kind only. It is matched to projected sites at that coarse key; a coarse key covering several projected keys is reported, never split.
+    - Identical occurrences are matched by multiplicity. Which stored invocation is which occurrence is not determined.
+    - HAS_EFFECT records kind, operation, argument count, and whether conditional; A1 matches steps on exactly that.

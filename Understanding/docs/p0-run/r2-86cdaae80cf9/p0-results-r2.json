@@ -1,0 +1,3119 @@
+{
+ "protocol": "docs/p0-protocol-frozen.md",
+ "protocolSha256": "bfc3195c8c0668f462ac08a0f065a9e0ab21f7d722813cd5f536c257e13f065d",
+ "controlsSha256": "026e980936b75fb7d87703c370b4e61ad5cd6ed4be413c64fa5bf0dcbfd0593a",
+ "build": "86cdaae80cf9",
+ "baselineBuild": "a93a98cead33",
+ "corpora": {
+  "ir0-typescript": {
+   "totals": {
+    "O": 113,
+    "Opp": 65,
+    "S": 65,
+    "P": 65,
+    "T": 65,
+    "pseudoP": 15,
+    "pseudoT": 15,
+    "rows": 9,
+    "byClass": {
+     "wrapper": 0,
+     "grouping-merge": 0,
+     "grouping-duplication": 0,
+     "ingestion-discrepancy": 0,
+     "other": 0
+    },
+    "byMapping": {
+     "unique": 0,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 9
+    },
+    "keysByMapping": {
+     "unique": 56,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 9
+    },
+    "unmatchedByReason": {
+     "receiver": 19,
+     "behaviour": 14,
+     "nested-argument": 8,
+     "expression-operand": 4,
+     "predicate": 3
+    },
+    "valuelessThrows": 18,
+    "opaqueStatements": 15
+   },
+   "a1": {
+    "executablesCompared": 58,
+    "executablesEqual": 46,
+    "returnedCallSteps": 13,
+    "stepPairs": 97,
+    "effectPairs": 96,
+    "unmatchedSteps": 13,
+    "unmatchedStepsReturned": 13,
+    "unmatchedEffects": 0,
+    "kindMismatches": []
+   },
+   "unpaired": {
+    "inIrOnly": [],
+    "inStoreOnly": []
+   },
+   "rows": [
+    {
+     "exec": "adapters/typescript/index.ts::operand#0",
+     "key": "[\"get\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"text\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"identifier\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":true}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":1},\"property\":\"inputs\"}",
+     "coarse": "[\"get\",[\"read\"],\"read\"]",
+     "operation": "get",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "adapters/typescript/index.ts::operand#0",
+     "key": "[\"get\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"text\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"member_expression\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"identifier\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":true}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":1},\"property\":\"enums\"}",
+     "coarse": "[\"get\",[\"read\"],\"read\"]",
+     "operation": "get",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[4].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "journal/index.ts::apply#0",
+     "key": "[\"delete\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"supersedes\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"absent\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"supersedes\"},\"negated\":true},{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"ASSERT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"CONCEPT\"}}}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"unknown\",\"reason\":\"this\"},\"property\":\"live\"}",
+     "coarse": "[\"delete\",[\"read\"],\"read\"]",
+     "operation": "delete",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].else[0].then[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "journal/index.ts::apply#0",
+     "key": "[\"delete\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"target\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"RETRACT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"ASSERT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"CONCEPT\"}}}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"unknown\",\"reason\":\"this\"},\"property\":\"live\"}",
+     "coarse": "[\"delete\",[\"read\"],\"read\"]",
+     "operation": "delete",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].else[0].else[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "schema/index.ts::checkAssertion#0",
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"object\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":1},\"negated\":false}]}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[5].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "schema/index.ts::checkAssertion#0",
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"subject\"}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "schema/index.ts::checkAssertion#0",
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"property\":\"scope\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"GE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"confidence\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"number\",\"value\":\"0\"}}},{\"kind\":\"compare\",\"op\":\"LE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"confidence\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"number\",\"value\":\"1\"}}},{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"source\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"INFERRED\"}}},{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"verification\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"NONE\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"verification\"},\"negated\":true}]},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"source\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"DECLARED\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"negated\":false}]},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"value\",\"id\":0},\"property\":\"layer\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"derived\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"derived_from\"},\"negated\":false}]},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"property\":\"scope\"},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":1},\"negated\":false}]}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[11].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "scopes/index.ts::declareScope#0",
+     "key": "[\"assert\",[{\"kind\":\"unknown\",\"reason\":\"object\"}],null]{\"kind\":\"input\",\"index\":0}",
+     "coarse": "[\"assert\",[\"unknown\"],\"input\"]",
+     "operation": "assert",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "scopes/index.ts::declareScope#0",
+     "key": "[\"assert\",[{\"kind\":\"unknown\",\"reason\":\"object\"}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"input\",\"index\":3},\"negated\":false}]{\"kind\":\"input\",\"index\":0}",
+     "coarse": "[\"assert\",[\"unknown\"],\"input\"]",
+     "operation": "assert",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    }
+   ],
+   "unmatchedOccurrences": [
+    {
+     "exec": "adapters/python/index.ts::encodeFunction#0",
+     "path": "body[0].expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/python/index.ts::encodeFunction#0",
+     "path": "body[0].expr.receiver.expr.receiver.expr",
+     "operation": "filter",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/python/index.ts::encodeFunction#0",
+     "path": "body[0].expr.receiver.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/python/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/python/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stmt",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/python/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/python/index.ts::effectOf#0",
+     "path": "body[2].expr.args[0].body[0].value.expr",
+     "operation": "operand",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/python/index.ts::effectOf#0",
+     "path": "body[2].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/treeSitter.ts::loadLanguage#0",
+     "path": "body[3].then[0].expr.of.args[0].expr",
+     "operation": "readFileSync",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "adapters/treeSitter.ts::loadLanguage#0",
+     "path": "body[3].then[0].expr.of.args[0].expr.args[0].expr.whenTrue.expr",
+     "operation": "resolve",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "adapters/treeSitter.ts::loadLanguage#0",
+     "path": "body[3].then[0].expr.of.args[0].expr.args[0].expr.whenFalse.expr",
+     "operation": "resolve",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::encodeFunctions#0",
+     "path": "body[2].expr.operand.body[0].then[0].effect",
+     "operation": "collectEnum",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::encodeFunctions#0",
+     "path": "body[5].expr.operand.body[0].then[1].expr",
+     "operation": "map",
+     "carrier": "bind",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::encodeFunctions#0",
+     "path": "body[5].expr.operand.body[0].then[1].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::encodeFunctions#0",
+     "path": "body[5].expr.operand.body[0].then[3].effect",
+     "operation": "set",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stmt",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::block#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::bodyOf#0",
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "block",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::bodyOf#0",
+     "path": "body[0].value.expr.whenFalse.expr",
+     "operation": "filter",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::unparen#0",
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "unparen",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::unparen#0",
+     "path": "body[0].value.expr.whenTrue.expr.args[0].expr.object.expr",
+     "operation": "children",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::effectOf#0",
+     "path": "body[2].expr.args[0].body[0].value.expr",
+     "operation": "operand",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::effectOf#0",
+     "path": "body[2].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::operand#0",
+     "path": "body[5].predicate.operands[1].left.object.expr",
+     "operation": "child",
+     "carrier": "predicate",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::operand#0",
+     "path": "body[5].then[0].expr.args[0].expr.object.expr",
+     "operation": "children",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::mergeAbsent#0",
+     "path": "body[0].predicate.operands[0].operands[1].left.expr",
+     "operation": "stringify",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "adapters/typescript/index.ts::mergeAbsent#0",
+     "path": "body[0].predicate.operands[0].operands[1].right.expr",
+     "operation": "stringify",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "ir/index.ts::project#0",
+     "path": "body[3].effect.args[0].body[0].value.expr",
+     "operation": "localeCompare",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "ir/index.ts::project#0",
+     "path": "body[3].effect.args[0].body[0].value.expr.args[0].expr",
+     "operation": "key",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "ir/index.ts::project#0",
+     "path": "body[3].effect.args[0].body[0].value.expr.receiver.expr",
+     "operation": "key",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "ir/index.ts::cond#0",
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "normalise",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "ir/index.ts::effectProjection#0",
+     "path": "body[0].value.expr.receiver.object.expr",
+     "operation": "project",
+     "carrier": "receiver",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::fingerprint#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "digest",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::fingerprint#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "update",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::fingerprint#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr.args[0].expr",
+     "operation": "stringify",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "ir/index.ts::fingerprint#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr.receiver.expr",
+     "operation": "createHash",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::canonNumber#0",
+     "path": "body[0].expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::canonPath#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ir/index.ts::canonPath#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "journal/index.ts::constructor#0",
+     "path": "body[1].then[2].then[0].expr.args[1].expr.left.expr",
+     "operation": "lastIndexOf",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "journal/index.ts::replay#0",
+     "path": "body[0].expr.receiver.expr",
+     "operation": "split",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "journal/index.ts::retract#0",
+     "path": "body[3].expr.operand.body[1].effect",
+     "operation": "push",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "journal/index.ts::retract#0",
+     "path": "body[3].expr.operand.body[2].effect",
+     "operation": "push",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "journal/index.ts::commit#0",
+     "path": "body[2].then[0].effect.args[1].expr.left.expr",
+     "operation": "join",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "journal/index.ts::commit#0",
+     "path": "body[2].then[0].effect.args[1].expr.left.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "journal/index.ts::commit#0",
+     "path": "body[2].then[0].effect.args[1].expr.left.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stringify",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "journal/index.ts::about#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "liveAssertions",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1Unmatched": [
+    {
+     "exec": "adapters/python/index.ts::block#0",
+     "steps": [
+      {
+       "match": "call|filter|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "adapters/typescript/index.ts::litOf#0",
+     "steps": [
+      {
+       "match": "call|canonNumber|1|true",
+       "returned": true,
+       "path": "body[0].then[0].value.expr"
+      },
+      {
+       "match": "call|canonString|1|true",
+       "returned": true,
+       "path": "body[1].then[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "adapters/typescript/index.ts::block#0",
+     "steps": [
+      {
+       "match": "call|filter|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "concepts/index.ts::isConceptKind#0",
+     "steps": [
+      {
+       "match": "call|includes|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "ir/index.ts::key#0",
+     "steps": [
+      {
+       "match": "call|stringify|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "ir/index.ts::effectProjection#0",
+     "steps": [
+      {
+       "match": "call|filter|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "ir/index.ts::fingerprint#0",
+     "steps": [
+      {
+       "match": "call|slice|2|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "ir/index.ts::canonPath#0",
+     "steps": [
+      {
+       "match": "call|replace|2|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "journal/index.ts::getConcept#0",
+     "steps": [
+      {
+       "match": "call|get|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "journal/index.ts::about#0",
+     "steps": [
+      {
+       "match": "call|filter|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "journal/index.ts::now#0",
+     "steps": [
+      {
+       "match": "call|toISOString|0|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "scopes/index.ts::declareAuthorityOver#0",
+     "steps": [
+      {
+       "match": "call|assert|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    }
+   ]
+  },
+  "toml-python": {
+   "totals": {
+    "O": 104,
+    "Opp": 65,
+    "S": 65,
+    "P": 65,
+    "T": 65,
+    "pseudoP": 34,
+    "pseudoT": 34,
+    "rows": 0,
+    "byClass": {
+     "wrapper": 0,
+     "grouping-merge": 0,
+     "grouping-duplication": 0,
+     "ingestion-discrepancy": 0,
+     "other": 0
+    },
+    "byMapping": {
+     "unique": 0,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 0
+    },
+    "keysByMapping": {
+     "unique": 65,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 0
+    },
+    "unmatchedByReason": {
+     "nested-argument": 6,
+     "expression-operand": 10,
+     "predicate": 11,
+     "receiver": 12
+    },
+    "valuelessThrows": 8,
+    "opaqueStatements": 34
+   },
+   "a1": {
+    "executablesCompared": 56,
+    "executablesEqual": 42,
+    "returnedCallSteps": 15,
+    "stepPairs": 314,
+    "effectPairs": 303,
+    "unmatchedSteps": 15,
+    "unmatchedStepsReturned": 15,
+    "unmatchedEffects": 0,
+    "kindMismatches": []
+   },
+   "unpaired": {
+    "inIrOnly": [],
+    "inStoreOnly": []
+   },
+   "rows": [],
+   "unmatchedOccurrences": [
+    {
+     "exec": "decoder.py::__init__#0",
+     "path": "body[0].expr.args[1].expr.left.expr",
+     "operation": "count",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "decoder.py::__init__#0",
+     "path": "body[0].expr.args[2].expr.right.expr",
+     "operation": "rfind",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "decoder.py::dump#0",
+     "path": "body[1].then[0].value.expr.right.expr",
+     "operation": "unicode",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "decoder.py::dump#0",
+     "path": "body[1].else[0].value.expr.left.expr",
+     "operation": "unicode",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "decoder.py::_strictly_valid_num#0",
+     "path": "body[5].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_strictly_valid_num#0",
+     "path": "body[7].then[1].predicate.operands[0].operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_load_unicode_escapes#0",
+     "path": "body[1].expr.left.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "decoder.py::load_inline_object#0",
+     "path": "body[2].predicate.operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_get_split_on_quotes#0",
+     "path": "body[3].predicate.operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[1].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[2].predicate.operands[1].operands[0].left.expr.object.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[2].then[0].expr.receiver.expr",
+     "operation": "strip",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[2].then[3].expr.left.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[2].then[3].expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "decoder.py::_load_line_multiline_str#0",
+     "path": "body[5].predicate.operands[0].operands[0].operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::load_value#0",
+     "path": "body[1].else[0].predicate.left.expr",
+     "operation": "lower",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::bounded_string#0",
+     "path": "body[0].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::load_array#0",
+     "path": "body[3].predicate.operands[1].right.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "decoder.py::load_array#0",
+     "path": "body[3].predicate.operands[1].right.expr.receiver.expr.object.expr",
+     "operation": "split",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "decoder.py::load_array#0",
+     "path": "body[3].else[5].effect.args[0].expr",
+     "operation": "join",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "decoder.py::__init__#27#0",
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::_dump_float#0",
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::_dump_float#0",
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "format",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::_dump_time#0",
+     "path": "body[2].value.expr.object.expr",
+     "operation": "isoformat",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "encoder.py::dump_inline_table#0",
+     "path": "body[2].then[2].value.expr.left.expr.right.expr",
+     "operation": "join",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "encoder.py::dump_inline_table#0",
+     "path": "body[2].else[0].value.expr.args[0].expr",
+     "operation": "dump_value",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "encoder.py::dump_value#0",
+     "path": "body[0].expr.args[0].expr",
+     "operation": "type",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "encoder.py::dump_value#0",
+     "path": "body[2].value.expr.whenTrue.expr",
+     "operation": "dump_fn",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "encoder.py::dump_value#0",
+     "path": "body[2].value.expr.whenFalse.expr",
+     "operation": "self.dump_funcs[str]",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "encoder.py::__init__#11#0",
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::__init__#12#0",
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::__init__#12#0",
+     "path": "body[1].predicate.left.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "encoder.py::__init__#14#0",
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::__init__#16#0",
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "encoder.py::_dump_pathlib_path#0",
+     "path": "body[0].value.expr.args[0].expr",
+     "operation": "str",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "encoder.py::dump_value#18#0",
+     "path": "body[1].value.expr.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ordered.py::__init__#0",
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "ordered.py::__init__#1#0",
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "tz.py::utcoffset#0",
+     "path": "body[0].value.expr.right.expr",
+     "operation": "timedelta",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1Unmatched": [
+    {
+     "exec": "decoder.py::_ispath#0",
+     "steps": [
+      {
+       "match": "call|_detect_pathlib_path|1|true",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "decoder.py::_getpath#0",
+     "steps": [
+      {
+       "match": "call|fspath|1|true",
+       "returned": true,
+       "path": "body[0].then[1].value.expr"
+      },
+      {
+       "match": "call|str|1|true",
+       "returned": true,
+       "path": "body[1].then[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "decoder.py::get_empty_table#0",
+     "steps": [
+      {
+       "match": "call|_dict|0|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "decoder.py::get_empty_inline_table#0",
+     "steps": [
+      {
+       "match": "call|DynamicInlineTableDict|0|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::_dump_str#0",
+     "steps": [
+      {
+       "match": "call|unicode|1|false",
+       "returned": true,
+       "path": "body[8].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::_dump_float#0",
+     "steps": [
+      {
+       "match": "call|replace|2|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::_dump_time#0",
+     "steps": [
+      {
+       "match": "call|isoformat|0|true",
+       "returned": true,
+       "path": "body[1].then[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::get_empty_table#0",
+     "steps": [
+      {
+       "match": "call|_dict|0|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::dump_inline_table#0",
+     "steps": [
+      {
+       "match": "call|unicode|1|true",
+       "returned": true,
+       "path": "body[2].else[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::_dump_int#0",
+     "steps": [
+      {
+       "match": "call|format|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::_dump_pathlib_path#0",
+     "steps": [
+      {
+       "match": "call|_dump_str|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "encoder.py::dump_value#18#0",
+     "steps": [
+      {
+       "match": "call|dump_value|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "tz.py::__deepcopy__#0",
+     "steps": [
+      {
+       "match": "call|__class__|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "tz.py::dst#0",
+     "steps": [
+      {
+       "match": "call|timedelta|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    }
+   ]
+  },
+  "radon-python": {
+   "totals": {
+    "O": 183,
+    "Opp": 121,
+    "S": 120,
+    "P": 121,
+    "T": 121,
+    "pseudoP": 81,
+    "pseudoT": 81,
+    "rows": 12,
+    "byClass": {
+     "wrapper": 1,
+     "grouping-merge": 0,
+     "grouping-duplication": 0,
+     "ingestion-discrepancy": 0,
+     "other": 0
+    },
+    "byMapping": {
+     "unique": 1,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 11
+    },
+    "keysByMapping": {
+     "unique": 110,
+     "multiplicity": 0,
+     "ambiguous": 0,
+     "coarse-ambiguous": 11
+    },
+    "unmatchedByReason": {
+     "nested-argument": 40,
+     "behaviour": 1,
+     "receiver": 6,
+     "predicate": 2,
+     "expression-operand": 13
+    },
+    "valuelessThrows": 10,
+    "opaqueStatements": 81
+   },
+   "a1": {
+    "executablesCompared": 137,
+    "executablesEqual": 95,
+    "returnedCallSteps": 44,
+    "stepPairs": 297,
+    "effectPairs": 274,
+    "unmatchedSteps": 44,
+    "unmatchedStepsReturned": 44,
+    "unmatchedEffects": 0,
+    "kindMismatches": []
+   },
+   "unpaired": {
+    "inIrOnly": [],
+    "inStoreOnly": []
+   },
+   "rows": [
+    {
+     "exec": "cli/__init__.py::log_result#0",
+     "key": "[\"log\",[{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"as_json\",\"args\":[],\"receiver\":{\"kind\":\"input\",\"index\":0}}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],{\"kind\":\"opaque\",\"category\":\"other\"}]null",
+     "coarse": "[\"log\",[\"computed\",\"unknown\",\"unknown\"],null]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "cli/__init__.py::log_result#0",
+     "key": "[\"log\",[{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"as_xml\",\"args\":[],\"receiver\":{\"kind\":\"input\",\"index\":0}}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"opaque\",\"category\":\"other\"}]}]null",
+     "coarse": "[\"log\",[\"computed\",\"unknown\",\"unknown\"],null]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].else[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "cli/tools.py::detect_encoding#0",
+     "key": "[\"find_cookie\",[{\"kind\":\"value\",\"id\":5}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false}]null",
+     "coarse": "[\"find_cookie\",[\"value\"],null]",
+     "operation": "find_cookie",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[10].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "cli/tools.py::detect_encoding#0",
+     "key": "[\"find_cookie\",[{\"kind\":\"value\",\"id\":8}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":7},\"negated\":true},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":8},\"negated\":false}]}]null",
+     "coarse": "[\"find_cookie\",[\"value\"],null]",
+     "operation": "find_cookie",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[15].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "cli/tools.py::detect_encoding#0",
+     "key": "[\"read_or_stop\",[],null]null",
+     "coarse": "[\"read_or_stop\",[],null]",
+     "operation": "read_or_stop",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[7].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "cli/tools.py::detect_encoding#0",
+     "key": "[\"read_or_stop\",[],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":5},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":7},\"negated\":true}]}]null",
+     "coarse": "[\"read_or_stop\",[],null]",
+     "operation": "read_or_stop",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[13].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "complexity.py::cc_visit_ast#0",
+     "key": "[\"from_ast\",[{\"kind\":\"input\",\"index\":0},{\"kind\":\"unknown\",\"reason\":\"dictionary_splat\"}],null]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"from_ast\",[\"input\",\"unknown\"],\"unknown\"]",
+     "operation": "from_ast",
+     "Opp": 1,
+     "S": 0,
+     "P": 1,
+     "T": 1,
+     "Tcoarse": 1,
+     "Pcoarse": 1,
+     "classes": [
+      "wrapper"
+     ],
+     "mapping": "unique",
+     "occurrences": [
+      {
+       "path": "body[1].value.object.expr",
+       "carrier": "return",
+       "wrapper": [
+        "read",
+        "computed"
+       ],
+       "reachable": true,
+       "statementLevel": false
+      }
+     ],
+     "contributing": {
+      "effects": [],
+      "binds": [
+       "return(read>computed)"
+      ],
+      "kept": "binds",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "contrib/flake8.py::add_options#0",
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-max-cc\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "contrib/flake8.py::add_options#0",
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-no-assert\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "contrib/flake8.py::add_options#0",
+     "key": "[\"add_option\",[{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"--radon-show-closures\"}},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"},{\"kind\":\"unknown\",\"reason\":\"keyword_argument\"}],null]{\"kind\":\"input\",\"index\":1}",
+     "coarse": "[\"add_option\",[\"literal\",\"unknown\",\"unknown\",\"unknown\",\"unknown\",\"unknown\"],\"input\"]",
+     "operation": "add_option",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "key": "[\"log\",[{\"kind\":\"input\",\"index\":0}],{\"kind\":\"opaque\",\"category\":\"other\"}]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"log\",[\"input\"],\"unknown\"]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "key": "[\"log\",[{\"kind\":\"input\",\"index\":2}],{\"kind\":\"opaque\",\"category\":\"other\"}]{\"kind\":\"unknown\",\"reason\":\"free-name\"}",
+     "coarse": "[\"log\",[\"input\"],\"unknown\"]",
+     "operation": "log",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    }
+   ],
+   "unmatchedOccurrences": [
+    {
+     "exec": "cli/__init__.py::file_config#0",
+     "path": "body[3].effect.args[0].expr",
+     "operation": "toml_config",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::from_function#0",
+     "path": "body[4].expr.args[0].expr",
+     "operation": "zip",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::from_function#0",
+     "path": "body[4].expr.args[0].expr.args[0].expr",
+     "operation": "reversed",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::from_function#0",
+     "path": "body[4].expr.args[0].expr.args[1].expr",
+     "operation": "reversed",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::log_result#0",
+     "path": "body[1].then[0].effect.args[0].expr",
+     "operation": "as_json",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::log_result#0",
+     "path": "body[1].else[0].then[0].effect.args[0].expr",
+     "operation": "as_xml",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::log#0",
+     "path": "body[3].effect.args[0].expr.left.expr.left.expr.right.expr.right.expr",
+     "operation": "get",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::log#0",
+     "path": "body[3].effect.args[0].expr.left.expr.right.expr.whenFalse.expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/__init__.py::log_error#0",
+     "path": "body[1].effect.args[0].expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::results#0",
+     "path": "body[3].value.expr.args[0].expr",
+     "operation": "run",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_json#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "dict",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::gobble#11#0",
+     "path": "body[1].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_json#13#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_xml#14#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_md#15#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_codeclimate_issues#16#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "_to_dicts",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::gobble#18#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "analyze",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::gobble#18#0",
+     "path": "body[1].value.expr.args[0].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::to_terminal#20#0",
+     "path": "body[3].then[0].expr.operand.body[0].value.expr",
+     "operation": "get",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "exec": "cli/harvest.py::gobble#21#0",
+     "path": "body[1].expr.args[0].expr",
+     "operation": "read",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::as_json#24#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "dict",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/harvest.py::__init__#27#0",
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "cli/tools.py::_get_normal_name#0",
+     "path": "body[1].expr.receiver.expr",
+     "operation": "lower",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "cli/tools.py::find_cookie#0",
+     "path": "body[3].expr.args[0].expr",
+     "operation": "group",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/tools.py::iter_filenames#0",
+     "path": "body[1].predicate.left.expr",
+     "operation": "set",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "cli/tools.py::iter_filenames#0",
+     "path": "body[1].predicate.right.expr",
+     "operation": "set",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "exec": "cli/tools.py::iter_filenames#0",
+     "path": "body[2].expr.whenTrue.expr",
+     "operation": "split",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "cli/tools.py::iter_filenames#0",
+     "path": "body[3].expr.whenTrue.expr",
+     "operation": "split",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "cli/tools.py::iter_filenames#0",
+     "path": "body[3].expr.whenTrue.expr.receiver.expr",
+     "operation": "format",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "cli/tools.py::cc_to_dict#0",
+     "path": "body[3].expr.left.expr",
+     "operation": "set",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "cli/tools.py::cc_to_dict#0",
+     "path": "body[3].expr.right.expr",
+     "operation": "set",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "cli/tools.py::dict_to_xml#0",
+     "path": "body[3].value.expr.receiver.expr",
+     "operation": "tostring",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "cli/tools.py::_format_line#0",
+     "path": "body[1].value.expr.args[6].expr.whenFalse.expr",
+     "operation": "format",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "cli/tools.py::get_fingerprint#0",
+     "path": "body[3].effect.args[0].expr",
+     "operation": "encode",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "complexity.py::cc_rank#0",
+     "path": "body[2].value.expr.args[0].expr.left.expr",
+     "operation": "min",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "complexity.py::average_complexity#0",
+     "path": "body[3].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "complexity.py::average_complexity#0",
+     "path": "body[3].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "complexity.py::cc_visit#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "code2ast",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "metrics.py::h_visit#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "parse",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "metrics.py::halstead_visitor_report#0",
+     "path": "body[5].then[0].expr.left.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "metrics.py::halstead_visitor_report#0",
+     "path": "body[5].then[0].expr.right.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "metrics.py::halstead_visitor_report#0",
+     "path": "body[6].expr.whenTrue.expr.right.expr",
+     "operation": "log",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "path": "body[4].expr.args[0].expr.right.expr",
+     "operation": "radians",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "path": "body[5].value.expr.args[0].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "path": "body[5].value.expr.args[0].expr.args[1].expr.left.expr.left.expr.right.expr.right.expr",
+     "operation": "sin",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "raw.py::_generate#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "generate_tokens",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "raw.py::_generate#0",
+     "path": "body[1].value.expr.args[0].expr.args[0].object.expr",
+     "operation": "StringIO",
+     "carrier": "argument",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "raw.py::_logical#0",
+     "path": "body[2].value.expr.args[0].expr",
+     "operation": "aux",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "raw.py::aux#0",
+     "path": "body[1].expr.args[0].expr",
+     "operation": "_fewer_tokens",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::from_code#0",
+     "path": "body[1].value.expr.args[0].expr",
+     "operation": "code2ast",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::functions_complexity#0",
+     "path": "body[1].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "visitors.py::functions_complexity#0",
+     "path": "body[1].value.expr.left.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::functions_complexity#0",
+     "path": "body[1].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "visitors.py::classes_complexity#0",
+     "path": "body[1].value.expr.left.expr",
+     "operation": "sum",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "visitors.py::classes_complexity#0",
+     "path": "body[1].value.expr.left.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::classes_complexity#0",
+     "path": "body[1].value.expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "exec": "visitors.py::generic_visit#0",
+     "path": "body[4].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "exec": "visitors.py::visit_FunctionDef#0",
+     "path": "body[3].expr.args[3].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::visit_ClassDef#0",
+     "path": "body[5].expr.args[3].expr",
+     "operation": "max",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::visit_ClassDef#0",
+     "path": "body[5].expr.args[3].expr.args[0].expr.right.expr",
+     "operation": "list",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::visit_ClassDef#0",
+     "path": "body[5].expr.args[3].expr.args[0].expr.right.expr.args[0].expr",
+     "operation": "map",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "exec": "visitors.py::aux#0",
+     "path": "body[6].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1Unmatched": [
+    {
+     "exec": "cli/__init__.py::get_value#0",
+     "steps": [
+      {
+       "match": "call|getint|3|true",
+       "returned": true,
+       "path": "body[1].then[0].value.expr"
+      },
+      {
+       "match": "call|getboolean|3|true",
+       "returned": true,
+       "path": "body[2].then[0].value.expr"
+      },
+      {
+       "match": "call|get|3|true",
+       "returned": true,
+       "path": "body[2].else[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/__init__.py::__getattr__#0",
+     "steps": [
+      {
+       "match": "call|__getattribute__|1|true",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/__init__.py::__repr__#0",
+     "steps": [
+      {
+       "match": "call|repr|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/__init__.py::from_function#0",
+     "steps": [
+      {
+       "match": "call|cls|1|false",
+       "returned": true,
+       "path": "body[6].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::_iter_filenames#0",
+     "steps": [
+      {
+       "match": "call|iter_filenames|3|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::results#0",
+     "steps": [
+      {
+       "match": "call|caching_iterator|2|true",
+       "returned": true,
+       "path": "body[3].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_json#0",
+     "steps": [
+      {
+       "match": "call|dumps|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::gobble#11#0",
+     "steps": [
+      {
+       "match": "call|sorted_results|2|false",
+       "returned": true,
+       "path": "body[3].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_json#13#0",
+     "steps": [
+      {
+       "match": "call|dumps|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_xml#14#0",
+     "steps": [
+      {
+       "match": "call|dict_to_xml|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_md#15#0",
+     "steps": [
+      {
+       "match": "call|dict_to_md|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_codeclimate_issues#16#0",
+     "steps": [
+      {
+       "match": "call|dict_to_codeclimate_issues|2|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::gobble#18#0",
+     "steps": [
+      {
+       "match": "call|raw_to_dict|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::_sort#0",
+     "steps": [
+      {
+       "match": "call|sorted|2|true",
+       "returned": true,
+       "path": "body[0].then[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_json#24#0",
+     "steps": [
+      {
+       "match": "call|dumps|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::gobble#28#0",
+     "steps": [
+      {
+       "match": "call|h_visit|1|false",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/harvest.py::as_json#29#0",
+     "steps": [
+      {
+       "match": "call|dumps|1|false",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::dict_to_xml#0",
+     "steps": [
+      {
+       "match": "call|decode|1|false",
+       "returned": true,
+       "path": "body[3].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::_format_line#0",
+     "steps": [
+      {
+       "match": "call|format|8|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::format_cc_issue#0",
+     "steps": [
+      {
+       "match": "call|dumps|1|false",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::get_content#0",
+     "steps": [
+      {
+       "match": "call|join|1|false",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::get_fingerprint#0",
+     "steps": [
+      {
+       "match": "call|hexdigest|0|false",
+       "returned": true,
+       "path": "body[4].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "cli/tools.py::strip_ipython#0",
+     "steps": [
+      {
+       "match": "call|join|1|false",
+       "returned": true,
+       "path": "body[0].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "complexity.py::cc_rank#0",
+     "steps": [
+      {
+       "match": "call|chr|1|true",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "complexity.py::sorted_results#0",
+     "steps": [
+      {
+       "match": "call|sorted|2|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "complexity.py::cc_visit#0",
+     "steps": [
+      {
+       "match": "call|cc_visit_ast|2|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::h_visit#0",
+     "steps": [
+      {
+       "match": "call|h_visit_ast|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::h_visit_ast#0",
+     "steps": [
+      {
+       "match": "call|Halstead|2|false",
+       "returned": true,
+       "path": "body[4].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::halstead_visitor_report#0",
+     "steps": [
+      {
+       "match": "call|HalsteadReport|12|false",
+       "returned": true,
+       "path": "body[9].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::mi_compute#0",
+     "steps": [
+      {
+       "match": "call|min|2|true",
+       "returned": true,
+       "path": "body[5].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::mi_visit#0",
+     "steps": [
+      {
+       "match": "call|mi_compute|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "metrics.py::mi_rank#0",
+     "steps": [
+      {
+       "match": "call|chr|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "raw.py::_generate#0",
+     "steps": [
+      {
+       "match": "call|list|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "raw.py::_logical#0",
+     "steps": [
+      {
+       "match": "call|sum|2|false",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "raw.py::analyze#0",
+     "steps": [
+      {
+       "match": "call|Module|7|false",
+       "returned": true,
+       "path": "body[5].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::code2ast#0",
+     "steps": [
+      {
+       "match": "call|parse|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::fullname#0",
+     "steps": [
+      {
+       "match": "call|format|2|true",
+       "returned": true,
+       "path": "body[2].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::__str__#0",
+     "steps": [
+      {
+       "match": "call|format|6|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::__str__#6#0",
+     "steps": [
+      {
+       "match": "call|format|6|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::from_code#0",
+     "steps": [
+      {
+       "match": "call|from_ast|2|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::distinct_operators#0",
+     "steps": [
+      {
+       "match": "call|len|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    },
+    {
+     "exec": "visitors.py::distinct_operands#0",
+     "steps": [
+      {
+       "match": "call|len|1|false",
+       "returned": true,
+       "path": "body[1].value.expr"
+      }
+     ],
+     "effects": []
+    }
+   ]
+  }
+ }
+}

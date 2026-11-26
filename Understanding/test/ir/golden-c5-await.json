@@ -1,0 +1,348 @@
+{
+ "ts_standalone_name": {
+  "fingerprint": "1ae39bc83493446f95934dfd",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "opaque:completion-dependency",
+     "args": []
+    }
+   }
+  ]
+ },
+ "ts_standalone_call": {
+  "fingerprint": "77136b47952bb580ef569524",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "ts_bound": {
+  "fingerprint": "3ae4e4cede3cabb0a6fe7728",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "bind",
+     "id": 0,
+     "expr": {
+      "kind": "call",
+      "operation": "foo",
+      "args": [
+       {
+        "kind": "input",
+        "index": 0
+       }
+      ]
+     }
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "value",
+      "id": 0
+     }
+    }
+   }
+  ]
+ },
+ "ts_return": {
+  "fingerprint": "d6beac2af36f45ec6d37eb1b",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "computed",
+      "expr": {
+       "kind": "call",
+       "operation": "foo",
+       "args": [
+        {
+         "kind": "input",
+         "index": 0
+        }
+       ]
+      }
+     }
+    }
+   }
+  ]
+ },
+ "py_standalone_name": {
+  "fingerprint": "1ae39bc83493446f95934dfd",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "opaque:completion-dependency",
+     "args": []
+    }
+   }
+  ]
+ },
+ "py_standalone_call": {
+  "fingerprint": "77136b47952bb580ef569524",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "py_bound": {
+  "fingerprint": "0b9e56e6dbe5c8ac562fbc57",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "bind",
+     "id": 0,
+     "expr": {
+      "kind": "unknown",
+      "reason": "await"
+     }
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "value",
+      "id": 0
+     }
+    }
+   }
+  ]
+ },
+ "py_return": {
+  "fingerprint": "fb57699b201bf8a1b53cfd71",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "unknown",
+      "reason": "await"
+     }
+    }
+   }
+  ]
+ },
+ "ts_plain_call": {
+  "fingerprint": "77136b47952bb580ef569524",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "ts_plain_bound": {
+  "fingerprint": "3ae4e4cede3cabb0a6fe7728",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "bind",
+     "id": 0,
+     "expr": {
+      "kind": "call",
+      "operation": "foo",
+      "args": [
+       {
+        "kind": "input",
+        "index": 0
+       }
+      ]
+     }
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "value",
+      "id": 0
+     }
+    }
+   }
+  ]
+ },
+ "ts_plain_return": {
+  "fingerprint": "d6beac2af36f45ec6d37eb1b",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "computed",
+      "expr": {
+       "kind": "call",
+       "operation": "foo",
+       "args": [
+        {
+         "kind": "input",
+         "index": 0
+        }
+       ]
+      }
+     }
+    }
+   }
+  ]
+ },
+ "py_plain_call": {
+  "fingerprint": "77136b47952bb580ef569524",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   }
+  ]
+ },
+ "py_plain_bound": {
+  "fingerprint": "3ae4e4cede3cabb0a6fe7728",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "bind",
+     "id": 0,
+     "expr": {
+      "kind": "call",
+      "operation": "foo",
+      "args": [
+       {
+        "kind": "input",
+        "index": 0
+       }
+      ]
+     }
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "CALL_EXTERNAL",
+     "operation": "foo",
+     "args": [
+      {
+       "kind": "input",
+       "index": 0
+      }
+     ]
+    }
+   },
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "value",
+      "id": 0
+     }
+    }
+   }
+  ]
+ },
+ "py_plain_return": {
+  "fingerprint": "d6beac2af36f45ec6d37eb1b",
+  "projection": [
+   {
+    "under": null,
+    "what": {
+     "kind": "return",
+     "value": {
+      "kind": "computed",
+      "expr": {
+       "kind": "call",
+       "operation": "foo",
+       "args": [
+        {
+         "kind": "input",
+         "index": 0
+        }
+       ]
+      }
+     }
+    }
+   }
+  ]
+ }
+}

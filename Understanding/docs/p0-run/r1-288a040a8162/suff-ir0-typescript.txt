@@ -1,0 +1,68 @@
+corpus            corpora/ir0-typescript/src
+threads walked    48   (an entry executable and everything reachable through resolved calls)
+qualifying        2   (>=3 executables, >=1 branch, >=1 observable effect, >=1 boundary crossing, 0 opacity)
+SUFFICIENT        0
+
+why threads fail to qualify, worst first:
+    43  fewer than 3 executables, needs 3
+    36  no value crosses an executable boundary
+    35  no branch
+    31  no observable effect
+    15  opaque construct(s)
+
+qualifying threads:
+  encodeFunctions  (3 executables, 8 predicates, 10 effects)  27 missing facts
+       10  EFFECT_UNDERSPECIFIED   encodeFunctions: parse, encodeFunctions: visit, encodeFunctions: walk
+        8  CALLEE_UNIDENTIFIED   encodeFunctions: visit, encodeFunctions: walk, parse: parse
+        6  RECEIVER_UNIDENTIFIED   parse: parse, parse: setLanguage, loadLanguage: get
+        3  ORDER_UNSPECIFIED   encodeFunctions, parse, loadLanguage
+  operand  (4 executables, 23 predicates, 8 effects)  24 missing facts
+        8  EFFECT_UNDERSPECIFIED   operand: operand, operand: get, operand: litOf
+        6  CALLEE_UNIDENTIFIED   operand: get, operand: operand, canonNumber: exec
+        4  RECEIVER_UNIDENTIFIED   operand: get, canonNumber: exec, canonNumber: replace
+        2  EXPRESSION_UNREPRESENTED   operand: receiver of get
+        2  OPERAND_UNIDENTIFIED   canonNumber: argument of replace
+        2  ORDER_UNSPECIFIED   operand, canonNumber
+
+ranked missing facts across qualifying threads (occurrences, then threads affected):
+    18    2 thr   EFFECT_UNDERSPECIFIED
+    14    2 thr   CALLEE_UNIDENTIFIED
+    10    2 thr   RECEIVER_UNIDENTIFIED
+     5    2 thr   ORDER_UNSPECIFIED
+     2    1 thr   EXPRESSION_UNREPRESENTED
+     2    1 thr   OPERAND_UNIDENTIFIED
+
+what each means:
+  EFFECT_UNDERSPECIFIED: An effect whose invocation is known and whose semantics are not: no target identity, no operation semantics, no externally observable behaviour. Enough to say it happened, not enough to reproduce it.
+  CALLEE_UNIDENTIFIED: A call whose callee the store does not identify, so the emitter cannot know what to call.
+  RECEIVER_UNIDENTIFIED: A receiver whose identity the store does not establish, so the emitter cannot know what the operation acts on.
+  ORDER_UNSPECIFIED: Two or more effects whose relative order the store does not fix, so the emitter cannot know the sequence.
+  EXPRESSION_UNREPRESENTED: A transformation with no concept in the store, so the emitter has nothing to render it from.
+  OPERAND_UNIDENTIFIED: An operand the store records as unknown, so the emitter cannot know what value is used.
+
+the emitter's needs, frozen before measuring:
+  - per step: the operation performed, and for a call the identity of the callee
+  - per step: every operand with its identity, including receivers
+  - per step: the control condition under which it runs, with its predicate and operands
+  - per step: the value produced, and where it goes next
+  - per effect: the target, the operation's identity and semantics, the arguments, the ordering relative to other effects, and any externally observable behaviour required for equivalence
+  - per thread: the entry point and its parameters
+  - per thread: the exit and its value
+  - per thread: the semantic entity identity of anything constructed (a class or structured object; NOT a programming-language type)
+
+limits of this checker:
+  - A thread here is an entry executable and everything reachable from it through RESOLVED calls. With 12 and 16 resolved calls in the two corpora, threads are short, and a thread's members understate the work the source actually does.
+  - TYPE_REQUIRED is not populated by this checker. It is counted only where equivalent regeneration actually requires type information that cannot be recovered from the semantic facts present, and deciding that needs an emitter to fail for that reason. Convenience does not count, and nothing here guesses.
+  - A verdict is only as good as EMITTER_NEEDS. If an emitter later fails for a reason not on that list, the list was incomplete and the log records that as a finding about the checklist.
+
+order of observable effects (R-1B0, instrument only):
+  definition: A pair of observable effects in one executable is fixed when facts of a designated order relation connect the two occurrences on one control path, directly or by a chain.
+  order relations designated: none
+  executables with two or more observable effects: 18
+  pairs: 96, fixed by the store: 0, unordered: 96
+  qualifying thread encodeFunctions: 12 pairs, 12 unordered
+  qualifying thread operand: 13 pairs, 13 unordered
+  limits:
+  - No relation is designated as an order relation yet, so no pair can be fixed. That is the starting point R-1B measures from, not a result.
+  - Effects are stored as literals on HAS_EFFECT, with no occurrence identity, so there is no node an order fact could name. R-1B1 must give effect occurrences an identity before any candidate relation can be tried.
+  - HAS_EFFECT records only whether an effect is under a condition, and HAS_PREDICATE is not linked to any particular effect, so the store cannot tell whether two effects can run on the same path. Pairs on mutually exclusive branches are counted as unordered, which inflates the count until path membership is represented.

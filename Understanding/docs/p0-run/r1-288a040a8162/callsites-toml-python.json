@@ -1,0 +1,2504 @@
+{
+ "executables": [
+  {
+   "file": "decoder.py",
+   "name": "_detect_pathlib_path",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_ispath",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|_detect_pathlib_path|1|true",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_getpath",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|fspath|1|true",
+      "returned": true,
+      "path": "body[0].then[1].value.expr"
+     },
+     {
+      "match": "call|str|1|true",
+      "returned": true,
+      "path": "body[1].then[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 2
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].expr.args[1].expr.left.expr",
+     "operation": "count",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[0].expr.args[2].expr.right.expr",
+     "operation": "rfind",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 5,
+    "writeEffects": 5,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__init__#4",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__getitem__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__setitem__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "dump",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].then[0].value.expr.right.expr",
+     "operation": "unicode",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[1].else[0].value.expr.left.expr",
+     "operation": "unicode",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_strictly_valid_num",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[5].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[7].then[1].predicate.operands[0].operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "load",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "loads",
+   "ordinal": 0,
+   "counts": {
+    "O": 6,
+    "Opp": 6,
+    "S": 6,
+    "P": 6,
+    "T": 6,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 3,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 6,
+    "callEffects": 6,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_load_date",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_load_unicode_escapes",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [
+    {
+     "path": "body[1].expr.left.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_unescape",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__init__#14",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "get_empty_table",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|_dict|0|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "get_empty_inline_table",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|DynamicInlineTableDict|0|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "load_inline_object",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[2].predicate.operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_get_split_on_quotes",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[3].predicate.operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "load_line",
+   "ordinal": 0,
+   "counts": {
+    "O": 7,
+    "Opp": 7,
+    "S": 7,
+    "P": 7,
+    "T": 7,
+    "pseudoP": 7,
+    "pseudoT": 7
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 7
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 7,
+    "callEffects": 7,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 7,
+    "opaqueEffects": 7,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_load_line_multiline_str",
+   "ordinal": 0,
+   "counts": {
+    "O": 7,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[2].predicate.operands[1].operands[0].left.expr.object.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[2].then[0].expr.receiver.expr",
+     "operation": "strip",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[2].then[3].expr.left.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[2].then[3].expr.right.expr",
+     "operation": "len",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[5].predicate.operands[0].operands[0].operands[0].left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "load_value",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 2,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [
+    {
+     "path": "body[1].else[0].predicate.left.expr",
+     "operation": "lower",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "bounded_string",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [
+    {
+     "path": "body[0].predicate.left.expr",
+     "operation": "len",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "_load_array_isstrarray",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "load_array",
+   "ordinal": 0,
+   "counts": {
+    "O": 8,
+    "Opp": 5,
+    "S": 5,
+    "P": 5,
+    "T": 5,
+    "pseudoP": 4,
+    "pseudoT": 4
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 4
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[3].predicate.operands[1].right.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[3].predicate.operands[1].right.expr.receiver.expr.object.expr",
+     "operation": "split",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[3].else[5].effect.args[0].expr",
+     "operation": "join",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 5,
+    "callEffects": 5,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 4,
+    "opaqueEffects": 4,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "preserve_comment",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "embed_comments",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "__init__#27",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "preserve_comment#28",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "decoder.py",
+   "name": "embed_comments#29",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dumps",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "_dump_str",
+   "ordinal": 0,
+   "counts": {
+    "O": 6,
+    "Opp": 6,
+    "S": 6,
+    "P": 6,
+    "T": 6,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 6,
+    "callEffects": 5,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|unicode|1|false",
+      "returned": true,
+      "path": "body[8].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "_dump_float",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "format",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|replace|2|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "_dump_time",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[2].value.expr.object.expr",
+     "operation": "isoformat",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|isoformat|0|true",
+      "returned": true,
+      "path": "body[1].then[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 3,
+    "writeEffects": 3,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "get_empty_table",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|_dict|0|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_list",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_inline_table",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[2].then[2].value.expr.left.expr.right.expr",
+     "operation": "join",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[2].else[0].value.expr.args[0].expr",
+     "operation": "dump_value",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [
+     {
+      "match": "call|unicode|1|true",
+      "returned": true,
+      "path": "body[2].else[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_value",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].expr.args[0].expr",
+     "operation": "type",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[2].value.expr.whenTrue.expr",
+     "operation": "dump_fn",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[2].value.expr.whenFalse.expr",
+     "operation": "self.dump_funcs[str]",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_sections",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "__init__#11",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "__init__#12",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[1].predicate.left.expr",
+     "operation": "strip",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_list#13",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "__init__#14",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 6,
+    "writeEffects": 6,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "_dump_int",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|format|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "__init__#16",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "_dump_pathlib_path",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.args[0].expr",
+     "operation": "str",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|_dump_str|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "encoder.py",
+   "name": "dump_value#18",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[1].value.expr.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|dump_value|1|false",
+      "returned": true,
+      "path": "body[1].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "ordered.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ordered.py",
+   "name": "__init__#1",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [
+    {
+     "path": "body[0].effect.receiver.expr",
+     "operation": "super",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "tz.py",
+   "name": "__init__",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 5,
+    "writeEffects": 5,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "tz.py",
+   "name": "__deepcopy__",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|__class__|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "tz.py",
+   "name": "tzname",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "tz.py",
+   "name": "utcoffset",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.right.expr",
+     "operation": "timedelta",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "tz.py",
+   "name": "dst",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|timedelta|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  }
+ ],
+ "totals": {
+  "O": 104,
+  "Opp": 65,
+  "S": 65,
+  "P": 65,
+  "T": 65,
+  "pseudoP": 34,
+  "pseudoT": 34,
+  "rows": 0,
+  "byClass": {
+   "wrapper": 0,
+   "grouping-merge": 0,
+   "grouping-duplication": 0,
+   "ingestion-discrepancy": 0,
+   "other": 0
+  },
+  "byMapping": {
+   "unique": 0,
+   "multiplicity": 0,
+   "ambiguous": 0,
+   "coarse-ambiguous": 0
+  },
+  "unmatchedByReason": {
+   "nested-argument": 6,
+   "expression-operand": 10,
+   "predicate": 11,
+   "receiver": 12
+  },
+  "valuelessThrows": 8,
+  "opaqueStatements": 34
+ },
+ "a1": {
+  "executablesCompared": 56,
+  "executablesEqual": 42,
+  "stepPairs": 314,
+  "effectPairs": 303,
+  "unmatchedSteps": 15,
+  "unmatchedStepsReturned": 15,
+  "unmatchedEffects": 0,
+  "kindMismatches": []
+ },
+ "unpaired": {
+  "inIrOnly": [
+   "decoder.py::_detect_pathlib_path::0",
+   "decoder.py::__getitem__::0",
+   "decoder.py::load_value::0",
+   "decoder.py::preserve_comment::0",
+   "decoder.py::embed_comments::0",
+   "tz.py::tzname::0",
+   "tz.py::utcoffset::0"
+  ],
+  "inStoreOnly": []
+ },
+ "limits": [
+  "Locations are file, executable, and IR path. The IR keeps no source lines by design.",
+  "Calls the encoder does not represent, inside opaque constructs or in a thrown value it drops, are in no population. The visibility bound counts the statements that may hide them; it claims nothing about them.",
+  "A stored invocation records operation, argument kinds, and receiver kind only. It is matched to projected sites at that coarse key; a coarse key covering several projected keys is reported, never split.",
+  "Identical occurrences are matched by multiplicity. Which stored invocation is which occurrence is not determined.",
+  "HAS_EFFECT records kind, operation, argument count, and whether conditional; A1 matches steps on exactly that."
+ ]
+}

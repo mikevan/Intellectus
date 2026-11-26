@@ -1,0 +1,70 @@
+node       v22.23.4
+platform   linux x64
+encoder    typescript-adapter/0.5   ir_schema 6
+build      a93a98cead33
+corpus     corpora/ir0-typescript/src   verified against MANIFEST.json (10 files, corpus 01c953f3772a799f)
+files      10
+functions  58
+statements 240   (semantic; excluded: 0 non-semantic, 0 metadata)
+
+opaque            15 / 240 statements = 6.3%
+collision groups  2
+
+opaque categories, worst first:
+     9  loop
+     6  multi-branch
+
+collision groups (same intrinsic fingerprint, different names). Classification is a human's job:
+  edc1f1604a42f46c9973548f  corpora/ir0-typescript/src/adapters/python/index.ts:operand  |  corpora/ir0-typescript/src/adapters/python/index.ts:predicate  |  corpora/ir0-typescript/src/adapters/python/index.ts:stmt  |  corpora/ir0-typescript/src/adapters/typescript/index.ts:stmt  |  corpora/ir0-typescript/src/ir/index.ts:normalise
+  d1013e379434b7aef934a35a  corpora/ir0-typescript/src/adapters/python/index.ts:block  |  corpora/ir0-typescript/src/adapters/typescript/index.ts:block
+
+per file: opaque / statements, functions:
+     4 /   15   fns   7   corpora/ir0-typescript/src/adapters/python/index.ts
+     4 /   72   fns  18   corpora/ir0-typescript/src/journal/index.ts
+     3 /   52   fns  11   corpora/ir0-typescript/src/adapters/typescript/index.ts
+     1 /   20   fns   4   corpora/ir0-typescript/src/adapters/treeSitter.ts
+     1 /   30   fns  10   corpora/ir0-typescript/src/ir/index.ts
+     1 /   34   fns   2   corpora/ir0-typescript/src/schema/index.ts
+     1 /   14   fns   3   corpora/ir0-typescript/src/scopes/index.ts
+     0 /    3   fns   3   corpora/ir0-typescript/src/concepts/index.ts
+     0 /    0   fns   0   corpora/ir0-typescript/src/index.ts
+     0 /    0   fns   0   corpora/ir0-typescript/src/schema/relations.ts
+
+reproduces  R-1A of ir0-typescript, recorded 2026-09-17 at build 392244d37f62, confirmed on linux and windows.
+
+semantic statements hidden inside opaque containers  153   (of 158 hidden statements in all)
+  A hidden statement lies beneath an opaque container and has no independently represented statement in the IR.
+  It is counted once, whatever its depth, and attributed to the container immediately above it.
+
+  what each opaque construct conceals (by nearest container):
+     107  switch_statement       semantic 104, non-semantic 3, metadata 0
+      31  for_in_statement       semantic 30, non-semantic 1, metadata 0
+      10  for_statement          semantic 10, non-semantic 0, metadata 0
+       6  try_statement          semantic 5, non-semantic 1, metadata 0
+       4  while_statement        semantic 4, non-semantic 0, metadata 0
+
+  what the IR fails to expose (hidden statements by construct, worst first):
+      42  lexical_declaration
+      41  return_statement
+      27  if_statement
+      14  statement_block
+      10  call_expression
+      10  assignment_expression
+       5  comment
+       2  break_statement
+       2  throw_statement
+       2  continue_statement
+       2  for_in_statement
+       1  try_statement
+
+  deepest nesting          2 containers above one statement
+  represented source stmts 196 semantic, 5 non-semantic, 0 metadata   (SOURCE statements under no container; not the IR statement count above, and not comparable one to one with it)
+  outside any function     117   (encoded by nobody, and not hidden by the definition: counted apart)
+  in unencoded functions   14   (arrow and function expressions the adapters do not encode: counted apart)
+
+  what this instrument does not claim:
+    - A hidden statement is counted once and attributed to its nearest opaque container. Depth says how many containers are above it; the same statement is never counted per ancestor.
+    - A statement inside a nested function is not hidden: the adapters encode nested functions as executables of their own. What the nested-def container conceals is the construction of the closure, not its body.
+    - This instrument does not claim a hidden statement belongs in the flattened statement count. That is a representation question and is not answered here.
+    - A TypeScript else branch written without braces is a statement outside a body node and is not counted; every such branch in these corpora is braced.
+    - Hidden statements are counted in SOURCE statements. The measure counts IR statements, and the two populations differ by construction: one source statement can become several IR statements. A hidden count is what is concealed, never a number to add to the measure's total.

@@ -1,0 +1,489 @@
+{
+ "allOtherRefusalControls": "primary set equals the frozen manifest's expected set; consequent set empty",
+ "baseManifestSha256": "072b51013d2b85eae9d3c15954a3388cb398f94f94b8b7fdb662b319a2b33ecf",
+ "conflictingArm": [
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      "x",
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "u"
+       ]
+      },
+      "v"
+     ],
+     "completion": [],
+     "entry": [
+      "x"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "u",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [],
+     "program": [
+      [
+       "x",
+       "B",
+       null
+      ],
+      [
+       "B",
+       "u",
+       "then"
+      ],
+      [
+       "B",
+       "v",
+       "else"
+      ],
+      [
+       "u",
+       "v",
+       null
+      ],
+      [
+       "v",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "x",
+       "call"
+      ],
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "u",
+       "call"
+      ],
+      [
+       "v",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "refusals": [],
+    "required": [
+     [
+      "x.return",
+      "u.invoke",
+      [
+       {
+        "arms": [
+         [
+          "B",
+          "then"
+         ]
+        ],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "x.return",
+      "v.invoke",
+      [
+       {
+        "arms": [
+         [
+          "B",
+          "else"
+         ]
+        ],
+        "thenable": []
+       },
+       {
+        "arms": [
+         [
+          "B",
+          "then"
+         ]
+        ],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "CA0",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      "x",
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "u"
+       ]
+      },
+      "v"
+     ],
+     "completion": [],
+     "entry": [
+      "x"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "u",
+       "B",
+       "else"
+      ]
+     ],
+     "predicates": [],
+     "program": [
+      [
+       "x",
+       "B",
+       null
+      ],
+      [
+       "B",
+       "u",
+       "then"
+      ],
+      [
+       "B",
+       "v",
+       "else"
+      ],
+      [
+       "u",
+       "v",
+       null
+      ],
+      [
+       "v",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "x",
+       "call"
+      ],
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "u",
+       "call"
+      ],
+      [
+       "v",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "x.return",
+      "u.invoke"
+     ]
+    ],
+    "refusals": [],
+    "required": [
+     [
+      "x.return",
+      "v.invoke",
+      [
+       {
+        "arms": [
+         [
+          "B",
+          "else"
+         ]
+        ],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "CA1",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [
+        "v"
+       ],
+       "then": [
+        "u"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "u",
+       "B",
+       "then"
+      ],
+      [
+       "v",
+       "B",
+       "else"
+      ]
+     ],
+     "predicates": [],
+     "program": [
+      [
+       "B",
+       "u",
+       "then"
+      ],
+      [
+       "u",
+       "v",
+       null
+      ],
+      [
+       "B",
+       "v",
+       "else"
+      ],
+      [
+       "v",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "u",
+       "call"
+      ],
+      [
+       "v",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "u.return",
+      "v.invoke"
+     ]
+    ],
+    "refusals": [],
+    "required": []
+   },
+   "id": "CA2",
+   "language": "typescript"
+  }
+ ],
+ "diagnosticControls": [
+  {
+   "alt": "AWAIT_TARGET to a non-call step",
+   "consequent": [
+    [
+     "R12",
+     "R13"
+    ]
+   ],
+   "primary": [
+    "R13"
+   ],
+   "rule": "R13"
+  },
+  {
+   "alt": "AWAIT_TARGET to another executable's call",
+   "consequent": [
+    [
+     "R12",
+     "R13"
+    ]
+   ],
+   "primary": [
+    "R13"
+   ],
+   "rule": "R13"
+  },
+  {
+   "alt": "call step with class unresolved",
+   "consequent": [
+    [
+     "R12",
+     "R13"
+    ]
+   ],
+   "primary": [
+    "R13"
+   ],
+   "rule": "R13"
+  },
+  {
+   "alt": "literal with class call-result",
+   "consequent": [
+    [
+     "R12",
+     "R13"
+    ]
+   ],
+   "primary": [
+    "R13"
+   ],
+   "rule": "R13"
+  },
+  {
+   "alt": "await without AWAIT_TARGET",
+   "consequent": [],
+   "primary": [
+    "R12"
+   ],
+   "rule": "R12"
+  },
+  {
+   "alt": "await with two AWAIT_TARGET",
+   "consequent": [],
+   "primary": [
+    "R12"
+   ],
+   "rule": "R12"
+  },
+  {
+   "alt": "entry missing",
+   "consequent": [],
+   "primary": [
+    "R18"
+   ],
+   "rule": "R18"
+  },
+  {
+   "alt": "entry duplicated",
+   "consequent": [],
+   "primary": [
+    "R18"
+   ],
+   "rule": "R18"
+  },
+  {
+   "alt": "entry owned by another executable",
+   "consequent": [
+    [
+     "R18",
+     "R18"
+    ]
+   ],
+   "primary": [
+    "R18"
+   ],
+   "rule": "R18"
+  },
+  {
+   "alt": "entry with an incoming program fact",
+   "consequent": [],
+   "primary": [
+    "R18"
+   ],
+   "rule": "R18"
+  }
+ ],
+ "sabotage": {
+  "description": "the same chain-derivation function with its conflicting-arm check removed",
+  "mustFail": [
+   "CA1",
+   "CA2"
+  ],
+  "mustStillPass": [
+   "CA0"
+  ]
+ },
+ "version": "r1b1-followup-1"
+}

@@ -1,36 +1,89 @@
 // The Python adapter: the only code that knows Python. Produces FunctionIR; nothing lexical survives it.
 import type { Node } from "web-tree-sitter";
 import { parse, children } from "../treeSitter.js";
-import { canonNumber, canonString, type Expr, type FunctionIR, type Operand, type Predicate, type OpaqueCategory, type Stmt } from "../../ir/index.js";
+import { canonNumber, canonString, type Expr, type FunctionIR, type Operand, type Predicate, type OpaqueCategory, type StatementClass, type Stmt } from "../../ir/index.js";
 
-export const ENCODER = "python-adapter/0.1";
+export const ENCODER = "python-adapter/0.9";
 
 /** This grammar's node types, mapped to the IR's language-neutral categories. */
 const CATEGORY: Record<string, OpaqueCategory> = {
   for_statement: "loop", while_statement: "loop",
   match_statement: "multi-branch",
-  try_statement: "exception-handling", with_statement: "exception-handling",
-  class_definition: "declaration", function_definition: "declaration", import_statement: "declaration",
+  try_statement: "exception-handling",
+  // C-3. A `with` acquires a resource, runs a scope under its lifetime, and releases it on every exit, including
+  // an exceptional one. Releasing on an exception is a consequence of the lifetime, not the purpose of the
+  // construct, and calling it exception-handling described the wrong thing. `async with` is the same role and is
+  // classified the same way: the category says WHAT the construct does, and how execution proceeds is an
+  // orthogonal dimension that R-1 addresses. Classification only: acquisition, suspension, resumption, release
+  // ordering and failure propagation are all still unrepresented.
+  with_statement: "scoped-resource",
+  class_definition: "declaration",
+  // C-4. A def reaches this table only as a STATEMENT inside another function's body, which is exactly the case
+  // the category describes: execution constructs a function value and binds it in the enclosing scope. A
+  // module-level or class-body def never passes through here; it is encoded as an executable of its own.
+  function_definition: "local-function-construction",
+  import_statement: "declaration",
   import_from_statement: "declaration", global_statement: "declaration", nonlocal_statement: "declaration",
   decorated_definition: "declaration",
   pass_statement: "other", delete_statement: "other", assert_statement: "other",
 };
 function categoryOf(nodeType: string): OpaqueCategory { return CATEGORY[nodeType] ?? "other"; }
 
+/** IR-9: what kind of statement this is, on execution semantics alone. */
+const NON_SEMANTIC = new Set(["pass_statement", "comment"]);
+const METADATA = new Set(["import_statement", "import_from_statement", "global_statement", "nonlocal_statement", "future_import_statement"]);
+function classOf(node: Node): StatementClass {
+  if (NON_SEMANTIC.has(node.type)) return "NON_SEMANTIC";
+  if (METADATA.has(node.type)) return "METADATA";
+  if (node.type === "expression_statement") {
+    const inner = children(node)[0];
+    // a bare string statement, docstring or not: no execution semantics
+    if (inner && (inner.type === "string" || inner.type === "concatenated_string")) return "NON_SEMANTIC";
+    // a bare annotation with no value: x: int
+    if (inner && inner.type === "type" ) return "METADATA";
+  }
+  return "SEMANTIC";
+}
+
 export async function encodeFunctions(source: string): Promise<Map<string, FunctionIR>> {
   const root = await parse("python", source);
   const out = new Map<string, FunctionIR>();
-  for (const n of children(root)) if (n.type === "function_definition") out.set(n.childForFieldName("name")!.text, encodeFunction(n));
+  // Walk the whole tree, not only the module's top level. A method inside a class and a function inside a function
+  // are functions; skipping them made the Python adapter find a quarter of what the TypeScript adapter finds, which
+  // no measurement of language independence can survive. (IR-5; see docs/experiment-log.md.)
+  const walk = (n: Node): void => {
+    if (n.type === "function_definition") {
+      const name = n.childForFieldName("name")!.text;
+      out.set(out.has(name) ? `${name}#${out.size}` : name, encodeFunction(n));
+    }
+    for (const c of children(n)) walk(c);
+  };
+  walk(root);
   return out;
+}
+
+/** C-2. Is this function declared `@contextmanager`? The decorator sits on the decorated_definition above the
+ * function. The name is matched as written (`contextmanager` or a dotted `...contextmanager`), which is
+ * DECLARED_BY_AUTHOR knowledge and not a fact about the program: see the note on Ctx.declaredContextManager. */
+function declaredContextManager(fn: Node): boolean {
+  const parent = fn.parent;
+  if (!parent || parent.type !== "decorated_definition") return false;
+  return children(parent).some((d) => d.type === "decorator" && /(^|\.)contextmanager$/.test(d.text.replace(/^@/, "").trim()));
 }
 
 function encodeFunction(fn: Node): FunctionIR {
   const params = children(fn.childForFieldName("parameters")!).filter((p) => p.type !== "keyword_separator").map((p) => p.type === "identifier" ? p.text : p.childForFieldName("name")?.text ?? p.text).filter((p) => p !== "self");
-  const ctx: Ctx = { inputs: new Map(params.map((p, i) => [p, i])), locals: new Map(), next: { id: 0 } };
+  const ctx: Ctx = { declaredContextManager: declaredContextManager(fn), inputs: new Map(params.map((p, i) => [p, i])), locals: new Map(), next: { id: 0 } };
   return { inputs: params.length, body: block(fn.childForFieldName("body")!, ctx) };
 }
 
 interface Ctx {
+  /** C-2. True when this function is declared `@contextmanager`, which is the ONLY evidence that permits the
+   * scoped-resource-handoff classification. DECLARED_BY_AUTHOR knowledge: the decorator's name, read from the
+   * source, not a fact derived from program semantics. An alias, an imported rename, a wrapper, or a context
+   * manager implemented without that decorator is not recognised, and a generator is never classified as a
+   * handoff because of try/finally, a single yield, a name, or any other shape. */
+  declaredContextManager: boolean;
   inputs: Map<string, number>;
   /** name -> value id. A local's name lives only here, in the adapter, and never reaches the IR. */
   locals: Map<string, number>;
@@ -52,13 +105,20 @@ function stmt(s: Node, ctx: Ctx): Stmt | undefined {
     case "raise_statement": return { kind: "throw" };
     case "expression_statement": {
       const e = children(s)[0];
+      // R-1A. A standalone awaited expression, evaluated for its effects under a completion dependency. Same scoped
+      // `evaluate` carrier as TypeScript; a plain call statement stays `effect`.
+      if (e?.type === "await") return { kind: "evaluate", expr: expression(e, ctx) };
       if (e?.type === "call") return { kind: "effect", effect: effectOf(e, ctx) };
       if (e?.type === "assignment" || e?.type === "augmented_assignment") return assignment(e, ctx);
-      return { kind: "opaque", category: categoryOf(e?.type ?? "empty") };
+      // C-2. A yield suspends. What it suspends FOR is the distinction: a generator hands a value to a consumer,
+      // and a @contextmanager hands a resource to the caller's scope and resumes to release it. Neither is
+      // represented yet; both are now named for what they are instead of "other".
+      if (e?.type === "yield") return { kind: "opaque", category: ctx.declaredContextManager ? "scoped-resource-handoff" : "value-stream-emission", statementClass: classOf(s) };
+      return { kind: "opaque", category: categoryOf(e?.type ?? "empty"), statementClass: classOf(s) };
     }
     case "assignment": case "augmented_assignment": return assignment(s, ctx);
     case "comment": return undefined;
-    default: return { kind: "opaque", category: categoryOf(s.type) };
+    default: return { kind: "opaque", category: categoryOf(s.type), statementClass: classOf(s) };
   }
 }
 
@@ -89,7 +149,7 @@ function expression(n: Node, ctx: Ctx): Expr {
       const f = n.childForFieldName("function")!.text;
       const a0 = children(n.childForFieldName("arguments")!)[0];
       if (["Decimal", "int", "float", "Fraction"].includes(f) && a0) return { kind: "operand", operand: { kind: "literal", literal: canonNumber(a0.text) } };
-      const e = effectOf(n, ctx); return { kind: "call", operation: e.operation, args: e.args };
+      const e = effectOf(n, ctx); return { kind: "call", operation: e.operation, args: e.args, receiver: e.receiver };
     }
     case "attribute": return { kind: "member", object: operand(n.childForFieldName("object")!, ctx), property: n.childForFieldName("attribute")!.text };
     case "subscript": return { kind: "index", object: operand(n.childForFieldName("value")!, ctx), at: operand(n.childForFieldName("subscript")!, ctx) };
@@ -106,6 +166,9 @@ function expression(n: Node, ctx: Ctx): Expr {
       if (op === "+") return expression(children(n)[0], ctx);
       return { kind: "unknown", reason: "unary" };
     }
+    // R-1A. Before this, `await` in an expression was `unknown`, so a bound or returned awaited call lost the call
+    // as well as the await. The call is recovered and the dependency is represented, matching TypeScript.
+    case "await": return { kind: "awaited", of: expression(children(n)[0], ctx) };
     case "conditional_expression": {
       const kids = children(n); // value if cond else other
       return { kind: "choose", predicate: predicate(kids[1], ctx), whenTrue: operand(kids[0], ctx), whenFalse: operand(kids[2], ctx) };
@@ -116,9 +179,12 @@ function expression(n: Node, ctx: Ctx): Expr {
 
 function effectOf(call: Node, ctx: Ctx) {
   const fnNode = call.childForFieldName("function")!;
-  const name = fnNode.type === "attribute" ? fnNode.childForFieldName("attribute")!.text : fnNode.text;
+  const isMember = fnNode.type === "attribute";
+  const name = isMember ? fnNode.childForFieldName("attribute")!.text : fnNode.text;
+  // IR-7: the receiver is kept as parsed, not interpreted, and not used for resolution this round.
+  const receiver = isMember ? operand(fnNode.childForFieldName("object")!, ctx) : undefined;
   const args = children(call.childForFieldName("arguments")!).map((a) => operand(a, ctx));
-  return { kind: "CALL_EXTERNAL" as const, operation: name, args };
+  return { kind: "CALL_EXTERNAL" as const, operation: name, args, receiver };
 }
 
 function operand(n: Node, ctx: Ctx): Operand {
@@ -138,7 +204,7 @@ function operand(n: Node, ctx: Ctx): Operand {
       const e = expression(n, ctx);
       return e.kind === "operand" ? e.operand : { kind: "computed", expr: e };
     }
-    case "subscript": case "binary_operator": case "conditional_expression": {
+    case "subscript": case "binary_operator": case "conditional_expression": case "await": {   // R-1A: await reaches operand position through `computed`
       const e = expression(n, ctx);
       return e.kind === "operand" ? e.operand : { kind: "computed", expr: e };
     }
@@ -147,7 +213,8 @@ function operand(n: Node, ctx: Ctx): Operand {
     case "lambda": {
       const paramsNode = n.childForFieldName("parameters");
       const params = paramsNode ? children(paramsNode).map((p) => (p.type === "identifier" ? p.text : p.childForFieldName("name")?.text ?? p.text)) : [];
-      const innerCtx: Ctx = { inputs: new Map(params.map((p, i) => [p, i])), locals: new Map(), next: { id: 0 } };
+      // A lambda body is one expression and holds no yield statement, so the C-2 flag is false here by construction.
+      const innerCtx: Ctx = { declaredContextManager: false, inputs: new Map(params.map((p, i) => [p, i])), locals: new Map(), next: { id: 0 } };
       return { kind: "behaviour", inputs: params.length, body: [{ kind: "return", value: operand(n.childForFieldName("body")!, innerCtx) }] };
     }
     case "unary_operator": {

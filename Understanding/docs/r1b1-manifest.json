@@ -1,0 +1,5254 @@
+{
+ "ablation": [
+  "K4a",
+  "K5",
+  "K7",
+  "K13",
+  "K14"
+ ],
+ "combinations": [
+  [
+   "A",
+   "H1"
+  ],
+  [
+   "A",
+   "H2"
+  ],
+  [
+   "B",
+   "H1"
+  ],
+  [
+   "B",
+   "H2"
+  ]
+ ],
+ "deferred": [
+  {
+   "rule": "R22",
+   "why": "the validator may not read predicate text; moved to ingestion and encoder verification (amendment A4)"
+  }
+ ],
+ "engine": [
+  {
+   "conditionBlindMustDerive": [
+    [
+     "x",
+     "y"
+    ]
+   ],
+   "facts": [
+    {
+     "after": "m",
+     "before": "x",
+     "conds": {
+      "arms": [
+       [
+        "B",
+        "then"
+       ]
+      ],
+      "thenable": []
+     }
+    },
+    {
+     "after": "y",
+     "before": "m",
+     "conds": {
+      "arms": [
+       [
+        "B",
+        "else"
+       ]
+      ],
+      "thenable": []
+     }
+    }
+   ],
+   "forbidden": [
+    [
+     "x",
+     "y"
+    ]
+   ],
+   "id": "K9b"
+  }
+ ],
+ "fixtures": [
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "s1",
+      "s2"
+     ],
+     "completion": [],
+     "entry": [
+      "s1"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "s1",
+       "s2",
+       null
+      ],
+      [
+       "s2",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "s1",
+       "call"
+      ],
+      [
+       "s2",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "s1",
+      "s2",
+      "T",
+      {
+       "after": "s2.invoke",
+       "before": "s1.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K1",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "f",
+      "g"
+     ],
+     "completion": [],
+     "entry": [
+      "f"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "f",
+       "g",
+       null
+      ],
+      [
+       "g",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "f",
+       "call"
+      ],
+      [
+       "g",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "f",
+      "g",
+      "T",
+      {
+       "after": "g.invoke",
+       "before": "f.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K2",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "load",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "load"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "load",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "load",
+       "call"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "load",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K3",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       "load",
+       "call-result"
+      ]
+     ],
+     "body": [
+      "load",
+      "w",
+      "use"
+     ],
+     "completion": [
+      [
+       "w",
+       "load"
+      ]
+     ],
+     "entry": [
+      "load"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "load",
+       "w",
+       null
+      ],
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "load",
+       "call"
+      ],
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "load.return",
+      "w.settle"
+     ],
+     [
+      "w.enter",
+      "w.settle"
+     ],
+     [
+      "load.invoke",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [
+     [
+      "load",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": [
+     [
+      "w.enter",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.settle",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ],
+     [
+      "w.settle",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K4a",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "load",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "load"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "load",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "load",
+       "call"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "delta": {
+     "awaitTarget": -1,
+     "completion": -1,
+     "from": "K4a",
+     "program": -1,
+     "steps": -1
+    },
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "load",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K4b",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "b",
+       "then",
+       "falls-through"
+      ],
+      [
+       "b",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [
+      [
+       "w",
+       "load",
+       "call-result"
+      ]
+     ],
+     "body": [
+      {
+       "branch": "b",
+       "else": [],
+       "then": [
+        "load",
+        "w"
+       ]
+      },
+      "use"
+     ],
+     "completion": [
+      [
+       "w",
+       "load"
+      ]
+     ],
+     "entry": [
+      "b"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "load",
+       "b",
+       "then"
+      ],
+      [
+       "w",
+       "b",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "b",
+       "pred:b"
+      ]
+     ],
+     "program": [
+      [
+       "b",
+       "load",
+       "then"
+      ],
+      [
+       "load",
+       "w",
+       null
+      ],
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "b",
+       "use",
+       "else"
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "b",
+       "branch"
+      ],
+      [
+       "load",
+       "call"
+      ],
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "w.enter",
+      "w.settle"
+     ],
+     [
+      "load.return",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [
+     [
+      "load",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": [
+     [
+      "w.settle",
+      "use.invoke",
+      [
+       {
+        "arms": [
+         [
+          "b",
+          "then"
+         ]
+        ],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K5",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [
+        "b"
+       ],
+       "then": [
+        "a"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ],
+      [
+       "b",
+       "B",
+       "else"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "a",
+       "then"
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "a",
+       "end",
+       null
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "X",
+      null
+     ]
+    ],
+    "required": [
+     [
+      "a.return",
+      "end.exit",
+      [
+       {
+        "arms": [
+         [
+          "B",
+          "then"
+         ]
+        ],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "b.return",
+      "end.exit",
+      [
+       {
+        "arms": [
+         [
+          "B",
+          "else"
+         ]
+        ],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K6a",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        "a"
+       ]
+      },
+      {
+       "branch": "B2",
+       "else": [],
+       "then": [
+        "b"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B1",
+       "then"
+      ],
+      [
+       "b",
+       "B2",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:c"
+      ],
+      [
+       "B2",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "a",
+       "then"
+      ],
+      [
+       "B1",
+       "B2",
+       "else"
+      ],
+      [
+       "a",
+       "B2",
+       null
+      ],
+      [
+       "B2",
+       "b",
+       "then"
+      ],
+      [
+       "B2",
+       "end",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K6b",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        "a"
+       ]
+      },
+      {
+       "branch": "B2",
+       "else": [],
+       "then": [
+        "b"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B1",
+       "then"
+      ],
+      [
+       "b",
+       "B2",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:x>0"
+      ],
+      [
+       "B2",
+       "pred:x<0"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "a",
+       "then"
+      ],
+      [
+       "B1",
+       "B2",
+       "else"
+      ],
+      [
+       "a",
+       "B2",
+       null
+      ],
+      [
+       "B2",
+       "b",
+       "then"
+      ],
+      [
+       "B2",
+       "end",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K6c",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "always-exits"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "a",
+        "r"
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ],
+      [
+       "r",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "a",
+       "then"
+      ],
+      [
+       "a",
+       "r",
+       null
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "r",
+       "exit"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "X",
+      null
+     ]
+    ],
+    "required": []
+   },
+   "id": "K6d",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "always-exits"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "a",
+        "r"
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ],
+      [
+       "r",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "r",
+       "exit"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {
+     "f": [
+      "edges",
+      "reachability"
+     ]
+    },
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "U",
+      null
+     ]
+    ],
+    "required": []
+   },
+   "id": "K6d-i",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "unknown"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "a",
+        "o"
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ],
+      [
+       "o",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "a",
+       "then"
+      ],
+      [
+       "a",
+       "o",
+       null
+      ],
+      [
+       "o",
+       "b",
+       null
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "o",
+       "opaque"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "o",
+      "T",
+      {
+       "after": "o.start",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "o",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "o.end",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K6e",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "b1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "b1",
+       "else",
+       "falls-through"
+      ],
+      [
+       "b2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "b2",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [
+      [
+       "w1",
+       null,
+       "unresolved"
+      ],
+      [
+       "w2",
+       "c3",
+       "call-result"
+      ]
+     ],
+     "body": [
+      {
+       "branch": "b1",
+       "else": [],
+       "then": [
+        "c1"
+       ]
+      },
+      "w1",
+      "c2",
+      {
+       "branch": "b2",
+       "else": [],
+       "then": [
+        "c3",
+        "w2",
+        "c4"
+       ]
+      },
+      "x1"
+     ],
+     "completion": [
+      [
+       "w2",
+       "c3"
+      ]
+     ],
+     "entry": [
+      "b1"
+     ],
+     "id": "loadLanguage",
+     "inArm": [
+      [
+       "c1",
+       "b1",
+       "then"
+      ],
+      [
+       "c3",
+       "b2",
+       "then"
+      ],
+      [
+       "w2",
+       "b2",
+       "then"
+      ],
+      [
+       "c4",
+       "b2",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "b1",
+       "pred:!ready"
+      ],
+      [
+       "b2",
+       "pred:!lang"
+      ]
+     ],
+     "program": [
+      [
+       "b1",
+       "c1",
+       "then"
+      ],
+      [
+       "c1",
+       "w1",
+       null
+      ],
+      [
+       "b1",
+       "w1",
+       "else"
+      ],
+      [
+       "w1",
+       "c2",
+       null
+      ],
+      [
+       "c2",
+       "b2",
+       null
+      ],
+      [
+       "b2",
+       "c3",
+       "then"
+      ],
+      [
+       "c3",
+       "w2",
+       null
+      ],
+      [
+       "w2",
+       "c4",
+       null
+      ],
+      [
+       "c4",
+       "x1",
+       null
+      ],
+      [
+       "b2",
+       "x1",
+       "else"
+      ]
+     ],
+     "steps": [
+      [
+       "b1",
+       "branch"
+      ],
+      [
+       "c1",
+       "call"
+      ],
+      [
+       "w1",
+       "await"
+      ],
+      [
+       "c2",
+       "call"
+      ],
+      [
+       "b2",
+       "branch"
+      ],
+      [
+       "c3",
+       "call"
+      ],
+      [
+       "w2",
+       "await"
+      ],
+      [
+       "c4",
+       "call"
+      ],
+      [
+       "x1",
+       "exit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "c3.return",
+      "w2.settle"
+     ],
+     [
+      "w2.enter",
+      "w2.settle"
+     ],
+     [
+      "c1.return",
+      "w1.settle"
+     ],
+     [
+      "c1.invoke",
+      "w1.settle"
+     ],
+     [
+      "c1.return",
+      "w2.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [
+     [
+      "c1",
+      "c2",
+      "T",
+      {
+       "after": "c2.invoke",
+       "before": "c1.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b1",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "c1",
+      "c3",
+      "U",
+      {
+       "after": "c3.invoke",
+       "before": "c1.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b1",
+           "then"
+          ],
+          [
+           "b2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "c1",
+      "c4",
+      "U",
+      {
+       "after": "c4.invoke",
+       "before": "c1.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b1",
+           "then"
+          ],
+          [
+           "b2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "c2",
+      "c3",
+      "T",
+      {
+       "after": "c3.invoke",
+       "before": "c2.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "c2",
+      "c4",
+      "T",
+      {
+       "after": "c4.invoke",
+       "before": "c2.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "c3",
+      "c4",
+      "T",
+      {
+       "after": "c4.invoke",
+       "before": "c3.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "b2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": [
+     [
+      "w1.enter",
+      "w1.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w1.continue",
+      "c2.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w1.settle",
+      "w1.continue",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w1"
+        ]
+       }
+      ]
+     ],
+     [
+      "w2.settle",
+      "c4.invoke",
+      [
+       {
+        "arms": [
+         [
+          "b2",
+          "then"
+         ]
+        ],
+        "thenable": [
+         "w2"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K7",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        {
+         "branch": "B2",
+         "else": [],
+         "then": [
+          "a"
+         ]
+        },
+        "b"
+       ]
+      },
+      "z"
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "B2",
+       "B1",
+       "then"
+      ],
+      [
+       "b",
+       "B1",
+       "then"
+      ],
+      [
+       "a",
+       "B2",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:c"
+      ],
+      [
+       "B2",
+       "pred:d"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "B2",
+       "then"
+      ],
+      [
+       "B2",
+       "a",
+       "then"
+      ],
+      [
+       "a",
+       "b",
+       null
+      ],
+      [
+       "B2",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "z",
+       null
+      ],
+      [
+       "B1",
+       "z",
+       "else"
+      ],
+      [
+       "z",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "z",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "T",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "a",
+      "z",
+      "T",
+      {
+       "after": "z.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "b",
+      "z",
+      "T",
+      {
+       "after": "z.invoke",
+       "before": "b.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K8",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [
+        "b"
+       ],
+       "then": [
+        "a"
+       ]
+      },
+      "d"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ],
+      [
+       "b",
+       "B",
+       "else"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "a",
+       "then"
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "a",
+       "d",
+       null
+      ],
+      [
+       "b",
+       "d",
+       null
+      ],
+      [
+       "d",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "d",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "X",
+      null
+     ],
+     [
+      "a",
+      "d",
+      "T",
+      {
+       "after": "d.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "b",
+      "d",
+      "T",
+      {
+       "after": "d.invoke",
+       "before": "b.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "else"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K9",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        "a"
+       ]
+      },
+      {
+       "branch": "B2",
+       "else": [],
+       "then": [
+        "b"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B1",
+       "then"
+      ],
+      [
+       "b",
+       "B2",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:p"
+      ],
+      [
+       "B2",
+       "pred:q"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "a",
+       "then"
+      ],
+      [
+       "B1",
+       "B2",
+       "else"
+      ],
+      [
+       "a",
+       "B2",
+       null
+      ],
+      [
+       "B2",
+       "b",
+       "then"
+      ],
+      [
+       "B2",
+       "end",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K10",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       null,
+       "unresolved",
+       "ready"
+      ]
+     ],
+     "body": [
+      "w",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "w"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "w.enter",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [],
+    "required": [
+     [
+      "w.enter",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.settle",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K11",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "f",
+      "g"
+     ],
+     "completion": [],
+     "entry": [
+      "f"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [],
+     "steps": [
+      [
+       "f",
+       "call"
+      ],
+      [
+       "g",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {
+     "f": [
+      "edges",
+      "reachability"
+     ]
+    },
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "f",
+      "g",
+      "T",
+      null
+     ]
+    ],
+    "required": []
+   },
+   "id": "K12",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       "load",
+       "call-result"
+      ]
+     ],
+     "body": [
+      "load",
+      "work",
+      "w",
+      "use"
+     ],
+     "completion": [
+      [
+       "w",
+       "load"
+      ]
+     ],
+     "entry": [
+      "load"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "load",
+       "work",
+       null
+      ],
+      [
+       "work",
+       "w",
+       null
+      ],
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "load",
+       "call"
+      ],
+      [
+       "work",
+       "call"
+      ],
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "w.settle",
+      "work.invoke"
+     ],
+     [
+      "w.enter",
+      "w.settle"
+     ],
+     [
+      "load.return",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [
+     [
+      "load",
+      "work",
+      "T",
+      {
+       "after": "work.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "load",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "load.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "work",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "work.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": [
+     [
+      "w.settle",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K13",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "x"
+     ],
+     "completion": [],
+     "entry": [
+      "x"
+     ],
+     "id": "cached",
+     "inArm": [],
+     "predicates": [],
+     "program": [],
+     "steps": [
+      [
+       "x",
+       "exit"
+      ]
+     ]
+    },
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       "c",
+       "call-result"
+      ]
+     ],
+     "body": [
+      "c",
+      "w",
+      "use"
+     ],
+     "completion": [
+      [
+       "w",
+       "c"
+      ]
+     ],
+     "entry": [
+      "c"
+     ],
+     "id": "g",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "c",
+       "w",
+       null
+      ],
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "c",
+       "call"
+      ],
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "c.invoke",
+      "w.settle"
+     ],
+     [
+      "c.return",
+      "w.settle"
+     ],
+     [
+      "w.enter",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [
+     [
+      "c",
+      "use",
+      "T",
+      {
+       "after": "use.invoke",
+       "before": "c.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": [
+     [
+      "w.settle",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K14",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       null,
+       "unresolved",
+       "ready"
+      ]
+     ],
+     "body": [
+      "w",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "w"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [
+     [
+      "w.enter",
+      "w.settle"
+     ]
+    ],
+    "noEvent": [],
+    "pairs": [],
+    "required": [
+     [
+      "w.enter",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.settle",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": [
+         "w"
+        ]
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K15",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       null,
+       "plain-value",
+       "42"
+      ]
+     ],
+     "body": [
+      "w",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "w"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [
+     "w.settle"
+    ],
+    "pairs": [],
+    "required": [
+     [
+      "w.enter",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K16",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       null,
+       "plain-value",
+       "42"
+      ]
+     ],
+     "body": [
+      "w",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "w"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [],
+    "required": [
+     [
+      "w.enter",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.continue",
+      "use.invoke",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ],
+     [
+      "w.settle",
+      "w.continue",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K16-py",
+   "language": "python"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "unknown"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "o",
+        "a"
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "o",
+       "B",
+       "then"
+      ],
+      [
+       "a",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "o",
+       "then"
+      ],
+      [
+       "o",
+       "a",
+       null
+      ],
+      [
+       "a",
+       "b",
+       null
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "o",
+       "opaque"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "o",
+      "a",
+      "T",
+      {
+       "after": "a.invoke",
+       "before": "o.end",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "o",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "o.end",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K17",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B2",
+       "then",
+       "unknown"
+      ],
+      [
+       "B2",
+       "else",
+       "always-exits"
+      ],
+      [
+       "B1",
+       "then",
+       "unknown"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        "a",
+        {
+         "branch": "B2",
+         "else": [
+          "r"
+         ],
+         "then": [
+          "o"
+         ]
+        }
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B1",
+       "then"
+      ],
+      [
+       "B2",
+       "B1",
+       "then"
+      ],
+      [
+       "o",
+       "B2",
+       "then"
+      ],
+      [
+       "r",
+       "B2",
+       "else"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:c"
+      ],
+      [
+       "B2",
+       "pred:d"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "a",
+       "then"
+      ],
+      [
+       "a",
+       "B2",
+       null
+      ],
+      [
+       "B2",
+       "o",
+       "then"
+      ],
+      [
+       "B2",
+       "r",
+       "else"
+      ],
+      [
+       "o",
+       "b",
+       null
+      ],
+      [
+       "B1",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "o",
+       "opaque"
+      ],
+      [
+       "r",
+       "exit"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "o",
+      "T",
+      {
+       "after": "o.start",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "a",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "o",
+      "b",
+      "U",
+      {
+       "after": "b.invoke",
+       "before": "o.end",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K18",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B2",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B2",
+       "else",
+       "always-exits"
+      ],
+      [
+       "B1",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B1",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B1",
+       "else": [],
+       "then": [
+        "a",
+        {
+         "branch": "B2",
+         "else": [
+          "r"
+         ],
+         "then": [
+          "x"
+         ]
+        }
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B1"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "a",
+       "B1",
+       "then"
+      ],
+      [
+       "B2",
+       "B1",
+       "then"
+      ],
+      [
+       "x",
+       "B2",
+       "then"
+      ],
+      [
+       "r",
+       "B2",
+       "else"
+      ]
+     ],
+     "predicates": [
+      [
+       "B1",
+       "pred:c"
+      ],
+      [
+       "B2",
+       "pred:d"
+      ]
+     ],
+     "program": [
+      [
+       "B1",
+       "a",
+       "then"
+      ],
+      [
+       "a",
+       "B2",
+       null
+      ],
+      [
+       "B2",
+       "x",
+       "then"
+      ],
+      [
+       "B2",
+       "r",
+       "else"
+      ],
+      [
+       "x",
+       "b",
+       null
+      ],
+      [
+       "B1",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B1",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "B2",
+       "branch"
+      ],
+      [
+       "x",
+       "call"
+      ],
+      [
+       "r",
+       "exit"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "a",
+      "x",
+      "T",
+      {
+       "after": "x.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "a",
+      "b",
+      "T",
+      {
+       "after": "b.invoke",
+       "before": "a.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "x",
+      "b",
+      "T",
+      {
+       "after": "b.invoke",
+       "before": "x.return",
+       "conds": [
+        {
+         "arms": [
+          [
+           "B1",
+           "then"
+          ],
+          [
+           "B2",
+           "then"
+          ]
+         ],
+         "thenable": []
+        }
+       ]
+      }
+     ]
+    ],
+    "required": []
+   },
+   "id": "K19",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "always-exits"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "o",
+        "r"
+       ]
+      },
+      "b"
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "f",
+     "inArm": [
+      [
+       "o",
+       "B",
+       "then"
+      ],
+      [
+       "r",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "o",
+       "then"
+      ],
+      [
+       "o",
+       "r",
+       null
+      ],
+      [
+       "B",
+       "b",
+       "else"
+      ],
+      [
+       "b",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "o",
+       "opaque"
+      ],
+      [
+       "r",
+       "exit"
+      ],
+      [
+       "b",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "o",
+      "b",
+      "X",
+      null
+     ]
+    ],
+    "required": []
+   },
+   "id": "K21",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "f",
+      "g"
+     ],
+     "completion": [],
+     "entry": [
+      "f"
+     ],
+     "id": "f",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "f",
+       "g",
+       null
+      ],
+      [
+       "g",
+       "end",
+       null
+      ],
+      [
+       "h",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "f",
+       "call"
+      ],
+      [
+       "g",
+       "call"
+      ],
+      [
+       "h",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {
+     "f": [
+      "reachability"
+     ]
+    },
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [
+     [
+      "f",
+      "g",
+      "T",
+      {
+       "after": "g.invoke",
+       "before": "f.return",
+       "conds": [
+        {
+         "arms": [],
+         "thenable": []
+        }
+       ]
+      }
+     ],
+     [
+      "f",
+      "h",
+      "T",
+      null
+     ],
+     [
+      "g",
+      "h",
+      "T",
+      null
+     ]
+    ],
+    "required": [
+     [
+      "h.return",
+      "end.exit",
+      [
+       {
+        "arms": [],
+        "thenable": []
+       }
+      ]
+     ]
+    ]
+   },
+   "id": "K22",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "s"
+     ],
+     "completion": [],
+     "entry": [
+      "s"
+     ],
+     "id": "e1",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "s",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "s",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    },
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "t"
+     ],
+     "completion": [],
+     "entry": [
+      "t"
+     ],
+     "id": "e2",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "t",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "t",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [],
+    "refusals": [],
+    "required": []
+   },
+   "id": "L1",
+   "language": "typescript",
+   "legacy": {
+    "followsExecutable": [
+     [
+      "e2",
+      "e1",
+      "thread",
+      "T1"
+     ]
+    ],
+    "hasPredicateExecutable": [
+     [
+      "e1",
+      "pred:p1"
+     ],
+     [
+      "e1",
+      "pred:p2"
+     ]
+    ]
+   }
+  }
+ ],
+ "mini": [
+  {
+   "executables": [
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "f"
+     ],
+     "completion": [],
+     "entry": [
+      "f"
+     ],
+     "id": "p",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "f",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "f",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    },
+    {
+     "armStatus": [],
+     "awaitTarget": [
+      [
+       "w",
+       "p:f",
+       "call-result"
+      ]
+     ],
+     "body": [
+      "w",
+      "use"
+     ],
+     "completion": [],
+     "entry": [
+      "w"
+     ],
+     "id": "q",
+     "inArm": [],
+     "predicates": [],
+     "program": [
+      [
+       "w",
+       "use",
+       null
+      ],
+      [
+       "use",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "w",
+       "await"
+      ],
+      [
+       "use",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [],
+    "required": []
+   },
+   "id": "X13",
+   "language": "typescript"
+  },
+  {
+   "executables": [
+    {
+     "armStatus": [
+      [
+       "B",
+       "then",
+       "falls-through"
+      ],
+      [
+       "B",
+       "else",
+       "falls-through"
+      ]
+     ],
+     "awaitTarget": [],
+     "body": [
+      {
+       "branch": "B",
+       "else": [],
+       "then": [
+        "a"
+       ]
+      }
+     ],
+     "completion": [],
+     "entry": [
+      "B"
+     ],
+     "id": "p",
+     "inArm": [
+      [
+       "a",
+       "B",
+       "then"
+      ]
+     ],
+     "predicates": [
+      [
+       "B",
+       "pred:c"
+      ]
+     ],
+     "program": [
+      [
+       "B",
+       "a",
+       "then"
+      ],
+      [
+       "B",
+       "end",
+       "else"
+      ],
+      [
+       "a",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "B",
+       "branch"
+      ],
+      [
+       "a",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    },
+    {
+     "armStatus": [],
+     "awaitTarget": [],
+     "body": [
+      "s"
+     ],
+     "completion": [],
+     "entry": [
+      "s"
+     ],
+     "id": "q",
+     "inArm": [
+      [
+       "s",
+       "p:B",
+       "then"
+      ]
+     ],
+     "predicates": [],
+     "program": [
+      [
+       "s",
+       "end",
+       null
+      ]
+     ],
+     "steps": [
+      [
+       "s",
+       "call"
+      ],
+      [
+       "end",
+       "exit",
+       "implicit"
+      ]
+     ]
+    }
+   ],
+   "expect": {
+    "completeness": {},
+    "forbidden": [],
+    "noEvent": [],
+    "pairs": [],
+    "required": []
+   },
+   "id": "X14",
+   "language": "typescript"
+  }
+ ],
+ "refusals": [
+  {
+   "alt": "program from an executable",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R1"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "@f",
+      "s2",
+      null
+     ]
+    ],
+    "removeProgram": []
+   },
+   "rule": "R1"
+  },
+  {
+   "alt": "program to an executable",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R1"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "s2",
+      "@f",
+      null
+     ]
+    ],
+    "removeProgram": [
+     [
+      "s2",
+      "end",
+      null
+     ]
+    ]
+   },
+   "rule": "R1"
+  },
+  {
+   "alt": "program across executables",
+   "base": "K14",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R2"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "c",
+      "cached:x",
+      null
+     ]
+    ],
+    "exe": "g",
+    "removeProgram": [
+     [
+      "c",
+      "w",
+      null
+     ]
+    ]
+   },
+   "rule": "R2"
+  },
+  {
+   "alt": "A: within names another executable",
+   "base": "K1",
+   "candidates": [
+    "A"
+   ],
+   "expect": [
+    "R2"
+   ],
+   "mutate": {
+    "setWithin": [
+     [
+      "s1",
+      "s2",
+      "cached"
+     ]
+    ]
+   },
+   "rule": "R2"
+  },
+  {
+   "alt": "program self-loop",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R3"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "s1",
+      "s1",
+      null
+     ]
+    ],
+    "removeProgram": [
+     [
+      "s1",
+      "s2",
+      null
+     ]
+    ]
+   },
+   "rule": "R3"
+  },
+  {
+   "alt": "program leaves an explicit exit",
+   "base": "K6d",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R4"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "r",
+      "b",
+      null
+     ]
+    ]
+   },
+   "rule": "R4"
+  },
+  {
+   "alt": "program leaves the implicit exit",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R4"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "end",
+      "s1",
+      null
+     ]
+    ]
+   },
+   "rule": "R4"
+  },
+  {
+   "alt": "branch fact without an arm",
+   "base": "K6a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R5"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "B",
+      "a",
+      null
+     ]
+    ],
+    "removeProgram": [
+     [
+      "B",
+      "a",
+      "then"
+     ]
+    ]
+   },
+   "rule": "R5"
+  },
+  {
+   "alt": "arm on a non-branch",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R6"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "s1",
+      "s2",
+      "then"
+     ]
+    ],
+    "removeProgram": [
+     [
+      "s1",
+      "s2",
+      null
+     ]
+    ]
+   },
+   "rule": "R6"
+  },
+  {
+   "alt": "second fact from a non-branch",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R7"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "s1",
+      "end",
+      null
+     ]
+    ]
+   },
+   "rule": "R7"
+  },
+  {
+   "alt": "second fact on one branch arm",
+   "base": "K6a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R7"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "B",
+      "b",
+      "then"
+     ]
+    ]
+   },
+   "rule": "R7"
+  },
+  {
+   "alt": "completion between two calls",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R8"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "use",
+      "load"
+     ]
+    ],
+    "removeCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R8"
+  },
+  {
+   "alt": "completion between two awaits",
+   "base": "K7",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R8"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w1",
+      "w2"
+     ]
+    ]
+   },
+   "rule": "R8"
+  },
+  {
+   "alt": "completion from an await to a branch",
+   "base": "K7",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R8"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w2",
+      "b2"
+     ]
+    ],
+    "removeCompletion": [
+     [
+      "w2",
+      "c3"
+     ]
+    ]
+   },
+   "rule": "R8"
+  },
+  {
+   "alt": "completion call differs from AWAIT_TARGET",
+   "base": "K13",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R9"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w",
+      "work"
+     ]
+    ],
+    "removeCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R9"
+  },
+  {
+   "alt": "completion with operandClass unresolved",
+   "base": "K11",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R10"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w",
+      "use"
+     ]
+    ]
+   },
+   "rule": "R10"
+  },
+  {
+   "alt": "completion with operandClass plain-value",
+   "base": "K16",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R10"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w",
+      "use"
+     ]
+    ]
+   },
+   "rule": "R10"
+  },
+  {
+   "alt": "second completion for one await",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R11"
+   ],
+   "mutate": {
+    "addCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R11"
+  },
+  {
+   "alt": "await without AWAIT_TARGET",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R12"
+   ],
+   "mutate": {
+    "removeAwaitTarget": [
+     "w"
+    ],
+    "removeCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R12"
+  },
+  {
+   "alt": "await with two AWAIT_TARGET",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R12"
+   ],
+   "mutate": {
+    "addAwaitTarget": [
+     [
+      "w",
+      "use",
+      "call-result"
+     ]
+    ]
+   },
+   "rule": "R12"
+  },
+  {
+   "alt": "AWAIT_TARGET to a non-call step",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R13"
+   ],
+   "mutate": {
+    "addAwaitTarget": [
+     [
+      "w",
+      "end",
+      "call-result"
+     ]
+    ],
+    "removeAwaitTarget": [
+     "w"
+    ],
+    "removeCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R13"
+  },
+  {
+   "alt": "AWAIT_TARGET to another executable's call",
+   "base": "X13",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R13"
+   ],
+   "mutate": {},
+   "rule": "R13"
+  },
+  {
+   "alt": "call step with class unresolved",
+   "base": "K4a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R13"
+   ],
+   "mutate": {
+    "addAwaitTarget": [
+     [
+      "w",
+      "load",
+      "unresolved"
+     ]
+    ],
+    "removeAwaitTarget": [
+     "w"
+    ],
+    "removeCompletion": [
+     [
+      "w",
+      "load"
+     ]
+    ]
+   },
+   "rule": "R13"
+  },
+  {
+   "alt": "literal with class call-result",
+   "base": "K11",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R13"
+   ],
+   "mutate": {
+    "addAwaitTarget": [
+     [
+      "w",
+      null,
+      "call-result",
+      "ready"
+     ]
+    ],
+    "removeAwaitTarget": [
+     "w"
+    ]
+   },
+   "rule": "R13"
+  },
+  {
+   "alt": "IN_ARM to a non-branch",
+   "base": "K5",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R14"
+   ],
+   "mutate": {
+    "addInArm": [
+     [
+      "load",
+      "use",
+      "then"
+     ]
+    ],
+    "removeInArm": [
+     [
+      "load",
+      "b",
+      "then"
+     ]
+    ]
+   },
+   "rule": "R14"
+  },
+  {
+   "alt": "IN_ARM across executables",
+   "base": "X14",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R14"
+   ],
+   "mutate": {},
+   "rule": "R14"
+  },
+  {
+   "alt": "a step with two IN_ARM",
+   "base": "K5",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R15"
+   ],
+   "mutate": {
+    "addInArm": [
+     [
+      "load",
+      "b",
+      "else"
+     ]
+    ]
+   },
+   "rule": "R15"
+  },
+  {
+   "alt": "IN_ARM cycle",
+   "base": "K8",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R16"
+   ],
+   "mutate": {
+    "addInArm": [
+     [
+      "B1",
+      "B2",
+      "then"
+     ]
+    ]
+   },
+   "rule": "R16"
+  },
+  {
+   "alt": "ARM_STATUS on a non-branch",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R17"
+   ],
+   "mutate": {
+    "addStatus": [
+     [
+      "s1",
+      "then",
+      "falls-through"
+     ]
+    ]
+   },
+   "rule": "R17"
+  },
+  {
+   "alt": "duplicate ARM_STATUS for one arm",
+   "base": "K6a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R17"
+   ],
+   "mutate": {
+    "addStatus": [
+     [
+      "B",
+      "then",
+      "falls-through"
+     ]
+    ]
+   },
+   "rule": "R17"
+  },
+  {
+   "alt": "entry missing",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R18"
+   ],
+   "mutate": {
+    "setEntry": []
+   },
+   "rule": "R18"
+  },
+  {
+   "alt": "entry duplicated",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R18"
+   ],
+   "mutate": {
+    "setEntry": [
+     "s1",
+     "s2"
+    ]
+   },
+   "rule": "R18"
+  },
+  {
+   "alt": "entry owned by another executable",
+   "base": "K14",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R18"
+   ],
+   "mutate": {
+    "exe": "g",
+    "setEntry": [
+     "cached:x"
+    ]
+   },
+   "rule": "R18"
+  },
+  {
+   "alt": "entry with an incoming program fact",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R18"
+   ],
+   "mutate": {
+    "setEntry": [
+     "s2"
+    ]
+   },
+   "rule": "R18"
+  },
+  {
+   "alt": "event-graph cycle",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R19"
+   ],
+   "mutate": {
+    "addProgram": [
+     [
+      "s2",
+      "s1",
+      null
+     ]
+    ],
+    "removeProgram": [
+     [
+      "s2",
+      "end",
+      null
+     ]
+    ]
+   },
+   "rule": "R19"
+  },
+  {
+   "alt": "predicate on a non-branch",
+   "base": "K6a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R20"
+   ],
+   "mutate": {
+    "addPredicate": [
+     [
+      "a",
+      "pred:x"
+     ]
+    ]
+   },
+   "rule": "R20"
+  },
+  {
+   "alt": "second predicate for one branch",
+   "base": "K6a",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R21"
+   ],
+   "mutate": {
+    "addPredicate": [
+     [
+      "B",
+      "pred:y"
+     ]
+    ]
+   },
+   "rule": "R21"
+  },
+  {
+   "alt": "implicit on a non-exit",
+   "base": "K1",
+   "candidates": [
+    "A",
+    "B"
+   ],
+   "expect": [
+    "R23"
+   ],
+   "mutate": {
+    "setImplicit": [
+     "s1"
+    ]
+   },
+   "rule": "R23"
+  }
+ ],
+ "version": "r1b1-manifest-1"
+}

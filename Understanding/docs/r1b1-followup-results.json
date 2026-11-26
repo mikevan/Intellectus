@@ -1,0 +1,2765 @@
+{
+ "hashes": {
+  "manifest": "072b51013d2b85eae9d3c15954a3388cb398f94f94b8b7fdb662b319a2b33ecf",
+  "followup": "df3ae73b5d15cdc2dda63d631e65363cbecf8022a2660beeb9c81547dac7f224",
+  "r1": "f6749afaae98945cbb3600f59a7ec7cd8c6f5b18740b775ca75362f7a058eae6",
+  "r2": "0df935df316e21c42a03208d49814d01a04b6ced7adadb633756f51b18fc33ec"
+ },
+ "deriveIdentity": {
+  "derive": true,
+  "function armsOf": true,
+  "const stepOfEv": true,
+  "function canon": true
+ },
+ "diagnostics": {
+  "A/H1": [
+   {
+    "rule": "R12",
+    "alt": "await without AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R12",
+    "alt": "await with two AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to a non-call step",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to another executable's call",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "call step with class unresolved",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "literal with class call-result",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry missing",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry duplicated",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry owned by another executable",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry with an incoming program fact",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "A/H2": [
+   {
+    "rule": "R12",
+    "alt": "await without AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R12",
+    "alt": "await with two AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to a non-call step",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to another executable's call",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "call step with class unresolved",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "literal with class call-result",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry missing",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry duplicated",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry owned by another executable",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry with an incoming program fact",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "B/H1": [
+   {
+    "rule": "R12",
+    "alt": "await without AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R12",
+    "alt": "await with two AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to a non-call step",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to another executable's call",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "call step with class unresolved",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "literal with class call-result",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry missing",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry duplicated",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry owned by another executable",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry with an incoming program fact",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "B/H2": [
+   {
+    "rule": "R12",
+    "alt": "await without AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R12",
+    "alt": "await with two AWAIT_TARGET",
+    "expected": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R12"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to a non-call step",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "AWAIT_TARGET to another executable's call",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "call step with class unresolved",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R13",
+    "alt": "literal with class call-result",
+    "expected": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R13"
+     ],
+     "consequent": [
+      [
+       "R12",
+       "R13"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry missing",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry duplicated",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry owned by another executable",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": [
+      [
+       "R18",
+       "R18"
+      ]
+     ]
+    },
+    "ok": true
+   },
+   {
+    "rule": "R18",
+    "alt": "entry with an incoming program fact",
+    "expected": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "got": {
+     "primary": [
+      "R18"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ]
+ },
+ "otherRefusals": {
+  "A/H1": [
+   {
+    "rule": "R1",
+    "alt": "program from an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R1",
+    "alt": "program to an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "program across executables",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "A: within names another executable",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R3",
+    "alt": "program self-loop",
+    "got": {
+     "primary": [
+      "R3"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves an explicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves the implicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R5",
+    "alt": "branch fact without an arm",
+    "got": {
+     "primary": [
+      "R5"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R6",
+    "alt": "arm on a non-branch",
+    "got": {
+     "primary": [
+      "R6"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact from a non-branch",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact on one branch arm",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two calls",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two awaits",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion from an await to a branch",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R9",
+    "alt": "completion call differs from AWAIT_TARGET",
+    "got": {
+     "primary": [
+      "R9"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass unresolved",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass plain-value",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R11",
+    "alt": "second completion for one await",
+    "got": {
+     "primary": [
+      "R11"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM to a non-branch",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM across executables",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R15",
+    "alt": "a step with two IN_ARM",
+    "got": {
+     "primary": [
+      "R15"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R16",
+    "alt": "IN_ARM cycle",
+    "got": {
+     "primary": [
+      "R16"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "ARM_STATUS on a non-branch",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "duplicate ARM_STATUS for one arm",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R19",
+    "alt": "event-graph cycle",
+    "got": {
+     "primary": [
+      "R19"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R20",
+    "alt": "predicate on a non-branch",
+    "got": {
+     "primary": [
+      "R20"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R21",
+    "alt": "second predicate for one branch",
+    "got": {
+     "primary": [
+      "R21"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R23",
+    "alt": "implicit on a non-exit",
+    "got": {
+     "primary": [
+      "R23"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "A/H2": [
+   {
+    "rule": "R1",
+    "alt": "program from an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R1",
+    "alt": "program to an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "program across executables",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "A: within names another executable",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R3",
+    "alt": "program self-loop",
+    "got": {
+     "primary": [
+      "R3"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves an explicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves the implicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R5",
+    "alt": "branch fact without an arm",
+    "got": {
+     "primary": [
+      "R5"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R6",
+    "alt": "arm on a non-branch",
+    "got": {
+     "primary": [
+      "R6"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact from a non-branch",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact on one branch arm",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two calls",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two awaits",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion from an await to a branch",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R9",
+    "alt": "completion call differs from AWAIT_TARGET",
+    "got": {
+     "primary": [
+      "R9"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass unresolved",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass plain-value",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R11",
+    "alt": "second completion for one await",
+    "got": {
+     "primary": [
+      "R11"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM to a non-branch",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM across executables",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R15",
+    "alt": "a step with two IN_ARM",
+    "got": {
+     "primary": [
+      "R15"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R16",
+    "alt": "IN_ARM cycle",
+    "got": {
+     "primary": [
+      "R16"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "ARM_STATUS on a non-branch",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "duplicate ARM_STATUS for one arm",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R19",
+    "alt": "event-graph cycle",
+    "got": {
+     "primary": [
+      "R19"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R20",
+    "alt": "predicate on a non-branch",
+    "got": {
+     "primary": [
+      "R20"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R21",
+    "alt": "second predicate for one branch",
+    "got": {
+     "primary": [
+      "R21"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R23",
+    "alt": "implicit on a non-exit",
+    "got": {
+     "primary": [
+      "R23"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "B/H1": [
+   {
+    "rule": "R1",
+    "alt": "program from an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R1",
+    "alt": "program to an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "program across executables",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R3",
+    "alt": "program self-loop",
+    "got": {
+     "primary": [
+      "R3"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves an explicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves the implicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R5",
+    "alt": "branch fact without an arm",
+    "got": {
+     "primary": [
+      "R5"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R6",
+    "alt": "arm on a non-branch",
+    "got": {
+     "primary": [
+      "R6"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact from a non-branch",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact on one branch arm",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two calls",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two awaits",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion from an await to a branch",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R9",
+    "alt": "completion call differs from AWAIT_TARGET",
+    "got": {
+     "primary": [
+      "R9"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass unresolved",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass plain-value",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R11",
+    "alt": "second completion for one await",
+    "got": {
+     "primary": [
+      "R11"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM to a non-branch",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM across executables",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R15",
+    "alt": "a step with two IN_ARM",
+    "got": {
+     "primary": [
+      "R15"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R16",
+    "alt": "IN_ARM cycle",
+    "got": {
+     "primary": [
+      "R16"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "ARM_STATUS on a non-branch",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "duplicate ARM_STATUS for one arm",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R19",
+    "alt": "event-graph cycle",
+    "got": {
+     "primary": [
+      "R19"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R20",
+    "alt": "predicate on a non-branch",
+    "got": {
+     "primary": [
+      "R20"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R21",
+    "alt": "second predicate for one branch",
+    "got": {
+     "primary": [
+      "R21"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R23",
+    "alt": "implicit on a non-exit",
+    "got": {
+     "primary": [
+      "R23"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ],
+  "B/H2": [
+   {
+    "rule": "R1",
+    "alt": "program from an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R1",
+    "alt": "program to an executable",
+    "got": {
+     "primary": [
+      "R1"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R2",
+    "alt": "program across executables",
+    "got": {
+     "primary": [
+      "R2"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R3",
+    "alt": "program self-loop",
+    "got": {
+     "primary": [
+      "R3"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves an explicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R4",
+    "alt": "program leaves the implicit exit",
+    "got": {
+     "primary": [
+      "R4"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R5",
+    "alt": "branch fact without an arm",
+    "got": {
+     "primary": [
+      "R5"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R6",
+    "alt": "arm on a non-branch",
+    "got": {
+     "primary": [
+      "R6"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact from a non-branch",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R7",
+    "alt": "second fact on one branch arm",
+    "got": {
+     "primary": [
+      "R7"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two calls",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion between two awaits",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R8",
+    "alt": "completion from an await to a branch",
+    "got": {
+     "primary": [
+      "R8"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R9",
+    "alt": "completion call differs from AWAIT_TARGET",
+    "got": {
+     "primary": [
+      "R9"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass unresolved",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R10",
+    "alt": "completion with operandClass plain-value",
+    "got": {
+     "primary": [
+      "R10"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R11",
+    "alt": "second completion for one await",
+    "got": {
+     "primary": [
+      "R11"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM to a non-branch",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R14",
+    "alt": "IN_ARM across executables",
+    "got": {
+     "primary": [
+      "R14"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R15",
+    "alt": "a step with two IN_ARM",
+    "got": {
+     "primary": [
+      "R15"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R16",
+    "alt": "IN_ARM cycle",
+    "got": {
+     "primary": [
+      "R16"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "ARM_STATUS on a non-branch",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R17",
+    "alt": "duplicate ARM_STATUS for one arm",
+    "got": {
+     "primary": [
+      "R17"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R19",
+    "alt": "event-graph cycle",
+    "got": {
+     "primary": [
+      "R19"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R20",
+    "alt": "predicate on a non-branch",
+    "got": {
+     "primary": [
+      "R20"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R21",
+    "alt": "second predicate for one branch",
+    "got": {
+     "primary": [
+      "R21"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   },
+   {
+    "rule": "R23",
+    "alt": "implicit on a non-exit",
+    "got": {
+     "primary": [
+      "R23"
+     ],
+     "consequent": []
+    },
+    "ok": true
+   }
+  ]
+ },
+ "conflictingArm": {
+  "A/H1": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   }
+  ],
+  "A/H2": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   }
+  ],
+  "B/H1": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   }
+  ],
+  "B/H2": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": true,
+      "got": []
+     }
+    ]
+   }
+  ]
+ },
+ "sabotage": {
+  "patched": true,
+  "A/H1": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   }
+  ],
+  "A/H2": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   }
+  ],
+  "B/H1": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   }
+  ],
+  "B/H2": [
+   {
+    "fixture": "CA0",
+    "pass": true,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < u.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": true,
+      "got": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA1",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "x.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}",
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ],
+      "want": [
+       "{\"arms\":[\"f:B/else\"],\"th\":[]}"
+      ]
+     },
+     {
+      "q": "not x.return < u.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   },
+   {
+    "fixture": "CA2",
+    "pass": false,
+    "checks": [
+     {
+      "q": "no refusals",
+      "ok": true,
+      "got": []
+     },
+     {
+      "q": "not u.return < v.invoke",
+      "ok": false,
+      "got": [
+       "{\"arms\":[\"f:B/else\",\"f:B/then\"],\"th\":[]}"
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

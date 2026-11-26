@@ -7,7 +7,7 @@
 import type { ConceptId } from "../concepts/index.js";
 import type { Journal } from "../journal/index.js";
 import type { FunctionIR, Operand, Predicate } from "../ir/index.js";
-import { effectProjection, fingerprint } from "../ir/index.js";
+import { effectProjection, fingerprint , unwrapAwaited } from "../ir/index.js";
 
 export type Verdict = "EXACT_FINGERPRINT" | "PROBABLE_EQUIVALENT" | "STRUCTURALLY_SIMILAR" | "NONE";
 
@@ -56,7 +56,7 @@ function surface(fn: FunctionIR): { reads: string[]; operations: string[]; shape
     if (!o) return;
     if (o.kind === "read") { reads.add(o.property); walkOperand(o.object); }
     else if (o.kind === "negated") walkOperand(o.operand);
-    else if (o.kind === "computed") { if (o.expr.kind === "call" && o.expr.operation) operations.add(o.expr.operation); }
+    else if (o.kind === "computed") { const { inner } = unwrapAwaited(o.expr); if (inner.kind === "call" && inner.operation) operations.add(inner.operation); }   // R-1A: see through the wrapper
   };
   const walkPredicate = (p: Predicate): void => {
     if (p.kind === "compare") { walkOperand(p.left); walkOperand(p.right); }

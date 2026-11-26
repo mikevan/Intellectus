@@ -7,59 +7,328 @@
       "ir": 0,
       "measured": "2026-09-13",
       "buildId": null,
-      "files": 10, "functions": 58, "statements": 240,
-      "opaque": 85, "opaquePct": 35.4,
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 85,
+      "opaquePct": 35.4,
       "categories": null,
       "collisionGroups": 6,
-      "confirmed": ["linux"],
+      "confirmed": [
+        "linux"
+      ],
       "note": "Before local bindings were represented. Opaque reasons were grammar node names at this version, not categories, which was itself a defect fixed at IR-2."
     },
     {
       "ir": 1,
       "measured": "2026-09-13",
       "buildId": null,
-      "files": 10, "functions": 58, "statements": 240,
-      "opaque": 16, "opaquePct": 6.7,
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
       "categories": null,
       "collisionGroups": 4,
-      "confirmed": ["linux"],
+      "confirmed": [
+        "linux"
+      ],
       "note": "Local bindings and assignments as named values. Member reads added later the same day (IR-1b) took the groups from 5 to 4."
     },
     {
       "ir": 2,
       "measured": "2026-09-13",
       "buildId": null,
-      "files": 10, "functions": 58, "statements": 240,
-      "opaque": 16, "opaquePct": 6.7,
-      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
       "collisionGroups": 4,
-      "confirmed": ["linux", "windows"],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
       "note": "Language-neutral opaque categories and canonical single-use inlining. First version confirmed on a second platform."
     },
     {
       "ir": 3,
       "measured": "2026-09-14",
       "buildId": "d36e05dfc3aa",
-      "files": 10, "functions": 58, "statements": 240,
-      "opaque": 16, "opaquePct": 6.7,
-      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
       "collisionGroups": 3,
-      "collisionFingerprints": ["6acd180082c43bee56a85d4a", "a6afc611f788cd0f0e69939d", "7fb18b89e33bcbde5c309904"],
-      "confirmed": ["linux", "windows"],
+      "collisionFingerprints": [
+        "6acd180082c43bee56a85d4a",
+        "a6afc611f788cd0f0e69939d",
+        "7fb18b89e33bcbde5c309904"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
       "note": "Calls and other expressions in operand position as computed values."
     },
     {
       "ir": 4,
       "measured": "2026-09-14",
       "buildId": "f48949f5caf3",
-      "files": 10, "functions": 58, "statements": 240,
-      "opaque": 16, "opaquePct": 6.7,
-      "categories": { "loop": 9, "multi-branch": 6, "other": 1 },
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
       "collisionGroups": 2,
-      "collisionFingerprints": ["6acd180082c43bee56a85d4a", "ee8c8e5ca86134f52b8f5dae"],
-      "confirmed": ["linux", "windows"],
-      "current": true,
+      "collisionFingerprints": [
+        "6acd180082c43bee56a85d4a",
+        "ee8c8e5ca86134f52b8f5dae"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
       "note": "A function passed as a value represented as behaviour. The two groups are the switch-heavy group and block in both adapters, which is the one genuine cross-language match in this corpus."
+    },
+    {
+      "ir": 5,
+      "measured": "2026-09-14",
+      "buildId": "db10d41b6016",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "6acd180082c43bee56a85d4a",
+        "ee8c8e5ca86134f52b8f5dae"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "IR-5 changed the Python adapter only, so every number here is identical to IR-4. The row exists to record that the transition left this corpus untouched, which was a hard prediction of the round."
+    },
+    {
+      "ir": 7,
+      "measured": "2026-09-14",
+      "buildId": "8f7d92ee822d",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "8379a451414bb7e6161adcdb",
+        "e862dc89271e1e4aa29359bc"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "IR-7 Receiver: a member call keeps the entity it acts on, as parsed, and ir_schema moves to 4. Statement counts, function counts, opacity and the number of collision groups are unchanged, because no statement became representable and none stopped being; the collision FINGERPRINTS changed for functions containing member calls, which was expected and not predicted stable, because new computational information is now in the fingerprint. The receiver is not used for resolution in this round."
+    },
+    {
+      "ir": 9,
+      "measured": "2026-09-14",
+      "buildId": "bedeedfa09d7",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "511cc6fafc5c3e5183aa7b56",
+        "7c5b2ce062cad172ce451b64"
+      ],
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "IR-9 classifies every statement as semantic, non-semantic or metadata, and only an unrepresented SEMANTIC statement counts as opaque. The statement count changed legitimately because 0 non-semantic and 0 metadata statements left the denominator: they carry no execution semantics and were previously counted as unrepresented semantics. Intrinsic fingerprints changed wherever a function body contained a docstring or a bare string statement, which was expected and not predicted stable. Nothing else changed: no new resolution, no import modelling, no loop or exception representation."
+    },
+    {
+      "ir": 10,
+      "step": "C-2",
+      "measured": "2026-09-17",
+      "buildId": "cfd813c76e4d",
+      "encoder": "typescript-adapter/0.3",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "511cc6fafc5c3e5183aa7b56",
+        "7c5b2ce062cad172ce451b64"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-2 did not touch the TypeScript adapter, which stays at typescript-adapter/0.3, so every measured value is identical to its IR-9 row: 240 semantic statements, 16 opaque, nothing excluded, both collision fingerprints unchanged. The one remaining `other` here is the standalone `await` at adapters/treeSitter.ts line 11, which C-5 addresses. 0 non-semantic and 0 metadata statements left the denominator."
+    },
+    {
+      "ir": 11,
+      "step": "C-3",
+      "measured": "2026-09-17",
+      "buildId": "78c7b3b8d635",
+      "encoder": "typescript-adapter/0.3",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "511cc6fafc5c3e5183aa7b56",
+        "7c5b2ce062cad172ce451b64"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-3 changed the Python adapter only, and TypeScript has no construct this step classifies, so every measured value is identical to the C-2 row: 240 semantic statements, 16 opaque, nothing excluded, both collision fingerprints unchanged. No movement was manufactured to make the step look project-wide. The one remaining `other` is still the standalone `await` at adapters/treeSitter.ts line 11, which C-5 addresses. 0 non-semantic and 0 metadata statements left the denominator."
+    },
+    {
+      "ir": 12,
+      "step": "C-4",
+      "measured": "2026-09-17",
+      "buildId": "db2878f82a3c",
+      "encoder": "typescript-adapter/0.3",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "other": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "511cc6fafc5c3e5183aa7b56",
+        "7c5b2ce062cad172ce451b64"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-4 changed the Python adapter only, so every measured value is identical to the C-3 row: 240 semantic statements, 16 opaque, nothing excluded, both collision fingerprints unchanged. TypeScript's own nested functions are arrow and function expressions, which the adapter does not encode at all; that gap is I-1's 14 statements in unencoded functions and is not what C-4 addresses. The one remaining other is still the standalone await at adapters/treeSitter.ts line 11. 0 non-semantic and 0 metadata statements left the denominator."
+    },
+    {
+      "ir": 13,
+      "step": "C-5",
+      "measured": "2026-09-17",
+      "buildId": "afbddabae98a",
+      "encoder": "typescript-adapter/0.4",
+      "files": 10,
+      "functions": 58,
+      "statements": 240,
+      "opaque": 16,
+      "opaquePct": 6.7,
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6,
+        "completion-dependency": 1
+      },
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "511cc6fafc5c3e5183aa7b56",
+        "7c5b2ce062cad172ce451b64"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-5 classified the last `other` in any corpus: `await ready;` at adapters/treeSitter.ts line 11 is completion-dependency, a standalone awaited expression whose operand the adapter cannot otherwise represent, where normal continuation depends on completion of the awaited computation. other 1 to 0. The four bound awaits in this corpus (adapters/python/index.ts 9, adapters/treeSitter.ts 15 and 22, adapters/typescript/index.ts 12) are untouched: they are bindings whose await the adapter erases, and un-erasing them is R-1's representation change, not a classification. Both collision fingerprints unchanged because loadLanguage, which holds the statement, is in neither group. 240 semantic statements, 16 opaque, 0 non-semantic and 0 metadata statements left the denominator."
+    },
+    {
+      "ir": 14,
+      "step": "R-1A",
+      "measured": "2026-09-17",
+      "buildId": "392244d37f62",
+      "encoder": "typescript-adapter/0.5",
+      "irSchema": 6,
+      "categories": {
+        "loop": 9,
+        "multi-branch": 6
+      },
+      "statements": 240,
+      "opaque": 15,
+      "opaquePct": 6.3,
+      "files": 10,
+      "functions": 58,
+      "nonSemanticExcluded": 0,
+      "metadataExcluded": 0,
+      "collisionGroups": 2,
+      "collisionFingerprints": [
+        "edc1f1604a42f46c9973548f",
+        "d1013e379434b7aef934a35a"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "current": true,
+      "note": "R-1A, ir_schema 6: the first representational change since IR-9. The standalone `await ready` at adapters/treeSitter.ts line 11 is represented (evaluate{awaited{operand}}) instead of opaque, so opaque 16 to 15 with the statement count unchanged at 240, and its pseudo-invocation is gone: REPRESENTATION_LOSS 16 to 15, invocations 81 to 80. All five awaits in the corpus are completion dependencies in the IR, and the four awaited calls keep operation, arguments, receiver and outcome exactly as at C-5 (monotonicity, tested at the projection level). Collision-group membership unchanged; fingerprint values changed with the schema number. 0 non-semantic and 0 metadata statements left the denominator."
     }
   ]
 }

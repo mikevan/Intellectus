@@ -1,0 +1,81 @@
+node       v22.23.4
+platform   linux x64
+encoder    python-adapter/0.9   ir_schema 6
+build      d7efd55eb399
+corpus     corpora/radon-python/src   verified against MANIFEST.json (12 files, corpus ec611e4e91ff85aa)
+files      12
+functions  137
+statements 435   (semantic; excluded: 126 non-semantic, 2 metadata)
+
+opaque            81 / 435 statements = 18.6%
+collision groups  8
+
+opaque categories, worst first:
+    35  loop
+    20  value-stream-emission
+    10  exception-handling
+     7  scoped-resource
+     6  local-function-construction
+     3  scoped-resource-handoff
+
+collision groups (same intrinsic fingerprint, different names). Classification is a human's job:
+  6a113d93d87f7902781d593b  corpora/radon-python/src/cli/harvest.py:as_codeclimate_issues  |  corpora/radon-python/src/cli/harvest.py:as_md  |  corpora/radon-python/src/cli/harvest.py:as_xml  |  corpora/radon-python/src/cli/harvest.py:as_xml#19  |  corpora/radon-python/src/cli/harvest.py:as_xml#25  |  corpora/radon-python/src/cli/harvest.py:to_terminal
+  6557aeaa75206efcc59cdcb4  corpora/radon-python/src/visitors.py:visit_AugAssign  |  corpora/radon-python/src/visitors.py:visit_BinOp  |  corpora/radon-python/src/visitors.py:visit_BoolOp  |  corpora/radon-python/src/visitors.py:visit_Compare  |  corpora/radon-python/src/visitors.py:visit_UnaryOp
+  8d7d3d88639451014825c469  corpora/radon-python/src/cli/harvest.py:filtered_results  |  corpora/radon-python/src/cli/harvest.py:run  |  corpora/radon-python/src/cli/harvest.py:to_terminal#26
+  2a00c64ee50ee1fc9c7925c9  corpora/radon-python/src/cli/harvest.py:caching_iterator  |  corpora/radon-python/src/cli/tools.py:filter_out  |  corpora/radon-python/src/raw.py:_fewer_tokens
+  9b2d0a6b6892174c32333efe  corpora/radon-python/src/cli/__init__.py:log_list  |  corpora/radon-python/src/cli/tools.py:explore_directories
+  0e01dc43e3e1948863de8a3a  corpora/radon-python/src/cli/harvest.py:_to_dicts  |  corpora/radon-python/src/cli/harvest.py:_to_dicts#31
+  490d18f9eca666656b4ff42a  corpora/radon-python/src/cli/tools.py:_open  |  corpora/radon-python/src/cli/tools.py:_open#6
+  e854c578870ee9b3e62f8ff6  corpora/radon-python/src/visitors.py:visit_AsyncFunctionDef  |  corpora/radon-python/src/visitors.py:visit_AsyncFunctionDef#33
+
+per file: opaque / statements, functions:
+    31 /   82   fns  33   corpora/radon-python/src/cli/harvest.py
+    24 /  114   fns  24   corpora/radon-python/src/cli/tools.py
+    10 /   60   fns  18   corpora/radon-python/src/cli/__init__.py
+     7 /   21   fns   9   corpora/radon-python/src/raw.py
+     6 /   83   fns  34   corpora/radon-python/src/visitors.py
+     1 /    3   fns   1   corpora/radon-python/src/__init__.py
+     1 /   14   fns   6   corpora/radon-python/src/complexity.py
+     1 /   16   fns   4   corpora/radon-python/src/contrib/flake8.py
+     0 /    0   fns   0   corpora/radon-python/src/__main__.py
+     0 /    6   fns   1   corpora/radon-python/src/cli/colors.py
+     0 /    0   fns   0   corpora/radon-python/src/contrib/__init__.py
+     0 /   36   fns   7   corpora/radon-python/src/metrics.py
+
+reproduces  R-1A of radon-python, recorded 2026-09-17 at build 392244d37f62, confirmed on linux and windows.
+
+semantic statements hidden inside opaque containers  270   (of 285 hidden statements in all)
+  A hidden statement lies beneath an opaque container and has no independently represented statement in the IR.
+  It is counted once, whatever its depth, and attributed to the container immediately above it.
+
+  what each opaque construct conceals (by nearest container):
+     200  for_statement          semantic 196, non-semantic 4, metadata 0
+      65  try_statement          semantic 55, non-semantic 10, metadata 0
+      12  with_statement         semantic 12, non-semantic 0, metadata 0
+       8  while_statement        semantic 7, non-semantic 1, metadata 0
+
+  what the IR fails to expose (hidden statements by construct, worst first):
+      91  assignment
+      39  call
+      39  if_statement
+      33  yield
+      24  augmented_assignment
+      15  for_statement
+      14  comment
+      10  return_statement
+       8  continue_statement
+       5  raise_statement
+       3  with_statement
+       3  try_statement
+
+  deepest nesting          4 containers above one statement
+  represented source stmts 430 semantic, 150 non-semantic, 2 metadata   (SOURCE statements under no container; not the IR statement count above, and not comparable one to one with it)
+  outside any function     224   (encoded by nobody, and not hidden by the definition: counted apart)
+  in unencoded functions   0   (arrow and function expressions the adapters do not encode: counted apart)
+
+  what this instrument does not claim:
+    - A hidden statement is counted once and attributed to its nearest opaque container. Depth says how many containers are above it; the same statement is never counted per ancestor.
+    - A statement inside a nested function is not hidden: the adapters encode nested functions as executables of their own. What the nested-def container conceals is the construction of the closure, not its body.
+    - This instrument does not claim a hidden statement belongs in the flattened statement count. That is a representation question and is not answered here.
+    - A TypeScript else branch written without braces is a statement outside a body node and is not counted; every such branch in these corpora is braced.
+    - Hidden statements are counted in SOURCE statements. The measure counts IR statements, and the two populations differ by construction: one source statement can become several IR statements. A hidden count is what is concealed, never a number to add to the measure's total.

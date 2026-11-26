@@ -1,0 +1,67 @@
+node       v22.23.4
+platform   linux x64
+encoder    python-adapter/0.9   ir_schema 6
+build      86cdaae80cf9
+corpus     corpora/toml-python/src   verified against MANIFEST.json (5 files, corpus dbbd34f3b778aadb)
+files      5
+functions  56
+statements 345   (semantic; excluded: 8 non-semantic, 7 metadata)
+
+opaque            34 / 345 statements = 9.9%
+collision groups  2
+
+opaque categories, worst first:
+    29  loop
+     3  exception-handling
+     1  declaration
+     1  scoped-resource
+
+collision groups (same intrinsic fingerprint, different names). Classification is a human's job:
+  7c258ab1761b0ce8bd1968cb  corpora/toml-python/src/decoder.py:get_empty_table  |  corpora/toml-python/src/encoder.py:get_empty_table
+  5abb7d4c7799924b8b7e40ec  corpora/toml-python/src/ordered.py:__init__  |  corpora/toml-python/src/ordered.py:__init__#1
+
+per file: opaque / statements, functions:
+    27 /  243   fns  30   corpora/toml-python/src/decoder.py
+     7 /   90   fns  19   corpora/toml-python/src/encoder.py
+     0 /    0   fns   0   corpora/toml-python/src/__init__.py
+     0 /    2   fns   2   corpora/toml-python/src/ordered.py
+     0 /   10   fns   5   corpora/toml-python/src/tz.py
+
+reproduces  R-1A of toml-python, recorded 2026-09-17 at build 392244d37f62, confirmed on linux and windows.
+
+semantic statements hidden inside opaque containers  496   (of 507 hidden statements in all)
+  A hidden statement lies beneath an opaque container and has no independently represented statement in the IR.
+  It is counted once, whatever its depth, and attributed to the container immediately above it.
+
+  what each opaque construct conceals (by nearest container):
+     294  for_statement          semantic 294, non-semantic 0, metadata 0
+     136  while_statement        semantic 131, non-semantic 5, metadata 0
+      75  try_statement          semantic 70, non-semantic 5, metadata 0
+       1  with_statement         semantic 1, non-semantic 0, metadata 0
+       1  class_definition       semantic 0, non-semantic 1, metadata 0
+
+  what the IR fails to expose (hidden statements by construct, worst first):
+     195  assignment
+     126  if_statement
+      61  augmented_assignment
+      28  raise_statement
+      18  call
+      15  continue_statement
+      15  while_statement
+      11  try_statement
+      11  for_statement
+      10  break_statement
+       5  pass_statement
+       5  comment
+
+  deepest nesting          5 containers above one statement
+  represented source stmts 383 semantic, 10 non-semantic, 7 metadata   (SOURCE statements under no container; not the IR statement count above, and not comparable one to one with it)
+  outside any function     72   (encoded by nobody, and not hidden by the definition: counted apart)
+  in unencoded functions   0   (arrow and function expressions the adapters do not encode: counted apart)
+
+  what this instrument does not claim:
+    - A hidden statement is counted once and attributed to its nearest opaque container. Depth says how many containers are above it; the same statement is never counted per ancestor.
+    - A statement inside a nested function is not hidden: the adapters encode nested functions as executables of their own. What the nested-def container conceals is the construction of the closure, not its body.
+    - This instrument does not claim a hidden statement belongs in the flattened statement count. That is a representation question and is not answered here.
+    - A TypeScript else branch written without braces is a statement outside a body node and is not counted; every such branch in these corpora is braced.
+    - Hidden statements are counted in SOURCE statements. The measure counts IR statements, and the two populations differ by construction: one source statement can become several IR statements. A hidden count is what is concealed, never a number to add to the measure's total.

@@ -1,0 +1,69 @@
+{
+  "name": "radon-python",
+  "language": "python",
+  "fileCount": 12,
+  "totalBytes": 88327,
+  "corpusHash": "ec611e4e91ff85aa",
+  "files": [
+    {
+      "path": "__init__.py",
+      "bytes": 415,
+      "sha256": "4a70ab5f3d7ad115e914c2dcbe2a445a6442cf785ce4c4f340b7db6f71669d67"
+    },
+    {
+      "path": "__main__.py",
+      "bytes": 82,
+      "sha256": "6f5a3722b786fcefa117572d01dbede437f7ec3c328f8d8bb1fa0d8484a70f4b"
+    },
+    {
+      "path": "cli/__init__.py",
+      "bytes": 15930,
+      "sha256": "b0fa867f9fb1c225e26ab878de9db8bb3a9917cc504a0c848b06385365377fa2"
+    },
+    {
+      "path": "cli/colors.py",
+      "bytes": 1133,
+      "sha256": "67f18ff53d86272c8e2580c1f73983f2884c2a4d6acae45f0789ab2d578b0029"
+    },
+    {
+      "path": "cli/harvest.py",
+      "bytes": 15326,
+      "sha256": "4abfc737419893a95fd5b5f08c3b86fc257bc435ee5c2ade4f2e027fe3af8934"
+    },
+    {
+      "path": "cli/tools.py",
+      "bytes": 21355,
+      "sha256": "36b288fb5344ded319815a24b3058563586979b94c4f6a3ffb824ac0ac3e5eee"
+    },
+    {
+      "path": "complexity.py",
+      "bytes": 3829,
+      "sha256": "48a34bc19a57908c99b2395c49f5c0539c26391d88842b966494b221091ca688"
+    },
+    {
+      "path": "contrib/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "contrib/flake8.py",
+      "bytes": 2280,
+      "sha256": "3a141863b8271840c4d8846eb00c9e7d0119982b982f4ac02b9deeee6cac3a93"
+    },
+    {
+      "path": "metrics.py",
+      "bytes": 4913,
+      "sha256": "872dc654cdc81fe92676353b751f4f65d9f7eac99845f3c4b77497aab4809c68"
+    },
+    {
+      "path": "raw.py",
+      "bytes": 7824,
+      "sha256": "4fac478432f708bea51cafb7bda44223c0a76a504e5a60ad89535a1a06576144"
+    },
+    {
+      "path": "visitors.py",
+      "bytes": 15240,
+      "sha256": "305939b058a4100787b47ca302b71afa827908c1471ccb568070c4ec0026ade5"
+    }
+  ]
+}

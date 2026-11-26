@@ -2,9 +2,9 @@
 // Status.Approved and "APPROVED" are one canonical state value.
 import type { Node } from "web-tree-sitter";
 import { parse, children } from "../treeSitter.js";
-import { canonNumber, canonString, type CanonLiteral, type Expr, type FunctionIR, type Operand, type Predicate, type OpaqueCategory, type Stmt } from "../../ir/index.js";
+import { canonNumber, canonString, type CanonLiteral, type Expr, type FunctionIR, type Operand, type Predicate, type OpaqueCategory, type StatementClass, type Stmt } from "../../ir/index.js";
 
-export const ENCODER = "typescript-adapter/0.1";
+export const ENCODER = "typescript-adapter/0.5";
 
 /** This grammar's node types, mapped to the IR's language-neutral categories. */
 const CATEGORY: Record<string, OpaqueCategory> = {
@@ -17,6 +17,19 @@ const CATEGORY: Record<string, OpaqueCategory> = {
   export_statement: "declaration", ambient_declaration: "declaration",
 };
 function categoryOf(nodeType: string): OpaqueCategory { return CATEGORY[nodeType] ?? "other"; }
+
+/** IR-9: what kind of statement this is, on execution semantics alone. */
+const NON_SEMANTIC = new Set(["empty_statement", "comment"]);
+const METADATA = new Set(["import_statement", "export_statement", "type_alias_declaration", "interface_declaration", "ambient_declaration", "declare_statement"]);
+function classOf(node: Node): StatementClass {
+  if (NON_SEMANTIC.has(node.type)) return "NON_SEMANTIC";
+  if (METADATA.has(node.type)) return "METADATA";
+  if (node.type === "expression_statement") {
+    const inner = children(node)[0];
+    if (inner && (inner.type === "string" || inner.type === "template_string")) return "NON_SEMANTIC";
+  }
+  return "SEMANTIC";
+}
 
 interface Ctx {
   inputs: Map<string, number>;
@@ -80,14 +93,17 @@ function stmt(s: Node, ctx: Ctx): Stmt | undefined {
     case "return_statement": { const v = children(s)[0]; return { kind: "return", value: v ? operand(v, ctx) : undefined }; }
     case "throw_statement": return { kind: "throw" };
     case "expression_statement": {
-      let e = children(s)[0]; if (e?.type === "await_expression") e = children(e)[0];
+      const e = children(s)[0];
+      // R-1A. A standalone awaited expression is evaluated for its effects under a completion dependency. The
+      // `evaluate` carrier is used for this case only; a plain call statement stays `effect` (scoped design choice).
+      if (e?.type === "await_expression") return { kind: "evaluate", expr: expression(e, ctx) };
       if (e?.type === "call_expression") return { kind: "effect", effect: effectOf(e, ctx) };
       if (e?.type === "assignment_expression" || e?.type === "augmented_assignment_expression") return assignment(e, ctx);
-      return { kind: "opaque", category: categoryOf(e?.type ?? "empty") };
+      return { kind: "opaque", category: categoryOf(e?.type ?? "empty"), statementClass: classOf(s) };
     }
     case "comment": return undefined;
     case "lexical_declaration": case "variable_declaration": return bindings(s, ctx);
-    default: return { kind: "opaque", category: categoryOf(s.type) };
+    default: return { kind: "opaque", category: categoryOf(s.type), statementClass: classOf(s) };
   }
 }
 
@@ -134,9 +150,10 @@ function operandOfExpr(e: Expr, ctx: Ctx): Operand { return e.kind === "operand"
 /** The value an expression computes. Calls keep their operation name because it is externally observable. */
 function expression(n: Node, ctx: Ctx): Expr {
   n = unparen(n);
-  if (n.type === "await_expression") return expression(children(n)[0], ctx);
+  // R-1A. The await is no longer erased: the value of the operand once its evaluation completes. Nesting preserved.
+  if (n.type === "await_expression") return { kind: "awaited", of: expression(children(n)[0], ctx) };
   switch (n.type) {
-    case "call_expression": { const e = effectOf(n, ctx); return { kind: "call", operation: e.operation, args: e.args }; }
+    case "call_expression": { const e = effectOf(n, ctx); return { kind: "call", operation: e.operation, args: e.args, receiver: e.receiver }; }
     case "member_expression": {
       const asEnum = ctx.enums.get(n.text);
       if (asEnum) return { kind: "operand", operand: { kind: "literal", literal: asEnum } };
@@ -162,9 +179,13 @@ function expression(n: Node, ctx: Ctx): Expr {
 
 function effectOf(call: Node, ctx: Ctx) {
   const fnNode = call.childForFieldName("function")!;
-  const name = fnNode.type === "member_expression" ? fnNode.childForFieldName("property")!.text : fnNode.text;
+  const isMember = fnNode.type === "member_expression";
+  const name = isMember ? fnNode.childForFieldName("property")!.text : fnNode.text;
+  // IR-7: the entity the operation acts on is kept as an operand, exactly as parsed. Its type is NOT inferred and
+  // it is NOT used to resolve anything in this round; `thing.visit(x)` is call(receiver=thing, visit, [x]).
+  const receiver = isMember ? operand(fnNode.childForFieldName("object")!, ctx) : undefined;
   const args = children(call.childForFieldName("arguments")!).map((a) => operand(a, ctx));
-  return { kind: "CALL_EXTERNAL" as const, operation: name, args };
+  return { kind: "CALL_EXTERNAL" as const, operation: name, args, receiver };
 }
 
 function operand(n: Node, ctx: Ctx): Operand {

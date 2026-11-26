@@ -1,0 +1,3259 @@
+{
+ "executables": [
+  {
+   "file": "adapters/python/index.ts",
+   "name": "encodeFunctions",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "encodeFunction",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].expr.receiver.expr.receiver.expr",
+     "operation": "filter",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].expr.receiver.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "block",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stmt",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|filter|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "stmt",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "effectOf",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].expr.args[0].body[0].value.expr",
+     "operation": "operand",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[2].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "operand",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/python/index.ts",
+   "name": "predicate",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/treeSitter.ts",
+   "name": "loadLanguage",
+   "ordinal": 0,
+   "counts": {
+    "O": 7,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 4,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].then[0].expr.of.args[0].expr",
+     "operation": "readFileSync",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[3].then[0].expr.of.args[0].expr.args[0].expr.whenTrue.expr",
+     "operation": "resolve",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[3].then[0].expr.of.args[0].expr.args[0].expr.whenFalse.expr",
+     "operation": "resolve",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 4,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/treeSitter.ts",
+   "name": "parse",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/treeSitter.ts",
+   "name": "children",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/treeSitter.ts",
+   "name": "text",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "encodeFunctions",
+   "ordinal": 0,
+   "counts": {
+    "O": 7,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].expr.operand.body[0].then[0].effect",
+     "operation": "collectEnum",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[5].expr.operand.body[0].then[1].expr",
+     "operation": "map",
+     "carrier": "bind",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[5].expr.operand.body[0].then[1].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[5].expr.operand.body[0].then[3].effect",
+     "operation": "set",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "collectEnum",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "litOf",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|canonNumber|1|true",
+      "returned": true,
+      "path": "body[0].then[0].value.expr"
+     },
+     {
+      "match": "call|canonString|1|true",
+      "returned": true,
+      "path": "body[1].then[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 2
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "block",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stmt",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|filter|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "bodyOf",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "block",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[0].value.expr.whenFalse.expr",
+     "operation": "filter",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "stmt",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "unparen",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "unparen",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    },
+    {
+     "path": "body[0].value.expr.whenTrue.expr.args[0].expr.object.expr",
+     "operation": "children",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "effectOf",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].expr.args[0].body[0].value.expr",
+     "operation": "operand",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[2].expr.receiver.expr",
+     "operation": "children",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "operand",
+   "ordinal": 0,
+   "counts": {
+    "O": 6,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"get\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"text\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"identifier\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":true}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":1},\"property\":\"inputs\"}",
+     "coarse": "[\"get\",[\"read\"],\"read\"]",
+     "operation": "get",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[3].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"get\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"text\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"member_expression\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"type\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"identifier\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":true}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":1},\"property\":\"enums\"}",
+     "coarse": "[\"get\",[\"read\"],\"read\"]",
+     "operation": "get",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[4].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous",
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 2
+   },
+   "unmatched": [
+    {
+     "path": "body[5].predicate.operands[1].left.object.expr",
+     "operation": "child",
+     "carrier": "predicate",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[5].then[0].expr.args[0].expr.object.expr",
+     "operation": "children",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 4,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "predicate",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "adapters/typescript/index.ts",
+   "name": "mergeAbsent",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].predicate.operands[0].operands[1].left.expr",
+     "operation": "stringify",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    },
+    {
+     "path": "body[0].predicate.operands[0].operands[1].right.expr",
+     "operation": "stringify",
+     "carrier": "predicate",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "predicate"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "concepts/index.ts",
+   "name": "isConceptKind",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|includes|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "concepts/index.ts",
+   "name": "newConceptId",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "concepts/index.ts",
+   "name": "isConceptId",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "normalise",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "key",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|stringify|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "project",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].effect.args[0].body[0].value.expr",
+     "operation": "localeCompare",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[3].effect.args[0].body[0].value.expr.args[0].expr",
+     "operation": "key",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[3].effect.args[0].body[0].value.expr.receiver.expr",
+     "operation": "key",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "alwaysExits",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "cond",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.whenTrue.expr",
+     "operation": "normalise",
+     "carrier": "expression",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "expression-operand"
+    }
+   ],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "effectProjection",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.object.expr",
+     "operation": "project",
+     "carrier": "receiver",
+     "wrapper": [
+      "read",
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|filter|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "fingerprint",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "digest",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "update",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr.args[0].expr",
+     "operation": "stringify",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr.receiver.expr",
+     "operation": "createHash",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|slice|2|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "canonNumber",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "canonString",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "ir/index.ts",
+   "name": "canonPath",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[0].value.expr.receiver.expr.receiver.expr",
+     "operation": "replace",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|replace|2|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "constructor",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 4,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[1].then[2].then[0].expr.args[1].expr.left.expr",
+     "operation": "lastIndexOf",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    }
+   ],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 4,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "replay",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 2,
+    "pseudoT": 2
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 2
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].expr.receiver.expr",
+     "operation": "split",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 2,
+    "opaqueEffects": 2,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "hadTornTail",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "apply",
+   "ordinal": 0,
+   "counts": {
+    "O": 5,
+    "Opp": 5,
+    "S": 5,
+    "P": 5,
+    "T": 5,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [
+    {
+     "key": "[\"delete\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"supersedes\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"absent\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"supersedes\"},\"negated\":true},{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"ASSERT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"CONCEPT\"}}}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"unknown\",\"reason\":\"this\"},\"property\":\"live\"}",
+     "coarse": "[\"delete\",[\"read\"],\"read\"]",
+     "operation": "delete",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].else[0].then[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "key": "[\"delete\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"target\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"RETRACT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"ASSERT\"}}},{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"kind\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"CONCEPT\"}}}]}]{\"kind\":\"read\",\"object\":{\"kind\":\"unknown\",\"reason\":\"this\"},\"property\":\"live\"}",
+     "coarse": "[\"delete\",[\"read\"],\"read\"]",
+     "operation": "delete",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].else[0].else[0].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous",
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 2
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 5,
+    "callEffects": 5,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "begin",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "inTx",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "concept",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "assert",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "retract",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 1,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 2,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[3].expr.operand.body[1].effect",
+     "operation": "push",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    },
+    {
+     "path": "body[3].expr.operand.body[2].effect",
+     "operation": "push",
+     "carrier": "effect",
+     "wrapper": [],
+     "reason": "behaviour"
+    }
+   ],
+   "a1": {
+    "callSteps": 2,
+    "callEffects": 2,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "commit",
+   "ordinal": 0,
+   "counts": {
+    "O": 6,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 3,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[2].then[0].effect.args[1].expr.left.expr",
+     "operation": "join",
+     "carrier": "argument",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "nested-argument"
+    },
+    {
+     "path": "body[2].then[0].effect.args[1].expr.left.expr.receiver.expr",
+     "operation": "map",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    },
+    {
+     "path": "body[2].then[0].effect.args[1].expr.left.expr.receiver.expr.args[0].body[0].value.expr",
+     "operation": "stringify",
+     "carrier": "return",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "behaviour"
+    }
+   ],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "abort",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "getConcept",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|get|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "liveAssertions",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "about",
+   "ordinal": 0,
+   "counts": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [
+    {
+     "path": "body[0].value.expr.receiver.expr",
+     "operation": "liveAssertions",
+     "carrier": "receiver",
+     "wrapper": [
+      "computed"
+     ],
+     "reason": "receiver"
+    }
+   ],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|filter|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "history",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "sequence",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "literal",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "journal/index.ts",
+   "name": "now",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|toISOString|0|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "schema/index.ts",
+   "name": "constructor",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 1,
+    "writeSteps": 1,
+    "writeEffects": 1,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "schema/index.ts",
+   "name": "checkAssertion",
+   "ordinal": 0,
+   "counts": {
+    "O": 4,
+    "Opp": 4,
+    "S": 4,
+    "P": 4,
+    "T": 4,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 12,
+    "opaqueStatements": 1
+   },
+   "rows": [
+    {
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"object\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":1},\"negated\":false}]}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[5].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"subject\"}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    },
+    {
+     "key": "[\"lookup\",[{\"kind\":\"read\",\"object\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"property\":\"scope\"}],{\"kind\":\"and\",\"operands\":[{\"kind\":\"compare\",\"op\":\"GE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"confidence\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"number\",\"value\":\"0\"}}},{\"kind\":\"compare\",\"op\":\"LE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"confidence\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"number\",\"value\":\"1\"}}},{\"kind\":\"opaque\",\"category\":\"other\"},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"source\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"INFERRED\"}}},{\"kind\":\"compare\",\"op\":\"EQ\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"verification\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"NONE\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"verification\"},\"negated\":true}]},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"source\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"DECLARED\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"negated\":false}]},{\"kind\":\"or\",\"operands\":[{\"kind\":\"compare\",\"op\":\"NE\",\"left\":{\"kind\":\"read\",\"object\":{\"kind\":\"value\",\"id\":0},\"property\":\"layer\"},\"right\":{\"kind\":\"literal\",\"literal\":{\"type\":\"string\",\"value\":\"derived\"}}},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"derived_from\"},\"negated\":false}]},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"read\",\"object\":{\"kind\":\"read\",\"object\":{\"kind\":\"input\",\"index\":0},\"property\":\"authority\"},\"property\":\"scope\"},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":0},\"negated\":false},{\"kind\":\"truthy\",\"operand\":{\"kind\":\"value\",\"id\":1},\"negated\":false}]}]null",
+     "coarse": "[\"lookup\",[\"read\"],null]",
+     "operation": "lookup",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 3,
+     "Pcoarse": 3,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[11].then[0].expr",
+       "carrier": "bind",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [
+       "bind"
+      ],
+      "kept": "effects",
+      "dropped": 1
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous",
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 3
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 4,
+    "callEffects": 4,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "scopes/index.ts",
+   "name": "declareScope",
+   "ordinal": 0,
+   "counts": {
+    "O": 3,
+    "Opp": 3,
+    "S": 3,
+    "P": 3,
+    "T": 3,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [
+    {
+     "key": "[\"assert\",[{\"kind\":\"unknown\",\"reason\":\"object\"}],null]{\"kind\":\"input\",\"index\":0}",
+     "coarse": "[\"assert\",[\"unknown\"],\"input\"]",
+     "operation": "assert",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[1].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    },
+    {
+     "key": "[\"assert\",[{\"kind\":\"unknown\",\"reason\":\"object\"}],{\"kind\":\"truthy\",\"operand\":{\"kind\":\"input\",\"index\":3},\"negated\":false}]{\"kind\":\"input\",\"index\":0}",
+     "coarse": "[\"assert\",[\"unknown\"],\"input\"]",
+     "operation": "assert",
+     "Opp": 1,
+     "S": 1,
+     "P": 1,
+     "T": null,
+     "Tcoarse": 2,
+     "Pcoarse": 2,
+     "classes": [],
+     "mapping": "coarse-ambiguous",
+     "occurrences": [
+      {
+       "path": "body[2].then[0].effect",
+       "carrier": "effect",
+       "wrapper": [],
+       "reachable": true,
+       "statementLevel": true
+      }
+     ],
+     "contributing": {
+      "effects": [
+       "CALL_EXTERNAL"
+      ],
+      "binds": [],
+      "kept": "effects",
+      "dropped": 0
+     }
+    }
+   ],
+   "mappings": [
+    "coarse-ambiguous",
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 2
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 3,
+    "callEffects": 3,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  },
+  {
+   "file": "scopes/index.ts",
+   "name": "declareAuthorityOver",
+   "ordinal": 0,
+   "counts": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "pseudoP": 0,
+    "pseudoT": 0
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 0
+   },
+   "rows": [],
+   "mappings": [
+    "unique"
+   ],
+   "keysByMapping": {
+    "unique": 1,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 1,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 0,
+    "opaqueEffects": 0,
+    "unmatchedSteps": [
+     {
+      "match": "call|assert|1|false",
+      "returned": true,
+      "path": "body[0].value.expr"
+     }
+    ],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 1
+   }
+  },
+  {
+   "file": "scopes/index.ts",
+   "name": "hasStanding",
+   "ordinal": 0,
+   "counts": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "pseudoP": 1,
+    "pseudoT": 1
+   },
+   "visibility": {
+    "valuelessThrows": 0,
+    "opaqueStatements": 1
+   },
+   "rows": [],
+   "mappings": [],
+   "keysByMapping": {
+    "unique": 0,
+    "multiplicity": 0,
+    "ambiguous": 0,
+    "coarse-ambiguous": 0
+   },
+   "unmatched": [],
+   "a1": {
+    "callSteps": 0,
+    "callEffects": 0,
+    "writeSteps": 0,
+    "writeEffects": 0,
+    "emitSteps": 0,
+    "emitEffects": 0,
+    "opaqueSteps": 1,
+    "opaqueEffects": 1,
+    "unmatchedSteps": [],
+    "unmatchedEffects": [],
+    "returnedCallSteps": 0
+   }
+  }
+ ],
+ "totals": {
+  "O": 113,
+  "Opp": 65,
+  "S": 65,
+  "P": 65,
+  "T": 65,
+  "pseudoP": 15,
+  "pseudoT": 15,
+  "rows": 9,
+  "byClass": {
+   "wrapper": 0,
+   "grouping-merge": 0,
+   "grouping-duplication": 0,
+   "ingestion-discrepancy": 0,
+   "other": 0
+  },
+  "byMapping": {
+   "unique": 0,
+   "multiplicity": 0,
+   "ambiguous": 0,
+   "coarse-ambiguous": 9
+  },
+  "keysByMapping": {
+   "unique": 56,
+   "multiplicity": 0,
+   "ambiguous": 0,
+   "coarse-ambiguous": 9
+  },
+  "unmatchedByReason": {
+   "receiver": 19,
+   "behaviour": 14,
+   "nested-argument": 8,
+   "expression-operand": 4,
+   "predicate": 3
+  },
+  "valuelessThrows": 18,
+  "opaqueStatements": 15
+ },
+ "a1": {
+  "executablesCompared": 58,
+  "executablesEqual": 46,
+  "returnedCallSteps": 13,
+  "stepPairs": 97,
+  "effectPairs": 96,
+  "unmatchedSteps": 13,
+  "unmatchedStepsReturned": 13,
+  "unmatchedEffects": 0,
+  "kindMismatches": []
+ },
+ "unpaired": {
+  "inIrOnly": [],
+  "inStoreOnly": []
+ },
+ "limits": [
+  "Locations are file, executable, and IR path. The IR keeps no source lines by design.",
+  "Calls the encoder does not represent, inside opaque constructs or in a thrown value it drops, are in no population. The visibility bound counts the statements that may hide them; it claims nothing about them.",
+  "A stored invocation records operation, argument kinds, and receiver kind only. It is matched to projected sites at that coarse key; a coarse key covering several projected keys is reported, never split.",
+  "Identical occurrences are matched by multiplicity. Which stored invocation is which occurrence is not determined.",
+  "HAS_EFFECT records kind, operation, argument count, and whether conditional; A1 matches steps on exactly that."
+ ]
+}

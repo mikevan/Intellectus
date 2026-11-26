@@ -35,6 +35,15 @@ const table = [
     { name: "EXTRACTED_FROM", subject: any, object: any, layer: "lineage" },
     { name: "DESCENDED_FROM", subject: any, object: any, layer: "lineage" },
     { name: "RESTORED_TO", subject: ["application"], object: ["checkpoint"], layer: "history" },
+    // IR-6 Composition. Every one of these is written by ingestion from what the IR-5 encoder already produced.
+    { name: "HAS_PARAMETER", subject: ["executable"], object: ["value"], layer: "structural", inverse: "PARAMETER_OF", requiredAttributes: ["position"] },
+    { name: "HAS_RETURN", subject: ["executable"], object: ["value"], layer: "structural", inverse: "RETURN_OF" },
+    { name: "HAS_INVOCATION", subject: ["executable"], object: ["invocation"], layer: "structural", inverse: "INVOCATION_IN" },
+    { name: "INVOKES", subject: ["invocation"], object: ["executable"], layer: "structural", inverse: "INVOKED_BY" },
+    { name: "HAS_ARGUMENT", subject: ["invocation"], object: ["value"], layer: "structural", inverse: "ARGUMENT_OF", requiredAttributes: ["position"] },
+    { name: "HAS_OUTCOME", subject: ["invocation"], object: ["value"], layer: "structural", inverse: "OUTCOME_OF" },
+    // the flow edges: a value at one boundary is the same value at the next
+    { name: "FLOWS_TO", subject: ["value"], object: ["value"], layer: "structural", inverse: "FLOWS_FROM" },
 ];
 export const SCHEMA_VERSION = 1;
 export const RELATIONS = new Map(table.map((r) => [r.name, r]));

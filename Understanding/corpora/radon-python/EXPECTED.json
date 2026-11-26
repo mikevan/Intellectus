@@ -1,0 +1,264 @@
+{
+  "corpus": "radon-python",
+  "corpusHash": "ec611e4e91ff85aa",
+  "note": "An application, not a library, selected against criteria frozen before any candidate was examined and without regard to Understanding's performance against it. One row per encoder version, append-only. Read the IR-7 row's note before comparing its opacity with the other corpora.",
+  "rows": [
+    {
+      "ir": 7,
+      "measured": "2026-09-14",
+      "buildId": "e887e1b635bd",
+      "files": 12,
+      "functions": 137,
+      "statements": 563,
+      "opaque": 209,
+      "opaquePct": 37.1,
+      "categories": {
+        "other": 149,
+        "loop": 35,
+        "exception-handling": 17,
+        "declaration": 8
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "7e475d70b1a375bc806359de",
+        "5427a7abce430f87cb53f901",
+        "96ae0ce3592ce34b1d3635ad",
+        "7e2c20b6da31a62aa75b54c6",
+        "9afa935f72dd7f1103496073",
+        "1c5c27a65b45106e08813e02",
+        "5f1a4c0174041af3b3e8ab34",
+        "0ebd4fb10bdb5d5714784d13"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "First measurement. 37.1% opaque is NOT comparable to toml-python's 13.6% without this note: 126 of the 209 opaque statements are docstrings, which are expression statements containing a bare string and carry no semantics at all. Excluding them the rate is 83 of 437 = 19.0%, which is the figure comparable to the other corpora. Counting docstrings as unrepresented semantics is a defect in the instrument, recorded here and not fixed in this round because the encoder was frozen through corpus selection."
+    },
+    {
+      "ir": 9,
+      "measured": "2026-09-14",
+      "buildId": "bedeedfa09d7",
+      "files": 12,
+      "functions": 137,
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "categories": {
+        "loop": 35,
+        "other": 23,
+        "exception-handling": 17,
+        "declaration": 6
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "a5384fe149fb7f60d1ec39c8",
+        "947d6f92ad2a39e960353639",
+        "836b1216301734511037c211",
+        "d8ec3ce927f17c4b0c0bf744",
+        "27fb02f3b28c82498adc6288",
+        "921b50de556274b770082a07",
+        "755edd5baf3c2ee2ef7e27bc",
+        "60838937cf23001bf8ba30a8"
+      ],
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "IR-9 classifies every statement as semantic, non-semantic or metadata, and only an unrepresented SEMANTIC statement counts as opaque. The statement count changed legitimately because 126 non-semantic and 2 metadata statements left the denominator: they carry no execution semantics and were previously counted as unrepresented semantics. Intrinsic fingerprints changed wherever a function body contained a docstring or a bare string statement, which was expected and not predicted stable. Nothing else changed: no new resolution, no import modelling, no loop or exception representation."
+    },
+    {
+      "ir": 10,
+      "step": "C-2",
+      "measured": "2026-09-17",
+      "buildId": "cfd813c76e4d",
+      "encoder": "python-adapter/0.5",
+      "files": 12,
+      "functions": 137,
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "categories": {
+        "loop": 35,
+        "value-stream-emission": 20,
+        "exception-handling": 17,
+        "declaration": 6,
+        "scoped-resource-handoff": 3
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "a5384fe149fb7f60d1ec39c8",
+        "947d6f92ad2a39e960353639",
+        "836b1216301734511037c211",
+        "d8ec3ce927f17c4b0c0bf744",
+        "27fb02f3b28c82498adc6288",
+        "921b50de556274b770082a07",
+        "937136f1518166f9c151c29c",
+        "60838937cf23001bf8ba30a8"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-2 split Python's `yield` into value-stream-emission (a generator hands a value to a consumer) and scoped-resource-handoff (a @contextmanager hands a resource to the caller's scope). The 23 statements that were `other` are the same 23 statements, renamed: 20 emission and 3 handoff, at cli/tools.py 40 and 220 and cli/__init__.py 433. Nothing is represented that was not represented before, so 435 semantic statements, 81 opaque, 126 non-semantic and 2 metadata statements left the denominator exactly as at IR-9. One collision fingerprint moved, 755edd5db3a2ff2ef7e27bc to 937136f1518166f9c151c29c, which is the _open pair whose yields were reclassified; the other seven are unchanged. The handoff classification rests on the decorator's name, which is DECLARED_BY_AUTHOR knowledge and not a fact derived from program semantics; aliases, imported renames, wrappers, and hand-written context managers are not recognised."
+    },
+    {
+      "ir": 11,
+      "step": "C-3",
+      "measured": "2026-09-17",
+      "buildId": "78c7b3b8d635",
+      "encoder": "python-adapter/0.6",
+      "files": 12,
+      "functions": 137,
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "categories": {
+        "loop": 35,
+        "value-stream-emission": 20,
+        "exception-handling": 10,
+        "scoped-resource": 7,
+        "declaration": 6,
+        "scoped-resource-handoff": 3
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "a5384fe149fb7f60d1ec39c8",
+        "947d6f92ad2a39e960353639",
+        "836b1216301734511037c211",
+        "d8ec3ce927f17c4b0c0bf744",
+        "27fb02f3b28c82498adc6288",
+        "921b50de556274b770082a07",
+        "2fe3b1a0f4f1dfcd9266565d",
+        "60838937cf23001bf8ba30a8"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-3 moved Python's `with` from exception-handling to scoped-resource: a scope that acquires a resource, runs under its lifetime, and releases it on every exit. Releasing on an exception is a consequence of that lifetime, not the purpose of the construct. exception-handling 17 to 10, all seven of the difference being `with` statements; `try` is untouched. The same 81 statements are opaque and the same 435 are semantic; 126 non-semantic and 2 metadata statements left the denominator exactly as at IR-9. One collision fingerprint moved, 937136f1518166f9c151c29c to 2fe3b1a0f4f1dfcd9266565d, the _open pair, which holds both a reclassified `with` and the handoff yields C-2 renamed; the other seven are unchanged. Classification only: acquisition, release ordering, and failure propagation are all still unrepresented."
+    },
+    {
+      "ir": 12,
+      "step": "C-4",
+      "measured": "2026-09-17",
+      "buildId": "db2878f82a3c",
+      "encoder": "python-adapter/0.7",
+      "files": 12,
+      "functions": 137,
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "categories": {
+        "loop": 35,
+        "value-stream-emission": 20,
+        "exception-handling": 10,
+        "scoped-resource": 7,
+        "local-function-construction": 6,
+        "scoped-resource-handoff": 3
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "a5384fe149fb7f60d1ec39c8",
+        "947d6f92ad2a39e960353639",
+        "836b1216301734511037c211",
+        "d8ec3ce927f17c4b0c0bf744",
+        "27fb02f3b28c82498adc6288",
+        "921b50de556274b770082a07",
+        "2fe3b1a0f4f1dfcd9266565d",
+        "60838937cf23001bf8ba30a8"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-4 moved a nested def from declaration to local-function-construction: execution constructs a function value and binds it within an enclosing executable scope. declaration 6 to 0, local-function-construction 6, at cli/harvest.py 140, cli/tools.py 117, 123 and 297, raw.py 151, and visitors.py 383. The category is deliberately NOT closure construction: an inspection of all six found that only three capture an enclosing binding, so a closure claim would have been false for half of them. All eight collision fingerprints are unchanged, because none of the six sits in a function that collides with another. 435 semantic statements, 81 opaque, 126 non-semantic and 2 metadata statements left the denominator, exactly as at IR-9."
+    },
+    {
+      "ir": 13,
+      "step": "C-5",
+      "measured": "2026-09-17",
+      "buildId": "afbddabae98a",
+      "encoder": "python-adapter/0.8",
+      "files": 12,
+      "functions": 137,
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "categories": {
+        "loop": 35,
+        "value-stream-emission": 20,
+        "exception-handling": 10,
+        "scoped-resource": 7,
+        "local-function-construction": 6,
+        "scoped-resource-handoff": 3
+      },
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "a5384fe149fb7f60d1ec39c8",
+        "947d6f92ad2a39e960353639",
+        "836b1216301734511037c211",
+        "d8ec3ce927f17c4b0c0bf744",
+        "27fb02f3b28c82498adc6288",
+        "921b50de556274b770082a07",
+        "2fe3b1a0f4f1dfcd9266565d",
+        "60838937cf23001bf8ba30a8"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "note": "C-5 changed the Python adapter's handling of a bare await statement (an awaited call stays a represented call effect; an awaited non-call becomes completion-dependency), and this corpus contains no bare await, so every measured value is identical to the C-4 row. The adapter's version moved because its behaviour moved, not because this corpus exercises it; the behaviour is proved by fixture. 435 semantic statements, 81 opaque, 126 non-semantic and 2 metadata statements left the denominator."
+    },
+    {
+      "ir": 14,
+      "step": "R-1A",
+      "measured": "2026-09-17",
+      "buildId": "392244d37f62",
+      "encoder": "python-adapter/0.9",
+      "irSchema": 6,
+      "categories": {
+        "loop": 35,
+        "value-stream-emission": 20,
+        "exception-handling": 10,
+        "scoped-resource": 7,
+        "local-function-construction": 6,
+        "scoped-resource-handoff": 3
+      },
+      "statements": 435,
+      "opaque": 81,
+      "opaquePct": 18.6,
+      "files": 12,
+      "functions": 137,
+      "nonSemanticExcluded": 126,
+      "metadataExcluded": 2,
+      "collisionGroups": 8,
+      "collisionFingerprints": [
+        "6a113d93d87f7902781d593b",
+        "6557aeaa75206efcc59cdcb4",
+        "8d7d3d88639451014825c469",
+        "2a00c64ee50ee1fc9c7925c9",
+        "9b2d0a6b6892174c32333efe",
+        "0e01dc43e3e1948863de8a3a",
+        "490d18f9eca666656b4ff42a",
+        "e854c578870ee9b3e62f8ff6"
+      ],
+      "confirmed": [
+        "linux",
+        "windows"
+      ],
+      "current": true,
+      "note": "R-1A, ir_schema 6: the IR gained the `awaited` expression modifier and the `evaluate` carrier. This corpus contains no await, so every category, count and collision-group MEMBERSHIP is identical to the C-5 row. Every fingerprint VALUE changed because the schema number is hashed into the fingerprint; that is a property of the fingerprint, not a change in any function's semantics, and the frozen prediction that only await-bearing functions would move was wrong for that reason (see the log). 126 non-semantic and 2 metadata statements left the denominator."
+    }
+  ]
+}

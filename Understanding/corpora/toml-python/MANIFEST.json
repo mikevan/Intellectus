@@ -1,0 +1,34 @@
+{
+  "name": "toml-python",
+  "language": "python",
+  "fileCount": 5,
+  "totalBytes": 50660,
+  "corpusHash": "dbbd34f3b778aadb",
+  "files": [
+    {
+      "path": "__init__.py",
+      "bytes": 723,
+      "sha256": "02ede4a82c0a0f47236dfe322463a9505c29b18d161ec0b56511af5a020a9a97"
+    },
+    {
+      "path": "decoder.py",
+      "bytes": 38942,
+      "sha256": "8521932dffb65810d9fdd768087585cba37ae3b5f2312875a37acdda8e1d1058"
+    },
+    {
+      "path": "encoder.py",
+      "bytes": 9940,
+      "sha256": "5e305cf1acafbe5b0bc9dfea0c0e2d3160cd98c1514b80e9c2db8349606aef3a"
+    },
+    {
+      "path": "ordered.py",
+      "bytes": 354,
+      "sha256": "9b3d37959995d1b99cf65b1844850eba3ec3b2ee4fb70abe52d195ab915d559e"
+    },
+    {
+      "path": "tz.py",
+      "bytes": 701,
+      "sha256": "fb9be0f30920fdab67562d939c4bde7b121513b4ff171055afffb65957ced680"
+    }
+  ]
+}

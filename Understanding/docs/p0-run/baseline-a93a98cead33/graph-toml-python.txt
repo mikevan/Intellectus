@@ -1,0 +1,158 @@
+corpus            corpora/toml-python/src
+files             5
+concepts          61  (5 modules, 56 executables)
+assertions        993
+
+assertions by relation:
+    166  HAS_PREDICATE
+    117  HAS_ARGUMENT
+    116  HAS_EFFECT
+     99  HAS_INVOCATION
+     99  HAS_OUTCOME
+     87  HAS_PARAMETER
+     75  FLOWS_TO
+     61  RENDERS_AS
+     56  MEMBER_OF
+     56  HAS_FINGERPRINT
+     37  HAS_RETURN
+     12  INVOKES
+     12  CALLS
+
+interprocedural structure:
+  executables               56
+  CALLS edges               12   (resolved 12)
+  isolated executables      38  (no call in or out)
+  connected components      45   largest 5
+  longest directed chain    2 calls deep
+
+call operations with no callee  29 distinct, 87 occurrences  (unresolved + ambiguous invocations; opaque: entries are pseudo-operations, not calls)
+    29  opaque:loop
+     9  split
+     8  __init__
+     3  strip
+     3  opaque:exception-handling
+     3  _dict
+     3  replace
+     2  str
+     2  format
+     2  get_empty_table
+     2  TomlDecoder
+     2  decode
+
+boundary composition:
+  invocations               99   (resolved 12, unresolved 77, ambiguous 10, self 0)
+  boundary values           340
+  FLOWS_TO edges            75
+  values that flow anywhere  71 of 340
+  largest value reachability 4 values
+
+what the 87 invocations with no CALLS edge cost, by cause (occurrences, not distinct names):
+  category               occ    args   lost flows
+  RECEIVER_UNRESOLVED    31      30           61
+  REPRESENTATION_LOSS    34       0           34
+  INTERNAL_AMBIGUOUS     10      13           23
+  EXTERNAL_UNMODELED      4       4            8
+  UNKNOWN                 4       4            8
+  INTERNAL_NONEXECUTABLE    4       3            7
+  TOTAL                  87      54          141
+  flows written 75; flows prevented 141; so 34.7% of the composition this corpus offers was captured.
+
+  ranked by cost, the operations in each cause:
+    RECEIVER_UNRESOLVED  fspath, format, strip, decode, join, split, _dict, pop, and 7 more
+    REPRESENTATION_LOSS  opaque:loop, opaque:scoped-resource, opaque:exception-handling, opaque:declaration
+    INTERNAL_AMBIGUOUS   __init__, get_empty_table
+    EXTERNAL_UNMODELED   str, list
+    UNKNOWN              dump_value_func, unicode, timedelta
+    INTERNAL_NONEXECUTABLE TomlDecoder, DynamicInlineTableDict, TomlEncoder
+
+  external knowledge used: 88 operation names and 14 class names, both DECLARED_BY_AUTHOR.
+    The author's knowledge of the Python and JavaScript standard libraries, 2026-09-14.
+    The class declarations of the committed corpora, read from the corpus text on 2026-09-14 because the store holds no concept for a class.
+
+  what this instrument cannot measure:
+    - RECEIVER_UNRESOLVED is now populated from IR-7's preserved receiver, and it takes precedence over EXTERNAL_UNMODELED when a call has a receiver, because the operation's name cannot tell a runtime method from a method of the corpus. So EXTERNAL_UNMODELED now means a bare call to a built-in name, and the split between runtime receivers and corpus receivers still needs type flow, which this round does not have.
+    - DYNAMIC can only be populated where the IR recorded that the callee came from a value, which the current adapters never do, so it stays at zero for the same reason.
+    - REPRESENTATION_LOSS exposes zero arguments by construction, so its full cost is not measurable by this instrument.
+
+where the 49 receiver arguments in the store come from (origin, not type):
+  origin                   occ   in a flow
+  UNRESOLVED                27          0
+  PARAMETER                  9          9
+  CALL_OUTCOME               6          6
+  LOCAL_BINDING              3          0
+  LITERAL_OR_CONSTRUCTED     3          0
+  MEMBER_VALUE               1          0
+  traceable origins        22 of 49
+  backward steps followed  max 2, total 17
+
+  what this instrument cannot establish:
+    - MODULE_OR_IMPORTED cannot be populated: the store holds module concepts, and the encoder records an imported name as a free name rather than as the module it came from, so an imported receiver is indistinguishable from any other unbound name.
+    - An origin is not a type. PARAMETER says the identity arrives from the caller; it says nothing about what the caller passed.
+    - LOCAL_BINDING and MEMBER_VALUE are read from the operand kind the encoder recorded, not followed through the value graph, because ingestion writes no flow edge from a binding to a receiver use.
+
+producers of the 71 receiver occurrences in the IR, by group (measurement only, no flow written):
+  group           total  identifiable  ambiguous  unavailable   of which invocation / other
+  LOCAL_BINDING     16            16          0            0   13 / 3
+  MEMBER_VALUE       2             2          0            0   0 / 2
+  COMPUTED          21            21          0            0   9 / 12
+
+  what a producer is not:
+    - A producer is an expression, not an entity. MEMBER_VALUE identifies the read that produced the receiver and says nothing about what is stored in the field.
+    - This instrument reads the IR directly rather than the store, because the store holds no assertion joining a binding or a computed expression to a receiver use. That absence is what IR-8 would address; nothing here writes it.
+    - A receiver recorded as `unknown` (a free name) is outside these three groups entirely: there is no producer in the function to identify, which is the import and module gap stated in E3-origin.
+
+channels still written by nobody:
+  PARTICIPATES_IN  0
+  FOLLOWS          0
+  OBSERVED_IN      0
+  TESTED_BY        0
+  SATISFIES        0
+
+what each total counts (I-0):
+     99  invocations
+         HAS_INVOCATION assertions: one per call site after the effect/bind merge below.
+     12  resolved invocations
+         Invocations whose operation named exactly one executable in this corpus, other than the caller; each writes INVOKES and CALLS.
+     77  unresolved invocations
+         Invocations whose operation named no executable in this corpus.
+     10  ambiguous invocations
+         Invocations whose operation named more than one executable; never resolved to one of them.
+      0  self invocations
+         Invocations whose only candidate is the caller itself: direct recursion. No CALLS self-loop is written, so these appear in no other bucket.
+     87  call-operation occurrences
+         Entries in the operation table: unresolved plus ambiguous invocations, counted by operation name. `opaque:` entries stand for unrepresented statements and are not calls.
+     87  invocations with no CALLS edge
+         The population the cost table classifies: every invocation without an INVOKES edge, which is unresolved plus ambiguous plus self.
+     34  of those, pseudo-invocations
+         REPRESENTATION_LOSS rows: one per opaque statement, standing in for a construct the IR cannot represent. Not calls.
+     53  of those, calls
+         Invocations with no CALLS edge that are actual call sites.
+     49  receiver arguments in the store
+         HAS_ARGUMENT assertions with role=receiver: one per merged call site that carries a receiver. The population the origin instrument reads.
+     71  receiver occurrences in the IR
+         Receivers read straight from the semantic projection, before the merge: the population the producer instrument reads.
+     71  receiver sites from the projection
+         Receiver-bearing call sites read from the semantic projection before the merge: exactly what the producer instrument counts.
+      8  receiver sites from returned or thrown operands
+         Receiver-bearing call sites the ingestion additionally finds inside returned and thrown operands. The producer instrument does not walk these.
+     39  call sites merged
+         Sites the effect/bind rule merged: one call reported twice by the projection becomes one invocation.
+     30  of those, carrying a receiver
+         Merged sites whose call had a receiver: the whole difference between the two receiver populations.
+
+the totals reconcile (I-0):
+  ok        invocations account for every call site
+            99 = 12 resolved + 77 unresolved + 10 ambiguous + 0 self
+  ok        the operation table counts unresolved and ambiguous only
+            87 = 77 unresolved + 10 ambiguous
+  ok        the cost table classifies every invocation without a CALLS edge
+            87 = 99 invocations - 12 resolved
+  ok        the cost table separates calls from pseudo-invocations
+            87 = 34 pseudo-invocations + 53 calls
+  ok        the origin instrument reads the store's receiver arguments
+            49 = 49 receiver arguments
+  ok        the producer instrument counts the projection's receiver sites
+            71 IR occurrences = 71 receiver sites from the projection
+  ok        the store's receiver arguments are the sites seen, less those merged
+            49 store arguments = 71 from the projection + 8 from returned or thrown operands - 30 merged
+  every identity holds

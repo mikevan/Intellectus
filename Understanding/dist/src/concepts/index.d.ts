@@ -1,4 +1,4 @@
-export declare const CONCEPT_KINDS: readonly ["application", "scope", "thread", "trace", "component", "module", "class", "executable", "entity", "state", "event", "external", "test", "requirement", "intent", "decision", "constraint", "invariant", "obligation", "checkpoint"];
+export declare const CONCEPT_KINDS: readonly ["application", "scope", "thread", "trace", "component", "module", "class", "executable", "entity", "state", "event", "external", "test", "requirement", "intent", "decision", "constraint", "invariant", "obligation", "checkpoint", "invocation", "value"];
 export type ConceptKind = (typeof CONCEPT_KINDS)[number];
 export type ConceptId = `C-${string}`;
 export interface Concept {

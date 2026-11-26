@@ -1,0 +1,5037 @@
+{
+ "manifestSha256": "072b51013d2b85eae9d3c15954a3388cb398f94f94b8b7fdb662b319a2b33ecf",
+ "combinations": {
+  "A/H1": {
+   "fixtures": [
+    {
+     "id": "K1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K2",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K3",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K4a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 10,
+     "queriesOk": 10,
+     "counts": {
+      "total": 10,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 10,
+      "attributeReads": 5,
+      "edgeExpansions": 29
+     }
+    },
+    {
+     "id": "K4b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K5",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 6,
+     "queriesOk": 6,
+     "counts": {
+      "total": 18,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "AWAIT_TARGET": 1,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 27
+     },
+     "cost": {
+      "factsInspected": 18,
+      "attributeReads": 9,
+      "edgeExpansions": 20
+     }
+    },
+    {
+     "id": "K6a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 14,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 21
+     },
+     "cost": {
+      "factsInspected": 14,
+      "attributeReads": 6,
+      "edgeExpansions": 14
+     }
+    },
+    {
+     "id": "K6b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6c",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6d",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 6,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K6d-i",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K6e",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K7",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "loadLanguage": []
+     },
+     "queries": 27,
+     "queriesOk": 27,
+     "counts": {
+      "total": 33,
+      "byRel": {
+       "CONTAINS_STEP": 9,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "AWAIT_TARGET": 2,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 11
+      },
+      "attributeValues": 49
+     },
+     "cost": {
+      "factsInspected": 33,
+      "attributeReads": 17,
+      "edgeExpansions": 188
+     }
+    },
+    {
+     "id": "K8",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 23,
+      "byRel": {
+       "CONTAINS_STEP": 6,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 3,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 36
+     },
+     "cost": {
+      "factsInspected": 23,
+      "attributeReads": 11,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K9",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 42
+     }
+    },
+    {
+     "id": "K10",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K11",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K12",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 4,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 4,
+      "attributeReads": 0,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K13",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 14,
+     "queriesOk": 14,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 17
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 6,
+      "edgeExpansions": 60
+     }
+    },
+    {
+     "id": "K14",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "cached": [],
+      "g": []
+     },
+     "queries": 7,
+     "queriesOk": 7,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 2,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 15
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 5,
+      "edgeExpansions": 26
+     }
+    },
+    {
+     "id": "K15",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K16",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 2
+     }
+    },
+    {
+     "id": "K16-py",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 3
+     }
+    },
+    {
+     "id": "K17",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K18",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 38
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 11,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K19",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 38
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 11,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K21",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 6,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K22",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "reachability"
+      ]
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 8,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 3
+      },
+      "attributeValues": 11
+     },
+     "cost": {
+      "factsInspected": 8,
+      "attributeReads": 3,
+      "edgeExpansions": 40
+     }
+    },
+    {
+     "id": "L1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "e1": [],
+      "e2": []
+     },
+     "queries": 0,
+     "queriesOk": 0,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 2,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 3
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 0
+     }
+    }
+   ],
+   "refusalControls": [
+    {
+     "rule": "R1",
+     "alt": "program from an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R1",
+     "alt": "program to an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "program across executables",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "A: within names another executable",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R3",
+     "alt": "program self-loop",
+     "expected": [
+      "R3"
+     ],
+     "got": [
+      "R3"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves an explicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves the implicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R5",
+     "alt": "branch fact without an arm",
+     "expected": [
+      "R5"
+     ],
+     "got": [
+      "R5"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R6",
+     "alt": "arm on a non-branch",
+     "expected": [
+      "R6"
+     ],
+     "got": [
+      "R6"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact from a non-branch",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact on one branch arm",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two calls",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two awaits",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion from an await to a branch",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R9",
+     "alt": "completion call differs from AWAIT_TARGET",
+     "expected": [
+      "R9"
+     ],
+     "got": [
+      "R9"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass unresolved",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass plain-value",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R11",
+     "alt": "second completion for one await",
+     "expected": [
+      "R11"
+     ],
+     "got": [
+      "R11"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await without AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await with two AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to a non-call step",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to another executable's call",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "call step with class unresolved",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "literal with class call-result",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM to a non-branch",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM across executables",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R15",
+     "alt": "a step with two IN_ARM",
+     "expected": [
+      "R15"
+     ],
+     "got": [
+      "R15"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R16",
+     "alt": "IN_ARM cycle",
+     "expected": [
+      "R16"
+     ],
+     "got": [
+      "R16"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "ARM_STATUS on a non-branch",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "duplicate ARM_STATUS for one arm",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry missing",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry duplicated",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry owned by another executable",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18",
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry with an incoming program fact",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R19",
+     "alt": "event-graph cycle",
+     "expected": [
+      "R19"
+     ],
+     "got": [
+      "R19"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R20",
+     "alt": "predicate on a non-branch",
+     "expected": [
+      "R20"
+     ],
+     "got": [
+      "R20"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R21",
+     "alt": "second predicate for one branch",
+     "expected": [
+      "R21"
+     ],
+     "got": [
+      "R21"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R23",
+     "alt": "implicit on a non-exit",
+     "expected": [
+      "R23"
+     ],
+     "got": [
+      "R23"
+     ],
+     "ok": true
+    }
+   ],
+   "ablation": [
+    {
+     "id": "K4a",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 10,
+     "assertionsWithout": 9
+    },
+    {
+     "id": "K5",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 18,
+     "assertionsWithout": 17
+    },
+    {
+     "id": "K7",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 33,
+     "assertionsWithout": 32
+    },
+    {
+     "id": "K13",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    },
+    {
+     "id": "K14",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    }
+   ],
+   "misses": [
+    "refusal R13 (AWAIT_TARGET to a non-call step): expected R13 got R13,R12",
+    "refusal R13 (AWAIT_TARGET to another executable's call): expected R13 got R13,R12",
+    "refusal R13 (call step with class unresolved): expected R13 got R13,R12",
+    "refusal R13 (literal with class call-result): expected R13 got R13,R12"
+   ],
+   "cost": {
+    "factsInspected": 396,
+    "attributeReads": 171,
+    "edgeExpansions": 688
+   },
+   "counts": {
+    "total": 396,
+    "attributeValues": 574
+   },
+   "k4delta": {
+    "a": {
+     "CONTAINS_STEP": 4,
+     "ENTRY_STEP": 1,
+     "AWAIT_TARGET": 1,
+     "FOLLOWS": 4
+    },
+    "b": {
+     "CONTAINS_STEP": 3,
+     "ENTRY_STEP": 1,
+     "FOLLOWS": 2
+    }
+   },
+   "engine": [
+    {
+     "id": "K9b",
+     "correctDerivesForbidden": false,
+     "blindDerives": true
+    }
+   ]
+  },
+  "A/H2": {
+   "fixtures": [
+    {
+     "id": "K1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K2",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K3",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K4a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 10,
+     "queriesOk": 10,
+     "counts": {
+      "total": 10,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 10,
+      "attributeReads": 5,
+      "edgeExpansions": 29
+     }
+    },
+    {
+     "id": "K4b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 2,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K5",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 6,
+     "queriesOk": 6,
+     "counts": {
+      "total": 18,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "AWAIT_TARGET": 1,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 27
+     },
+     "cost": {
+      "factsInspected": 18,
+      "attributeReads": 9,
+      "edgeExpansions": 20
+     }
+    },
+    {
+     "id": "K6a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 14,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 21
+     },
+     "cost": {
+      "factsInspected": 14,
+      "attributeReads": 6,
+      "edgeExpansions": 14
+     }
+    },
+    {
+     "id": "K6b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6c",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6d",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 6,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K6d-i",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K6e",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K7",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "loadLanguage": []
+     },
+     "queries": 27,
+     "queriesOk": 27,
+     "counts": {
+      "total": 33,
+      "byRel": {
+       "CONTAINS_STEP": 9,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "AWAIT_TARGET": 2,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 11
+      },
+      "attributeValues": 49
+     },
+     "cost": {
+      "factsInspected": 33,
+      "attributeReads": 17,
+      "edgeExpansions": 188
+     }
+    },
+    {
+     "id": "K8",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 23,
+      "byRel": {
+       "CONTAINS_STEP": 6,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 3,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 36
+     },
+     "cost": {
+      "factsInspected": 23,
+      "attributeReads": 11,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K9",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 42
+     }
+    },
+    {
+     "id": "K10",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 6
+      },
+      "attributeValues": 32
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 10,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K11",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K12",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 4,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 4,
+      "attributeReads": 0,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K13",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 14,
+     "queriesOk": 14,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 17
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 6,
+      "edgeExpansions": 60
+     }
+    },
+    {
+     "id": "K14",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "cached": [],
+      "g": []
+     },
+     "queries": 7,
+     "queriesOk": 7,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 2,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 15
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 5,
+      "edgeExpansions": 26
+     }
+    },
+    {
+     "id": "K15",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K16",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 2
+     }
+    },
+    {
+     "id": "K16-py",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "FOLLOWS": 2
+      },
+      "attributeValues": 9
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 3,
+      "edgeExpansions": 3
+     }
+    },
+    {
+     "id": "K17",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 5
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 7,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K18",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 38
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 11,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K19",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 7
+      },
+      "attributeValues": 38
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 11,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K21",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "FOLLOWS": 4
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 6,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K22",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "reachability"
+      ]
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 8,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "FOLLOWS": 3
+      },
+      "attributeValues": 11
+     },
+     "cost": {
+      "factsInspected": 8,
+      "attributeReads": 3,
+      "edgeExpansions": 40
+     }
+    },
+    {
+     "id": "L1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "e1": [],
+      "e2": []
+     },
+     "queries": 0,
+     "queriesOk": 0,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 2,
+       "HAS_PREDICATE": 2,
+       "FOLLOWS": 3
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 0
+     }
+    }
+   ],
+   "refusalControls": [
+    {
+     "rule": "R1",
+     "alt": "program from an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R1",
+     "alt": "program to an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "program across executables",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "A: within names another executable",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R3",
+     "alt": "program self-loop",
+     "expected": [
+      "R3"
+     ],
+     "got": [
+      "R3"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves an explicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves the implicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R5",
+     "alt": "branch fact without an arm",
+     "expected": [
+      "R5"
+     ],
+     "got": [
+      "R5"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R6",
+     "alt": "arm on a non-branch",
+     "expected": [
+      "R6"
+     ],
+     "got": [
+      "R6"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact from a non-branch",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact on one branch arm",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two calls",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two awaits",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion from an await to a branch",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R9",
+     "alt": "completion call differs from AWAIT_TARGET",
+     "expected": [
+      "R9"
+     ],
+     "got": [
+      "R9"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass unresolved",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass plain-value",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R11",
+     "alt": "second completion for one await",
+     "expected": [
+      "R11"
+     ],
+     "got": [
+      "R11"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await without AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await with two AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to a non-call step",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to another executable's call",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "call step with class unresolved",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "literal with class call-result",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM to a non-branch",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM across executables",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R15",
+     "alt": "a step with two IN_ARM",
+     "expected": [
+      "R15"
+     ],
+     "got": [
+      "R15"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R16",
+     "alt": "IN_ARM cycle",
+     "expected": [
+      "R16"
+     ],
+     "got": [
+      "R16"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "ARM_STATUS on a non-branch",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "duplicate ARM_STATUS for one arm",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry missing",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry duplicated",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry owned by another executable",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18",
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry with an incoming program fact",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R19",
+     "alt": "event-graph cycle",
+     "expected": [
+      "R19"
+     ],
+     "got": [
+      "R19"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R20",
+     "alt": "predicate on a non-branch",
+     "expected": [
+      "R20"
+     ],
+     "got": [
+      "R20"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R21",
+     "alt": "second predicate for one branch",
+     "expected": [
+      "R21"
+     ],
+     "got": [
+      "R21"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R23",
+     "alt": "implicit on a non-exit",
+     "expected": [
+      "R23"
+     ],
+     "got": [
+      "R23"
+     ],
+     "ok": true
+    }
+   ],
+   "ablation": [
+    {
+     "id": "K4a",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 10,
+     "assertionsWithout": 9
+    },
+    {
+     "id": "K5",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 18,
+     "assertionsWithout": 17
+    },
+    {
+     "id": "K7",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 33,
+     "assertionsWithout": 32
+    },
+    {
+     "id": "K13",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    },
+    {
+     "id": "K14",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    }
+   ],
+   "misses": [
+    "refusal R13 (AWAIT_TARGET to a non-call step): expected R13 got R13,R12",
+    "refusal R13 (AWAIT_TARGET to another executable's call): expected R13 got R13,R12",
+    "refusal R13 (call step with class unresolved): expected R13 got R13,R12",
+    "refusal R13 (literal with class call-result): expected R13 got R13,R12"
+   ],
+   "cost": {
+    "factsInspected": 396,
+    "attributeReads": 171,
+    "edgeExpansions": 688
+   },
+   "counts": {
+    "total": 396,
+    "attributeValues": 574
+   },
+   "k4delta": {
+    "a": {
+     "CONTAINS_STEP": 4,
+     "ENTRY_STEP": 1,
+     "AWAIT_TARGET": 1,
+     "FOLLOWS": 4
+    },
+    "b": {
+     "CONTAINS_STEP": 3,
+     "ENTRY_STEP": 1,
+     "FOLLOWS": 2
+    }
+   },
+   "engine": [
+    {
+     "id": "K9b",
+     "correctDerivesForbidden": false,
+     "blindDerives": true
+    }
+   ]
+  },
+  "B/H1": {
+   "fixtures": [
+    {
+     "id": "K1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K2",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K3",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K4a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 10,
+     "queriesOk": 10,
+     "counts": {
+      "total": 10,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 3,
+       "AWAITS": 1
+      },
+      "attributeValues": 6
+     },
+     "cost": {
+      "factsInspected": 10,
+      "attributeReads": 1,
+      "edgeExpansions": 29
+     }
+    },
+    {
+     "id": "K4b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K5",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 6,
+     "queriesOk": 6,
+     "counts": {
+      "total": 18,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "AWAIT_TARGET": 1,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 5,
+       "AWAITS": 1
+      },
+      "attributeValues": 15
+     },
+     "cost": {
+      "factsInspected": 18,
+      "attributeReads": 3,
+      "edgeExpansions": 20
+     }
+    },
+    {
+     "id": "K6a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 14,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 13
+     },
+     "cost": {
+      "factsInspected": 14,
+      "attributeReads": 2,
+      "edgeExpansions": 14
+     }
+    },
+    {
+     "id": "K6b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6c",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6d",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 2,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K6d-i",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K6e",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K7",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "loadLanguage": []
+     },
+     "queries": 27,
+     "queriesOk": 27,
+     "counts": {
+      "total": 33,
+      "byRel": {
+       "CONTAINS_STEP": 9,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "AWAIT_TARGET": 2,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 10,
+       "AWAITS": 1
+      },
+      "attributeValues": 27
+     },
+     "cost": {
+      "factsInspected": 33,
+      "attributeReads": 6,
+      "edgeExpansions": 188
+     }
+    },
+    {
+     "id": "K8",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 23,
+      "byRel": {
+       "CONTAINS_STEP": 6,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 3,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 23,
+      "attributeReads": 4,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K9",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 42
+     }
+    },
+    {
+     "id": "K10",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K11",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K12",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 4,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 4,
+      "attributeReads": 0,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K13",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 14,
+     "queriesOk": 14,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 4,
+       "AWAITS": 1
+      },
+      "attributeValues": 7
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 1,
+      "edgeExpansions": 60
+     }
+    },
+    {
+     "id": "K14",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "cached": [],
+      "g": []
+     },
+     "queries": 7,
+     "queriesOk": 7,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 2,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 3,
+       "AWAITS": 1
+      },
+      "attributeValues": 7
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 1,
+      "edgeExpansions": 26
+     }
+    },
+    {
+     "id": "K15",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K16",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 2
+     }
+    },
+    {
+     "id": "K16-py",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 3
+     }
+    },
+    {
+     "id": "K17",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K18",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 4,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K19",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "TESTS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 4,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K21",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "TESTS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 2,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K22",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "reachability"
+      ]
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 8,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 3
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 8,
+      "attributeReads": 0,
+      "edgeExpansions": 40
+     }
+    },
+    {
+     "id": "L1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "e1": [],
+      "e2": []
+     },
+     "queries": 0,
+     "queriesOk": 0,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 2,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 2,
+       "FOLLOWS": 1
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 0,
+      "edgeExpansions": 0
+     }
+    }
+   ],
+   "refusalControls": [
+    {
+     "rule": "R1",
+     "alt": "program from an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R1",
+     "alt": "program to an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "program across executables",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R3",
+     "alt": "program self-loop",
+     "expected": [
+      "R3"
+     ],
+     "got": [
+      "R3"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves an explicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves the implicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R5",
+     "alt": "branch fact without an arm",
+     "expected": [
+      "R5"
+     ],
+     "got": [
+      "R5"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R6",
+     "alt": "arm on a non-branch",
+     "expected": [
+      "R6"
+     ],
+     "got": [
+      "R6"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact from a non-branch",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact on one branch arm",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two calls",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two awaits",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion from an await to a branch",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R9",
+     "alt": "completion call differs from AWAIT_TARGET",
+     "expected": [
+      "R9"
+     ],
+     "got": [
+      "R9"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass unresolved",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass plain-value",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R11",
+     "alt": "second completion for one await",
+     "expected": [
+      "R11"
+     ],
+     "got": [
+      "R11"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await without AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await with two AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to a non-call step",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to another executable's call",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "call step with class unresolved",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "literal with class call-result",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM to a non-branch",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM across executables",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R15",
+     "alt": "a step with two IN_ARM",
+     "expected": [
+      "R15"
+     ],
+     "got": [
+      "R15"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R16",
+     "alt": "IN_ARM cycle",
+     "expected": [
+      "R16"
+     ],
+     "got": [
+      "R16"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "ARM_STATUS on a non-branch",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "duplicate ARM_STATUS for one arm",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry missing",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry duplicated",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry owned by another executable",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18",
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry with an incoming program fact",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R19",
+     "alt": "event-graph cycle",
+     "expected": [
+      "R19"
+     ],
+     "got": [
+      "R19"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R20",
+     "alt": "predicate on a non-branch",
+     "expected": [
+      "R20"
+     ],
+     "got": [
+      "R20"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R21",
+     "alt": "second predicate for one branch",
+     "expected": [
+      "R21"
+     ],
+     "got": [
+      "R21"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R23",
+     "alt": "implicit on a non-exit",
+     "expected": [
+      "R23"
+     ],
+     "got": [
+      "R23"
+     ],
+     "ok": true
+    }
+   ],
+   "ablation": [
+    {
+     "id": "K4a",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 10,
+     "assertionsWithout": 9
+    },
+    {
+     "id": "K5",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 18,
+     "assertionsWithout": 17
+    },
+    {
+     "id": "K7",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 33,
+     "assertionsWithout": 32
+    },
+    {
+     "id": "K13",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    },
+    {
+     "id": "K14",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    }
+   ],
+   "misses": [
+    "refusal R13 (AWAIT_TARGET to a non-call step): expected R13 got R13,R12",
+    "refusal R13 (AWAIT_TARGET to another executable's call): expected R13 got R13,R12",
+    "refusal R13 (call step with class unresolved): expected R13 got R13,R12",
+    "refusal R13 (literal with class call-result): expected R13 got R13,R12"
+   ],
+   "cost": {
+    "factsInspected": 396,
+    "attributeReads": 54,
+    "edgeExpansions": 688
+   },
+   "counts": {
+    "total": 396,
+    "attributeValues": 340
+   },
+   "k4delta": {
+    "a": {
+     "CONTAINS_STEP": 4,
+     "ENTRY_STEP": 1,
+     "AWAIT_TARGET": 1,
+     "NEXT_STEP": 3,
+     "AWAITS": 1
+    },
+    "b": {
+     "CONTAINS_STEP": 3,
+     "ENTRY_STEP": 1,
+     "NEXT_STEP": 2
+    }
+   },
+   "engine": [
+    {
+     "id": "K9b",
+     "correctDerivesForbidden": false,
+     "blindDerives": true
+    }
+   ]
+  },
+  "B/H2": {
+   "fixtures": [
+    {
+     "id": "K1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K2",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K3",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K4a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 10,
+     "queriesOk": 10,
+     "counts": {
+      "total": 10,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 3,
+       "AWAITS": 1
+      },
+      "attributeValues": 6
+     },
+     "cost": {
+      "factsInspected": 10,
+      "attributeReads": 1,
+      "edgeExpansions": 29
+     }
+    },
+    {
+     "id": "K4b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 6,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 6,
+      "attributeReads": 0,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K5",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 6,
+     "queriesOk": 6,
+     "counts": {
+      "total": 18,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "AWAIT_TARGET": 1,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 5,
+       "AWAITS": 1
+      },
+      "attributeValues": 15
+     },
+     "cost": {
+      "factsInspected": 18,
+      "attributeReads": 3,
+      "edgeExpansions": 20
+     }
+    },
+    {
+     "id": "K6a",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 14,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 13
+     },
+     "cost": {
+      "factsInspected": 14,
+      "attributeReads": 2,
+      "edgeExpansions": 14
+     }
+    },
+    {
+     "id": "K6b",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6c",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K6d",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 2,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K6d-i",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1
+      },
+      "attributeValues": 12
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 2,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K6e",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K7",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "loadLanguage": []
+     },
+     "queries": 27,
+     "queriesOk": 27,
+     "counts": {
+      "total": 33,
+      "byRel": {
+       "CONTAINS_STEP": 9,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "AWAIT_TARGET": 2,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 10,
+       "AWAITS": 1
+      },
+      "attributeValues": 27
+     },
+     "cost": {
+      "factsInspected": 33,
+      "attributeReads": 6,
+      "edgeExpansions": 188
+     }
+    },
+    {
+     "id": "K8",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 23,
+      "byRel": {
+       "CONTAINS_STEP": 6,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 3,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 22
+     },
+     "cost": {
+      "factsInspected": 23,
+      "attributeReads": 4,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K9",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 42
+     }
+    },
+    {
+     "id": "K10",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 20,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 6
+      },
+      "attributeValues": 20
+     },
+     "cost": {
+      "factsInspected": 20,
+      "attributeReads": 4,
+      "edgeExpansions": 9
+     }
+    },
+    {
+     "id": "K11",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K12",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "edges",
+       "reachability"
+      ]
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 4,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1
+      },
+      "attributeValues": 4
+     },
+     "cost": {
+      "factsInspected": 4,
+      "attributeReads": 0,
+      "edgeExpansions": 4
+     }
+    },
+    {
+     "id": "K13",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 14,
+     "queriesOk": 14,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 4,
+       "AWAITS": 1
+      },
+      "attributeValues": 7
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 1,
+      "edgeExpansions": 60
+     }
+    },
+    {
+     "id": "K14",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "cached": [],
+      "g": []
+     },
+     "queries": 7,
+     "queriesOk": 7,
+     "counts": {
+      "total": 12,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 2,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 3,
+       "AWAITS": 1
+      },
+      "attributeValues": 7
+     },
+     "cost": {
+      "factsInspected": 12,
+      "attributeReads": 1,
+      "edgeExpansions": 26
+     }
+    },
+    {
+     "id": "K15",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 4,
+     "queriesOk": 4,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 7
+     }
+    },
+    {
+     "id": "K16",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 2
+     }
+    },
+    {
+     "id": "K16-py",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 3,
+     "queriesOk": 3,
+     "counts": {
+      "total": 7,
+      "byRel": {
+       "CONTAINS_STEP": 3,
+       "ENTRY_STEP": 1,
+       "AWAIT_TARGET": 1,
+       "NEXT_STEP": 2
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 7,
+      "attributeReads": 1,
+      "edgeExpansions": 3
+     }
+    },
+    {
+     "id": "K17",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 16,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 5
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 16,
+      "attributeReads": 2,
+      "edgeExpansions": 31
+     }
+    },
+    {
+     "id": "K18",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 4,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K19",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 9,
+     "queriesOk": 9,
+     "counts": {
+      "total": 25,
+      "byRel": {
+       "CONTAINS_STEP": 7,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 4,
+       "ARM_STATUS": 4,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 7
+      },
+      "attributeValues": 24
+     },
+     "cost": {
+      "factsInspected": 25,
+      "attributeReads": 4,
+      "edgeExpansions": 35
+     }
+    },
+    {
+     "id": "K21",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": []
+     },
+     "queries": 2,
+     "queriesOk": 2,
+     "counts": {
+      "total": 15,
+      "byRel": {
+       "CONTAINS_STEP": 5,
+       "ENTRY_STEP": 1,
+       "IN_ARM": 2,
+       "ARM_STATUS": 2,
+       "HAS_PREDICATE": 1,
+       "NEXT_STEP": 4
+      },
+      "attributeValues": 14
+     },
+     "cost": {
+      "factsInspected": 15,
+      "attributeReads": 2,
+      "edgeExpansions": 12
+     }
+    },
+    {
+     "id": "K22",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "f": [
+       "reachability"
+      ]
+     },
+     "queries": 8,
+     "queriesOk": 8,
+     "counts": {
+      "total": 8,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 1,
+       "NEXT_STEP": 3
+      },
+      "attributeValues": 5
+     },
+     "cost": {
+      "factsInspected": 8,
+      "attributeReads": 0,
+      "edgeExpansions": 40
+     }
+    },
+    {
+     "id": "L1",
+     "misses": [],
+     "refusals": [],
+     "warnings": {
+      "e1": [],
+      "e2": []
+     },
+     "queries": 0,
+     "queriesOk": 0,
+     "counts": {
+      "total": 11,
+      "byRel": {
+       "CONTAINS_STEP": 4,
+       "ENTRY_STEP": 2,
+       "HAS_PREDICATE": 2,
+       "NEXT_STEP": 2,
+       "FOLLOWS": 1
+      },
+      "attributeValues": 8
+     },
+     "cost": {
+      "factsInspected": 11,
+      "attributeReads": 0,
+      "edgeExpansions": 0
+     }
+    }
+   ],
+   "refusalControls": [
+    {
+     "rule": "R1",
+     "alt": "program from an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R1",
+     "alt": "program to an executable",
+     "expected": [
+      "R1"
+     ],
+     "got": [
+      "R1"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R2",
+     "alt": "program across executables",
+     "expected": [
+      "R2"
+     ],
+     "got": [
+      "R2"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R3",
+     "alt": "program self-loop",
+     "expected": [
+      "R3"
+     ],
+     "got": [
+      "R3"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves an explicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R4",
+     "alt": "program leaves the implicit exit",
+     "expected": [
+      "R4"
+     ],
+     "got": [
+      "R4"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R5",
+     "alt": "branch fact without an arm",
+     "expected": [
+      "R5"
+     ],
+     "got": [
+      "R5"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R6",
+     "alt": "arm on a non-branch",
+     "expected": [
+      "R6"
+     ],
+     "got": [
+      "R6"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact from a non-branch",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R7",
+     "alt": "second fact on one branch arm",
+     "expected": [
+      "R7"
+     ],
+     "got": [
+      "R7"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two calls",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion between two awaits",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R8",
+     "alt": "completion from an await to a branch",
+     "expected": [
+      "R8"
+     ],
+     "got": [
+      "R8"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R9",
+     "alt": "completion call differs from AWAIT_TARGET",
+     "expected": [
+      "R9"
+     ],
+     "got": [
+      "R9"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass unresolved",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R10",
+     "alt": "completion with operandClass plain-value",
+     "expected": [
+      "R10"
+     ],
+     "got": [
+      "R10"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R11",
+     "alt": "second completion for one await",
+     "expected": [
+      "R11"
+     ],
+     "got": [
+      "R11"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await without AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R12",
+     "alt": "await with two AWAIT_TARGET",
+     "expected": [
+      "R12"
+     ],
+     "got": [
+      "R12"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to a non-call step",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "AWAIT_TARGET to another executable's call",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "call step with class unresolved",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R13",
+     "alt": "literal with class call-result",
+     "expected": [
+      "R13"
+     ],
+     "got": [
+      "R13",
+      "R12"
+     ],
+     "ok": false
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM to a non-branch",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R14",
+     "alt": "IN_ARM across executables",
+     "expected": [
+      "R14"
+     ],
+     "got": [
+      "R14"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R15",
+     "alt": "a step with two IN_ARM",
+     "expected": [
+      "R15"
+     ],
+     "got": [
+      "R15"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R16",
+     "alt": "IN_ARM cycle",
+     "expected": [
+      "R16"
+     ],
+     "got": [
+      "R16"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "ARM_STATUS on a non-branch",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R17",
+     "alt": "duplicate ARM_STATUS for one arm",
+     "expected": [
+      "R17"
+     ],
+     "got": [
+      "R17"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry missing",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry duplicated",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry owned by another executable",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18",
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R18",
+     "alt": "entry with an incoming program fact",
+     "expected": [
+      "R18"
+     ],
+     "got": [
+      "R18"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R19",
+     "alt": "event-graph cycle",
+     "expected": [
+      "R19"
+     ],
+     "got": [
+      "R19"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R20",
+     "alt": "predicate on a non-branch",
+     "expected": [
+      "R20"
+     ],
+     "got": [
+      "R20"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R21",
+     "alt": "second predicate for one branch",
+     "expected": [
+      "R21"
+     ],
+     "got": [
+      "R21"
+     ],
+     "ok": true
+    },
+    {
+     "rule": "R23",
+     "alt": "implicit on a non-exit",
+     "expected": [
+      "R23"
+     ],
+     "got": [
+      "R23"
+     ],
+     "ok": true
+    }
+   ],
+   "ablation": [
+    {
+     "id": "K4a",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 10,
+     "assertionsWithout": 9
+    },
+    {
+     "id": "K5",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 18,
+     "assertionsWithout": 17
+    },
+    {
+     "id": "K7",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 33,
+     "assertionsWithout": 32
+    },
+    {
+     "id": "K13",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    },
+    {
+     "id": "K14",
+     "lostOrChanged": [],
+     "refusals": [],
+     "assertionsWith": 12,
+     "assertionsWithout": 11
+    }
+   ],
+   "misses": [
+    "refusal R13 (AWAIT_TARGET to a non-call step): expected R13 got R13,R12",
+    "refusal R13 (AWAIT_TARGET to another executable's call): expected R13 got R13,R12",
+    "refusal R13 (call step with class unresolved): expected R13 got R13,R12",
+    "refusal R13 (literal with class call-result): expected R13 got R13,R12"
+   ],
+   "cost": {
+    "factsInspected": 396,
+    "attributeReads": 54,
+    "edgeExpansions": 688
+   },
+   "counts": {
+    "total": 396,
+    "attributeValues": 340
+   },
+   "k4delta": {
+    "a": {
+     "CONTAINS_STEP": 4,
+     "ENTRY_STEP": 1,
+     "AWAIT_TARGET": 1,
+     "NEXT_STEP": 3,
+     "AWAITS": 1
+    },
+    "b": {
+     "CONTAINS_STEP": 3,
+     "ENTRY_STEP": 1,
+     "NEXT_STEP": 2
+    }
+   },
+   "engine": [
+    {
+     "id": "K9b",
+     "correctDerivesForbidden": false,
+     "blindDerives": true
+    }
+   ]
+  }
+ }
+}

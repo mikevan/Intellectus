@@ -13,7 +13,33 @@ async function same(name: string, pySrc: string, tsSrc: string) {
   assert.equal(fingerprint(a), fingerprint(b), `${name}: fingerprints differ`);
 }
 
-test("pair 1: a conjunction in Python against an early-return chain in TypeScript, Decimal and enum spellings", async () => {
+// IR-7 FINDING, recorded rather than fixed by editing the fixture. Under IR-5 these two projected identically and
+// pair 1 passed. IR-7 preserves the receiver, and the two programs are not the same at the call site: the Python
+// calls a module-level `publish`, the TypeScript calls `events.publish`. The match at IR-5 was partly the encoder
+// being blind to the receiver. The fixture stays as written, its outcome is now DIFFER, and the assertion below
+// says so; `pair 1b` compares two programs that genuinely agree at the call site.
+test("pair 1 under IR-7: the same logic differs because one calls a method and the other a function", async () => {
+  const a = (await py(`from decimal import Decimal
+def close(amount, status):
+    if amount > Decimal("25000.00") and status == "APPROVED":
+        publish("ACCOUNT_CLOSED")
+`)).get("close")!;
+  const b = (await ts(`enum Status { Approved = "APPROVED", Pending = "PENDING" }
+enum AccountEvents { Closed = "ACCOUNT_CLOSED" }
+async function close(amount: number, status: Status) {
+  if (status !== Status.Approved) return;
+  if (amount <= 25_000) return;
+  await events.publish(AccountEvents.Closed);
+}
+`)).get("close")!;
+  assert.notEqual(fingerprint(a), fingerprint(b), "IR-7 sees a difference IR-5 could not");
+  const pj = effectProjection(a)[0].what as { receiver?: unknown };
+  const tj = effectProjection(b)[0].what as { receiver?: unknown };
+  assert.equal(pj.receiver, undefined, "the Python call has no receiver");
+  assert.ok(tj.receiver, "the TypeScript call has one, and that is the whole difference");
+});
+
+test("pair 1b: the same logic converges when both call the operation the same way", async () => {
   await same("close",
 `from decimal import Decimal
 def close(amount, status):
@@ -25,7 +51,7 @@ enum AccountEvents { Closed = "ACCOUNT_CLOSED" }
 async function close(amount: number, status: Status) {
   if (status !== Status.Approved) return;
   if (amount <= 25_000) return;
-  await events.publish(AccountEvents.Closed);
+  publish(AccountEvents.Closed);
 }
 `);
 });

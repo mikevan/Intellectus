@@ -8,9 +8,11 @@
 // Same corpus, same ordinary adapter, no privileged path, no src/ change. It reports; it does not classify.
 import { readdirSync, statSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
-import { encodeFunctions, ENCODER } from "../src/adapters/typescript/index.js";
+import { encodeFunctions as encodeTypeScript, ENCODER as TS_ENCODER } from "../src/adapters/typescript/index.js";
+import { encodeFunctions as encodePython, ENCODER as PY_ENCODER } from "../src/adapters/python/index.js";
 import { canonPath, fingerprint, IR_SCHEMA } from "../src/ir/index.js";
 import { createHash } from "node:crypto";
+import { measureContainers } from "../src/query/containers.js";
 // The compiled script runs from dist/scripts, so the root is found by walking up to the package.json, not by
 // counting "..". Getting this wrong once made the instrument measure dist/src/*.d.ts and report 0 of 0 with
 // complete confidence, which is the same failure as counting .test() and calling it a test.
@@ -37,13 +39,24 @@ function walk(dir, out = []) {
         const p = join(dir, e);
         if (statSync(p).isDirectory())
             walk(p, out);
-        else if (p.endsWith(".ts") && !p.endsWith(".d.ts"))
+        else if ((p.endsWith(".ts") && !p.endsWith(".d.ts")) || p.endsWith(".py"))
             out.push(p);
     }
     return out;
 }
+// IR-9: only an unrepresented SEMANTIC statement is opaque. Non-semantic and metadata statements are counted
+// separately and are outside the opacity numerator AND denominator, so the correction is visible rather than a
+// number quietly shrinking.
 function countStmts(body, acc) {
     for (const s of body) {
+        if (s.kind === "opaque" && s.statementClass === "NON_SEMANTIC") {
+            acc.nonSemantic++;
+            continue;
+        }
+        if (s.kind === "opaque" && s.statementClass === "METADATA") {
+            acc.metadata++;
+            continue;
+        }
         acc.stmts++;
         if (s.kind === "opaque") {
             acc.opaque++;
@@ -59,7 +72,7 @@ function countStmts(body, acc) {
 // produced by a different build. Three stale-artifact confusions in two days earned this line.
 function buildId() {
     const h = createHash("sha256");
-    for (const f of [...walk(join(ROOT, "src")), ...walk(join(ROOT, "scripts"))].sort())
+    for (const f of [...walk(join(ROOT, "src")), ...walk(join(ROOT, "scripts"))].filter((f) => f.endsWith(".ts")).sort())
         h.update(canonPath(relative(ROOT, f))).update(readFileSync(f));
     return h.digest("hex").slice(0, 12);
 }
@@ -91,7 +104,7 @@ if (manifest) {
         throw new Error(`The corpus does not match ${manifestPath}:\n  ${problems.join("\n  ")}\nA measurement over a corpus that is not the recorded one is not a measurement of anything.`);
 }
 const files = walk(CORPUS);
-const acc = { stmts: 0, opaque: 0, reasons: new Map() };
+const acc = { stmts: 0, opaque: 0, nonSemantic: 0, metadata: 0, reasons: new Map() };
 const byFingerprint = new Map();
 let functions = 0;
 const perFile = [];
@@ -99,7 +112,8 @@ for (const file of files) {
     const rel = canonPath(relative(ROOT, file));
     const before = { ...acc, reasons: acc.reasons };
     const start = { stmts: acc.stmts, opaque: acc.opaque };
-    const found = await encodeFunctions(readFileSync(file, "utf8"));
+    const isPython = file.endsWith(".py");
+    const found = isPython ? await encodePython(readFileSync(file, "utf8")) : await encodeTypeScript(readFileSync(file, "utf8"));
     for (const [name, ir] of found) {
         functions++;
         countStmts(ir.body, acc);
@@ -117,12 +131,13 @@ const groups = [...byFingerprint.entries()].filter(([, g]) => g.length > 1).sort
 const pct = ((100 * acc.opaque) / Math.max(acc.stmts, 1)).toFixed(1);
 console.log(`node       ${process.version}`);
 console.log(`platform   ${process.platform} ${process.arch}`);
-console.log(`encoder    ${ENCODER}   ir_schema ${IR_SCHEMA}`);
+const languages = new Set(walk(CORPUS).map((f) => (f.endsWith(".py") ? "python" : "typescript")));
+console.log(`encoder    ${[...languages].map((l) => (l === "python" ? PY_ENCODER : TS_ENCODER)).join(", ")}   ir_schema ${IR_SCHEMA}`);
 console.log(`build      ${buildId()}`);
 console.log(`corpus     ${CORPUS === join(ROOT, "src") ? "src/**/*.ts" : CORPUS}${manifest ? `   verified against MANIFEST.json (${manifest.fileCount} files, corpus ${manifest.corpusHash})` : ""}`);
 console.log(`files      ${files.length}`);
 console.log(`functions  ${functions}`);
-console.log(`statements ${acc.stmts}`);
+console.log(`statements ${acc.stmts}   (semantic; excluded: ${acc.nonSemantic} non-semantic, ${acc.metadata} metadata)`);
 console.log("");
 console.log(`opaque            ${acc.opaque} / ${acc.stmts} statements = ${pct}%`);
 console.log(`collision groups  ${groups.length}`);
@@ -149,15 +164,38 @@ if (expected) {
         const mine = groups.map(([fp]) => fp).sort().join(",");
         const theirs = [...row.collisionFingerprints].sort().join(",");
         if (mine !== theirs)
-            diffs.push(`collision fingerprints differ from the recorded set for IR-${row.ir}`);
+            diffs.push(`collision fingerprints differ from the recorded set for ${row.step ?? `IR-${row.ir}`}`);
     }
     console.log("");
     if (diffs.length === 0)
-        console.log(`reproduces  IR-${row.ir} of ${expected.corpus}, recorded ${row.measured}${row.buildId ? ` at build ${row.buildId}` : ""}, confirmed on ${row.confirmed.join(" and ")}.`);
+        console.log(`reproduces  ${row.step ?? `IR-${row.ir}`} of ${expected.corpus}, recorded ${row.measured}${row.buildId ? ` at build ${row.buildId}` : ""}, confirmed on ${row.confirmed.join(" and ")}.`);
     else {
-        console.log(`DIFFERS from IR-${row.ir} of ${expected.corpus}, recorded ${row.measured}:`);
+        console.log(`DIFFERS from ${row.step ?? `IR-${row.ir}`} of ${expected.corpus}, recorded ${row.measured}:`);
         for (const d of diffs)
             console.log(`  ${d}`);
         console.log("  Either the encoder changed, or this is a new encoder version and EXPECTED.json needs a new row. It is never a reason to edit an existing row.");
     }
 }
+// ---- I-1: what the opaque containers conceal. Observational; nothing above this line depends on it. ----
+const containers = await measureContainers(files.map((f) => ({ path: canonPath(relative(ROOT, f)), source: readFileSync(f, "utf8"), language: f.endsWith(".py") ? "python" : "typescript" })));
+console.log("");
+console.log(`semantic statements hidden inside opaque containers  ${containers.byClassification.SEMANTIC}   (of ${containers.hidden.length} hidden statements in all)`);
+console.log("  A hidden statement lies beneath an opaque container and has no independently represented statement in the IR.");
+console.log("  It is counted once, whatever its depth, and attributed to the container immediately above it.");
+console.log("");
+console.log("  what each opaque construct conceals (by nearest container):");
+for (const [c, v] of Object.entries(containers.byNearestContainer).sort((a, b) => b[1].total - a[1].total))
+    console.log(`    ${String(v.total).padStart(4)}  ${c.padEnd(22)} semantic ${v.SEMANTIC}, non-semantic ${v.NON_SEMANTIC}, metadata ${v.METADATA}`);
+console.log("");
+console.log("  what the IR fails to expose (hidden statements by construct, worst first):");
+for (const [c, n] of Object.entries(containers.byConstruct).slice(0, 12))
+    console.log(`    ${String(n).padStart(4)}  ${c}`);
+console.log("");
+console.log(`  deepest nesting          ${Math.max(0, ...containers.hidden.map((h) => h.depth))} containers above one statement`);
+console.log(`  represented source stmts ${containers.sourceStatementsRepresented.SEMANTIC} semantic, ${containers.sourceStatementsRepresented.NON_SEMANTIC} non-semantic, ${containers.sourceStatementsRepresented.METADATA} metadata   (SOURCE statements under no container; not the IR statement count above, and not comparable one to one with it)`);
+console.log(`  outside any function     ${containers.outsideAnyFunction}   (encoded by nobody, and not hidden by the definition: counted apart)`);
+console.log(`  in unencoded functions   ${containers.inUnencodedFunctionBodies}   (arrow and function expressions the adapters do not encode: counted apart)`);
+console.log("");
+console.log("  what this instrument does not claim:");
+for (const l of containers.limits)
+    console.log(`    - ${l}`);

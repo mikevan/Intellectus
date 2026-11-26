@@ -1,0 +1,410 @@
+{
+ "protocol": "docs/p0-protocol-frozen.md",
+ "frozen": "2026-11-02",
+ "notes": [
+  "Counts are per executable. O = IR call occurrences; Opp = occurrences in positions the ingestion rule reaches; S = draft 1 probe statement-level sites; P = projected sites (independent re-implementation); T = stored non-opaque HAS_INVOCATION.",
+  "classes lists the classification of every row the executable produces (empty: no row). mapping lists the mapping status of every key with at least one site or invocation, sorted, deduplicated.",
+  "irShape is the canonicalised body as JSON, observed with build a93a98cead33 before freezing; a mismatch is a control failure.",
+  "a1 compares statement-level steps with HAS_EFFECT: callSteps vs callEffects (non-opaque CALL_EXTERNAL), opaqueSteps vs opaqueEffects, unmatched counts after matching on kind, operation, argument count and conditional.",
+  "A failure is scored as a miss and recorded; nothing is tuned."
+ ],
+ "sources": {
+  "python": {
+   "path": "p0_controls.py",
+   "text": "def c1_attr_ret(a):\n    return f(a).x\n\n\ndef c2_neg_ret(a):\n    return -f(a)\n\n\ndef c3_throw_wrapped(a):\n    raise g(a).err\n\n\ndef c4_bound(a):\n    x = f(a)\n    return x\n\n\ndef c5_twice(a):\n    f(a)\n    f(a)\n\n\ndef c6_loop(a):\n    for i in a:\n        h(i)\n\n\ndef c7_merge(a):\n    f(a)\n    return f(a)\n\n\ndef c8_nested(a):\n    h(g(a))\n\n\ndef c9_ret(a):\n    return f(a)\n"
+  },
+  "typescript": {
+   "path": "p0_controls.ts",
+   "text": "export function c1AttrRet(a: any) { return f(a).x; }\nexport function c2NegRet(a: number) { return -f(a); }\nexport function c3ThrowWrapped(a: any) { throw g(a).err; }\nexport function c9Ret(a: number) { return f(a); }\n"
+  }
+ },
+ "expected": {
+  "python": {
+   "c1_attr_ret": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "T": 1,
+    "classes": [
+     "wrapper"
+    ],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"read\",\"object\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}},\"property\":\"x\"}}"
+    ]
+   },
+   "c2_neg_ret": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "T": 1,
+    "classes": [
+     "wrapper"
+    ],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"negated\",\"operand\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}}}}"
+    ]
+   },
+   "c3_throw_wrapped": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "classes": [],
+    "mapping": [],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"throw\"}"
+    ],
+    "visibility": {
+     "valuelessThrows": 1,
+     "opaqueStatements": 0
+    }
+   },
+   "c4_bound": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "classes": [],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 1,
+     "callEffects": 1,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    }
+   },
+   "c5_twice": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 2,
+    "T": 2,
+    "classes": [],
+    "mapping": [
+     "multiplicity"
+    ],
+    "a1": {
+     "callSteps": 2,
+     "callEffects": 2,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    }
+   },
+   "c6_loop": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "classes": [],
+    "mapping": [],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 1,
+     "opaqueEffects": 1,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "visibility": {
+     "valuelessThrows": 0,
+     "opaqueStatements": 1
+    }
+   },
+   "c7_merge": {
+    "O": 2,
+    "Opp": 2,
+    "S": 2,
+    "P": 1,
+    "T": 1,
+    "classes": [
+     "grouping-merge"
+    ],
+    "mapping": [
+     "ambiguous"
+    ],
+    "a1": {
+     "callSteps": 2,
+     "callEffects": 1,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 1,
+     "unmatchedEffects": 0
+    }
+   },
+   "c8_nested": {
+    "O": 2,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "classes": [],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 1,
+     "callEffects": 1,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "unmatched": [
+     {
+      "operation": "g",
+      "reason": "nested-argument"
+     }
+    ]
+   },
+   "c9_ret": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "classes": [],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 1,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 1,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}}}"
+    ]
+   }
+  },
+  "typescript": {
+   "c1AttrRet": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "T": 1,
+    "classes": [
+     "wrapper"
+    ],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"read\",\"object\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}},\"property\":\"x\"}}"
+    ]
+   },
+   "c2NegRet": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "T": 1,
+    "classes": [
+     "wrapper"
+    ],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"negated\",\"operand\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}}}}"
+    ]
+   },
+   "c3ThrowWrapped": {
+    "O": 0,
+    "Opp": 0,
+    "S": 0,
+    "P": 0,
+    "T": 0,
+    "classes": [],
+    "mapping": [],
+    "a1": {
+     "callSteps": 0,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 0,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"throw\"}"
+    ],
+    "visibility": {
+     "valuelessThrows": 1,
+     "opaqueStatements": 0
+    }
+   },
+   "c9Ret": {
+    "O": 1,
+    "Opp": 1,
+    "S": 1,
+    "P": 1,
+    "T": 1,
+    "classes": [],
+    "mapping": [
+     "unique"
+    ],
+    "a1": {
+     "callSteps": 1,
+     "callEffects": 0,
+     "opaqueSteps": 0,
+     "opaqueEffects": 0,
+     "unmatchedSteps": 1,
+     "unmatchedEffects": 0
+    },
+    "irShape": [
+     "{\"kind\":\"return\",\"value\":{\"kind\":\"computed\",\"expr\":{\"kind\":\"call\",\"operation\":\"f\",\"args\":[{\"kind\":\"input\",\"index\":0}]}}}"
+    ]
+   }
+  }
+ },
+ "irControls": [
+  {
+   "name": "c3b_throw_wrapped_ir",
+   "fn": {
+    "inputs": 1,
+    "body": [
+     {
+      "kind": "throw",
+      "value": {
+       "kind": "read",
+       "property": "err",
+       "object": {
+        "kind": "computed",
+        "expr": {
+         "kind": "call",
+         "operation": "g",
+         "args": [
+          {
+           "kind": "input",
+           "index": 0
+          }
+         ]
+        }
+       }
+      }
+     }
+    ]
+   },
+   "expected": {
+    "O": 1,
+    "Opp": 1,
+    "S": 0,
+    "P": 1,
+    "classesWithoutStore": [
+     "wrapper"
+    ]
+   }
+  }
+ ],
+ "classifierControls": [
+  {
+   "name": "K-agree",
+   "Opp": 1,
+   "S": 1,
+   "P": 1,
+   "T": 1,
+   "expected": []
+  },
+  {
+   "name": "K-merge",
+   "Opp": 2,
+   "S": 2,
+   "P": 1,
+   "T": 1,
+   "expected": [
+    "grouping-merge"
+   ]
+  },
+  {
+   "name": "K-dup",
+   "Opp": 1,
+   "S": 1,
+   "P": 2,
+   "T": 2,
+   "expected": [
+    "grouping-duplication"
+   ]
+  },
+  {
+   "name": "K-ingest",
+   "Opp": 1,
+   "S": 1,
+   "P": 1,
+   "T": 2,
+   "expected": [
+    "ingestion-discrepancy"
+   ]
+  },
+  {
+   "name": "K-both",
+   "Opp": 2,
+   "S": 2,
+   "P": 1,
+   "T": 2,
+   "expected": [
+    "grouping-merge",
+    "ingestion-discrepancy"
+   ]
+  }
+ ]
+}

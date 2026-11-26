@@ -1,0 +1,62 @@
+{
+ "revision": "p0-controls-2, added 2026-11-02 after the first P0 runs, under Michael's P0 source review; p0-controls.json stays frozen and unedited",
+ "notes": [
+  "Pairing control: e2_stored_only is ingested but deliberately left out of the IR list given to the instrument, so it exists only in the store.",
+  "A1 attribution controls re-read the frozen sources of p0-controls.json; they add expectations, not sources."
+ ],
+ "pairing": {
+  "source": {
+   "path": "p0_controls_2.py",
+   "text": "def e1_empty(a):\n    pass\n\n\ndef e2_stored_only(a):\n    f(a)\n    g(a)\n"
+  },
+  "omitFromIr": [
+   "e2_stored_only"
+  ],
+  "expected": {
+   "inIrOnly": [],
+   "inStoreOnly": [
+    "p0_controls_2.py::e2_stored_only::0"
+   ],
+   "T": 2,
+   "Tmatched": 0,
+   "TstoreOnly": 2,
+   "emptyExecutable": {
+    "name": "e1_empty",
+    "T": 0,
+    "rows": 0
+   }
+  }
+ },
+ "a1Attribution": {
+  "python": {
+   "c7_merge": {
+    "groups": [
+     {
+      "match": "call|f|1|false",
+      "steps": 2,
+      "effects": 1,
+      "unmatchedSteps": 1,
+      "returnedSteps": 1,
+      "candidates": 2,
+      "attribution": "ambiguous"
+     }
+    ],
+    "attributed": 0
+   },
+   "c9_ret": {
+    "groups": [
+     {
+      "match": "call|f|1|false",
+      "steps": 1,
+      "effects": 0,
+      "unmatchedSteps": 1,
+      "returnedSteps": 1,
+      "candidates": 1,
+      "attribution": "unique"
+     }
+    ],
+    "attributed": 1
+   }
+  }
+ }
+}
