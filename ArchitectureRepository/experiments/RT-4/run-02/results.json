@@ -1,0 +1,73 @@
+{
+  "status": "pass",
+  "optimization": "disabled",
+  "cases": 202,
+  "fingerprints": {
+    "base": "ff1f89439ef6967f15034b25",
+    "discount": "767d9fd06e6439d4833b0cdd"
+  },
+  "exactIR": true,
+  "scores": {
+    "original": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      }
+    ],
+    "typescript": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      }
+    ],
+    "reconstructed": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      }
+    ]
+  },
+  "lexical": {
+    "byteIdentical": false,
+    "originalSHA256": "c9ad91df9a111fda2ea04a83df6b2aa39df72f14c3d5bc10ac0bd526ba97096f",
+    "reconstructedSHA256": "72c5cd353d9fabf417630af5dfa50159236ad8752efbd8d36172568269bd707c",
+    "originalBytes": 244,
+    "reconstructedBytes": 211,
+    "parameterNames": "total/member -> p0/p1",
+    "localNames": "amount -> v0",
+    "originalContainsComment": false
+  },
+  "registryMarkers": [
+    "RT2_PASS adapters none",
+    "RT2_PASS adapters python",
+    "RT2_PASS encode LinguisticPython semantic-1 539c8c16db6fd772dc4b4fd5975b02a59aed3d32e080e6020404c504bde7b981",
+    "RT2_PASS adapters none",
+    "RT2_PASS recall semantic-1 539c8c16db6fd772dc4b4fd5975b02a59aed3d32e080e6020404c504bde7b981",
+    "RT2_PASS adapters typescript",
+    "RT2_PASS express LinguisticTypeScript semantic-1",
+    "RT2_PASS encode LinguisticTypeScript semantic-2 ab10ca509d9f357f66093743f5a1dd6b85a3c3504021da41221a62913c386c87",
+    "RT2_PASS adapters none",
+    "RT2_PASS recall semantic-2 ab10ca509d9f357f66093743f5a1dd6b85a3c3504021da41221a62913c386c87",
+    "RT2_PASS adapters python",
+    "RT2_PASS express LinguisticPython semantic-2",
+    "RT2_PASS encode LinguisticPython semantic-3 04e2547b31a269b5816d494f6f573485a2f811c13462b9084665ad69a43110bc"
+  ]
+}

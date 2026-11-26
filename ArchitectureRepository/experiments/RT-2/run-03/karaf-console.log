@@ -1,0 +1,235 @@
+karaf.bat: Ignoring predefined value for KARAF_HOME
+[36m        __ __                  ____      [0m
+[36m       / //_/____ __________ _/ __/      [0m
+[36m      / ,<  / __ `/ ___/ __ `/ /_        [0m
+[36m     / /| |/ /_/ / /  / /_/ / __/        [0m
+[36m    /_/ |_|\__,_/_/   \__,_/_/         [0m
+
+[1m  Apache Karaf[0m (4.4.13)
+
+Hit '[1m<tab>[0m' for a list of available commands
+and '[1m[cmd] --help[0m' for help on a specific command.
+Hit '[1m<ctrl-d>[0m' or type '[1msystem:shutdown[0m' or '[1mlogout[0m' to shutdown Karaf.
+
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:repo-add 'file:///C:/workspace/Intellectus-RT-2/build/feat ures.xml'
+Adding feature url file:///C:/workspace/Intellectus-RT-2/build/features.xml
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:install rt2-core
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters none
+RT2_PASS adapters none
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:install rt2-python
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters python
+RT2_PASS adapters python
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:encode python original.py semantic-1
+RT2_PASS encode LinguisticPython semantic-1 539c8c16db6fd772dc4b4fd5975b02a59aed3d32e080e6020404c504bde7b981
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:stop rt2-python
+karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters none
+RT2_PASS adapters none
+karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:recall semantic-1
+RT2_PASS recall semantic-1 539c8c16db6fd772dc4b4fd5975b02a59aed3d32e080e6020404c504bde7b981
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:install rt2-typescript
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters typescript
+RT2_PASS adapters typescript
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:express typescript semantic-1 generated.ts
+RT2_PASS express LinguisticTypeScript semantic-1
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:encode typescript generated.ts semantic-2
+RT2_PASS encode LinguisticTypeScript semantic-2 ab10ca509d9f357f66093743f5a1dd6b85a3c3504021da41221a62913c386c87
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:stop rt2-typescript
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters none
+RT2_PASS adapters none
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:recall semantic-2
+RT2_PASS recall semantic-2 ab10ca509d9f357f66093743f5a1dd6b85a3c3504021da41221a62913c386c87
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:optimize
+RT2_PASS optimize e55f3847b53f1c57bfb0ffe6e88e5026e0b471efcbe2fcf0533a865dcc1906fb
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:recall optimized
+RT2_PASS recall optimized e55f3847b53f1c57bfb0ffe6e88e5026e0b471efcbe2fcf0533a865dcc1906fb
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> feature:start rt2-python
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:adapters python
+RT2_PASS adapters python
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:express python optimized improved.py
+RT2_PASS express LinguisticPython optimized
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> rt2:encode python improved.py semantic-3
+RT2_PASS encode LinguisticPython semantic-3 db9d948b81ee96ff1a74371294286304f6f1cda319a6ac32855e868363791622
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> 
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> shutdown -f
+
+[1mkaraf[0m@root()>                                                    
+[1mkaraf[0m@root()> karaf@root()> 

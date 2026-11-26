@@ -1,0 +1,23 @@
+feature:repo-add 'file:///C:/workspace/Intellectus-RT-2/build/features.xml'
+feature:install rt2-core
+rt2:adapters none
+feature:install rt2-python
+rt2:adapters python
+rt2:encode python original.py semantic-1
+feature:stop rt2-python
+rt2:adapters none
+rt2:recall semantic-1
+feature:install rt2-typescript
+rt2:adapters typescript
+rt2:express typescript semantic-1 generated.ts
+rt2:encode typescript generated.ts semantic-2
+feature:stop rt2-typescript
+rt2:adapters none
+rt2:recall semantic-2
+rt2:optimize
+rt2:recall optimized
+feature:start rt2-python
+rt2:adapters python
+rt2:express python optimized improved.py
+rt2:encode python improved.py semantic-3
+shutdown -f

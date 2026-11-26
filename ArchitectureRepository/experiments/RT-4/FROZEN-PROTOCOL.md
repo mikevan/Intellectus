@@ -1,0 +1,4 @@
+# RT-4 frozen protocol
+Use exact RT-2 source fixture (SHA-256 C9AD91DF9A111FDA2EA04A83DF6B2AA39DF72F14C3D5BC10AC0BD526BA97096F), unchanged RT-2 bundles and worker, and RT-3 local-only lifecycle orchestration. Optimization disabled; no optimizer invocation or optimized model.
+Predictions: both functions' IR objects and fingerprints identical across Python, TypeScript, reconstructed Python (base ff1f89439ef6967f15034b25; discount 767d9fd06e6439d4833b0cdd). Retain arithmetic, local binding, function call, redundant branch. Complexity base 1/0/0; discount 3/5/6 for all three. Exhaustively execute 202 pairs total 0..100, member 0/1; oracle total+3+2*member. Measure lexical losses separately.
+Require 13 runtime markers and registry states none, Python, none, TypeScript, none, Python; persisted model recall hashes after adapters stop. Repeat in fresh Karaf data directory; six deterministic files must match hashes. Do not modify prior experiments.

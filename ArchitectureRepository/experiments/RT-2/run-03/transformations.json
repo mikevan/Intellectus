@@ -1,0 +1,6 @@
+[
+  {
+    "path": "discount.1.then.0",
+    "rule": "eliminate-identical-arms"
+  }
+]

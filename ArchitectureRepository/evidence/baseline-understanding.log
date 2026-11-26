@@ -1,0 +1,1096 @@
+TAP version 13
+# Subtest: channel 1, structure only: no proposal, and the reason is named
+ok 1 - channel 1, structure only: no proposal, and the reason is named
+  ---
+  duration_ms: 47.9957
+  type: 'test'
+  ...
+# Subtest: channel 2, a declared schema: the field is bridged, the operation is not
+ok 2 - channel 2, a declared schema: the field is bridged, the operation is not
+  ---
+  duration_ms: 1.9837
+  type: 'test'
+  ...
+# Subtest: channel 3, a declared field and an OBSERVED operation: similar, and short of probable
+ok 3 - channel 3, a declared field and an OBSERVED operation: similar, and short of probable
+  ---
+  duration_ms: 1.9949
+  type: 'test'
+  ...
+# Subtest: channel 3b, both correspondences DECLARED by the owner: proposed at probable, difference still shown
+ok 4 - channel 3b, both correspondences DECLARED by the owner: proposed at probable, difference still shown
+  ---
+  duration_ms: 1.624
+  type: 'test'
+  ...
+# Subtest: the negative control: different behaviour is never proposed, whatever the evidence
+ok 5 - the negative control: different behaviour is never proposed, whatever the evidence
+  ---
+  duration_ms: 2.2002
+  type: 'test'
+  ...
+# Subtest: a proposal enters the store as INFERRED, scoped, traceable, and never verified
+ok 6 - a proposal enters the store as INFERRED, scoped, traceable, and never verified
+  ---
+  duration_ms: 4.1601
+  type: 'test'
+  ...
+# Subtest: the E2 programs contain zero opacity, so the known switch and loop gaps cannot confound the result
+ok 7 - the E2 programs contain zero opacity, so the known switch and loop gaps cannot confound the result
+  ---
+  duration_ms: 12.9568
+  type: 'test'
+  ...
+# Subtest: evidence removal: retract the declaration and the claim goes with it, in the same transaction
+ok 8 - evidence removal: retract the declaration and the claim goes with it, in the same transaction
+  ---
+  duration_ms: 4.4247
+  type: 'test'
+  ...
+# Subtest: contradictory evidence: a denial is never outvoted, and both sides are reported
+ok 9 - contradictory evidence: a denial is never outvoted, and both sides are reported
+  ---
+  duration_ms: 7.3204
+  type: 'test'
+  ...
+# Subtest: a denial alone, with nothing affirming it, is also a finding and not silence
+ok 10 - a denial alone, with nothing affirming it, is also a finding and not silence
+  ---
+  duration_ms: 1.8006
+  type: 'test'
+  ...
+# Subtest: pair 1 under IR-7: the same logic differs because one calls a method and the other a function
+ok 11 - pair 1 under IR-7: the same logic differs because one calls a method and the other a function
+  ---
+  duration_ms: 50.3655
+  type: 'test'
+  ...
+# Subtest: pair 1b: the same logic converges when both call the operation the same way
+ok 12 - pair 1b: the same logic converges when both call the operation the same way
+  ---
+  duration_ms: 2.4535
+  type: 'test'
+  ...
+# Subtest: pair 2: five spellings of one constant fingerprint the same
+ok 13 - pair 2: five spellings of one constant fingerprint the same
+  ---
+  duration_ms: 5.5773
+  type: 'test'
+  ...
+# Subtest: pair 3: None against null-or-undefined, with the guard inverted
+ok 14 - pair 3: None against null-or-undefined, with the guard inverted
+  ---
+  duration_ms: 3.0791
+  type: 'test'
+  ...
+# Subtest: pair 4: nested conditional against a flat early-return chain
+ok 15 - pair 4: nested conditional against a flat early-return chain
+  ---
+  duration_ms: 1.5962
+  type: 'test'
+  ...
+# Subtest: a real difference is still a difference: 25000 against 50000
+ok 16 - a real difference is still a difference: 25000 against 50000
+  ---
+  duration_ms: 1.1559
+  type: 'test'
+  ...
+# Subtest: a different effect is a different function, whatever the control flow
+ok 17 - a different effect is a different function, whatever the control flow
+  ---
+  duration_ms: 1.587
+  type: 'test'
+  ...
+# Subtest: P0 control python c1_attr_ret
+ok 18 - P0 control python c1_attr_ret
+  ---
+  duration_ms: 166.2704
+  type: 'test'
+  ...
+# Subtest: P0 control python c2_neg_ret
+ok 19 - P0 control python c2_neg_ret
+  ---
+  duration_ms: 0.406
+  type: 'test'
+  ...
+# Subtest: P0 control python c3_throw_wrapped
+ok 20 - P0 control python c3_throw_wrapped
+  ---
+  duration_ms: 0.1409
+  type: 'test'
+  ...
+# Subtest: P0 control python c4_bound
+ok 21 - P0 control python c4_bound
+  ---
+  duration_ms: 0.1194
+  type: 'test'
+  ...
+# Subtest: P0 control python c5_twice
+ok 22 - P0 control python c5_twice
+  ---
+  duration_ms: 0.1991
+  type: 'test'
+  ...
+# Subtest: P0 control python c6_loop
+ok 23 - P0 control python c6_loop
+  ---
+  duration_ms: 0.1112
+  type: 'test'
+  ...
+# Subtest: P0 control python c7_merge
+ok 24 - P0 control python c7_merge
+  ---
+  duration_ms: 0.1098
+  type: 'test'
+  ...
+# Subtest: P0 control python c8_nested
+ok 25 - P0 control python c8_nested
+  ---
+  duration_ms: 0.2317
+  type: 'test'
+  ...
+# Subtest: P0 control python c9_ret
+ok 26 - P0 control python c9_ret
+  ---
+  duration_ms: 0.486
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c1AttrRet
+ok 27 - P0 control typescript c1AttrRet
+  ---
+  duration_ms: 0.4401
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c2NegRet
+ok 28 - P0 control typescript c2NegRet
+  ---
+  duration_ms: 0.1806
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c3ThrowWrapped
+ok 29 - P0 control typescript c3ThrowWrapped
+  ---
+  duration_ms: 0.113
+  type: 'test'
+  ...
+# Subtest: P0 control typescript c9Ret
+ok 30 - P0 control typescript c9Ret
+  ---
+  duration_ms: 0.0682
+  type: 'test'
+  ...
+# Subtest: P0 IR control c3b_throw_wrapped_ir
+ok 31 - P0 IR control c3b_throw_wrapped_ir
+  ---
+  duration_ms: 0.2898
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-agree
+ok 32 - P0 classifier control K-agree
+  ---
+  duration_ms: 0.1109
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-merge
+ok 33 - P0 classifier control K-merge
+  ---
+  duration_ms: 0.0645
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-dup
+ok 34 - P0 classifier control K-dup
+  ---
+  duration_ms: 0.0687
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-ingest
+ok 35 - P0 classifier control K-ingest
+  ---
+  duration_ms: 0.0541
+  type: 'test'
+  ...
+# Subtest: P0 classifier control K-both
+ok 36 - P0 classifier control K-both
+  ---
+  duration_ms: 0.0542
+  type: 'test'
+  ...
+# Subtest: P0 control names are distinct across languages
+ok 37 - P0 control names are distinct across languages
+  ---
+  duration_ms: 0.1488
+  type: 'test'
+  ...
+# Subtest: P0 control 2: an empty executable is paired, and a stored-only executable still counts in the stored total
+ok 38 - P0 control 2: an empty executable is paired, and a stored-only executable still counts in the stored total
+  ---
+  duration_ms: 4.4791
+  type: 'test'
+  ...
+# Subtest: P0 control 2: A1 attribution c7_merge
+ok 39 - P0 control 2: A1 attribution c7_merge
+  ---
+  duration_ms: 0.188
+  type: 'test'
+  ...
+# Subtest: P0 control 2: A1 attribution c9_ret
+ok 40 - P0 control 2: A1 attribution c9_ret
+  ---
+  duration_ms: 0.0707
+  type: 'test'
+  ...
+# Subtest: fixtures are zero-opacity, so nothing here is confounded by the known gaps
+ok 41 - fixtures are zero-opacity, so nothing here is confounded by the known gaps
+  ---
+  duration_ms: 71.1286
+  type: 'test'
+  ...
+# Subtest: prediction 1: a value crossing two boundaries is derivable, and no step is supplied by the query
+ok 42 - prediction 1: a value crossing two boundaries is derivable, and no step is supplied by the query
+  ---
+  duration_ms: 3.1285
+  type: 'test'
+  ...
+# Subtest: prediction 2: two calls to one callee stay two flows
+ok 43 - prediction 2: two calls to one callee stay two flows
+  ---
+  duration_ms: 4.6811
+  type: 'test'
+  ...
+# Subtest: prediction 3: results of different callees cannot cross
+ok 44 - prediction 3: results of different callees cannot cross
+  ---
+  duration_ms: 12.0838
+  type: 'test'
+  ...
+# Subtest: prediction 4: reversing the argument order changes what is derivable
+ok 45 - prediction 4: reversing the argument order changes what is derivable
+  ---
+  duration_ms: 1.3259
+  type: 'test'
+  ...
+# Subtest: prediction 6: an unresolved callee is UNKNOWN and an ambiguous one is AMBIGUOUS, never a guess
+ok 46 - prediction 6: an unresolved callee is UNKNOWN and an ambiguous one is AMBIGUOUS, never a guess
+  ---
+  duration_ms: 6.5778
+  type: 'test'
+  ...
+# Subtest: prediction 7: a derived path names its supporting assertions, and retracting one removes the path
+ok 47 - prediction 7: a derived path names its supporting assertions, and retracting one removes the path
+  ---
+  duration_ms: 1.9124
+  type: 'test'
+  ...
+# Subtest: IR-6 was a representation version; IR-7 is an encoder change and says so
+ok 48 - IR-6 was a representation version; IR-7 is an encoder change and says so
+  ---
+  duration_ms: 0.7159
+  type: 'test'
+  ...
+# Subtest: IR-7 prediction 8: a.visit(x) and b.visit(x) keep distinct receivers despite identical operation and argument
+ok 49 - IR-7 prediction 8: a.visit(x) and b.visit(x) keep distinct receivers despite identical operation and argument
+  ---
+  duration_ms: 2.106
+  type: 'test'
+  ...
+# Subtest: IR-7 prediction 9: visit(x) stays receiverless; no receiver is manufactured
+ok 50 - IR-7 prediction 9: visit(x) stays receiverless; no receiver is manufactured
+  ---
+  duration_ms: 32.1661
+  type: 'test'
+  ...
+# Subtest: IR-7 prediction 10: the receiver is auditable back to its source construct
+ok 51 - IR-7 prediction 10: the receiver is auditable back to its source construct
+  ---
+  duration_ms: 3.2333
+  type: 'test'
+  ...
+# Subtest: IR-7 prediction 11: thing.visit(x) preserves equivalent receiver structure in both languages
+ok 52 - IR-7 prediction 11: thing.visit(x) preserves equivalent receiver structure in both languages
+  ---
+  duration_ms: 0.8023
+  type: 'test'
+  ...
+# Subtest: IR-8: a receiver produced by a bound call is joined to that call's outcome, with provenance
+ok 53 - IR-8: a receiver produced by a bound call is joined to that call's outcome, with provenance
+  ---
+  duration_ms: 16.9696
+  type: 'test'
+  ...
+# Subtest: IR-8 negative control: reassignment is not ambiguity, because the IR numbers each binding
+ok 54 - IR-8 negative control: reassignment is not ambiguity, because the IR numbers each binding
+  ---
+  duration_ms: 26.2495
+  type: 'test'
+  ...
+# Subtest: IR-8: a value bound twice under one id yields no edge, because no single producer can be named
+ok 55 - IR-8: a value bound twice under one id yields no edge, because no single producer can be named
+  ---
+  duration_ms: 2.217
+  type: 'test'
+  ...
+# Subtest: IR-8: a non-invocation producer is never converted into an invocation outcome
+ok 56 - IR-8: a non-invocation producer is never converted into an invocation outcome
+  ---
+  duration_ms: 4.0596
+  type: 'test'
+  ...
+# Subtest: the E3 path searcher is unchanged since it was frozen
+ok 57 - the E3 path searcher is unchanged since it was frozen
+  ---
+  duration_ms: 1.6496
+  type: 'test'
+  ...
+# Subtest: every unresolved invocation is classified, and the totals reconcile with ingestion
+ok 58 - every unresolved invocation is classified, and the totals reconcile with ingestion
+  ---
+  duration_ms: 228.0879
+  type: 'test'
+  ...
+# Subtest: lost flows are counted per occurrence, and every record says why it was classified
+ok 59 - lost flows are counted per occurrence, and every record says why it was classified
+  ---
+  duration_ms: 62.7166
+  type: 'test'
+  ...
+# Subtest: EXTERNAL_UNMODELED rests on declared knowledge and says so; nothing else borrows anything
+ok 60 - EXTERNAL_UNMODELED rests on declared knowledge and says so; nothing else borrows anything
+  ---
+  duration_ms: 54.7771
+  type: 'test'
+  ...
+# Subtest: an operation the corpus does not declare and the list does not contain is UNKNOWN, never guessed
+ok 61 - an operation the corpus does not declare and the list does not contain is UNKNOWN, never guessed
+  ---
+  duration_ms: 96.083
+  type: 'test'
+  ...
+# Subtest: the ambiguous stay ambiguous: a name declared twice is never resolved to one of them
+ok 62 - the ambiguous stay ambiguous: a name declared twice is never resolved to one of them
+  ---
+  duration_ms: 1.6969
+  type: 'test'
+  ...
+# Subtest: every frozen category has a definition, and every record's category is one of them
+ok 63 - every frozen category has a definition, and every record's category is one of them
+  ---
+  duration_ms: 147.5261
+  type: 'test'
+  ...
+# Subtest: INTERNAL_NONEXECUTABLE rests on the declared class list and names it
+ok 64 - INTERNAL_NONEXECUTABLE rests on the declared class list and names it
+  ---
+  duration_ms: 68.5122
+  type: 'test'
+  ...
+# Subtest: the instrument states what it cannot measure, and does not populate those categories
+ok 65 - the instrument states what it cannot measure, and does not populate those categories
+  ---
+  duration_ms: 76.7606
+  type: 'test'
+  ...
+# Subtest: the split reduced UNKNOWN without changing any total
+ok 66 - the split reduced UNKNOWN without changing any total
+  ---
+  duration_ms: 75.7359
+  type: 'test'
+  ...
+# Subtest: no relation is designated as an order relation in R-1B0
+ok 67 - no relation is designated as an order relation in R-1B0
+  ---
+  duration_ms: 5.857
+  type: 'test'
+  ...
+# Subtest: three observable effects in one executable are three pairs, all unordered
+ok 68 - three observable effects in one executable are three pairs, all unordered
+  ---
+  duration_ms: 123.3826
+  type: 'test'
+  ...
+# Subtest: one observable effect forms no pair and raises no ORDER_UNSPECIFIED
+ok 69 - one observable effect forms no pair and raises no ORDER_UNSPECIFIED
+  ---
+  duration_ms: 5.2219
+  type: 'test'
+  ...
+# Subtest: effects in different executables never form a pair
+ok 70 - effects in different executables never form a pair
+  ---
+  duration_ms: 7.8393
+  type: 'test'
+  ...
+# Subtest: bindings, returns, and completion dependencies never enter the count
+ok 71 - bindings, returns, and completion dependencies never enter the count
+  ---
+  duration_ms: 21.6515
+  type: 'test'
+  ...
+# Subtest: the limits travel with the report
+ok 72 - the limits travel with the report
+  ---
+  duration_ms: 13.1507
+  type: 'test'
+  ...
+# Subtest: every receiver is classified into a frozen origin, and the totals reconcile
+ok 73 - every receiver is classified into a frozen origin, and the totals reconcile
+  ---
+  duration_ms: 223.3742
+  type: 'test'
+  ...
+# Subtest: the prediction: a non-zero subset of receivers has a mechanically traceable origin
+ok 74 - the prediction: a non-zero subset of receivers has a mechanically traceable origin
+  ---
+  duration_ms: 107.6051
+  type: 'test'
+  ...
+# Subtest: a receiver traced to a parameter rests on the flow assertions that carried it
+ok 75 - a receiver traced to a parameter rests on the flow assertions that carried it
+  ---
+  duration_ms: 133.8755
+  type: 'test'
+  ...
+# Subtest: UNRESOLVED stays legitimate and says what the encoder recorded instead
+ok 76 - UNRESOLVED stays legitimate and says what the encoder recorded instead
+  ---
+  duration_ms: 83.6741
+  type: 'test'
+  ...
+# Subtest: the instrument states that an origin is not a type, and that module identity is unavailable
+ok 77 - the instrument states that an origin is not a type, and that module identity is unavailable
+  ---
+  duration_ms: 88.9093
+  type: 'test'
+  ...
+# Subtest: classifying origins changes nothing in the store: measurement only
+ok 78 - classifying origins changes nothing in the store: measurement only
+  ---
+  duration_ms: 66.3683
+  type: 'test'
+  ...
+# Subtest: the prediction: at least one non-parameter receiver in each corpus has an identifiable producer
+ok 79 - the prediction: at least one non-parameter receiver in each corpus has an identifiable producer
+  ---
+  duration_ms: 394.7546
+  type: 'test'
+  ...
+# Subtest: every record's outcome is one of the three, and the group totals reconcile
+ok 80 - every record's outcome is one of the three, and the group totals reconcile
+  ---
+  duration_ms: 38.6055
+  type: 'test'
+  ...
+# Subtest: a member-read producer is identified as an expression and explicitly not as an entity
+ok 81 - a member-read producer is identified as an expression and explicitly not as an entity
+  ---
+  duration_ms: 85.2982
+  type: 'test'
+  ...
+# Subtest: a binding bound more than once is AMBIGUOUS, and one with no binding is UNAVAILABLE; neither is guessed
+ok 82 - a binding bound more than once is AMBIGUOUS, and one with no binding is UNAVAILABLE; neither is guessed
+  ---
+  duration_ms: 0.258
+  type: 'test'
+  ...
+# Subtest: the instrument reads the IR rather than the store, and says why
+ok 83 - the instrument reads the IR rather than the store, and says why
+  ---
+  duration_ms: 32.3244
+  type: 'test'
+  ...
+# Subtest: every total in the graph report derives from a defined population: corpora/radon-python/src
+ok 84 - every total in the graph report derives from a defined population: corpora/radon-python/src
+  ---
+  duration_ms: 356.0029
+  type: 'test'
+  ...
+# Subtest: every total in the graph report derives from a defined population: corpora/toml-python/src
+ok 85 - every total in the graph report derives from a defined population: corpora/toml-python/src
+  ---
+  duration_ms: 136.4518
+  type: 'test'
+  ...
+# Subtest: every total in the graph report derives from a defined population: corpora/ir0-typescript/src
+ok 86 - every total in the graph report derives from a defined population: corpora/ir0-typescript/src
+  ---
+  duration_ms: 151.9242
+  type: 'test'
+  ...
+# Subtest: the identity that used to fail: a self-call is counted, not silently dropped
+ok 87 - the identity that used to fail: a self-call is counted, not silently dropped
+  ---
+  duration_ms: 165.1671
+  type: 'test'
+  ...
+# Subtest: the two receiver populations are named separately and differ only by the merge
+ok 88 - the two receiver populations are named separately and differ only by the merge
+  ---
+  duration_ms: 118.6184
+  type: 'test'
+  ...
+# Subtest: pseudo-invocations are separated from calls, because an opaque statement is not a call
+ok 89 - pseudo-invocations are separated from calls, because an opaque statement is not a call
+  ---
+  duration_ms: 143.2466
+  type: 'test'
+  ...
+# Subtest: the checker writes nothing: measurement only
+ok 90 - the checker writes nothing: measurement only
+  ---
+  duration_ms: 229.9303
+  type: 'test'
+  ...
+# Subtest: the emitter's checklist and the fact definitions travel with every report
+ok 91 - the emitter's checklist and the fact definitions travel with every report
+  ---
+  duration_ms: 106.6166
+  type: 'test'
+  ...
+# Subtest: prediction 1: no thread in the Python corpus is sufficient
+ok 92 - prediction 1: no thread in the Python corpus is sufficient
+  ---
+  duration_ms: 93.0207
+  type: 'test'
+  ...
+# Subtest: a thread with an observable effect always reports EFFECT_UNDERSPECIFIED, because the store holds only its invocation
+ok 93 - a thread with an observable effect always reports EFFECT_UNDERSPECIFIED, because the store holds only its invocation
+  ---
+  duration_ms: 2.9927
+  type: 'test'
+  ...
+# Subtest: TYPE_REQUIRED is never populated by this checker, and the limit says why
+ok 94 - TYPE_REQUIRED is never populated by this checker, and the limit says why
+  ---
+  duration_ms: 97.3898
+  type: 'test'
+  ...
+# Subtest: the qualification criteria are applied as written, and a trivial thread fails four of five
+ok 95 - the qualification criteria are applied as written, and a trivial thread fails four of five
+  ---
+  duration_ms: 3.628
+  type: 'test'
+  ...
+# Subtest: the checker states that a thread understates the work, because it follows resolved calls only
+ok 96 - the checker states that a thread understates the work, because it follows resolved calls only
+  ---
+  duration_ms: 97.8625
+  type: 'test'
+  ...
+# Subtest: a generator's yield is value-stream emission
+ok 97 - a generator's yield is value-stream emission
+  ---
+  duration_ms: 38.484
+  type: 'test'
+  ...
+# Subtest: a @contextmanager's yield is scoped resource handoff
+ok 98 - a @contextmanager's yield is scoped resource handoff
+  ---
+  duration_ms: 0.6434
+  type: 'test'
+  ...
+# Subtest: a dotted decorator is the same declaration
+ok 99 - a dotted decorator is the same declaration
+  ---
+  duration_ms: 0.5066
+  type: 'test'
+  ...
+# Subtest: the negative control: shape never justifies handoff, only the declaration does
+ok 100 - the negative control: shape never justifies handoff, only the declaration does
+  ---
+  duration_ms: 1.476
+  type: 'test'
+  ...
+# Subtest: a decorator that is not contextmanager leaves the yield as emission
+ok 101 - a decorator that is not contextmanager leaves the yield as emission
+  ---
+  duration_ms: 0.4777
+  type: 'test'
+  ...
+# Subtest: the classification is evidence of a declaration, not of program semantics, and the limitation is real
+ok 102 - the classification is evidence of a declaration, not of program semantics, and the limitation is real
+  ---
+  duration_ms: 0.3454
+  type: 'test'
+  ...
+# Subtest: C-2 represents nothing: both kinds of yield are still opaque and still semantic
+ok 103 - C-2 represents nothing: both kinds of yield are still opaque and still semantic
+  ---
+  duration_ms: 0.6349
+  type: 'test'
+  ...
+# Subtest: the IR's category vocabulary carries both names, and `other` still exists for what is still not understood
+ok 104 - the IR's category vocabulary carries both names, and `other` still exists for what is still not understood
+  ---
+  duration_ms: 0.6518
+  type: 'test'
+  ...
+# Subtest: a with statement is a scoped resource, not exception handling
+ok 105 - a with statement is a scoped resource, not exception handling
+  ---
+  duration_ms: 186.8466
+  type: 'test'
+  ...
+# Subtest: async with is the same role: the category says what the construct does, not how execution proceeds
+ok 106 - async with is the same role: the category says what the construct does, not how execution proceeds
+  ---
+  duration_ms: 0.5146
+  type: 'test'
+  ...
+# Subtest: try stays exception handling
+ok 107 - try stays exception handling
+  ---
+  duration_ms: 0.4469
+  type: 'test'
+  ...
+# Subtest: the negative control: try/finally that acquires and releases by hand is not a scoped resource
+ok 108 - the negative control: try/finally that acquires and releases by hand is not a scoped resource
+  ---
+  duration_ms: 1.1057
+  type: 'test'
+  ...
+# Subtest: the negative control: open and close calls in an ordinary block are calls, not a scoped resource
+ok 109 - the negative control: open and close calls in an ordinary block are calls, not a scoped resource
+  ---
+  duration_ms: 0.8153
+  type: 'test'
+  ...
+# Subtest: C-3 represents nothing: a with is still opaque, still semantic, and still counts toward opacity
+ok 110 - C-3 represents nothing: a with is still opaque, still semantic, and still counts toward opacity
+  ---
+  duration_ms: 0.4828
+  type: 'test'
+  ...
+# Subtest: the two sides of the protocol keep separate identities
+ok 111 - the two sides of the protocol keep separate identities
+  ---
+  duration_ms: 1.367
+  type: 'test'
+  ...
+# Subtest: a nested def is local function construction
+ok 112 - a nested def is local function construction
+  ---
+  duration_ms: 47.6351
+  type: 'test'
+  ...
+# Subtest: a nested def that captures nothing is still local function construction
+ok 113 - a nested def that captures nothing is still local function construction
+  ---
+  duration_ms: 0.7648
+  type: 'test'
+  ...
+# Subtest: the negative control: a module-level def is not local function construction
+ok 114 - the negative control: a module-level def is not local function construction
+  ---
+  duration_ms: 0.503
+  type: 'test'
+  ...
+# Subtest: the negative control: a class-body def is a method, not local function construction
+ok 115 - the negative control: a class-body def is a method, not local function construction
+  ---
+  duration_ms: 0.4455
+  type: 'test'
+  ...
+# Subtest: the negative control: a nested class is not local function construction
+ok 116 - the negative control: a nested class is not local function construction
+  ---
+  duration_ms: 0.4465
+  type: 'test'
+  ...
+# Subtest: C-4 represents nothing: the construction is still opaque, still semantic
+ok 117 - C-4 represents nothing: the construction is still opaque, still semantic
+  ---
+  duration_ms: 3.1449
+  type: 'test'
+  ...
+# Subtest: the nested function is still encoded as an executable of its own, so its body is not hidden
+ok 118 - the nested function is still encoded as an executable of its own, so its body is not hidden
+  ---
+  duration_ms: 0.627
+  type: 'test'
+  ...
+# Subtest: control 1: a plain call statement is a represented call effect
+ok 119 - control 1: a plain call statement is a represented call effect
+  ---
+  duration_ms: 36.4442
+  type: 'test'
+  ...
+# Subtest: control 2 (flipped by R-1A): a standalone awaited call keeps its call and gains its completion dependency
+ok 120 - control 2 (flipped by R-1A): a standalone awaited call keeps its call and gains its completion dependency
+  ---
+  duration_ms: 1.9905
+  type: 'test'
+  ...
+# Subtest: control 3 (superseded by R-1A): a standalone await of a non-call is represented, not opaque
+ok 121 - control 3 (superseded by R-1A): a standalone await of a non-call is represented, not opaque
+  ---
+  duration_ms: 0.4149
+  type: 'test'
+  ...
+# Subtest: control 4: Python and TypeScript agree on both standalone forms
+ok 122 - control 4: Python and TypeScript agree on both standalone forms
+  ---
+  duration_ms: 1.7895
+  type: 'test'
+  ...
+# Subtest: control 5 (flipped by R-1A): a bound await stays a binding, keeps the call, and is distinguishable
+ok 123 - control 5 (flipped by R-1A): a bound await stays a binding, keeps the call, and is distinguishable
+  ---
+  duration_ms: 1.2876
+  type: 'test'
+  ...
+# Subtest: control 6 (flipped by R-1A): a returned await stays on the return path and is distinguishable
+ok 124 - control 6 (flipped by R-1A): a returned await stays on the return path and is distinguishable
+  ---
+  duration_ms: 0.5667
+  type: 'test'
+  ...
+# Subtest: control 7: async context alone creates no completion dependency; the explicit await is the evidence
+ok 125 - control 7: async context alone creates no completion dependency; the explicit await is the evidence
+  ---
+  duration_ms: 0.658
+  type: 'test'
+  ...
+# Subtest: C-5's closing count, as R-1A leaves it: every awaited call is still represented, and now so is each dependency
+ok 126 - C-5's closing count, as R-1A leaves it: every awaited call is still represented, and now so is each dependency
+  ---
+  duration_ms: 0.7991
+  type: 'test'
+  ...
+# Subtest: a path is stored the same way on Windows and on Linux
+ok 127 - a path is stored the same way on Windows and on Linux
+  ---
+  duration_ms: 1.1103
+  type: 'test'
+  ...
+# Subtest: numbers canonicalise across spellings
+ok 128 - numbers canonicalise across spellings
+  ---
+  duration_ms: 1.0884
+  type: 'test'
+  ...
+# Subtest: a quoted string loses its quotes and nothing else
+ok 129 - a quoted string loses its quotes and nothing else
+  ---
+  duration_ms: 0.2896
+  type: 'test'
+  ...
+# Subtest: the prediction frozen before the work: radon conceals 33 yields
+ok 130 - the prediction frozen before the work: radon conceals 33 yields
+  ---
+  duration_ms: 126.1831
+  type: 'test'
+  ...
+# Subtest: every hidden statement is counted once and carries its provenance: corpora/radon-python/src
+ok 131 - every hidden statement is counted once and carries its provenance: corpora/radon-python/src
+  ---
+  duration_ms: 44.2134
+  type: 'test'
+  ...
+# Subtest: every hidden statement is counted once and carries its provenance: corpora/toml-python/src
+ok 132 - every hidden statement is counted once and carries its provenance: corpora/toml-python/src
+  ---
+  duration_ms: 35.2336
+  type: 'test'
+  ...
+# Subtest: every hidden statement is counted once and carries its provenance: corpora/ir0-typescript/src
+ok 133 - every hidden statement is counted once and carries its provenance: corpora/ir0-typescript/src
+  ---
+  duration_ms: 59.0909
+  type: 'test'
+  ...
+# Subtest: a statement under three containers is attributed to the nearest one, and counted once
+ok 134 - a statement under three containers is attributed to the nearest one, and counted once
+  ---
+  duration_ms: 0.5668
+  type: 'test'
+  ...
+# Subtest: a statement inside a nested function is represented there, so it is not hidden
+ok 135 - a statement inside a nested function is represented there, so it is not hidden
+  ---
+  duration_ms: 0.8109
+  type: 'test'
+  ...
+# Subtest: the instrument classifies statements the way the adapters do
+ok 136 - the instrument classifies statements the way the adapters do
+  ---
+  duration_ms: 0.9041
+  type: 'test'
+  ...
+# Subtest: a hidden count is a source-statement count, and the instrument says so with its output
+ok 137 - a hidden count is a source-statement count, and the instrument says so with its output
+  ---
+  duration_ms: 36.7193
+  type: 'test'
+  ...
+# Subtest: the ir0-typescript corpus matches its manifest, file for file
+ok 138 - the ir0-typescript corpus matches its manifest, file for file
+  ---
+  duration_ms: 21.2304
+  type: 'test'
+  ...
+# Subtest: the toml-python corpus matches its manifest, file for file
+ok 139 - the toml-python corpus matches its manifest, file for file
+  ---
+  duration_ms: 3.2909
+  type: 'test'
+  ...
+# Subtest: the radon-python corpus matches its manifest, file for file
+ok 140 - the radon-python corpus matches its manifest, file for file
+  ---
+  duration_ms: 8.3716
+  type: 'test'
+  ...
+# Subtest: the ir0-typescript corpus carries its provenance and its expected results
+ok 141 - the ir0-typescript corpus carries its provenance and its expected results
+  ---
+  duration_ms: 1.6462
+  type: 'test'
+  ...
+# Subtest: the toml-python corpus carries its provenance and its expected results
+ok 142 - the toml-python corpus carries its provenance and its expected results
+  ---
+  duration_ms: 0.7942
+  type: 'test'
+  ...
+# Subtest: the radon-python corpus carries its provenance and its expected results
+ok 143 - the radon-python corpus carries its provenance and its expected results
+  ---
+  duration_ms: 0.6141
+  type: 'test'
+  ...
+# Subtest: the two adapters find the same things: a method inside a class is a function in both
+ok 144 - the two adapters find the same things: a method inside a class is a function in both
+  ---
+  duration_ms: 75.1932
+  type: 'test'
+  ...
+# Subtest: a docstring is non-semantic, is excluded from the opacity denominator, and produces no effect
+ok 145 - a docstring is non-semantic, is excluded from the opacity denominator, and produces no effect
+  ---
+  duration_ms: 13.2086
+  type: 'test'
+  ...
+# Subtest: an import is metadata, and a yield is semantic and opaque
+ok 146 - an import is metadata, and a yield is semantic and opaque
+  ---
+  duration_ms: 0.7686
+  type: 'test'
+  ...
+# Subtest: every corpus row from IR-9 onward records what left the denominator
+ok 147 - every corpus row from IR-9 onward records what left the denominator
+  ---
+  duration_ms: 1.3549
+  type: 'test'
+  ...
+# Subtest: the earlier frozen encoders are kept, so an earlier result still has an encoder to belong to
+ok 148 - the earlier frozen encoders are kept, so an earlier result still has an encoder to belong to
+  ---
+  duration_ms: 16.4489
+  type: 'test'
+  ...
+# Subtest: the encoder in force is unchanged: no experimental result may come from a tuned encoder
+ok 149 - the encoder in force is unchanged: no experimental result may come from a tuned encoder
+  ---
+  duration_ms: 17.3465
+  type: 'test'
+  ...
+# Subtest: every ingested assertion is PARSED, unverified, and names the rule that produced it
+ok 150 - every ingested assertion is PARSED, unverified, and names the rule that produced it
+  ---
+  duration_ms: 70.9246
+  type: 'test'
+  ...
+# Subtest: every ingested assertion can be audited back to a source location
+ok 151 - every ingested assertion can be audited back to a source location
+  ---
+  duration_ms: 28.5406
+  type: 'test'
+  ...
+# Subtest: a call becomes an edge only when it resolves to exactly one declared name; otherwise it is reported, not guessed
+ok 152 - a call becomes an edge only when it resolves to exactly one declared name; otherwise it is reported, not guessed
+  ---
+  duration_ms: 5.0031
+  type: 'test'
+  ...
+# Subtest: ingestion writes no relation the E3 protocol forbids
+ok 153 - ingestion writes no relation the E3 protocol forbids
+  ---
+  duration_ms: 4.395
+  type: 'test'
+  ...
+# Subtest: schema 6, and the legacy schema-5 category is readable but never emitted
+ok 154 - schema 6, and the legacy schema-5 category is readable but never emitted
+  ---
+  duration_ms: 51.5118
+  type: 'test'
+  ...
+# Subtest: all four forms carry the dependency in both languages, and the standalone forms use the scoped carrier
+ok 155 - all four forms carry the dependency in both languages, and the standalone forms use the scoped carrier
+  ---
+  duration_ms: 26.6975
+  type: 'test'
+  ...
+# Subtest: the tagged target: outcome when the awaited evaluation produces one, evaluation when it does not, never manufactured
+ok 156 - the tagged target: outcome when the awaited evaluation produces one, evaluation when it does not, never manufactured
+  ---
+  duration_ms: 0.9707
+  type: 'test'
+  ...
+# Subtest: N5 monotonicity at the projection level: strip the wrapper and the dependency, and C-5's projection is what remains
+ok 157 - N5 monotonicity at the projection level: strip the wrapper and the dependency, and C-5's projection is what remains
+  ---
+  duration_ms: 15.8903
+  type: 'test'
+  ...
+# Subtest: N5 for a call: operation, arguments, receiver, path condition and outcome unchanged, plus exactly one dependency
+ok 158 - N5 for a call: operation, arguments, receiver, path condition and outcome unchanged, plus exactly one dependency
+  ---
+  duration_ms: 2.1217
+  type: 'test'
+  ...
+# Subtest: N1: an awaited call statement is no longer identical to the unawaited one
+ok 159 - N1: an awaited call statement is no longer identical to the unawaited one
+  ---
+  duration_ms: 2.4903
+  type: 'test'
+  ...
+# Subtest: N2: a bound await is no longer identical to the unawaited binding
+ok 160 - N2: a bound await is no longer identical to the unawaited binding
+  ---
+  duration_ms: 1.5006
+  type: 'test'
+  ...
+# Subtest: N3: a returned await is no longer identical to the unawaited return
+ok 161 - N3: a returned await is no longer identical to the unawaited return
+  ---
+  duration_ms: 1.8779
+  type: 'test'
+  ...
+# Subtest: N4: async context alone changes nothing
+ok 162 - N4: async context alone changes nothing
+  ---
+  duration_ms: 2.5357
+  type: 'test'
+  ...
+# Subtest: N6: nesting is preserved, never canonicalised: await await foo() is two dependencies
+ok 163 - N6: nesting is preserved, never canonicalised: await await foo() is two dependencies
+  ---
+  duration_ms: 2.1239
+  type: 'test'
+  ...
+# Subtest: the positive control, conditional on existing IR-2 behaviour, recorded as a finding
+ok 164 - the positive control, conditional on existing IR-2 behaviour, recorded as a finding
+  ---
+  duration_ms: 1.3145
+  type: 'test'
+  ...
+# Subtest: X1 and X3: the Python asymmetry closes, and all four forms project identically across languages
+ok 165 - X1 and X3: the Python asymmetry closes, and all four forms project identically across languages
+  ---
+  duration_ms: 4.7089
+  type: 'test'
+  ...
+# Subtest: X2: the section-16 pair with an awaited publish converges because the await is represented on both sides
+ok 166 - X2: the section-16 pair with an awaited publish converges because the await is represented on both sides
+  ---
+  duration_ms: 3.3064
+  type: 'test'
+  ...
+# Subtest: ir0-typescript: every await is represented, REPRESENTATION_LOSS equals the opaque semantic statements, and the legacy category is gone
+ok 167 - ir0-typescript: every await is represented, REPRESENTATION_LOSS equals the opaque semantic statements, and the legacy category is gone
+  ---
+  duration_ms: 134.3066
+  type: 'test'
+  ...
+# Subtest: assertions live inside transactions and survive a reload
+ok 168 - assertions live inside transactions and survive a reload
+  ---
+  duration_ms: 6.4553
+  type: 'test'
+  ...
+# Subtest: an uncommitted transaction is ignored on replay: the crash rule
+ok 169 - an uncommitted transaction is ignored on replay: the crash rule
+  ---
+  duration_ms: 3.9499
+  type: 'test'
+  ...
+# Subtest: supersession replaces; retraction ceases; history keeps both
+ok 170 - supersession replaces; retraction ceases; history keeps both
+  ---
+  duration_ms: 1.297
+  type: 'test'
+  ...
+# Subtest: retracting a base fact retracts what was derived from it, in the same transaction
+ok 171 - retracting a base fact retracts what was derived from it, in the same transaction
+  ---
+  duration_ms: 0.4725
+  type: 'test'
+  ...
+# Subtest: one writer: a second begin() while one is open is refused
+ok 172 - one writer: a second begin() while one is open is refused
+  ---
+  duration_ms: 0.5551
+  type: 'test'
+  ...
+# Subtest: a torn final line is discarded with its whole transaction, and the store still loads
+ok 173 - a torn final line is discarded with its whole transaction, and the store still loads
+  ---
+  duration_ms: 10.3525
+  type: 'test'
+  ...
+# Subtest: a torn line that is not the last line is corruption and is refused
+ok 174 - a torn line that is not the last line is corruption and is refused
+  ---
+  duration_ms: 5.2919
+  type: 'test'
+  ...
+# Subtest: a complete but truncated transaction (no COMMIT, clean lines) is also discarded
+ok 175 - a complete but truncated transaction (no COMMIT, clean lines) is also discarded
+  ---
+  duration_ms: 4.2683
+  type: 'test'
+  ...
+# Subtest: a store with a torn tail can be written to again, and the new transaction commits cleanly
+ok 176 - a store with a torn tail can be written to again, and the new transaction commits cleanly
+  ---
+  duration_ms: 13.1405
+  type: 'test'
+  ...
+# Subtest: a relation not in the vocabulary is unrepresentable
+ok 177 - a relation not in the vocabulary is unrepresentable
+  ---
+  duration_ms: 2.8355
+  type: 'test'
+  ...
+# Subtest: kind rules: a module cannot CALL, a test cannot SATISFY, a requirement cannot be CALLED
+ok 178 - kind rules: a module cannot CALL, a test cannot SATISFY, a requirement cannot be CALLED
+  ---
+  duration_ms: 0.8629
+  type: 'test'
+  ...
+# Subtest: required attributes: FOLLOWS needs control and within; CONSTRAINS needs a modality
+ok 179 - required attributes: FOLLOWS needs control and within; CONSTRAINS needs a modality
+  ---
+  duration_ms: 0.6491
+  type: 'test'
+  ...
+# Subtest: DECLARED needs an authority; only INFERRED carries a verification; derived needs derived_from
+ok 180 - DECLARED needs an authority; only INFERRED carries a verification; derived needs derived_from
+  ---
+  duration_ms: 0.8317
+  type: 'test'
+  ...
+# Subtest: scopes are concepts, and a root scope is not a superuser
+ok 181 - scopes are concepts, and a root scope is not a superuser
+  ---
+  duration_ms: 0.929
+  type: 'test'
+  ...
+1..181
+# tests 181
+# suites 0
+# pass 181
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1738.9159

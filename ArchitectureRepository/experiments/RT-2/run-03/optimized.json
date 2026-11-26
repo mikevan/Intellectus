@@ -1,0 +1,116 @@
+{
+  "contractVersion": "0.1",
+  "language": "typescript",
+  "encoder": "typescript-adapter/0.5",
+  "irSchema": 6,
+  "sourceHash": "093465a7325ba19201dffc0569d9195727d6d84f1c7bb195f693a2846ecf2172",
+  "status": "partial",
+  "limitations": [
+    "Legacy encoder does not expose complete source spans or reconstruction; no equivalence claimed."
+  ],
+  "executables": [
+    {
+      "name": "base",
+      "ir": {
+        "inputs": 1,
+        "body": [
+          {
+            "kind": "return",
+            "value": {
+              "kind": "computed",
+              "expr": {
+                "kind": "arith",
+                "op": "ADD",
+                "left": {
+                  "kind": "input",
+                  "index": 0
+                },
+                "right": {
+                  "kind": "literal",
+                  "literal": {
+                    "type": "number",
+                    "value": "3"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "fingerprint": "ff1f89439ef6967f15034b25"
+    },
+    {
+      "name": "discount",
+      "ir": {
+        "inputs": 2,
+        "body": [
+          {
+            "kind": "bind",
+            "id": 0,
+            "expr": {
+              "kind": "call",
+              "operation": "base",
+              "args": [
+                {
+                  "kind": "input",
+                  "index": 0
+                }
+              ]
+            }
+          },
+          {
+            "kind": "branch",
+            "predicate": {
+              "kind": "compare",
+              "op": "EQ",
+              "left": {
+                "kind": "input",
+                "index": 1
+              },
+              "right": {
+                "kind": "literal",
+                "literal": {
+                  "type": "number",
+                  "value": "1"
+                }
+              }
+            },
+            "then": [
+              {
+                "kind": "return",
+                "value": {
+                  "kind": "computed",
+                  "expr": {
+                    "kind": "arith",
+                    "op": "ADD",
+                    "left": {
+                      "kind": "value",
+                      "id": 0
+                    },
+                    "right": {
+                      "kind": "literal",
+                      "literal": {
+                        "type": "number",
+                        "value": "2"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "else": [
+              {
+                "kind": "return",
+                "value": {
+                  "kind": "value",
+                  "id": 0
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "fingerprint": "ba1fcec209501ab1cb9b6ea4"
+    }
+  ]
+}

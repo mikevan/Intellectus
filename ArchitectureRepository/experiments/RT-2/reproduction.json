@@ -1,0 +1,57 @@
+[
+  {
+    "file": "semantic-1.json",
+    "hash": "539C8C16DB6FD772DC4B4FD5975B02A59AED3D32E080E6020404C504BDE7B981",
+    "matches": true
+  },
+  {
+    "file": "semantic-2.json",
+    "hash": "AB10CA509D9F357F66093743F5A1DD6B85A3C3504021DA41221A62913C386C87",
+    "matches": true
+  },
+  {
+    "file": "semantic-3.json",
+    "hash": "DB9D948B81EE96FF1A74371294286304F6F1CDA319A6AC32855E868363791622",
+    "matches": true
+  },
+  {
+    "file": "optimized.json",
+    "hash": "E55F3847B53F1C57BFB0FFE6E88E5026E0B471EFCBE2FCF0533A865DCC1906FB",
+    "matches": true
+  },
+  {
+    "file": "transformations.json",
+    "hash": "138006EBF29A57F70C9F65A7D3C6A6A17A3598FC6A0203473F6F201F31F8E441",
+    "matches": true
+  },
+  {
+    "file": "generated.ts",
+    "hash": "093465A7325BA19201DFFC0569D9195727D6D84F1C7BB195F693A2846ECF2172",
+    "matches": true
+  },
+  {
+    "file": "improved.py",
+    "hash": "A02DD45BF1750BE5A56CE73C67B5712EC4E2D7BFFA0AEED4BB35821C1C2FE2C0",
+    "matches": true
+  },
+  {
+    "file": "negative-base-arithmetic.py",
+    "hash": "B2074022852D75F601411EA1C89F8CFD1B36AF4A4EF3E91E01B9D8B12CBE6FF3",
+    "matches": true
+  },
+  {
+    "file": "negative-membership.py",
+    "hash": "19157BF866925034BA85133BD27845008E35C84E35FD2336599FF663E7938065",
+    "matches": true
+  },
+  {
+    "file": "negative-premium.py",
+    "hash": "61564871AEAB9A901CADFA529641EF00262B71DB0982FBCED6CE171758252F32",
+    "matches": true
+  },
+  {
+    "file": "results.json",
+    "hash": "9BD3D5B045D97260B3CF4577503F778F6C7F9C22FC3711A111451F52487D39CE",
+    "matches": true
+  }
+]

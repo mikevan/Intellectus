@@ -1,0 +1,32 @@
+[
+  {
+    "file": "semantic-1.json",
+    "hash": "431B55C461EFD0656C7F0352B234D88074817C7742110BA8A39B9FA05174EE84",
+    "matches": true
+  },
+  {
+    "file": "semantic-2.json",
+    "hash": "EC9A37E281202AC5971F864CDEEBD1E976B88F3BA1E6CA0EEBA29630CBE9B8C8",
+    "matches": true
+  },
+  {
+    "file": "semantic-3.json",
+    "hash": "E91CB8126B8DEB34B65D312A3DAE5A09EC2A624ABCA7A1AF272B12E6529378AC",
+    "matches": true
+  },
+  {
+    "file": "generated.ts",
+    "hash": "30F8EEBC02BF5F931F146254AC728552610F96C8D45A4335803F065170DD103E",
+    "matches": true
+  },
+  {
+    "file": "reconstructed.py",
+    "hash": "449921D3B4991439F3560C026291B65E651AEAF9B0729A8A42F8F6F94C81C2D8",
+    "matches": true
+  },
+  {
+    "file": "results.json",
+    "hash": "70FA02593787180D232DB52CEBF117951E89D69B45BB8631A733A147062985B6",
+    "matches": true
+  }
+]

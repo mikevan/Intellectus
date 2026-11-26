@@ -1,0 +1,54 @@
+{
+  "status": "passed",
+  "domain": {
+    "totalCents": [
+      0,
+      1000000000
+    ],
+    "membership": [
+      0,
+      1
+    ],
+    "output": "integer discount percentage"
+  },
+  "cases": 40004,
+  "negativeDifferences": [
+    [
+      10000,
+      0
+    ],
+    [
+      10000,
+      1
+    ]
+  ],
+  "transformations": 2,
+  "scores": {
+    "original": {
+      "cyclomatic": 6,
+      "campbell": 16,
+      "mbcc": 21
+    },
+    "typescript": {
+      "cyclomatic": 6,
+      "campbell": 16,
+      "mbcc": 21
+    },
+    "improved": {
+      "cyclomatic": 4,
+      "campbell": 8,
+      "mbcc": 7
+    }
+  },
+  "fingerprints": {
+    "original": "3d87c9d70f031ae2b5603ac6",
+    "typescript": "3d87c9d70f031ae2b5603ac6",
+    "optimized": "9eb28f76ba70803e2120d9a8",
+    "negative": "7030dd76cf3cdbae25cdcf9e"
+  },
+  "limitations": [
+    "Only pure terminating decision trees with input-to-integer comparisons and integer returns.",
+    "Not unrestricted semantic equivalence; obligation oracle and decision partitions apply to the declared domain.",
+    "No runtime performance claim."
+  ]
+}

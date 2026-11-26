@@ -1,0 +1,8 @@
+# RT-2 frozen protocol — first attempt
+Approved direction: user requested continuation after reviewing the RT-2 draft.
+Domain: integer total 0..100 inclusive, member 0 or 1; two functions, base(total)=total+3, discount(total,member)=total+3+2*member.
+All 202 pairs exhaustively executed. Independent oracle is the arithmetic formula above.
+Prediction: source and TypeScript executable fingerprints match by name; optimized model drops exactly one pure duplicate-arm branch; Python re-encoding matches optimized fingerprint by function. Three metrics for discount decrease; base unchanged.
+Controls: mutate base +3 to +4, member predicate ==1 to ==0, member premium +2 to +1; each must disagree with oracle. Unsupported constructs fail expression rather than silently emit.
+Use actual Karaf distinct language providers with encode and express methods, independent persistence service; registry must show no adapter, Python only, none, TypeScript only, none, Python only. Persist exact complete bridge model; after adapter unload, verify SHA-256 and reload from disk. Preserve provenance and explicitly label bridge representation partial. Fixture-independent renderer supports only validated pure bounded integer arithmetic, comparisons, local bindings, calls to named functions, and terminating branches. Original source is never passed to express. No Lexicon required for language-only fixture; record this.
+Use unchanged baseline encoder and Complexity library. New directory only; RT-1 untouched. Repeat using fresh output directory and compare generated source, serialized models and results; runtime service IDs/timestamps need not match. Record failed predictions before corrections. No broad semantic-equivalence claim.

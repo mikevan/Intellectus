@@ -1,0 +1,111 @@
+{
+  "inputs": 2,
+  "body": [
+    {
+      "kind": "branch",
+      "predicate": {
+        "kind": "compare",
+        "op": "GE",
+        "left": {
+          "kind": "input",
+          "index": 0
+        },
+        "right": {
+          "kind": "literal",
+          "literal": {
+            "type": "number",
+            "value": "10000"
+          }
+        }
+      },
+      "then": [
+        {
+          "kind": "branch",
+          "predicate": {
+            "kind": "compare",
+            "op": "EQ",
+            "left": {
+              "kind": "input",
+              "index": 1
+            },
+            "right": {
+              "kind": "literal",
+              "literal": {
+                "type": "number",
+                "value": "1"
+              }
+            }
+          },
+          "then": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "literal",
+                "literal": {
+                  "type": "number",
+                  "value": "15"
+                }
+              }
+            }
+          ],
+          "else": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "literal",
+                "literal": {
+                  "type": "number",
+                  "value": "5"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "else": [
+        {
+          "kind": "branch",
+          "predicate": {
+            "kind": "compare",
+            "op": "EQ",
+            "left": {
+              "kind": "input",
+              "index": 1
+            },
+            "right": {
+              "kind": "literal",
+              "literal": {
+                "type": "number",
+                "value": "1"
+              }
+            }
+          },
+          "then": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "literal",
+                "literal": {
+                  "type": "number",
+                  "value": "5"
+                }
+              }
+            }
+          ],
+          "else": [
+            {
+              "kind": "return",
+              "value": {
+                "kind": "literal",
+                "literal": {
+                  "type": "number",
+                  "value": "0"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

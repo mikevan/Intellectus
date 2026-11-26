@@ -1,0 +1,33 @@
+{
+  "calls_per_sample": 200010,
+  "samples_per_implementation": 9,
+  "median_ms": {
+    "original": 26.4085,
+    "improved": 21.4468
+  },
+  "raw_ms": {
+    "original": [
+      38.1799,
+      26.4085,
+      23.038,
+      28.0087,
+      39.4003,
+      21.337,
+      22.3373,
+      27.9082,
+      19.1845
+    ],
+    "improved": [
+      21.3229,
+      30.5982,
+      25.9867,
+      18.916,
+      19.5215,
+      24.0283,
+      26.3678,
+      20.177,
+      21.4468
+    ]
+  },
+  "note": "Local illustrative timing; not a release or platform-wide performance guarantee."
+}

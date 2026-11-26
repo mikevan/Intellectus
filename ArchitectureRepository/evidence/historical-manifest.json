@@ -1,0 +1,226 @@
+[
+  {
+    "Path": "C:\\workspace\\RT-1-Experiment-Report.md",
+    "Hash": "2B2275BC25C2BCEF372348341E6143F0EB67C513847A273E0C45DE0578F44371"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\RT-2-Experiment-Report.md",
+    "Hash": "8E099B25EE13FE918CF02155A1F11243BC4D2AB14FBA6957B2F2A48077B95896"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\RT-3-Experiment-Report.md",
+    "Hash": "8506E3099A89995BFE0F440E5EB300A2A67EB9A2758D3ADFCA371BAEADCCDEA4"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\RT-4-Experiment-Report.md",
+    "Hash": "6948A027B335DA642E1F5A545FAD4BDB012DA9CDD14951D14501C8E2A1FBD83E"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\benchmark.py",
+    "Hash": "AAFFE964F896F3BBCD63FAAC9BE9FD884943FF58A1E0D264775E6668FA9B7F9D"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\original.py",
+    "Hash": "AB2B99F3BFDA82F1F3103C7D4564126E8CEF05224067CEF4C0EC473F5DC89177"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\README.md",
+    "Hash": "B12D863642E59E5375805417A45F2AEB82E742C54605C5138FEDE1BECEE355D5"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\roundtrip.mjs",
+    "Hash": "E77ED511597FCA9E9AC9810506AEFA08314A94E6A9E1517980533189EC29AF95"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\run-python.py",
+    "Hash": "2B19CC7EB4AEF2B7A6188450BE35B54812DAE3AD8AC269BC8CA48D4B64CF80E2"
+  },
+  {
+    "Path": "C:\\workspace-Intellectus\\IntellectusRuntime\\roundtrip\\run-typescript.mjs",
+    "Hash": "9E92210EE4FC3C8F13EFEC9C31BE9736E029B9AB3425C1D60B73A2D0E1C8E420"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\generated.ts",
+    "Hash": "093465A7325BA19201DFFC0569D9195727D6D84F1C7BB195F693A2846ECF2172"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\improved.py",
+    "Hash": "A02DD45BF1750BE5A56CE73C67B5712EC4E2D7BFFA0AEED4BB35821C1C2FE2C0"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\negative-base-arithmetic.py",
+    "Hash": "B2074022852D75F601411EA1C89F8CFD1B36AF4A4EF3E91E01B9D8B12CBE6FF3"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\negative-membership.py",
+    "Hash": "19157BF866925034BA85133BD27845008E35C84E35FD2336599FF663E7938065"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\negative-premium.py",
+    "Hash": "61564871AEAB9A901CADFA529641EF00262B71DB0982FBCED6CE171758252F32"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\optimized.json",
+    "Hash": "E55F3847B53F1C57BFB0FFE6E88E5026E0B471EFCBE2FCF0533A865DCC1906FB"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\results.json",
+    "Hash": "9BD3D5B045D97260B3CF4577503F778F6C7F9C22FC3711A111451F52487D39CE"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\semantic-1.json",
+    "Hash": "539C8C16DB6FD772DC4B4FD5975B02A59AED3D32E080E6020404C504BDE7B981"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\semantic-2.json",
+    "Hash": "AB10CA509D9F357F66093743F5A1DD6B85A3C3504021DA41221A62913C386C87"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\semantic-3.json",
+    "Hash": "DB9D948B81EE96FF1A74371294286304F6F1CDA319A6AC32855E868363791622"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-03\\transformations.json",
+    "Hash": "138006EBF29A57F70C9F65A7D3C6A6A17A3598FC6A0203473F6F201F31F8E441"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\generated.ts",
+    "Hash": "093465A7325BA19201DFFC0569D9195727D6D84F1C7BB195F693A2846ECF2172"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\improved.py",
+    "Hash": "A02DD45BF1750BE5A56CE73C67B5712EC4E2D7BFFA0AEED4BB35821C1C2FE2C0"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\negative-base-arithmetic.py",
+    "Hash": "B2074022852D75F601411EA1C89F8CFD1B36AF4A4EF3E91E01B9D8B12CBE6FF3"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\negative-membership.py",
+    "Hash": "19157BF866925034BA85133BD27845008E35C84E35FD2336599FF663E7938065"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\negative-premium.py",
+    "Hash": "61564871AEAB9A901CADFA529641EF00262B71DB0982FBCED6CE171758252F32"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\optimized.json",
+    "Hash": "E55F3847B53F1C57BFB0FFE6E88E5026E0B471EFCBE2FCF0533A865DCC1906FB"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\results.json",
+    "Hash": "9BD3D5B045D97260B3CF4577503F778F6C7F9C22FC3711A111451F52487D39CE"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\semantic-1.json",
+    "Hash": "539C8C16DB6FD772DC4B4FD5975B02A59AED3D32E080E6020404C504BDE7B981"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\semantic-2.json",
+    "Hash": "AB10CA509D9F357F66093743F5A1DD6B85A3C3504021DA41221A62913C386C87"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\semantic-3.json",
+    "Hash": "DB9D948B81EE96FF1A74371294286304F6F1CDA319A6AC32855E868363791622"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-2\\run-04\\transformations.json",
+    "Hash": "138006EBF29A57F70C9F65A7D3C6A6A17A3598FC6A0203473F6F201F31F8E441"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\generated.ts",
+    "Hash": "30F8EEBC02BF5F931F146254AC728552610F96C8D45A4335803F065170DD103E"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\reconstructed.py",
+    "Hash": "449921D3B4991439F3560C026291B65E651AEAF9B0729A8A42F8F6F94C81C2D8"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\results.json",
+    "Hash": "70FA02593787180D232DB52CEBF117951E89D69B45BB8631A733A147062985B6"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\semantic-1.json",
+    "Hash": "431B55C461EFD0656C7F0352B234D88074817C7742110BA8A39B9FA05174EE84"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\semantic-2.json",
+    "Hash": "EC9A37E281202AC5971F864CDEEBD1E976B88F3BA1E6CA0EEBA29630CBE9B8C8"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-01\\semantic-3.json",
+    "Hash": "E91CB8126B8DEB34B65D312A3DAE5A09EC2A624ABCA7A1AF272B12E6529378AC"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\generated.ts",
+    "Hash": "30F8EEBC02BF5F931F146254AC728552610F96C8D45A4335803F065170DD103E"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\reconstructed.py",
+    "Hash": "449921D3B4991439F3560C026291B65E651AEAF9B0729A8A42F8F6F94C81C2D8"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\results.json",
+    "Hash": "70FA02593787180D232DB52CEBF117951E89D69B45BB8631A733A147062985B6"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\semantic-1.json",
+    "Hash": "431B55C461EFD0656C7F0352B234D88074817C7742110BA8A39B9FA05174EE84"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\semantic-2.json",
+    "Hash": "EC9A37E281202AC5971F864CDEEBD1E976B88F3BA1E6CA0EEBA29630CBE9B8C8"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-3\\run-02\\semantic-3.json",
+    "Hash": "E91CB8126B8DEB34B65D312A3DAE5A09EC2A624ABCA7A1AF272B12E6529378AC"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\generated.ts",
+    "Hash": "093465A7325BA19201DFFC0569D9195727D6D84F1C7BB195F693A2846ECF2172"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\reconstructed.py",
+    "Hash": "72C5CD353D9FABF417630AF5DFA50159236AD8752EFBD8D36172568269BD707C"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\results.json",
+    "Hash": "C75C4047F1D40310A9B3317D08749E1657BA129EE926B76BFB26DA5F1043BA6F"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\semantic-1.json",
+    "Hash": "539C8C16DB6FD772DC4B4FD5975B02A59AED3D32E080E6020404C504BDE7B981"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\semantic-2.json",
+    "Hash": "AB10CA509D9F357F66093743F5A1DD6B85A3C3504021DA41221A62913C386C87"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-01\\semantic-3.json",
+    "Hash": "04E2547B31A269B5816D494F6F573485A2F811C13462B9084665AD69A43110BC"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\generated.ts",
+    "Hash": "093465A7325BA19201DFFC0569D9195727D6D84F1C7BB195F693A2846ECF2172"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\reconstructed.py",
+    "Hash": "72C5CD353D9FABF417630AF5DFA50159236AD8752EFBD8D36172568269BD707C"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\results.json",
+    "Hash": "C75C4047F1D40310A9B3317D08749E1657BA129EE926B76BFB26DA5F1043BA6F"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\semantic-1.json",
+    "Hash": "539C8C16DB6FD772DC4B4FD5975B02A59AED3D32E080E6020404C504BDE7B981"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\semantic-2.json",
+    "Hash": "AB10CA509D9F357F66093743F5A1DD6B85A3C3504021DA41221A62913C386C87"
+  },
+  {
+    "Path": "C:\\workspace\\Intellectus-RT-4\\run-02\\semantic-3.json",
+    "Hash": "04E2547B31A269B5816D494F6F573485A2F811C13462B9084665AD69A43110BC"
+  }
+]

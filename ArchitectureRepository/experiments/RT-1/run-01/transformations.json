@@ -1,0 +1,40 @@
+[
+  {
+    "rule": "eliminate-identical-arms",
+    "path": "body.then.then",
+    "predicate": {
+      "kind": "compare",
+      "op": "GE",
+      "left": {
+        "kind": "input",
+        "index": 0
+      },
+      "right": {
+        "kind": "literal",
+        "literal": {
+          "type": "number",
+          "value": "10000"
+        }
+      }
+    }
+  },
+  {
+    "rule": "eliminate-identical-arms",
+    "path": "body.then.else",
+    "predicate": {
+      "kind": "compare",
+      "op": "GE",
+      "left": {
+        "kind": "input",
+        "index": 0
+      },
+      "right": {
+        "kind": "literal",
+        "literal": {
+          "type": "number",
+          "value": "10000"
+        }
+      }
+    }
+  }
+]

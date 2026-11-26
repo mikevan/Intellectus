@@ -1,0 +1,79 @@
+{
+  "status": "pass",
+  "cases": 202,
+  "negative": {
+    "base-arithmetic": {
+      "count": 202,
+      "example": [
+        0,
+        0
+      ]
+    },
+    "membership": {
+      "count": 202,
+      "example": [
+        0,
+        0
+      ]
+    },
+    "premium": {
+      "count": 101,
+      "example": [
+        0,
+        1
+      ]
+    }
+  },
+  "scores": {
+    "original": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      }
+    ],
+    "typescript": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      }
+    ],
+    "improved": [
+      {
+        "cyclomatic": 1,
+        "campbell": 0,
+        "mbcc": 0
+      },
+      {
+        "cyclomatic": 2,
+        "campbell": 2,
+        "mbcc": 1
+      }
+    ]
+  },
+  "fingerprints": {
+    "original": {
+      "base": "ff1f89439ef6967f15034b25",
+      "discount": "767d9fd06e6439d4833b0cdd"
+    },
+    "typescript": {
+      "base": "ff1f89439ef6967f15034b25",
+      "discount": "767d9fd06e6439d4833b0cdd"
+    },
+    "improved": {
+      "base": "ff1f89439ef6967f15034b25",
+      "discount": "ba1fcec209501ab1cb9b6ea4"
+    }
+  }
+}

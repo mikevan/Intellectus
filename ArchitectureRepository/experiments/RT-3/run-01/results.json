@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "optimization": "disabled",
+  "cases": 40004,
+  "fingerprint": "3d87c9d70f031ae2b5603ac6",
+  "exactIR": true,
+  "scores": {
+    "original": {
+      "cyclomatic": 6,
+      "campbell": 16,
+      "mbcc": 21
+    },
+    "typescript": {
+      "cyclomatic": 6,
+      "campbell": 16,
+      "mbcc": 21
+    },
+    "reconstructed": {
+      "cyclomatic": 6,
+      "campbell": 16,
+      "mbcc": 21
+    }
+  },
+  "lexical": {
+    "byteIdentical": false,
+    "originalSHA256": "ab2b99f3bfda82f1f3103c7d4564126e8cef05224067cef4c0ec473f5dc89177",
+    "reconstructedSHA256": "449921d3b4991439f3560c026291b65e651aeaf9b0729a8a42f8f6f94c81c2d8",
+    "originalBytes": 461,
+    "reconstructedBytes": 357,
+    "parameterNames": "total/member -> p0/p1",
+    "commentPreserved": false
+  },
+  "registryMarkers": [
+    "RT2_PASS adapters none",
+    "RT2_PASS adapters python",
+    "RT2_PASS encode LinguisticPython semantic-1 431b55c461efd0656c7f0352b234d88074817c7742110ba8a39b9fa05174ee84",
+    "RT2_PASS adapters none",
+    "RT2_PASS recall semantic-1 431b55c461efd0656c7f0352b234d88074817c7742110ba8a39b9fa05174ee84",
+    "RT2_PASS adapters typescript",
+    "RT2_PASS express LinguisticTypeScript semantic-1",
+    "RT2_PASS encode LinguisticTypeScript semantic-2 ec9a37e281202ac5971f864cdeebd1e976b88f3ba1e6ca0eeba29630cbe9b8c8",
+    "RT2_PASS adapters none",
+    "RT2_PASS recall semantic-2 ec9a37e281202ac5971f864cdeebd1e976b88f3ba1e6ca0eeba29630cbe9b8c8",
+    "RT2_PASS adapters python",
+    "RT2_PASS express LinguisticPython semantic-2",
+    "RT2_PASS encode LinguisticPython semantic-3 e91cb8126b8deb34b65d312a3dae5a09ec2a624abca7a1af272b12e6529378ac"
+  ]
+}

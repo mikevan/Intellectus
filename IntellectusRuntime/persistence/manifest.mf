@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: intellectus.persistence.probe
+Bundle-Version: 0.1.0
+Bundle-Activator: com.intellectus.persistence.Activator
+Import-Package: com.intellectus.api,org.osgi.framework
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+
