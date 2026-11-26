@@ -1,0 +1,10 @@
+import { readFileSync } from 'node:fs';
+const direct = (a: number, b: number) => a + 3 + 2*b;
+const lookup = (a: number, b: number) => a + [3,5][b];
+const late = (a: number, b: number) => direct(a,b) + Number(a===4 && b===1);
+const shift = (a: number, b: number) => direct(a,b) + 1;
+const fns = {direct,lookup,late,shift};
+const fn = fns[process.argv[2] as keyof typeof fns];
+if(!fn) throw Error('Unknown fixed fixture');
+const inputs: string[][] = JSON.parse(readFileSync(0,'utf8'));
+console.log(JSON.stringify(inputs.map(([a,b])=>String(fn(Number(a),Number(b))))));

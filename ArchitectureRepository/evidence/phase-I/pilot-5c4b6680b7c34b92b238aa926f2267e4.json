@@ -1,0 +1,1510 @@
+{
+  "status": "pilot-pass",
+  "notRT5": true,
+  "contract": {
+    "schema": "finite-pure-integer-v1",
+    "bounds": [
+      [
+        "0",
+        "4"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "observable": "normal-integer-return",
+    "effects": "none",
+    "ordering": "not-observed",
+    "environment": "declared-pure-deterministic",
+    "id": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1"
+  },
+  "discoveryCases": 48,
+  "verificationCases": 60,
+  "subjects": [
+    {
+      "name": "branch",
+      "language": "python",
+      "initial": {
+        "source": {
+          "digest": "514c7f00bb53bf85b4f353307a42712520fc015fc6b873ce74f40a9dd00903e9",
+          "size": 422,
+          "producer": "python",
+          "method": "fixed pilot fixture",
+          "run": "branch"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "3",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "514c7f00bb53bf85b4f353307a42712520fc015fc6b873ce74f40a9dd00903e9",
+          "size": 422,
+          "producer": "python",
+          "method": "fixed pilot fixture",
+          "run": "branch"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"3\"},{\"input\":[\"0\",\"1\"],\"value\":\"5\"},{\"input\":[\"1\",\"0\"],\"value\":\"4\"},{\"input\":[\"1\",\"1\"],\"value\":\"6\"},{\"input\":[\"2\",\"0\"],\"value\":\"5\"},{\"input\":[\"2\",\"1\"],\"value\":\"7\"},{\"input\":[\"3\",\"0\"],\"value\":\"6\"},{\"input\":[\"3\",\"1\"],\"value\":\"8\"},{\"input\":[\"4\",\"0\"],\"value\":\"7\"},{\"input\":[\"4\",\"1\"],\"value\":\"9\"}]}",
+      "verification": {
+        "status": "verified-in-scope",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+        "actual": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a"
+      }
+    },
+    {
+      "name": "iteration",
+      "language": "python",
+      "initial": {
+        "source": {
+          "digest": "514c7f00bb53bf85b4f353307a42712520fc015fc6b873ce74f40a9dd00903e9",
+          "size": 422,
+          "producer": "python",
+          "method": "fixed pilot fixture",
+          "run": "iteration"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "3",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "514c7f00bb53bf85b4f353307a42712520fc015fc6b873ce74f40a9dd00903e9",
+          "size": 422,
+          "producer": "python",
+          "method": "fixed pilot fixture",
+          "run": "iteration"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"3\"},{\"input\":[\"0\",\"1\"],\"value\":\"5\"},{\"input\":[\"1\",\"0\"],\"value\":\"4\"},{\"input\":[\"1\",\"1\"],\"value\":\"6\"},{\"input\":[\"2\",\"0\"],\"value\":\"5\"},{\"input\":[\"2\",\"1\"],\"value\":\"7\"},{\"input\":[\"3\",\"0\"],\"value\":\"6\"},{\"input\":[\"3\",\"1\"],\"value\":\"8\"},{\"input\":[\"4\",\"0\"],\"value\":\"7\"},{\"input\":[\"4\",\"1\"],\"value\":\"9\"}]}",
+      "verification": {
+        "status": "verified-in-scope",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+        "actual": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a"
+      }
+    },
+    {
+      "name": "direct",
+      "language": "typescript",
+      "initial": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "direct"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "3",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "direct"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"3\"},{\"input\":[\"0\",\"1\"],\"value\":\"5\"},{\"input\":[\"1\",\"0\"],\"value\":\"4\"},{\"input\":[\"1\",\"1\"],\"value\":\"6\"},{\"input\":[\"2\",\"0\"],\"value\":\"5\"},{\"input\":[\"2\",\"1\"],\"value\":\"7\"},{\"input\":[\"3\",\"0\"],\"value\":\"6\"},{\"input\":[\"3\",\"1\"],\"value\":\"8\"},{\"input\":[\"4\",\"0\"],\"value\":\"7\"},{\"input\":[\"4\",\"1\"],\"value\":\"9\"}]}",
+      "verification": {
+        "status": "verified-in-scope",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+        "actual": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a"
+      }
+    },
+    {
+      "name": "lookup",
+      "language": "typescript",
+      "initial": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "lookup"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "3",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "lookup"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"3\"},{\"input\":[\"0\",\"1\"],\"value\":\"5\"},{\"input\":[\"1\",\"0\"],\"value\":\"4\"},{\"input\":[\"1\",\"1\"],\"value\":\"6\"},{\"input\":[\"2\",\"0\"],\"value\":\"5\"},{\"input\":[\"2\",\"1\"],\"value\":\"7\"},{\"input\":[\"3\",\"0\"],\"value\":\"6\"},{\"input\":[\"3\",\"1\"],\"value\":\"8\"},{\"input\":[\"4\",\"0\"],\"value\":\"7\"},{\"input\":[\"4\",\"1\"],\"value\":\"9\"}]}",
+      "verification": {
+        "status": "verified-in-scope",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+        "actual": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a"
+      }
+    },
+    {
+      "name": "shift",
+      "language": "typescript",
+      "initial": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "shift"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "4",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "shift"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "9",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "10",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "09642318a844f8f7c9ddae853dcc9496ba40382c71d424d603c8edbcd894f70d",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"4\"},{\"input\":[\"0\",\"1\"],\"value\":\"6\"},{\"input\":[\"1\",\"0\"],\"value\":\"5\"},{\"input\":[\"1\",\"1\"],\"value\":\"7\"},{\"input\":[\"2\",\"0\"],\"value\":\"6\"},{\"input\":[\"2\",\"1\"],\"value\":\"8\"},{\"input\":[\"3\",\"0\"],\"value\":\"7\"},{\"input\":[\"3\",\"1\"],\"value\":\"9\"},{\"input\":[\"4\",\"0\"],\"value\":\"8\"},{\"input\":[\"4\",\"1\"],\"value\":\"10\"}]}",
+      "verification": {
+        "status": "verified-in-scope",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "09642318a844f8f7c9ddae853dcc9496ba40382c71d424d603c8edbcd894f70d",
+        "actual": "09642318a844f8f7c9ddae853dcc9496ba40382c71d424d603c8edbcd894f70d"
+      }
+    },
+    {
+      "name": "late",
+      "language": "typescript",
+      "initial": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "late"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "candidate": {
+        "status": "proposed",
+        "candidate": {
+          "type": "affine-integer-v1",
+          "intercept": "3",
+          "coefficients": [
+            "1",
+            "2"
+          ]
+        }
+      },
+      "actual": {
+        "source": {
+          "digest": "2fcd99ab06d7230c1482581a31770bf2885700f70a6c5b03e03372bbd9b28315",
+          "size": 569,
+          "producer": "typescript",
+          "method": "fixed pilot fixture",
+          "run": "late"
+        },
+        "rows": [
+          {
+            "input": [
+              "0",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "3",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "0",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "4",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "1",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "5",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "2",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "6",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "3",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "8",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "0"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "7",
+              "effects": false
+            }
+          },
+          {
+            "input": [
+              "4",
+              "1"
+            ],
+            "outcome": {
+              "kind": "return",
+              "value": "10",
+              "effects": false
+            }
+          }
+        ]
+      },
+      "oracleMatch": true,
+      "identity": "02c41ee9ca28113010323a63864dcc9a94b4a55b797271ff92cd3cb8c879eac7",
+      "canonical": "{\"schema\":\"finite-behavior-v1\",\"contract\":\"bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1\",\"observations\":[{\"input\":[\"0\",\"0\"],\"value\":\"3\"},{\"input\":[\"0\",\"1\"],\"value\":\"5\"},{\"input\":[\"1\",\"0\"],\"value\":\"4\"},{\"input\":[\"1\",\"1\"],\"value\":\"6\"},{\"input\":[\"2\",\"0\"],\"value\":\"5\"},{\"input\":[\"2\",\"1\"],\"value\":\"7\"},{\"input\":[\"3\",\"0\"],\"value\":\"6\"},{\"input\":[\"3\",\"1\"],\"value\":\"8\"},{\"input\":[\"4\",\"0\"],\"value\":\"7\"},{\"input\":[\"4\",\"1\"],\"value\":\"10\"}]}",
+      "verification": {
+        "status": "contradicted",
+        "checker": "finite-exact-v1",
+        "contractId": "bc59d1bd206a52fdaa931eaa757dadbb86f92f975eb362ccdd2ab8abee32f6b1",
+        "expected": "3aea8af0f3ef6aa218ed353e9ad9d9fea13557240c0bbf41fe91b4f5f5c8db0a",
+        "actual": "02c41ee9ca28113010323a63864dcc9a94b4a55b797271ff92cd3cb8c879eac7",
+        "counterexample": {
+          "input": [
+            "4",
+            "1"
+          ],
+          "predicted": "9",
+          "observed": "10"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Fixed authored arithmetic only",
+    "Purity declared, not independently proven",
+    "No AI, structural specialist or business intent tested",
+    "Finite mapping is not generalized semantic understanding"
+  ]
+}

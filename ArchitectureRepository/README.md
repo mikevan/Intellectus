@@ -1,9 +1,10 @@
-# Intellectus — Architecture Repository
+# Intellectus â€” Architecture Repository
 
-Intellectus investigates implementation-independent computational understanding through reproducible experiments, heterogeneous analytical specialists, and evidence-grounded knowledge. RT-1–4 established restricted reconstruction and exposed the need for a deeper semantic model. The next stage is research, not a claim of production readiness.
+Intellectus investigates implementation-independent computational understanding through reproducible experiments, heterogeneous analytical specialists, and evidence-grounded knowledge. RT-1â€“4 established restricted reconstruction and exposed the need for a deeper semantic model. The next stage is research, not a claim of production readiness.
 
 ## Start here
-- [RT-1–4 research summary](research/Intellectus-RT-1-4-Research-Summary.md)
+- [Research continuity and succession charter](Intellectus-Research-Continuity.md)
+- [RT-1â€“4 research summary](research/Intellectus-RT-1-4-Research-Summary.md)
 - [Architecture and implementation plan](architecture/Intellectus-Architecture-and-Implementation-Plan.md)
 - [Phase I research foundation](research/Phase-I-Research-Foundation.md)
 - [Style manual](standards/Intellectus-Style-Manual.md)
@@ -25,3 +26,5 @@ Original evidence is preserved at its original local paths. New documentation be
 - [Semantic knowledge and specialist contracts](architecture/Semantic-Knowledge-Contract.md)
 - [RT-5 draft protocol](experiments/RT-5/RT-5-Draft-Protocol.md)
 - [Phase I live deliberation findings](research/Phase-I-Live-Deliberation-Findings.md)
+- [Current research scope](research/Current-Research-Scope.md)
+- [P1/P2 engineering pilot findings](research/P1-P2-Pilot-Findings.md)
