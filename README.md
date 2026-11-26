@@ -6,7 +6,7 @@ Michael Van Geertruy | Open research | Experimental software
 
 Intellectus is an open-source research project investigating how to verify what software does independently of its implementation. The research combines deterministic analysis, independent verification and specialized AI hypotheses in an evidence-grounded knowledge model.
 
-[Project overview](site/ArchitectureRepository/ProjectDocumentation/index.md) · [Semantic model](site/ArchitectureRepository/ProjectDocumentation/semantic-model.md)
+[Visit the Intellectus website](https://mikevan.github.io/Intellectus/) · [Semantic model](site/ArchitectureRepository/ProjectDocumentation/semantic-model.md)
 
 ## Research at a glance
 
