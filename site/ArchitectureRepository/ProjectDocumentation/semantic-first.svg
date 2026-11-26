@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 324" role="img" class="chart-label" aria-label="Semantic first"><style>/* PRS identity: use this file to change all brand and chart colors. */
+:root{
+  --background:#090b09;
+  --panel:#121612;
+  --panel-raised:#1b211b;
+  --border:#394137;
+  --ink:#f3f4ee;
+  --muted:#bfc8bc;
+  --gold:#f5aa20;
+  --green:#69c814;
+  --link:#a0e65a;
+  --on-accent:#080b07;
+  --graph-before:#f5aa20;
+  --graph-after:#69c814;
+  --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+/* SVG charts use these semantic roles. Build embeds theme tokens and this file in SVG. */
+.chart-panel{fill:var(--panel)}.chart-background{fill:var(--background)}.chart-label{fill:var(--ink)}.chart-secondary{fill:var(--muted)}.chart-accent{fill:var(--gold)}.chart-arrow{stroke:var(--green)}.chart-before{fill:var(--graph-before)}.chart-after{fill:var(--graph-after)}
+</style><rect x="12" y="10" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="33" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Developer</text><text x="210" y="52" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Defines purpose, rules and flows</text><path d="M210 68 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="86" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="109" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Temporal ontology</text><text x="210" y="128" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Authoritative shared semantic model</text><path d="M210 144 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="162" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="185" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Target constraints</text><text x="210" y="204" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Environment-specific implementation choices</text><path d="M210 220 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="238" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="261" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Python · TypeScript · Java · C# · Rust</text><text x="210" y="280" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Illustrative targets, independently verified</text></svg>

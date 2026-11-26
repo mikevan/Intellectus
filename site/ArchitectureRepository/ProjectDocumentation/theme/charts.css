@@ -1,0 +1,2 @@
+/* SVG charts use these semantic roles. Build embeds theme tokens and this file in SVG. */
+.chart-panel{fill:var(--panel)}.chart-background{fill:var(--background)}.chart-label{fill:var(--ink)}.chart-secondary{fill:var(--muted)}.chart-accent{fill:var(--gold)}.chart-arrow{stroke:var(--green)}.chart-before{fill:var(--graph-before)}.chart-after{fill:var(--graph-after)}

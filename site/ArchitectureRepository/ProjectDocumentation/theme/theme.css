@@ -1,0 +1,16 @@
+/* PRS identity: use this file to change all brand and chart colors. */
+:root{
+  --background:#090b09;
+  --panel:#121612;
+  --panel-raised:#1b211b;
+  --border:#394137;
+  --ink:#f3f4ee;
+  --muted:#bfc8bc;
+  --gold:#f5aa20;
+  --green:#69c814;
+  --link:#a0e65a;
+  --on-accent:#080b07;
+  --graph-before:#f5aa20;
+  --graph-after:#69c814;
+  --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
