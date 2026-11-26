@@ -20,3 +20,8 @@ Historical documents retain their original wording, including former internal cl
 
 Original evidence is preserved at its original local paths. New documentation belongs in this hierarchy; do not edit frozen experiment records retrospectively.
 
+## Phase I redesign (proposals for review)
+
+- [Semantic knowledge and specialist contracts](architecture/Semantic-Knowledge-Contract.md)
+- [RT-5 draft protocol](experiments/RT-5/RT-5-Draft-Protocol.md)
+- [Phase I live deliberation findings](research/Phase-I-Live-Deliberation-Findings.md)

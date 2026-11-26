@@ -1,0 +1,17 @@
+import {writeFileSync} from 'node:fs';
+import {contract} from './knowledge.mjs';
+import {structuralPort,colibriPort} from './specialist-ports.mjs';
+import {deliberate} from './revision.mjs';
+const [root,model,out]=process.argv.slice(2);
+if(!root||!model||!out)throw Error('Usage: node live-deliberation.mjs <monorepo> <model> <new-result-file>');
+const telemetry=[];
+const port=colibriPort({model,apiKey:process.env.COLI_API_KEY,timeoutMs:240000,maxTokens:256});
+const track=async input=>{const r=await port(input);telemetry.push({role:input.role,revision:!!input.previous,...r.telemetry});return r;};
+const result=await deliberate(contract([['0','4'],['-2','2']]),{structural:structuralPort(root),conceptual:track,domain:track},2);
+const roles=['conceptual','domain'];
+const both=roles.every(role=>result.initial.result.initial.find(p=>p.role===role)?.body.status==='proposed');
+const typedAI=result.initial.deliberation?.initial.some(p=>['conceptual','domain'].includes(p.role)&&p.candidate)??false;
+const livePassed=both&&typedAI&&result.status==='verified-in-scope';
+writeFileSync(out,JSON.stringify({livePassed,typedAI,telemetry,result},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({livePassed,typedAI,rounds:result.rounds.length,unresolvedContradictions:result.unresolvedContradictions,telemetry},null,2));
+if(!livePassed)process.exitCode=1;

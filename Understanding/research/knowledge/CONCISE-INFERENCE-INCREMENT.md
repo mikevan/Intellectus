@@ -1,0 +1,5 @@
+# Direct structured inference trial 2 — finding and prospective correction
+
+The live typed trial 20261126-013954-3ed44904 failed its machine-checkable claim gate: both responses terminated at the 256-token ceiling. Inspection shows verbose mathematical reasoning, not demonstrated looping. The Domain role derived 7+3x-2y in prose and began a correct typed candidate, but did not complete the JSON. The Conceptual role also began solving the equations but its response was incomplete. Neither can be promoted. Deterministic verification remained successful; no revision round ran. Preserve the original evidence and failed gate.
+
+The next variant requests a compact candidate-first response, suppresses explanatory prose, explicitly permits a concise domain abstention, and increases the maximum completion budget to 512. It does not change mathematical acceptance criteria. Four additional component tests exercise the new response contract and refusal to accept truncated JSON. 42 total component tests pass. The live trial is pending.

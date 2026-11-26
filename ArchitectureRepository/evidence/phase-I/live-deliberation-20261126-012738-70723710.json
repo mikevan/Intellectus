@@ -1,0 +1,1149 @@
+{
+  "livePassed": false,
+  "typedAI": false,
+  "telemetry": [
+    {
+      "role": "conceptual",
+      "revision": false,
+      "model": "intellectus-qwen36",
+      "elapsedMs": 65226,
+      "usage": {
+        "prompt_tokens": 282,
+        "completion_tokens": 71,
+        "total_tokens": 353
+      }
+    },
+    {
+      "role": "domain",
+      "revision": false,
+      "model": "intellectus-qwen36",
+      "elapsedMs": 61250,
+      "usage": {
+        "prompt_tokens": 279,
+        "completion_tokens": 99,
+        "total_tokens": 378
+      }
+    }
+  ],
+  "result": {
+    "initial": {
+      "result": {
+        "contract": {
+          "schema": "finite-pure-integer-v1",
+          "bounds": [
+            [
+              "0",
+              "4"
+            ],
+            [
+              "-2",
+              "2"
+            ]
+          ],
+          "observable": "normal-integer-return",
+          "effects": "none",
+          "ordering": "not-observed",
+          "environment": "declared-pure-deterministic",
+          "id": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64"
+        },
+        "initial": [
+          {
+            "role": "structural",
+            "method": "provided-static-adapter",
+            "body": {
+              "status": "observed",
+              "view": {
+                "contractVersion": "0.1",
+                "language": "python",
+                "encoder": "python-adapter/0.9",
+                "irSchema": 6,
+                "sourceHash": "0897966d2037a506868082cfffaa04ef9a1fd5e0ca2c425179f469d1570cef8d",
+                "status": "partial",
+                "limitations": [
+                  "Legacy encoder does not expose complete source spans or reconstruction; no equivalence claimed."
+                ],
+                "executables": [
+                  {
+                    "name": "transform",
+                    "ir": {
+                      "inputs": 2,
+                      "body": [
+                        {
+                          "kind": "bind",
+                          "id": 0,
+                          "expr": {
+                            "kind": "operand",
+                            "operand": {
+                              "kind": "literal",
+                              "literal": {
+                                "type": "number",
+                                "value": "7"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "kind": "opaque",
+                          "category": "loop",
+                          "statementClass": "SEMANTIC"
+                        },
+                        {
+                          "kind": "return",
+                          "value": {
+                            "kind": "computed",
+                            "expr": {
+                              "kind": "arith",
+                              "op": "SUB",
+                              "left": {
+                                "kind": "value",
+                                "id": 0
+                              },
+                              "right": {
+                                "kind": "computed",
+                                "expr": {
+                                  "kind": "arith",
+                                  "op": "MUL",
+                                  "left": {
+                                    "kind": "literal",
+                                    "literal": {
+                                      "type": "number",
+                                      "value": "2"
+                                    }
+                                  },
+                                  "right": {
+                                    "kind": "input",
+                                    "index": 1
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "fingerprint": "f931cf2cadf5a18adf6ec357"
+                  }
+                ]
+              }
+            },
+            "digest": "b11ce2d659a8977195c44692722bf5cb36b94d2beb198bb200db6ec9fe5938c4"
+          },
+          {
+            "role": "behavioral",
+            "method": "fixed-subprocess-v1",
+            "body": {
+              "status": "observed",
+              "inputs": [
+                {
+                  "input": [
+                    "0",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "11",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "1",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "14",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "0",
+                    "-1"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "9",
+                    "effects": false
+                  }
+                }
+              ],
+              "artifact": {
+                "digest": "9984ee2b0d75670c83be1919da65eb2f47fb87cd6b6fbea248f9cb61620c9fa4",
+                "size": 234,
+                "producer": "python",
+                "method": "subprocess execution",
+                "run": "python-fixture-v1"
+              },
+              "source": {
+                "digest": "0897966d2037a506868082cfffaa04ef9a1fd5e0ca2c425179f469d1570cef8d",
+                "size": 213,
+                "producer": "python",
+                "method": "authored fixture",
+                "run": "python-fixture-v1"
+              }
+            },
+            "digest": "476cc0868ac2102195e5762585fe3a099f3668590cc65094ab3fc8d91dadf98e"
+          },
+          {
+            "role": "causal",
+            "method": "unit-interventions-v1",
+            "body": {
+              "status": "observed",
+              "requested": [
+                [
+                  "0",
+                  "-2"
+                ],
+                [
+                  "1",
+                  "-2"
+                ],
+                [
+                  "0",
+                  "-1"
+                ]
+              ],
+              "observed": [
+                {
+                  "input": [
+                    "0",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "11",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "1",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "14",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "0",
+                    "-1"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "9",
+                    "effects": false
+                  }
+                }
+              ]
+            },
+            "digest": "61620fc1747475ad7b27e5978a2f3763a42f810ef57846d489d6134bede172a6"
+          },
+          {
+            "role": "mathematical",
+            "method": "affine-v1",
+            "body": {
+              "status": "proposed",
+              "candidate": {
+                "type": "affine-integer-v1",
+                "intercept": "7",
+                "coefficients": [
+                  "3",
+                  "-2"
+                ]
+              }
+            },
+            "digest": "7daccaa8174c8afeefc4425b3ff114a4d99ab3375aeb70c84e8711db28197b9d"
+          },
+          {
+            "role": "conceptual",
+            "method": "inference-port",
+            "body": {
+              "status": "proposed",
+              "hypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples."
+            },
+            "digest": "ca2e79afdf29ecf3d2eb1768a0b4d3760a12bfef2f476b8bedf4a7ad6fdad74b"
+          },
+          {
+            "role": "domain",
+            "method": "inference-port",
+            "body": {
+              "status": "proposed",
+              "hypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown."
+            },
+            "digest": "747c42d10a9b7b76159ae6303c3e2ae1e51be090228310cbf1eae7f7231c99d0"
+          }
+        ],
+        "sealedDigest": "51295086476820a8dbb167a97294c0f90b3ab787869e3a441f2d523537f06a0c",
+        "packets": [
+          {
+            "role": "structural",
+            "method": "provided-static-adapter",
+            "body": {
+              "status": "observed",
+              "view": {
+                "contractVersion": "0.1",
+                "language": "python",
+                "encoder": "python-adapter/0.9",
+                "irSchema": 6,
+                "sourceHash": "0897966d2037a506868082cfffaa04ef9a1fd5e0ca2c425179f469d1570cef8d",
+                "status": "partial",
+                "limitations": [
+                  "Legacy encoder does not expose complete source spans or reconstruction; no equivalence claimed."
+                ],
+                "executables": [
+                  {
+                    "name": "transform",
+                    "ir": {
+                      "inputs": 2,
+                      "body": [
+                        {
+                          "kind": "bind",
+                          "id": 0,
+                          "expr": {
+                            "kind": "operand",
+                            "operand": {
+                              "kind": "literal",
+                              "literal": {
+                                "type": "number",
+                                "value": "7"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "kind": "opaque",
+                          "category": "loop",
+                          "statementClass": "SEMANTIC"
+                        },
+                        {
+                          "kind": "return",
+                          "value": {
+                            "kind": "computed",
+                            "expr": {
+                              "kind": "arith",
+                              "op": "SUB",
+                              "left": {
+                                "kind": "value",
+                                "id": 0
+                              },
+                              "right": {
+                                "kind": "computed",
+                                "expr": {
+                                  "kind": "arith",
+                                  "op": "MUL",
+                                  "left": {
+                                    "kind": "literal",
+                                    "literal": {
+                                      "type": "number",
+                                      "value": "2"
+                                    }
+                                  },
+                                  "right": {
+                                    "kind": "input",
+                                    "index": 1
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "fingerprint": "f931cf2cadf5a18adf6ec357"
+                  }
+                ]
+              }
+            },
+            "digest": "b11ce2d659a8977195c44692722bf5cb36b94d2beb198bb200db6ec9fe5938c4"
+          },
+          {
+            "role": "behavioral",
+            "method": "fixed-subprocess-v1",
+            "body": {
+              "status": "observed",
+              "inputs": [
+                {
+                  "input": [
+                    "0",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "11",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "1",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "14",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "0",
+                    "-1"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "9",
+                    "effects": false
+                  }
+                }
+              ],
+              "artifact": {
+                "digest": "9984ee2b0d75670c83be1919da65eb2f47fb87cd6b6fbea248f9cb61620c9fa4",
+                "size": 234,
+                "producer": "python",
+                "method": "subprocess execution",
+                "run": "python-fixture-v1"
+              },
+              "source": {
+                "digest": "0897966d2037a506868082cfffaa04ef9a1fd5e0ca2c425179f469d1570cef8d",
+                "size": 213,
+                "producer": "python",
+                "method": "authored fixture",
+                "run": "python-fixture-v1"
+              }
+            },
+            "digest": "476cc0868ac2102195e5762585fe3a099f3668590cc65094ab3fc8d91dadf98e"
+          },
+          {
+            "role": "causal",
+            "method": "unit-interventions-v1",
+            "body": {
+              "status": "observed",
+              "requested": [
+                [
+                  "0",
+                  "-2"
+                ],
+                [
+                  "1",
+                  "-2"
+                ],
+                [
+                  "0",
+                  "-1"
+                ]
+              ],
+              "observed": [
+                {
+                  "input": [
+                    "0",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "11",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "1",
+                    "-2"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "14",
+                    "effects": false
+                  }
+                },
+                {
+                  "input": [
+                    "0",
+                    "-1"
+                  ],
+                  "outcome": {
+                    "kind": "return",
+                    "value": "9",
+                    "effects": false
+                  }
+                }
+              ]
+            },
+            "digest": "61620fc1747475ad7b27e5978a2f3763a42f810ef57846d489d6134bede172a6"
+          },
+          {
+            "role": "mathematical",
+            "method": "affine-v1",
+            "body": {
+              "status": "proposed",
+              "candidate": {
+                "type": "affine-integer-v1",
+                "intercept": "7",
+                "coefficients": [
+                  "3",
+                  "-2"
+                ]
+              }
+            },
+            "digest": "7daccaa8174c8afeefc4425b3ff114a4d99ab3375aeb70c84e8711db28197b9d"
+          },
+          {
+            "role": "conceptual",
+            "method": "inference-port",
+            "body": {
+              "status": "proposed",
+              "hypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples."
+            },
+            "digest": "ca2e79afdf29ecf3d2eb1768a0b4d3760a12bfef2f476b8bedf4a7ad6fdad74b"
+          },
+          {
+            "role": "domain",
+            "method": "inference-port",
+            "body": {
+              "status": "proposed",
+              "hypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown."
+            },
+            "digest": "747c42d10a9b7b76159ae6303c3e2ae1e51be090228310cbf1eae7f7231c99d0"
+          },
+          {
+            "role": "skeptic",
+            "method": "independent-complete-domain-v1",
+            "body": {
+              "status": "verified-in-scope",
+              "checker": "finite-exact-v1",
+              "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+              "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+              "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+              "artifact": {
+                "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+                "size": 1929,
+                "producer": "typescript",
+                "method": "subprocess execution",
+                "run": "typescript-fixture-v1"
+              },
+              "source": {
+                "digest": "19273f4614605af5f5d3621a94a3c2b7a77b15f4a6484995f2d3cd3e7ce69a98",
+                "size": 271,
+                "producer": "typescript",
+                "method": "authored fixture",
+                "run": "typescript-fixture-v1"
+              },
+              "pythonCheck": {
+                "status": "verified-in-scope",
+                "checker": "finite-exact-v1",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+              },
+              "tsCheck": {
+                "status": "verified-in-scope",
+                "checker": "finite-exact-v1",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+              },
+              "pythonArtifact": {
+                "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+                "size": 1929,
+                "producer": "python",
+                "method": "subprocess execution",
+                "run": "python-fixture-v1"
+              }
+            },
+            "digest": "ff920e1ef023bf2dd3b62d3c623bd4c8a714274a85d8df9aa88ada95845de64b"
+          }
+        ],
+        "verification": {
+          "status": "verified-in-scope",
+          "checker": "finite-exact-v1",
+          "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+          "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+          "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+        },
+        "record": {
+          "claim": {
+            "schema": "claim-v1",
+            "subject": "fixed-research-fixture-pair",
+            "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+            "kind": "inferred",
+            "representation": {
+              "type": "finite-mapping",
+              "version": 1
+            },
+            "payload": {
+              "behavioralId": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+              "candidate": {
+                "type": "affine-integer-v1",
+                "intercept": "7",
+                "coefficients": [
+                  "3",
+                  "-2"
+                ]
+              }
+            },
+            "assumptions": [],
+            "dependencies": [],
+            "id": "efcb8e190eb6d39170a5b88c3ffa0ab50c3a629d137a87da8fa334576f293f08",
+            "evidenceRefs": [
+              "9984ee2b0d75670c83be1919da65eb2f47fb87cd6b6fbea248f9cb61620c9fa4"
+            ]
+          },
+          "status": "verified-in-scope",
+          "events": [
+            {
+              "kind": "artifact",
+              "record": {
+                "digest": "9984ee2b0d75670c83be1919da65eb2f47fb87cd6b6fbea248f9cb61620c9fa4",
+                "size": 234,
+                "producer": "python",
+                "method": "subprocess execution",
+                "run": "python-fixture-v1"
+              },
+              "seq": 1
+            },
+            {
+              "kind": "artifact",
+              "record": {
+                "digest": "0897966d2037a506868082cfffaa04ef9a1fd5e0ca2c425179f469d1570cef8d",
+                "size": 213,
+                "producer": "python",
+                "method": "authored fixture",
+                "run": "python-fixture-v1"
+              },
+              "seq": 2
+            },
+            {
+              "kind": "artifact",
+              "record": {
+                "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+                "size": 1929,
+                "producer": "python",
+                "method": "subprocess execution",
+                "run": "python-fixture-v1"
+              },
+              "seq": 3
+            },
+            {
+              "kind": "artifact",
+              "record": {
+                "digest": "19273f4614605af5f5d3621a94a3c2b7a77b15f4a6484995f2d3cd3e7ce69a98",
+                "size": 271,
+                "producer": "typescript",
+                "method": "authored fixture",
+                "run": "typescript-fixture-v1"
+              },
+              "seq": 4
+            },
+            {
+              "kind": "claim",
+              "record": {
+                "schema": "claim-v1",
+                "subject": "fixed-research-fixture-pair",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "kind": "inferred",
+                "representation": {
+                  "type": "finite-mapping",
+                  "version": 1
+                },
+                "payload": {
+                  "behavioralId": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                  "candidate": {
+                    "type": "affine-integer-v1",
+                    "intercept": "7",
+                    "coefficients": [
+                      "3",
+                      "-2"
+                    ]
+                  }
+                },
+                "assumptions": [],
+                "dependencies": [],
+                "id": "efcb8e190eb6d39170a5b88c3ffa0ab50c3a629d137a87da8fa334576f293f08",
+                "evidenceRefs": [
+                  "9984ee2b0d75670c83be1919da65eb2f47fb87cd6b6fbea248f9cb61620c9fa4"
+                ]
+              },
+              "seq": 5
+            },
+            {
+              "kind": "assessment",
+              "claimId": "efcb8e190eb6d39170a5b88c3ffa0ab50c3a629d137a87da8fa334576f293f08",
+              "result": {
+                "status": "verified-in-scope",
+                "checker": "finite-exact-v1",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+              },
+              "evidenceRefs": [
+                "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7"
+              ],
+              "seq": 6
+            }
+          ]
+        },
+        "verificationEvidence": {
+          "rows": [
+            {
+              "input": [
+                "0",
+                "-2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "11",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "0",
+                "-1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "9",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "0",
+                "0"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "7",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "0",
+                "1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "5",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "0",
+                "2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "3",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "1",
+                "-2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "14",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "1",
+                "-1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "12",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "1",
+                "0"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "10",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "1",
+                "1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "8",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "1",
+                "2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "6",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "2",
+                "-2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "17",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "2",
+                "-1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "15",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "2",
+                "0"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "13",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "2",
+                "1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "11",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "2",
+                "2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "9",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "3",
+                "-2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "20",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "3",
+                "-1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "18",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "3",
+                "0"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "16",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "3",
+                "1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "14",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "3",
+                "2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "12",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "4",
+                "-2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "23",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "4",
+                "-1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "21",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "4",
+                "0"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "19",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "4",
+                "1"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "17",
+                "effects": false
+              }
+            },
+            {
+              "input": [
+                "4",
+                "2"
+              ],
+              "outcome": {
+                "kind": "return",
+                "value": "15",
+                "effects": false
+              }
+            }
+          ],
+          "source": {
+            "digest": "19273f4614605af5f5d3621a94a3c2b7a77b15f4a6484995f2d3cd3e7ce69a98",
+            "size": 271,
+            "producer": "typescript",
+            "method": "authored fixture",
+            "run": "typescript-fixture-v1"
+          },
+          "artifact": {
+            "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+            "size": 1929,
+            "producer": "typescript",
+            "method": "subprocess execution",
+            "run": "typescript-fixture-v1"
+          }
+        },
+        "enabled": [
+          "structural",
+          "behavioral",
+          "causal",
+          "mathematical",
+          "conceptual",
+          "domain",
+          "skeptic"
+        ]
+      },
+      "deliberation": {
+        "sealedDigest": "998e21f501ee8eae2105c76706534db8d0ec0f1997fc83f4379394861c8fd75f",
+        "initial": [
+          {
+            "role": "conceptual",
+            "status": "proposed",
+            "hypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples.",
+            "rawHypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples."
+          },
+          {
+            "role": "domain",
+            "status": "proposed",
+            "hypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown.",
+            "rawHypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown."
+          },
+          {
+            "role": "mathematical",
+            "status": "proposed",
+            "candidate": {
+              "type": "affine-integer-v1",
+              "intercept": "7",
+              "coefficients": [
+                "3",
+                "-2"
+              ]
+            }
+          }
+        ],
+        "observationsAgree": true,
+        "results": [
+          {
+            "role": "conceptual",
+            "claimDigest": "dbd5907521f4ec25ca80c2e390eb90f7e7fc2644ceabd4dc9053091dd3cbedb2",
+            "original": {
+              "role": "conceptual",
+              "status": "proposed",
+              "hypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples.",
+              "rawHypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples."
+            },
+            "status": "unresolved",
+            "reason": "No supported machine-checkable mathematical claim"
+          },
+          {
+            "role": "domain",
+            "claimDigest": "558da4960775549b95b4dce87a0ad4da21012264f6284df8a66f6847fa826d37",
+            "original": {
+              "role": "domain",
+              "status": "proposed",
+              "hypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown.",
+              "rawHypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown."
+            },
+            "status": "unresolved",
+            "reason": "No supported machine-checkable mathematical claim"
+          },
+          {
+            "role": "mathematical",
+            "claimDigest": "8f7a378d2cb36552c78db09990fddc49531c8e6bc3f730dc7e0724b4ed63c05b",
+            "original": {
+              "role": "mathematical",
+              "status": "proposed",
+              "candidate": {
+                "type": "affine-integer-v1",
+                "intercept": "7",
+                "coefficients": [
+                  "3",
+                  "-2"
+                ]
+              }
+            },
+            "status": "verified-in-scope",
+            "checks": [
+              {
+                "source": "python",
+                "artifact": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+                "status": "verified-in-scope",
+                "checker": "finite-exact-v1",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+              },
+              {
+                "source": "typescript",
+                "artifact": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+                "status": "verified-in-scope",
+                "checker": "finite-exact-v1",
+                "contractId": "6a5ed12aac0839fc15fd623d76585839efe241543bc7c80b4f14866dced6fe64",
+                "expected": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+                "actual": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe"
+              }
+            ]
+          }
+        ],
+        "consensus": {
+          "status": "verified-in-scope",
+          "behavioralId": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+          "claimDigests": [
+            "8f7a378d2cb36552c78db09990fddc49531c8e6bc3f730dc7e0724b4ed63c05b"
+          ]
+        },
+        "evidence": [
+          {
+            "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+            "size": 1929,
+            "producer": "python",
+            "method": "subprocess execution",
+            "run": "python-fixture-v1"
+          },
+          {
+            "digest": "d57343eddc8b08bb7950c560d7e5193748bee18105749496dc9707b15cff93a7",
+            "size": 1929,
+            "producer": "typescript",
+            "method": "subprocess execution",
+            "run": "typescript-fixture-v1"
+          }
+        ]
+      },
+      "hypotheses": [
+        {
+          "role": "conceptual",
+          "status": "proposed",
+          "hypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples.",
+          "rawHypothesis": "The observed values (11, 14, 9) are consistent with the affine function f(x, y) = 3x + 5y + 11, but the data is insufficient to uniquely determine the coefficients; the relationship is a conjecture based on limited samples."
+        },
+        {
+          "role": "domain",
+          "status": "proposed",
+          "hypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown.",
+          "rawHypothesis": "The function appears to be an affine transformation of the form f(x, y) = 3x + 2y + 11, based on the provided observations: f(0, -2) = 11, f(1, -2) = 14, and f(0, -1) = 9. However, without additional observations or explicit business context, the specific business application remains unknown."
+        },
+        {
+          "role": "mathematical",
+          "status": "proposed",
+          "candidate": {
+            "type": "affine-integer-v1",
+            "intercept": "7",
+            "coefficients": [
+              "3",
+              "-2"
+            ]
+          }
+        }
+      ]
+    },
+    "rounds": [],
+    "status": "verified-in-scope",
+    "consensus": {
+      "status": "verified-in-scope",
+      "behavioralId": "6791e4aa85cb407cda45c7e6e91268010414e2ff7310f975fe93e48820f980fe",
+      "claimDigests": [
+        "8f7a378d2cb36552c78db09990fddc49531c8e6bc3f730dc7e0724b4ed63c05b"
+      ]
+    },
+    "verifiedClaimDigests": [
+      "8f7a378d2cb36552c78db09990fddc49531c8e6bc3f730dc7e0724b4ed63c05b"
+    ],
+    "unresolvedContradictions": [],
+    "maxRounds": 2
+  }
+}

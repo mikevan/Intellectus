@@ -1,0 +1,16 @@
+import {writeFileSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {contract} from './knowledge.mjs';
+import {investigateFixture} from './committee.mjs';
+import {structuralPort,colibriPort} from './specialist-ports.mjs';
+const [root,model,out]=process.argv.slice(2);
+if(!root||!model||!out)throw Error('Usage: node live-committee.mjs <monorepo> <configured-model-id> <new-result-file>');
+const telemetry=[];
+const port=colibriPort({model,apiKey:process.env.COLI_API_KEY});
+const tracked=async input=>{const result=await port(input);telemetry.push({role:input.role,...result.telemetry});return result;};
+const result=await investigateFixture(contract([['0','4'],['-2','2']]),{structural:structuralPort(root),conceptual:tracked,domain:tracked});
+const roles=['conceptual','domain'];
+const livePassed=roles.every(role=>result.initial.find(x=>x.role===role)?.body.status==='proposed')&&telemetry.length===2&&result.record?.status==='verified-in-scope';
+writeFileSync(resolve(out),JSON.stringify({livePassed,telemetry,result},null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({livePassed,roles:roles.map(role=>({role,status:result.initial.find(p=>p.role===role)?.body.status})),telemetry},null,2));
+if(!livePassed)process.exitCode=1;

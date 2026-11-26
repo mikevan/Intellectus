@@ -1,0 +1,40 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtempSync,readFileSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {join} from 'node:path';
+import {contract,tuples,behavioralIdentity,evidence,claim,verifyFinite,ResearchJournal} from './knowledge.mjs';
+const c=contract([['0','2'],['0','1']]);
+const rows=tuples(c).map(input=>({input,outcome:{kind:'return',value:String(BigInt(input[0])+BigInt(input[1])),effects:false}}));
+const altered=structuredClone(rows);altered.at(-1).outcome.value='99';
+test('normalization independent of observation order',()=>assert.deepEqual(behavioralIdentity(c,rows),behavioralIdentity(c,[...rows].reverse())));
+test('negative control diverges',()=>assert.notEqual(behavioralIdentity(c,rows).id,behavioralIdentity(c,altered).id));
+test('incomplete, duplicate, out-of-domain and observable-effect rows rejected',()=>{
+ assert.throws(()=>behavioralIdentity(c,rows.slice(1)),/Incomplete/);
+ assert.throws(()=>behavioralIdentity(c,[...rows,rows[0]]),/Duplicate/);
+ const wrong=structuredClone(rows);wrong[0].input[0]='3';assert.throws(()=>behavioralIdentity(c,wrong),/Out of domain/);
+ wrong[0].input[0]='0';wrong[0].outcome.effects=true;assert.throws(()=>behavioralIdentity(c,wrong),/violation/);
+});
+test('noncanonical integer and tampered scope rejected',()=>{assert.throws(()=>contract([['00','2']]));assert.throws(()=>behavioralIdentity({...c,id:'fake'},rows),/Contract mismatch/);});
+test('different contracts cannot be conflated',()=>assert.notEqual(contract([['0','1']]).id,c.id));
+test('verifier reports concrete contradiction',()=>assert.deepEqual(verifyFinite(c,rows,altered).counterexample,{input:['2','1'],predicted:'3',observed:'99'}));
+test('journal replay, provenance, and dependent invalidation',()=>{
+ const dir=mkdtempSync(join(tmpdir(),'intellectus-knowledge-')),path=join(dir,'journal.ndjson'),j=new ResearchJournal(path);
+ const artifact=evidence(JSON.stringify(rows),'fixture-runner','execution','run-1');j.recordArtifact(artifact);
+ const spec={subject:'opaque-A',contractId:c.id,kind:'inferred',representation:{type:'finite-mapping',version:1},payload:{behavioralId:behavioralIdentity(c,rows).id},evidenceRefs:[artifact.digest]};
+ const a=claim(spec),b=claim({...spec,subject:'opaque-B',dependencies:[a.id]});
+ j.recordClaim(a);j.recordClaim(b);
+ assert.throws(()=>j.assessFinite(b.id,c,rows,rows,[artifact.digest]),/Unverified dependency/);
+ j.assessFinite(a.id,c,rows,rows,[artifact.digest]);j.assessFinite(b.id,c,rows,rows,[artifact.digest]);
+ const bad=evidence(JSON.stringify(altered),'fixture-runner','execution','run-2');j.recordArtifact(bad);
+ j.assessFinite(a.id,c,rows,altered,[bad.digest]);
+ const restored=new ResearchJournal(path);assert.equal(restored.state.get(a.id),'contradicted');assert.equal(restored.state.get(b.id),'unresolved');
+ assert.equal(restored.events.length,j.events.length);assert.ok(readFileSync(path,'utf8').includes('counterexample'));
+});
+test('unknown evidence references refused',()=>{const j=new ResearchJournal();const a=claim({subject:'x',contractId:c.id,kind:'inferred',representation:{type:'finite-mapping',version:1},payload:{behavioralId:'x'},evidenceRefs:['missing']});assert.throws(()=>j.recordClaim(a),/Unknown evidence/);});
+test('unrelated evidence cannot authorize a verified claim',()=>{
+ const j=new ResearchJournal(),a=evidence('unrelated','observer','execution','run-x');j.recordArtifact(a);
+ const r=claim({subject:'x',contractId:c.id,kind:'inferred',representation:{type:'finite-mapping',version:1},payload:{behavioralId:behavioralIdentity(c,rows).id},evidenceRefs:[a.digest]});j.recordClaim(r);
+ assert.throws(()=>j.assessFinite(r.id,c,rows,rows,[a.digest]),/exact observed rows/);
+ assert.equal(j.state.get(r.id),'proposed');
+});
