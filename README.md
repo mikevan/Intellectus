@@ -2,11 +2,33 @@
 
 **Semantic Software Engineering Platform**
 
-Michael Van Geertruy | Open research | Experimental software
+[Visit the Intellectus website](https://mikevan.github.io/Intellectus/)
 
-Intellectus is an open-source research project investigating how to verify what software does independently of its implementation. The research combines deterministic analysis, independent verification and specialized AI hypotheses in an evidence-grounded knowledge model.
+## Our mission
+The mission of Intellectus is to develop and maintain an open-source Semantic Software Engineering Platform that enables artificial intelligence systems to understand the purpose, behavior, and methods of software systems by applying a flow-based semantic model represented through a temporal ontology.
 
-[Visit the Intellectus website](https://mikevan.github.io/Intellectus/) · [Semantic model](site/ArchitectureRepository/ProjectDocumentation/semantic-model.md)
+Through independently operating specialist models, deterministic analysis, LoRA training, and Colibri-based inference, Intellectus seeks to acquire, verify, preserve, and apply that understanding independently of the original implementation.
+
+## Why Intellectus?
+Software contains knowledge about how to accomplish tasks, but that knowledge is usually bound to source code, frameworks and runtime assumptions. Intellectus investigates whether an AI system can acquire the meaning of a software system, retain it independently, and use it to construct a new implementation. The goal is understanding, not translation.
+
+## Explore the project
+- [Projects and modules](https://mikevan.github.io/Intellectus/projects.html) — the modular runtime and research components.
+- [Get started](https://mikevan.github.io/Intellectus/get-started.html) — begin with the research model and reproduction prerequisites.
+- [Documentation](https://mikevan.github.io/Intellectus/documentation.html) — user, developer and architecture guides.
+- [Research](https://mikevan.github.io/Intellectus/research.html) — questions, methods, results and future work.
+- [Architecture Repository](https://mikevan.github.io/Intellectus/archive.html) — original research records and source documents.
+- [Analytics](https://mikevan.github.io/Intellectus/analytics.html) — measured historical results and their interpretation.
+- [Downloads](https://mikevan.github.io/Intellectus/downloads.html) — releases, compatibility and verification.
+- [Community](https://mikevan.github.io/Intellectus/community.html) — contribute and participate.
+
+## Understanding through reconstruction
+[The round-trip experiment](https://mikevan.github.io/Intellectus/round-trip.html) starts with Python, acquires a temporal ontology, generates TypeScript, then independently acquires a new ontology from TypeScript and reconstructs Python without the original source. Independent verification compares the two Python applications.
+
+## Semantic-first development
+[The semantic-first workflow](https://mikevan.github.io/Intellectus/semantic-first.html) starts with a developer-authored semantic model rather than existing source. The model expresses required behavior; languages become implementation choices.
+
+[Charter](https://mikevan.github.io/Intellectus/charter.html) · [Standards](https://mikevan.github.io/Intellectus/standards.html) · [Validation](https://mikevan.github.io/Intellectus/testing.html) · [Glossary](https://mikevan.github.io/Intellectus/glossary.html) · [Semantic model](https://mikevan.github.io/Intellectus/semantic-model.html)
 
 ## Research at a glance
 
