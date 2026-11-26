@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="429" viewBox="0 0 900 429" role="img"><title>Cumulative inference duration</title><rect width="100%" height="100%" rx="12" fill="#f8fafc"/>
+<text x="24" y="30" font-family="Arial,sans-serif" font-size="22" fill="#172b46" font-weight="bold">Cumulative inference duration</text>
+<text x="24" y="53" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Sum of invocation elapsed time, not end-to-end wall clock.</text>
+<rect x="24" y="66" width="14" height="14" fill="#64748b"/>
+<text x="44" y="78" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Seconds</text>
+<text x="24" y="123" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Initial</text>
+<rect x="175" y="106" width="298.87" height="16" rx="2" fill="#64748b"/>
+<text x="480.8698200083717" y="119" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">119 s</text>
+<text x="24" y="199" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Deliberation</text>
+<rect x="175" y="182" width="317.71" height="16" rx="2" fill="#64748b"/>
+<text x="499.7061532021766" y="195" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">126.5 s</text>
+<text x="24" y="275" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Typed</text>
+<rect x="175" y="258" width="570.11" height="16" rx="2" fill="#64748b"/>
+<text x="752.1130179991628" y="271" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">227 s</text>
+<text x="24" y="351" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Concise</text>
+<rect x="175" y="334" width="326.75" height="16" rx="2" fill="#64748b"/>
+<text x="508.747593135203" y="347" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">130.1 s</text>
+</svg>

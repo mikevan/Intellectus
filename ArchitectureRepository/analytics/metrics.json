@@ -1,0 +1,155 @@
+{
+  "roundtrip": [
+    {
+      "id": "RT-1",
+      "cases": 40004,
+      "before": {
+        "cyclomatic": 6,
+        "campbell": 16,
+        "mbcc": 21
+      },
+      "after": {
+        "cyclomatic": 4,
+        "campbell": 8,
+        "mbcc": 7
+      },
+      "optimization": true,
+      "evidence": "experiments/RT-1/run-01/results.json"
+    },
+    {
+      "id": "RT-2",
+      "cases": 202,
+      "before": {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      },
+      "after": {
+        "cyclomatic": 2,
+        "campbell": 2,
+        "mbcc": 1
+      },
+      "optimization": true,
+      "evidence": "experiments/RT-2/run-03/results.json"
+    },
+    {
+      "id": "RT-3",
+      "cases": 40004,
+      "before": {
+        "cyclomatic": 6,
+        "campbell": 16,
+        "mbcc": 21
+      },
+      "after": {
+        "cyclomatic": 6,
+        "campbell": 16,
+        "mbcc": 21
+      },
+      "optimization": false,
+      "evidence": "experiments/RT-3/run-01/results.json"
+    },
+    {
+      "id": "RT-4",
+      "cases": 202,
+      "before": {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      },
+      "after": {
+        "cyclomatic": 3,
+        "campbell": 5,
+        "mbcc": 6
+      },
+      "optimization": false,
+      "evidence": "experiments/RT-4/run-01/results.json"
+    }
+  ],
+  "live": [
+    {
+      "label": "Initial",
+      "passed": true,
+      "typed": null,
+      "calls": 2,
+      "prompt": 471,
+      "completion": 74,
+      "ms": 119033,
+      "evidence": "evidence/phase-I/live-committee-20261126-011149-7d31dc66.json"
+    },
+    {
+      "label": "Deliberation",
+      "passed": false,
+      "typed": false,
+      "calls": 2,
+      "prompt": 561,
+      "completion": 170,
+      "ms": 126476,
+      "evidence": "evidence/phase-I/live-deliberation-20261126-012738-70723710.json"
+    },
+    {
+      "label": "Typed",
+      "passed": false,
+      "typed": false,
+      "calls": 2,
+      "prompt": 365,
+      "completion": 512,
+      "ms": 226955,
+      "evidence": "evidence/phase-I/live-typed-deliberation-20261126-013954-3ed44904.json"
+    },
+    {
+      "label": "Concise",
+      "passed": true,
+      "typed": true,
+      "calls": 4,
+      "prompt": 820,
+      "completion": 209,
+      "ms": 130068,
+      "evidence": "evidence/phase-I/live-concise-deliberation-20261126-015216-dc8477f1.json"
+    }
+  ],
+  "pilot": {
+    "runs": 2,
+    "verificationCasesPerRun": 60,
+    "discoveryCasesPerRun": 48,
+    "subjects": 6,
+    "distinctIdentities": 3,
+    "identicalEvidence": true,
+    "evidence": [
+      "evidence/phase-I/pilot-56348eb740814dcfbd66090989adcf46.json",
+      "evidence/phase-I/pilot-5c4b6680b7c34b92b238aa926f2267e4.json"
+    ]
+  },
+  "rt1Benchmark": {
+    "calls_per_sample": 200010,
+    "samples_per_implementation": 9,
+    "median_ms": {
+      "original": 26.4085,
+      "improved": 21.4468
+    },
+    "raw_ms": {
+      "original": [
+        38.1799,
+        26.4085,
+        23.038,
+        28.0087,
+        39.4003,
+        21.337,
+        22.3373,
+        27.9082,
+        19.1845
+      ],
+      "improved": [
+        21.3229,
+        30.5982,
+        25.9867,
+        18.916,
+        19.5215,
+        24.0283,
+        26.3678,
+        20.177,
+        21.4468
+      ]
+    },
+    "note": "Local illustrative timing; not a release or platform-wide performance guarantee."
+  }
+}

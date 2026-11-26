@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="429" viewBox="0 0 900 429" role="img"><title>Local inference by qualification</title><rect width="100%" height="100%" rx="12" fill="#f8fafc"/>
+<text x="24" y="30" font-family="Arial,sans-serif" font-size="22" fill="#172b46" font-weight="bold">Local inference by qualification</text>
+<text x="24" y="53" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Prompt and completion token counts; not external API charges.</text>
+<rect x="24" y="66" width="14" height="14" fill="#64748b"/>
+<text x="44" y="78" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Prompt</text>
+<rect x="274" y="66" width="14" height="14" fill="#087f8c"/>
+<text x="294" y="78" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Completion</text>
+<text x="24" y="123" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Initial</text>
+<rect x="175" y="106" width="327.40" height="16" rx="2" fill="#64748b"/>
+<text x="509.4024390243902" y="119" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">471</text>
+<rect x="175" y="127" width="51.44" height="16" rx="2" fill="#087f8c"/>
+<text x="233.4390243902439" y="140" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">74</text>
+<text x="24" y="199" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Deliberation</text>
+<rect x="175" y="182" width="389.96" height="16" rx="2" fill="#64748b"/>
+<text x="571.9634146341464" y="195" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">561</text>
+<rect x="175" y="203" width="118.17" height="16" rx="2" fill="#087f8c"/>
+<text x="300.1707317073171" y="216" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">170</text>
+<text x="24" y="275" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Typed</text>
+<rect x="175" y="258" width="253.72" height="16" rx="2" fill="#64748b"/>
+<text x="435.719512195122" y="271" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">365</text>
+<rect x="175" y="279" width="355.90" height="16" rx="2" fill="#087f8c"/>
+<text x="537.9024390243902" y="292" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">512</text>
+<text x="24" y="351" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Concise</text>
+<rect x="175" y="334" width="570.00" height="16" rx="2" fill="#64748b"/>
+<text x="752.0" y="347" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">820</text>
+<rect x="175" y="355" width="145.28" height="16" rx="2" fill="#087f8c"/>
+<text x="327.280487804878" y="368" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">209</text>
+</svg>

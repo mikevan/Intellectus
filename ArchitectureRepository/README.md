@@ -1,30 +1,45 @@
-# Intellectus â€” Architecture Repository
+# Intellectus | Architecture Repository
 
-Intellectus investigates implementation-independent computational understanding through reproducible experiments, heterogeneous analytical specialists, and evidence-grounded knowledge. RT-1â€“4 established restricted reconstruction and exposed the need for a deeper semantic model. The next stage is research, not a claim of production readiness.
+**Research director: Michael Van Geertruy**
 
-## Start here
-- [Research continuity and succession charter](Intellectus-Research-Continuity.md)
-- [RT-1â€“4 research summary](research/Intellectus-RT-1-4-Research-Summary.md)
-- [Architecture and implementation plan](architecture/Intellectus-Architecture-and-Implementation-Plan.md)
-- [Phase I research foundation](research/Phase-I-Research-Foundation.md)
-- [Style manual](standards/Intellectus-Style-Manual.md)
+The research program seeks an evidence-grounded representation of computational meaning that is not dictated by programming language or implementation. Its findings are published openly, including unsuccessful hypotheses.
+
+## Research portfolio
+
+| Read | Purpose |
+|---|---|
+| [Analytics and charts](analytics/README.md) | Quantitative results, complexity, local inference overhead, verified behavior |
+| [Testing curriculum](research/Testing-Curriculum.md) | Research questions, controls, gates, sequence and status |
+| [Research decision register](research/Research-Decision-Register.md) | Evidence supporting each architectural direction |
+| [Research continuity charter](Intellectus-Research-Continuity.md) | Intellectual vision, authorship, roadmap and reproduction |
+| [Current scope](research/Current-Research-Scope.md) | Contemporary understanding first; future reasoning deferred |
+| [Architecture and implementation plan](architecture/Intellectus-Architecture-and-Implementation-Plan.md) | Research backend and technical roadmap |
+| [Semantic knowledge contract](architecture/Semantic-Knowledge-Contract.md) | Claim, evidence and specialist interfaces |
+| [Style manual](standards/Intellectus-Style-Manual.md) | Documentation and engineering conventions |
+
+![Round-trip complexity](analytics/mbcc.svg)
+
+## Experimental record
+
+| Stage | State | Reports |
+|---|---|---|
+| RT-1 | Complete | [Report](experiments/RT-1/RT-1-Experiment-Report.md) |
+| RT-2 | Complete | [Protocol](experiments/RT-2/RT-2-Experiment-Protocol.md), [report](experiments/RT-2/RT-2-Experiment-Report.md) |
+| RT-3 | Complete | [Report](experiments/RT-3/RT-3-Experiment-Report.md) |
+| RT-4 | Complete | [Report](experiments/RT-4/RT-4-Experiment-Report.md) |
+| RT-1–4 interpretation | Complete | [Research summary](research/Intellectus-RT-1-4-Research-Summary.md) |
+| Phase I | Qualified operationally | [Foundation](research/Phase-I-Research-Foundation.md), [findings](research/Phase-I-Live-Deliberation-Findings.md) |
+| P1/P2 | Engineering pilots passed | [Findings](research/P1-P2-Pilot-Findings.md) |
+| P3/P4 | Planned | [Curriculum](research/Testing-Curriculum.md) |
+| RT-5 | Draft; not executed | [Draft protocol](experiments/RT-5/RT-5-Draft-Protocol.md) |
+
+## Design and evidence
+
+- [Research direction and owner decisions](architecture/Research-Direction.md)
+- [Architecture ADR](architecture/ADR-001-Intellectus-Architecture.md)
 - [Future linguistic sharding spike](research/Intellectus-Linguistic-Sharding-Spike.md)
-- [Research direction and decisions](architecture/Research-Direction.md)
+- [Raw qualification evidence](evidence/phase-I/)
+- [Historical artifact manifest](evidence/historical-manifest.json)
+- [Research implementation](../Understanding/research/knowledge/)
 
-## Experiments
-- [RT-1](experiments/RT-1/RT-1-Experiment-Report.md)
-- [RT-2 protocol](experiments/RT-2/RT-2-Experiment-Protocol.md) and [report](experiments/RT-2/RT-2-Experiment-Report.md)
-- [RT-3](experiments/RT-3/RT-3-Experiment-Report.md)
-- [RT-4](experiments/RT-4/RT-4-Experiment-Report.md)
-
-Historical documents retain their original wording, including former internal classification and original machine paths. The project owner has authorized open research publication. Historical paths describe the original test environment; the accompanying artifact directories preserve selected evidence, not a complete standalone build environment.
-
-Original evidence is preserved at its original local paths. New documentation belongs in this hierarchy; do not edit frozen experiment records retrospectively.
-
-## Phase I redesign (proposals for review)
-
-- [Semantic knowledge and specialist contracts](architecture/Semantic-Knowledge-Contract.md)
-- [RT-5 draft protocol](experiments/RT-5/RT-5-Draft-Protocol.md)
-- [Phase I live deliberation findings](research/Phase-I-Live-Deliberation-Findings.md)
-- [Current research scope](research/Current-Research-Scope.md)
-- [P1/P2 engineering pilot findings](research/P1-P2-Pilot-Findings.md)
+Historical documents retain their original wording, former internal classification and machine paths. The owner authorized open research publication. The supplied artifact directories are selected preserved evidence, not a complete standalone build environment. New analyses interpret, but do not modify, frozen experiment records.

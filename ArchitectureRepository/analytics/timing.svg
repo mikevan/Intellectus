@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="201" viewBox="0 0 900 201" role="img"><title>RT-1 local timing observation</title><rect width="100%" height="100%" rx="12" fill="#f8fafc"/>
+<text x="24" y="30" font-family="Arial,sans-serif" font-size="22" fill="#172b46" font-weight="bold">RT-1 local timing observation</text>
+<text x="24" y="53" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Nine samples per implementation; 200,010 calls per sample.</text>
+<rect x="24" y="66" width="14" height="14" fill="#64748b"/>
+<text x="44" y="78" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Original</text>
+<rect x="274" y="66" width="14" height="14" fill="#087f8c"/>
+<text x="294" y="78" font-family="Arial,sans-serif" font-size="13" fill="#172b46" font-weight="normal">Improved</text>
+<text x="24" y="123" font-family="Arial,sans-serif" font-size="14" fill="#172b46" font-weight="bold">Median</text>
+<rect x="175" y="106" width="570.00" height="16" rx="2" fill="#64748b"/>
+<text x="752.0" y="119" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">26.4085 ms</text>
+<rect x="175" y="127" width="462.91" height="16" rx="2" fill="#087f8c"/>
+<text x="644.9068671071814" y="140" font-family="Arial,sans-serif" font-size="12" fill="#172b46" font-weight="normal">21.4468 ms</text>
+</svg>
