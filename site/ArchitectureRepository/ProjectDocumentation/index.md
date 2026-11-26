@@ -5,6 +5,8 @@ The mission of Intellectus is to develop and maintain an open-source Semantic So
 
 Through independently operating specialist models, deterministic analysis, LoRA training, and Colibri-based inference, Intellectus seeks to acquire, verify, preserve, and apply that understanding independently of the original implementation.
 
+[Source code](https://github.com/mikevan/Intellectus)
+
 ## Why Intellectus?
 Software contains knowledge about how to accomplish tasks, but that knowledge is usually bound to source code, frameworks and runtime assumptions. Intellectus investigates whether an AI system can acquire the meaning of a software system, retain it independently, and use it to construct a new implementation. The goal is understanding, not translation.
 
