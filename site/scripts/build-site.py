@@ -33,7 +33,16 @@ def render(body):
     while i<len(lines):
         l=lines[i];i+=1
         if not l.strip():continue
-        if l.startswith("#"):
+        if l.startswith("~~~"):
+            code = []
+            while i < len(lines) and lines[i] != "~~~":
+                code.append(lines[i])
+                i += 1
+            if i == len(lines):
+                raise ValueError("Unclosed code fence")
+            i += 1
+            out.append("<pre><code>" + html.escape("\n".join(code)) + "</code></pre>")
+        elif l.startswith("#"):
             n=len(l)-len(l.lstrip("#"));n=min(n+1,6);out.append(f"<h{n}>{inline(l.lstrip('# '))}</h{n}>")
         elif l.startswith("|"):
             rows=[l]
