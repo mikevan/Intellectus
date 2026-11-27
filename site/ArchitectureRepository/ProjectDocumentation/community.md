@@ -3,6 +3,9 @@
 Intellectus welcomes contributors in software engineering, semantic modeling, AI research, experimental design, documentation and review.
 
 ## Participation
+
+[Join GitHub Discussions](https://github.com/mikevan/Intellectus/discussions) to ask research questions, share reproduction results, and give feedback on upcoming experiments.
+
 Use the repository's public issues and pull requests to propose changes and discuss alternatives. Record technical decisions in an archived location; seek consensus, retain dissent and explain the decision. Credit substantive contributions and preserve research attribution. Access should reflect sustained contribution and demonstrated responsibility.
 
 ## Conduct and governance
