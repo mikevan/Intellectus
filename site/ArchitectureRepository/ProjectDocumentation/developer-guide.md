@@ -9,19 +9,23 @@ Document service capabilities, inputs/outputs, wiring, activation/deactivation, 
 ## Claims and data
 Preserve immutable evidence references; distinguish structural fingerprint from scoped semantic identity. Do not overwrite historical assertions when retracting a claim: append a revision. Keep lexical details separate from meaning unless they affect the contract.
 
+## Local development setup
+
+Use Python 3.10 or later for the P3 and P4 runners. P1/P2 and deterministic preflights do not require a model server. For live model experiments, follow [Set up Colibri for local inference on Windows](colibri-setup.md).
+
 ## Reproduce the P3 experiment
 
-1. Open the [P3 research directory](https://github.com/mikevan/Intellectus/tree/main/site/ArchitectureRepository/research/P3) and use the commit recorded for the run you want to reproduce. The [Colibri runbook](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Colibri-Runbook.md) contains copyable PowerShell commands.
+1. Open the [P3 research directory](https://github.com/mikevan/Intellectus/tree/main/site/ArchitectureRepository/research/P3) and use the commit recorded for the run you want to reproduce. The [P3 runbook](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Colibri-Runbook.md) contains the trial commands.
 2. Run the deterministic preflight with Python 3.10 or later. It needs no model server and should pass all 12 cases and 300 oracle checks. Stop if any check fails.
-3. Start Colibri v2.1.0 with the recorded Qwen3.6-35B-A3B checkpoint and runtime settings. Check that the local models endpoint lists intellectus-qwen36 before running the live arm.
+3. Complete the shared Colibri setup with the checkpoint and runtime settings recorded for the trial.
 4. Use a fresh output file for each live run. Compare the disposition for each case with the deterministic control and review the explanation for each withdrawal.
 
-Match the checkpoint revision or weight hashes, runtime build, effective backend and engine settings, prompts, and scoring rules. The model alias identifies the API target. The checkpoint provenance identifies the weights used. Exact Phase I runtime settings were not recorded, so the P3 runbook describes the current setup.
+Match the checkpoint revision or weight hashes, runtime build, effective backend and engine settings, prompts, and scoring rules. The model alias identifies the API target. The checkpoint provenance identifies the weights used. Exact Phase I runtime settings were not recorded, so use the settings recorded for the specific P3 run.
 
 ## Reproduce the P4 pilots
 
 1. Open the [P4 research directory](https://github.com/mikevan/Intellectus/tree/main/site/ArchitectureRepository/research/P4). Run preflight.py from the P4 directory or use run.py without an output path to prepare the 24 requests without inference.
-2. Use the recorded Colibri checkpoint and the P3 runbook to verify the local model endpoint. The P4 runner requires a model, a provenance file, and a fresh output path. Select pilot mode for an exploratory repeat. Formal mode requires recorded independent review of the exact artifact hashes.
+2. Use the shared Colibri setup and the recorded checkpoint to verify the local model endpoint. The P4 runner requires a model, a provenance file, and a fresh output path. Select pilot mode for an exploratory repeat. Formal mode requires recorded independent review of the exact artifact hashes.
 3. For Pilot 02, append the instruction in the follow-up amendment to the system prompt. Use the prompt and condition order in the raw manifest to confirm what was sent. Score against the rubric and preserve the raw responses and both diagnostic and strict scores.
 
 ## Review checklist
