@@ -11,7 +11,7 @@ Preserve immutable evidence references; distinguish structural fingerprint from 
 
 ## Local development setup
 
-Use Python 3.10 or later for the P3 and P4 runners. P1/P2 and deterministic preflights do not require a model server. For live model experiments, follow [Set up Colibri for local inference on Windows](colibri-setup.md).
+Use the [experiment environment setup](experiment-setup.md) to install Java, Python, Node.js, Karaf, and Colibri. Then follow the [run instructions for your experiment](experiment-runs.md).
 
 ## Reproduce the P3 experiment
 

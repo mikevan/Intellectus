@@ -17,6 +17,8 @@ P4 tested whether supplied business context clarifies ambiguous computations. Th
 - P4 domain contribution — [Pilot 01 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-01-Findings.md) and [Pilot 02 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-02-Findings.md)
 - [Research archive](archive.html) — protocols, fixtures, raw responses, and provenance
 
+Use the [experiment run instructions](experiment-runs.md) to reproduce a recorded run after completing the shared setup.
+
 ## Candidate experimental sequence
 | Trial | Question |
 |---|---|

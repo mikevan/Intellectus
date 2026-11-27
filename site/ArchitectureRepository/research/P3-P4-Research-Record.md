@@ -1,5 +1,7 @@
 # P3 and P4 research record
 
+To reproduce these runs, complete the [shared environment setup](../ProjectDocumentation/experiment-setup.md), then follow the [P3 commands](P3/Run.md) or [P4 commands](P4/Run.md).
+
 ## P3 — Deliberative correction
 
 [Aim and protocol](P3/Protocol.md) · [Windows reproduction](P3/Colibri-Runbook.md)

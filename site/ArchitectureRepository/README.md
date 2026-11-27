@@ -19,6 +19,8 @@ The research program seeks an evidence-grounded representation of computational 
 
 ![Round-trip complexity](analytics/mbcc.svg)
 
+Start with the [experiment environment setup](ProjectDocumentation/experiment-setup.md), then choose the [run instructions for the experiment](ProjectDocumentation/experiment-runs.md).
+
 ## Experimental record
 
 | Stage | State | Reports |

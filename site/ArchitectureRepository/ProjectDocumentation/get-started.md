@@ -6,6 +6,8 @@
 - Developer: read the [architecture](architecture.md), [semantic model](semantic-model.md) and [developer guide](developer-guide.md).
 
 ## Runtime prerequisites
+
+For a research checkout, start with the [experiment environment setup](experiment-setup.md), then use the [experiment run instructions](experiment-runs.md).
 The reported historical Karaf prototype used Java 17 and Karaf 4.4.13. Python and Node/TypeScript tooling were used for the restricted experiments. These are historical observations, not a supported-version matrix for a public release. Check the actual checkout's build descriptors, dependency locks and documented experiment prerequisites.
 
 ## Install and run
