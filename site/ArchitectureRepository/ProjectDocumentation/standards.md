@@ -3,6 +3,10 @@
 ## Information architecture
 Organize the site around Projects, Get Started, Documentation, Research, Downloads and Community. Manuals use explicit versions; examples separate intended behavior from results. Use accessible navigation and consistent Intellectus navy/blue styling. Canonical source documents live in ArchitectureRepository; a generated static site is a publication view.
 
+## Test and research workflow
+
+Do not create Git branches for tests or research experiments. Work on main and keep each research experiment in a dedicated directory within the research area.
+
 ## Required records
 | Record | Required fields |
 |---|---|

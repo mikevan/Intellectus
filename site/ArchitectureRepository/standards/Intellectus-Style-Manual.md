@@ -44,6 +44,8 @@ Use PascalCase names for named modules. Do not invent an alternative brand, plur
 
 ## 4. Research style
 
+Do not create Git branches for tests or research experiments. Work on main and keep each research experiment in a dedicated directory within the research area.
+
 1. State the question, domain and limitations, independent obligations, predictions, controls, falsifiers, and acceptance criteria before the run.
 2. Freeze the approved protocol and baseline; do not build experiment implementation before protocol approval.
 3. A completed experiment is an immutable research record. Never retrospectively repair it to fit later decisions. Record defects, limitations, and their proposed remedy in the next experiment.
