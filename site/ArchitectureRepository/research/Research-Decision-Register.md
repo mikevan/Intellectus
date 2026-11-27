@@ -16,7 +16,7 @@ Michael Van Geertruy — research direction and evidentiary rationale
 | Open research and continuity | Owner explicitly directed publication of source, failures and decisions | Preserve historical artifacts and transparent attribution |
 
 | Keep AI revision behind independent verification | Both P3 runs missed qualification. The second prompt improved withdrawal and retention without improving repair. | Preserve both runs and require separate verification before promotion. |
-| Require evidence-backed business records | The second P4 pilot conveyed 8/8 interpretations but verified 0/8 under the field-level rubric. | Test explicit business-record fields and cited text on fresh cases before formal qualification. |
+| Establish application flow before contextual explanation | The owner directed deterministic flow extraction using the decision constructs MBCC scores, with decision counts for each path. | Start with the [Python Hello World pilot](Application-Flow/Protocol.md). Give Colibri the verified flow and function evidence in sequence, then request one explanation. |
 
 See the [P3 and P4 research record](P3-P4-Research-Record.md) for the paired results and the distinction between tested changes and proposals.
 
