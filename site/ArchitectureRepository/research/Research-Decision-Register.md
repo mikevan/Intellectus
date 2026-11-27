@@ -15,6 +15,11 @@ Michael Van Geertruy — research direction and evidentiary rationale
 | Defer temporal and strategic reasoning | Present-state understanding remains incomplete | Retain long-term vision in charter but exclude from current implementation |
 | Open research and continuity | Owner explicitly directed publication of source, failures and decisions | Preserve historical artifacts and transparent attribution |
 
+| Keep AI revision behind independent verification | Both P3 runs missed qualification. The second prompt improved withdrawal and retention without improving repair. | Preserve both runs and require separate verification before promotion. |
+| Require evidence-backed business records | The second P4 pilot conveyed 8/8 interpretations but verified 0/8 under the field-level rubric. | Test explicit business-record fields and cited text on fresh cases before formal qualification. |
+
+See the [P3 and P4 research record](P3-P4-Research-Record.md) for the paired results and the distinction between tested changes and proposals.
+
 ## Interpretation of the research trajectory
 
 The early tests were deliberately paired to discriminate reconstruction fidelity from optimization. Their success against operational obligations was not treated as proof of the broader hypothesis. Michael identified the mismatch between structural preservation and semantic abstraction and directed the redesign. The live committee then demonstrated that orchestration and structured output are not sufficient for substantive understanding. The deterministic pilots supply a measurable comparison point rather than a claim that the research objective is solved.

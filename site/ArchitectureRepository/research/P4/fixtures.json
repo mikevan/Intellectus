@@ -1,0 +1,530 @@
+[
+  {
+    "id": "C01",
+    "form": "difference",
+    "code": "max(0, x - y)",
+    "observed": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        3,
+        0
+      ],
+      [
+        5,
+        2,
+        3
+      ]
+    ],
+    "held_out": [
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        9,
+        2,
+        7
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C01-A",
+        "text": "x is units owed on the order. y is units already fulfilled. Both are individual units."
+      },
+      {
+        "id": "C01-B",
+        "text": "For an active order, report units still owed after fulfillment. A surplus does not create a negative balance."
+      }
+    ]
+  },
+  {
+    "id": "C02",
+    "form": "difference",
+    "code": "max(0, x - y)",
+    "observed": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        3,
+        0
+      ],
+      [
+        5,
+        2,
+        3
+      ]
+    ],
+    "held_out": [
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        9,
+        2,
+        7
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C02-A",
+        "text": "x is required training time. y is completed training time. Both are whole hours."
+      },
+      {
+        "id": "C02-B",
+        "text": "For a current training plan, report hours still required after completed training. Extra hours do not create a negative balance."
+      }
+    ]
+  },
+  {
+    "id": "C03",
+    "form": "difference",
+    "code": "max(0, x - y)",
+    "observed": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        3,
+        0
+      ],
+      [
+        5,
+        2,
+        3
+      ]
+    ],
+    "held_out": [
+      [
+        4,
+        4,
+        0
+      ],
+      [
+        9,
+        2,
+        7
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C03-A",
+        "text": "Approved warehouse dictionary A maps x to owed units and y to fulfilled units."
+      },
+      {
+        "id": "C03-B",
+        "text": "Equally authoritative dictionary B maps x to fulfilled units and y to owed units. Neither supersedes the other."
+      }
+    ]
+  },
+  {
+    "id": "C04",
+    "form": "cap",
+    "code": "min(x, y)",
+    "observed": [
+      [
+        0,
+        5,
+        0
+      ],
+      [
+        5,
+        5,
+        5
+      ],
+      [
+        9,
+        2,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        2,
+        9,
+        2
+      ],
+      [
+        7,
+        3,
+        3
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C04-A",
+        "text": "x is the eligible expense amount. y is the policy cap. Both are in cents."
+      },
+      {
+        "id": "C04-B",
+        "text": "For approved expense claims, pay the eligible amount up to the policy cap."
+      }
+    ]
+  },
+  {
+    "id": "C05",
+    "form": "cap",
+    "code": "min(x, y)",
+    "observed": [
+      [
+        0,
+        5,
+        0
+      ],
+      [
+        5,
+        5,
+        5
+      ],
+      [
+        9,
+        2,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        2,
+        9,
+        2
+      ],
+      [
+        7,
+        3,
+        3
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C05-A",
+        "text": "x is the requested shipment quantity. y is available stock. Both count individual units."
+      },
+      {
+        "id": "C05-B",
+        "text": "For released orders, ship up to the requested quantity without exceeding available stock."
+      }
+    ]
+  },
+  {
+    "id": "C06",
+    "form": "cap",
+    "code": "min(x, y)",
+    "observed": [
+      [
+        0,
+        5,
+        0
+      ],
+      [
+        5,
+        5,
+        5
+      ],
+      [
+        9,
+        2,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        2,
+        9,
+        2
+      ],
+      [
+        7,
+        3,
+        3
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C06-A",
+        "text": "x is the eligible expense amount and y is the policy cap. Both are in cents."
+      },
+      {
+        "id": "C06-B",
+        "text": "A draft rule proposes paying the larger of the two amounts for an approved expense claim."
+      }
+    ]
+  },
+  {
+    "id": "C07",
+    "form": "threshold",
+    "code": "1 if x >= y else 0",
+    "observed": [
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        3,
+        1
+      ]
+    ],
+    "held_out": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        8,
+        7,
+        1
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C07-A",
+        "text": "x is the learner's score. y is the minimum passing score. Both are points. The output is a binary flag."
+      },
+      {
+        "id": "C07-B",
+        "text": "For a completed assessment, set the flag to one when the learner meets or exceeds the pass mark."
+      }
+    ]
+  },
+  {
+    "id": "C08",
+    "form": "threshold",
+    "code": "1 if x >= y else 0",
+    "observed": [
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        3,
+        1
+      ]
+    ],
+    "held_out": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        8,
+        7,
+        1
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C08-A",
+        "text": "x is the measured stock level. y is the configured trigger level. Both are units. The output is a binary flag."
+      },
+      {
+        "id": "C08-B",
+        "text": "For an active monitoring rule, flag that stock has reached or exceeded the replenishment trigger."
+      }
+    ]
+  },
+  {
+    "id": "C09",
+    "form": "threshold",
+    "code": "1 if x >= y else 0",
+    "observed": [
+      [
+        2,
+        3,
+        0
+      ],
+      [
+        3,
+        3,
+        1
+      ],
+      [
+        5,
+        3,
+        1
+      ]
+    ],
+    "held_out": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        8,
+        7,
+        1
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C09-A",
+        "text": "Approved rule A states that on a true result a warehouse operator should create a replenishment request."
+      },
+      {
+        "id": "C09-B",
+        "text": "Equally authoritative rule B states that on a true result the operator should suppress that request. Neither supersedes the other."
+      }
+    ]
+  },
+  {
+    "id": "C10",
+    "form": "allocation",
+    "code": "x * y // 100",
+    "observed": [
+      [
+        4,
+        10,
+        0
+      ],
+      [
+        7,
+        10,
+        0
+      ],
+      [
+        20,
+        10,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        37,
+        20,
+        7
+      ],
+      [
+        13,
+        50,
+        6
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C10-A",
+        "text": "x is eligible account balance in cents. y is an integer allocation percentage."
+      },
+      {
+        "id": "C10-B",
+        "text": "For a confirmed allocation, reserve the calculated share in whole cents and round down."
+      }
+    ]
+  },
+  {
+    "id": "C11",
+    "form": "allocation",
+    "code": "x * y // 100",
+    "observed": [
+      [
+        4,
+        10,
+        0
+      ],
+      [
+        7,
+        10,
+        0
+      ],
+      [
+        20,
+        10,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        37,
+        20,
+        7
+      ],
+      [
+        13,
+        50,
+        6
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C11-A",
+        "text": "x is planned output in units. y is an integer reserve percentage."
+      },
+      {
+        "id": "C11-B",
+        "text": "For an approved production plan, reserve the calculated share in whole units and round down."
+      }
+    ]
+  },
+  {
+    "id": "C12",
+    "form": "allocation",
+    "code": "x * y // 100",
+    "observed": [
+      [
+        4,
+        10,
+        0
+      ],
+      [
+        7,
+        10,
+        0
+      ],
+      [
+        20,
+        10,
+        2
+      ]
+    ],
+    "held_out": [
+      [
+        37,
+        20,
+        7
+      ],
+      [
+        13,
+        50,
+        6
+      ]
+    ],
+    "documents": [
+      {
+        "id": "C12-A",
+        "text": "x is planned production in units. y is the reserve percentage."
+      },
+      {
+        "id": "C12-B",
+        "text": "A draft rule specifies rounding to the nearest unit for an approved production plan."
+      }
+    ]
+  }
+]

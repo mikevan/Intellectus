@@ -1,0 +1,134 @@
+{
+  "C01": {
+    "action": "claim",
+    "entity": "warehouse order",
+    "unit": "units",
+    "meaning": "units still owed",
+    "applicability": "active order",
+    "evidence": [
+      "C01-A",
+      "C01-B"
+    ]
+  },
+  "C02": {
+    "action": "claim",
+    "entity": "training plan",
+    "unit": "hours",
+    "meaning": "training hours still required",
+    "applicability": "current training plan",
+    "evidence": [
+      "C02-A",
+      "C02-B"
+    ]
+  },
+  "C03": {
+    "action": "abstain",
+    "kind": "conflict",
+    "reason_or_witness": "reversed input roles",
+    "evidence": [
+      "C03-A",
+      "C03-B"
+    ]
+  },
+  "C04": {
+    "action": "claim",
+    "entity": "expense claim",
+    "unit": "cents",
+    "meaning": "payable reimbursement",
+    "applicability": "approved expense claim",
+    "evidence": [
+      "C04-A",
+      "C04-B"
+    ]
+  },
+  "C05": {
+    "action": "claim",
+    "entity": "shipment",
+    "unit": "units",
+    "meaning": "quantity to ship",
+    "applicability": "released order",
+    "evidence": [
+      "C05-A",
+      "C05-B"
+    ]
+  },
+  "C06": {
+    "action": "abstain",
+    "kind": "contradiction",
+    "reason_or_witness": [
+      9,
+      2,
+      2
+    ],
+    "evidence": [
+      "C06-A",
+      "C06-B"
+    ]
+  },
+  "C07": {
+    "action": "claim",
+    "entity": "training assessment",
+    "unit": "binary flag",
+    "meaning": "assessment passed",
+    "applicability": "completed assessment",
+    "evidence": [
+      "C07-A",
+      "C07-B"
+    ]
+  },
+  "C08": {
+    "action": "claim",
+    "entity": "inventory item",
+    "unit": "binary flag",
+    "meaning": "replenishment trigger reached",
+    "applicability": "active monitoring rule",
+    "evidence": [
+      "C08-A",
+      "C08-B"
+    ]
+  },
+  "C09": {
+    "action": "abstain",
+    "kind": "conflict",
+    "reason_or_witness": "opposite prescribed actions",
+    "evidence": [
+      "C09-A",
+      "C09-B"
+    ]
+  },
+  "C10": {
+    "action": "claim",
+    "entity": "account balance",
+    "unit": "cents",
+    "meaning": "allocated share",
+    "applicability": "confirmed allocation",
+    "evidence": [
+      "C10-A",
+      "C10-B"
+    ]
+  },
+  "C11": {
+    "action": "claim",
+    "entity": "production plan",
+    "unit": "units",
+    "meaning": "reserved production share",
+    "applicability": "approved production plan",
+    "evidence": [
+      "C11-A",
+      "C11-B"
+    ]
+  },
+  "C12": {
+    "action": "abstain",
+    "kind": "contradiction",
+    "reason_or_witness": [
+      7,
+      10,
+      0
+    ],
+    "evidence": [
+      "C12-A",
+      "C12-B"
+    ]
+  }
+}

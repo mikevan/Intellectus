@@ -22,7 +22,9 @@ shutil.copytree(src/"theme",site/"theme",dirs_exist_ok=True)
 def inline(s):
     s=html.escape(s)
     def link(m):
-        label,href=m.groups(); href=href.replace(".md",".html")
+        label,href=m.groups()
+        if href.endswith(".md") and href[:-3] in docs:
+            href=href[:-3]+".html"
         if href.endswith(".svg"):return f'<figure><img src="{href}" alt="{label}"/><figcaption>{label}</figcaption></figure>'
         return f'<a href="{href}">{label}</a>'
     return re.sub(r'\[([^\]]+)\]\(([^)]+)\)',link,s)

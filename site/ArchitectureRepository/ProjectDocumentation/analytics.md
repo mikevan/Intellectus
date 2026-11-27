@@ -17,6 +17,17 @@ RT-1/2 explicitly optimized duplicate branches. RT-3/4 disabled optimization and
 ## Interpretation
 The reported operational gates passed within their restricted scope, but the target implementation-independent semantic identity was not achieved. Equal behavior did not guarantee equal structural fingerprints. The historical intermediate representation remains useful; RT-5 must test convergence instead of another structural round trip.
 
+## P3 and P4 local inference
+
+| Run | Requests | Cumulative request time |
+| --- | ---: | ---: |
+| P3 Run 01 | 12 | 278.196 seconds |
+| P3 Run 02 | 12 | 735.702 seconds |
+| P4 Pilot 01 | 24 | 770.433 seconds |
+| P4 Pilot 02 | 24 | 1,627.273 seconds |
+
+These are sums of request durations for the recorded runs. See the [research record](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3-P4-Research-Record.md) for scope and outcomes.
+
 ## Dashboard measures not yet established
 | Measure | Definition | Status |
 |---|---|---|

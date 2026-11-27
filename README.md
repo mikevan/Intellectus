@@ -57,7 +57,8 @@ Software contains knowledge about how to accomplish tasks, but that knowledge is
 | Implicit optimization | Paired explicit/disabled optimization trials | Not demonstrated; motivated redesign |
 | Heterogeneous committee | Four live qualifications | Operational feasibility, not successful AI understanding |
 | Behavioral convergence | P1/P2; four equivalent implementations, two controls | Demonstrated on bounded arithmetic fixtures |
-| AI self-correction and contextual value | P3/P4 | Outstanding hypotheses |
+| Deliberative correction | [P3 runs](site/ArchitectureRepository/research/P3-P4-Research-Record.md#p3--deliberative-correction) | Two live runs missed qualification |
+| Domain contribution | [P4 pilots](site/ArchitectureRepository/research/P3-P4-Research-Record.md#p4--contribution-of-domain-context) | Context improved explanations. Strict verified claims remained at 0/8. |
 
 [Research analytics](site/ArchitectureRepository/analytics/README.md) · [Testing curriculum](site/ArchitectureRepository/research/Testing-Curriculum.md) · [Decision register](site/ArchitectureRepository/research/Research-Decision-Register.md) · [Architecture Repository](site/ArchitectureRepository/README.md)
 

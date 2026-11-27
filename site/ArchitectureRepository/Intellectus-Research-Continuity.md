@@ -68,7 +68,7 @@ The deterministic baseline demonstrates bounded behavioral equivalence, not univ
 
 ## 6. Outstanding questions and experimental roadmap
 
-P1 and P2 engineering pilots have passed. The next qualification is P3.
+P1 and P2 engineering pilots passed. Two P3 runs missed qualification. Two exploratory P4 pilots found that supplied context improved explanations, while no supported claim met the strict rubric. See the [P3 and P4 research record](research/P3-P4-Research-Record.md) for methods, evidence, and follow-up changes.
 
 1. **P3 — Deliberative correction:** Freeze benign synthetic cases, independently verified counterexamples and held-out inputs. Compare deterministic-only controls with AI-assisted analysis. Record initial claims, counterexamples, revised claims or explicit withdrawals and verification results. A passing result requires actual correction or justified withdrawal, not merely valid formatting.
 2. **P4 — Domain contribution:** Provide independently authored business context for otherwise ambiguous computations. Compare results with and without context and with deterministic-only controls. Test whether domain knowledge contributes independently verifiable meaning. Allow abstention.

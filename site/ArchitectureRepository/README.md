@@ -30,7 +30,7 @@ The research program seeks an evidence-grounded representation of computational 
 | RT-1–4 interpretation | Complete | [Research summary](research/Intellectus-RT-1-4-Research-Summary.md) |
 | Phase I | Qualified operationally | [Foundation](research/Phase-I-Research-Foundation.md), [findings](research/Phase-I-Live-Deliberation-Findings.md) |
 | P1/P2 | Engineering pilots passed | [Findings](research/P1-P2-Pilot-Findings.md) |
-| P3/P4 | Planned | [Curriculum](research/Testing-Curriculum.md) |
+| P3/P4 | P3 did not qualify. P4 completed two exploratory pilots. | [Research record](research/P3-P4-Research-Record.md) |
 | RT-5 | Draft; not executed | [Draft protocol](experiments/RT-5/RT-5-Draft-Protocol.md) |
 
 ## Design and evidence

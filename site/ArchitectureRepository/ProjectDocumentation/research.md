@@ -6,6 +6,17 @@ Independently acquired semantic claims can converge on verifiable implementation
 ## Historical finding
 RT-1–4 demonstrated restricted cross-language reconstruction, deliberate optimization, reproducibility and, in RT-2–4, dynamic OSGi lifecycle and snapshot recall. They also exposed a central limitation: language-neutral IR retained irrelevant implementation structure. The research direction changed to test implementation independence before RT-5. See [analytics](analytics.md).
 
+## P3 and P4 qualification results
+
+P3 tested revision after counterexamples. The deterministic control got all 12 cases right. Neither AI run qualified. The revised instructions improved withdrawals and retentions, while verified repairs fell from one to zero.
+
+P4 tested whether supplied business context clarifies ambiguous computations. The second exploratory pilot conveyed all eight intended interpretations. Zero passed the field-level rubric, and three of four misleading controls drew a correct abstention. The next proposed change is to identify the business record explicitly and cite the document text that supports it.
+
+- [P3 and P4 research record](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3-P4-Research-Record.md)
+- P3 deliberative correction — [Run 01 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Run-01-Findings.md) and [Run 02 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Run-02-Findings.md)
+- P4 domain contribution — [Pilot 01 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-01-Findings.md) and [Pilot 02 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-02-Findings.md)
+- [Research archive](archive.html) — protocols, fixtures, raw responses, and provenance
+
 ## Candidate experimental sequence
 | Trial | Question |
 |---|---|
