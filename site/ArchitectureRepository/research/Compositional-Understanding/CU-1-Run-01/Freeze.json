@@ -1,0 +1,45 @@
+{
+  "sha256": {
+    "acquire.py": "ac1ceeb5e0c6b5e9db1f3093b28e0b78fbb597fd1432c25cb553f6bf12b3a0a9",
+    "run_cu1.py": "5f73e5649e11a3c2e576759485ee9f6a06b19027bda21946aa568cd6177781f4",
+    "baseline.py": "592a687a26db83d6ce3d0868452eb0ef639aea35982c4ec8fafa7afde417a650",
+    "oracle.py": "e5da897006c708f3f2851587f1bbd14a097cf4143778456dddf7f5f7b4008b1c",
+    "score_cu1.py": "09287374cdb991e27cfee36be954cf78773057a991b436edf1cb3c1908d925bb",
+    "fixtures.json": "f460f12cd23acb0cfc3138f3abc136ab00206074bd1d02bd1601f5ddd85914e7",
+    "CU-1-Protocol.md": "d7099a1f37beaaa7870d6fbd45f2b641c795090cc667292e9f26a74d75b74c6b",
+    "Evaluator-Preparation.md": "1057dd58a9ea9e1b0dfc7be6faa7604b969cf6cacf7dd6f13c1ab2c13d388710",
+    "frozen-skill": "cba959e67692dc0c422f30059fe78d027c8f3f84a630f8685e4ff2e9683ee2b8",
+    "KeepSafe/keepsafe/__init__.py": "ec7c94fa20238535d9f190aeeaee73783421f284338332c07477598112f3e372",
+    "KeepSafe/keepsafe/__main__.py": "e8ca2906f278529013ab93baba9a086ccf530a5249af475f3b5166264760e0c4",
+    "KeepSafe/keepsafe/checkpointing.py": "392805fbcfa1a0a2b7e11e1094d5ac479a60fd6d5228400993b81b72f562bc71",
+    "KeepSafe/keepsafe/cli.py": "f981b60c6b9d43d5739dedb1de07b23d1d16beda116ced6efa7fd271f3a0222f",
+    "KeepSafe/keepsafe/core.py": "60451cdd40c75ee58e594e7fec341baaf6fd63cb225689e085e2082a69c7d5de",
+    "MVS/mvs/__init__.py": "a7c54e8c2dd089018ea1bff7aa0084af826fd1c1145298d78e007058b1a5e840",
+    "MVS/mvs/cli.py": "780da2d8993e9f6200a0aaaf1493d6b57c4eefe5188666f8b81ec6ef6039c5bd",
+    "MVS/mvs/core.py": "d843db0115d90a691b754c6454c2d61418fdcf349e240dcc52cf3d7739141a02",
+    "MVS/mvs/errors.py": "da608be448655ec3396ca6a1d32149b1c25d562f4f7bfec6582124d07d3327a0",
+    "MVS/mvs/model.py": "0725cb5db341f79192978c7af72faf69740173c04a658de6aa8c366caae615a9"
+  },
+  "parity": {
+    "KeepSafe": true,
+    "MVS": true
+  },
+  "python": "3.14.2 (tags/v3.14.2:df79316, Dec  5 2025, 17:18:21) [MSC v.1944 64 bit (AMD64)]",
+  "pathspec": "0.12.1",
+  "sse": {
+    "model": "intellectus-qwen36",
+    "temperature": 0,
+    "max_tokens": 3072,
+    "stream": true,
+    "stream_options": {
+      "include_usage": true
+    }
+  },
+  "prompt": "Use the frozen methodology to propose up to three relationships spanning\nmultiple activities. Focus on predictions within this subject. Steps and fields\nare opaque identifiers. Justify scope and cite observed workflow IDs. Treat\npurpose claims as exploratory. Return one compact JSON object with key claims.\nEach claim has description, evidence (workflow IDs), falsifier, scope (a nonempty\nlist drawn from X and Y), and predictions (a list of [left_step, left_field,\noperator, right_step, right_field] arrays). Operators are eq and ne. Use distinct\nsteps within each prediction, and include at least two distinct right-hand\nobservations per relationship. Select only fields that occur in every workflow\nin the stated scope. Use evidence and report uncertainty. An empty claims list\nis valid. Avoid markdown.",
+  "endpoint": "http://127.0.0.1:8000/v1/chat/completions",
+  "source_commits": {
+    "KeepSafe": "414fd785fb18f42c188c2ff90ccf8c3015b35263",
+    "MVS": "176e4d345bd20031abffa42477fc2c8852464547"
+  },
+  "model_identity": "Server-reported model alias. Current weights were not fingerprinted."
+}

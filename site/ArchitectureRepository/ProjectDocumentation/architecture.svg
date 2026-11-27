@@ -1,19 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 476" role="img" class="chart-label" aria-label="Architecture"><style>/* PRS identity: use this file to change all brand and chart colors. */
-:root{
-  --background:#090b09;
-  --panel:#121612;
-  --panel-raised:#1b211b;
-  --border:#394137;
-  --ink:#f3f4ee;
-  --muted:#bfc8bc;
-  --gold:#f5aa20;
-  --green:#69c814;
-  --link:#a0e65a;
-  --on-accent:#080b07;
-  --graph-before:#f5aa20;
-  --graph-after:#69c814;
-  --font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-}
-/* SVG charts use these semantic roles. Build embeds theme tokens and this file in SVG. */
-.chart-panel{fill:var(--panel)}.chart-background{fill:var(--background)}.chart-label{fill:var(--ink)}.chart-secondary{fill:var(--muted)}.chart-accent{fill:var(--gold)}.chart-arrow{stroke:var(--green)}.chart-before{fill:var(--graph-before)}.chart-after{fill:var(--graph-after)}
-</style><rect x="12" y="10" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="33" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Investigation contract</text><text x="210" y="52" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Source, observations, requirements</text><path d="M210 68 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="86" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="109" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Karaf / OSGi coordinator</text><text x="210" y="128" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Independent specialists + Colibri inference</text><path d="M210 144 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="162" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="185" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Evidence reconciliation</text><text x="210" y="204" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Witness / DeepTest and skeptical review</text><path d="M210 220 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="238" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="261" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Understanding</text><text x="210" y="280" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Verified claims and temporal ontology</text><path d="M210 296 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="314" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="337" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Linguistic adapters</text><text x="210" y="356" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Target-specific expression</text><path d="M210 372 v18" class="chart-arrow" stroke-width="3"/><rect x="12" y="390" width="396" height="58" rx="8" class="chart-panel"/><text x="210" y="413" text-anchor="middle" class="chart-label" font-family="sans-serif" font-size="15" font-weight="bold">Independent verification</text><text x="210" y="432" text-anchor="middle" class="chart-accent" font-family="sans-serif" font-size="12">Evidence feeds back into knowledge</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 610" role="img"><title>Complementary methods of knowing</title><rect width="960" height="610" rx="18" class="chart-background"/>
+<text x="36" y="46" font-size="26" font-family="system-ui" class="chart-label">Complementary methods of knowing</text>
+<rect x="36" y="75" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="103" font-family="system-ui" font-size="20" class="chart-accent">Deterministic — 3 roles</text><text x="57" y="129" font-family="system-ui" font-size="16" class="chart-secondary">Structural, behavioral and mathematical evidence.</text>
+<path d="M480 151 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="175" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="203" font-family="system-ui" font-size="20" class="chart-accent">Hybrid — 2 roles</text><text x="57" y="229" font-family="system-ui" font-size="16" class="chart-secondary">Causal investigation and skeptical verification.</text>
+<path d="M480 251 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="275" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="303" font-family="system-ui" font-size="20" class="chart-accent">AI-driven — 2 roles</text><text x="57" y="329" font-family="system-ui" font-size="16" class="chart-secondary">Conceptual and domain hypotheses through Colibri.</text>
+<path d="M480 351 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="375" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="403" font-family="system-ui" font-size="20" class="chart-accent">Independent verification</text><text x="57" y="429" font-family="system-ui" font-size="16" class="chart-secondary">Scope claims; preserve counterexamples and unresolved meanings.</text>
+<path d="M480 451 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="475" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="503" font-family="system-ui" font-size="20" class="chart-accent">Understanding</text><text x="57" y="529" font-family="system-ui" font-size="16" class="chart-secondary">Retain qualified knowledge, provenance and revision history.</text>
+</svg>

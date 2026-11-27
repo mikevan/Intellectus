@@ -1,0 +1,112 @@
+{
+  "manifest": {
+    "sha256": {
+      "Frozen-Skill.md": "cba959e67692dc0c422f30059fe78d027c8f3f84a630f8685e4ff2e9683ee2b8",
+      "greet.py": "a7f6e1ce6eff11780ea5722fe4e3be70670fddeae126870c9687ab1177667c6b",
+      "control.py": "7280b4b7ed4f7c3c84cde845b664fa8285cc468ac7769dddc824166493c568c7",
+      "oracle.json": "210b761743ba4be689748ee938edd1a2a3d77824c05b625ec7eecfb46e2d74f9",
+      "Protocol.md": "d1fcb07a16557b4246bb01f68194827ca6ff4f139fb6323dbc16663d040e7e6a",
+      "qualify.py": "f6bf27757d6b1ffd5ab308882bd617e4df4a1b53fb2b01e9c43dde67b29394ad"
+    },
+    "model": "intellectus-qwen36",
+    "endpoint": "http://127.0.0.1:8000/v1/",
+    "runtime": "Colibri v2.1.0",
+    "sampling": {
+      "temperature": 0,
+      "max_tokens": 1536
+    },
+    "checkpoint_reference": "../../P3/run-01-provenance.json",
+    "checkpoint_note": "Existing running checkpoint, with prior fingerprints referenced.",
+    "python": "3.14.2",
+    "base_commit": "414fd785fb18f42c188c2ff90ccf8c3015b35263"
+  },
+  "discovery": {
+    "scope": "One optional text argument. Observe the returned text only.",
+    "observations": [
+      {
+        "arguments": [],
+        "results": {
+          "A": "Hello, World!",
+          "B": "Hello, World!"
+        }
+      },
+      {
+        "arguments": [
+          "Ada"
+        ],
+        "results": {
+          "A": "Hello, Ada!",
+          "B": "Hello, Ada!"
+        }
+      },
+      {
+        "arguments": [
+          "Grace"
+        ],
+        "results": {
+          "A": "Hello, Grace!",
+          "B": "Hello, Grace!"
+        }
+      }
+    ],
+    "task": "Investigate these observations using the supplied methodology. Record initial hypotheses, the scope of any prediction, and observations that could distinguish competing explanations."
+  },
+  "withheld": [
+    {
+      "arguments": [
+        ""
+      ],
+      "results": {
+        "A": "Hello, World!",
+        "B": "Hello, !"
+      }
+    },
+    {
+      "arguments": [
+        "World"
+      ],
+      "results": {
+        "A": "Hello, World!",
+        "B": "Hello, World!"
+      }
+    },
+    {
+      "arguments": [
+        " "
+      ],
+      "results": {
+        "A": "Hello,  !",
+        "B": "Hello,  !"
+      }
+    },
+    {
+      "arguments": [
+        " Ada "
+      ],
+      "results": {
+        "A": "Hello,  Ada !",
+        "B": "Hello,  Ada !"
+      }
+    },
+    {
+      "arguments": [
+        "Ada!"
+      ],
+      "results": {
+        "A": "Hello, Ada!!",
+        "B": "Hello, Ada!!"
+      }
+    },
+    {
+      "arguments": [
+        "Lin"
+      ],
+      "results": {
+        "A": "Hello, Lin!",
+        "B": "Hello, Lin!"
+      }
+    }
+  ],
+  "predictions": [],
+  "oracle_agreement": 18
+}

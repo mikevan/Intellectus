@@ -1,26 +1,54 @@
 # Intellectus
 
-# Our mission
-The mission of Intellectus is to develop and maintain an open-source Semantic Software Engineering Platform that enables artificial intelligence systems to understand the purpose, behavior, and methods of software systems by applying a flow-based semantic model represented through a temporal ontology.
+# What if computers could understand what they do?
 
-Through independently operating specialist models, deterministic analysis, LoRA training, and Colibri-based inference, Intellectus seeks to acquire, verify, preserve, and apply that understanding independently of the original implementation.
+Imagine buying a birdhouse. One person builds it with a hammer and nails. Another uses screws and a drill. A third uses glue. The methods are different, but you recognize what they have in common: a place for birds to live.
 
-[Source code](https://github.com/mikevan/Intellectus)
+Can a computer discover that common purpose without being told what to look for?
 
-## Why Intellectus?
-Software contains knowledge about how to accomplish tasks, but that knowledge is usually bound to source code, frameworks and runtime assumptions. Intellectus investigates whether an AI system can acquire the meaning of a software system, retain it independently, and use it to construct a new implementation. The goal is understanding, not translation.
+Intellectus is an open-source research project investigating that question. We start with software because we can observe what it does and test whether our conclusions are right.
 
-## Explore the project
-- [Projects and modules](projects.md) — the modular runtime and research components.
-- [Get started](get-started.md) — begin with the research model and reproduction prerequisites.
-- [Documentation](documentation.md) — user, developer and architecture guides.
-- [Research](research.md) — questions, methods, results and future work.
-- [Analytics](analytics.md) — measured historical results and their interpretation.
-- [Downloads](downloads.md) — releases, compatibility and verification.
-- [Community](community.md) — contribute and participate.
+[See how we investigate](research.md) | [Explore the vision](vision.md) | [Source code](https://github.com/mikevan/Intellectus)
 
-## Understanding through reconstruction
-[The round-trip experiment](round-trip.md) starts with Python, acquires a temporal ontology, generates TypeScript, then independently acquires a new ontology from TypeScript and reconstructs Python without the original source. Independent verification compares the two Python applications.
+## Following instructions is not the same as understanding
 
-## Semantic-first development
-[The semantic-first workflow](semantic-first.md) starts with a developer-authored semantic model rather than existing source. The model expresses required behavior; languages become implementation choices.
+A recipe tells you how to make a cake. You can translate that recipe into another language without ever baking a cake.
+
+If you understand baking, you know how ingredients and methods work together. You can use that knowledge to create a new kind of cake, not just follow an existing recipe.
+
+We want to find out whether computers can develop a comparable kind of understanding, then demonstrate it through evidence.
+
+## How we approach the problem
+
+Imagine a group of people trying to figure out how an unfamiliar machine works. One looks at the parts. Another watches it run. Another changes something to see what happens. Someone else looks for a mistake in their explanation.
+
+We use the same principle with computer programs: different methods investigate the same problem, contribute evidence and challenge each other's conclusions.
+
+[Meet the seven specialists](architecture.md)
+
+## What have we learned so far?
+
+| What we tried | What we learned |
+|---|---|
+| Convert software between languages | Copying the instructions does not necessarily capture their meaning. |
+| Compare programs with the same observable behavior | Different implementations can produce the same verified results in a limited test. |
+| Ask AI to explain and revise a rule | AI sometimes corrects its explanation, but has not consistently added knowledge beyond conventional calculation. |
+| Examine real applications with cooperating parts | Our first compositional experiment verified relationships in both applications using deterministic methods. AI did not add a verified new relationship. |
+
+[See the measurements and evidence](analytics.md) | [Read the research record](research.md)
+
+## Where could this lead?
+
+If computers can understand how the parts of a system work together, they may eventually help us understand how entire systems work, how they change over time, and what could happen if we change something.
+
+That is the long-term vision. We have not achieved it yet.
+
+[Discover the research vision](vision.md) | [Read the scientific foundations](foundations.md)
+
+## Join the investigation
+
+Intellectus is open research. We publish the successes, the failures and the evidence behind both. You do not need a degree to ask a good question.
+
+Michael Van Geertruy originated and directs the research.
+
+[Explore the software](projects.md) | [Community](community.md) | [Research archive](archive.html)

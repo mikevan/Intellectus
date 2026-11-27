@@ -1,6 +1,7 @@
 """Render canonical Markdown sources to a static site using Python 3."""
 from pathlib import Path
 import html, re, shutil
+import functools
 root=Path(__file__).resolve().parent.parent
 src=root/"ArchitectureRepository/ProjectDocumentation"
 site=root/"public"
@@ -17,7 +18,7 @@ for p in src.iterdir():
         chart = (src/"theme/charts.css").read_text()
         svg = re.sub(r"<style>.*?</style>", "", p.read_text(), flags=re.S)
         pos = svg.index(">") + 1
-        (site/p.name).write_text(svg[:pos]+"<style>"+theme+chart+"</style>"+svg[pos:])
+        (site/p.name).write_text(svg[:pos]+"<style>"+theme+chart+"</style>"+svg[pos:], encoding="utf-8")
 shutil.copytree(src/"theme",site/"theme",dirs_exist_ok=True)
 def inline(s):
     s=html.escape(s)
@@ -63,14 +64,14 @@ def render(body):
         else:
             x=inline(l);out.append(x if x.startswith("<figure>") else "<p>"+x+"</p>")
     return "\n".join(out)
-nav=[("index","Home"),("projects","Projects"),("get-started","Get Started"),("documentation","Documentation"),("research","Research"),("archive","Architecture Repository"),("analytics","Analytics"),("downloads","Downloads"),("community","Community")]
+nav=[("index","Home"),("vision","Vision"),("foundations","Research Foundations"),("architecture","Architecture"),("research","Research"),("analytics","Analytics"),("projects","Software"),("community","Community"),("archive","Archive")]
 (site/"style.css").write_text('@import url("theme/theme.css");\n@import url("theme/layout.css");\n@import url("theme/components.css");\n@import url("theme/charts.css");\n')
 for slug,(title,body) in docs.items():
     links=" ".join(f'<a href="{s}.html"'+(' aria-current="page"' if s==slug else '')+f'>{l}</a>' for s,l in nav)
     foot=" · ".join(f'<a href="{s}.html">{l}</a>' for s,l in [("charter","Charter"),("standards","Standards"),("testing","Validation"),("glossary","Glossary")])
     banner='<div class="review">Documentation preview — November 26, 2026. Review historical evidence before public release.</div>'
-    headline=f'<div class="hero"><h1>{html.escape(title)}</h1><p>Semantic understanding beyond implementation.</p></div>' if slug=="index" else f'<h1>{html.escape(title)}</h1>'
-    (site/(slug+".html")).write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | Intellectus</title><link rel="stylesheet" href="style.css"></head><body><header><div class="brand"><img src="theme/intellectus.png" alt="Intellectus semantic modelling logo"/><div><strong>INTELLECTUS</strong><p>Understand software across languages.</p></div></div><nav aria-label="Main navigation">{links}</nav></header><main>{banner}{headline}{render(body)}</main><footer>{foot}<p>Intellectus · Research · Engineering · Community</p></footer></body></html>')
+    headline=f'<div class="hero"><h1>{html.escape(title)}</h1><p>Can computers learn what their work accomplishes?</p></div>' if slug=="index" else f'<h1>{html.escape(title)}</h1>'
+    (site/(slug+".html")).write_text(f'<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)} | Intellectus</title><link rel="stylesheet" href="style.css"></head><body><header><div class="brand"><img src="theme/intellectus.png" alt="Intellectus semantic modelling logo"/><div><strong>INTELLECTUS</strong><p>Learning what software really does.</p></div></div><nav aria-label="Main navigation">{links}</nav></header><main>{banner}{headline}{render(body)}</main><footer>{foot}<p>Intellectus · Research · Engineering · Community</p></footer></body></html>', encoding="utf-8")
 
 # Build a browsable generated copy of the single canonical repository.
 from urllib.parse import quote

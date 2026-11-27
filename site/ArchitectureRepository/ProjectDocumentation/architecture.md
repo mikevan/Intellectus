@@ -1,25 +1,29 @@
-# Architecture guide
+# Architecture: complementary methods of knowing
 
-## Logical architecture
-[Flow of understanding](architecture.svg)
+Think of a group examining an unfamiliar machine. Some inspect the parts, some watch it work, some propose explanations, and others test whether those explanations hold up. Intellectus combines these different methods rather than trusting one person's answer.
 
-Intellectus uses Karaf and OSGi to coordinate small independently provisioned services. Deterministic and AI specialists investigate a scoped question. Reconciliation compares claims and evidence; Witness and DeepTest support independent checks; Understanding retains qualified knowledge. Linguistic adapters express supported views in selected languages.
+[Specialist architecture](architecture.svg)
 
-## Specialist boundaries
-| Specialist | Focus |
-|---|---|
-| Structural | Static relationships and source evidence |
-| Behavioral | Observed outputs, effects and trace attribution |
-| Causal | Controlled interventions and counterexamples |
-| Mathematical | Relations, constraints and symbolic evidence |
-| Conceptual | Abstraction and competing interpretations |
-| Domain | Context supplied by scoped lexicons |
-| Skeptic | Falsification and coverage limitations |
+The research architecture separates evidence acquisition, candidate interpretation, independent verification and persistent knowledge. The proposed seven-specialist architecture is not a claim that every role is fully integrated or necessary.
 
-Specialists should be independently provisioned, tested, and evaluated. Shared model weights and shared evidence can correlate errors. Independence is a property to measure, not a claim established by role prompts.
+| Specialist | Execution | Contribution |
+|---|---|---|
+| Structural | Deterministic | AST, call graphs, control flow, MBCC and reachable relationships |
+| Behavioral | Deterministic | Instrumentation, Witness and DeepTest where qualified; observed state and outcomes |
+| Mathematical | Deterministic | Exact calculation, symbolic relations and formal checks |
+| Causal | Hybrid | Propose dependencies and test them with controlled variation |
+| Skeptic | Hybrid | Challenge claims, propose disconfirming observations and verify evidence |
+| Conceptual | AI-driven | Candidate abstractions, compositional relationships and emergent capabilities |
+| Domain | AI-driven | Interpret independently supplied context and declared obligations |
 
-## Knowledge ownership
-Understanding retains claims, evidence references, scope, semantic views, revisions and dissent independently of adapter or model lifetime. Source structure is evidence, not necessarily intrinsic meaning. Runtime composition is distinct from knowledge persistence.
+Three deterministic, two hybrid and two AI-driven roles. Colibri supplies local inference when needed. Purpose-trained SLMs and adapters remain research options; no successful training is asserted. Measure contribution and ablate before consolidating.
 
-## Decisions and status
-The canonical architecture and historical research belong in ArchitectureRepository. Use an ADR for decisions, alternatives, evidence and consequences. Preserve historical baselines. The new temporal ontology design and full specialist orchestration remain proposals to qualify.
+## Evidence over agreement
+
+A model may propose a claim but cannot verify it merely by reporting confidence or agreement. Preserve independent evidence, contradictions, assumptions, restrictions and revisions. Separate structural identity from behavioral identity and independently established purpose.
+
+## Knowledge independent of the investigator
+
+Understanding retains qualified knowledge separately from the model or adapter that discovered it. Multiple views may represent a relationship: mathematical, behavioral, causal, structural or ontological. No universal representation is assumed. Karaf/OSGi lifecycle was demonstrated on restricted historical experiments; complete production orchestration remains unqualified.
+
+[Semantic model](semantic-model.md) · [Software modules](projects.md) · [Research vision](vision.md)

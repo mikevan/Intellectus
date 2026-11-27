@@ -1,0 +1,77 @@
+{
+  "sha256": {
+    "Frozen-Skill.md": "cba959e67692dc0c422f30059fe78d027c8f3f84a630f8685e4ff2e9683ee2b8",
+    "baseline.json": "789112e94b9e50ada2ce9a0fecd35275da0b301ae99c7473329eeecc8e0f4905",
+    "oracle.json": "210b761743ba4be689748ee938edd1a2a3d77824c05b625ec7eecfb46e2d74f9",
+    "replicate-01.json": "c11bbdb6e4aa8c9ec0bb8a363f1bcdf2a56dda03b02344ec1aa94ecf7d961b73",
+    "Findings.md": "8612a28ced71255466577642b35d060d83e7266374d44b669d243e753cc42e14",
+    "Follow-Up\\Protocol.md": "9e26bd136b627637aa6cae769b65695f796e1152bb504e616c07c4c881dc10e8",
+    "Follow-Up\\follow_up.py": "928a6d8d2894851ef9403fb79bc7cf5d1421946f70f1aedf33e8cc33fb41fd5c"
+  },
+  "endpoint": "http://127.0.0.1:8000/v1/",
+  "checkpoint_reference": "../../P3/run-01-provenance.json",
+  "requests": {
+    "concise": {
+      "model": "intellectus-qwen36",
+      "temperature": 0,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "max_tokens": 1536,
+      "messages": [
+        {
+          "role": "system",
+          "content": "# Investigate behavioral meaning\n\nUse the supplied scope and evidence to investigate what the software accomplishes. Treat concepts, dimensions, and relationships as hypotheses. Work with the evidence the investigator provides and propose checks for the investigator to perform.\n\n1. Identify similarities and differences among the observed outcomes.\n2. Propose concepts and dimensions that explain those distinctions. State what varies on each dimension and what stays the same. Two observations may be equivalent along one dimension and differ along another.\n3. Explain the relationships among the candidates. A grouping shows which observations share a property. A relationship claim explains how properties vary together, separately, or in dependence on one another. Cite evidence for each claim.\n4. Propose an observation that could disprove each material claim. To test independence, look for a case in which one dimension changes while the other stays fixed. State when the supplied evidence cannot distinguish competing explanations.\n5. Check whether each distinction survives a change in implementation. Cite comparable observations when available. Otherwise propose a comparison and leave invariance unresolved.\n6. Retain uncertainty about unsupported purpose, dependencies, and behavior outside the observed scope.\n\n7. Test whether several candidates express a more general concept or whether one concept should be divided into more specific concepts. Treat each proposed generalization or specialization as a hypothesis. State what evidence would support or defeat it.\n8. Distinguish observed behavior, inferred relationships, inferred purpose, and independently declared intent. Leave ultimate business purpose unresolved when observable behavior is the only evidence.\n9. Prefer distinctions that help explain outcomes, predict new observations, or discriminate between plausible accounts within scope. Flag potentially redundant distinctions and retain those that may still matter.\n10. When new evidence is supplied, reassess prior concepts, dimensions, and relationships. Record which are retained, revised, merged, specialized, rejected, or unresolved, and why. Link each disposition to the new evidence and preserve the prior claims and their evidence.\n\nUse this methodology without a predefined taxonomy of software operations. Let the concepts, dimensions, and relationships emerge from the supplied evidence.\n\nReturn JSON with observations, candidate_concepts, candidate_dimensions, relationships, and open_questions. When revisiting prior candidates, include revisions with references to prior claims and new evidence. For each candidate or relationship, give the evidence references, a possible disconfirming observation, and its status within the supplied scope. Use implementation details as evidence. Define behavioral claims by observations that another implementation could reproduce.\n\nReturn only JSON with disposition, rule_for_A, rule_for_B, distinguishing_evidence, and unresolved. Use at most 220 words. Cite case IDs rather than copying observations."
+        },
+        {
+          "role": "user",
+          "content": "{\"scope\": \"One optional text argument. Observe the returned text only.\", \"prior_hypothesis\": \"If InputPresence is 'None', OutputTemplate is 'Hello, ' and NamePlaceholder is 'World!'. If InputPresence is 'Present', OutputTemplate is 'Hello, ' and NamePlaceholder is the input argument followed by '!'.\", \"prior_question\": \"What happens with empty string input?\", \"observations\": [{\"id\": \"D1\", \"arguments\": [], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, World!\"}}, {\"id\": \"D2\", \"arguments\": [\"Ada\"], \"results\": {\"A\": \"Hello, Ada!\", \"B\": \"Hello, Ada!\"}}, {\"id\": \"D3\", \"arguments\": [\"Grace\"], \"results\": {\"A\": \"Hello, Grace!\", \"B\": \"Hello, Grace!\"}}, {\"id\": \"W1\", \"arguments\": [\"\"], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, !\"}}, {\"id\": \"W2\", \"arguments\": [\"World\"], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, World!\"}}, {\"id\": \"W3\", \"arguments\": [\" \"], \"results\": {\"A\": \"Hello,  !\", \"B\": \"Hello,  !\"}}, {\"id\": \"W4\", \"arguments\": [\" Ada \"], \"results\": {\"A\": \"Hello,  Ada !\", \"B\": \"Hello,  Ada !\"}}, {\"id\": \"W5\", \"arguments\": [\"Ada!\"], \"results\": {\"A\": \"Hello, Ada!!\", \"B\": \"Hello, Ada!!\"}}, {\"id\": \"W6\", \"arguments\": [\"Lin\"], \"results\": {\"A\": \"Hello, Lin!\", \"B\": \"Hello, Lin!\"}}], \"task\": \"Reassess the prior hypothesis. Explain both subjects and distinguish their behavior where the evidence warrants it. State the scope of your revised relationship, cite the observations that changed it, and leave untested behavior unresolved.\"}"
+        }
+      ]
+    },
+    "larger-budget": {
+      "model": "intellectus-qwen36",
+      "temperature": 0,
+      "stream": true,
+      "stream_options": {
+        "include_usage": true
+      },
+      "max_tokens": 3072,
+      "messages": [
+        {
+          "role": "system",
+          "content": "# Investigate behavioral meaning\n\nUse the supplied scope and evidence to investigate what the software accomplishes. Treat concepts, dimensions, and relationships as hypotheses. Work with the evidence the investigator provides and propose checks for the investigator to perform.\n\n1. Identify similarities and differences among the observed outcomes.\n2. Propose concepts and dimensions that explain those distinctions. State what varies on each dimension and what stays the same. Two observations may be equivalent along one dimension and differ along another.\n3. Explain the relationships among the candidates. A grouping shows which observations share a property. A relationship claim explains how properties vary together, separately, or in dependence on one another. Cite evidence for each claim.\n4. Propose an observation that could disprove each material claim. To test independence, look for a case in which one dimension changes while the other stays fixed. State when the supplied evidence cannot distinguish competing explanations.\n5. Check whether each distinction survives a change in implementation. Cite comparable observations when available. Otherwise propose a comparison and leave invariance unresolved.\n6. Retain uncertainty about unsupported purpose, dependencies, and behavior outside the observed scope.\n\n7. Test whether several candidates express a more general concept or whether one concept should be divided into more specific concepts. Treat each proposed generalization or specialization as a hypothesis. State what evidence would support or defeat it.\n8. Distinguish observed behavior, inferred relationships, inferred purpose, and independently declared intent. Leave ultimate business purpose unresolved when observable behavior is the only evidence.\n9. Prefer distinctions that help explain outcomes, predict new observations, or discriminate between plausible accounts within scope. Flag potentially redundant distinctions and retain those that may still matter.\n10. When new evidence is supplied, reassess prior concepts, dimensions, and relationships. Record which are retained, revised, merged, specialized, rejected, or unresolved, and why. Link each disposition to the new evidence and preserve the prior claims and their evidence.\n\nUse this methodology without a predefined taxonomy of software operations. Let the concepts, dimensions, and relationships emerge from the supplied evidence.\n\nReturn JSON with observations, candidate_concepts, candidate_dimensions, relationships, and open_questions. When revisiting prior candidates, include revisions with references to prior claims and new evidence. For each candidate or relationship, give the evidence references, a possible disconfirming observation, and its status within the supplied scope. Use implementation details as evidence. Define behavioral claims by observations that another implementation could reproduce.\n\nUse the output format specified by the frozen skill."
+        },
+        {
+          "role": "user",
+          "content": "{\"scope\": \"One optional text argument. Observe the returned text only.\", \"prior_hypothesis\": \"If InputPresence is 'None', OutputTemplate is 'Hello, ' and NamePlaceholder is 'World!'. If InputPresence is 'Present', OutputTemplate is 'Hello, ' and NamePlaceholder is the input argument followed by '!'.\", \"prior_question\": \"What happens with empty string input?\", \"observations\": [{\"id\": \"D1\", \"arguments\": [], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, World!\"}}, {\"id\": \"D2\", \"arguments\": [\"Ada\"], \"results\": {\"A\": \"Hello, Ada!\", \"B\": \"Hello, Ada!\"}}, {\"id\": \"D3\", \"arguments\": [\"Grace\"], \"results\": {\"A\": \"Hello, Grace!\", \"B\": \"Hello, Grace!\"}}, {\"id\": \"W1\", \"arguments\": [\"\"], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, !\"}}, {\"id\": \"W2\", \"arguments\": [\"World\"], \"results\": {\"A\": \"Hello, World!\", \"B\": \"Hello, World!\"}}, {\"id\": \"W3\", \"arguments\": [\" \"], \"results\": {\"A\": \"Hello,  !\", \"B\": \"Hello,  !\"}}, {\"id\": \"W4\", \"arguments\": [\" Ada \"], \"results\": {\"A\": \"Hello,  Ada !\", \"B\": \"Hello,  Ada !\"}}, {\"id\": \"W5\", \"arguments\": [\"Ada!\"], \"results\": {\"A\": \"Hello, Ada!!\", \"B\": \"Hello, Ada!!\"}}, {\"id\": \"W6\", \"arguments\": [\"Lin\"], \"results\": {\"A\": \"Hello, Lin!\", \"B\": \"Hello, Lin!\"}}], \"task\": \"Reassess the prior hypothesis. Explain both subjects and distinguish their behavior where the evidence warrants it. State the scope of your revised relationship, cite the observations that changed it, and leave untested behavior unresolved.\"}"
+        }
+      ]
+    }
+  },
+  "selection": {
+    "colibri": {
+      "selected": [
+        ""
+      ],
+      "budget": 1,
+      "outcomes": {
+        "A": "Hello, World!",
+        "B": "Hello, !"
+      },
+      "discriminates": true
+    },
+    "boundary_generator": {
+      "selected": [
+        ""
+      ],
+      "budget": 1,
+      "outcomes": {
+        "A": "Hello, World!",
+        "B": "Hello, !"
+      },
+      "discriminates": true
+    }
+  }
+}

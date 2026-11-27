@@ -1,5 +1,7 @@
 # Understanding through reconstruction
 
+This is a proposed future synthesis and verification protocol, not the result of RT-1–4. Those experiments used structural IR and did not demonstrate acquisition of a temporal ontology.
+
 Consider an inventory application written in Python that accepts a reservation, checks stock, updates the reserved quantity, and rejects requests exceeding availability. Its semantics include the successful transition, failed-request behavior, stock invariants and ordering of effects.
 
 [Round-trip experiment](round-trip.svg)

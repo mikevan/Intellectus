@@ -1,6 +1,6 @@
 # Semantic-first development
 
-Developers need not begin with an existing implementation. They can author a temporal semantic ontology directly: purpose, entities, flows, events, conditions, state transitions, rules, effects, exceptions and accepted outcomes.
+A proposed future workflow could begin with independently declared obligations rather than existing source. A developer-authored semantic view could express: purpose, entities, flows, events, conditions, state transitions, rules, effects, exceptions and accepted outcomes.
 
 [One ontology, multiple implementation targets](semantic-first.svg)
 

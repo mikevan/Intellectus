@@ -1,0 +1,17 @@
+{
+  "independent_author_verified": false,
+  "files": {
+    "HelloWorlds/python/helloworld/greet.py": "a7f6e1ce6eff11780ea5722fe4e3be70670fddeae126870c9687ab1177667c6b",
+    "HelloWorlds/react-vitest/src/greet.ts": "f439197712d35c32b59e6483856019e5898aa300e0fa6e30a51df1164d76ce59",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/control.py": "7280b4b7ed4f7c3c84cde845b664fa8285cc468ac7769dddc824166493c568c7",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Frozen-Skill.md": "cba959e67692dc0c422f30059fe78d027c8f3f84a630f8685e4ff2e9683ee2b8",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Follow-Up/larger-budget.json": "58375b860ff6c58923658b91bf1cb2b28790bfb9bd11f7db55df826e0e785e7d",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/oracle.json": "210b761743ba4be689748ee938edd1a2a3d77824c05b625ec7eecfb46e2d74f9",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Transfer-01/Frozen-Hypothesis.json": "36d53ef01a4794bf5459cf57c63052290669545d307d240ea4fbe75a0896a746",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Transfer-01/Fresh-Inputs.json": "fc6f5f0ee46d70a03d3841af813994e3e5b9957bc1f10cd887c81d25f7158777",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Transfer-01/Protocol.md": "9ad7f7f4920820ec4de449bba180334a3a5e751f75b1ccaf854c5275a2190f7d",
+    "site/ArchitectureRepository/research/Application-Flow/Qualification-01/Transfer-01/verify_transfer.py": "0f7b45b78aadaa261b3f92977ee5edaa97ff80153dbdcb944b2a70dfac92c74f"
+  },
+  "base_commit": "414fd785fb18f42c188c2ff90ccf8c3015b35263",
+  "third_source_commit": "c7c07f59d8bc517b2c41c6757a60104f409e63b8"
+}

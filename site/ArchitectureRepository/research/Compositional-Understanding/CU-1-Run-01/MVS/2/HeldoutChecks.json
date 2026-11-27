@@ -1,0 +1,291 @@
+[
+  [
+    "X",
+    {
+      "id": "h1",
+      "order": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "A": {
+          "p": null,
+          "q": null,
+          "r": null,
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "B": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1"
+          ]
+        },
+        "D": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true
+        },
+        "E": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1",
+            "r2"
+          ]
+        },
+        "F": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true
+        },
+        "G": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "H": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1",
+            "r2"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ],
+  [
+    "Y",
+    {
+      "id": "h2",
+      "order": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "A": {
+          "p": null,
+          "q": null,
+          "r": null,
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "B": {
+          "p": "one\n",
+          "q": null,
+          "r": "one\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "one\n",
+          "q": null,
+          "r": "one\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1"
+          ]
+        },
+        "E": {
+          "p": "two\n",
+          "q": "three\n",
+          "r": "two\n",
+          "s": "three\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1"
+          ]
+        },
+        "G": {
+          "p": "two\n",
+          "q": "three\n",
+          "r": "two\n",
+          "s": "three\n",
+          "t": 1,
+          "u": true
+        },
+        "H": {
+          "p": "two\n",
+          "q": "three\n",
+          "r": "two\n",
+          "s": "three\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ],
+  [
+    "Z",
+    {
+      "id": "h3",
+      "order": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "A": {
+          "p": null,
+          "q": null,
+          "r": null,
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "B": {
+          "p": "red\n",
+          "q": null,
+          "r": "red\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "red\n",
+          "q": null,
+          "r": "red\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1"
+          ]
+        },
+        "D": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true
+        },
+        "E": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1",
+            "r2"
+          ]
+        },
+        "F": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true
+        },
+        "G": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 1,
+          "u": true
+        },
+        "H": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "r1",
+            "r2"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ]
+]

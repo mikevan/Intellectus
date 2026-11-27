@@ -1,0 +1,229 @@
+{
+  "metrics": {
+    "fresh": {
+      "A_vs_A": 12,
+      "B_vs_B": 12,
+      "C_vs_A": 12,
+      "C_vs_B": 12,
+      "cases": 12
+    },
+    "reused-control": {
+      "A_vs_A": 2,
+      "B_vs_B": 2,
+      "C_vs_A": 2,
+      "C_vs_B": 1,
+      "cases": 2
+    }
+  },
+  "observations": [
+    {
+      "partition": "fresh",
+      "arguments": [
+        "\t"
+      ],
+      "predicted": {
+        "A": "Hello, \t!",
+        "B": "Hello, \t!"
+      },
+      "observed": {
+        "A": "Hello, \t!",
+        "B": "Hello, \t!",
+        "C": "Hello, \t!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "\n"
+      ],
+      "predicted": {
+        "A": "Hello, \n!",
+        "B": "Hello, \n!"
+      },
+      "observed": {
+        "A": "Hello, \n!",
+        "B": "Hello, \n!",
+        "C": "Hello, \n!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        " \t "
+      ],
+      "predicted": {
+        "A": "Hello,  \t !",
+        "B": "Hello,  \t !"
+      },
+      "observed": {
+        "A": "Hello,  \t !",
+        "B": "Hello,  \t !",
+        "C": "Hello,  \t !"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "!"
+      ],
+      "predicted": {
+        "A": "Hello, !!",
+        "B": "Hello, !!"
+      },
+      "observed": {
+        "A": "Hello, !!",
+        "B": "Hello, !!",
+        "C": "Hello, !!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "!!!"
+      ],
+      "predicted": {
+        "A": "Hello, !!!!",
+        "B": "Hello, !!!!"
+      },
+      "observed": {
+        "A": "Hello, !!!!",
+        "B": "Hello, !!!!",
+        "C": "Hello, !!!!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "  "
+      ],
+      "predicted": {
+        "A": "Hello,   !",
+        "B": "Hello,   !"
+      },
+      "observed": {
+        "A": "Hello,   !",
+        "B": "Hello,   !",
+        "C": "Hello,   !"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "Zoë"
+      ],
+      "predicted": {
+        "A": "Hello, Zoë!",
+        "B": "Hello, Zoë!"
+      },
+      "observed": {
+        "A": "Hello, Zoë!",
+        "B": "Hello, Zoë!",
+        "C": "Hello, Zoë!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "世界"
+      ],
+      "predicted": {
+        "A": "Hello, 世界!",
+        "B": "Hello, 世界!"
+      },
+      "observed": {
+        "A": "Hello, 世界!",
+        "B": "Hello, 世界!",
+        "C": "Hello, 世界!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "7"
+      ],
+      "predicted": {
+        "A": "Hello, 7!",
+        "B": "Hello, 7!"
+      },
+      "observed": {
+        "A": "Hello, 7!",
+        "B": "Hello, 7!",
+        "C": "Hello, 7!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "😀"
+      ],
+      "predicted": {
+        "A": "Hello, 😀!",
+        "B": "Hello, 😀!"
+      },
+      "observed": {
+        "A": "Hello, 😀!",
+        "B": "Hello, 😀!",
+        "C": "Hello, 😀!"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        " "
+      ],
+      "predicted": {
+        "A": "Hello,  !",
+        "B": "Hello,  !"
+      },
+      "observed": {
+        "A": "Hello,  !",
+        "B": "Hello,  !",
+        "C": "Hello,  !"
+      }
+    },
+    {
+      "partition": "fresh",
+      "arguments": [
+        "hello, world"
+      ],
+      "predicted": {
+        "A": "Hello, hello, world!",
+        "B": "Hello, hello, world!"
+      },
+      "observed": {
+        "A": "Hello, hello, world!",
+        "B": "Hello, hello, world!",
+        "C": "Hello, hello, world!"
+      }
+    },
+    {
+      "partition": "reused-control",
+      "arguments": [],
+      "predicted": {
+        "A": "Hello, World!",
+        "B": "Hello, World!"
+      },
+      "observed": {
+        "A": "Hello, World!",
+        "B": "Hello, World!",
+        "C": "Hello, World!"
+      }
+    },
+    {
+      "partition": "reused-control",
+      "arguments": [
+        ""
+      ],
+      "predicted": {
+        "A": "Hello, World!",
+        "B": "Hello, !"
+      },
+      "observed": {
+        "A": "Hello, World!",
+        "B": "Hello, !",
+        "C": "Hello, World!"
+      }
+    }
+  ],
+  "elapsed_seconds": 0.2687010000227019
+}

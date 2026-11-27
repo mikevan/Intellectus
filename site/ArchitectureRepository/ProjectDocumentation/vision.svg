@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 610" role="img"><title>From operations to composite understanding</title><rect width="960" height="610" rx="18" class="chart-background"/>
+<text x="36" y="46" font-size="26" font-family="system-ui" class="chart-label">From operations to composite understanding</text>
+<rect x="36" y="75" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="103" font-family="system-ui" font-size="20" class="chart-accent">Individual operations</text><text x="57" y="129" font-family="system-ui" font-size="16" class="chart-secondary">Observe and verify behavior.</text>
+<path d="M480 151 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="175" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="203" font-family="system-ui" font-size="20" class="chart-accent">Relationships</text><text x="57" y="229" font-family="system-ui" font-size="16" class="chart-secondary">Discover dependencies, invariants and state transitions.</text>
+<path d="M480 251 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="275" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="303" font-family="system-ui" font-size="20" class="chart-accent">Compositions</text><text x="57" y="329" font-family="system-ui" font-size="16" class="chart-secondary">Establish what cooperating activities accomplish.</text>
+<path d="M480 351 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="375" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="403" font-family="system-ui" font-size="20" class="chart-accent">Capabilities and context</text><text x="57" y="429" font-family="system-ui" font-size="16" class="chart-secondary">Investigate reusable concepts and independently declared purpose.</text>
+<path d="M480 451 v24" class="chart-arrow" stroke-width="3" fill="none"/>
+<rect x="36" y="475" width="888" height="76" rx="9" class="chart-panel" stroke="#394137"/>
+<text x="57" y="503" font-family="system-ui" font-size="20" class="chart-accent">Prospective understanding — future</text><text x="57" y="529" font-family="system-ui" font-size="16" class="chart-secondary">Historical, predictive, counterfactual and strategic reasoning.</text>
+</svg>

@@ -1,0 +1,85 @@
+{
+  "discovery": [
+    {
+      "args": [],
+      "expected": [
+        "Hello, World!",
+        "Hello, World!"
+      ]
+    },
+    {
+      "args": [
+        "Ada"
+      ],
+      "expected": [
+        "Hello, Ada!",
+        "Hello, Ada!"
+      ]
+    },
+    {
+      "args": [
+        "Grace"
+      ],
+      "expected": [
+        "Hello, Grace!",
+        "Hello, Grace!"
+      ]
+    }
+  ],
+  "withheld": [
+    {
+      "args": [
+        ""
+      ],
+      "expected": [
+        "Hello, World!",
+        "Hello, !"
+      ]
+    },
+    {
+      "args": [
+        "World"
+      ],
+      "expected": [
+        "Hello, World!",
+        "Hello, World!"
+      ]
+    },
+    {
+      "args": [
+        " "
+      ],
+      "expected": [
+        "Hello,  !",
+        "Hello,  !"
+      ]
+    },
+    {
+      "args": [
+        " Ada "
+      ],
+      "expected": [
+        "Hello,  Ada !",
+        "Hello,  Ada !"
+      ]
+    },
+    {
+      "args": [
+        "Ada!"
+      ],
+      "expected": [
+        "Hello, Ada!!",
+        "Hello, Ada!!"
+      ]
+    },
+    {
+      "args": [
+        "Lin"
+      ],
+      "expected": [
+        "Hello, Lin!",
+        "Hello, Lin!"
+      ]
+    }
+  ]
+}

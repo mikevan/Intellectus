@@ -1,17 +1,19 @@
 # Project charter
 
-## Purpose and scope
-Intellectus develops open-source software for acquiring, representing, verifying, preserving and applying flow-based semantic knowledge of software systems through temporal ontologies. Its scientific objective is to test whether implementation-independent understanding can enable equivalent and new software implementations.
+## Purpose
 
-## In scope
-- Temporal ontology and semantic flow representation, including purpose, methods, conditions, effects and obligations.
-- Independent deterministic specialists and specialist AI models; creation and evaluation of domain-specific SLMs and LoRA adapters; Colibri inference.
-- Knowledge acquisition, evidence reconciliation, persistence and independent verification.
-- Language-specific interpretation and expression, framework and domain lexicons, and developer-authored semantic models.
-- Reproducible experimentation, openly reviewable methods, and documented constraints.
+Intellectus is an open-source research initiative and experimental semantic software engineering platform. Its scientific objective is to investigate whether implementation-independent understanding can be acquired, verified, retained and reused through complementary methods of investigation.
 
-## Outside the current scope
-Universal source equivalence, guaranteed optimal programs, and claims of general intelligence are not established. Raw source preservation is distinct from semantic identity. General application synthesis remains a research objective.
+## Scope
+
+- Ground knowledge in observations, interventions, independently supplied obligations and verification.
+- Discover relationships among computational activities and higher-order capabilities without prescribing the resulting ontology.
+- Evaluate deterministic, hybrid and AI-driven specialists against independent controls.
+- Preserve knowledge across changes of representation, implementation and analytical machinery.
+- Treat synthesis, temporal reasoning, prediction and strategic evaluation as research directions, not established features.
 
 ## Principles
-Evidence outranks model confidence. Preserve dissent, negative results and provenance. Prefer small independently versioned modules, documented service contracts and openly archived technical decisions. Make implementation choices after constructing the semantic model.
+
+Evidence outranks model confidence. Preserve negative results, dissent, provenance and frozen protocols. Make implementation choices after understanding. Build expansively for research, then reduce empirically before productization.
+
+Research originator and director: Michael Van Geertruy. See the [research continuity charter](ArchitectureRepository/Intellectus-Research-Continuity.md).

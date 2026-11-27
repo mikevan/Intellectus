@@ -1,0 +1,53 @@
+{
+  "visible": [
+    [
+      "v1",
+      "alpha\n",
+      "beta\n",
+      "extra\n",
+      "intact"
+    ],
+    [
+      "v2",
+      "morning\n",
+      "evening\n",
+      "spare\n",
+      "intact"
+    ],
+    [
+      "v3",
+      "alpha\n",
+      "beta\n",
+      "extra\n",
+      "omit"
+    ]
+  ],
+  "withheld": [
+    [
+      "h1",
+      "café\n",
+      "delta\n",
+      "appendix\n",
+      "intact"
+    ],
+    [
+      "h2",
+      "one\n",
+      "two\n",
+      "three\n",
+      "omit"
+    ],
+    [
+      "h3",
+      "red\n",
+      "blue\n",
+      "green\n",
+      "unknown"
+    ]
+  ],
+  "unknown": {
+    "KeepSafe": "9999-missing",
+    "MVS": "r9999"
+  },
+  "repeats": 3
+}

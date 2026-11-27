@@ -1,0 +1,264 @@
+[
+  [
+    "X",
+    {
+      "id": "h1",
+      "order": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "B": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first"
+          ]
+        },
+        "D": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true
+        },
+        "E": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first",
+            "0002-second"
+          ]
+        },
+        "F": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "delta\n",
+          "s": "appendix\n",
+          "t": 0,
+          "u": true
+        },
+        "G": {
+          "p": "delta\n",
+          "q": "appendix\n",
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "H": {
+          "p": "café\n",
+          "q": null,
+          "r": "café\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first",
+            "0002-second"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ],
+  [
+    "Y",
+    {
+      "id": "h2",
+      "order": [
+        "B",
+        "C",
+        "E",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "B": {
+          "p": "one\n",
+          "q": null,
+          "r": "one\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "one\n",
+          "q": null,
+          "r": "one\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first"
+          ]
+        },
+        "E": {
+          "p": "two\n",
+          "q": "three\n",
+          "r": "two\n",
+          "s": "three\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first"
+          ]
+        },
+        "G": {
+          "p": "two\n",
+          "q": "three\n",
+          "r": "one\n",
+          "s": "three\n",
+          "t": 0,
+          "u": true
+        },
+        "H": {
+          "p": "one\n",
+          "q": "three\n",
+          "r": "one\n",
+          "s": "three\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ],
+  [
+    "Z",
+    {
+      "id": "h3",
+      "order": [
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H"
+      ],
+      "steps": {
+        "B": {
+          "p": "red\n",
+          "q": null,
+          "r": "red\n",
+          "s": null,
+          "t": 0,
+          "u": true
+        },
+        "C": {
+          "p": "red\n",
+          "q": null,
+          "r": "red\n",
+          "s": null,
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first"
+          ]
+        },
+        "D": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true
+        },
+        "E": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first",
+            "0002-second"
+          ]
+        },
+        "F": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true
+        },
+        "G": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 1,
+          "u": true
+        },
+        "H": {
+          "p": "blue\n",
+          "q": "green\n",
+          "r": "blue\n",
+          "s": "green\n",
+          "t": 0,
+          "u": true,
+          "v": [
+            "0001-first",
+            "0002-second"
+          ]
+        }
+      }
+    },
+    {
+      "case": true,
+      "initial_bytes": true,
+      "history_count": true,
+      "history_preserved": true,
+      "comparison_observed": true,
+      "restore_status": true,
+      "restore_input": true,
+      "restore_result": true
+    }
+  ]
+]

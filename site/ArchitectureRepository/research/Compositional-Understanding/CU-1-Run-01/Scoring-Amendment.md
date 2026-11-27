@@ -1,0 +1,3 @@
+# Scoring execution amendment
+
+All six SSE responses and eighteen held-out workflows completed before scoring. The frozen scorer raised KeyError F while looking for a comparison step in the omission condition. Its claim assessor already classifies predictions that reference unavailable observations as unsupported. The recovery scorer applies that same rule to the baseline's supporting-predicate filter. Prediction operators, thresholds, scope requirements, novelty checks, raw records and oracle results are preserved. The original scorer remains available under its frozen digest. No acquisition or inference was repeated.

@@ -1,0 +1,31 @@
+{
+  "source": "../Follow-Up/larger-budget.json",
+  "scope": "No argument or exactly one string argument; the only observed channel is returned text.",
+  "claims": [
+    {
+      "id": "H1",
+      "subject": "A",
+      "when": "Argument omitted or supplied as empty text.",
+      "result": "Hello, World!"
+    },
+    {
+      "id": "H2",
+      "subject": "B",
+      "when": "Argument omitted.",
+      "result": "Hello, World!"
+    },
+    {
+      "id": "H3",
+      "subject": "B",
+      "when": "Argument supplied as empty text.",
+      "result": "Hello, !"
+    },
+    {
+      "id": "H4",
+      "subject": "A and B",
+      "when": "A nonempty string is supplied.",
+      "result": "Literal Hello, space, then that string unchanged, then !."
+    }
+  ],
+  "review": "Argument absence and zero-length text are observable input distinctions. No validity judgment, intended purpose, or internal fallback mechanism is asserted."
+}

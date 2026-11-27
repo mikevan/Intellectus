@@ -1,39 +1,44 @@
 # Research program
 
-## Hypothesis
-Independently acquired semantic claims can converge on verifiable implementation-independent understanding sufficient for software generation. This remains unproven.
+We begin with small questions we can test. When an answer turns out to be wrong, we preserve the evidence and use it to decide what to try next. This page shows that journey, including the questions that remain unanswered.
 
-## Historical finding
-RT-1–4 demonstrated restricted cross-language reconstruction, deliberate optimization, reproducibility and, in RT-2–4, dynamic OSGi lifecycle and snapshot recall. They also exposed a central limitation: language-neutral IR retained irrelevant implementation structure. The research direction changed to test implementation independence before RT-5. See [analytics](analytics.md).
+## Current research: compositional understanding
 
-## P3 and P4 qualification results
+Intellectus investigates whether independently evaluated computational activities can yield qualified knowledge about what they collectively accomplish. The immediate subjects are KeepSafe and Mike's Versioning System (MVS), investigated independently before comparing capabilities.
 
-P3 tested revision after counterexamples. The deterministic control got all 12 cases right. Neither AI run qualified. The revised instructions improved withdrawals and retentions, while verified repairs fell from one to zero.
+[Compositional research direction](ArchitectureRepository/research/Compositional-Understanding/README.md) · [CU-1 protocol](ArchitectureRepository/research/Compositional-Understanding/CU-1-Protocol.md) · [CU-1 Run 01 findings](ArchitectureRepository/research/Compositional-Understanding/CU-1-Run-01/Findings.md)
 
-P4 tested whether supplied business context clarifies ambiguous computations. The second exploratory pilot conveyed all eight intended interpretations. Zero passed the field-level rubric, and three of four misleading controls drew a correct abstention. A four-case follow-up passed two cases. The current research priority is deterministic application-flow extraction using the control constructs MBCC scores. Count the decisions evaluated on each verified path, then give Colibri the flow and available method and attribute evidence in sequence. The [Python Hello World pilot](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/Application-Flow/Protocol.md) starts with two explicit paths and requests an explanation only after the last evidence packet.
+CU-1 met its deterministic compositional-relationship threshold on both subjects. Colibri met its relationship threshold on KeepSafe only and added no independently verified incremental relationship on either subject. Emergent capabilities and business purpose remain unqualified.
 
-- [P3 and P4 research record](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3-P4-Research-Record.md)
-- P3 deliberative correction — [Run 01 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Run-01-Findings.md) and [Run 02 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P3/Run-02-Findings.md)
-- P4 domain contribution — [Pilot 01 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-01-Findings.md) and [Pilot 02 findings](https://github.com/mikevan/Intellectus/blob/main/site/ArchitectureRepository/research/P4/Pilot-02-Findings.md)
-- [Research archive](archive.html) — protocols, fixtures, raw responses, and provenance
+## How the research evolved
 
-Use the [experiment run instructions](experiment-runs.md) to reproduce a recorded run after completing the shared setup.
+| Stage | Question | Finding and consequence |
+|---|---|---|
+| RT-1–4 | Does language-neutral reconstruction imply understanding? | Explicit optimization changed structural fingerprints; disabled optimization retained redundancy. Redesign semantic identity. |
+| Phase I | Can complementary specialists investigate and verify claims? | Operational feasibility established; AI correction and incremental knowledge not established. |
+| P1/P2 | Can bounded equivalent behavior converge and different behavior diverge? | Deterministic pilot passed with four equivalent and two negative subjects. |
+| P3/P4 | Can AI correct a hypothesis or add verified domain context? | Qualification thresholds missed; preserve exploratory findings. |
+| Hello World | Can acquired relationships be revised and reused? | Bounded fresh predictions passed; deterministic probe selection tied; independent authorship unresolved. |
+| CU-1 | Can multiple activities yield verified relationships? | Deterministic H1 met for both, AI H2 unmet for both. |
+| CU-2–6 | Can relationships yield emergent capabilities, convergence, discrimination, transfer and purpose? | Planned; freeze protocols before execution. |
 
-## Candidate experimental sequence
-| Trial | Question |
+[Quantitative evidence](analytics.md) · [Testing and validation](testing.md) · [Full research archive](archive.html)
+
+## Compositional curriculum
+
+| Stage | Question |
 |---|---|
-| RT-5 | Do different equivalent implementations converge? |
-| RT-6 | Can knowledge be discovered blindly? |
-| RT-7 | Does a specialist committee improve results? |
-| RT-8 | Does domain context add verified knowledge? |
-| RT-9 | Can false consensus be rejected? |
-| RT-10 | Can qualified knowledge be reused? |
-| RT-11 | Can verified meaning drive synthesis? |
-| RT-12 | Does equivalence survive different representations? |
-| RT-13 | Can linguistic sharding be qualified? |
-| RT-14 | How does the approach scale? |
+| CU-1 | Verify relationships spanning activities in each application. |
+| CU-2 | Establish higher-order capabilities from complete workflows. |
+| CU-3 | Compare shared capabilities across applications. |
+| CU-4 | Distinguish superficially similar but materially different capabilities. |
+| CU-5 | Test transfer of previously qualified knowledge and acquisition cost. |
+| CU-6 | Investigate independently supplied business context and purpose. |
 
-These are candidate research questions, not frozen protocols or completed trials. Build expansively, qualify, ablate, consolidate, then productize. Preserve all earlier evidence.
+The earlier RT-5 through RT-14 formal roadmap remains in the [testing curriculum](ArchitectureRepository/research/Testing-Curriculum.md). Do not relabel pilots as formal RT-5. Protocols, conditions and results remain distinct.
 
-## Research attribution
-Research originator and director: Michael Van Geertruy. Record contributors, source artifacts, AI-assisted drafting/engineering where applicable, and independent reviewers for each experimental record. Do not retrospectively change frozen results.
+## Research attribution and method
+
+Michael Van Geertruy originated and directs the research. Preserve authorship, independent review, AI-assisted contributions, raw evidence and failed predictions. Verification must be independent of the candidate interpretation. Advance on evidence, not merely completed work.
+
+[Reproduce experiments](experiment-runs.md) · [Foundations](foundations.md)
